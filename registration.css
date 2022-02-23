@@ -49,6 +49,7 @@ h1 {
     color: white;
 }
 form {
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,7 +63,7 @@ form {
 .element {
     display: flex;
     margin-top: 30px;
-    width: 400px;
+    width: 100%;
     height: 50px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(60px);
@@ -86,7 +87,7 @@ input {
     border: 0;
     background: rgba(0, 0, 0, 0);
     border-radius: 0 10px 10px 0;
-    width: 358px;
+    width: 89.5%;
     height: 50px;
 }
 
@@ -96,7 +97,7 @@ button {
     font-size: 25px;
     height: 50px;
     margin-top: 50px;
-    width: 400px;
+    width: 100%;
     border: 0;
     cursor: pointer;
     background: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
