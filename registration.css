@@ -36,7 +36,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 27%;
+    width: 30%;
     background: linear-gradient(199.6deg, #8D8D8D -95.93%, rgba(255, 255, 255, 0) 108.19%);
     backdrop-filter: blur(5px);
     border-radius: 20px;
