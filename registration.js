@@ -147,7 +147,8 @@ passwordInput1.addEventListener('change', () => {
 
 function passOneError() {
     form.insertBefore(errorPassOne, menuElement4);
-    errorPassOne.innerText = 'Пароль должен содержать не менее \n 8-ми символов и латинские буквы';
+    errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
+        '\n в том числе цифры и латинские буквы';
 }
 
 const menuElement4 = document.createElement("div");
