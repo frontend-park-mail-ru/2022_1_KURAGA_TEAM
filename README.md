@@ -18,4 +18,4 @@ Frontend репозиторий проекта Netflix
 
 + Липко Дмитрий - [dnlipko](https://github.com/dnlipko)
 + Ершов Виталий - [LaHainee](https://github.com/LaHainee)
-+ Шишова Настя - 
++ Шишова Настя - [NellinLin](https://github.com/NellinLin)
