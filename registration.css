@@ -1,0 +1,176 @@
+body {
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+    margin: 0;
+}
+@font-face {
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+}
+#root {
+    background: #01090B;
+    height: 100%;
+}
+
+#back {
+    background: url("static/root.png");
+    width: 100%;
+    height: 968px;
+    opacity: 0.3;
+}
+#logo {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    height: 100px;
+}
+
+#back-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 968px;
+    width: 100%;
+}
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 27%;
+    background: linear-gradient(199.6deg, #8D8D8D -95.93%, rgba(255, 255, 255, 0) 108.19%);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+h1 {
+    display: block;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: white;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.error {
+    overflow: auto;
+    font-size: 18px;
+    color: red;
+}
+.element {
+    display: flex;
+    margin-top: 30px;
+    width: 400px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(60px);
+    border-radius: 10px;
+}
+#svg {
+    margin: 8px 20px 10px 10px;
+    width: 32px;
+    height: 32px;
+}
+input::-webkit-input-placeholder {
+    color: white;
+    font-size: 20px;
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+}
+input {
+    font-size: 20px;
+    color: white;
+    outline: none;
+    padding: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0 10px 10px 0;
+    width: 358px;
+    height: 50px;
+}
+
+button {
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+    color: white;
+    font-size: 25px;
+    height: 50px;
+    margin-top: 50px;
+    width: 400px;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
+    mix-blend-mode: normal;
+    border-radius: 10px;
+    transition: transform .1s ease-out,background-color .15s linear;
+}
+button:active {
+    transform: scale(0.94);
+}
+button:hover {
+    background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
+}
+#text {
+    margin-bottom: 60px;
+}
+#first-span {
+    margin-top: 10px;
+    font-size: 22px;
+    color: gray;
+}
+#second-span {
+    margin-left: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+#footer {
+    display: grid;
+    width: 100%;
+    position: absolute;
+    background: #01090B;
+    height: 150px;
+
+    grid-template-columns: 350px 350px auto 300px;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "first second third fourth";
+}
+#first-footer{
+    display: block;
+    grid-area: first;
+}
+#second-footer{
+    display: block;
+    grid-area: second;
+}
+#third-footer{
+    display: block;
+    grid-area: third;
+}
+#fourth-footer{
+    text-align: end;
+    display: block;
+    grid-area: fourth;
+}
+.title {
+    color: #C3C3C2;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+.content {
+    color: #C3C3C2;
+    margin-left: 50px;
+    font-size: 15px;
+}
+.refer {
+    height: 39px;
+    width: 39px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
