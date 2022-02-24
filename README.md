@@ -4,8 +4,8 @@ Frontend репозиторий проекта Netflix
 
 ## Ссылки
 
-+ Репозиторий backend - https://github.com/go-park-mail-ru/2022_1_KuragaTeam
-+ Фигма - https://www.figma.com/file/eQOdv9H0PdMUCkNejzHr9g/VK-%D0%A4%D0%B8%D0%BB%D1%8C%D0%BC%D1%8B?node-id=7%3A62
++ Репозиторий [backend](https://github.com/go-park-mail-ru/2022_1_KuragaTeam)
++ Макет в [Фигма](https://www.figma.com/file/eQOdv9H0PdMUCkNejzHr9g/VK-%D0%A4%D0%B8%D0%BB%D1%8C%D0%BC%D1%8B?node-id=7%3A62)
 
 ## Авторы
 
@@ -18,4 +18,4 @@ Frontend репозиторий проекта Netflix
 
 + Липко Дмитрий - [dnlipko](https://github.com/dnlipko)
 + Ершов Виталий - [LaHainee](https://github.com/LaHainee)
-+ Шишова Настя - [NellinLin](https://github.com/NellinLin)
++ Шишова Анастасия - [NellinLin](https://github.com/NellinLin)
