@@ -17,24 +17,26 @@
 }
 @media (min-width: 1400px) and (max-width: 1600px) {
     #menu{
-        width: 35%;
+        width: 38%;
     }
 }
 @media (min-width: 1200px) and (max-width: 1400px) {
     #menu{
-        width: 40%;
+        width: 43%;
     }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
     #menu{
-        width: 45%;
+        width: 48%;
     }
 }
 @media (min-width: 800px) and (max-width: 1000px) {
     #menu{
-        width: 50%;
+
+        width: 70%;
     }
     #back-menu {
+        height: 100%;
         width: 102%;
     }
     #footer {
