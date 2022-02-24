@@ -17,6 +17,7 @@
 }
 @media (min-width: 1400px) and (max-width: 1600px) {
     #menu{
+
         width: 38%;
     }
 }
@@ -30,10 +31,9 @@
         width: 48%;
     }
 }
-@media (min-width: 800px) and (max-width: 1000px) {
+@media (min-width: 750px) and (max-width: 1000px) {
     #menu{
-
-        width: 70%;
+        width: 85%;
     }
     #back-menu {
         height: 100%;
