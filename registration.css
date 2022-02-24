@@ -40,6 +40,7 @@ body {
     width: 30%;
     background: linear-gradient(199.6deg, #8D8D8D -95.93%, rgba(255, 255, 255, 0) 108.19%);
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-radius: 20px;
 }
 h1 {
@@ -108,6 +109,7 @@ button {
 }
 button:active {
     transform: scale(0.94);
+    -webkit-transform: scale(0.94);
 }
 button:hover {
     background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
