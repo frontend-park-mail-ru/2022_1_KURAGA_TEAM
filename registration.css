@@ -6,7 +6,7 @@ body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
 #root {
-    width: 102%;
+    width: 100%;
     background: #01090B;
     height: 100%;
 }
@@ -57,7 +57,7 @@ form {
 }
 
 .error {
-    overflow: auto;
+    font-weight: bold;
     font-size: 18px;
     color: red;
 }
@@ -131,7 +131,7 @@ button:hover {
 
 #footer {
     display: grid;
-    width: 102%;
+    width: 100%;
     position: absolute;
     background: #01090B;
     height: 150px;
