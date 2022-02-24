@@ -6,6 +6,7 @@ body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
 #root {
+    width: 102%;
     background: #01090B;
     height: 100%;
 }
@@ -29,7 +30,7 @@ body {
     align-items: center;
     position: absolute;
     top: 0;
-    height: 968px;
+    height: 100%;
     width: 100%;
 }
 #menu {
@@ -130,7 +131,7 @@ button:hover {
 
 #footer {
     display: grid;
-    width: 100%;
+    width: 102%;
     position: absolute;
     background: #01090B;
     height: 150px;
