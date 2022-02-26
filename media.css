@@ -4,6 +4,32 @@
     }
 }
 @media (min-width: 1000px) and (max-width: 1400px) {
+    .error {
+        font-size: 14px;
+    }
+    .menu-h1 {
+        margin-top: 50px;
+    }
+    .element {
+        height: 40px;
+    }
+    .svg {
+        height: 26px;
+        width: 26px;
+    }
+    .menu-input::-webkit-input-placeholder {
+        font-size: 16px;
+    }
+    .menu-input {
+        font-size: 16px;
+    }
+    .menu-button {
+        margin-top: 40px;
+        height: 40px;
+    }
+    .text {
+        margin-bottom: 40px;
+    }
     #menu{
         width: 650px;
     }
