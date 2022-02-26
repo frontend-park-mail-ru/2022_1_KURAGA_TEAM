@@ -24,14 +24,21 @@
         font-size: 16px;
     }
     .menu-button {
+        font-size: 22px;
         margin-top: 40px;
         height: 40px;
+    }
+    .first-span {
+        font-size: 20px;
+    }
+    .second-span {
+        font-size: 20px;
     }
     .text {
         margin-bottom: 40px;
     }
     #menu{
-        width: 650px;
+        width: 600px;
     }
 }
 @media (min-width: 750px) and (max-width: 1000px) {
