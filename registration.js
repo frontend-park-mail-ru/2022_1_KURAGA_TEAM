@@ -121,6 +121,12 @@ function createMenuReg(backMenu) {
         objElem.forEach((element) => {
             if (element.menuInput.dataset.section === "name") {
                 element.menuInput.addEventListener('change', () => {
+                    if (element.menuInput.value.trim() === "") {
+                        nameError();
+
+                        return;
+                    }
+
                     if (element.menuInput.validity.valid) {
                         form.removeChild(element.menuError);
 
@@ -203,10 +209,8 @@ function createMenuReg(backMenu) {
     let objElements = createInputs();
 
     function nameError() {
-        if(objElements[0].menuInput.validity.valueMissing) {
             form.insertBefore(objElements[0].menuError, objElements[1].menuElement);
             objElements[0].menuError.textContent = 'Заполните поле';
-        }
     }
 
     function emailError() {
@@ -243,7 +247,7 @@ function createMenuReg(backMenu) {
     form.appendChild(button);
 
     form.addEventListener('submit', (e) => {
-        if(!objElements[0].menuInput.validity.valid) {
+        if(!objElements[0].menuInput.validity.valid || objElements[0].menuInput.value.trim() === "") {
             nameError();
 
             e.preventDefault();
@@ -255,7 +259,14 @@ function createMenuReg(backMenu) {
             e.preventDefault();
         }
 
-        if(!objElements[2].menuInput.validity.valid) {
+        const containsLetters = /^.*[a-zA-Z]+.*$/;
+        const minimum8Chars = /^.{8,}$/;
+        const containsNumbers = /^.*[0-9]+.*$/;
+
+        if(!objElements[2].menuInput.validity.valid ||
+            !containsNumbers.test(objElements[2].menuInput.value) &&
+            !containsLetters.test(objElements[2].menuInput.value) &&
+            !minimum8Chars.test(objElements[2].menuInput.value)) {
             passOneError();
 
             e.preventDefault();
