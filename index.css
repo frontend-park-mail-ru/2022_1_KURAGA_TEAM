@@ -1,32 +1,9 @@
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
-@font-face {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
-}
-.background{
-    background-color : #01090B
-}
 
-a, input, img {
-    outline: none;
-    text-decoration: none;
-    display: block;
-}
-.item-a {
-    grid-area: header;
-}
+#root {
 
-.item-b {
-    grid-area: main;
-}
-.item-c {
-    grid-area: footer;
-}
-
-
-.container {
-    background: url("static/1+1.jpg");
     margin: -8px;
     display: grid;
     grid-template-rows: auto;
@@ -35,124 +12,162 @@ a, input, img {
     "header"
     "main"
     "footer";
-    background-size: cover;
-    height: 640px;   // костыль
+
 }
 
-
-
-.fontGT{
-    font-family: "GT-Eesti-Pro-Display-Bold",cursive;
+.font {
+    text-decoration: none;
     font-style: normal;
     font-weight: bold;
     color: #FFFFFF;
 }
 
-.navbar {
+.fontOther {
+    text-decoration: none;
+    font-family: GT Eesti Pro Display,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFFFF;
+}
 
-    display: grid;
-    grid-template-columns: 150px 150px 150px 150px 150px auto 50px auto 100px;
-    column-gap: 10px;
+@font-face {
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+
+}
+
+.background {
+    background-color: #01090B
+}
+
+.header {
+    margin-bottom: 30px;
+    flex-direction: row;
+    background-image: url("static/1+1.jpg");
+    background-size: cover;
+    grid-area: header;
+
+}
+
+
+.navbar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    column-gap: 30px;
+
+    align-items: center;
     font-size: 24px;
     line-height: 28px;
-    align-items: flex-end;
     text-align: center;
     background: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
 }
 
-input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+#logo {
+    padding-inline-start: 35px;
 }
 
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
+#profileImg {
+    flex-grow: 1;
 }
 
-
-.label{
-    place-self: center;
+#space {
+    flex-grow: 3;
 }
+
 
 .mainMovie {
-    display: grid;
-    grid-template-columns: auto  600px 30px ;
-    column-gap: 10px;
-    grid-template-rows: 200px auto 20px;
-    row-gap: 10px;
-    grid-template-areas:
-    ". . ."
-    ". sidebar . "
-    ". . ."
-
+    display: flex;
+    justify-content: flex-end;
 }
 
-.item-sidebar{
-    width: auto;
-    height: auto;
-    grid-area: sidebar;
+.sidebar {
+
     background: linear-gradient(206.08deg, rgba(196, 196, 196, 0.45) -40.85%, rgba(196, 196, 196, 0) 97.87%);
     backdrop-filter: blur(30px);
-    /* Note: backdrop-filter has minimal browser support */
+    width: 582px;
+    height: 351px;
 
+
+    padding: 5px;
     border-radius: 32px;
-}
-
-.titleMain {
+    margin: 150px 10px 10px;
     display: grid;
-    grid-template-columns: auto;
     column-gap: 10px;
     grid-template-rows: auto;
     row-gap: 10px;
+    grid-template-columns: 300px auto;
     grid-template-areas:
     "title title"
     "btn btnInfo"
 }
 
-.titl{
+.title{
     text-align: center;
-    color: #FFFFFF;
     grid-area: title;
 }
 
-.btn{
+.titleName {
+    font-size: 96px;
+    line-height: 111px;
+
+}
+.titleDescr{
+    font-weight: 350;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+
+.btn {
+    width: auto;
+    grid-area: btn;
     margin: 15px;
-    padding-block: 19px;
-    padding-inline: 40px;
+    padding-block: 5px;
+    padding-inline: 35px;
     font-style: normal;
     font-weight: 350;
     font-size: 24px;
     line-height: 28px;
+    place-self: center;
+
+
     background: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
     mix-blend-mode: normal;
     border-radius: 7px;
     justify-self: center;
-    grid-area: btn;
-
 }
-.btnInfo{
+
+.btnInfo {
+    width: auto;
+    grid-area: btnInfo;
     margin: 15px;
-    padding-block: 19px;
+    padding-block: 5px;
     padding-inline: 40px;
     font-style: normal;
     font-weight: 350;
     font-size: 24px;
     line-height: 28px;
-    grid-area: btnInfo;
+    place-self: center;
     background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
     mix-blend-mode: normal;
     backdrop-filter: blur(15px);
-    /* Note: backdrop-filter has minimal browser support */
+
     border-radius: 5px;
-    justify-self: center;
+
 
 }
 
 
+.main {
+    grid-area: main;
+}
 
-.selection{
+.item-c {
+    grid-area: footer;
+}
+
+
+.selection {
     display: grid;
     grid-template-columns: auto;
     column-gap: 10px;
@@ -164,13 +179,13 @@ input[type=text]:focus {
     "select3"
 }
 
-.select-1{
+.select-1 {
     margin-inline: 22px;
     display: grid;
     grid-area: select1;
 }
 
-.selectPop{
+.selectPop {
     display: grid;
     grid-template-columns: 10px;
     column-gap: 10px;
@@ -178,7 +193,7 @@ input[type=text]:focus {
 
 }
 
-.selectMovies{
+.selectMovies {
     width: 1300px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -188,6 +203,7 @@ input[type=text]:focus {
     grid-template-rows: auto;
 
 }
+
 .movie {
     background: url("static/star.png");
     background-size: contain;
@@ -207,12 +223,12 @@ input[type=text]:focus {
 
 }
 
-.refMov{
+.refMov {
     grid-area: movie;
 }
 
 
-.descMov{
+.descMov {
     display: grid;
     grid-template-columns: auto 50px;
     column-gap: 10px;
@@ -229,7 +245,7 @@ input[type=text]:focus {
 
 }
 
-.genre{
+.genre {
     margin-block: -20px;
     font-weight: 350;
     font-size: 14px;
@@ -237,111 +253,119 @@ input[type=text]:focus {
     color: #707070;
 }
 
-.select-2{
+.select-2 {
     margin-inline: 22px;
     grid-area: select2;
 }
 
-.select-3{
+.select-3 {
     margin-inline: 22px;
     grid-area: select3;
 }
 
 
+/*#footer {*/
+/*    display: grid;*/
+/*    width: 100%;*/
+/*    position: absolute;*/
+/*    background: #01090B;*/
+/*    height: 150px;*/
+
+/*    grid-template-columns: 350px 350px auto 300px;*/
+/*    grid-template-rows: auto;*/
+/*    grid-template-areas:*/
+/*        "first second third fourth";*/
+/*}*/
+
+/*#first-footer {*/
+/*    display: block;*/
+/*    grid-area: first;*/
+/*}*/
+
+/*#second-footer {*/
+/*    display: block;*/
+/*    grid-area: second;*/
+/*}*/
+
+/*#third-footer {*/
+/*    display: block;*/
+/*    grid-area: third;*/
+/*}*/
+
+/*#fourth-footer {*/
+
+/*    text-align: end;*/
+/*    display: block;*/
+/*    grid-area: fourth;*/
+/*    display: -webkit-inline-box;*/
+/*}*/
+
+/*.title {*/
+/*    color: #C3C3C2;*/
+/*    margin-left: 50px;*/
+/*    margin-top: 20px;*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 25px;*/
+/*}*/
+
+/*.content {*/
+/*    color: #C3C3C2;*/
+/*    margin-left: 50px;*/
+/*    font-size: 15px;*/
+/*}*/
+
+/*.refer {*/
+/*    height: 39px;*/
+/*    width: 39px;*/
+/*    margin-right: 50px;*/
+/*    margin-top: 20px;*/
+/*}*/
 
 
-#footer {
-    display: grid;
-    width: 100%;
-    position: absolute;
-    background: #01090B;
-    height: 150px;
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
-    grid-template-columns: 350px 350px auto 300px;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "first second third fourth";
-}
-#first-footer{
-    display: block;
-    grid-area: first;
-}
-#second-footer{
-    display: block;
-    grid-area: second;
-}
-#third-footer{
-    display: block;
-    grid-area: third;
-}
-#fourth-footer{
+/*form {*/
+/*    position: relative;*/
+/*    margin: 0 auto;*/
+/*    height: 42px;*/
+/*}*/
 
-    text-align: end;
-    display: block;
-    grid-area: fourth;
-    display: -webkit-inline-box;
-}
-.title {
-    color: #C3C3C2;
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 25px;
-}
-.content {
-    color: #C3C3C2;
-    margin-left: 50px;
-    font-size: 15px;
-}
-.refer {
-    height: 39px;
-    width: 39px;
-    margin-right: 50px;
-    margin-top: 20px;
-}
+/*input {*/
 
+/*    font-size: 24px;*/
+/*    height: 48px;*/
+/*    width: 0;*/
+/*    padding: 0 42px 0 15px;*/
+/*    border: none;*/
+/*    border-bottom: 2px solid transparent;*/
+/*    outline: none;*/
+/*    background: transparent;*/
+/*    transition: .4s cubic-bezier(0, 0.8, 0, 1);*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    z-index: 2;*/
+/*}*/
 
-* {box-sizing: border-box;}
-form {
-    position: relative;
-    width: 300px;
-    margin: 0 auto;
-    height: 42px;
-}
-input {
+/*input:focus {*/
+/*    width: 300px;*/
+/*    z-index: 1;*/
+/*    border-bottom: 2px solid #F9F0DA;*/
+/*}*/
 
-    font-size: 24px;
-    height: 48px;
-    width: 0;
-    padding: 0 42px 0 15px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    background: transparent;
-    transition: .4s cubic-bezier(0, 0.8, 0, 1);
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-}
-
-input:focus {
-    width: 300px;
-    z-index: 1;
-    border-bottom: 2px solid #F9F0DA;
-}
-
-button {
-    background: url("static/lupa.png");
-    border: none;
-    height: 42px;
-    width: 42px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    background-size: contain;
-}
+/*button {*/
+/*    background: url("static/lupa.png");*/
+/*    border: none;*/
+/*    height: 42px;*/
+/*    width: 42px;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    cursor: pointer;*/
+/*    background-size: contain;*/
+/*}*/
 
 
 .section {
@@ -350,15 +374,16 @@ button {
     direction: ltr;
     scrollbar-width: thin;
 
-    h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
 
-    p + p {
-        margin-top: 1rem;
-    }
+p + p {
+    margin-top: 1rem;
+}
+
 }
 
 .section::-webkit-scrollbar {
