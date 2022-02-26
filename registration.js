@@ -2,12 +2,17 @@
 
 const root = document.getElementById("root");
 
+const meta = document.createElement("meta");
+meta.name = "theme-color";
+meta.content = "#01090B";
+root.appendChild(meta);
+
 const back = document.createElement("div");
 back.id = "back";
 root.appendChild(back);
 
 const logo = document.createElement("object");
-logo.id = "logo";
+logo.classList.add("logo");
 logo.type = "image/svg+xml";
 logo.data = "static/Logo.svg";
 root.appendChild(logo);
@@ -21,204 +26,219 @@ menu.id = "menu";
 backMenu.appendChild(menu);
 
 const reg = document.createElement("h1")
+reg.classList.add("menu-h1");
 reg.textContent = "Регистрация";
 menu.appendChild(reg);
 
 const form = document.createElement("form");
 form.method = "post";
+form.classList.add("menu-form");
 form.action = ".";
 form.noValidate = true;
 menu.appendChild(form);
 
-const menuElement1 = document.createElement("div");
-menuElement1.classList.add("element");
-form.appendChild(menuElement1);
-
-const name = document.createElement("object");
-name.id = "svg";
-name.type = "image/svg+xml";
-name.data = "static/name.svg";
-menuElement1.appendChild(name);
-
-const nameInput = document.createElement("input");
-nameInput.placeholder = "Введите Имя";
-nameInput.type = "text";
-nameInput.required = true;
-menuElement1.appendChild(nameInput);
-
-const errorName = document.createElement("div");
-errorName.classList.add("error");
-
-nameInput.addEventListener('change', () => {
-    if (nameInput.validity.valid) {
-        form.removeChild(errorName);
-
-        return;
+const configElement = {
+    name: {
+        data: "static/name.svg",
+        placeholder: "Введите Имя",
+        type: "text",
+    },
+    email: {
+        data: "static/email.svg",
+        placeholder: "Введите Почту",
+        type: "email",
+    },
+    passwordFirst: {
+        data: "static/password.svg",
+        placeholder: "Введите Пароль",
+        type: "password",
+    },
+    passwordSecond: {
+        data: "static/password.svg",
+        placeholder: "Повторите Пароль",
+        type: "password",
     }
+}
 
-    nameError();
-});
+function createInputs() {
+    let objElem = Object
+        .entries(configElement)
+        .map(([key, {data, placeholder, type}]) => {
+            const menuElement = document.createElement("div");
+            menuElement.dataset.section = key;
+            menuElement.classList.add("element");
+            form.appendChild(menuElement);
+
+            const menuSvg = document.createElement("object");
+            menuSvg.classList.add("svg");
+            menuSvg.type = "image/svg+xml";
+            menuSvg.data = data
+            menuElement.appendChild(menuSvg);
+
+            const menuInput = document.createElement("input");
+            menuInput.placeholder = placeholder
+            menuInput.classList.add("menu-input");
+            menuInput.type = type
+            menuInput.required = true;
+            menuInput.dataset.section = key;
+            menuElement.appendChild(menuInput);
+
+            const menuError = document.createElement("div");
+            menuError.classList.add("error");
+
+            return {menuError, menuInput, menuElement};
+        });
+        objElem.forEach((element) => {
+            if (element.menuInput.dataset.section === "name") {
+                element.menuInput.addEventListener('change', () => {
+                    if (element.menuInput.validity.valid) {
+                        form.removeChild(element.menuError);
+
+                        return;
+                    }
+
+                    nameError();
+                });
+
+                element.menuInput.addEventListener('keydown', () => {
+                    form.removeChild(element.menuError);
+                });
+
+                return
+            }
+
+            if (element.menuInput.dataset.section === "email") {
+                element.menuInput.addEventListener('change', () => {
+                    if (element.menuInput.validity.valid) {
+                        form.removeChild(element.menuError);
+
+                        return;
+                    }
+
+                    emailError();
+                });
+
+                element.menuInput.addEventListener('keydown', () => {
+                    form.removeChild(element.menuError);
+                });
+
+                return
+            }
+
+            if (element.menuInput.dataset.section === "passwordFirst") {
+                element.menuInput.addEventListener('change', () => {
+                    const containsLetters = /^.*[a-zA-Z]+.*$/;
+                    const minimum8Chars = /^.{8,}$/;
+                    const containsNumbers = /^.*[0-9]+.*$/;
+
+                    if (element.menuInput.validity.valid &&
+                        containsNumbers.test(element.menuInput.value) &&
+                        containsLetters.test(element.menuInput.value) &&
+                        minimum8Chars.test(element.menuInput.value)) {
+                        form.removeChild(element.menuError);
+
+                        return;
+                    }
+
+                    passOneError();
+                });
+
+                element.menuInput.addEventListener('keydown', () => {
+                    form.removeChild(element.menuError);
+                });
+
+                return
+            }
+
+            if (element.menuInput.dataset.section === "passwordSecond") {
+                element.menuInput.addEventListener('change', () => {
+                    if (element.menuInput.validity.valid) {
+                        form.removeChild(element.menuError);
+
+                        return;
+                    }
+
+                    passTwoError();
+                });
+
+                element.menuInput.addEventListener('keydown', () => {
+                    form.removeChild(element.menuError);
+                });
+            }
+        });
+
+        return objElem;
+}
+
+objElements = createInputs();
 
 function nameError() {
-    if(nameInput.validity.valueMissing) {
-        form.insertBefore(errorName, menuElement2);
-        errorName.textContent = 'Заполните поле';
+    if(objElements[0].menuInput.validity.valueMissing) {
+        form.insertBefore(objElements[0].menuError, objElements[1].menuElement);
+        objElements[0].menuError.textContent = 'Заполните поле';
     }
 }
-
-const menuElement2 = document.createElement("div");
-menuElement2.classList.add("element");
-form.appendChild(menuElement2);
-
-const email = document.createElement("object");
-email.id = "svg";
-email.type = "image/svg+xml";
-email.data = "static/email.svg";
-menuElement2.appendChild(email);
-
-const emailInput = document.createElement("input");
-emailInput.placeholder = "Введите Почту";
-emailInput.type = "email";
-emailInput.required = true;
-menuElement2.appendChild(emailInput);
-
-const errorEmail = document.createElement("div");
-errorEmail.classList.add("error");
-
-emailInput.addEventListener('change', () => {
-    if (emailInput.validity.valid) {
-        form.removeChild(errorEmail);
-
-        return;
-    }
-
-    emailError();
-});
 
 function emailError() {
-    if(emailInput.validity.valueMissing) {
-        form.insertBefore(errorEmail, menuElement3);
-        errorEmail.textContent = 'Заполните поле';
+    if(objElements[1].menuInput.validity.valueMissing) {
+        form.insertBefore(objElements[1].menuError, objElements[2].menuElement);
+        objElements[1].menuError.textContent = 'Заполните поле';
 
         return;
     }
 
-    if(emailInput.validity.typeMismatch) {
-        form.insertBefore(errorEmail, menuElement3);
-        errorEmail.textContent = 'Введите действительный email';
+    if(objElements[1].menuInput.validity.typeMismatch) {
+        form.insertBefore(objElements[1].menuError, objElements[2].menuElement);
+        objElements[1].menuError.textContent = 'Введите действительный email';
     }
 }
 
-const menuElement3 = document.createElement("div");
-menuElement3.classList.add("element");
-form.appendChild(menuElement3);
-
-const password1 = document.createElement("object");
-password1.id = "svg";
-password1.type = "image/svg+xml";
-password1.data = "static/password.svg";
-menuElement3.appendChild(password1);
-
-const passwordInput1 = document.createElement("input");
-passwordInput1.placeholder = "Введите Пароль";
-passwordInput1.type = "password";
-passwordInput1.required = true;
-menuElement3.appendChild(passwordInput1);
-
-const errorPassOne = document.createElement("div");
-errorPassOne.classList.add("error");
-
-passwordInput1.addEventListener('change', () => {
-    const containsLetters = /^.*[a-zA-Z]+.*$/;
-    const minimum8Chars = /^.{8,}$/;
-    const containsNumbers = /^.*[0-9]+.*$/;
-
-    if (passwordInput1.validity.valid &&
-        containsNumbers.test(passwordInput1.value) &&
-        containsLetters.test(passwordInput1.value) &&
-        minimum8Chars.test(passwordInput1.value)) {
-        form.removeChild(errorPassOne);
-
-        return;
-    }
-
-    passOneError();
-});
-
 function passOneError() {
-    form.insertBefore(errorPassOne, menuElement4);
-    errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
+    form.insertBefore(objElements[2].menuError, objElements[3].menuElement);
+    objElements[2].menuError.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
         '\n в том числе цифры и латинские буквы';
 }
 
-const menuElement4 = document.createElement("div");
-menuElement4.classList.add("element");
-form.appendChild(menuElement4);
-
-const password2 = document.createElement("object");
-password2.id = "svg";
-password2.type = "image/svg+xml";
-password2.data = "static/password.svg";
-menuElement4.appendChild(password2);
-
-const passwordInput2 = document.createElement("input");
-passwordInput2.placeholder = "Повторите Пароль";
-passwordInput2.type = "password";
-passwordInput2.required = true;
-menuElement4.appendChild(passwordInput2);
-
-const errorPassTwo = document.createElement("div");
-errorPassTwo.classList.add("error");
-
-passwordInput2.addEventListener('change', () => {
-    if (passwordInput2.validity.valid) {
-        form.removeChild(errorPassTwo);
-
-        return;
-    }
-
-    passTwoError();
-});
-
 function passTwoError() {
-    if(passwordInput2.validity.valueMissing) {
-        form.insertBefore(errorPassTwo, button);
-        errorPassTwo.textContent = 'Заполните поле';
+    if(objElements[3].menuInput.validity.valueMissing) {
+        form.insertBefore(objElements[3].menuError, button);
+        objElements[3].menuError.textContent = 'Заполните поле';
     }
 }
 
 const button = document.createElement("button");
 button.type = "submit";
+button.classList.add("menu-button");
 button.textContent = "Зарегистрироваться";
 form.appendChild(button);
 
 form.addEventListener('submit', (e) => {
-    if(!nameInput.validity.valid) {
+    if(!objElements[0].menuInput.validity.valid) {
         nameError();
 
         e.preventDefault();
     }
 
-    if(!emailInput.validity.valid) {
+    if(!objElements[1].menuInput.validity.valid) {
         emailError();
 
         e.preventDefault();
     }
 
-    if(!passwordInput1.validity.valid) {
+    if(!objElements[2].menuInput.validity.valid) {
         passOneError();
 
         e.preventDefault();
     }
 
-    if(passwordInput2.value !== passwordInput1.value) {
-        form.insertBefore(errorPassTwo, button);
-        errorPassTwo.textContent = 'Пароли не совпадают';
+    if(objElements[3].menuInput.value !== objElements[2].menuInput.value) {
+        form.insertBefore(objElements[3].menuError, button);
+        objElements[3].menuError.textContent = 'Пароли не совпадают';
 
         e.preventDefault();
     }
 
-    if(!passwordInput2.validity.valid) {
+    if(!objElements[3].menuInput.validity.valid) {
         passTwoError();
 
         e.preventDefault();
@@ -226,17 +246,17 @@ form.addEventListener('submit', (e) => {
 });
 
 const text = document.createElement("div");
-text.id = "text";
+text.classList.add("text");
 menu.appendChild(text);
 
 const spanFirst = document.createElement("span");
-spanFirst.id = "first-span";
+spanFirst.classList.add("first-span");
 spanFirst.textContent = "Есть аккаунт?";
 text.appendChild(spanFirst);
 
 const spanSecond = document.createElement("a");
 spanSecond.href = ".";
-spanSecond.id = "second-span";
+spanSecond.classList.add("second-span");
 spanSecond.textContent = "Войдите";
 text.appendChild(spanSecond);
 
@@ -244,9 +264,12 @@ const footer = document.createElement("footer");
 footer.id = "footer";
 root.appendChild(footer);
 
+const left = document.createElement("div");
+left.classList.add("left");
+footer.appendChild(left);
+
 const firstFooter = document.createElement("div");
-firstFooter.id = "first-footer";
-footer.appendChild(firstFooter);
+left.appendChild(firstFooter);
 
 const cont = document.createElement("div");
 cont.classList.add("title");
@@ -265,7 +288,7 @@ firstFooter.appendChild(ourEmail);
 
 const secondFooter = document.createElement("div");
 secondFooter.id = "second-footer";
-footer.appendChild(secondFooter);
+left.appendChild(secondFooter);
 
 const info = document.createElement("div");
 info.classList.add("title");
@@ -282,37 +305,38 @@ disc.classList.add("content");
 disc.textContent = "Может содержать информацию, не предназначенную для несовершеннолетних";
 secondFooter.appendChild(disc);
 
-const thirdFooter = document.createElement("div");
-thirdFooter.id = "third-footer";
-footer.appendChild(thirdFooter);
-
 const fourthFooter = document.createElement("div");
-fourthFooter.id = "fourth-footer";
+fourthFooter.id = "third-footer";
 footer.appendChild(fourthFooter);
 
-const refT = document.createElement("a");
-refT.href = "/";
-fourthFooter.appendChild(refT);
+const configIcon = {
+    telegram: {
+        href: "/",
+        src: "static/telegram.png",
+    },
+    instagram: {
+        href: "https://www.instagram.com/danyatarnovskiy/",
+        src: "static/insta.png",
+    },
+    vk: {
+        href: "https://vk.com/dtarnovsky",
+        src: "static/vk.png",
+    }
+};
 
-const telegram = document.createElement("img");
-telegram.classList.add("refer");
-telegram.src = "static/telegram.png";
-refT.appendChild(telegram);
+function createIcons() {
+    Object
+        .values(configIcon)
+        .forEach(({href, src}) => {
+            const ref = document.createElement("a");
+            ref.href = href;
+            fourthFooter.appendChild(ref);
 
-const refI = document.createElement("a");
-refI.href = "https://www.instagram.com/danyatarnovskiy/";
-fourthFooter.appendChild(refI);
+            const icon = document.createElement("img");
+            icon.classList.add("refer");
+            icon.src = src;
+            ref.appendChild(icon);
+        });
+}
 
-const inst = document.createElement("img");
-inst.classList.add("refer");
-inst.src = "static/insta.png";
-refI.appendChild(inst);
-
-const refV = document.createElement("a");
-refV.href = "https://vk.com/dtarnovsky";
-fourthFooter.appendChild(refV);
-
-const vk = document.createElement("img");
-vk.classList.add("refer");
-vk.src = "static/vk.png";
-refV.appendChild(vk);
+createIcons();

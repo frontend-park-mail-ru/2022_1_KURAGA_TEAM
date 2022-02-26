@@ -8,16 +8,17 @@ body {
 #root {
     width: 100%;
     background: #01090B;
-    height: 100%;
+    height: 100vh;
 }
 
 #back {
+    position: absolute;
     background: url("static/root.png");
     width: 100%;
-    height: 968px;
+    height: 100vh;
     opacity: 0.3;
 }
-#logo {
+.logo {
     position: absolute;
     top: 30px;
     left: 50px;
@@ -28,29 +29,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     top: 0;
-    height: 968px;
+    height: 100vh;
     width: 100%;
 }
 #menu {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: 750px;
     background: linear-gradient(199.6deg, #8D8D8D -95.93%, rgba(255, 255, 255, 0) 108.19%);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 20px;
 }
-h1 {
+.menu-h1 {
     display: block;
     margin-top: 80px;
     margin-bottom: 20px;
     font-size: 40px;
     color: white;
 }
-form {
+.menu-form {
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -71,17 +71,16 @@ form {
     backdrop-filter: blur(60px);
     border-radius: 10px;
 }
-#svg {
+.svg {
     margin: 8px 20px 10px 10px;
     width: 32px;
     height: 32px;
 }
-input::-webkit-input-placeholder {
+.menu-input::-webkit-input-placeholder {
     color: white;
     font-size: 20px;
-    font-family: GT Eesti Pro Display, arial, sans-serif;
 }
-input {
+.menu-input {
     font-size: 20px;
     color: white;
     outline: none;
@@ -90,10 +89,10 @@ input {
     background: rgba(0, 0, 0, 0);
     border-radius: 0 10px 10px 0;
     width: 89.5%;
-    height: 50px;
+    height: 100%;
 }
 
-button {
+.menu-button {
     font-family: GT Eesti Pro Display, arial, sans-serif;
     color: white;
     font-size: 25px;
@@ -107,22 +106,22 @@ button {
     border-radius: 10px;
     transition: transform .1s ease-out,background-color .15s linear;
 }
-button:active {
+.menu-button:active {
     transform: scale(0.94);
     -webkit-transform: scale(0.94);
 }
-button:hover {
+.menu-button:hover {
     background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
 }
-#text {
+.text {
     margin-bottom: 60px;
 }
-#first-span {
+.first-span {
     margin-top: 10px;
     font-size: 22px;
     color: gray;
 }
-#second-span {
+.second-span {
     margin-left: 5px;
     display: inline-block;
     margin-top: 10px;
@@ -132,44 +131,35 @@ button:hover {
 }
 
 #footer {
-    display: grid;
+    display: flex;
     width: 100%;
     position: absolute;
     background: #01090B;
     height: 150px;
-
-    grid-template-columns: 350px 350px auto 300px;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "first second third fourth";
+    justify-content: space-between;
 }
-#first-footer{
-    display: block;
-    grid-area: first;
+.left {
+    margin-left: 50px;
+    width: 60%;
+    display: flex;
 }
 #second-footer{
+    margin-left: 20px;
     display: block;
-    grid-area: second;
 }
 #third-footer{
-    display: block;
-    grid-area: third;
-}
-#fourth-footer{
     text-align: end;
     display: block;
     grid-area: fourth;
 }
 .title {
     color: #C3C3C2;
-    margin-left: 50px;
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 25px;
 }
 .content {
     color: #C3C3C2;
-    margin-left: 50px;
     font-size: 15px;
 }
 .refer {
