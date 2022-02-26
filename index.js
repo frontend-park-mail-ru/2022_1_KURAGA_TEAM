@@ -72,7 +72,7 @@ for (let i = 0; i < MovieName.length; i++)  {
     selectFirst.className = "select-" +(i+1);
     const selectPop = document.createElement("div");
     selectPop.className = "selectPop font";
-    selectPop.innerHTML += `<div style = "inline-size: max-content;font-size: 36px;line-height: 42px;margin-inline-start: 30px;">${MovieName[i]}</div>`
+    selectPop.innerHTML += `<div class = "selectTitle">${MovieName[i]}</div>`
 
 //MovieUrl = ["star.png", "star.png", "star.png", "star.png","star.png"]
     const selectMovie = document.createElement("div");

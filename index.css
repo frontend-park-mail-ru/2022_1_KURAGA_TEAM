@@ -85,7 +85,7 @@ body {
     background: linear-gradient(206.08deg, rgba(196, 196, 196, 0.45) -40.85%, rgba(196, 196, 196, 0) 97.87%);
     backdrop-filter: blur(30px);
     width: 582px;
-    height: 351px;
+    height: auto;
 
 
     padding: 5px;
@@ -185,6 +185,13 @@ body {
     grid-area: select1;
 }
 
+.selectTitle{
+    inline-size: max-content;
+    font-size: 36px;
+    line-height: 42px;
+    margin-inline-start: 60px;
+    margin-block-start: 13px;
+}
 .selectPop {
     display: grid;
     grid-template-columns: 10px;
@@ -194,7 +201,7 @@ body {
 }
 
 .selectMovies {
-    width: 1300px;
+    width: 1280px;
     overflow-x: auto;
     overflow-y: hidden;
     display: grid;
