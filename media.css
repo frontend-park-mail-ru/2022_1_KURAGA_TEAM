@@ -1,9 +1,9 @@
-@media (min-width: 1400px) and (max-width: 1600px) {
+@media (min-width: 1450px) and (max-width: 1600px) {
     #menu{
         width: 750px;
     }
 }
-@media (min-width: 1000px) and (max-width: 1400px) {
+@media (min-width: 1000px) and (max-width: 1450px) {
     .error {
         font-size: 14px;
     }
