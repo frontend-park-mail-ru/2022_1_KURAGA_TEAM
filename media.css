@@ -1,12 +1,10 @@
 @media (min-width: 1450px) and (max-width: 1600px) {
     .selectMovies{
-        width: 950px;
+        width: 1280px;
     }
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
-    .selectMovies{
-        width: 950px;
-    }
+
 }
 @media (min-width: 750px) and (max-width: 1000px) {
     .selectMovies{
