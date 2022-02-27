@@ -105,7 +105,7 @@ function createMain() {
 
 // подборки
     const selection = document.createElement("div");
-    selection.className = "main selection";
+    selection.className = "selection";
     let MovieName = ["Популярное", "Лучшее за 2021", "Семейное"];
 
     MovieName.forEach((str) => {

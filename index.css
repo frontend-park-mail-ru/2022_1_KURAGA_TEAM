@@ -170,9 +170,7 @@ body {
 }
 
 
-.main {
-    grid-area: main;
-}
+
 
 .item-c {
     grid-area: footer;
