@@ -1,106 +1,159 @@
+'use strict'
+
 const root = document.getElementById('root');
 
-//         first row  header + main movie
-const firstRow = document.createElement("div");
-firstRow.className = "header"
+function createPage() {
+    createHeader();
+    createMain();
+    // createFooter();
+}
 
-const header = document.createElement("div");
-header.className = "navbar font";
+function createHeader() {
+    const firstRow = document.createElement("div");
+    firstRow.className = "header"
 
-header.innerHTML += `<div id="logo"><img src="static/logo.png" style  = "height: 100px"></div>`;
-headerStr = ["Главная", "Фильмы", "Сериалы", "Избранное"]
-headerStr.forEach((str) => {
-    const refT = document.createElement("a");
-    refT.className = "label font";
-    refT.href = "/";
-    refT.textContent =str;
-    header.appendChild(refT)
+    const header = document.createElement("div");
+    header.className = "navbar font";
 
-});
-header.innerHTML += `<div id="space"></div><div id = "searchBtn"><img src="static/lupa.png" class = "label" style  = "height: 35px"></div>`
-header.innerHTML += `<div id = "profileImg"><img src="static/profile.png" class = "label" style  = "height: 58px"></div>`
-firstRow.appendChild(header)
+    const logo = document.createElement("object");
+    logo.classList.add("logo");
+    logo.type = "image/png";
+    logo.data = "static/logo.png";
+    header.appendChild(logo);
+    let headerStr = ["Главная", "Фильмы", "Сериалы", "Избранное"]
+    headerStr.forEach((str) => {
+        const refT = document.createElement("a");
+        refT.className = "label font";
+        refT.href = "/";
+        refT.textContent = str;
+        header.appendChild(refT)
 
-///////////////////////
-
-
-const mainMovie = document.createElement("div");
-mainMovie.className = "mainMovie";
-
-const descr = document.createElement("div")
-descr.className = "sidebar"
-const title = document.createElement("div")
-title.className = "font title"
-title.innerHTML += `<div class = "titleName">1+1</div>`
-title.innerHTML += '<div class="titleDescr">«Sometimes you have to reach into someone else\'s world to find out what\'s missing in your own»</div>'
-
-const btn = document.createElement("div")
-btn.className = "btn"
-const refBtn = document.createElement("a");
-refBtn.className = "fontOther";
-refBtn.href = "/";
-refBtn.textContent ="Смотреть онлайн";
-btn.appendChild(refBtn)
-
-const btnInfo = document.createElement("div")
-btnInfo.className = "btnInfo"
-const refBtnInfo = document.createElement("a");
-refBtnInfo.className = "fontOther";
-refBtnInfo.href = "/";
-refBtnInfo.textContent ="О фильме";
-btnInfo.appendChild(refBtnInfo)
-
-descr.appendChild(title)
-descr.appendChild(btn)
-descr.appendChild(btnInfo)
-
-mainMovie.appendChild(descr)
-firstRow.appendChild(mainMovie)
-root.appendChild(firstRow)
+    });
 
 
+    const space = document.createElement("div");
+    space.classList.add("space");
+    header.appendChild(space);
+
+    const search = document.createElement("object");
+    search.classList.add("searchBtn");
+    search.type = "image/png";
+    search.data = "static/lupa.png";
+    header.appendChild(search);
 
 
+    const profile = document.createElement("div");
+    profile.classList.add("profile");
+    const profileImg = document.createElement("img");
+    profileImg.classList = "profileImg";
+    profileImg.src = "static/profile.png";
+    profile.appendChild(profileImg);
+    header.appendChild(profile);
+    firstRow.appendChild(header);
+
+
+    const mainMovie = document.createElement("div");
+    mainMovie.className = "mainMovie";
+    const descr = document.createElement("div");
+    descr.className = "sidebar";
+    const title = document.createElement("div");
+    title.className = "font title";
+
+    const titleName = document.createElement("div");
+    titleName.classList.add("titleName");
+    titleName.textContent = "1+1";
+    title.appendChild(titleName);
+
+    const titleDescr = document.createElement("div");
+    titleDescr.classList.add("titleDescr");
+    titleDescr.textContent = "«Sometimes you have to reach into someone else\'s world to find out what\'s missing in your own»";
+    title.appendChild(titleDescr);
+
+
+    const btn = document.createElement("div")
+    btn.className = "btn"
+    btn.action = ".";
+    const refBtn = document.createElement("a");
+    refBtn.className = "fontOther";
+    refBtn.href = "/";
+    refBtn.textContent = "Смотреть онлайн";
+    btn.appendChild(refBtn)
+
+    const btnInfo = document.createElement("div")
+    btnInfo.className = "btnInfo"
+    btnInfo.action = ".";
+    const refBtnInfo = document.createElement("a");
+    refBtnInfo.className = "fontOther";
+    refBtnInfo.href = "/";
+    refBtnInfo.textContent = "О фильме";
+    btnInfo.appendChild(refBtnInfo)
+
+    descr.appendChild(title)
+    descr.appendChild(btn)
+    descr.appendChild(btnInfo)
+
+    mainMovie.appendChild(descr)
+    firstRow.appendChild(mainMovie)
+    root.appendChild(firstRow)
+}
+
+
+function createMain() {
 
 // подборки
-const selection = document.createElement("div");
-selection.className = "main selection";
-MovieName = ["Популярное", "Лучшее за 2021", "Семейное"]
-for (let i = 0; i < MovieName.length; i++)  {
+    const selection = document.createElement("div");
+    selection.className = "main selection";
+    let MovieName = ["Популярное", "Лучшее за 2021", "Семейное"];
 
-    const selectFirst = document.createElement("div");
-    selectFirst.className = "select-" +(i+1);
-    const selectPop = document.createElement("div");
-    selectPop.className = "selectPop font";
-    selectPop.innerHTML += `<div class = "selectTitle">${MovieName[i]}</div>`
+    MovieName.forEach((str) => {
 
-//MovieUrl = ["star.png", "star.png", "star.png", "star.png","star.png"]
-    const selectMovie = document.createElement("div");
-    selectMovie.className = "selectMovies section";
+        const select = document.createElement("div");
+        select.className = "select font";
 
-    for (let i = 0; i < 5; i++) {
+        const selectTitle = document.createElement("div");
+        selectTitle.classList.add("selectTitle");
+        selectTitle.textContent = str;
+        select.appendChild(selectTitle);
+        const selectMovie = document.createElement("div");
+        selectMovie.className = "selectMovies section";
 
-        const movie = document.createElement("div");
-        movie.className = "movie";
-        const refMov = document.createElement("a");
-        refMov.href = "/"
-        const hrefMov = document.createElement("div");
-        hrefMov.className = "refmov";
-        const desMov = document.createElement("div");
-        desMov.className = "descMov";
-        desMov.innerHTML += 'Звёздные войны<img src="static/heart.png" style = "width: 36px;">'
-        desMov.innerHTML += '<div class = "genre font">Фантастика</div>'
-        refMov.appendChild(hrefMov)
-        movie.appendChild(refMov)
-        movie.appendChild(desMov)
-        selectMovie.appendChild(movie)
-        selectPop.appendChild(selectMovie)
-    }
+        for (let i = 0; i < 5; i++) {
 
-    selectFirst.appendChild(selectPop)
-    selection.appendChild(selectFirst)
-    root.appendChild(selection)
+            const movie = document.createElement("div");
+            movie.className = "movie";
+            const refMov = document.createElement("a");
+            refMov.href = "/"
+            const hrefMov = document.createElement("div");
+            hrefMov.className = "refmov";
+            const desMov = document.createElement("div");
+            desMov.className = "descMov";
 
+            const titleMovie = document.createElement("div");
+            titleMovie.textContent = "Звёздные войны";
+            desMov.appendChild(titleMovie);
+
+            const genre = document.createElement("div");
+            genre.className = "genre font";
+            genre.textContent = "Фантастика";
+            desMov.appendChild(genre);
+
+            const like = document.createElement("div");
+            like.classList.add("like");
+            desMov.appendChild(like);
+
+
+
+            refMov.appendChild(hrefMov)
+            movie.appendChild(refMov)
+            movie.appendChild(desMov)
+            selectMovie.appendChild(movie)
+            select.appendChild(selectMovie)
+        }
+
+        selection.appendChild(select)
+        root.appendChild(selection)
+
+    });
 }
 
 // футер
@@ -186,10 +239,7 @@ for (let i = 0; i < MovieName.length; i++)  {
 // root.appendChild(f)
 
 
-
-
-
-
+createPage();
 
 
 

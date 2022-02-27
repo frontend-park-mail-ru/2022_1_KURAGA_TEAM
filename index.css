@@ -62,15 +62,22 @@ body {
     background: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
 }
 
-#logo {
+.logo {
+    height: 100px;
     padding-inline-start: 35px;
 }
 
-#profileImg {
+.searchBtn{
+    height: 35px;
+}
+.profile{
     flex-grow: 1;
 }
+.profileImg {
+    height: 58px;
+}
 
-#space {
+.space {
     flex-grow: 3;
 }
 
@@ -135,6 +142,7 @@ body {
     mix-blend-mode: normal;
     border-radius: 7px;
     justify-self: center;
+    transition: transform .1s ease-out,background-color .15s linear;
 }
 
 .btnInfo {
@@ -153,6 +161,7 @@ body {
     backdrop-filter: blur(15px);
 
     border-radius: 5px;
+    transition: transform .1s ease-out,background-color .15s linear;
 
 
 }
@@ -173,16 +182,17 @@ body {
     column-gap: 10px;
     grid-template-rows: auto;
     row-gap: 10px;
-    grid-template-areas:
-    "select1"
-    "select2"
-    "select3"
+
 }
 
-.select-1 {
+.select {
     margin-inline: 22px;
-    display: grid;
-    grid-area: select1;
+
+    grid-template-columns: 10px;
+    column-gap: 10px;
+    grid-template-rows: 50px auto;
+
+
 }
 
 .selectTitle{
@@ -192,13 +202,8 @@ body {
     margin-inline-start: 60px;
     margin-block-start: 13px;
 }
-.selectPop {
-    display: grid;
-    grid-template-columns: 10px;
-    column-gap: 10px;
-    grid-template-rows: 50px auto;
 
-}
+
 
 .selectMovies {
     width: 1280px;
@@ -236,12 +241,8 @@ body {
 
 
 .descMov {
-    display: grid;
-    grid-template-columns: auto 50px;
-    column-gap: 10px;
-    grid-template-rows: auto;
-    padding-inline-start: 20px;
-    padding-top: 5px;
+    display: flex;
+    column-gap: 15px;
     font-style: normal;
     font-weight: 350;
     font-size: 16px;
@@ -249,25 +250,53 @@ body {
     background: linear-gradient(180deg, rgba(196, 196, 196, 0) -79.55%, #000000 124.95%);
     backdrop-filter: blur(5px);
     grid-area: descMov;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-evenly;
 
 }
 
 .genre {
-    margin-block: -20px;
     font-weight: 350;
     font-size: 14px;
     line-height: 16px;
     color: #707070;
 }
 
-.select-2 {
-    margin-inline: 22px;
-    grid-area: select2;
+
+.like{
+
+    background: url("static/heart.png");
+    width: 32px;
+    height: 32px;
+    background-size: contain;
 }
 
-.select-3 {
-    margin-inline: 22px;
-    grid-area: select3;
+
+.like:hover {
+    background: url("static/activeLike.png");
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+}
+
+
+
+
+.btnInfo:active {
+    transform: scale(0.94);
+    -webkit-transform: scale(0.94);
+}
+.btnInfo:hover {
+    background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
+}
+.btn:active {
+    transform: scale(0.94);
+    -webkit-transform: scale(0.94);
+}
+.btn:hover {
+    background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
 }
 
 
