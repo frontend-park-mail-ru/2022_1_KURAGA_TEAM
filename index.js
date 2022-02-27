@@ -3,6 +3,9 @@
 const root = document.getElementById('root');
 
 function createPage() {
+    root.innerHTML = '';
+
+
     createHeader();
     createMain();
     // createFooter();
@@ -137,10 +140,16 @@ function createMain() {
             genre.textContent = "Фантастика";
             desMov.appendChild(genre);
 
-            const like = document.createElement("div");
+            const like = document.createElement("a");
+            like.href = "/"
             like.classList.add("like");
-            desMov.appendChild(like);
+            const likeImg = document.createElement("img");
+            likeImg.id = "Like";
+            likeImg.src = "static/heart.svg";
+            like.appendChild(likeImg);
 
+
+            desMov.appendChild(like);
 
 
             refMov.appendChild(hrefMov)
@@ -154,6 +163,21 @@ function createMain() {
         root.appendChild(selection)
 
     });
+
+
+        root.addEventListener("click", (e) => {
+            const {target} = e;
+            e.preventDefault();
+            if( target.id == "Like") {
+               target.src = "static/LIKE.svg"
+
+            }
+
+            console.log(e);
+        });
+
+
+
 }
 
 // футер
