@@ -13,6 +13,6 @@ export class Footer {
     }
 
     render() {
-        this.#parent.innerHTML = pug.renderFile("footer", this.#items);
+        this.#parent.innerHTML += pug.renderFile("footer", this.#items);
     }
 }
