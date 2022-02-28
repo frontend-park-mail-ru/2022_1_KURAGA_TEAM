@@ -1,5 +1,7 @@
 'use script'
 
+import {Footer} from "./components/footer.js";
+
 const root = document.getElementById("root");
 
 const configElement = {
@@ -298,75 +300,77 @@ function createMenuReg(backMenu) {
 }
 
 function createFooter() {
-    const footer = document.createElement("footer");
-    footer.id = "footer";
-    root.appendChild(footer);
+    const footer = new Footer(root);
+    footer.items = configIcon;
+    footer.render();
 
-    const left = document.createElement("div");
-    left.classList.add("left");
-    footer.appendChild(left);
-
-    const firstFooter = document.createElement("div");
-    left.appendChild(firstFooter);
-
-    const cont = document.createElement("div");
-    cont.classList.add("title");
-    cont.textContent = "Контакты";
-    firstFooter.appendChild(cont);
-
-    const address = document.createElement("div");
-    address.classList.add("content");
-    address.textContent = "Москва. ул. 2-ая Бауманская, д. 5";
-    firstFooter.appendChild(address);
-
-    const ourEmail = document.createElement("a");
-    ourEmail.classList.add("content");
-    ourEmail.href = "mailto:kuraga_team@moviespace.com"
-    ourEmail.textContent = "kuraga_team@moviespace.com";
-    firstFooter.appendChild(ourEmail);
-
-    const secondFooter = document.createElement("div");
-    secondFooter.id = "second-footer";
-    left.appendChild(secondFooter);
-
-    const info = document.createElement("div");
-    info.classList.add("title");
-    info.textContent = "Информация";
-    secondFooter.appendChild(info);
-
-    const year = document.createElement("div");
-    year.classList.add("content");
-    year.textContent = "© 2022–2022 Movie Space.";
-    secondFooter.appendChild(year);
-
-    const disc = document.createElement("div");
-    disc.classList.add("content");
-    disc.textContent = "Может содержать информацию, не предназначенную для несовершеннолетних";
-    secondFooter.appendChild(disc);
-
-    createIcons(footer);
+    // const footer = document.createElement("footer");
+    // footer.id = "footer";
+    // root.appendChild(footer);
+    //
+    // const left = document.createElement("div");
+    // left.classList.add("left");
+    // footer.appendChild(left);
+    //
+    // const firstFooter = document.createElement("div");
+    // left.appendChild(firstFooter);
+    //
+    // const cont = document.createElement("div");
+    // cont.classList.add("title");
+    // cont.textContent = "Контакты";
+    // firstFooter.appendChild(cont);
+    //
+    // const address = document.createElement("div");
+    // address.classList.add("content");
+    // address.textContent = "Москва. ул. 2-ая Бауманская, д. 5";
+    // firstFooter.appendChild(address);
+    //
+    // const ourEmail = document.createElement("a");
+    // ourEmail.classList.add("content");
+    // ourEmail.href = "mailto:kuraga_team@moviespace.com"
+    // ourEmail.textContent = "kuraga_team@moviespace.com";
+    // firstFooter.appendChild(ourEmail);
+    //
+    // const secondFooter = document.createElement("div");
+    // secondFooter.id = "second-footer";
+    // left.appendChild(secondFooter);
+    //
+    // const info = document.createElement("div");
+    // info.classList.add("title");
+    // info.textContent = "Информация";
+    // secondFooter.appendChild(info);
+    //
+    // const year = document.createElement("div");
+    // year.classList.add("content");
+    // year.textContent = "© 2022–2022 Movie Space.";
+    // secondFooter.appendChild(year);
+    //
+    // const disc = document.createElement("div");
+    // disc.classList.add("content");
+    // disc.textContent = "Может содержать информацию, не предназначенную для несовершеннолетних";
+    // secondFooter.appendChild(disc);
+    //
+    // createIcons(footer);
 }
 
-function createIcons(footer) {
-    const fourthFooter = document.createElement("div");
-    fourthFooter.id = "third-footer";
-    footer.appendChild(fourthFooter);
-
-    Object
-        .values(configIcon)
-        .forEach(({href, src}) => {
-            const ref = document.createElement("a");
-            ref.classList.add("ref");
-            ref.href = href;
-            fourthFooter.appendChild(ref);
-
-            const icon = document.createElement("img");
-            icon.classList.add("refer");
-            icon.src = src;
-            ref.appendChild(icon);
-        });
-}
+// function createIcons(footer) {
+//     const fourthFooter = document.createElement("div");
+//     fourthFooter.id = "third-footer";
+//     footer.appendChild(fourthFooter);
+//
+//     Object
+//         .values(configIcon)
+//         .forEach(({href, src}) => {
+//             const ref = document.createElement("a");
+//             ref.classList.add("ref");
+//             ref.href = href;
+//             fourthFooter.appendChild(ref);
+//
+//             const icon = document.createElement("img");
+//             icon.classList.add("refer");
+//             icon.src = src;
+//             ref.appendChild(icon);
+//         });
+// }
 
 createPage();
-
-

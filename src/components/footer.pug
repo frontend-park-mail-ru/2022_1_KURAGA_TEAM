@@ -1,0 +1,14 @@
+footer#footer
+    div.left
+        div
+            div.title Контакты
+            div.content Москва. ул. 2-ая Бауманская, д. 5
+            a.content(href="mailto:kuraga_team@moviespace.com") kuraga_team@moviespace.com
+        div#second-footer
+            div.title Информация
+            div.content © 2022–2022 Movie Space.
+            div.content Может содержать информацию, не предназначенную для несовершеннолетних
+    div#third-footer
+        each key, item in #{items}
+            a.ref(href=item.href)
+                img.refer(src=item.src)
