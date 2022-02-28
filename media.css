@@ -7,9 +7,6 @@
     .error {
         font-size: 14px;
     }
-    .menu-h1 {
-        margin-top: 50px;
-    }
     .element {
         height: 40px;
     }
@@ -25,7 +22,7 @@
     }
     .menu-button {
         font-size: 22px;
-        margin-top: 40px;
+        margin-top: 20px;
         height: 40px;
     }
     .first-span {
@@ -34,15 +31,15 @@
     .second-span {
         font-size: 20px;
     }
-    .text {
-        margin-bottom: 40px;
-    }
     #menu{
+        padding-top: 50px;
+        padding-bottom: 40px;
         width: 600px;
     }
 }
 @media (min-width: 750px) and (max-width: 1000px) {
     #menu{
+        height: fit-content;
         width: 880px;
     }
     #back-menu {

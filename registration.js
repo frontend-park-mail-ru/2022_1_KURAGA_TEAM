@@ -2,11 +2,6 @@
 
 const root = document.getElementById("root");
 
-const meta = document.createElement("meta");
-meta.name = "theme-color";
-meta.content = "#01090B";
-root.appendChild(meta);
-
 const configElement = {
     name: {
         data: "static/name.svg",
@@ -324,8 +319,9 @@ function createFooter() {
     address.textContent = "Москва. ул. 2-ая Бауманская, д. 5";
     firstFooter.appendChild(address);
 
-    const ourEmail = document.createElement("div");
+    const ourEmail = document.createElement("a");
     ourEmail.classList.add("content");
+    ourEmail.href = "mailto:kuraga_team@moviespace.com"
     ourEmail.textContent = "kuraga_team@moviespace.com";
     firstFooter.appendChild(ourEmail);
 
@@ -360,6 +356,7 @@ function createIcons(footer) {
         .values(configIcon)
         .forEach(({href, src}) => {
             const ref = document.createElement("a");
+            ref.classList.add("ref");
             ref.href = href;
             fourthFooter.appendChild(ref);
 
