@@ -1,0 +1,8 @@
+export function template(locals) {
+    var pug_html = "", pug_mixins = {}, pug_interp;
+    var pug_indent = [];
+    pug_html = pug_html + "\n\u003Cstyle\u003E#footer {\n    display: flex;\n    width: 100%;\n    position: absolute;\n    background: #01090B;\n    height: 150px;\n    justify-content: space-between;\n}\n.left {\n    margin-left: 50px;\n    width: 60%;\n    display: flex;\n}\n#second-footer{\n    margin-left: 20px;\n    display: block;\n}\n#third-footer{\n    text-align: end;\n    display: block;\n    grid-area: fourth;\n}\n.title {\n    color: #C3C3C2;\n    margin-top: 20px;\n    margin-bottom: 10px;\n    font-size: 25px;\n}\n.content {\n    text-decoration: none;\n    color: #C3C3C2;\n    font-size: 15px;\n}\n.refer {\n    height: 39px;\n    width: 39px;\n    margin-top: 20px;\n}\n.ref {\n    margin-right: 50px;\n}\n\n\u003C\u002Fstyle\u003E\n\u003Cfooter id=\"footer\"\u003E\n  \u003Cdiv class=\"left\"\u003E\n    \u003Cdiv\u003E\n      \u003Cdiv class=\"title\"\u003EКонтакты\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003EМосква. ул. 2-ая Бауманская, д. 5\u003C\u002Fdiv\u003E\u003Ca class=\"content\" href=\"mailto:kuraga_team@moviespace.com\"\u003Ekuraga_team@moviespace.com\u003C\u002Fa\u003E\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv id=\"second-footer\"\u003E\n      \u003Cdiv class=\"title\"\u003EИнформация\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003E© 2022–2022 Movie Space.\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003EМожет содержать информацию, не предназначенную для несовершеннолетних\u003C\u002Fdiv\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fdiv\u003E\n\u003C\u002Ffooter\u003E";
+    ;
+    return pug_html;
+}
+

@@ -1,3 +1,5 @@
+@import '../components/footer.css';
+
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
@@ -42,7 +44,7 @@ body {
 .header {
     margin-bottom: 30px;
     flex-direction: row;
-    background-image: url("static/1+1.jpg");
+    background-image: url("../../static/1+1.jpg");
     background-size: cover;
     grid-area: header;
 
@@ -170,8 +172,6 @@ body {
 }
 
 
-
-
 .item-c {
     grid-area: footer;
 }
@@ -217,7 +217,7 @@ body {
 }
 
 .movie {
-    background: url("static/star.png");
+    background: url("../../static/star.png");
     background-size: contain;
     display: grid;
     grid-template-columns: auto;
@@ -252,8 +252,10 @@ body {
     grid-area: descMov;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: space-around;
-    justify-content: space-evenly;
+    align-content: flex-start;
+    justify-content: flex-start;
+    padding-block-start: 5px;
+    padding-inline-start: 40px;
 
 }
 
@@ -265,18 +267,17 @@ body {
 }
 
 
-.like {
-
-    width: auto;
-    height: auto;
+.like::before {
+    background-size: contain;
+    background-image: url("../../static/LIKE.svg");
 
 }
 
-/*.like:active {*/
-/*    background-size: contain;*/
-/*    background-image: url("static/LIKE.svg");*/
+.like::after {
+    background-size: contain;
+    background-image: url("../../static/star.png");
 
-/*}*/
+}
 
 
 .btnInfo:active {
@@ -298,108 +299,132 @@ body {
 }
 
 
-/*#footer {*/
-/*    display: grid;*/
-/*    width: 100%;*/
-/*    position: absolute;*/
-/*    background: #01090B;*/
-/*    height: 150px;*/
+#cb {
 
-/*    grid-template-columns: 350px 350px auto 300px;*/
-/*    grid-template-rows: auto;*/
-/*    grid-template-areas:*/
-/*        "first second third fourth";*/
-/*}*/
+    width: 55px;
+    background: url("../../static/heart.svg");
+    visibility: hidden;
+}
 
-/*#first-footer {*/
-/*    display: block;*/
-/*    grid-area: first;*/
-/*}*/
+input#cb::after {
 
-/*#second-footer {*/
-/*    display: block;*/
-/*    grid-area: second;*/
-/*}*/
+    visibility: visible;
+    content: url("../../static/heart.svg");
 
-/*#third-footer {*/
-/*    display: block;*/
-/*    grid-area: third;*/
-/*}*/
+    padding: 8px;
+}
 
-/*#fourth-footer {*/
-
-/*    text-align: end;*/
-/*    display: block;*/
-/*    grid-area: fourth;*/
-/*    display: -webkit-inline-box;*/
-/*}*/
-
-/*.title {*/
-/*    color: #C3C3C2;*/
-/*    margin-left: 50px;*/
-/*    margin-top: 20px;*/
-/*    margin-bottom: 10px;*/
-/*    font-size: 25px;*/
-/*}*/
-
-/*.content {*/
-/*    color: #C3C3C2;*/
-/*    margin-left: 50px;*/
-/*    font-size: 15px;*/
-/*}*/
-
-/*.refer {*/
-/*    height: 39px;*/
-/*    width: 39px;*/
-/*    margin-right: 50px;*/
-/*    margin-top: 20px;*/
-/*}*/
+input#cb:checked::after {
+    content: url("../../static/LIKE.svg");
+}
 
 
-/** {*/
-/*    box-sizing: border-box;*/
-/*}*/
 
-/*form {*/
-/*    position: relative;*/
-/*    margin: 0 auto;*/
-/*    height: 42px;*/
-/*}*/
 
-/*input {*/
 
-/*    font-size: 24px;*/
-/*    height: 48px;*/
-/*    width: 0;*/
-/*    padding: 0 42px 0 15px;*/
-/*    border: none;*/
-/*    border-bottom: 2px solid transparent;*/
-/*    outline: none;*/
-/*    background: transparent;*/
-/*    transition: .4s cubic-bezier(0, 0.8, 0, 1);*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    right: 0;*/
-/*    z-index: 2;*/
-/*}*/
+/*
+#footer {
+    display: grid;
+    width: 100%;
+    position: absolute;
+    background: #01090B;
+    height: 150px;
 
-/*input:focus {*/
-/*    width: 300px;*/
-/*    z-index: 1;*/
-/*    border-bottom: 2px solid #F9F0DA;*/
-/*}*/
+    grid-template-columns: 350px 350px auto 300px;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "first second third fourth";
+}
 
-/*button {*/
-/*    background: url("static/lupa.png");*/
-/*    border: none;*/
-/*    height: 42px;*/
-/*    width: 42px;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    right: 0;*/
-/*    cursor: pointer;*/
-/*    background-size: contain;*/
-/*}*/
+#first-footer {
+    display: block;
+    grid-area: first;
+}
+
+#second-footer {
+    display: block;
+    grid-area: second;
+}
+
+#third-footer {
+    display: block;
+    grid-area: third;
+}
+
+#fourth-footer {
+
+    text-align: end;
+    display: block;
+    grid-area: fourth;
+    display: -webkit-inline-box;
+}
+
+.title {
+    color: #C3C3C2;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.content {
+    color: #C3C3C2;
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+.refer {
+    height: 39px;
+    width: 39px;
+    margin-right: 50px;
+    margin-top: 20px;
+}*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+form {
+    position: relative;
+    margin: 0 auto;
+    height: 42px;
+}
+
+input {
+
+    font-size: 24px;
+    height: 48px;
+    width: 0;
+    padding: 0 42px 0 15px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    background: transparent;
+    transition: .4s cubic-bezier(0, 0.8, 0, 1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+input:focus {
+    width: 300px;
+    z-index: 1;
+    border-bottom: 2px solid #F9F0DA;
+}
+
+button {
+    background: url("static/lupa.png");
+    border: none;
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-size: contain;
+}
 
 
 .section {

@@ -1,5 +1,5 @@
 'use strict'
-
+//const template = require('./components/footer');
 const root = document.getElementById('root');
 
 function createPage() {
@@ -8,7 +8,7 @@ function createPage() {
 
     createHeader();
     createMain();
-    // createFooter();
+   // createFooter();
 }
 
 function createHeader() {
@@ -21,7 +21,7 @@ function createHeader() {
     const logo = document.createElement("object");
     logo.classList.add("logo");
     logo.type = "image/png";
-    logo.data = "static/logo.png";
+    logo.data = "../static/logo.png";
     header.appendChild(logo);
     let headerStr = ["Главная", "Фильмы", "Сериалы", "Избранное"]
     headerStr.forEach((str) => {
@@ -41,7 +41,7 @@ function createHeader() {
     const search = document.createElement("object");
     search.classList.add("searchBtn");
     search.type = "image/png";
-    search.data = "static/lupa.png";
+    search.data = "../static/lupa.png";
     header.appendChild(search);
 
 
@@ -49,7 +49,7 @@ function createHeader() {
     profile.classList.add("profile");
     const profileImg = document.createElement("img");
     profileImg.classList = "profileImg";
-    profileImg.src = "static/profile.png";
+    profileImg.src = "../static/profile.png";
     profile.appendChild(profileImg);
     header.appendChild(profile);
     firstRow.appendChild(header);
@@ -140,15 +140,9 @@ function createMain() {
             genre.textContent = "Фантастика";
             desMov.appendChild(genre);
 
-            const like = document.createElement("a");
-            like.href = "/"
-            like.classList.add("like");
-            const likeImg = document.createElement("img");
-            likeImg.id = "Like";
-            likeImg.src = "static/heart.svg";
-            like.appendChild(likeImg);
-
-
+            const like = document.createElement("input");
+            like.type = "checkbox";
+            like.id = "cb";
             desMov.appendChild(like);
 
 
@@ -165,21 +159,26 @@ function createMain() {
     });
 
 
-        root.addEventListener("click", (e) => {
-            const {target} = e;
-            e.preventDefault();
-            if( target.id == "Like") {
-               target.src = "static/LIKE.svg"
-
-            }
-
-            console.log(e);
-        });
+        
 
 
 
 }
+/*function template(locals) {
+    var pug_html = "", pug_mixins = {}, pug_interp;
+    var pug_indent = [];
+    pug_html = pug_html + "\n\u003Cfooter id=\"footer\"\u003E\n  \u003Cdiv class=\"left\"\u003E\n    \u003Cdiv\u003E\n      \u003Cdiv class=\"title\"\u003EКонтакты\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003EМосква. ул. 2-ая Бауманская, д. 5\u003C\u002Fdiv\u003E\u003Ca class=\"content\" href=\"mailto:kuraga_team@moviespace.com\"\u003Ekuraga_team@moviespace.com\u003C\u002Fa\u003E\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv id=\"second-footer\"\u003E\n      \u003Cdiv class=\"title\"\u003EИнформация\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003E© 2022–2022 Movie Space.\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003EМожет содержать информацию, не предназначенную для несовершеннолетних\u003C\u002Fdiv\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fdiv\u003E\n\u003C\u002Ffooter\u003E";
+    ;
+    return pug_html;
+}*/
+function createFooter(){
+    const f = document.createElement("div");
+    f.className = "item-c"
+    
+    f.innerHTML = template(locals);
+    root.appendChild(f);
 
+}
 // футер
 // const f = document.createElement("div");
 // f.className = "item-с";
