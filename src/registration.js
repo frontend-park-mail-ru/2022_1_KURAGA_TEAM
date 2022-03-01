@@ -1,6 +1,7 @@
 'use script'
 
-import {FooterClass} from "./components/footerClass.js";
+import {FooterClass} from "./components/footer/footerClass.js";
+import template from "./components/button/button.js";
 
 const root = document.getElementById("root");
 
@@ -118,6 +119,7 @@ function createMenuReg(backMenu) {
         objElem.forEach((element) => {
             if (element.menuInput.dataset.section === "name") {
                 element.menuInput.addEventListener('change', () => {
+
                     if (element.menuInput.value.trim() === "") {
                         nameError();
 
@@ -237,13 +239,10 @@ function createMenuReg(backMenu) {
         }
     }
 
-    const button = document.createElement("button");
-    button.type = "submit";
-    button.classList.add("menu-button");
-    button.textContent = "Зарегистрироваться";
-    form.appendChild(button);
+    form.innerHTML += template();
 
     form.addEventListener('submit', (e) => {
+        console.log(1)
         if(!objElements[0].menuInput.validity.valid || objElements[0].menuInput.value.trim() === "") {
             nameError();
 
