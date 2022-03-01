@@ -2,6 +2,8 @@
 import {FooterClass} from "./components/footer/footerClass.js";
 const root = document.getElementById('root');
 
+
+
 function createPage() {
 
     createHeader();
@@ -163,13 +165,20 @@ function createMain() {
 
 }
 
-/*function template(locals) {
-    var pug_html = "", pug_mixins = {}, pug_interp;
-    var pug_indent = [];
-    pug_html = pug_html + "\n\u003Cfooter id=\"footer\"\u003E\n  \u003Cdiv class=\"left\"\u003E\n    \u003Cdiv\u003E\n      \u003Cdiv class=\"title\"\u003EКонтакты\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003EМосква. ул. 2-ая Бауманская, д. 5\u003C\u002Fdiv\u003E\u003Ca class=\"content\" href=\"mailto:kuraga_team@moviespace.com\"\u003Ekuraga_team@moviespace.com\u003C\u002Fa\u003E\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv id=\"second-footer\"\u003E\n      \u003Cdiv class=\"title\"\u003EИнформация\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003E© 2022–2022 Movie Space.\u003C\u002Fdiv\u003E\n      \u003Cdiv class=\"content\"\u003EМожет содержать информацию, не предназначенную для несовершеннолетних\u003C\u002Fdiv\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fdiv\u003E\n\u003C\u002Ffooter\u003E";
-    ;
-    return pug_html;
-}*/
+const configIcon = {
+    telegram: {
+        href: "/",
+        src: "../../static/telegram.png",
+    },
+    instagram: {
+        href: "https://www.instagram.com/danyatarnovskiy/",
+        src: "../../static/insta.png",
+    },
+    vk: {
+        href: "https://vk.com/dtarnovsky",
+        src: "../../static/vk.png",
+    }
+};
 
 const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
 
