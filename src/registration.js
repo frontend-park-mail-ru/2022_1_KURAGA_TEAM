@@ -1,27 +1,27 @@
 'use script'
 
-import {Footer} from "./components/footer.js";
+import {FooterClass} from "./components/footerClass.js";
 
 const root = document.getElementById("root");
 
 const configElement = {
     name: {
-        data: "static/name.svg",
+        data: "../../static/name.svg",
         placeholder: "Введите Имя",
         type: "text",
     },
     email: {
-        data: "static/email.svg",
+        data: "../../static/email.svg",
         placeholder: "Введите Почту",
         type: "email",
     },
     passwordFirst: {
-        data: "static/password.svg",
+        data: "../../static/password.svg",
         placeholder: "Введите Пароль",
         type: "password",
     },
     passwordSecond: {
-        data: "static/password.svg",
+        data: "../../static/password.svg",
         placeholder: "Повторите Пароль",
         type: "password",
     }
@@ -30,15 +30,15 @@ const configElement = {
 const configIcon = {
     telegram: {
         href: "/",
-        src: "static/telegram.png",
+        src: "../../static/telegram.png",
     },
     instagram: {
         href: "https://www.instagram.com/danyatarnovskiy/",
-        src: "static/insta.png",
+        src: "../../static/insta.png",
     },
     vk: {
         href: "https://vk.com/dtarnovsky",
-        src: "static/vk.png",
+        src: "../../static/vk.png",
     }
 };
 
@@ -58,7 +58,7 @@ function createDecor() {
     const logo = document.createElement("object");
     logo.classList.add("logo");
     logo.type = "image/svg+xml";
-    logo.data = "static/Logo.svg";
+    logo.data = "../../static/Logo.svg";
     root.appendChild(logo);
 
     const backMenu = document.createElement("div");
@@ -299,78 +299,12 @@ function createMenuReg(backMenu) {
     text.appendChild(spanSecond);
 }
 
+const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
+
 function createFooter() {
-    const footer = new Footer(root);
-    footer.items = configIcon;
+    const footer = new FooterClass(root);
+    footer.items = footerIcons;
     footer.render();
-
-    // const footer = document.createElement("footer");
-    // footer.id = "footer";
-    // root.appendChild(footer);
-    //
-    // const left = document.createElement("div");
-    // left.classList.add("left");
-    // footer.appendChild(left);
-    //
-    // const firstFooter = document.createElement("div");
-    // left.appendChild(firstFooter);
-    //
-    // const cont = document.createElement("div");
-    // cont.classList.add("title");
-    // cont.textContent = "Контакты";
-    // firstFooter.appendChild(cont);
-    //
-    // const address = document.createElement("div");
-    // address.classList.add("content");
-    // address.textContent = "Москва. ул. 2-ая Бауманская, д. 5";
-    // firstFooter.appendChild(address);
-    //
-    // const ourEmail = document.createElement("a");
-    // ourEmail.classList.add("content");
-    // ourEmail.href = "mailto:kuraga_team@moviespace.com"
-    // ourEmail.textContent = "kuraga_team@moviespace.com";
-    // firstFooter.appendChild(ourEmail);
-    //
-    // const secondFooter = document.createElement("div");
-    // secondFooter.id = "second-footer";
-    // left.appendChild(secondFooter);
-    //
-    // const info = document.createElement("div");
-    // info.classList.add("title");
-    // info.textContent = "Информация";
-    // secondFooter.appendChild(info);
-    //
-    // const year = document.createElement("div");
-    // year.classList.add("content");
-    // year.textContent = "© 2022–2022 Movie Space.";
-    // secondFooter.appendChild(year);
-    //
-    // const disc = document.createElement("div");
-    // disc.classList.add("content");
-    // disc.textContent = "Может содержать информацию, не предназначенную для несовершеннолетних";
-    // secondFooter.appendChild(disc);
-    //
-    // createIcons(footer);
 }
-
-// function createIcons(footer) {
-//     const fourthFooter = document.createElement("div");
-//     fourthFooter.id = "third-footer";
-//     footer.appendChild(fourthFooter);
-//
-//     Object
-//         .values(configIcon)
-//         .forEach(({href, src}) => {
-//             const ref = document.createElement("a");
-//             ref.classList.add("ref");
-//             ref.href = href;
-//             fourthFooter.appendChild(ref);
-//
-//             const icon = document.createElement("img");
-//             icon.classList.add("refer");
-//             icon.src = src;
-//             ref.appendChild(icon);
-//         });
-// }
 
 createPage();
