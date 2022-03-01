@@ -1,14 +1,12 @@
 'use strict'
-//const template = require('./components/footer');
+import {FooterClass} from "./components/footer/footerClass.js";
 const root = document.getElementById('root');
 
 function createPage() {
-    root.innerHTML = '';
-
 
     createHeader();
     createMain();
-   // createFooter();
+    createFooter();
 }
 
 function createHeader() {
@@ -164,6 +162,7 @@ function createMain() {
 
 
 }
+
 /*function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     var pug_indent = [];
@@ -171,12 +170,16 @@ function createMain() {
     ;
     return pug_html;
 }*/
+
+const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
+
 function createFooter(){
     const f = document.createElement("div");
     f.className = "item-c"
-    
-    f.innerHTML = template(locals);
-    root.appendChild(f);
+
+    const footer = new FooterClass(f);
+    footer.items = footerIcons;
+    footer.render();
 
 }
 // футер

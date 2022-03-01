@@ -1,0 +1,23 @@
+{
+  "name": "2022_1_kuraga_team",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM/issues"
+  },
+  "homepage": "https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.5"
+  }
+}
