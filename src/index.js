@@ -143,7 +143,6 @@ const Movies = [
 
 
 
-
 function createMain() {
 
 // подборки
@@ -162,9 +161,38 @@ function createMain() {
         select.appendChild(selectTitle);
 
 
-        const carousel = new CarouselClass(select);
+        const wrap = document.createElement("div");
+        wrap.classList.add("wrap");
+
+        const carousel = document.createElement("div");
+        carousel.className = "b-carousel js-carousel";
+
+        const btnPrev = document.createElement("button");
+        btnPrev.className = "b-carousel__prev js-carousel__prev";
+
+        const btnNext = document.createElement("button");
+        btnNext.className = "b-carousel__next js-carousel__next";
+
+        carousel.appendChild(btnPrev);
+        carousel.appendChild(btnNext);
+
+        const car = document.createElement("div");
+        car.className = "b-carousel__wrap js-carousel__wrap";
+        car.style = "transform: translateX(0%);";
+        //for (let i = 0; i < 3; i++) {
+            const carouse1 = new CarouselClass(car);
+            carouse1.items = Movies;
+            carouse1.render();
+            const carouse2 = new CarouselClass(car);
+            carouse2.items = Movies;
+            carouse2.render();
+      //  }
+        carousel.appendChild(car);
+        wrap.appendChild(carousel);
+
+       /* const carousel = new CarouselClass(select);
         carousel.items = Movies;
-        carousel.render();
+        carousel.render();*/
 
 
         /*const selectMovie = document.createElement("div");
@@ -202,14 +230,17 @@ function createMain() {
             selectMovie.appendChild(movie)
             select.appendChild(selectMovie)
         }*/
-
+        select.appendChild(wrap);
         selection.appendChild(select);
         root.appendChild(selection)
 
     });
 
 
+
+
 }
+
 
 const configIcon = {
     telegram: {
@@ -239,90 +270,88 @@ function createFooter() {
 
 }
 
-// футер
-// const f = document.createElement("div");
-// f.className = "item-с";
-// const footer = document.createElement("footer");
-// footer.id = "footer";
-// f.appendChild(footer);
-//
-// const firstFooter = document.createElement("div");
-// firstFooter.id = "first-footer";
-// footer.appendChild(firstFooter);
-//
-// const cont = document.createElement("div");
-// cont.classList.add("title");
-// cont.textContent = "Контакты";
-// firstFooter.appendChild(cont);
-//
-// const address = document.createElement("div");
-// address.classList.add("content");
-// address.textContent = "Москва. ул. 2-ая Бауманская, д. 5";
-// firstFooter.appendChild(address);
-//
-// const ourEmail = document.createElement("div");
-// ourEmail.classList.add("content");
-// ourEmail.textContent = "kuraga_team@moviespace.com";
-// firstFooter.appendChild(ourEmail);
-//
-// const secondFooter = document.createElement("div");
-// secondFooter.id = "second-footer";
-// footer.appendChild(secondFooter);
-//
-// const info = document.createElement("div");
-// info.classList.add("title");
-// info.textContent = "Информация";
-// secondFooter.appendChild(info);
-//
-// const year = document.createElement("div");
-// year.classList.add("content");
-// year.textContent = "© 2022–2022 Movie Space.";
-// secondFooter.appendChild(year);
-//
-// const disc = document.createElement("div");
-// disc.classList.add("content");
-// disc.textContent = "Может содержать информацию, не предназначенную для несовершеннолетних";
-// secondFooter.appendChild(disc);
-//
-// const thirdFooter = document.createElement("div");
-// thirdFooter.id = "third-footer";
-// footer.appendChild(thirdFooter);
-//
-// const fourthFooter = document.createElement("div");
-// fourthFooter.id = "fourth-footer";
-// footer.appendChild(fourthFooter);
-//
-// const refT = document.createElement("a");
-// refT.href = "/";
-// fourthFooter.appendChild(refT);
-//
-// const telegram = document.createElement("img");
-// telegram.classList.add("refer");
-// telegram.src = "static/telegram.png";
-// refT.appendChild(telegram);
-//
-// const refI = document.createElement("a");
-// refI.href = "https://www.instagram.com/danyatarnovskiy/";
-// fourthFooter.appendChild(refI);
-//
-// const inst = document.createElement("img");
-// inst.classList.add("refer");
-// inst.src = "static/insta.png";
-// refI.appendChild(inst);
-//
-// const refV = document.createElement("a");
-// refV.href = "https://vk.com/dtarnovsky";
-// fourthFooter.appendChild(refV);
-//
-// const vk = document.createElement("img");
-// vk.classList.add("refer");
-// vk.src = "static/vk.png";
-// refV.appendChild(vk);
-//
-// root.appendChild(f)
+
 
 
 createPage();
 
+(function () {
+    "use strict";
 
+    function Carousel(setting) {
+        if (document.querySelector(setting.wrap) === null) {
+            console.error(`Carousel not fount selector ${setting.wrap}`);
+            return;
+        }
+
+        /* Scope privates methods and properties */
+        let privates = {};
+
+
+        /* Public methods */
+        // Prev slide
+        this.prev_slide = () => {
+            --privates.opt.position;
+
+            if (privates.opt.position < 0) {
+                privates.sel.wrap.classList.add('s-notransition');
+                privates.opt.position = privates.opt.max_position - 1;
+            }
+
+            privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position}00%)`;
+        };
+
+
+        // Next slide
+        this.next_slide = () => {
+            ++privates.opt.position;
+
+            if (privates.opt.position >= privates.opt.max_position) {
+                privates.opt.position = 0;
+            }
+
+            privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position}00%)`;
+        };
+
+
+        /* Privates properties */
+        privates.setting = setting;
+
+        privates.sel = {
+            "main": document.querySelector(privates.setting.main),
+            "wrap": document.querySelector(privates.setting.wrap),
+            "children": document.querySelector(privates.setting.wrap).children,
+            "prev": document.querySelector(privates.setting.prev),
+            "next": document.querySelector(privates.setting.next)
+        };
+
+        privates.opt = {
+            "position": 0,
+            "max_position": document.querySelector(privates.setting.wrap).children.length
+        };
+
+        // Control
+        if (privates.sel.prev !== null) {
+            privates.sel.prev.addEventListener('click', () => {
+                this.prev_slide();
+            });
+        }
+
+        if (privates.sel.next !== null) {
+            privates.sel.next.addEventListener('click', () => {
+                this.next_slide();
+            });
+        }
+
+    }
+
+
+    let a = new Carousel({
+        "main": ".js-carousel",
+        "wrap": ".js-carousel__wrap",
+        "prev": ".js-carousel__prev",
+        "next": ".js-carousel__next"
+    });
+
+})();
 

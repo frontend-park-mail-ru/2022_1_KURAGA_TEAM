@@ -57,7 +57,7 @@ body {
 
 .b-carousel__wrap {
     display: flex;
-    transition: transform .5s;
+    transition: transform 2s;
     will-change: transform;
     position: relative;
     z-index: 1;
@@ -193,7 +193,7 @@ input#cb:checked::after {
 
 .select {
     margin-inline: 22px;
-
+    width: 1280px;
     grid-template-columns: 10px;
     column-gap: 10px;
     grid-template-rows: 50px auto;
