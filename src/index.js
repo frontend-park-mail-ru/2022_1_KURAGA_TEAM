@@ -118,30 +118,30 @@ function createHeader() {
 }
 
 
-const configMovies = {
-    StarWars: {
+const Movies = [
+    {
         href: "/",
         name: "Звездные войны1",
         genre: "Фантастика1"
     },
-    StarWars: {
+    {
         href: "/",
         name: "Звездные войны2",
         genre: "Фантастика2"
     },
-    StarWars: {
+    {
         href: "/",
         name: "Звездные войны3",
         genre: "Фантастика3"
     },
-    StarWars: {
+    {
         href: "/",
         name: "Звездные войны4",
         genre: "Фантастика4"
     }
-};
+];
 
-const Movies = Object.entries(configMovies).map(([key, {href, name, genre}]) => ({key, href, name, genre}));
+
 
 
 function createMain() {

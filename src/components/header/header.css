@@ -152,3 +152,21 @@
 
 
 }
+
+.btnInfo:active {
+    transform: scale(0.94);
+    -webkit-transform: scale(0.94);
+}
+
+.btnInfo:hover {
+    background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
+}
+
+.btn:active {
+    transform: scale(0.94);
+    -webkit-transform: scale(0.94);
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
+}

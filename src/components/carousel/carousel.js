@@ -30,7 +30,7 @@ export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
-        items = locals
+        items=locals
         var pug_indent = [];
         pug_mixins["carousel"] = pug_interp = function (items) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -63,9 +63,9 @@ export default function template(locals) {
                         pug_html = pug_html + pug_indent.join("");
                         pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n            ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"genre font\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n            ";
+                        pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n            ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cinput id=\"cb\" type=\"checkbox\"\u002F\u003E\n          ";
+                        pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n          ";
                         pug_html = pug_html + pug_indent.join("");
                         pug_html = pug_html + "\u003C\u002Fdiv\u003E\n        ";
                         pug_html = pug_html + pug_indent.join("");
@@ -86,9 +86,9 @@ export default function template(locals) {
                         pug_html = pug_html + pug_indent.join("");
                         pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n            ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"genre font\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n            ";
+                        pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n            ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cinput id=\"cb\" type=\"checkbox\"\u002F\u003E\n          ";
+                        pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n          ";
                         pug_html = pug_html + pug_indent.join("");
                         pug_html = pug_html + "\u003C\u002Fdiv\u003E\n        ";
                         pug_html = pug_html + pug_indent.join("");
