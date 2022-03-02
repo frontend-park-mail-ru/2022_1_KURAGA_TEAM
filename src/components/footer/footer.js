@@ -37,7 +37,7 @@ export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
-        items = locals;
+        items = locals
         var pug_indent = [];
         pug_mixins["footer"] = pug_interp = function (items) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
@@ -49,7 +49,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv\u003E\n      ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"title\"\u003EКонтакты\u003C\u002Fdiv\u003E\n      ";
+            pug_html = pug_html + "\u003Cdiv class=\"titleF\"\u003EКонтакты\u003C\u002Fdiv\u003E\n      ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"content\"\u003EМосква. ул. 2-ая Бауманская, д. 5\u003C\u002Fdiv\u003E\u003Ca class=\"content\" href=\"mailto:kuraga_team@moviespace.com\"\u003Ekuraga_team@moviespace.com\u003C\u002Fa\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
@@ -57,7 +57,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv id=\"second-footer\"\u003E\n      ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"title\"\u003EИнформация\u003C\u002Fdiv\u003E\n      ";
+            pug_html = pug_html + "\u003Cdiv class=\"titleF\"\u003EИнформация\u003C\u002Fdiv\u003E\n      ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"content\"\u003E© 2022–2022 Movie Space.\u003C\u002Fdiv\u003E\n      ";
             pug_html = pug_html + pug_indent.join("");

@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    line-height: 1;
+}
+
+.wrap {
+    margin: 10px auto;
+    width: 100%;
+
+}
+
+
+
+/* MAIN STYLES */
+.b-carousel {
+    background-color: #01090B;
+    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    box-sizing: border-box;
+    border: 1px solid;
+}
+
+.b-carousel__prev,
+.b-carousel__next {
+
+    position: absolute;
+    top: 50%;
+
+    height: 100%;
+
+    background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
+    transform: translateY(-50%) translateZ(0);
+    cursor: pointer;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 3;
+}
+.b-carousel__prev{
+    left: 0;
+}
+.b-carousel__next {
+    left: auto;
+    right: 0;
+}
+
+.b-carousel__wrap {
+    display: flex;
+    transition: transform .5s;
+    will-change: transform;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+.b-carousel__item {
+    flex: 0 0 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.b-carousel__img {
+
+    height: 100%;
+    object-fit: cover;
+
+}
+
+
+
+
+
+.movie {
+    background: url("static/star.png");
+    background-size: contain;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 50px;
+    column-gap: 10px;
+    width: 280px;
+    height: 165px;
+    row-gap: 10px;
+    border-radius: 24px;
+    margin-inline-start: 15px;
+
+    grid-template-areas:
+    "refMov "
+    "descMov"
+
+}
+
+.refMov {
+    grid-area: movie;
+}
+
+
+.descMov {
+    display: flex;
+    column-gap: 15px;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 19px;
+    background: linear-gradient(180deg, rgba(196, 196, 196, 0) -79.55%, #000000 124.95%);
+    backdrop-filter: blur(5px);
+    grid-area: descMov;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-evenly;
+
+}
+
+.genre {
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 16px;
+    color: #707070;
+}
+
+
+.like {
+
+    width: auto;
+    height: auto;
+
+}
+
+
+
+#cb {
+    visibility: hidden;
+}
+
+input#cb::after {
+    visibility: visible;
+    
+    padding: 8px;
+}
+
+input#cb:checked::after {
+
+}

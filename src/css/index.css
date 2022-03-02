@@ -1,4 +1,6 @@
 @import '../components/footer/footer.css';
+@import '../components/header/header.css';
+@import '../components/carousel/carousel.css';
 
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
@@ -23,6 +25,9 @@ body {
     font-weight: bold;
     color: #FFFFFF;
 }
+.background {
+    background-color: #01090B
+}
 
 .fontOther {
     text-decoration: none;
@@ -37,9 +42,7 @@ body {
 
 }
 
-.background {
-    background-color: #01090B
-}
+
 
 .header {
     margin-bottom: 30px;
