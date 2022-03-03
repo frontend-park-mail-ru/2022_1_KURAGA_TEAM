@@ -6,10 +6,15 @@
 }
 
 .error {
+    display: none;
     font-weight: bold;
     font-size: 18px;
     color: red;
 }
+.error-active {
+    display: block;
+}
+
 .element {
     display: flex;
     margin-top: 30px;

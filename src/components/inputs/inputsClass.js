@@ -1,78 +1,92 @@
 import inputsTemplate from "./inputs.js";
-import buttonTemplate from "../button/button.js";
 
-export class InputNameClass {
-    #items;
-    #parent;
-
-    constructor(parent) {
-        this.#parent = parent;
-    }
-
-    set items(value) {
-        this.#items = value;
-    }
-
+export class InputsClass {
     render() {
-        this.#parent.innerHTML += inputsTemplate(this.#items);
+        const configElement = {
+            name: {
+                data: "../../static/name.svg",
+                placeholder: "Введите Имя",
+                type: "text",
+                error: "nameError",
+            },
+            email: {
+                data: "../../static/email.svg",
+                placeholder: "Введите Почту",
+                type: "email",
+                error: "emailError",
+            },
+            passwordFirst: {
+                data: "../../static/password.svg",
+                placeholder: "Введите Пароль",
+                type: "password",
+                error: "passOneError",
+            },
+            passwordSecond: {
+                data: "../../static/password.svg",
+                placeholder: "Повторите Пароль",
+                type: "password",
+                error: "passTwoError",
+            }
+        }
+
+        const formElements = Object.entries(configElement)
+            .map(([key, {data, placeholder, type, error}]) =>
+                ({key, data, placeholder, type, error}));
+
+        return  inputsTemplate(formElements);
     }
 
-    setHandler()    {
+    setHandler() {
         const form = document.querySelector('.menu-form');
 
         const inputName = document.querySelector('input[data-section="name"]');
         const errorName = document.querySelector('div[data-section="nameError"]');
-        form.removeChild(errorName);
 
         const divEmail = document.querySelector('div[data-section="email"]');
         const inputEmail = document.querySelector('input[data-section="email"]');
         const errorEmail = document.querySelector('div[data-section="emailError"]');
-        form.removeChild(errorEmail);
 
         const divPassOne = document.querySelector('div[data-section="passwordFirst"]');
         const inputPassOne = document.querySelector('input[data-section="passwordFirst"]');
         const errorPassOne = document.querySelector('div[data-section="passOneError"]');
-        form.removeChild(errorPassOne);
 
         const divPassTwo = document.querySelector('div[data-section="passwordSecond"]');
         const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
-        form.removeChild(errorPassTwo);
 
         function nameError() {
-            form.insertBefore(errorName, divEmail);
+            errorName.classList.add("error-active");
             errorName.textContent = 'Заполните поле';
         }
 
         function emailError() {
             if(inputEmail.validity.valueMissing) {
-                form.insertBefore(errorEmail, divPassOne);
+                errorEmail.classList.add("error-active");
                 errorEmail.textContent = 'Заполните поле';
 
                 return;
             }
 
             if(inputEmail.validity.typeMismatch) {
-                form.insertBefore(errorEmail, divPassOne);
+                errorEmail.classList.add("error-active");
                 errorEmail.textContent = 'Введите действительный email';
             }
         }
 
         function passOneError() {
-            form.insertBefore(errorPassOne, divPassTwo);
+            errorPassOne.classList.add("error-active");
             errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
                 '\n в том числе цифры и латинские буквы';
         }
 
         function passTwoError() {
             if(errorPassTwo.validity.valueMissing) {
-                form.insertBefore(errorPassTwo, buttonTemplate);
+                errorPassTwo.classList.add("error-active");
                 errorPassTwo.textContent = 'Заполните поле';
             }
         }
 
         inputName.addEventListener('click', () => {
-            console.log(1)
             if (inputName.value.trim() === "") {
                 nameError();
 
@@ -80,7 +94,7 @@ export class InputNameClass {
             }
 
             if (inputName.validity.valid) {
-                form.removeChild(errorName);
+               errorName.classList.remove("error-active");
 
                 return;
             }
@@ -89,12 +103,12 @@ export class InputNameClass {
         });
 
         inputName.addEventListener('keydown', () => {
-            form.removeChild(errorName);
+            errorName.classList.remove("error-active");
         });
 
         inputEmail.addEventListener('change', () => {
             if (inputEmail.validity.valid) {
-                form.removeChild(errorEmail);
+                errorEmail.classList.remove("error-active");
 
                 return;
             }
@@ -103,7 +117,7 @@ export class InputNameClass {
         });
 
         inputEmail.addEventListener('keydown', () => {
-            form.removeChild(errorEmail);
+            errorEmail.classList.remove("error-active");
         });
 
         inputPassOne.addEventListener('change', () => {
@@ -115,7 +129,7 @@ export class InputNameClass {
                 containsNumbers.test(inputPassOne.value) &&
                 containsLetters.test(inputPassOne.value) &&
                 minimum8Chars.test(inputPassOne.value)) {
-                form.removeChild(errorPassOne);
+                errorPassOne.classList.remove("error-active");
 
                 return;
             }
@@ -124,12 +138,12 @@ export class InputNameClass {
         });
 
         inputPassOne.addEventListener('keydown', () => {
-            form.removeChild(errorPassOne);
+            errorPassOne.classList.remove("error-active");
         });
 
         inputPassTwo.addEventListener('change', () => {
             if (inputPassTwo.validity.valid) {
-                form.removeChild(errorPassTwo);
+                errorPassTwo.classList.remove("error-active");
 
                 return;
             }
@@ -138,7 +152,7 @@ export class InputNameClass {
         });
 
         inputPassTwo.addEventListener('keydown', () => {
-            form.removeChild(errorPassTwo);
+            errorPassTwo.classList.remove("error-active");
         });
 
         form.addEventListener('submit', (e) => {
@@ -168,7 +182,7 @@ export class InputNameClass {
             }
 
             if(inputPassTwo.value !== inputPassOne.value) {
-                form.insertBefore(errorPassTwo, buttonTemplate());
+                errorPassTwo.classList.add("error-active");
                 errorPassTwo.textContent = 'Пароли не совпадают';
 
                 e.preventDefault();

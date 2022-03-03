@@ -4,3 +4,4 @@ node_modules
 src/components/footer/footer.js
 src/components/inputs/inputs.js
 src/components/button/button.js
+src/components/regView/regView.js
