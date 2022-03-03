@@ -1,12 +1,11 @@
 mixin carousel(items)
-    div.b-carousel__item
-        each item in items
-            div.movie
-                a(href='/')
-                    div.refMov
-                div.descMov
-                    div= item.name
-                    div.genre= item.genre
-                    input#cb.inputLike(type = "checkbox")
+    each item in items
+        div.movie
+            a(href='/')
+                div.refMov
+            div.descMov
+                div= item.name
+                div.genre= item.genre
+                input#cb.inputLike(type = "checkbox")
 
 + carousel(items)

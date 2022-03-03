@@ -34,30 +34,27 @@ export default function template(locals) {
         var pug_indent = [];
         pug_mixins["carousel"] = pug_interp = function (items) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
-            pug_html = pug_html + "\n";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"b-carousel__item\"\u003E";
 // iterate items
             ;(function () {
                 var $$obj = items;
                 if ('number' == typeof $$obj.length) {
                     for (var pug_index0 = 0, $$l = $$obj.length; pug_index0 < $$l; pug_index0++) {
                         var item = $$obj[pug_index0];
-                        pug_html = pug_html + "\n  ";
+                        pug_html = pug_html + "\n";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca href=\"\u002F\"\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca href=\"\u002F\"\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n    ";
+                        pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n  ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n    ";
+                        pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n  ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003C\u002Fdiv\u003E\n  ";
+                        pug_html = pug_html + "\u003C\u002Fdiv\u003E\n";
                         pug_html = pug_html + pug_indent.join("");
                         pug_html = pug_html + "\u003C\u002Fdiv\u003E";
                     }
@@ -66,30 +63,27 @@ export default function template(locals) {
                     for (var pug_index0 in $$obj) {
                         $$l++;
                         var item = $$obj[pug_index0];
-                        pug_html = pug_html + "\n  ";
+                        pug_html = pug_html + "\n";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca href=\"\u002F\"\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca href=\"\u002F\"\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n    ";
+                        pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n  ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n      ";
+                        pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n    ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n    ";
+                        pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n  ";
                         pug_html = pug_html + pug_indent.join("");
-                        pug_html = pug_html + "\u003C\u002Fdiv\u003E\n  ";
+                        pug_html = pug_html + "\u003C\u002Fdiv\u003E\n";
                         pug_html = pug_html + pug_indent.join("");
                         pug_html = pug_html + "\u003C\u002Fdiv\u003E";
                     }
                 }
             }).call(this);
 
-            pug_html = pug_html + "\n";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E";
         };
         pug_indent.push('');
         pug_mixins["carousel"](items);

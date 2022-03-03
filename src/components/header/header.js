@@ -15,7 +15,17 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"space\"\u003E\u003C\u002Fdiv\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cobject class=\"searchBtn\" type=\"image\u002Fpng\" data=\"..\u002Fstatic\u002Flupa.png\"\u003E\u003C\u002Fobject\u003E\n    ";
+            pug_html = pug_html + "\u003Cform\u003E\n      ";
+            pug_html = pug_html + pug_indent.join("");
+            pug_html = pug_html + "\u003Cdiv class=\"search\"\u003E\n        ";
+            pug_html = pug_html + pug_indent.join("");
+            pug_html = pug_html + "\u003Cinput class=\"fontGT\" type=\"text\" placeholder=\"Поиск\"\u002F\u003E\n        ";
+            pug_html = pug_html + pug_indent.join("");
+            pug_html = pug_html + "\u003Cbutton class=\"btnSearch\" type=\"submit\"\u003E\u003C\u002Fbutton\u003E\n      ";
+            pug_html = pug_html + pug_indent.join("");
+            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n    ";
+            pug_html = pug_html + pug_indent.join("");
+            pug_html = pug_html + "\u003C\u002Fform\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"profile\"\u003E\u003Cimg class=\"profileImg\" src=\"..\u002Fstatic\u002Fprofile.png\"\u002F\u003E\u003C\u002Fdiv\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");

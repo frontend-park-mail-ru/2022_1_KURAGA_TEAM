@@ -20,6 +20,7 @@
 }
 
 .background {
+    margin: 5px;
     background-color: #01090B
 }
 
@@ -64,7 +65,7 @@
 }
 
 .space {
-    flex-grow: 3;
+    flex-grow: 1;
 }
 
 
@@ -169,4 +170,46 @@
 
 .btn:hover {
     background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
+}
+
+
+
+
+input[type=text] {
+    border: 0;
+    border-radius: 15px;
+    background-color: #ffffff40;
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #FFFFFF;
+    opacity: 1; /* Firefox */
+}
+input{
+    color:#ffffff;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 90%;
+}
+.btnSearch{
+    border: 0;
+    width: 42px;
+    margin-inline: -46px;
+    height: 100%;
+    background: url("../../../static/lupa.png");
+    background-size:contain;
+
+}
+
+
+.search{
+    width: 300px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 10px;
 }

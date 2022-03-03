@@ -142,7 +142,6 @@ const Movies = [
 ];
 
 
-
 function createMain() {
 
 // подборки
@@ -169,9 +168,11 @@ function createMain() {
 
         const btnPrev = document.createElement("button");
         btnPrev.className = "b-carousel__prev js-carousel__prev";
+        btnPrev.textContent = "❬";
 
         const btnNext = document.createElement("button");
         btnNext.className = "b-carousel__next js-carousel__next";
+        btnNext.textContent = "❭";
 
         carousel.appendChild(btnPrev);
         carousel.appendChild(btnNext);
@@ -179,20 +180,24 @@ function createMain() {
         const car = document.createElement("div");
         car.className = "b-carousel__wrap js-carousel__wrap";
         car.style = "transform: translateX(0%);";
-        //for (let i = 0; i < 3; i++) {
-            const carouse1 = new CarouselClass(car);
-            carouse1.items = Movies;
-            carouse1.render();
-            const carouse2 = new CarouselClass(car);
-            carouse2.items = Movies;
-            carouse2.render();
-      //  }
+
+
+        for (let i = 0; i < 3; i++) {
+            const carouselItem = document.createElement("div");
+            carouselItem.className = "b-carousel__item";
+
+            const carouse = new CarouselClass(carouselItem);
+            carouse.items = Movies;
+            carouse.render();
+            car.appendChild(carouselItem);
+
+        }
         carousel.appendChild(car);
         wrap.appendChild(carousel);
 
-       /* const carousel = new CarouselClass(select);
-        carousel.items = Movies;
-        carousel.render();*/
+        /* const carousel = new CarouselClass(select);
+         carousel.items = Movies;
+         carousel.render();*/
 
 
         /*const selectMovie = document.createElement("div");
@@ -237,8 +242,6 @@ function createMain() {
     });
 
 
-
-
 }
 
 
@@ -269,8 +272,6 @@ function createFooter() {
     root.appendChild(f);
 
 }
-
-
 
 
 createPage();
@@ -344,8 +345,6 @@ createPage();
         }
 
     }
-
-
     let a = new Carousel({
         "main": ".js-carousel",
         "wrap": ".js-carousel__wrap",
@@ -353,5 +352,9 @@ createPage();
         "next": ".js-carousel__next"
     });
 
+
+
 })();
+
+
 

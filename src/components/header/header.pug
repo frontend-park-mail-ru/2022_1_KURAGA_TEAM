@@ -7,7 +7,10 @@ mixin header(items)
             a.label.font(href="/") Сериалы
             a.label.font(href="/") Избранное
             div.space
-            object.searchBtn(type = "image/png", data = "../static/lupa.png")
+            form
+                div.search
+                    input.fontGT(type="text", placeholder="Поиск")
+                    button.btnSearch(type="submit")
             div.profile
                 img.profileImg(src = "../static/profile.png")
         div.mainMovie

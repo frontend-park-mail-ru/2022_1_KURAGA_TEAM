@@ -28,21 +28,22 @@ body {
     position: relative;
 
     box-sizing: border-box;
-    border: 1px solid;
+
 }
 
 .b-carousel__prev,
 .b-carousel__next {
-
+    color: #ffffffc2;
+    font-size: 30px;
     position: absolute;
     top: 50%;
-
+    background-color: #ffffff1c;
     height: 100%;
 
-    background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
+    /*background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);*/
     transform: translateY(-50%) translateZ(0);
     cursor: pointer;
-    text-indent: 100%;
+    /*text-indent: 100%;*/
     white-space: nowrap;
     overflow: hidden;
     z-index: 3;
@@ -69,7 +70,7 @@ body {
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .b-carousel__img {
