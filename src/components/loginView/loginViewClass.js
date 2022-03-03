@@ -1,18 +1,16 @@
-import regViewTemplate from "./regView.js";
+import loginViewTemplate from "./loginView.js";
 import {FooterClass} from "../footer/footerClass.js";
-import {InputsClass} from "../inputsReg/inputsClass.js";
-import buttonTemplate from "../button/button.js";
+import {InputsClass} from "../inputsLogin/inputsClass.js";
 
 const root = document.getElementById("root");
 
-export class RegViewClass {
+export class LoginViewClass {
     render() {
         const footer = new FooterClass();
         const inputs = new InputsClass();
 
-        root.innerHTML = regViewTemplate({
+        root.innerHTML = loginViewTemplate({
             inputs: inputs.render(),
-            button: buttonTemplate(),
             footer: footer.render()});
 
         inputs.setHandler();

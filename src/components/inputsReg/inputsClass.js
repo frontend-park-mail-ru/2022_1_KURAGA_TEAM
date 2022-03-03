@@ -42,15 +42,12 @@ export class InputsClass {
         const inputName = document.querySelector('input[data-section="name"]');
         const errorName = document.querySelector('div[data-section="nameError"]');
 
-        const divEmail = document.querySelector('div[data-section="email"]');
         const inputEmail = document.querySelector('input[data-section="email"]');
         const errorEmail = document.querySelector('div[data-section="emailError"]');
 
-        const divPassOne = document.querySelector('div[data-section="passwordFirst"]');
         const inputPassOne = document.querySelector('input[data-section="passwordFirst"]');
         const errorPassOne = document.querySelector('div[data-section="passOneError"]');
 
-        const divPassTwo = document.querySelector('div[data-section="passwordSecond"]');
         const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
 
@@ -60,17 +57,15 @@ export class InputsClass {
         }
 
         function emailError() {
-            if(inputEmail.validity.valueMissing) {
+            if(inputEmail.validity.typeMismatch) {
                 errorEmail.classList.add("error-active");
-                errorEmail.textContent = 'Заполните поле';
+                errorEmail.textContent = 'Введите действительный email';
 
                 return;
             }
 
-            if(inputEmail.validity.typeMismatch) {
-                errorEmail.classList.add("error-active");
-                errorEmail.textContent = 'Введите действительный email';
-            }
+            errorEmail.classList.add("error-active");
+            errorEmail.textContent = 'Заполните поле';
         }
 
         function passOneError() {
@@ -86,7 +81,7 @@ export class InputsClass {
             }
         }
 
-        inputName.addEventListener('click', () => {
+        inputName.addEventListener('change', () => {
             if (inputName.value.trim() === "") {
                 nameError();
 

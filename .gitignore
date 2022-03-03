@@ -2,6 +2,7 @@
 node_modules
 .eslintrc.js
 src/components/footer/footer.js
-src/components/inputs/inputs.js
+src/components/inputsReg/inputs.js
 src/components/button/button.js
 src/components/regView/regView.js
+src/components/loginView/loginView.js

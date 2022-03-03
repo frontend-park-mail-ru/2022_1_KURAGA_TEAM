@@ -1,6 +1,6 @@
 @import '../components/footer/footer.css';
 @import '../components/button/button.css';
-@import '../components/inputs/inputs.css';
+@import 'inputs.css';
 
 @media (min-width: 1450px) and (max-width: 1600px) {
     #menu{
