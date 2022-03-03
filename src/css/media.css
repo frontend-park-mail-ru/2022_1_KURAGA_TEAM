@@ -1,0 +1,58 @@
+@import '../components/footer/footer.css';
+@import '../components/button/button.css';
+@import '../components/inputs/inputs.css';
+
+@media (min-width: 1450px) and (max-width: 1600px) {
+    #menu{
+        width: 750px;
+    }
+}
+@media (min-width: 1000px) and (max-width: 1450px) {
+    .error {
+        font-size: 14px;
+    }
+    .element {
+        height: 40px;
+    }
+    .svg {
+        height: 26px;
+        width: 26px;
+    }
+    .menu-input::-webkit-input-placeholder {
+        font-size: 16px;
+    }
+    .menu-input {
+        font-size: 16px;
+    }
+    .menu-button {
+        font-size: 22px;
+        margin-top: 20px;
+        height: 40px;
+    }
+    .first-span {
+        font-size: 20px;
+    }
+    .second-span {
+        font-size: 20px;
+    }
+    #menu{
+        padding-top: 50px;
+        padding-bottom: 40px;
+        width: 600px;
+    }
+}
+@media (min-width: 750px) and (max-width: 1000px) {
+    #menu{
+        height: fit-content;
+        width: 880px;
+    }
+    #back-menu {
+        height: 100%;
+    }
+    #footer {
+        width: 102%;
+    }
+    #root {
+        width: 102%;
+    }
+}
