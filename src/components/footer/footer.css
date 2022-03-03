@@ -35,6 +35,11 @@
     height: 39px;
     width: 39px;
     margin-top: 20px;
+    transition: transform .1s linear;
+}
+.refer:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
 }
 .ref {
     margin-right: 50px;
