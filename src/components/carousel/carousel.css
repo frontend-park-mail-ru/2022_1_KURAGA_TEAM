@@ -110,6 +110,8 @@ body {
 
 .descMov {
     display: flex;
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
     column-gap: 15px;
     font-style: normal;
     font-weight: 350;
@@ -193,7 +195,8 @@ input#cb:checked::after {
 }
 
 .select {
-    margin-inline: 22px;
+    place-self: center;
+    /*margin-inline: 22px;*/
     width: 1280px;
     grid-template-columns: 10px;
     column-gap: 10px;
