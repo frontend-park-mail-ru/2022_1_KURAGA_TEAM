@@ -33,7 +33,7 @@ function pug_escape(e) {
 
 var pug_match_html = /["&<>]/;
 
-export default function template(locals) {
+export default function footerTemplate(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {

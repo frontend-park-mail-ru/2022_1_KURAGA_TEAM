@@ -1,6 +1,6 @@
-import footerTemplate from "./footer.js";
+import inputsTemplate from "./inputs.js";
 
-export class FooterClass {
+export class InputNameClass {
     #items;
     #parent;
 
@@ -13,6 +13,6 @@ export class FooterClass {
     }
 
     render() {
-        this.#parent.innerHTML += footerTemplate(this.#items);
+        this.#parent.innerHTML += inputsTemplate(this.#items);
     }
 }

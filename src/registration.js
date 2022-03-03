@@ -1,7 +1,8 @@
 'use script'
 
 import {FooterClass} from "./components/footer/footerClass.js";
-import template from "./components/button/button.js";
+import {InputNameClass} from "./components/inputs/inputNameClass.js";
+import buttonTemplate from "./components/button/button.js";
 
 const root = document.getElementById("root");
 
@@ -10,21 +11,25 @@ const configElement = {
         data: "../../static/name.svg",
         placeholder: "Введите Имя",
         type: "text",
+        error: "nameError",
     },
     email: {
         data: "../../static/email.svg",
         placeholder: "Введите Почту",
         type: "email",
+        error: "emailError",
     },
     passwordFirst: {
         data: "../../static/password.svg",
         placeholder: "Введите Пароль",
         type: "password",
+        error: "passOneError",
     },
     passwordSecond: {
         data: "../../static/password.svg",
         placeholder: "Повторите Пароль",
         type: "password",
+        error: "passTwoError",
     }
 }
 
@@ -69,6 +74,10 @@ function createDecor() {
     return backMenu
 }
 
+const formElements = Object.entries(configElement)
+    .map(([key, {data, placeholder, type, error}]) =>
+        ({key, data, placeholder, type, error}));
+
 function createMenuReg(backMenu) {
     const menu = document.createElement("div");
     menu.id = "menu";
@@ -86,170 +95,138 @@ function createMenuReg(backMenu) {
     form.noValidate = true;
     menu.appendChild(form);
 
+    const inputs = new InputNameClass(form);
+    inputs.items = formElements;
+    inputs.render();
 
+    const inputName = document.querySelector('input[data-section="name"]');
+    const errorName = document.querySelector('[data-section="nameError"]');
+    form.removeChild(errorName);
 
-    function createInputs() {
-        let objElem = Object
-            .entries(configElement)
-            .map(([key, {data, placeholder, type}]) => {
-                const menuElement = document.createElement("div");
-                menuElement.dataset.section = key;
-                menuElement.classList.add("element");
-                form.appendChild(menuElement);
+    const inputEmail = document.querySelector('input[data-section="email"]');
+    const errorEmail = document.querySelector('div[data-section="emailError"]');
+    form.removeChild(errorEmail);
 
-                const menuSvg = document.createElement("object");
-                menuSvg.classList.add("svg");
-                menuSvg.type = "image/svg+xml";
-                menuSvg.data = data
-                menuElement.appendChild(menuSvg);
+    const inputPassOne = document.querySelector('input[data-section="passwordFirst"]');
+    const errorPassOne = document.querySelector('div[data-section="passOneError"]');
+    form.removeChild(errorPassOne);
 
-                const menuInput = document.createElement("input");
-                menuInput.placeholder = placeholder
-                menuInput.classList.add("menu-input");
-                menuInput.type = type
-                menuInput.required = true;
-                menuInput.dataset.section = key;
-                menuElement.appendChild(menuInput);
+    const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
+    const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
+    form.removeChild(errorPassTwo);
 
-                const menuError = document.createElement("div");
-                menuError.classList.add("error");
-
-                return {menuError, menuInput, menuElement};
-            });
-        objElem.forEach((element) => {
-            if (element.menuInput.dataset.section === "name") {
-                element.menuInput.addEventListener('change', () => {
-
-                    if (element.menuInput.value.trim() === "") {
-                        nameError();
-
-                        return;
-                    }
-
-                    if (element.menuInput.validity.valid) {
-                        form.removeChild(element.menuError);
-
-                        return;
-                    }
-
-                    nameError();
-                });
-
-                element.menuInput.addEventListener('keydown', () => {
-                    form.removeChild(element.menuError);
-                });
-
-                return
-            }
-
-            if (element.menuInput.dataset.section === "email") {
-                element.menuInput.addEventListener('change', () => {
-                    if (element.menuInput.validity.valid) {
-                        form.removeChild(element.menuError);
-
-                        return;
-                    }
-
-                    emailError();
-                });
-
-                element.menuInput.addEventListener('keydown', () => {
-                    form.removeChild(element.menuError);
-                });
-
-                return
-            }
-
-            if (element.menuInput.dataset.section === "passwordFirst") {
-                element.menuInput.addEventListener('change', () => {
-                    const containsLetters = /^.*[a-zA-Z]+.*$/;
-                    const minimum8Chars = /^.{8,}$/;
-                    const containsNumbers = /^.*[0-9]+.*$/;
-
-                    if (element.menuInput.validity.valid &&
-                        containsNumbers.test(element.menuInput.value) &&
-                        containsLetters.test(element.menuInput.value) &&
-                        minimum8Chars.test(element.menuInput.value)) {
-                        form.removeChild(element.menuError);
-
-                        return;
-                    }
-
-                    passOneError();
-                });
-
-                element.menuInput.addEventListener('keydown', () => {
-                    form.removeChild(element.menuError);
-                });
-
-                return
-            }
-
-            if (element.menuInput.dataset.section === "passwordSecond") {
-                element.menuInput.addEventListener('change', () => {
-                    if (element.menuInput.validity.valid) {
-                        form.removeChild(element.menuError);
-
-                        return;
-                    }
-
-                    passTwoError();
-                });
-
-                element.menuInput.addEventListener('keydown', () => {
-                    form.removeChild(element.menuError);
-                });
-            }
-        });
-
-        return objElem;
-    }
-
-    let objElements = createInputs();
+    form.innerHTML = form.innerHTML + buttonTemplate();
 
     function nameError() {
-            form.insertBefore(objElements[0].menuError, objElements[1].menuElement);
-            objElements[0].menuError.textContent = 'Заполните поле';
+        form.insertBefore(errorName, inputEmail);
+        errorName.textContent = 'Заполните поле';
     }
 
     function emailError() {
-        if(objElements[1].menuInput.validity.valueMissing) {
-            form.insertBefore(objElements[1].menuError, objElements[2].menuElement);
-            objElements[1].menuError.textContent = 'Заполните поле';
+        if(inputEmail.validity.valueMissing) {
+            form.insertBefore(errorEmail, inputPassOne);
+            errorEmail.textContent = 'Заполните поле';
 
             return;
         }
 
-        if(objElements[1].menuInput.validity.typeMismatch) {
-            form.insertBefore(objElements[1].menuError, objElements[2].menuElement);
-            objElements[1].menuError.textContent = 'Введите действительный email';
+        if(inputEmail.validity.typeMismatch) {
+            form.insertBefore(errorEmail, inputPassOne);
+            errorEmail.textContent = 'Введите действительный email';
         }
     }
 
     function passOneError() {
-        form.insertBefore(objElements[2].menuError, objElements[3].menuElement);
-        objElements[2].menuError.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
+        form.insertBefore(errorPassOne, inputPassTwo);
+        errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
             '\n в том числе цифры и латинские буквы';
     }
 
     function passTwoError() {
-        if(objElements[3].menuInput.validity.valueMissing) {
-            form.insertBefore(objElements[3].menuError, button);
-            objElements[3].menuError.textContent = 'Заполните поле';
+        if(errorPassTwo.validity.valueMissing) {
+            form.insertBefore(errorPassTwo, buttonTemplate);
+            errorPassTwo.textContent = 'Заполните поле';
         }
     }
 
-    form.innerHTML += template();
+    inputName.addEventListener('change', () => {
+        if (inputName.value.trim() === "") {
+            nameError();
+
+            return;
+        }
+
+        if (inputName.validity.valid) {
+            form.removeChild(errorName);
+
+            return;
+        }
+
+        nameError();
+    });
+
+    inputName.addEventListener('keydown', () => {
+        form.removeChild(errorName);
+    });
+
+    inputEmail.addEventListener('change', () => {
+        console.log(1)
+        if (inputEmail.validity.valid) {
+            form.removeChild(errorEmail);
+
+            return;
+        }
+
+        emailError();
+    });
+
+    inputEmail.addEventListener('keydown', () => {
+        form.removeChild(errorEmail);
+    });
+
+    inputPassOne.addEventListener('change', () => {
+        const containsLetters = /^.*[a-zA-Z]+.*$/;
+        const minimum8Chars = /^.{8,}$/;
+        const containsNumbers = /^.*[0-9]+.*$/;
+
+        if (inputPassOne.validity.valid &&
+            containsNumbers.test(inputPassOne.value) &&
+            containsLetters.test(inputPassOne.value) &&
+            minimum8Chars.test(inputPassOne.value)) {
+            form.removeChild(errorPassOne);
+
+            return;
+        }
+
+        passOneError();
+    });
+
+    inputPassOne.addEventListener('keydown', () => {
+        form.removeChild(errorPassOne);
+    });
+
+    inputPassTwo.addEventListener('change', () => {
+        if (inputPassTwo.validity.valid) {
+            form.removeChild(errorPassTwo);
+
+            return;
+        }
+
+        passTwoError();
+    });
+
+    inputPassTwo.addEventListener('keydown', () => {
+        form.removeChild(errorPassTwo);
+    });
 
     form.addEventListener('submit', (e) => {
-        console.log(1)
-        if(!objElements[0].menuInput.validity.valid || objElements[0].menuInput.value.trim() === "") {
+        if(inputName.validity.valid || inputName.value.trim() === "" || inputName.value.length === 1) {
             nameError();
 
             e.preventDefault();
         }
 
-        if(!objElements[1].menuInput.validity.valid) {
+        if(inputEmail.validity.valid) {
             emailError();
 
             e.preventDefault();
@@ -259,23 +236,23 @@ function createMenuReg(backMenu) {
         const minimum8Chars = /^.{8,}$/;
         const containsNumbers = /^.*[0-9]+.*$/;
 
-        if(!objElements[2].menuInput.validity.valid ||
-            !containsNumbers.test(objElements[2].menuInput.value) &&
-            !containsLetters.test(objElements[2].menuInput.value) &&
-            !minimum8Chars.test(objElements[2].menuInput.value)) {
+        if(inputPassOne.validity.valid ||
+            !containsNumbers.test(inputPassOne.value) &&
+            !containsLetters.test(inputPassOne.value) &&
+            !minimum8Chars.test(inputPassOne.value)) {
             passOneError();
 
             e.preventDefault();
         }
 
-        if(objElements[3].menuInput.value !== objElements[2].menuInput.value) {
-            form.insertBefore(objElements[3].menuError, button);
-            objElements[3].menuError.textContent = 'Пароли не совпадают';
+        if(inputPassTwo.value !== inputPassOne.value) {
+            form.insertBefore(errorPassTwo, buttonTemplate());
+            errorPassTwo.textContent = 'Пароли не совпадают';
 
             e.preventDefault();
         }
 
-        if(!objElements[3].menuInput.validity.valid) {
+        if(inputPassTwo.validity.valid) {
             passTwoError();
 
             e.preventDefault();
