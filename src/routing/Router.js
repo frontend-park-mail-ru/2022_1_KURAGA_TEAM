@@ -12,12 +12,23 @@ export class Router {
         window.history.pushState(null, null, path);
 
         this.routes[window.location.pathname].render();
+
+        this.setHandler();
     }
 
    start() {
        let currentView = this.routes[window.location.pathname];
        currentView.render();
 
+       this.setHandler();
+
+       window.addEventListener('popstate', () => {
+           currentView = this.routes[window.location.pathname];
+           currentView.render();
+       });
+   }
+
+   setHandler() {
        Array.from(document.getElementsByTagName('a')).forEach((item) => {
            item.addEventListener('click', (e) => {
                e.preventDefault();
@@ -25,10 +36,5 @@ export class Router {
                this.go(item.pathname);
            })
        })
-
-       window.addEventListener('popstate', () => {
-           currentView = this.routes[window.location.pathname];
-           currentView.render();
-       });
    }
 }
