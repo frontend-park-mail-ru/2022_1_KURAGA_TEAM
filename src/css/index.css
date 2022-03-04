@@ -6,9 +6,15 @@
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
-
+.background{
+    margin: 0;
+    background-color: #01090B;
+}
 #root {
-
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+    color: #FFFFFF;
     margin: -8px;
     display: grid;
     grid-template-rows: auto;
@@ -26,9 +32,7 @@ body {
     font-weight: bold;
     color: #FFFFFF;
 }
-.background {
-    background-color: #01090B
-}
+
 /*
 .fontOther {
     text-decoration: none;
@@ -399,17 +403,7 @@ input:focus {
     border-bottom: 2px solid #F9F0DA;
 }
 
-button {
-    background: url("static/lupa.png");
-    border: none;
-    height: 42px;
-    width: 42px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    background-size: contain;
-}
+
 
 
 .section {

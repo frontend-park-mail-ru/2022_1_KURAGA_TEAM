@@ -1,18 +1,11 @@
-import template from "./mainMovie.js";
+import mainMovieTemplate from "./mainMovie.js";
 
 export class MainMovieClass {
-    #items;
-    #parent;
-
-    constructor(parent) {
-        this.#parent = parent;
-    }
-
-    set item(value) {
-        this.#items = value;
-    }
-
     render() {
-        this.#parent.innerHTML += template(this.#items);
+
+
+        // const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
+
+        return mainMovieTemplate();
     }
 }

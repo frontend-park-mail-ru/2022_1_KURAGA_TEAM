@@ -1,18 +1,12 @@
-import template from "./header.js";
+import headerTemplate from "./header.js";
 
+//import {MainMovieClass} from "../mainMovie/mainMovieClass";
 export class HeaderClass {
-    #items;
-    #parent;
-
-    constructor(parent) {
-        this.#parent = parent;
-    }
-
-    set item(value) {
-        this.#items = value;
-    }
-
     render() {
-        this.#parent.innerHTML += template(this.#items);
+        
+
+        // const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
+
+        return headerTemplate();
     }
 }

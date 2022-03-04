@@ -1,18 +1,19 @@
 mixin header(items)
-    div.navbar.font
         object.logo(type = "image/png", data = "../static/logo.png")
-        a.label.font(href="/") Главная
-        a.label.font(href="/") Фильмы
-        a.label.font(href="/") Сериалы
-        a.label.font(href="/") Избранное
+        a.font(href="/") Главная
+        a.font(href="/") Фильмы
+        a.font(href="/") Сериалы
+        a.font(href="/") Избранное
         div.space
         form
             div.search
-                input.fontGT(type="text", placeholder="Поиск")
+                input(type="text", placeholder="Поиск")
                 button.btnSearch(type="submit")
-        div.profile
-            img.profileImg(src = "../static/profile.png")
-
+        div.profile.dropdown
+            button.btnProfile
+            div.dropdown-content
+                a.font(href="/") Профиль
+                a.font(href="/") Выйти
 
 
 + header(items)
