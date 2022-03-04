@@ -1,16 +1,17 @@
 @import '../components/footer/footer.css';
 
 @media (min-width: 1450px) and (max-width: 1600px) {
-    .selectMovies{
-        width: 1280px;
+    .select{
+        width: 1430px;
     }
+
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
 
 }
 @media (min-width: 750px) and (max-width: 1000px) {
-    .selectMovies{
-        width: 950px;
+    .select{
+        width: 800px;
     }
 
 }
