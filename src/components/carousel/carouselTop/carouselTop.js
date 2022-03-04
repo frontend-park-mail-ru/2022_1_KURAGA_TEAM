@@ -33,7 +33,7 @@ function pug_escape(e) {
 
 var pug_match_html = /["&<>]/;
 
-export default function carouselTopTemplate(locals) {
+export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
@@ -45,9 +45,9 @@ export default function carouselTopTemplate(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"b-carousel js-carouselTop\"\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cbutton class=\"b-carousel__prev js-carouselTop__prev\"\u003E❬\u003C\u002Fbutton\u003E\n  ";
+            pug_html = pug_html + "\u003Cbutton class=\"b-carouselTop__prev js-carouselTop__prev\"\u003E❬\u003C\u002Fbutton\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cbutton class=\"b-carousel__next js-carouselTop__next\"\u003E❭\u003C\u002Fbutton\u003E\n  ";
+            pug_html = pug_html + "\u003Cbutton class=\"b-carouselTop__next js-carouselTop__next\"\u003E❭\u003C\u002Fbutton\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"b-carousel__wrap js-carouselTop__wrap\" style=\"transform: translateX(0%);\"\u003E";
 // iterate [1, 2, 3]
