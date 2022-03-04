@@ -1,6 +1,7 @@
 @import '../components/footer/footer.css';
 @import '../components/header/header.css';
 @import '../components/carousel/carousel.css';
+@import '../components/mainMovie/mainMovie.css';
 
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
@@ -388,28 +389,9 @@ input#cb:checked::after {
     box-sizing: border-box;
 }
 
-form {
-    position: relative;
-    margin: 0 auto;
-    height: 42px;
-}
 
-input {
 
-    font-size: 24px;
-    height: 48px;
-    width: 0;
-    padding: 0 42px 0 15px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    background: transparent;
-    transition: .4s cubic-bezier(0, 0.8, 0, 1);
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-}
+
 
 input:focus {
     width: 300px;

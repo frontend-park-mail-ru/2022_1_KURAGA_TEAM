@@ -2,7 +2,7 @@
 import {FooterClass} from "./components/footer/footerClass.js";
 import {HeaderClass} from "./components/header/headerClass.js";
 import {CarouselClass} from "./components/carousel/carouselClass.js";
-
+import {MainMovieClass} from "./components/mainMovie/mainMovieClass.js";
 const root = document.getElementById('root');
 
 
@@ -25,9 +25,18 @@ const headerProfile = Object.entries(configProfile).map(([key, {href, src}]) => 
 
 function createHeader() {
 
-    const header = new HeaderClass(root);
-    header.items = headerProfile;
-    header.render();
+    const header = document.createElement("div");
+    header.className = "header";
+
+    const h = new HeaderClass(header);
+    h.items = headerProfile;
+    h.render();
+
+    const m = new MainMovieClass(header);
+    m.items = headerProfile;
+    m.render();
+    
+    root.appendChild(header);
 
     /* const firstRow = document.createElement("div");
      firstRow.className = "header"

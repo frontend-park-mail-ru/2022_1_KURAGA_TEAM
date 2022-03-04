@@ -30,7 +30,7 @@
     background-image: url("../../../static/1+1.jpg");
     background-size: cover;
     grid-area: header;
-
+    height: 100%;
 }
 
 
@@ -48,20 +48,18 @@
 }
 
 .logo {
-    height: 100px;
-    padding-inline-start: 35px;
+    margin-block: 8px;
+    height: 60px;
+    padding-inline-start: 44px;
 }
 
-.searchBtn {
-    height: 35px;
-}
 
 .profile {
     flex-grow: 1;
 }
 
 .profileImg {
-    height: 58px;
+    height: 50px;
 }
 
 .space {
@@ -69,110 +67,12 @@
 }
 
 
-.mainMovie {
-    display: flex;
-    justify-content: flex-end;
+form {
+    width: 300px;
+    position: relative;
+    margin: 0 auto;
+    height: 34px;
 }
-
-.sidebar {
-
-    background: linear-gradient(206.08deg, rgba(196, 196, 196, 0.45) -40.85%, rgba(196, 196, 196, 0) 97.87%);
-    backdrop-filter: blur(30px);
-    width: 582px;
-    height: auto;
-
-
-    padding: 5px;
-    border-radius: 32px;
-    margin: 150px 10px 10px;
-    display: grid;
-    column-gap: 10px;
-    grid-template-rows: auto;
-    row-gap: 10px;
-    grid-template-columns: 300px auto;
-    grid-template-areas:
-    "title title"
-    "btn btnInfo"
-}
-
-.title {
-    text-align: center;
-    grid-area: title;
-}
-
-.titleName {
-    font-size: 96px;
-    line-height: 111px;
-
-}
-
-.titleDescr {
-    font-weight: 350;
-    font-size: 30px;
-    line-height: 35px;
-}
-
-
-.btn {
-    width: auto;
-    grid-area: btn;
-    margin: 15px;
-    padding-block: 5px;
-    padding-inline: 35px;
-    font-style: normal;
-    font-weight: 350;
-    font-size: 24px;
-    line-height: 28px;
-    place-self: center;
-
-
-    background: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
-    mix-blend-mode: normal;
-    border-radius: 7px;
-    justify-self: center;
-    transition: transform .1s ease-out, background-color .15s linear;
-}
-
-.btnInfo {
-    width: auto;
-    grid-area: btnInfo;
-    margin: 15px;
-    padding-block: 5px;
-    padding-inline: 40px;
-    font-style: normal;
-    font-weight: 350;
-    font-size: 24px;
-    line-height: 28px;
-    place-self: center;
-    background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
-    mix-blend-mode: normal;
-    backdrop-filter: blur(15px);
-
-    border-radius: 5px;
-    transition: transform .1s ease-out, background-color .15s linear;
-
-
-}
-
-.btnInfo:active {
-    transform: scale(0.94);
-    -webkit-transform: scale(0.94);
-}
-
-.btnInfo:hover {
-    background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
-}
-
-.btn:active {
-    transform: scale(0.94);
-    -webkit-transform: scale(0.94);
-}
-
-.btn:hover {
-    background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
-}
-
-
 
 
 input[type=text] {
@@ -183,31 +83,48 @@ input[type=text] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #FFFFFF;
     opacity: 1; /* Firefox */
 }
-input{
-    color:#ffffff;
+
+input {
+    color: white;
+    font-size: 24px;
+    height: 100%;
+    width: 0;
+    padding: 0 42px 0 15px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    background: transparent;
+    transition: .4s cubic-bezier(0, 0.8, 0, 1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
 }
 
 /* When the input field gets focus, change its width to 100% */
 input[type=text]:focus {
     width: 90%;
 }
-.btnSearch{
+
+.btnSearch {
+    width: 34px;
     border: 0;
-    width: 42px;
-    margin-inline: -46px;
+    margin-inline: -55px;
     height: 100%;
     background: url("../../../static/lupa.png");
-    background-size:contain;
+    background-size: contain;
 
 }
 
 
-.search{
-    width: 300px;
+.search {
+    width: 100%;
+    height: 100%;
     align-items: center;
     display: flex;
     justify-content: flex-start;
