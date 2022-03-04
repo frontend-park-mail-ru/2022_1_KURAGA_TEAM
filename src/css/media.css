@@ -50,18 +50,8 @@
     #menu{
         width: 90%
     }
-    #back-menu {
-        height: 100%;
-    }
     #footer {
         height: auto;
-        width: 110%;
-    }
-    #back {
-        width: 112%;
-    }
-    #root {
-        width: 112%;
     }
     .text {
         display: flex;

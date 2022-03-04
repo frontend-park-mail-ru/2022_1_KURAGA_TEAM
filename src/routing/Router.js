@@ -12,15 +12,9 @@ export class Router {
        let currentView = this.routes[window.location.pathname];
        currentView.render();
 
-       document.addEventListener('click', (e) => {
-          if (e.target instanceof HTMLAnchorElement) {
-              e.preventDefault();
-
-              history.pushState(null, null, e.target.pathname);
-              currentView = this.routes[e.target.pathname];
-
-              currentView.render();
-          }
+       window.addEventListener('popstate', () => {
+           currentView = this.routes[window.location.pathname];
+           currentView.render();
        });
    }
 }
