@@ -17,7 +17,9 @@ export class Router {
        currentView.render();
 
        Array.from(document.getElementsByTagName('a')).forEach((item) => {
-           item.addEventListener('click', () => {
+           item.addEventListener('click', (e) => {
+               e.preventDefault();
+
                this.go(item.pathname);
            })
        })
