@@ -2,5 +2,4 @@
 node_modules
 .eslintrc.js
 src/components/footer/footer.js
-src/components/inputsReg/inputs.js
 src/components/button/button.js
