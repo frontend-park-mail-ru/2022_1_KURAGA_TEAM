@@ -43,6 +43,8 @@
 }
 @media (max-width: 1000px) {
     .logo {
+        width: 136px;
+        height: 80px;
         left: 10px;
     }
     #menu{
@@ -53,7 +55,10 @@
     }
     #footer {
         height: auto;
-        width: 102%;
+        width: 110%;
+    }
+    #back {
+        width: 110%;
     }
     #root {
         width: 102%;
