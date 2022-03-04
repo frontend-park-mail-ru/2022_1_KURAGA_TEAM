@@ -7,7 +7,7 @@ mixin regView(items)
             form.menu-form(method="post", action=".", noValidate) !{items.inputs} !{items.button}
             div.text
                 span.first-span Есть аккаунт?
-                a.second-span(href=".") Войдите
+                a.second-span(href="/login") Войдите
     div !{items.footer}
 
 + regView(items)
