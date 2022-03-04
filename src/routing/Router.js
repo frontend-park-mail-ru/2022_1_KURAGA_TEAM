@@ -8,9 +8,19 @@ export class Router {
        return this;
    }
 
+    go(path) {
+        window.history.pushState(null, null, path);
+    }
+
    start() {
        let currentView = this.routes[window.location.pathname];
        currentView.render();
+
+       Array.from(document.getElementsByTagName('a')).forEach((item) => {
+           item.addEventListener('click', () => {
+               this.go(item.pathname);
+           })
+       })
 
        window.addEventListener('popstate', () => {
            currentView = this.routes[window.location.pathname];
