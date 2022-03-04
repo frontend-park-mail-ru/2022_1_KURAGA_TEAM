@@ -41,18 +41,27 @@
         width: 600px;
     }
 }
-@media (min-width: 750px) and (max-width: 1000px) {
+@media (max-width: 1000px) {
+    .logo {
+        left: 10px;
+    }
     #menu{
-        height: fit-content;
-        width: 880px;
+        width: 90%
     }
     #back-menu {
         height: 100%;
     }
     #footer {
+        height: auto;
         width: 102%;
     }
     #root {
         width: 102%;
+    }
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -1,6 +1,6 @@
 import loginViewTemplate from "./loginView.js";
-import {FooterClass} from "../footer/footerClass.js";
-import {InputsClass} from "../inputsLogin/inputsClass.js";
+import {FooterClass} from "../../components/footer/footerClass.js";
+import {InputsClass} from "../../components/inputsLogin/inputsClass.js";
 
 const root = document.getElementById("root");
 

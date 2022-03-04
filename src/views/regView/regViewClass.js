@@ -1,7 +1,7 @@
 import regViewTemplate from "./regView.js";
-import {FooterClass} from "../footer/footerClass.js";
-import {InputsClass} from "../inputsReg/inputsClass.js";
-import buttonTemplate from "../button/button.js";
+import {FooterClass} from "../../components/footer/footerClass.js";
+import {InputsClass} from "../../components/inputsReg/inputsClass.js";
+import buttonTemplate from "../../components/button/button.js";
 
 const root = document.getElementById("root");
 
