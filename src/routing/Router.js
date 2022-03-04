@@ -10,6 +10,8 @@ export class Router {
 
     go(path) {
         window.history.pushState(null, null, path);
+
+        this.routes[window.location.pathname].render();
     }
 
    start() {
