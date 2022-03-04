@@ -75,10 +75,8 @@ export class InputsClass {
         }
 
         function passTwoError() {
-            if(errorPassTwo.validity.valueMissing) {
-                errorPassTwo.classList.add("error-active");
-                errorPassTwo.textContent = 'Заполните поле';
-            }
+            errorPassTwo.classList.add("error-active");
+            errorPassTwo.textContent = 'Заполните поле';
         }
 
         inputName.addEventListener('change', () => {
@@ -151,13 +149,13 @@ export class InputsClass {
         });
 
         form.addEventListener('submit', (e) => {
-            if(inputName.validity.valid || inputName.value.trim() === "" || inputName.value.length === 1) {
+            if(!inputName.validity.valid || inputName.value.trim() === "" || inputEmail.value.length === 1) {
                 nameError();
 
                 e.preventDefault();
             }
 
-            if(inputEmail.validity.valid) {
+            if(!inputEmail.validity.valid) {
                 emailError();
 
                 e.preventDefault();
@@ -167,9 +165,9 @@ export class InputsClass {
             const minimum8Chars = /^.{8,}$/;
             const containsNumbers = /^.*[0-9]+.*$/;
 
-            if(inputPassOne.validity.valid ||
-                !containsNumbers.test(inputPassOne.value) &&
-                !containsLetters.test(inputPassOne.value) &&
+            if(!inputPassTwo.validity.valid ||
+                !containsNumbers.test(inputPassOne.value) ||
+                !containsLetters.test(inputPassOne.value) ||
                 !minimum8Chars.test(inputPassOne.value)) {
                 passOneError();
 
@@ -183,7 +181,8 @@ export class InputsClass {
                 e.preventDefault();
             }
 
-            if(inputPassTwo.validity.valid) {
+            if(inputPassTwo.value.length === 0) {
+                console.log(inputPassTwo.value.length)
                 passTwoError();
 
                 e.preventDefault();

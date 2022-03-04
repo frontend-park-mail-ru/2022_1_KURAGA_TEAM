@@ -90,7 +90,7 @@ export class InputsClass {
         });
 
         form.addEventListener('submit', (e) => {
-            if(inputEmail.validity.valid) {
+            if(!inputEmail.validity.valid) {
                 emailError();
 
                 e.preventDefault();
@@ -100,9 +100,9 @@ export class InputsClass {
             const minimum8Chars = /^.{8,}$/;
             const containsNumbers = /^.*[0-9]+.*$/;
 
-            if(inputPassword.validity.valid ||
-                !containsNumbers.test(inputPassword.value) &&
-                !containsLetters.test(inputPassword.value) &&
+            if(!inputPassword.validity.valid ||
+                !containsNumbers.test(inputPassword.value) ||
+                !containsLetters.test(inputPassword.value) ||
                 !minimum8Chars.test(inputPassword.value)) {
                 passwordError();
 
