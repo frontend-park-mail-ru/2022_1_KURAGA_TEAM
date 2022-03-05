@@ -1,10 +1,10 @@
-import homeViewTemplate from "./homeView.js";
-import {HeaderClass} from "../header/headerClass.js";
-import {MainMovieClass} from "../mainMovie/mainMovieClass.js";
-import {CarouselPopClass} from "../carousel/carouselPop/carouselPopClass.js"
-import {CarouselTopClass} from "../carousel/carouselTop/carouselTopClass.js"
-import {CarouselFamClass} from "../carousel/carouselFam/carouselFamClass.js"
-//import {FooterClass} from "../footer/footerClass.js";
+import homeViewTemplate from "../home.js;
+import {HeaderClass} from "../../components/header/headerClass.js";
+import {MainMovieClass} from "../../components/mainMovie/mainMovieClass.js";
+import {CarouselPopClass} from "../../components/carousel/carouselPop/carouselPopClass.js"
+import {CarouselTopClass} from "../../components/carousel/carouselTop/carouselTopClass.js"
+import {CarouselFamClass} from "../../components/carousel/carouselFam/carouselFamClass.js"
+//import {FooterClass} from "../../components/footer/footerClass.js";
 
 const root = document.getElementById("root");
 
@@ -16,7 +16,7 @@ export class HomeViewClass {
         const carouselPop = new CarouselPopClass();
         const carouselTop = new CarouselTopClass();
         const carouselFam = new CarouselFamClass();
-        // const footer = new FooterClass();
+        //const footer = new FooterClass();
 
         root.innerHTML = homeViewTemplate({
             header: header.render(),

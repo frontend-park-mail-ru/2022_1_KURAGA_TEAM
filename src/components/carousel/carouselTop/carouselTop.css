@@ -10,9 +10,6 @@ body {
 
 }
 
-
-
-/* MAIN STYLES */
 .b-carousel {
     background-color: #01090B;
     border-radius: 5px;
@@ -34,7 +31,6 @@ body {
     background-color: #ffffff1c;
     height: 100%;
     border: 0;
-    /*background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);*/
     transform: translateY(-50%) translateZ(0);
     cursor: pointer;
     /*text-indent: 100%;*/
@@ -88,9 +84,6 @@ body {
     object-fit: cover;
 
 }
-
-
-
 
 
 .movieTop {

@@ -12,9 +12,6 @@ body {
 
 }
 
-
-
-/* MAIN STYLES */
 .b-carousel {
     background-color: #01090B;
     border-radius: 5px;
@@ -87,7 +84,6 @@ body {
     object-fit: cover;
 
 }
-
 
 .movie {
     background: url("../../../static/star.png");
@@ -233,18 +229,18 @@ input#cb:checked::after {
 #cb {
 
     width: 55px;
-    background: url("../../../../static/heart.svg");
+    background: url("../../../static/heart.svg");
     visibility: hidden;
 }
 
 input#cb::after {
 
     visibility: visible;
-    content: url("../../../../static/heart.svg");
+    content: url("../../../static/heart.svg");
 
     padding: 8px;
 }
 
 input#cb:checked::after {
-    content: url("../../../../static/LIKE.svg");
+    content: url("../../../static/LIKE.svg");
 }

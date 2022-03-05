@@ -75,13 +75,13 @@ input[type=text] {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
     color: #FFFFFF;
     font-family: GT Eesti Pro Display, arial, sans-serif;
     text-decoration: none;
     font-style: normal;
     font-weight: bold;
-    opacity: 1; /* Firefox */
+    opacity: 1;
 }
 
 input {
@@ -114,7 +114,7 @@ input[type=text]:focus {
     margin-inline: -50px;
     height: 100%;
     background: url("../../../static/lupa.png");
-    background-size: contain;
+    background-size: 100%;
 
 
 }
