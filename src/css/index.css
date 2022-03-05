@@ -6,10 +6,10 @@
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
 }
-/*.background{*/
-/*    margin: 0;*/
-/*    background-color: #01090B;*/
-/*}   */
+.background{
+    margin: 0;
+    background-color: #01090B;
+}
 /*#root {*/
 /*    text-decoration: none;*/
 /*    font-style: normal;*/

@@ -1,4 +1,4 @@
-export default function template(locals) {
+export default function homeViewTemplate(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {

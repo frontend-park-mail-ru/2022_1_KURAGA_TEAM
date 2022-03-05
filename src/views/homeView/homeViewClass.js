@@ -1,4 +1,4 @@
-import homeViewTemplate from "../home.js;
+import homeViewTemplate from "./homeView.js";
 import {HeaderClass} from "../../components/header/headerClass.js";
 import {MainMovieClass} from "../../components/mainMovie/mainMovieClass.js";
 import {CarouselPopClass} from "../../components/carousel/carouselPop/carouselPopClass.js"

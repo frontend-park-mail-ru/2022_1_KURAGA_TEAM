@@ -11,3 +11,15 @@ async function registration(form) {
         return err;
     }
 }
+
+async function login(form) {
+    try {
+        return await ajax({
+            method: "post",
+            path: "/login",
+            body: form,
+        });
+    } catch (err) {
+        return err;
+    }
+}
