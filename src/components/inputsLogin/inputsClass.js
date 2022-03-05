@@ -1,4 +1,5 @@
 import inputsTemplate from "../inputsReg/inputs.js";
+import Ajax from "../../modules/ajax.js";
 
 export class InputsClass {
     render() {
@@ -90,7 +91,9 @@ export class InputsClass {
         });
 
         form.addEventListener('submit', (e) => {
+            let check = 0;
             if(!inputEmail.validity.valid) {
+                check++;
                 emailError();
 
                 e.preventDefault();
@@ -104,9 +107,29 @@ export class InputsClass {
                 !containsNumbers.test(inputPassword.value) ||
                 !containsLetters.test(inputPassword.value) ||
                 !minimum8Chars.test(inputPassword.value)) {
+                check++;
                 passwordError();
 
                 e.preventDefault();
+            }
+
+            if (check === 0) {
+                e.preventDefault();
+
+                const params = new FormData(form);
+                console.log(params);
+
+                Ajax.login({
+                    url: "/login",
+                    method: "post",
+                    body: params,
+                })
+                    .then(({status, responseBody}) => {
+                        console.log(status, responseBody);
+                    })
+                    .catch(({status, responseBody}) => {
+                        console.log(status, responseBody);
+                    });
             }
         });
     }
