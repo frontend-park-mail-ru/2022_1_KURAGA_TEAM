@@ -1,17 +1,63 @@
 @import '../components/footer/footer.css';
+@import '../components/button/button.css';
+@import 'inputs.css';
 
 @media (min-width: 1450px) and (max-width: 1600px) {
-    .select{
-        width: 1430px;
+    #menu{
+        width: 750px;
     }
-
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
-
-}
-@media (min-width: 750px) and (max-width: 1000px) {
-    .select{
-        width: 800px;
+    .error {
+        font-size: 14px;
     }
-
+    .element {
+        height: 40px;
+    }
+    .svg {
+        height: 26px;
+        width: 26px;
+    }
+    .menu-input::-webkit-input-placeholder {
+        font-size: 16px;
+    }
+    .menu-input {
+        font-size: 16px;
+    }
+    .menu-button {
+        font-size: 22px;
+        margin-top: 20px;
+        height: 40px;
+    }
+    .first-span {
+        font-size: 20px;
+    }
+    .second-span {
+        font-size: 20px;
+    }
+    #menu{
+        padding-top: 50px;
+        padding-bottom: 40px;
+        width: 600px;
+    }
 }
+@media (max-width: 1000px) {
+    .logo {
+        width: 136px;
+        height: 80px;
+        left: 10px;
+    }
+    #menu{
+        width: 90%
+    }
+    #footer {
+        height: auto;
+    }
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+

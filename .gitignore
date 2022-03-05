@@ -1,7 +1,6 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-/.idea
-/node_modules
+.idea
+node_modules
+.eslintrc.js
+src/components/footer/footer.js
+src/components/button/button.js
+
