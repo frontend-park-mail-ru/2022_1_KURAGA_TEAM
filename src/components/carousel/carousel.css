@@ -1,0 +1,246 @@
+@import './carouselTop/carouselTop.css';
+
+
+
+body {
+    line-height: 1;
+}
+
+.wrap {
+    margin: 10px auto;
+    width: 100%;
+
+}
+
+.b-carousel {
+    background-color: #01090B;
+    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    box-sizing: border-box;
+
+}
+
+.b-carousel__prev,
+.b-carousel__next {
+    border: 0;
+    width: 30px;
+    color: #ffffffc2;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    background-color: #ffffff1c;
+    height: 100%;
+
+    /*background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);*/
+    transform: translateY(-50%) translateZ(0);
+    cursor: pointer;
+    /*text-indent: 100%;*/
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 3;
+}
+.b-carousel__prev{
+    left: 0;
+}
+.b-carousel__next {
+    left: auto;
+    right: 0;
+}
+
+.b-carousel__prev:hover,
+.b-carousel__next:hover{
+    width: 40px;
+    font-size: 40px;
+    background-color: rgb(196 196 196 / 8%);
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
+
+
+.b-carousel__wrap {
+    display: flex;
+    transition: transform 2s;
+    will-change: transform;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+.b-carousel__item {
+    flex: 0 0 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.b-carousel__img {
+
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.movie {
+    background: url("../../../static/star.png");
+    background-size: contain;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 50px;
+    column-gap: 10px;
+    width: 280px;
+    height: 165px;
+    row-gap: 10px;
+    border-radius: 24px;
+    margin-inline-start: 0;
+
+    grid-template-areas:
+    "refMov "
+    "descMov"
+
+}
+
+.refMov {
+    grid-area: movie;
+}
+
+
+.descMov {
+    display: flex;
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
+    column-gap: 15px;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 19px;
+    background: linear-gradient(180deg, rgba(196, 196, 196, 0) -79.55%, #000000 124.95%);
+    backdrop-filter: blur(5px);
+    grid-area: descMov;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    padding-inline-start: 36px;
+
+}
+
+.genre {
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 16px;
+    color: #707070;
+}
+
+
+
+
+#cb {
+    visibility: hidden;
+}
+
+input#cb::after {
+    visibility: visible;
+    top: 4px;
+    padding: 8px;
+}
+
+input#cb:checked::after {
+
+}
+.inputLike {
+
+    font-size: 24px;
+    height: 48px;
+    width: 0;
+    padding: 0 42px 0 15px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    background: transparent;
+    transition: .4s cubic-bezier(0, 0.8, 0, 1);
+    position: absolute;
+    top: 4px;
+    right: 0;
+    z-index: 2;
+}
+
+.title {
+    text-align: center;
+    grid-area: title;
+}
+
+.titleName {
+    font-size: 96px;
+    line-height: 111px;
+
+}
+
+.titleDescr {
+    font-weight: 350;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+.selection {
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 10px;
+    grid-template-rows: auto;
+    row-gap: 10px;
+
+}
+
+.select {
+    place-self: center;
+    /*margin-inline: 22px;*/
+    width: 1280px;
+    grid-template-columns: 10px;
+    column-gap: 10px;
+    grid-template-rows: 50px auto;
+
+
+}
+
+.selectTitle {
+    inline-size: max-content;
+    font-size: 36px;
+    line-height: 42px;
+    margin-inline-start: 60px;
+    margin-block-start: 60px;
+}
+
+
+.selectMovies {
+    width: 1280px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    column-gap: 28px;
+    grid-template-rows: auto;
+
+}
+
+#cb {
+
+    width: 55px;
+    background: url("../../../static/heart.svg");
+    visibility: hidden;
+}
+
+input#cb::after {
+
+    visibility: visible;
+    content: url("../../../static/heart.svg");
+
+    padding: 8px;
+}
+
+input#cb:checked::after {
+    content: url("../../../static/LIKE.svg");
+}
