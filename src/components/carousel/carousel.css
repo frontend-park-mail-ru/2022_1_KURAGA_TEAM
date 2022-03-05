@@ -53,6 +53,17 @@ body {
     right: 0;
 }
 
+.b-carousel__prev:hover,
+.b-carousel__next:hover{
+    width: 40px;
+    font-size: 40px;
+    background-color: rgb(196 196 196 / 8%);
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
+
+
 .b-carousel__wrap {
     display: flex;
     transition: transform 2s;
@@ -78,11 +89,8 @@ body {
 }
 
 
-
-
-
 .movie {
-    background: url("../../../../static/star.png");
+    background: url("../../../static/star.png");
     background-size: contain;
     display: grid;
     grid-template-columns: auto;
