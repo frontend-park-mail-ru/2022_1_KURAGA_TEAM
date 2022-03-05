@@ -1,0 +1,18 @@
+mixin carouselPop(items)
+        div.b-carousel.js-carouselPop
+            button.b-carousel__prev.js-carouselPop__prev ❬
+            button.b-carousel__next.js-carouselPop__next ❭
+            div.b-carousel__wrap.js-carouselPop__wrap(style="transform: translateX(0%);")
+                each val in [1, 2, 3]
+                    div.b-carousel__item
+                        each item in items
+                            div.movie
+                                a(href= item.href)
+                                    div.refMov
+                                div.descMov
+                                    div= item.name
+                                    div.genre= item.genre
+                                    input#cb.inputLike(type = "checkbox")
+
+
++ carouselPop(items)
