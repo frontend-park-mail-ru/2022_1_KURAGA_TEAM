@@ -63,7 +63,7 @@ body {
 
 .b-carousel__wrap {
     display: flex;
-    transition: transform 2s;
+    transition: transform 3s cubic-bezier(0.39, 0.58, 0.57, 1);
     will-change: transform;
     position: relative;
     z-index: 1;
@@ -86,7 +86,7 @@ body {
 }
 
 
-.movieTop {
+.movie-top {
     background: url("../../../../static/star.png");
     background-size: contain;
     display: grid;
@@ -105,12 +105,12 @@ body {
 
 }
 
-.refMov {
+.ref-mov {
     grid-area: movie;
 }
 
 
-.descMovTop {
+.desc-mov-top {
     display: flex;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -153,35 +153,20 @@ input#cb::after {
 input#cb:checked::after {
 
 }
-.inputLike {
 
-    font-size: 24px;
-    height: 48px;
-    width: 0;
-    padding: 0 42px 0 15px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    background: transparent;
-    transition: .4s cubic-bezier(0, 0.8, 0, 1);
-    position: absolute;
-    top: 4px;
-    right: 0;
-    z-index: 2;
-}
 
 .title {
     text-align: center;
     grid-area: title;
 }
 
-.titleName {
+.title-name {
     font-size: 96px;
     line-height: 111px;
 
 }
 
-.titleDescr {
+.title-descr {
     font-weight: 350;
     font-size: 30px;
     line-height: 35px;
@@ -207,7 +192,7 @@ input#cb:checked::after {
 
 }
 
-.selectTitle {
+.select-title {
     inline-size: max-content;
     font-size: 36px;
     line-height: 42px;
@@ -216,7 +201,7 @@ input#cb:checked::after {
 }
 
 
-.selectMovies {
+.select-movies {
     width: 1280px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -238,8 +223,12 @@ input#cb::after {
 
     visibility: visible;
     content: url("../../../../static/heart.svg");
-
     padding: 8px;
+}
+
+input#cb:hover::after {
+    content: url("../../../../static/LIKE.svg");
+
 }
 
 input#cb:checked::after {

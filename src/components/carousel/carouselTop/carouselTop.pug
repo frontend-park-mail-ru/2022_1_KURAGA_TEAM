@@ -6,13 +6,13 @@ mixin carouselTop(items)
                 each val in [1, 2, 3]
                     div.b-carousel__item
                         each item in items
-                            div.movieTop
+                            div.movie-top
                                 a(href= item.href)
-                                    div.refMov
-                                div.descMovTop
+                                    div.ref-mov
+                                div.desc-mov-top
                                     div= item.name
                                     div.genre= item.genre
-                                    input#cb.inputLike(type = "checkbox")
+                                    input#cb.input-like(type = "checkbox")
 
 
 + carouselTop(items)
