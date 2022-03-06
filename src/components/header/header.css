@@ -132,7 +132,7 @@
 
 .profile {
     margin-inline-end: 30px;
-    flex-grow: 1;
+
 }
 
 
@@ -147,6 +147,7 @@
 }
 
 .dropdown {
+    position: relative;
     display: inline-block;
 }
 

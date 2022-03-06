@@ -21,7 +21,7 @@
         height: 245px;
     }
     .dropdown-content{
-        right: 28px;
+        right: -24px;
     }
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
@@ -58,7 +58,10 @@
         width: 600px;
     }
     .dropdown-content{
-        right: 10px;
+        right: 6px;
+    }
+    .profile{
+        flex-grow: 1;
     }
 }
 @media (max-width: 1000px) {
@@ -84,7 +87,10 @@
         margin-inline: 22px;
     }
     .dropdown-content{
-        right: 17px;
+        right: -22px;
+    }
+    .profile{
+        flex-grow: 1;
     }
 }
 
