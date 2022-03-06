@@ -2,6 +2,20 @@
 
 Frontend репозиторий проекта Netflix
 
+## Сборка
+
+Установка зависимостей
+
+```
+npm install express express-history-api-fallback morgan pug-cli
+```
+
+Запуск сервера
+
+```
+npm start
+```
+
 ## Ссылки
 
 + Репозиторий [backend](https://github.com/go-park-mail-ru/2022_1_KuragaTeam)
