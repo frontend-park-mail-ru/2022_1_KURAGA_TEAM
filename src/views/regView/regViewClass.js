@@ -5,7 +5,6 @@ import buttonTemplate from "../../components/button/button.js";
 import router from "../../routing/router.js";
 
 const root = document.getElementById("root");
-root.classList.remove("root");
 
 export class RegViewClass {
     render() {

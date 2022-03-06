@@ -1,16 +1,17 @@
 mixin homeView(items)
-    div#header.header
-        div.navbar !{items.header}
-        div.main-movie !{items.mainMovie}
-    div.selection.background
-        div.select
-            div.select-title Популярное
-            div.wrap !{items.carouselPop}
-            div.select-title Лучшее за 2021 год
-            div.wrap !{items.carouselTop}
-            div.select-title Семейное
-            div.wrap !{items.carouselFam}
-    div !{items.footer}
+    .root
+        div#header.header
+            div.navbar !{items.header}
+            div.main-movie !{items.mainMovie}
+        div.selection.background
+            div.select
+                div.select-title Популярное
+                div.wrap !{items.carouselPop}
+                div.select-title Лучшее за 2021 год
+                div.wrap !{items.carouselTop}
+                div.select-title Семейное
+                div.wrap !{items.carouselFam}
+        div !{items.footer}
 
 
 + homeView(items)

@@ -4,7 +4,7 @@ import {InputsClass} from "../../components/inputs/inputsLogin/inputsClass.js";
 import router from "../../routing/router.js";
 
 const root = document.getElementById("root");
-root.classList.remove("root");
+
 
 export class LoginViewClass {
     render() {

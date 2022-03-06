@@ -11,10 +11,7 @@ body {
     background-color: #01090B;
 }
 .root {
-    text-decoration: none;
-    font-style: normal;
-    font-weight: bold;
-    color: #FFFFFF;
+    
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: auto;
