@@ -58,7 +58,7 @@
         width: 600px;
     }
     .dropdown-content{
-        right: 17px;
+        right: 10px;
     }
 }
 @media (max-width: 1000px) {

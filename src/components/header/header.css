@@ -56,7 +56,7 @@
 .input-search[type=text] {
     border: 0;
     background-color: transparent;
-    width: 130px;
+    width: 100px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     font-family: GT Eesti Pro Display, arial, sans-serif;
@@ -104,7 +104,7 @@
     cursor: pointer;
     width: 34px;
     border: 0;
-    margin-inline: -50px;
+    margin-inline: -40px;
     height: 100%;
     background: url("../../../static/lupa.png");
     background-size: 100%;
@@ -126,9 +126,12 @@
     column-gap: 10px;
 }
 
-
+.name-profile{
+    margin-inline-start: 30px;
+}
 
 .profile {
+    margin-inline-end: 30px;
     flex-grow: 1;
 }
 
@@ -144,7 +147,6 @@
 }
 
 .dropdown {
-    position: relative;
     display: inline-block;
 }
 
