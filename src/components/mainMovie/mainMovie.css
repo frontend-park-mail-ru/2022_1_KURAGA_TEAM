@@ -1,5 +1,5 @@
 
-.mainMovie {
+.main-movie {
     display: flex;
     justify-content: flex-end;
 }
@@ -22,22 +22,30 @@
     "btn btnInfo"
 }
 
-.titleMainMovie {
+.title-main-movie {
     text-align: center;
     grid-area: title;
 }
 
-.titleName {
+.title-name {
     font-size: 96px;
     line-height: 111px;
 
 }
 
-.titleDescr {
+.title-descr {
     margin-inline: 72px;
     font-weight: 350;
     font-size: 30px;
     line-height: 35px;
+}
+
+.font-other {
+    text-decoration: none;
+    font-family: GT Eesti Pro Display, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFFFF;
 }
 
 
@@ -63,7 +71,7 @@
     transition: transform .1s ease-out, background-color .15s linear;
 }
 
-.btnInfo {
+.btn-info {
     width: auto;
     grid-area: btnInfo;
     margin: 15px;
@@ -86,12 +94,12 @@
 
 }
 
-.btnInfo:active {
+.btn-info:active {
     transform: scale(0.94);
     -webkit-transform: scale(0.94);
 }
 
-.btnInfo:hover {
+.btn-info:hover {
     background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
 }
 

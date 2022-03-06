@@ -33,7 +33,7 @@ function pug_escape(e) {
 
 var pug_match_html = /["&<>]/;
 
-export default function carouselFamTemplate(locals) {
+export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
@@ -69,15 +69,15 @@ export default function carouselFamTemplate(locals) {
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"desc-mov\"\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cinput class=\"input-like\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003C\u002Fdiv\u003E\n      ";
                                     pug_html = pug_html + pug_indent.join("");
@@ -92,15 +92,15 @@ export default function carouselFamTemplate(locals) {
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"desc-mov\"\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cinput class=\"input-like\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003C\u002Fdiv\u003E\n      ";
                                     pug_html = pug_html + pug_indent.join("");
@@ -131,15 +131,15 @@ export default function carouselFamTemplate(locals) {
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"desc-mov\"\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cinput class=\"input-like\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003C\u002Fdiv\u003E\n      ";
                                     pug_html = pug_html + pug_indent.join("");
@@ -154,15 +154,15 @@ export default function carouselFamTemplate(locals) {
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"movie\"\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"refMov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv class=\"descMov\"\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv class=\"desc-mov\"\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv\u003E" + (pug_escape(null == (pug_interp = item.name) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"genre\"\u003E" + (pug_escape(null == (pug_interp = item.genre) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cinput class=\"inputLike\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
+                                    pug_html = pug_html + "\u003Cinput class=\"input-like\" id=\"cb\" type=\"checkbox\"\u002F\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003C\u002Fdiv\u003E\n      ";
                                     pug_html = pug_html + pug_indent.join("");

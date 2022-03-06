@@ -1,14 +1,14 @@
 mixin homeView(items)
     div#header.header
-        div.navbar.font !{items.header}
-        div.mainMovie !{items.mainMovie}
+        div.navbar !{items.header}
+        div.main-movie !{items.mainMovie}
     div.selection.background
         div.select
-            div.selectTitle Популярное
+            div.select-title Популярное
             div.wrap !{items.carouselPop}
-            div.selectTitle Лучшее за 2021 год
+            div.select-title Лучшее за 2021 год
             div.wrap !{items.carouselTop}
-            div.selectTitle Семейное
+            div.select-title Семейное
             div.wrap !{items.carouselFam}
     div !{items.footer}
 

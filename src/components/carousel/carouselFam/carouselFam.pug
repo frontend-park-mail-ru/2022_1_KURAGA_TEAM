@@ -8,11 +8,11 @@ mixin carouselFam(items)
                         each item in items
                             div.movie
                                 a(href= item.href)
-                                    div.refMov
-                                div.descMov
+                                    div.ref-mov
+                                div.desc-mov
                                     div= item.name
                                     div.genre= item.genre
-                                    input#cb.inputLike(type = "checkbox")
+                                    input#cb.input-like(type = "checkbox")
 
 
 + carouselFam(items)

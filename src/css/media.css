@@ -6,6 +6,23 @@
     #menu{
         width: 650px;
     }
+    .formSearch{
+        flex-grow: 2;
+    }
+    .select{
+        width: 1500px;
+    }
+    .movie{
+        width: 330px;
+        height: 194px;
+    }
+    .movieTop{
+        width: 425px;
+        height: 245px;
+    }
+    .dropdown-content{
+        right: 28px;
+    }
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
     .error {
@@ -40,6 +57,9 @@
         padding-bottom: 40px;
         width: 600px;
     }
+    .dropdown-content{
+        right: 17px;
+    }
 }
 @media (max-width: 1000px) {
     .logo {
@@ -58,6 +78,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .select{
+        margin-inline: 22px;
+    }
+    .dropdown-content{
+        right: 17px;
     }
 }
 
