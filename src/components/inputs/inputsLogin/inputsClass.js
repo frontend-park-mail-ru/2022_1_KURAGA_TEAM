@@ -1,5 +1,6 @@
 import inputsTemplate from "../inputsReg/inputs.js";
-import {registration} from "../../../modules/network.js";
+import {login} from "../../../modules/network.js";
+import router from "../../../routing/router.js";
 
 export class InputsClass {
     render() {
@@ -118,18 +119,17 @@ export class InputsClass {
             if (check === 0) {
                 e.preventDefault();
 
-                registration(form)
+                login(form)
                     .then(({status, responseBody}) => {
                         if (Number(status) / 100 === 4) {
                             errorIncorr.classList.add("error-active center");
                             errorIncorr.textContent = "Неверная почта или пароль";
                         } else {
-                            const router = new Router();
                             router.go("/");
                         }
                     })
                     .catch((err) => {
-                        console.log(err);
+                        console.error(err);
                     })
             }
         });
