@@ -58,6 +58,7 @@ export default function inputsTemplate(locals) {
                 }
             }).call(this);
 
+            pug_html = pug_html + "\u003Cdiv class=\"error\" data-section=\"incorrect\"\u003E\u003C\u002Fdiv\u003E";
         };
         pug_mixins["inputs"](items);
     }.call(this, "items" in locals_for_with ? locals_for_with.items : typeof items !== "undefined" ? items : undefined));

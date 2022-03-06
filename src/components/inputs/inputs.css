@@ -13,7 +13,9 @@
 .error-active {
     display: block;
 }
-
+.center {
+    text-align: center;
+}
 .element {
     display: flex;
     margin-top: 30px;

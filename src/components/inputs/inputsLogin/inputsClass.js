@@ -1,5 +1,5 @@
 import inputsTemplate from "../inputsReg/inputs.js";
-import Ajax from "../../../modules/ajax.js";
+import {registration} from "../../../modules/network.js";
 
 export class InputsClass {
     render() {
@@ -33,6 +33,8 @@ export class InputsClass {
 
         const inputPassword = document.querySelector('input[data-section="password"]');
         const errorPassword = document.querySelector('div[data-section="passwordError"]');
+
+        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
         function emailError() {
             if(inputEmail.validity.valueMissing) {
@@ -116,20 +118,19 @@ export class InputsClass {
             if (check === 0) {
                 e.preventDefault();
 
-                const params = new FormData(form);
-                console.log(params);
-
-                Ajax.login({
-                    url: "/login",
-                    method: "post",
-                    body: params,
-                })
+                registration(form)
                     .then(({status, responseBody}) => {
-                        console.log(status, responseBody);
+                        if (Number(status) / 100 === 4) {
+                            errorIncorr.classList.add("error-active center");
+                            errorIncorr.textContent = "Неверная почта или пароль";
+                        } else {
+                            const router = new Router();
+                            router.go("/");
+                        }
                     })
-                    .catch(({status, responseBody}) => {
-                        console.log(status, responseBody);
-                    });
+                    .catch((err) => {
+                        console.log(err);
+                    })
             }
         });
     }

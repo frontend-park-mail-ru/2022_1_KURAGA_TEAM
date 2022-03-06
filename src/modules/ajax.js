@@ -17,10 +17,6 @@ export default function ajax({method, path, body}) {
             }
         })
         .catch((err) => {
-            status = err.status;
-            return {
-                status,
-                err,
-            }
+            return err;
         });
 }

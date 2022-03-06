@@ -4,5 +4,6 @@ mixin inputs(items)
                 object.svg(type="image/svg+xml", data=item.data)
                 input.menu-input(placeholder=item.placeholder, type=item.type, required, data-section=item.key)
             div.error(data-section=item.error)
+    div.error(data-section="incorrect")
 
 + inputs(items)

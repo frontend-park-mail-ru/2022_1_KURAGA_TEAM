@@ -51,6 +51,8 @@ export class InputsClass {
         const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
 
+        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
+
         function nameError() {
             errorName.classList.add("error-active");
             errorName.textContent = 'Заполните поле';

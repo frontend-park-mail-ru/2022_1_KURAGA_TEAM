@@ -1,11 +1,11 @@
 import ajax from "./ajax.js";
 
-async function registration(form) {
+export async function registration(form) {
     const param = new FormData(form);
     try {
         return await ajax({
             method: "post",
-            path: "/reg",
+            path: "/singup",
             body: param,
         });
     } catch (err) {
@@ -13,7 +13,7 @@ async function registration(form) {
     }
 }
 
-async function login(form) {
+export async function login(form) {
     const param = new FormData(form);
     try {
         return await ajax({

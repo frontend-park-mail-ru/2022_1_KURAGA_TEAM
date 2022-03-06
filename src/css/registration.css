@@ -14,7 +14,6 @@ body {
     background: #01090B;
     height: 100vh;
 }
-
 #back {
     position: absolute;
     background: url("../../static/root.png");
@@ -28,7 +27,6 @@ body {
     left: 50px;
     height: 100px;
 }
-
 #back-menu {
     display: flex;
     justify-content: center;
