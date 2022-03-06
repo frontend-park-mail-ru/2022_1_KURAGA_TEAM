@@ -28,7 +28,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cbutton class=\"btnProfile\"\u003E\u003C\u002Fbutton\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"dropdown-content\"\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EПрофиль\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EВыйти\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E\n";
+            pug_html = pug_html + "\u003Cdiv class=\"dropdown-content\"\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EПрофиль\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002Flogin\"\u003EВыйти\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003C\u002Fdiv\u003E";
         };

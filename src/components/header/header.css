@@ -180,5 +180,8 @@
 
     display: block;
 }
-.dropdown-content a:hover {background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);}
+.dropdown-content a:hover {
+    background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
+    border-radius: 5px;
+}
 .dropdown:hover .dropdown-content {display: block;}

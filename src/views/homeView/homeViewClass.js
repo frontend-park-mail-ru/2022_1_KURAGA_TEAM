@@ -23,8 +23,8 @@ export class HomeViewClass {
             mainMovie: mainMovie.render(),
             carouselPop: carouselPop.render(),
             carouselTop: carouselTop.render(),
-            carouselFam: carouselFam.render()
-           // footer: footer.render()
+            carouselFam: carouselFam.render(),
+            footer: footer.render()
         });
         carouselPop.setHandler();
         carouselTop.setHandler();
