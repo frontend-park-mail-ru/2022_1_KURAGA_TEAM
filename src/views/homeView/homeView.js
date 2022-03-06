@@ -1,4 +1,4 @@
-export default function homeViewTemplate(locals) {
+export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
@@ -34,7 +34,9 @@ export default function homeViewTemplate(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E";
+            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n";
+            pug_html = pug_html + pug_indent.join("");
+            pug_html = pug_html + "\u003Cdiv\u003E" + (null == (pug_interp = items.footer) ? "" : pug_interp) + "\u003C\u002Fdiv\u003E";
         };
         pug_indent.push('');
         pug_mixins["homeView"](items);

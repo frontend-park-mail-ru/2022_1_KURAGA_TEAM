@@ -4,6 +4,7 @@
     font-style: normal;
     font-weight: bold;
     color: #FFFFFF;
+    font-family: GT Eesti Pro Display, arial, sans-serif;
 }
 
 .fontOther {
@@ -14,10 +15,7 @@
     color: #FFFFFF;
 }
 
-@font-face {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
 
-}
 
 
 
@@ -44,7 +42,7 @@
     background: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
 }
 
-.logo {
+.logoHome {
     margin-block: 8px;
     height: 60px;
     padding-inline-start: 44px;
@@ -58,7 +56,7 @@
 }
 
 
-form {
+.formSearch {
     width: 300px;
     position: relative;
     margin: 0 30px;
@@ -66,7 +64,7 @@ form {
 }
 
 
-input[type=text] {
+.inputSearch[type=text] {
     border: 0;
     background-color: transparent;
     width: 130px;
@@ -84,7 +82,7 @@ input[type=text] {
     opacity: 1;
 }
 
-input {
+.inputSearch {
     color: white;
     font-size: 24px;
     height: 100%;
@@ -102,8 +100,14 @@ input {
     z-index: 2;
 }
 
+.inputSearch:focus {
+    width: 300px;
+    z-index: 1;
+    border-bottom: 2px solid #F9F0DA;
+}
+
 /* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
+.inputSearch[type=text]:focus {
     width: 90%;
 }
 

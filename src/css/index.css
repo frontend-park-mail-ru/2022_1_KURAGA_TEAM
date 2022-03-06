@@ -1,6 +1,6 @@
 @import '../components/footer/footer.css';
-/*@import '../components/header/header.css';*/
-/*@import '../components/carousel/carousel.css';*/
+@import '../components/header/header.css';
+@import '../components/carousel/carousel.css';
 @import '../components/mainMovie/mainMovie.css';
 
 body {
@@ -10,20 +10,20 @@ body {
     margin: 0;
     background-color: #01090B;
 }
-/*#root {*/
-/*    text-decoration: none;*/
-/*    font-style: normal;*/
-/*    font-weight: bold;*/
-/*    color: #FFFFFF;*/
-/*    margin: -8px;*/
-/*    display: grid;*/
-/*    grid-template-rows: auto;*/
-/*    grid-template-columns: auto;*/
-/*    grid-template-areas:*/
-/*    "header"*/
-/*    "main"*/
-/*    "footer";*/
-/*}*/
+.root {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: -8px;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
 
 .font {
     text-decoration: none;
@@ -36,11 +36,7 @@ body {
 /*    box-sizing: border-box;*/
 /*}*/
 
-/*input:focus {*/
-/*    width: 300px;*/
-/*    z-index: 1;*/
-/*    border-bottom: 2px solid #F9F0DA;*/
-/*}*/
+
 
 .section {
     max-height: 250px;
