@@ -8,7 +8,6 @@ import {FooterClass} from "../../components/footer/footerClass.js";
 
 const root = document.getElementById("root");
 
-
 export class HomeViewClass {
     render() {
         const header = new HeaderClass();

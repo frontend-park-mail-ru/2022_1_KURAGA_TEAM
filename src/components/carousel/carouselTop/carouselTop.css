@@ -116,7 +116,6 @@ body {
     border-bottom-right-radius: 8px;
     column-gap: 15px;
     font-style: normal;
-    font-weight: 350;
     font-size: 16px;
     line-height: 19px;
     background: linear-gradient(180deg, rgba(196, 196, 196, 0) -79.55%, #000000 124.95%);
@@ -127,6 +126,9 @@ body {
     align-content: flex-start;
     justify-content: space-evenly;
     padding-inline-start: 36px;
+    text-decoration: none;
+    font-weight: normal;
+    color: #FFFFFF;
 
 }
 
