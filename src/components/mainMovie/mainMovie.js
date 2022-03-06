@@ -10,7 +10,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"sidebar\"\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"font title\"\u003E\n    ";
+            pug_html = pug_html + "\u003Cdiv class=\"font titleMainMovie\"\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"titleName\"\u003E1+1\u003C\u002Fdiv\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");

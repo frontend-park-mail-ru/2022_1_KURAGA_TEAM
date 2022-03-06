@@ -8,15 +8,15 @@ export default function template(locals) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
             pug_html = pug_html + "\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cobject class=\"logo\" type=\"image\u002Fpng\" data=\"..\u002Fstatic\u002Flogo.png\"\u003E\u003C\u002Fobject\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EГлавная\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EФильмы\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EСериалы\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EИзбранное\u003C\u002Fa\u003E\n";
+            pug_html = pug_html + "\u003Cobject class=\"logoHome\" type=\"image\u002Fpng\" data=\"..\u002Fstatic\u002Flogo.png\"\u003E\u003C\u002Fobject\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EГлавная\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EФильмы\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EСериалы\u003C\u002Fa\u003E\u003Ca class=\"font\" href=\"\u002F\"\u003EИзбранное\u003C\u002Fa\u003E\n";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"space\"\u003E\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cform\u003E\n  ";
+            pug_html = pug_html + "\u003Cform class=\"formSearch\"\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"search\"\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cinput type=\"text\" placeholder=\"Поиск\"\u002F\u003E\n    ";
+            pug_html = pug_html + "\u003Cinput class=\"inputSearch\" type=\"text\" placeholder=\"Поиск\"\u002F\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cbutton class=\"btnSearch\" type=\"submit\"\u003E\u003C\u002Fbutton\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");

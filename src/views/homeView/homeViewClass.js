@@ -4,7 +4,7 @@ import {MainMovieClass} from "../../components/mainMovie/mainMovieClass.js";
 import {CarouselPopClass} from "../../components/carousel/carouselPop/carouselPopClass.js"
 import {CarouselTopClass} from "../../components/carousel/carouselTop/carouselTopClass.js"
 import {CarouselFamClass} from "../../components/carousel/carouselFam/carouselFamClass.js"
-//import {FooterClass} from "../../components/footer/footerClass.js";
+import {FooterClass} from "../../components/footer/footerClass.js";
 
 const root = document.getElementById("root");
 
@@ -16,7 +16,7 @@ export class HomeViewClass {
         const carouselPop = new CarouselPopClass();
         const carouselTop = new CarouselTopClass();
         const carouselFam = new CarouselFamClass();
-        //const footer = new FooterClass();
+        const footer = new FooterClass();
 
         root.innerHTML = homeViewTemplate({
             header: header.render(),
@@ -24,7 +24,7 @@ export class HomeViewClass {
             carouselPop: carouselPop.render(),
             carouselTop: carouselTop.render(),
             carouselFam: carouselFam.render()
-            //footer: footer.render()});
+           // footer: footer.render()
         });
         carouselPop.setHandler();
         carouselTop.setHandler();
