@@ -1,5 +1,5 @@
 import inputsTemplate from "../inputsReg/inputs.js";
-import Ajax from "../../modules/ajax.js";
+import Ajax from "../../../modules/ajax.js";
 
 export class InputsClass {
     render() {

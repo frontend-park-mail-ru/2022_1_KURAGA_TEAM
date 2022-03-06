@@ -43,3 +43,6 @@
     width: 89.5%;
     height: 100%;
 }
+.menu-input::placeholder {
+    font-family: GT Eesti Pro Display Light, arial, sans-serif;
+}
