@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     position: absolute;
-    background: #01090B;
+    background: var(--back-color);
     height: 150px;
     justify-content: space-between;
 }
@@ -22,14 +22,14 @@
 }
 .title {
     text-align: left;
-    color: #C3C3C2;
+    color: var(--font-footer-color);
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 25px;
 }
 .content {
     text-decoration: none;
-    color: #C3C3C2;
+    color: var(--font-footer-color);
     font-size: 15px;
 }
 .refer {

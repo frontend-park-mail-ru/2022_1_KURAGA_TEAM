@@ -5,13 +5,13 @@ import {CarouselPopClass} from "../../components/carousel/carouselPop/carouselPo
 import {CarouselTopClass} from "../../components/carousel/carouselTop/carouselTopClass.js"
 import {CarouselFamClass} from "../../components/carousel/carouselFam/carouselFamClass.js"
 import {FooterClass} from "../../components/footer/footerClass.js";
-//import {UserModel} from "../../models/User.js";
+import {setHandler} from "../../utils/handlerLink.js";
+
 const root = document.getElementById("root");
 
 export class HomeViewClass {
     render() {
-        //const user = UserModel.getUser();
-        // const films =FilmListModel.getFilms();
+
 
 
         const header = new HeaderClass();
@@ -36,25 +36,25 @@ export class HomeViewClass {
 
     setHandler() {
 
-        Array.from(document.getElementsByTagName('a')).forEach((item) => {
+        /*Array.from(document.getElementsByTagName('a')).forEach((item) => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 router.go(item.pathname);
             })
-        });
+        });*/
 
-
-        const quit = document.querySelector('.btn-info');
-        quit.addEventListener('click', (e) => {
+        const quit = document.querySelector(".quit");
+        console.log(quit);
+        quit.addEventListener('submit', (e) => {
             console.log("drdrgdrg");
             e.preventDefault();
 
-            logout(form)
+            logout()
                 .then(({status, responseBody}) => {
                     if (Number(status) / 100 === 4) {
 
                     } else {
-                        console("moove");
+                        console("move");
                         router.go("/login");
                     }
                 })

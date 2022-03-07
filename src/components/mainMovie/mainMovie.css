@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-    background: linear-gradient(206.08deg, rgba(196, 196, 196, 0.45) -40.85%, rgba(196, 196, 196, 0) 97.87%);
+    background: var(--sidebar-back);
     backdrop-filter: blur(30px);
     width: 573px;
     height: auto;
@@ -48,7 +48,7 @@
     font-family: GT Eesti Pro Display Light, arial, sans-serif;
     font-style: normal;
     font-weight: 350;
-    color: #FFFFFF;
+    color: var(--font-color);
 }
 
 .btn {
@@ -62,7 +62,7 @@
     font-size: 20px;
     line-height: 28px;
     place-self: center;
-    background: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
+    background: var(--btn-color);
     mix-blend-mode: normal;
     border-radius: 7px;
     justify-self: center;
@@ -82,7 +82,7 @@
     font-size: 20px;
     line-height: 28px;
     place-self: center;
-    background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
+    background: var(--btn-info-color);
     mix-blend-mode: normal;
     backdrop-filter: blur(15px);
     border-radius: 5px;
@@ -95,7 +95,7 @@
 }
 
 .btn-info:hover {
-    background: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
+    background: var(--btn-info-hover-color);
 }
 
 .btn:active {
@@ -104,6 +104,6 @@
 }
 
 .btn:hover {
-    background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
+    background: var(--btn-hover-color);
 }
 
