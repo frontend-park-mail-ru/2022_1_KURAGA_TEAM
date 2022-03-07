@@ -1,1 +1,4 @@
-button.menu-button(type="submit") Зарегистрироваться
+mixin button(value, cls)
+    button(class=`menu-button ${cls}`, type="submit") #{value}
+
++ button(value, cls)

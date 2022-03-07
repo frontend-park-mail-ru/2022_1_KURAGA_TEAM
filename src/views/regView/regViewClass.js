@@ -1,8 +1,8 @@
 import regViewTemplate from "./regView.js";
 import {FooterClass} from "../../components/footer/footerClass.js";
 import {InputsClass} from "../../components/inputs/inputsReg/inputsClass.js";
-import buttonTemplate from "../../components/button/button.js";
-import router from "../../routing/router.js";
+import {ButtonClass} from "../../components/button/buttonClass.js";
+import {setHandler} from "../../utils/handlerLink.js";
 
 const root = document.getElementById("root");
 
@@ -10,23 +10,14 @@ export class RegViewClass {
     render() {
         const footer = new FooterClass();
         const inputs = new InputsClass();
+        const button = new ButtonClass();
 
         root.innerHTML = regViewTemplate({
             inputs: inputs.render(),
-            button: buttonTemplate(),
+            button: button.render("Зарегистрироваться", ""),
             footer: footer.render()});
 
         inputs.setHandler();
-        this.setHandler();
-    }
-
-    setHandler() {
-        Array.from(document.getElementsByTagName('a')).forEach((item) => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                router.go(item.pathname);
-            })
-        });
+        setHandler();
     }
 }

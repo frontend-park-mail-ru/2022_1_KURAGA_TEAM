@@ -2,28 +2,26 @@ import inputsTemplate from "../inputsReg/inputs.js";
 import {login} from "../../../modules/network.js";
 import router from "../../../routing/router.js";
 
+const configElement = [
+    {
+        key: "email",
+        data: "../../static/email.svg",
+        placeholder: "Введите Почту",
+        type: "email",
+        error: "emailError",
+    },
+    {
+        key: "password",
+        data: "../../static/password.svg",
+        placeholder: "Введите Пароль",
+        type: "password",
+        error: "passwordError",
+    }
+];
+
 export class InputsClass {
     render() {
-        const configElement = {
-            email: {
-                data: "../../static/email.svg",
-                placeholder: "Введите Почту",
-                type: "email",
-                error: "emailError",
-            },
-            password: {
-                data: "../../static/password.svg",
-                placeholder: "Введите Пароль",
-                type: "password",
-                error: "passwordError",
-            },
-        }
-
-        const formElements = Object.entries(configElement)
-            .map(([key, {data, placeholder, type, error}]) =>
-                ({key, data, placeholder, type, error}));
-
-        return  inputsTemplate(formElements);
+        return  inputsTemplate(configElement);
     }
 
     setHandler() {
@@ -37,7 +35,7 @@ export class InputsClass {
 
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
-        function emailError() {
+        const emailError = () => {
             if(inputEmail.validity.valueMissing) {
                 errorEmail.classList.add("error-active");
                 errorEmail.textContent = 'Заполните поле';
@@ -51,7 +49,7 @@ export class InputsClass {
             }
         }
 
-        function passwordError() {
+        const passwordError = () => {
             errorPassword.classList.add("error-active");
             errorPassword.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
                 '\n в том числе цифры и латинские буквы';

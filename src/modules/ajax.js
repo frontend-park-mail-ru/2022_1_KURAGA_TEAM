@@ -1,22 +1,29 @@
-export default function ajax({method, path, body}) {
+const API_URL = "http://89.208.228.163:1323/api/v1";
+
+function ajax({method, path, body}) {
     let status;
-    const URL = `http://89.208.228.163:1323/api/v1 + ${path}`;
+    const URL = API_URL + path;
 
     return fetch(URL, {
         method,
         body,
     })
         .then((response) => {
-            status = response.status;
-            return response.json();
-        })
-        .then((responseBody) => {
             return {
                 status,
-                responseBody,
+                responseBody: response.json()
+                    .then((response) => {
+                        return response;
+                    })
             }
         })
         .catch((err) => {
             return err;
         });
 }
+
+export const ajaxReq = {
+    get:    (path) => ajax({path, method: "get"}),
+    post:   (params) => ajax({...params, method: "post"}),
+};
+

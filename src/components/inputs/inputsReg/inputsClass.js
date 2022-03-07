@@ -1,39 +1,39 @@
 import inputsTemplate from "./inputs.js";
 
+const configElement = [
+    {
+        key: "name",
+        data: "../../static/name.svg",
+        placeholder: "Введите Имя",
+        type: "text",
+        error: "nameError",
+    },
+    {
+        key: "email",
+        data: "../../static/email.svg",
+        placeholder: "Введите Почту",
+        type: "email",
+        error: "emailError",
+    },
+    {
+        key: "passwordFirst",
+        data: "../../static/password.svg",
+        placeholder: "Введите Пароль",
+        type: "password",
+        error: "passOneError",
+    },
+    {
+        key: "passwordSecond",
+        data: "../../static/password.svg",
+        placeholder: "Повторите Пароль",
+        type: "password",
+        error: "passTwoError",
+    }
+];
+
 export class InputsClass {
     render() {
-        const configElement = {
-            name: {
-                data: "../../static/name.svg",
-                placeholder: "Введите Имя",
-                type: "text",
-                error: "nameError",
-            },
-            email: {
-                data: "../../static/email.svg",
-                placeholder: "Введите Почту",
-                type: "email",
-                error: "emailError",
-            },
-            passwordFirst: {
-                data: "../../static/password.svg",
-                placeholder: "Введите Пароль",
-                type: "password",
-                error: "passOneError",
-            },
-            passwordSecond: {
-                data: "../../static/password.svg",
-                placeholder: "Повторите Пароль",
-                type: "password",
-                error: "passTwoError",
-            }
-        }
-
-        const formElements = Object.entries(configElement)
-            .map(([key, {data, placeholder, type, error}]) =>
-                ({key, data, placeholder, type, error}));
-
-        return  inputsTemplate(formElements);
+        return  inputsTemplate(configElement);
     }
 
     setHandler() {
@@ -53,12 +53,12 @@ export class InputsClass {
 
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
-        function nameError() {
+        const nameError = () => {
             errorName.classList.add("error-active");
             errorName.textContent = 'Заполните поле';
         }
 
-        function emailError() {
+        const emailError = () => {
             if(inputEmail.validity.typeMismatch) {
                 errorEmail.classList.add("error-active");
                 errorEmail.textContent = 'Введите действительный email';
@@ -70,13 +70,13 @@ export class InputsClass {
             errorEmail.textContent = 'Заполните поле';
         }
 
-        function passOneError() {
+        const passOneError = () => {
             errorPassOne.classList.add("error-active");
             errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
                 '\n в том числе цифры и латинские буквы';
         }
 
-        function passTwoError() {
+        const passTwoError = () => {
             errorPassTwo.classList.add("error-active");
             errorPassTwo.textContent = 'Заполните поле';
         }

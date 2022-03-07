@@ -1,10 +1,9 @@
-import ajax from "./ajax.js";
+import {ajaxReq} from "./ajax.js";
 
 export async function registration(form) {
     const param = new FormData(form);
     try {
-        return await ajax({
-            method: "post",
+        return await ajaxReq.post({
             path: "/singup",
             body: param,
         });
@@ -16,8 +15,7 @@ export async function registration(form) {
 export async function login(form) {
     const param = new FormData(form);
     try {
-        return await ajax({
-            method: "post",
+        return await ajaxReq.post({
             path: "/login",
             body: param,
         });
