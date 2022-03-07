@@ -118,13 +118,15 @@ export class InputsClass {
                 e.preventDefault();
 
                 login(form)
-                    .then(({status, responseBody}) => {
-                        if (Number(status) / 100 === 4) {
+                    .then(({isAuth}) => {
+                        if (isAuth) {
                             errorIncorr.classList.add("error-active center");
-                            errorIncorr.textContent = "Неверная почта или пароль";
-                        } else {
-                            router.go("/");
+                            errorIncorr.textContent = "Неверный логин или пароль";
+
+                            return;
                         }
+
+                        router.go("/");
                     })
                     .catch((err) => {
                         console.error(err);

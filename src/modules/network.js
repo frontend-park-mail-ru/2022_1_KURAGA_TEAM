@@ -24,12 +24,10 @@ export async function login(form) {
     }
 }
 
-export async function logout(form) {
-    const param = new FormData(form);
+export async function logout() {
     try {
-        return await ajaxReq.post({
+        return await ajaxReq.delete({
             path: "/",
-            body: param,
         });
     } catch (err) {
         return err;

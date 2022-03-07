@@ -1,4 +1,6 @@
 import inputsTemplate from "./inputs.js";
+import {login, registration} from "../../../modules/network";
+import router from "../../../routing/router";
 
 const configElement = [
     {
@@ -151,13 +153,16 @@ export class InputsClass {
         });
 
         form.addEventListener('submit', (e) => {
+            let check = 0;
             if(!inputName.validity.valid || inputName.value.trim() === "" || inputEmail.value.length === 1) {
+                check++;
                 nameError();
 
                 e.preventDefault();
             }
 
             if(!inputEmail.validity.valid) {
+                check++;
                 emailError();
 
                 e.preventDefault();
@@ -171,12 +176,14 @@ export class InputsClass {
                 !containsNumbers.test(inputPassOne.value) ||
                 !containsLetters.test(inputPassOne.value) ||
                 !minimum8Chars.test(inputPassOne.value)) {
+                check++;
                 passOneError();
 
                 e.preventDefault();
             }
 
             if(inputPassTwo.value !== inputPassOne.value) {
+                check++;
                 errorPassTwo.classList.add("error-active");
                 errorPassTwo.textContent = 'Пароли не совпадают';
 
@@ -184,10 +191,23 @@ export class InputsClass {
             }
 
             if(inputPassTwo.value.length === 0) {
+                check++;
                 console.log(inputPassTwo.value.length)
                 passTwoError();
 
                 e.preventDefault();
+            }
+
+            if (check === 0) {
+                e.preventDefault();
+
+                registration(form)
+                    .then(() => {
+                        router.go("/");
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    })
             }
         });
     }
