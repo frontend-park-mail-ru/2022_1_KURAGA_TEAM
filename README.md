@@ -7,7 +7,7 @@ Frontend репозиторий проекта Netflix
 Установка зависимостей
 
 ```
-npm install express express-history-api-fallback morgan pug-cli
+npm install
 ```
 
 Запуск сервера
