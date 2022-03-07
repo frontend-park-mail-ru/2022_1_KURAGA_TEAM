@@ -32,17 +32,10 @@ export class HomeViewClass {
         carouselPop.setHandler();
         carouselTop.setHandler();
         carouselFam.setHandler();
+        setHandler();
     }
 
-    setHandler() {
-
-        /*Array.from(document.getElementsByTagName('a')).forEach((item) => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                router.go(item.pathname);
-            })
-        });*/
-
+    Handler() {
         const quit = document.querySelector(".quit");
         console.log(quit);
         quit.addEventListener('submit', (e) => {
@@ -65,6 +58,7 @@ export class HomeViewClass {
         });
 
     }
+
 
 }
 

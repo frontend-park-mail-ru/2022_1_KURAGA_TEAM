@@ -1,33 +1,32 @@
 import carouselFamTemplate from "./carouselFam.js";
 import {Carousel} from "../Carousel.js"
+
+const famMovies = [
+    {
+        href: "/",
+        name: "Звездные войны5",
+        genre: "Фантастика"
+    },
+    {
+        href: "/",
+        name: "Звездные войны6",
+        genre: "Фантастика"
+    },
+    {
+        href: "/",
+        name: "Звездные войны7",
+        genre: "Фантастика"
+    },
+    {
+        href: "/",
+        name: "Звездные войны8",
+        genre: "Фантастика"
+    }
+];
+
 export class CarouselFamClass {
     render() {
-
-
-        const Movies = [
-            {
-                href: "/",
-                name: "Звездные войны1",
-                genre: "Фантастика1"
-            },
-            {
-                href: "/",
-                name: "Звездные войны2",
-                genre: "Фантастика2"
-            },
-            {
-                href: "/",
-                name: "Звездные войны3",
-                genre: "Фантастика3"
-            },
-            {
-                href: "/",
-                name: "Звездные войны4",
-                genre: "Фантастика4"
-            }
-        ];
-
-        return carouselFamTemplate(Movies);
+        return carouselFamTemplate(famMovies);
     }
 
     setHandler() {

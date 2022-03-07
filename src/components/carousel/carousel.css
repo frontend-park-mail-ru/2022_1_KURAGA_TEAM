@@ -125,9 +125,7 @@ body {
 }
 
 
-#cb {
-    visibility: hidden;
-}
+
 
 .input-like {
     font-size: 24px;
@@ -199,7 +197,8 @@ body {
 }
 
 #cb {
-    width: 55px;
+    width: 75px;
+    margin: 2px;
     background: url("../../../static/heart.svg");
     visibility: hidden;
 }
