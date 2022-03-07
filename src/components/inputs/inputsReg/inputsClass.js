@@ -202,10 +202,9 @@ export class InputsClass {
                 e.preventDefault();
 
                 const formJson = JSON.stringify({
-                    name: inputName.value.trim(),
+                    username: inputName.value.trim(),
                     email: inputEmail.value.trim(),
-                    passwordOne: inputPassOne.value,
-                    passwordTwo: inputPassTwo.value,
+                    password: inputPassOne.value,
                 });
 
                 registration(formJson)

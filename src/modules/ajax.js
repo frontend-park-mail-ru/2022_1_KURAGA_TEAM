@@ -7,6 +7,9 @@ function ajax({method, path, body}) {
     return fetch(URL, {
         method,
         body,
+        headers: {
+            'Content-Type' : 'application/json'
+        },
     })
         .then((response) => {
             console.log(response.status);
