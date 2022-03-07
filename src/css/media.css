@@ -58,11 +58,9 @@
         width: 600px;
     }
     .dropdown-content{
-        right: 6px;
+        right: -20px;
     }
-    .profile{
-        flex-grow: 1;
-    }
+    
 }
 @media (max-width: 1000px) {
     .logo {
