@@ -26,9 +26,13 @@
 }
 
 .title-name {
+
+    font-style: normal;
     font-weight: bold;
-    font-size: 96px;
-    line-height: 111px;
+    font-size: 60px;
+    line-height: 80px;
+    align-items: center;
+    text-align: center;
 }
 
 .title-descr {
