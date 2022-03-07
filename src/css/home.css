@@ -4,6 +4,7 @@
 @import '../components/mainMovie/mainMovie.css';
 
 body {
+    font-family: GT Eesti Pro Display, arial, sans-serif;
     text-decoration: none;
     color: #FFFFFF;
 }
