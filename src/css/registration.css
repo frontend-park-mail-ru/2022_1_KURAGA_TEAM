@@ -54,7 +54,6 @@ body {
     font-size: 40px;
     color: white;
 }
-
 .text{
     margin-top: 10px;
 }
@@ -69,4 +68,7 @@ body {
     font-size: 22px;
     color: white;
     text-decoration: none;
+}
+.second-span:hover {
+    text-decoration: underline;
 }

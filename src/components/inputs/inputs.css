@@ -9,6 +9,7 @@
     font-weight: bold;
     font-size: 18px;
     color: red;
+    padding-top: 4px;
 }
 .error-active {
     display: block;

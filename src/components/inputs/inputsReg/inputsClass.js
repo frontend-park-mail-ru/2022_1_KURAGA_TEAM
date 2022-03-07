@@ -1,6 +1,6 @@
 import inputsTemplate from "./inputs.js";
-import {login, registration} from "../../../modules/network";
-import router from "../../../routing/router";
+import {login, registration} from "../../../modules/network.js";
+import router from "../../../routing/router.js";
 
 const configElement = [
     {
@@ -202,7 +202,12 @@ export class InputsClass {
                 e.preventDefault();
 
                 registration(form)
-                    .then(() => {
+                    .then(({isAuth}) => {
+                        if (isAuth) {
+                            errorIncorr.classList.add("error-active center");
+                            errorIncorr.textContent = "Ошибка валидации";
+                        }
+
                         router.go("/");
                     })
                     .catch((err) => {
