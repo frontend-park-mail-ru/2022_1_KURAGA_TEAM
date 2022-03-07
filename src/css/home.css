@@ -4,14 +4,14 @@
 @import '../components/mainMovie/mainMovie.css';
 
 body {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
+    text-decoration: none;
+    color: #FFFFFF;
 }
 .background{
     margin: 0;
     background-color: #01090B;
 }
 .root {
-    
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: auto;
@@ -20,19 +20,6 @@ body {
     "main"
     "footer";
 }
-
-.font {
-    text-decoration: none;
-    font-style: normal;
-    font-weight: bold;
-    color: #FFFFFF;
-}
-
-/** {*/
-/*    box-sizing: border-box;*/
-/*}*/
-
-
 
 .section {
     max-height: 250px;

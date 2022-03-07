@@ -12,18 +12,6 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"space\"\u003E\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cform class=\"form-search\"\u003E\n  ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"search\"\u003E\n    ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cinput class=\"input-search\" type=\"text\" placeholder=\"Поиск\"\u002F\u003E\n    ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cbutton class=\"btn-search\" type=\"submit\"\u003E\u003C\u002Fbutton\u003E\n  ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fform\u003E\n";
-            pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"font-nav name-profile\"\u003E " + (null == (pug_interp = items[0].name) ? "" : pug_interp) + "\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"profile dropdown\"\u003E\n  ";

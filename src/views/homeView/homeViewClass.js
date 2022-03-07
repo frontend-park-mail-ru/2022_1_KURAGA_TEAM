@@ -29,6 +29,15 @@ export class HomeViewClass {
         carouselTop.setHandler();
         carouselFam.setHandler();
     }
+    setHandler() {
+        Array.from(document.getElementsByTagName('a')).forEach((item) => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                router.go(item.pathname);
+            })
+        });
+    }
 
 }
 

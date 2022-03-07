@@ -1,9 +1,8 @@
-
 .font-nav {
     text-decoration: none;
+    color: #FFFFFF;
     font-style: normal;
     font-weight: bold;
-    color: #FFFFFF;
     font-family: GT Eesti Pro Display, arial, sans-serif;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -17,15 +16,13 @@
     height: 100%;
 }
 
-
 .navbar {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     column-gap: 30px;
-
     align-items: center;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     text-align: center;
     background: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
@@ -37,20 +34,15 @@
     padding-inline-start: 44px;
 }
 
-
-
-
 .space {
     flex-grow: 1;
 }
-
 
 .form-search {
     width: 300px;
     position: relative;
     height: 34px;
 }
-
 
 .input-search[type=text] {
     border: 0;
@@ -94,7 +86,6 @@
     border-bottom: 2px solid #F9F0DA;
 }
 
-/* When the input field gets focus, change its width to 100% */
 .input-search[type=text]:focus {
     width: 90%;
 }
@@ -107,10 +98,7 @@
     height: 100%;
     background: url("../../../static/lupa.png");
     background-size: 100%;
-
-
 }
-
 
 .search {
     text-decoration: none;
@@ -125,15 +113,13 @@
     column-gap: 10px;
 }
 
-.name-profile{
+.name-profile {
     margin-inline-start: 30px;
 }
 
 .profile {
     margin-inline-end: 30px;
-
 }
-
 
 .btn-profile {
     width: 50px;
@@ -154,22 +140,26 @@
     display: none;
     position: absolute;
     right: 23px;
-    background:linear-gradient(206.08deg, rgb(7 6 6 / 50%) -40.85%, rgb(7 6 6 / 18%) 97.87%);
+    background: linear-gradient(206.08deg, rgb(7 6 6 / 50%) -40.85%, rgb(7 6 6 / 18%) 97.87%);
     border-radius: 5px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 .dropdown-content a {
     font-size: 16px;
-    color :white;
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
-
     display: block;
 }
+
 .dropdown-content a:hover {
     background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
     border-radius: 5px;
 }
-.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
