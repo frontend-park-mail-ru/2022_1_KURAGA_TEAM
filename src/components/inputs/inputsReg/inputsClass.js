@@ -1,5 +1,5 @@
 import inputsTemplate from "./inputs.js";
-import {login, registration} from "../../../modules/network.js";
+import {registration} from "../../../modules/network.js";
 import router from "../../../routing/router.js";
 
 const configElement = [
@@ -206,6 +206,8 @@ export class InputsClass {
                         if (isAuth) {
                             errorIncorr.classList.add("error-active center");
                             errorIncorr.textContent = "Ошибка валидации";
+
+                            return;
                         }
 
                         router.go("/");

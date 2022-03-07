@@ -21,7 +21,7 @@ const configElement = [
 
 export class InputsClass {
     render() {
-        return  inputsTemplate(configElement);
+        return inputsTemplate(configElement);
     }
 
     setHandler() {
@@ -36,14 +36,14 @@ export class InputsClass {
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
         const emailError = () => {
-            if(inputEmail.validity.valueMissing) {
+            if (inputEmail.validity.valueMissing) {
                 errorEmail.classList.add("error-active");
                 errorEmail.textContent = 'Заполните поле';
 
                 return;
             }
 
-            if(inputEmail.validity.typeMismatch) {
+            if (inputEmail.validity.typeMismatch) {
                 errorEmail.classList.add("error-active");
                 errorEmail.textContent = 'Введите действительный email';
             }
