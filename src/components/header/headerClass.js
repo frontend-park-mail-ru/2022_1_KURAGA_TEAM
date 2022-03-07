@@ -4,16 +4,14 @@ import headerTemplate from "./header.js";
 export class HeaderClass {
     render() {
 
-        const configProfile = {
-            admin: {
+        const configUser= {
                 name: "admin",
                 src: ""
-            }
+
         };
 
 
-        const profile = Object.entries(configProfile).map(([key, {name, src}]) => ({key, name, src}));
 
-        return headerTemplate(profile);
+        return headerTemplate(configUser);
     }
 }

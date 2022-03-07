@@ -1,10 +1,10 @@
 export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
-    (function (items) {
-        items = locals;
+    (function (item) {
+        item = locals;
         var pug_indent = [];
-        pug_mixins["header"] = pug_interp = function (items) {
+        pug_mixins["header"] = pug_interp = function (item) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
             pug_html = pug_html + "\n";
             pug_html = pug_html + pug_indent.join("");
@@ -12,7 +12,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"space\"\u003E\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"font-nav name-profile\"\u003E " + (null == (pug_interp = items[0].name) ? "" : pug_interp) + "\u003C\u002Fdiv\u003E\n";
+            pug_html = pug_html + "\u003Cdiv class=\"font-nav name-profile\"\u003E " + (null == (pug_interp = item.name) ? "" : pug_interp) + "\u003C\u002Fdiv\u003E\n";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"profile dropdown\"\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
@@ -23,9 +23,9 @@ export default function template(locals) {
             pug_html = pug_html + "\u003C\u002Fdiv\u003E";
         };
         pug_indent.push('');
-        pug_mixins["header"](items);
+        pug_mixins["header"](item);
         pug_indent.pop();
-    }.call(this, "items" in locals_for_with ? locals_for_with.items : typeof items !== "undefined" ? items : undefined));
+    }.call(this, "item" in locals_for_with ? locals_for_with.item : typeof item !== "undefined" ? item : undefined));
     ;
     return pug_html;
 }
