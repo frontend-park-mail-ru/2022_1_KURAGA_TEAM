@@ -21,7 +21,7 @@ body {
 .b-carousel__prev,
 .b-carousel__next {
     border: 0;
-    width: 30px;
+    width: 40px;
     color: #ffffffc2;
     font-size: 30px;
     position: absolute;
@@ -46,7 +46,7 @@ body {
 
 .b-carousel__prev:hover,
 .b-carousel__next:hover {
-    width: 40px;
+    width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
     transition: all .4s ease;

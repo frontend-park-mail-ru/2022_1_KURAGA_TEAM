@@ -7,11 +7,8 @@ export class HeaderClass {
         const configUser= {
                 name: "admin",
                 src: ""
-
         };
-
-
-
+        
         return headerTemplate(configUser);
     }
 }
