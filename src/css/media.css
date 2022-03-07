@@ -21,7 +21,7 @@
         height: 245px;
     }
     .dropdown-content{
-        right: 28px;
+        right: -24px;
     }
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
@@ -58,8 +58,9 @@
         width: 600px;
     }
     .dropdown-content{
-        right: 17px;
+        right: -20px;
     }
+
 }
 @media (max-width: 1000px) {
     .logo {
@@ -84,7 +85,7 @@
         margin-inline: 22px;
     }
     .dropdown-content{
-        right: 17px;
+        right: -22px;
     }
 }
 

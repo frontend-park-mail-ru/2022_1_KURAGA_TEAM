@@ -1,19 +1,18 @@
-mixin header(items)
+mixin header(item)
         object.logo-home(type = "image/png", data = "../static/logo.png")
         a.font-nav(href="/") Главная
         a.font-nav(href="/") Фильмы
         a.font-nav(href="/") Сериалы
         a.font-nav(href="/") Избранное
         div.space
-        form.form-search
-            div.search
-                input.input-search(type="text", placeholder="Поиск")
-                button.btn-search(type="submit")
+        div.font-nav.name-profile  !{item.name}
         div.profile.dropdown
             button.btn-profile
             div.dropdown-content
                 a.font(href="/") Профиль
-                a.font(href="/login") Выйти
+                a.quit.font(href="/login") Выйти
 
 
-+ header(items)
+
+
++ header(item)

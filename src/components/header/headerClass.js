@@ -3,10 +3,12 @@ import headerTemplate from "./header.js";
 //import {MainMovieClass} from "../mainMovie/mainMovieClass";
 export class HeaderClass {
     render() {
+
+        const configUser= {
+                name: "admin",
+                src: ""
+        };
         
-
-        // const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
-
-        return headerTemplate();
+        return headerTemplate(configUser);
     }
 }

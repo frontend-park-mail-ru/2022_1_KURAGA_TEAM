@@ -1,6 +1,5 @@
 @import './carouselTop/carouselTop.css';
 
-
 body {
     line-height: 1;
 }
@@ -8,7 +7,6 @@ body {
 .wrap {
     margin: 10px auto;
     width: 100%;
-
 }
 
 .b-carousel {
@@ -17,25 +15,21 @@ body {
     width: 100%;
     overflow: hidden;
     position: relative;
-
     box-sizing: border-box;
-
 }
 
 .b-carousel__prev,
 .b-carousel__next {
     border: 0;
-    width: 30px;
+    width: 40px;
     color: #ffffffc2;
     font-size: 30px;
     position: absolute;
     top: 50%;
     background-color: #ffffff1c;
     height: 100%;
-
     transform: translateY(-50%) translateZ(0);
     cursor: pointer;
-
     white-space: nowrap;
     overflow: hidden;
     z-index: 3;
@@ -52,13 +46,12 @@ body {
 
 .b-carousel__prev:hover,
 .b-carousel__next:hover {
-    width: 40px;
+    width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
     transition: all .4s ease;
     -webkit-transition: all .4s ease;
 }
-
 
 .b-carousel__wrap {
     display: flex;
@@ -78,7 +71,6 @@ body {
 }
 
 .b-carousel__img {
-
     height: 100%;
     object-fit: cover;
 
@@ -96,17 +88,14 @@ body {
     row-gap: 10px;
     border-radius: 24px;
     margin-inline-start: 0;
-
     grid-template-areas:
     "refMov "
     "descMov"
-
 }
 
 .ref-mov {
     grid-area: movie;
 }
-
 
 .desc-mov {
     display: flex;
@@ -126,7 +115,6 @@ body {
     padding-inline-start: 36px;
     text-decoration: none;
     font-weight: normal;
-    color: #FFFFFF;
 
 }
 
@@ -142,9 +130,7 @@ body {
     visibility: hidden;
 }
 
-
 .input-like {
-
     font-size: 24px;
     height: 48px;
     width: 0;
@@ -168,7 +154,6 @@ body {
 .title-name {
     font-size: 96px;
     line-height: 111px;
-
 }
 
 .title-descr {
@@ -188,27 +173,21 @@ body {
 
 .select {
     place-self: center;
-    /*margin-inline: 22px;*/
     width: 1280px;
     grid-template-columns: 10px;
     column-gap: 10px;
     grid-template-rows: 50px auto;
-
-
 }
 
 .select-title {
     inline-size: max-content;
-    font-size: 36px;
+    font-size: 22px;
     line-height: 42px;
     margin-inline-start: 60px;
     margin-block-start: 60px;
-    text-decoration: none;
     font-style: normal;
-    font-weight: bold;
-    color: #FFFFFF;
+    font-weight: 500;
 }
-
 
 .select-movies {
     width: 1280px;
@@ -218,24 +197,19 @@ body {
     grid-template-columns: auto auto auto auto auto auto;
     column-gap: 28px;
     grid-template-rows: auto;
-
 }
 
 #cb {
-
     width: 55px;
     background: url("../../../static/heart.svg");
     visibility: hidden;
 }
 
 input#cb:hover::after {
-
     content: url("../../../static/LIKE.svg");
-
 }
 
 input#cb::after {
-
     transition: all .4s ease;
     -webkit-transition: all .4s ease;
     visibility: visible;
@@ -246,3 +220,4 @@ input#cb::after {
 input#cb:checked::after {
     content: url("../../../static/LIKE.svg");
 }
+

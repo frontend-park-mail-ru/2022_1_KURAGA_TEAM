@@ -1,11 +1,9 @@
-
 .main-movie {
     display: flex;
     justify-content: flex-end;
 }
 
 .sidebar {
-
     background: linear-gradient(206.08deg, rgba(196, 196, 196, 0.45) -40.85%, rgba(196, 196, 196, 0) 97.87%);
     backdrop-filter: blur(30px);
     width: 573px;
@@ -16,6 +14,7 @@
     column-gap: 10px;
     grid-template-rows: auto;
     row-gap: 10px;
+    padding-top: 15px;
     grid-template-columns: 300px auto;
     grid-template-areas:
     "title title"
@@ -28,12 +27,16 @@
 }
 
 .title-name {
-    font-size: 96px;
-    line-height: 111px;
-
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 80px;
+    align-items: center;
+    text-align: center;
 }
 
 .title-descr {
+    font-family: GT Eesti Pro Display Light, arial, sans-serif;
     margin-inline: 72px;
     font-weight: 350;
     font-size: 30px;
@@ -42,12 +45,11 @@
 
 .font-other {
     text-decoration: none;
-    font-family: GT Eesti Pro Display, sans-serif;
+    font-family: GT Eesti Pro Display Light, arial, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 350;
     color: #FFFFFF;
 }
-
 
 .btn {
     width: auto;
@@ -57,13 +59,9 @@
     padding-inline: 29px;
     margin-block-end: 39px;
     margin-block-start: 30px;
-    font-style: normal;
-    font-weight: 350;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     place-self: center;
-
-
     background: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
     mix-blend-mode: normal;
     border-radius: 7px;
@@ -81,17 +79,14 @@
     padding-inline: 40px;
     font-style: normal;
     font-weight: 350;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     place-self: center;
     background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
     mix-blend-mode: normal;
     backdrop-filter: blur(15px);
-
     border-radius: 5px;
     transition: transform .1s ease-out, background-color .15s linear;
-
-
 }
 
 .btn-info:active {
@@ -111,3 +106,4 @@
 .btn:hover {
     background: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
 }
+
