@@ -201,8 +201,15 @@ export class InputsClass {
             if (check === 0) {
                 e.preventDefault();
 
-                registration(form)
-                    .then(({isAuth}) => {
+                const formJson = JSON.stringify({
+                    name: inputName.value.trim(),
+                    email: inputEmail.value.trim(),
+                    passwordOne: inputPassOne.value,
+                    passwordTwo: inputPassTwo.value,
+                });
+
+                registration(formJson)
+                    .then(({isAuth, data}) => {
                         if (isAuth) {
                             errorIncorr.classList.add("error-active center");
                             errorIncorr.textContent = "Ошибка валидации";

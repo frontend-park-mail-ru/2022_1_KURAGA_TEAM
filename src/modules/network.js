@@ -1,11 +1,11 @@
 import {ajaxReq} from "./ajax.js";
 
 export async function registration(form) {
-    const param = new FormData(form);
+    // const param = new FormData(form);
     try {
         return await ajaxReq.post({
             path: "/singup",
-            body: param,
+            body: form,
         });
     } catch (err) {
         return err;
