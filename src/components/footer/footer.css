@@ -21,6 +21,7 @@
     grid-area: fourth;
 }
 .title {
+    text-align: left;
     color: #C3C3C2;
     margin-top: 20px;
     margin-bottom: 10px;

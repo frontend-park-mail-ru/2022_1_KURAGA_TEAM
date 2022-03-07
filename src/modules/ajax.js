@@ -9,7 +9,9 @@ function ajax({method, path, body}) {
         body,
     })
         .then((response) => {
+            console.log(response.status);
            if (response.status / 100 === 4) {
+
                return {
                    isAuth: true,
                    isError: false,

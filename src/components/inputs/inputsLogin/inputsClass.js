@@ -117,7 +117,12 @@ export class InputsClass {
             if (check === 0) {
                 e.preventDefault();
 
-                login(form)
+                const formJson = JSON.stringify({
+                    email: inputEmail.value.trim(),
+                    password: inputPassword.value,
+                });
+
+                login(formJson)
                     .then(({isAuth}) => {
                         if (isAuth) {
                             errorIncorr.classList.add("error-active center");

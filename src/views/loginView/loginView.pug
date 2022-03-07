@@ -4,7 +4,7 @@ mixin loginView(items)
     div#back-menu
         div#menu
             h1.menu-h1 Вход
-            form.menu-form(method="post", action="/", noValidate) !{items.inputs}
+            form.menu-form(method="post", action="/", noValidate, enctype="application/json") !{items.inputs}
                 button.menu-button(type="submit") Войти
             div.text
                 span.first-span Нет аккаунта?
