@@ -27,8 +27,7 @@ export async function login(form) {
 export async function logout(form) {
     const param = new FormData(form);
     try {
-        return await ajax({
-            method: "post",
+        return await ajaxReq.post({
             path: "/",
             body: param,
         });
@@ -39,8 +38,7 @@ export async function logout(form) {
 
 export async function profile() {
     try {
-        return await ajax({
-            method: "get",
+        return await ajaxReq.get({
             path: "/"
         });
     } catch (err) {

@@ -1,6 +1,6 @@
-class FilmList{
-    name: string
-    genre: string
-    imgPath: string
-
-}
+// class FilmList{
+//     name: string
+//     genre: string
+//     imgPath: string
+//
+// }
