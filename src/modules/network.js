@@ -34,7 +34,9 @@ export async function logout() {
 
 export async function profile() {
     try {
-        return await ajaxReq.get("/");
+        return await ajaxReq.get({
+            path: "/"
+        });
     } catch (err) {
         return err;
     }
