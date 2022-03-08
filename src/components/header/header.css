@@ -10,7 +10,7 @@
 .header {
     margin-bottom: 30px;
     flex-direction: row;
-    background-image: url("../../../static/1+1.jpg");
+    background-image: url("../../../static/1-1.webp");
     background-size: cover;
     grid-area: header;
     height: 100%;
