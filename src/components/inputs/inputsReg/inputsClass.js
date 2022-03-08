@@ -75,7 +75,7 @@ export class InputsClass {
         const passOneError = () => {
             errorPassOne.classList.add("error-active");
             errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
-                '\n в том числе цифры и латинские буквы';
+                '\n в том числе Цифры, Латинские буквы и одну Большую';
         }
 
         const passTwoError = () => {
@@ -121,11 +121,13 @@ export class InputsClass {
             const containsLetters = /^.*[a-zA-Z]+.*$/;
             const minimum8Chars = /^.{8,}$/;
             const containsNumbers = /^.*[0-9]+.*$/;
+            const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
             if (inputPassOne.validity.valid &&
                 containsNumbers.test(inputPassOne.value) &&
                 containsLetters.test(inputPassOne.value) &&
-                minimum8Chars.test(inputPassOne.value)) {
+                minimum8Chars.test(inputPassOne.value) &&
+                containsUpperSymbols.test(inputPassOne.value)) {
                 errorPassOne.classList.remove("error-active");
 
                 return;
@@ -171,11 +173,13 @@ export class InputsClass {
             const containsLetters = /^.*[a-zA-Z]+.*$/;
             const minimum8Chars = /^.{8,}$/;
             const containsNumbers = /^.*[0-9]+.*$/;
+            const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
             if(!inputPassTwo.validity.valid ||
                 !containsNumbers.test(inputPassOne.value) ||
                 !containsLetters.test(inputPassOne.value) ||
-                !minimum8Chars.test(inputPassOne.value)) {
+                !minimum8Chars.test(inputPassOne.value) ||
+                !containsUpperSymbols.test(inputPassOne.value)) {
                 check++;
                 passOneError();
 
@@ -210,7 +214,8 @@ export class InputsClass {
                 registration(formJson)
                     .then(({isAuth}) => {
                         if (!isAuth) {
-                            errorIncorr.classList.add("error-active center");
+                            errorIncorr.classList.add("error-active");
+                            errorIncorr.classList.add("center");
                             errorIncorr.textContent = "Ошибка валидации";
 
                             return;
