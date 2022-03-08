@@ -25,7 +25,7 @@ export async function login(form) {
 export async function logout() {
     try {
         return await ajaxReq.delete({
-            path: "/me"
+            path: "/"
         });
     } catch (err) {
         return err;

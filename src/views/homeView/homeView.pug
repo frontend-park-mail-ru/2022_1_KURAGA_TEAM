@@ -1,9 +1,9 @@
 mixin homeView(items)
-    .root
+    .root.background
         div#header.header
             div.navbar !{items.header}
             div.main-movie !{items.mainMovie}
-        div.selection.background
+        div.selection
             div.select
                 div.select-title Популярное
                 div.wrap !{items.carouselPop}

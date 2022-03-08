@@ -1,5 +1,5 @@
-.b-carouselTop__prev,
-.b-carouselTop__next {
+.b-carouseltop__prev,
+.b-carouseltop__next {
     width: 45px;
     color: var(--btn-carousel-color);
     font-size: 30px;
@@ -15,7 +15,7 @@
     z-index: 3;
 }
 
-.b-carouselTop__wrap {
+.b-carouseltop__wrap {
     display: flex;
     transition: transform 3s cubic-bezier(0.39, 0.58, 0.57, 1);
     will-change: transform;
@@ -26,16 +26,16 @@
 }
 
 
-.b-carouselTop__prev{
+.b-carouseltop__prev{
     left: 0;
 }
 
-.b-carouselTop__next {
+.b-carouseltop__next {
     left: auto;
     right: 0;
 }
 
-.b-carouselTop__prev:hover{
+.b-carouseltop__prev:hover{
     width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
@@ -43,7 +43,7 @@
     -webkit-transition: all .4s ease;
 }
 
-.b-carouselTop__next:hover{
+.b-carouseltop__next:hover{
     width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
@@ -51,15 +51,15 @@
     -webkit-transition: all .4s ease;
 }
 
-.movie-top {
+.movietop {
     background: url("../../../../static/star.png");
     background-size: contain;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 50px;
     column-gap: 10px;
-    width: 350px;
-    height: 200px;
+    width: 405px;
+    height: 235px;
     row-gap: 10px;
     border-radius: 12px;
     margin-inline-start: 0;
@@ -68,7 +68,7 @@
     "descMov"
 }
 
-.desc-mov-top {
+.desc-movtop {
     display: flex;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
