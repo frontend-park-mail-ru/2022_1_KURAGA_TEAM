@@ -119,7 +119,7 @@ export class InputsClass {
 
                 const formJson = JSON.stringify({
                     email: inputEmail.value.trim(),
-                    password: inputPasswordx.value,
+                    password: inputPassword.value,
                 });
 
                 login(formJson)

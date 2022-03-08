@@ -20,7 +20,7 @@
     display: block;
     grid-area: fourth;
 }
-.title {
+.titleFooter {
     text-align: left;
     color: var(--font-footer-color);
     margin-top: 20px;

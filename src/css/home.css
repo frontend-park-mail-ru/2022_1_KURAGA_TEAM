@@ -47,12 +47,9 @@ body {
     --btn-carousel-back-hover: rgb(196 196 196 / 8%);
     --desc-mov-back: linear-gradient(180deg, rgba(196, 196, 196, 0) -79.55%, #000000 124.95%);
     --genre-color: #707070;
-
-
 }
 
 .root {
-
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: auto;

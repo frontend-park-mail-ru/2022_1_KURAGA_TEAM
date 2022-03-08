@@ -33,41 +33,14 @@ function pug_escape(e) {
 
 var pug_match_html = /["&<>]/;
 
-export default function template(locals) {
+export default function footerTemplate(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
         items = locals;
-        var pug_indent = [];
         pug_mixins["footer"] = pug_interp = function (items) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
-            pug_html = pug_html + "\n";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cfooter id=\"footer\"\u003E\n  ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"left\"\u003E\n    ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv\u003E\n      ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"title\"\u003EКонтакты\u003C\u002Fdiv\u003E\n      ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"content\"\u003EМосква. ул. 2-ая Бауманская, д. 5\u003C\u002Fdiv\u003E\u003Ca class=\"content\" href=\"mailto:kuraga_team@moviespace.com\"\u003Ekuraga_team@moviespace.com\u003C\u002Fa\u003E\n    ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n    ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv id=\"second-footer\"\u003E\n      ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"title\"\u003EИнформация\u003C\u002Fdiv\u003E\n      ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"content\"\u003E© 2022–2022 Movie Space.\u003C\u002Fdiv\u003E\n      ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"content\"\u003EМожет содержать информацию, не предназначенную для несовершеннолетних\u003C\u002Fdiv\u003E\n    ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n  ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n  ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv id=\"third-footer\"\u003E";
+            pug_html = pug_html + "\u003Cfooter id=\"footer\"\u003E\u003Cdiv class=\"left\"\u003E\u003Cdiv\u003E\u003Cdiv class=\"titleFooter\"\u003EКонтакты\u003C\u002Fdiv\u003E\u003Cdiv class=\"content\"\u003EМосква. ул. 2-ая Бауманская, д. 5\u003C\u002Fdiv\u003E\u003Ca class=\"content\" href=\"mailto:kuraga_team@moviespace.com\"\u003Ekuraga_team@moviespace.com\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E\u003Cdiv id=\"second-footer\"\u003E\u003Cdiv class=\"titleFooter\"\u003EИнформация\u003C\u002Fdiv\u003E\u003Cdiv class=\"content\"\u003E© 2022–2022 Movie Space.\u003C\u002Fdiv\u003E\u003Cdiv class=\"content\"\u003EМожет содержать информацию, не предназначенную для несовершеннолетних\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E\u003Cdiv id=\"third-footer\"\u003E";
 // iterate items
             ;(function () {
                 var $$obj = items;
@@ -86,15 +59,9 @@ export default function template(locals) {
                 }
             }).call(this);
 
-            pug_html = pug_html + "\n  ";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Fdiv\u003E\n";
-            pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003C\u002Ffooter\u003E";
+            pug_html = pug_html + "\u003C\u002Fdiv\u003E\u003C\u002Ffooter\u003E";
         };
-        pug_indent.push('');
         pug_mixins["footer"](items);
-        pug_indent.pop();
     }.call(this, "items" in locals_for_with ? locals_for_with.items : typeof items !== "undefined" ? items : undefined));
     ;
     return pug_html;

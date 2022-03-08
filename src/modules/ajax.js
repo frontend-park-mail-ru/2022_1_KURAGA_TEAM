@@ -1,7 +1,6 @@
 const API_URL = "http://movie-space.ru:1323/api/v1";
 
 function ajax({method, path, body}) {
-    let status;
     const URL = API_URL + path;
 
     return fetch(URL, {
@@ -12,9 +11,7 @@ function ajax({method, path, body}) {
         },
     })
         .then((response) => {
-            console.log(response.status);
             if (response.status / 100 === 4) {
-
                 return {
                     isAuth: true,
                     isError: false,

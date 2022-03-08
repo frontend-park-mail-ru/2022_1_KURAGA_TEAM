@@ -3,12 +3,9 @@
 @import '../components/inputs/inputs.css';
 
 body {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
     margin: 0;
 }
-@font-face {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
-}
+
 #root {
     width: 100%;
     background: var(--back-color);

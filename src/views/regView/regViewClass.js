@@ -2,7 +2,7 @@ import regViewTemplate from "./regView.js";
 import {FooterClass} from "../../components/footer/footerClass.js";
 import {InputsClass} from "../../components/inputs/inputsReg/inputsClass.js";
 import {ButtonClass} from "../../components/button/buttonClass.js";
-import {setHandler} from "../../utils/handlerLink.js";
+import {handlerLink} from "../../utils/handlerLink.js";
 
 const root = document.getElementById("root");
 
@@ -18,6 +18,6 @@ export class RegViewClass {
             footer: footer.render()});
 
         inputs.setHandler();
-        setHandler();
+        handlerLink();
     }
 }
