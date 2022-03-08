@@ -1,0 +1,18 @@
+mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov)
+        div.b-carousel(class = car)
+            button(class=`b-carousel`+`${typeMov}`+`__prev ${prevBtn}`) ❬
+            button(class=`b-carousel`+`${typeMov}`+`__next ${nextBtn}`) ❭
+            div(class=`b-carousel`+`${typeMov}`+`__wrap ${wrapMov}`, style="transform: translateX(0%);")
+                each val in [1,2,3]
+                    div.b-carousel__item
+                        each item in items
+                            div(class=`movie`+`${typeMov}`)
+                                a(href= item.href)
+                                    div.ref-mov
+                                div(class=`desc-mov`+`${typeMov}`)
+                                    div= item.name
+                                    div.genre= item.genre
+                                    input#cb.input-like(type = "checkbox")
+
+
++ carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov)

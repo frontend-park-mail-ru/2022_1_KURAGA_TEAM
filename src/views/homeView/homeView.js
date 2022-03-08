@@ -2,13 +2,13 @@ export default function template(locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
     (function (items) {
-        items= locals;
+        items = locals;
         var pug_indent = [];
         pug_mixins["homeView"] = pug_interp = function (items) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
             pug_html = pug_html + "\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"root\"\u003E\n  ";
+            pug_html = pug_html + "\u003Cdiv class=\"root background\"\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"header\" id=\"header\"\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
@@ -18,7 +18,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003C\u002Fdiv\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"selection background\"\u003E\n    ";
+            pug_html = pug_html + "\u003Cdiv class=\"selection\"\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"select\"\u003E\n      ";
             pug_html = pug_html + pug_indent.join("");
