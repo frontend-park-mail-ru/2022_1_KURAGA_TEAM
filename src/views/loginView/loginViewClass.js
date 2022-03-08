@@ -14,7 +14,7 @@ export class LoginViewClass {
 
         root.innerHTML = loginViewTemplate({
             inputs: inputs.render(),
-            button: button.render("Войти", ""),
+            button: button.render("Войти"),
             footer: footer.render()});
 
         inputs.setHandler();

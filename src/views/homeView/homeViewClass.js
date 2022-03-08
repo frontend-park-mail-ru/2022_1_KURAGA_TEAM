@@ -5,7 +5,7 @@ import {CarouselPopClass} from "../../components/carousel/carouselPop/carouselPo
 import {CarouselTopClass} from "../../components/carousel/carouselTop/carouselTopClass.js"
 import {CarouselFamClass} from "../../components/carousel/carouselFam/carouselFamClass.js"
 import {FooterClass} from "../../components/footer/footerClass.js";
-import {setHandler} from "../../utils/handlerLink.js";
+import {handlerLink} from "../../utils/handlerLink.js";
 import {profile} from "../../modules/network.js";
 import router from "../../routing/router.js"
 
@@ -30,7 +30,7 @@ export class HomeViewClass {
             footer: footer.render()
         });
         this.handler();
-        setHandler();
+        handlerLink();
         carouselPop.setHandler();
         carouselTop.setHandler();
         carouselFam.setHandler();

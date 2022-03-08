@@ -33,7 +33,11 @@ function ajax({method, path, body}) {
             }
         })
         .catch((err) => {
-            return err;
+            return {
+                isAuth: false,
+                isError: true,
+                err,
+            }
         });
 }
 

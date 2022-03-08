@@ -14,7 +14,7 @@ export class RegViewClass {
 
         root.innerHTML = regViewTemplate({
             inputs: inputs.render(),
-            button: button.render("Зарегистрироваться", ""),
+            button: button.render("Зарегистрироваться"),
             footer: footer.render()});
 
         inputs.setHandler();
