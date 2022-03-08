@@ -3,7 +3,7 @@ import {HeaderClass} from "../../components/header/headerClass.js";
 import {MainMovieClass} from "../../components/mainMovie/mainMovieClass.js";
 import {carousel} from "../../components/carousel/carouselClass.js"
 import {FooterClass} from "../../components/footer/footerClass.js";
-import {setHandler} from "../../utils/handlerLink.js";
+import {handlerLink} from "../../utils/handlerLink.js";
 import {profile} from "../../modules/network.js";
 import router from "../../routing/router.js"
 
@@ -28,7 +28,7 @@ export class HomeViewClass {
             footer: footer.render()
         });
         this.handler();
-        setHandler();
+        handlerLink();
         carouselPop.setHandler();
         carouselTop.setHandler();
         carouselFam.setHandler();

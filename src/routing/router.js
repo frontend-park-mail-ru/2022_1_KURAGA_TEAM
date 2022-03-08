@@ -15,11 +15,11 @@ class Router {
     }
 
    start() {
-       let currentView = this.routes[window.location.pathname];
+       const currentView = this.routes[window.location.pathname];
        currentView.render();
 
        window.addEventListener('popstate', () => {
-           currentView = this.routes[window.location.pathname];
+           const currentView = this.routes[window.location.pathname];
            currentView.render();
        });
    }

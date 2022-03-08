@@ -1,24 +1,25 @@
 import footerTemplate from "./footer.js";
 
-const configIcon = {
-    telegram: {
+const configIcon = [
+    {
+        key: "telegram",
         href: "/",
         src: "../../static/telegram.png",
     },
-    instagram: {
+    {
+        key: "instagram",
         href: "https://www.instagram.com/danyatarnovskiy/",
         src: "../../static/insta.png",
     },
-    vk: {
+    {
+        key: "vk",
         href: "https://vk.com/dtarnovsky",
         src: "../../static/vk.png",
     }
-};
+];
 
 export class FooterClass {
     render() {
-        const footerIcons = Object.entries(configIcon).map(([key, {href, src}]) => ({key, href, src}));
-
-        return footerTemplate(footerIcons);
+        return footerTemplate(configIcon);
     }
 }

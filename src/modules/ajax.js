@@ -1,22 +1,21 @@
-const API_URL = "http://89.208.228.163:1323/api/v1";
+const API_URL = "http://movie-space.ru:1323/api/v1";
 
 function ajax({method, path, body}) {
-    let status;
     const URL = API_URL + path;
 
     return fetch(URL, {
         method,
         body,
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },
     })
         .then((response) => {
-            console.log(response.status);
             if (response.status / 100 === 4) {
-
+                console.log(1)
                 return {
-                    isAuth: true,
+                    isAuth: false,
                     isError: false,
                     data: response.json()
                         .then((response) => {
@@ -25,8 +24,9 @@ function ajax({method, path, body}) {
                 }
             }
 
+            console.log(2)
             return {
-                isAuth: false,
+                isAuth: true,
                 isError: false,
                 data: response.json()
                     .then((response) => {
@@ -35,7 +35,12 @@ function ajax({method, path, body}) {
             }
         })
         .catch((err) => {
-            return err;
+            console.log(3)
+            return {
+                isAuth: false,
+                isError: true,
+                err,
+            }
         });
 }
 

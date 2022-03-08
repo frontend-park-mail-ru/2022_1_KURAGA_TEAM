@@ -1,11 +1,9 @@
 {
-  "dependencies": {
+  "devDependencies": {
     "express": "^4.17.3",
     "express-history-api-fallback": "^2.2.1",
     "morgan": "^1.10.0",
-    "pug": "^3.0.2"
-  },
-  "devDependencies": {
+    "pug": "^3.0.2",
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4"
@@ -13,11 +11,11 @@
   "name": "2022_1_kuraga_team",
   "description": "Frontend репозиторий проекта Netflix",
   "version": "1.0.0",
-  "main": ".eslintrc.js",
+  "main": "src",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "lint": "node_modules/.bin/eslint src/"
+    "lint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
   },
   "repository": {
     "type": "git",
