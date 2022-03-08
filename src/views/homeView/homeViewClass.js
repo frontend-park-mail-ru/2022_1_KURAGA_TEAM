@@ -13,11 +13,11 @@ export default class HomeViewClass {
     render() {
         profile()
             .then(({ isAuth, data }) => {
-                // if (!isAuth) {
-                //     router.go('/login');
-                //
-                //     return;
-                // }
+                if (!isAuth) {
+                    router.go('/login');
+
+                    return;
+                }
 
                 const header = new HeaderClass();
                 const mainMovie = new MainMovieClass();
