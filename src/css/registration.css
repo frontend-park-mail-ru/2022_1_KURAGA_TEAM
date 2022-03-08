@@ -11,7 +11,7 @@ body {
 }
 #root {
     width: 100%;
-    background: #01090B;
+    background: var(--back-color);
     height: 100vh;
 }
 #back {
@@ -42,7 +42,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 650px;
-    background: linear-gradient(199.6deg, #8D8D8D -95.93%, rgba(255, 255, 255, 0) 108.19%);
+    background: var(--menu-back);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 20px;
@@ -52,7 +52,7 @@ body {
     display: block;
     margin-bottom: 0;
     font-size: 40px;
-    color: white;
+    color: var(--font-color);
 }
 .text{
     margin-top: 10px;
@@ -60,13 +60,13 @@ body {
 .first-span {
     margin-top: 10px;
     font-size: 22px;
-    color: gray;
+    color: var(--font-first-span-color);
 }
 .second-span {
     margin-left: 5px;
     display: inline-block;
     font-size: 22px;
-    color: white;
+    color: var(--font-color);
     text-decoration: none;
 }
 .second-span:hover {

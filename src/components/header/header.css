@@ -1,10 +1,10 @@
 .font-nav {
     font-family: GT Eesti Pro Display Medium, arial, sans-serif;
     text-decoration: none;
-    color: #FFFFFF;
+    color: var(--font-color);
     font-style: normal;
     font-weight: bold;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px var(--nav-font-shadow);
 }
 
 .header {
@@ -25,7 +25,7 @@
     font-size: 22px;
     line-height: 28px;
     text-align: center;
-    background: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
+    background:  var(--nav-back);
 }
 
 .logo-home {
@@ -54,7 +54,7 @@
 }
 
 ::placeholder {
-    color: #FFFFFF;
+    color: var(--font-color);
     font-family: GT Eesti Pro Display, arial, sans-serif;
     text-decoration: none;
     font-style: normal;
@@ -63,7 +63,7 @@
 }
 
 .input-search {
-    color: white;
+    color: var(--font-color);
     font-size: 24px;
     height: 100%;
     width: 0;
@@ -83,7 +83,7 @@
 .input-search:focus {
     width: 300px;
     z-index: 1;
-    border-bottom: 2px solid #F9F0DA;
+    border-bottom: 2px solid var(--font-color);
 }
 
 .input-search[type=text]:focus {
@@ -104,7 +104,7 @@
     text-decoration: none;
     font-style: normal;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--font-color);
     width: 100%;
     height: 100%;
     align-items: center;
@@ -113,13 +113,21 @@
     column-gap: 10px;
 }
 
+
+.profile-block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-inline-end: 35px;
+}
 .name-profile {
     margin-inline-start: 30px;
 }
 
 .profile {
     float: right;
-    margin-inline-end: 30px;
+
 }
 
 .btn-profile {
@@ -138,25 +146,25 @@
 }
 
 .dropdown-content {
+    right: auto;
     display: none;
     position: absolute;
-    right: 23px;
-    background: linear-gradient(206.08deg, rgb(7 6 6 / 50%) -40.85%, rgb(7 6 6 / 18%) 97.87%);
+    background: var(--drop-back);
     border-radius: 5px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 var(--drop-shadow);
     z-index: 1;
 }
 
 .dropdown-content a {
     font-size: 16px;
-    color: white;
+    color: var(--font-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
+    background: var(--drop-back-hover);
     border-radius: 5px;
 }
 
@@ -165,7 +173,8 @@
 }
 
 .arrow{
-    width: 10px;
-    height: 10px;
+    margin-inline-start: 10px;
+    width: 15px;
+    height: 9px;
     background-image: url("../../../static/arrow.svg");
 }

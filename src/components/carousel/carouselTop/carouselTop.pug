@@ -2,7 +2,7 @@ mixin carouselTop(items)
         div.b-carousel.js-carouselTop
             button.b-carouselTop__prev.js-carouselTop__prev ❬
             button.b-carouselTop__next.js-carouselTop__next ❭
-            div.b-carousel__wrap.js-carouselTop__wrap(style="transform: translateX(0%);")
+            div.b-carouselTop__wrap.js-carouselTop__wrap(style="transform: translateX(0%);")
                 each val in [1, 2, 3]
                     div.b-carousel__item
                         each item in items

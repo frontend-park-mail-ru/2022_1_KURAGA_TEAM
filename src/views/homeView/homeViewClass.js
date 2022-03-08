@@ -5,14 +5,14 @@ import {CarouselPopClass} from "../../components/carousel/carouselPop/carouselPo
 import {CarouselTopClass} from "../../components/carousel/carouselTop/carouselTopClass.js"
 import {CarouselFamClass} from "../../components/carousel/carouselFam/carouselFamClass.js"
 import {FooterClass} from "../../components/footer/footerClass.js";
-//import {UserModel} from "../../models/User.js";
+import {setHandler} from "../../utils/handlerLink.js";
+import {profile} from "../../modules/network.js";
+import router from "../../routing/router.js"
+
 const root = document.getElementById("root");
 
 export class HomeViewClass {
     render() {
-        //const user = UserModel.getUser();
-        // const films =FilmListModel.getFilms();
-
 
         const header = new HeaderClass();
         const mainMovie = new MainMovieClass();
@@ -29,42 +29,30 @@ export class HomeViewClass {
             carouselFam: carouselFam.render(),
             footer: footer.render()
         });
+        this.handler();
+        setHandler();
         carouselPop.setHandler();
         carouselTop.setHandler();
         carouselFam.setHandler();
+        header.setHandler();
     }
 
-    setHandler() {
+    handler(){
+        profile()
+            .then(({status, responseBody}) => {
+                if (Number(status) / 100 === 4) {
+                    router.go("/login");
+                } else {
 
-        Array.from(document.getElementsByTagName('a')).forEach((item) => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                router.go(item.pathname);
+                }
             })
-        });
-
-
-        const quit = document.querySelector('.btn-info');
-        quit.addEventListener('click', (e) => {
-            console.log("drdrgdrg");
-            e.preventDefault();
-
-            logout(form)
-                .then(({status, responseBody}) => {
-                    if (Number(status) / 100 === 4) {
-
-                    } else {
-                        console("moove");
-                        router.go("/login");
-                    }
-                })
-                .catch((err) => {
-                    console.error(err);
-                })
-
-        });
-
+            .catch((err) => {
+                console.error(err);
+            })
     }
+
+
+
 
 }
 
