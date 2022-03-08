@@ -20,6 +20,7 @@ export class HomeViewClass {
                 }
 
                 if (isAuth) {
+                    console.log(data);
                     const header = new HeaderClass();
                     const mainMovie = new MainMovieClass();
                     const carouselPop = new carousel(3,3,"Pop");
