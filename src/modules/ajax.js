@@ -9,31 +9,31 @@ function ajax({method, path, body}) {
         body,
         credentials: 'include',
         headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type': 'application/json'
         },
     })
         .then((response) => {
             console.log(response.status);
-           if (response.status / 100 === 4) {
+            if (response.status / 100 === 4) {
 
-               return {
-                   isAuth: true,
-                   isError: false,
-                   data: response.json()
-                       .then((response) => {
-                           return response;
-                       })
-               }
-           }
+                return {
+                    isAuth: true,
+                    isError: false,
+                    data: response.json()
+                        .then((response) => {
+                            return response;
+                        })
+                }
+            }
 
-           return {
-               isAuth: false,
-               isError: false,
-               data: response.json()
-                   .then((response) => {
-                       return response;
-                   })
-           }
+            return {
+                isAuth: false,
+                isError: false,
+                data: response.json()
+                    .then((response) => {
+                        return response;
+                    })
+            }
         })
         .catch((err) => {
             return err;
@@ -41,8 +41,8 @@ function ajax({method, path, body}) {
 }
 
 export const ajaxReq = {
-    get:    (path) => ajax({path, method: "get"}),
-    post:   (params) => ajax({...params, method: "post"}),
-    delete:   (path) => ajax({path, method: "delete"})
+    get: (path) => ajax({path, method: "get"}),
+    post: (params) => ajax({...params, method: "post"}),
+    delete: (path) => ajax({path, method: "delete"})
 };
 
