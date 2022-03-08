@@ -4,19 +4,34 @@ function checkStatus(status) {
     let statusInfo;
 
     switch (Math.round(status / 100)) {
-    case 4: {
-        statusInfo = 'Client Error';
+        case 1: {
+            statusInfo = 'Information';
 
-        break;
-    }
-    case 5: {
-        statusInfo = 'Server Error';
+            break;
+        }
+        case 2: {
+            statusInfo = 'Success';
 
-        break;
-    }
-    default: {
-        statusInfo = 'Undefined';
-    }
+            break;
+        }
+        case 3: {
+            statusInfo = 'Redirect';
+
+            break;
+        }
+        case 4: {
+            statusInfo = 'Client Error';
+
+            break;
+        }
+        case 5: {
+            statusInfo = 'Server Error';
+
+            break;
+        }
+        default: {
+            statusInfo = 'Undefined';
+        }
     }
 
     return statusInfo;
@@ -39,6 +54,7 @@ function ajax({ method, path, body }) {
             if (statusInfo === 'Client Error'
             || statusInfo === 'Server Error'
             || statusInfo === 'Undefined') {
+                console.log(2);
                 return {
                     isAuth: false,
                     isError: false,
@@ -47,6 +63,7 @@ function ajax({ method, path, body }) {
                 };
             }
 
+            console.log(1);
             return {
                 isAuth: true,
                 isError: false,

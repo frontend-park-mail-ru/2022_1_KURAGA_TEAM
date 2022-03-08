@@ -18,6 +18,7 @@ export default class HomeViewClass {
 
                     return;
                 }
+                console.log(isAuth);
 
                 const header = new HeaderClass();
                 const mainMovie = new MainMovieClass();
