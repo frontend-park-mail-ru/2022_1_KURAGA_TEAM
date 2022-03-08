@@ -5,7 +5,7 @@ import {carousel} from "../../components/carousel/carouselClass.js"
 import {FooterClass} from "../../components/footer/footerClass.js";
 import {handlerLink} from "../../utils/handlerLink.js";
 import {profile} from "../../modules/network.js";
-import router from "../../routing/router.js"
+import router from "../../routing/router.js";
 
 const root = document.getElementById("root");
 
