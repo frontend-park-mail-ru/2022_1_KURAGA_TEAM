@@ -3,13 +3,28 @@
 @import '../components/carousel/carousel.css';
 @import '../components/mainMovie/mainMovie.css';
 
+@font-face {
+    font-family: GT Eesti Pro Display;
+    src: url("../../static/fonts/gteestiprodisplay_regular.otf") format("otf");
+}
+
+@font-face {
+    font-family: GT Eesti Pro Display Medium;
+    src: url("../../static/fonts/gteestiprodisplay_medium.otf") format("otf");
+}
+
+@font-face {
+    font-family: GT Eesti Pro Display Light;
+    src: url("../../static/fonts/gteestiprodisplay_light.otf") format("otf");
+}
+
 body {
     font-family: GT Eesti Pro Display, arial, sans-serif;
     text-decoration: none;
     color: var(--font-color);
 }
 
-:root{
+:root {
     --back-color: #01090B;
     --font-color: #FFFFFF;
     --font-footer-color: #C3C3C2;
@@ -22,9 +37,9 @@ body {
     --btn-hover-color: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
     --btn-info-color: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
     --btn-info-hover-color: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
-    --nav-back: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%,rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
+    --nav-back: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
     --nav-font-shadow: rgba(0, 0, 0, 0.25);
-    --drop-back:linear-gradient(206.08deg, rgb(7 6 6 / 50%) -40.85%, rgb(7 6 6 / 18%) 97.87%);
+    --drop-back: linear-gradient(206.08deg, rgb(7 6 6 / 50%) -40.85%, rgb(7 6 6 / 18%) 97.87%);
     --drop-shadow: rgba(0, 0, 0, 0.2);
     --drop-back-hover: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
     --btn-carousel-color: #ffffffc2;
@@ -47,7 +62,7 @@ body {
     "footer";
 }
 
-.background{
+.background {
     margin: 0;
     background-color: var(--back-color);
 }

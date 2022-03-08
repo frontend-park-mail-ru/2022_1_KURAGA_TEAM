@@ -20,12 +20,11 @@ export class HeaderClass {
                     if (Number(status) / 100 === 4) {
 
                     } else {
-                        console.log("move");
                         router.go("/login");
                     }
                 })
                 .catch((err) => {
-                    console.error(err);
+                    // console.error(err);
                 })
 
         });

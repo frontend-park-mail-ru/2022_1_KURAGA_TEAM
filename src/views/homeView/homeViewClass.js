@@ -6,13 +6,13 @@ import {CarouselTopClass} from "../../components/carousel/carouselTop/carouselTo
 import {CarouselFamClass} from "../../components/carousel/carouselFam/carouselFamClass.js"
 import {FooterClass} from "../../components/footer/footerClass.js";
 import {setHandler} from "../../utils/handlerLink.js";
+import {profile} from "../../modules/network.js";
+import router from "../../routing/router.js"
 
 const root = document.getElementById("root");
 
 export class HomeViewClass {
     render() {
-
-
 
         const header = new HeaderClass();
         const mainMovie = new MainMovieClass();
@@ -29,11 +29,26 @@ export class HomeViewClass {
             carouselFam: carouselFam.render(),
             footer: footer.render()
         });
+        this.handler();
+        setHandler();
         carouselPop.setHandler();
         carouselTop.setHandler();
         carouselFam.setHandler();
-        setHandler();
         header.setHandler();
+    }
+
+    handler(){
+        profile()
+            .then(({status, responseBody}) => {
+                if (Number(status) / 100 === 4) {
+                    router.go("/login");
+                } else {
+
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            })
     }
 
 
