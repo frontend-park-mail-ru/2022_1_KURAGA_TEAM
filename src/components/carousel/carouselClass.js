@@ -1,6 +1,4 @@
-import carouselPopTemplate from "./carousel.js";
-
-
+import carouselTemplate from "./carousel.js";
 import {Carousel} from "./Carousel.js"
 const popMovies = [
     {
