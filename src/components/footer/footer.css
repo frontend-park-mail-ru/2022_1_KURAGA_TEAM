@@ -7,20 +7,24 @@
     height: 150px;
     justify-content: space-between;
 }
+
 .left {
     margin-left: 34px;
     width: 60%;
     display: flex;
 }
+
 #second-footer{
     margin-left: 20px;
     display: block;
 }
+
 #third-footer{
     text-align: end;
     display: block;
     grid-area: fourth;
 }
+
 .titleFooter {
     text-align: left;
     color: var(--font-footer-color);
@@ -28,21 +32,25 @@
     margin-bottom: 10px;
     font-size: 25px;
 }
+
 .content {
     text-decoration: none;
     color: var(--font-footer-color);
     font-size: 15px;
 }
+
 .refer {
     height: 39px;
     width: 39px;
     margin-top: 20px;
     transition: transform .1s linear;
 }
+
 .refer:hover {
     transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
+
 .ref {
     margin-right: 50px;
 }

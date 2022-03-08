@@ -7,6 +7,7 @@
     .select{
         width: 1408px;
     }
+
     .b-carouselTop__wrap {
         margin-inline: -44px;
     }
@@ -16,16 +17,20 @@
     #menu{
         width: 650px;
     }
+
     .formSearch{
         flex-grow: 2;
     }
+
     .select{
         width: 1500px;
     }
+
     .movie{
         width: 330px;
         height: 194px;
     }
+
     .movieTop{
         width: 425px;
         height: 245px;
@@ -36,30 +41,38 @@
     .error {
         font-size: 14px;
     }
+
     .element {
         height: 40px;
     }
+
     .svg {
         height: 26px;
         width: 26px;
     }
-    .menu-input::-webkit-input-placeholder {
+
+    .menu-input::input-placeholder {
         font-size: 16px;
     }
+
     .menu-input {
         font-size: 16px;
     }
+
     .menu-button {
         font-size: 22px;
         margin-top: 20px;
         height: 40px;
     }
+
     .first-span {
         font-size: 20px;
     }
+
     .second-span {
         font-size: 20px;
     }
+
     #menu{
         padding-top: 50px;
         padding-bottom: 40px;
@@ -73,12 +86,15 @@
         height: 80px;
         left: 10px;
     }
+
     #menu{
         width: 90%
     }
+
     #footer {
         height: auto;
     }
+
     .text {
         display: flex;
         flex-direction: column;

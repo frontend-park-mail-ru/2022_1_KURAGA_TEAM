@@ -1,5 +1,5 @@
 .menu-button {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
+    font-family: "GT Eesti Pro Display", arial, sans-serif;
     color: var(--font-color);
     font-size: 25px;
     height: 50px;
@@ -12,10 +12,12 @@
     border-radius: 10px;
     transition: transform .1s ease-out,background-color .15s linear;
 }
+
 .menu-button:active {
     transform: scale(0.94);
-    -webkit-transform: scale(0.94);
+    transform: scale(0.94);
 }
+
 .menu-button:hover {
     background: var(--btn-hover-color);
 }

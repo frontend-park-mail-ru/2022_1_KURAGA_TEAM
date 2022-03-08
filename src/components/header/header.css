@@ -1,5 +1,5 @@
 .font-nav {
-    font-family: GT Eesti Pro Display Medium, arial, sans-serif;
+    font-family: "GT Eesti Pro Display arial"m, arial, sans-serif;
     text-decoration: none;
     color: var(--font-color);
     font-style: normal;
@@ -48,14 +48,14 @@
     border: 0;
     background-color: transparent;
     width: 100px;
-    -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-    font-family: GT Eesti Pro Display, arial, sans-serif;
+    transition: width 0.4s ease-in-out;
+    font-family: "GT Eesti Pro Display", arial, sans-serif;
 }
 
 ::placeholder {
     color: var(--font-color);
-    font-family: GT Eesti Pro Display, arial, sans-serif;
+    font-family: "GT Eesti Pro Display", arial, sans-serif;
     text-decoration: none;
     font-style: normal;
     font-weight: bold;
@@ -68,7 +68,7 @@
     height: 100%;
     width: 0;
     padding: 0 42px 0 15px;
-    font-family: GT Eesti Pro Display, arial, sans-serif;
+    font-family: "GT Eesti Pro Display", arial, sans-serif;
     border: none;
     border-bottom: 2px solid transparent;
     outline: none;
@@ -122,6 +122,7 @@
     margin-inline-end: 35px;
     cursor: pointer;
 }
+
 .name-profile {
     cursor: pointer;
     margin-inline-start: 30px;

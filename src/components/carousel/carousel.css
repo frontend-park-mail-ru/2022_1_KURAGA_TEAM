@@ -1,9 +1,5 @@
 @import './carouselTop.css';
 
-body {
-    line-height: 1;
-}
-
 .wrap {
     margin: 10px auto;
     width: 100%;
@@ -49,7 +45,7 @@ body {
     font-size: 40px;
     background-color: var(--btn-carousel-back-hover);
     transition: all .4s ease;
-    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
 }
 
 .b-carousel__wrap {
@@ -172,7 +168,6 @@ body {
 }
 
 .select {
-
     place-self: center;
     width: 1280px;
     grid-template-columns: 10px;
@@ -213,7 +208,7 @@ input#cb:hover::after {
 
 input#cb::after {
     transition: all .4s ease;
-    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
     visibility: visible;
     content: url("../../../static/heart.svg");
     padding: 8px;
