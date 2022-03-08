@@ -1,4 +1,4 @@
-const API_URL = "http://89.208.228.163:1323/api/v1";
+const API_URL = "http://movie-space.ru:1323/api/v1";
 
 function ajax({method, path, body}) {
     let status;
@@ -7,6 +7,7 @@ function ajax({method, path, body}) {
     return fetch(URL, {
         method,
         body,
+        credentials: 'include',
         headers: {
             'Content-Type' : 'application/json'
         },
