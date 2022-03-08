@@ -1,21 +1,22 @@
-import regViewTemplate from "./regView.js";
-import {FooterClass} from "../../components/footer/footerClass.js";
-import {InputsClass} from "../../components/inputs/inputsReg/inputsClass.js";
-import {ButtonClass} from "../../components/button/buttonClass.js";
-import {handlerLink} from "../../utils/handlerLink.js";
+import regViewTemplate from './regView.js';
+import FooterClass from '../../components/footer/footerClass.js';
+import InputsClass from '../../components/inputs/inputsReg/inputsClass.js';
+import ButtonClass from '../../components/button/buttonClass.js';
+import handlerLink from '../../utils/handlerLink.js';
 
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 
-export class RegViewClass {
+export default class RegViewClass {
     render() {
         const footer = new FooterClass();
         const inputs = new InputsClass();
-        const button = new ButtonClass("Зарегистрироваться");
+        const button = new ButtonClass('Зарегистрироваться');
 
         root.innerHTML = regViewTemplate({
             inputs: inputs.render(),
             button: button.render(),
-            footer: footer.render()});
+            footer: footer.render(),
+        });
 
         inputs.setHandler();
         handlerLink();

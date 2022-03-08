@@ -1,41 +1,41 @@
-import inputsTemplate from "./inputs.js";
-import {registration} from "../../../modules/network.js";
-import router from "../../../routing/router.js";
+import inputsTemplate from './inputs.js';
+import { registration } from '../../../modules/network.js';
+import router from '../../../routing/router.js';
 
 const configElement = [
     {
-        key: "name",
-        data: "../../static/name.svg",
-        placeholder: "Введите Имя",
-        type: "text",
-        error: "nameError",
+        key: 'name',
+        data: '../../static/name.svg',
+        placeholder: 'Введите Имя',
+        type: 'text',
+        error: 'nameError',
     },
     {
-        key: "email",
-        data: "../../static/email.svg",
-        placeholder: "Введите Почту",
-        type: "email",
-        error: "emailError",
+        key: 'email',
+        data: '../../static/email.svg',
+        placeholder: 'Введите Почту',
+        type: 'email',
+        error: 'emailError',
     },
     {
-        key: "passwordFirst",
-        data: "../../static/password.svg",
-        placeholder: "Введите Пароль",
-        type: "password",
-        error: "passOneError",
+        key: 'passwordFirst',
+        data: '../../static/password.svg',
+        placeholder: 'Введите Пароль',
+        type: 'password',
+        error: 'passOneError',
     },
     {
-        key: "passwordSecond",
-        data: "../../static/password.svg",
-        placeholder: "Повторите Пароль",
-        type: "password",
-        error: "passTwoError",
-    }
+        key: 'passwordSecond',
+        data: '../../static/password.svg',
+        placeholder: 'Повторите Пароль',
+        type: 'password',
+        error: 'passTwoError',
+    },
 ];
 
-export class InputsClass {
+export default class InputsClass {
     render() {
-        return  inputsTemplate(configElement);
+        return inputsTemplate(configElement);
     }
 
     setHandler() {
@@ -56,42 +56,42 @@ export class InputsClass {
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
         const nameError = () => {
-            errorName.classList.add("error-active");
+            errorName.classList.add('error-active');
             errorName.textContent = 'Заполните поле';
-        }
+        };
 
         const emailError = () => {
-            if(inputEmail.validity.typeMismatch) {
-                errorEmail.classList.add("error-active");
+            if (inputEmail.validity.typeMismatch) {
+                errorEmail.classList.add('error-active');
                 errorEmail.textContent = 'Введите действительный email';
 
                 return;
             }
 
-            errorEmail.classList.add("error-active");
+            errorEmail.classList.add('error-active');
             errorEmail.textContent = 'Заполните поле';
-        }
+        };
 
         const passOneError = () => {
-            errorPassOne.classList.add("error-active");
-            errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
-                '\n в том числе Цифры, Латинские буквы и одну Большую';
-        }
+            errorPassOne.classList.add('error-active');
+            errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,'
+                + '\n в том числе Цифры, Латинские буквы и одну Большую';
+        };
 
         const passTwoError = () => {
-            errorPassTwo.classList.add("error-active");
+            errorPassTwo.classList.add('error-active');
             errorPassTwo.textContent = 'Заполните поле';
-        }
+        };
 
         inputName.addEventListener('change', () => {
-            if (inputName.value.trim() === "") {
+            if (inputName.value.trim() === '') {
                 nameError();
 
                 return;
             }
 
             if (inputName.validity.valid) {
-               errorName.classList.remove("error-active");
+                errorName.classList.remove('error-active');
 
                 return;
             }
@@ -100,12 +100,12 @@ export class InputsClass {
         });
 
         inputName.addEventListener('keydown', () => {
-            errorName.classList.remove("error-active");
+            errorName.classList.remove('error-active');
         });
 
         inputEmail.addEventListener('change', () => {
             if (inputEmail.validity.valid) {
-                errorEmail.classList.remove("error-active");
+                errorEmail.classList.remove('error-active');
 
                 return;
             }
@@ -114,7 +114,7 @@ export class InputsClass {
         });
 
         inputEmail.addEventListener('keydown', () => {
-            errorEmail.classList.remove("error-active");
+            errorEmail.classList.remove('error-active');
         });
 
         inputPassOne.addEventListener('change', () => {
@@ -123,12 +123,12 @@ export class InputsClass {
             const containsNumbers = /^.*[0-9]+.*$/;
             const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
-            if (inputPassOne.validity.valid &&
-                containsNumbers.test(inputPassOne.value) &&
-                containsLetters.test(inputPassOne.value) &&
-                minimum8Chars.test(inputPassOne.value) &&
-                containsUpperSymbols.test(inputPassOne.value)) {
-                errorPassOne.classList.remove("error-active");
+            if (inputPassOne.validity.valid
+                && containsNumbers.test(inputPassOne.value)
+                && containsLetters.test(inputPassOne.value)
+                && minimum8Chars.test(inputPassOne.value)
+                && containsUpperSymbols.test(inputPassOne.value)) {
+                errorPassOne.classList.remove('error-active');
 
                 return;
             }
@@ -137,12 +137,12 @@ export class InputsClass {
         });
 
         inputPassOne.addEventListener('keydown', () => {
-            errorPassOne.classList.remove("error-active");
+            errorPassOne.classList.remove('error-active');
         });
 
         inputPassTwo.addEventListener('change', () => {
             if (inputPassTwo.validity.valid) {
-                errorPassTwo.classList.remove("error-active");
+                errorPassTwo.classList.remove('error-active');
 
                 return;
             }
@@ -151,19 +151,19 @@ export class InputsClass {
         });
 
         inputPassTwo.addEventListener('keydown', () => {
-            errorPassTwo.classList.remove("error-active");
+            errorPassTwo.classList.remove('error-active');
         });
 
         form.addEventListener('submit', (e) => {
             let check = 0;
-            if(!inputName.validity.valid || inputName.value.trim() === "" || inputEmail.value.length === 1) {
+            if (!inputName.validity.valid || inputName.value.trim() === '' || inputEmail.value.length === 1) {
                 check++;
                 nameError();
 
                 e.preventDefault();
             }
 
-            if(!inputEmail.validity.valid) {
+            if (!inputEmail.validity.valid) {
                 check++;
                 emailError();
 
@@ -175,28 +175,28 @@ export class InputsClass {
             const containsNumbers = /^.*[0-9]+.*$/;
             const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
-            if(!inputPassTwo.validity.valid ||
-                !containsNumbers.test(inputPassOne.value) ||
-                !containsLetters.test(inputPassOne.value) ||
-                !minimum8Chars.test(inputPassOne.value) ||
-                !containsUpperSymbols.test(inputPassOne.value)) {
+            if (!inputPassTwo.validity.valid
+                || !containsNumbers.test(inputPassOne.value)
+                || !containsLetters.test(inputPassOne.value)
+                || !minimum8Chars.test(inputPassOne.value)
+                || !containsUpperSymbols.test(inputPassOne.value)) {
                 check++;
                 passOneError();
 
                 e.preventDefault();
             }
 
-            if(inputPassTwo.value !== inputPassOne.value) {
+            if (inputPassTwo.value !== inputPassOne.value) {
                 check++;
-                errorPassTwo.classList.add("error-active");
+                errorPassTwo.classList.add('error-active');
                 errorPassTwo.textContent = 'Пароли не совпадают';
 
                 e.preventDefault();
             }
 
-            if(inputPassTwo.value.length === 0) {
+            if (inputPassTwo.value.length === 0) {
                 check++;
-                console.log(inputPassTwo.value.length)
+                console.log(inputPassTwo.value.length);
                 passTwoError();
 
                 e.preventDefault();
@@ -212,20 +212,20 @@ export class InputsClass {
                 });
 
                 registration(formJson)
-                    .then(({isAuth}) => {
+                    .then(({ isAuth }) => {
                         if (!isAuth) {
-                            errorIncorr.classList.add("error-active");
-                            errorIncorr.classList.add("center");
-                            errorIncorr.textContent = "Ошибка валидации";
+                            errorIncorr.classList.add('error-active');
+                            errorIncorr.classList.add('center');
+                            errorIncorr.textContent = 'Ошибка валидации';
 
                             return;
                         }
 
-                        router.go("/");
+                        router.go('/');
                     })
                     .catch((err) => {
                         console.error(err);
-                    })
+                    });
             }
         });
     }

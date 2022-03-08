@@ -1,25 +1,25 @@
-import inputsTemplate from "../inputsReg/inputs.js";
-import {login} from "../../../modules/network.js";
-import router from "../../../routing/router.js";
+import inputsTemplate from '../inputsReg/inputs.js';
+import { login } from '../../../modules/network.js';
+import router from '../../../routing/router.js';
 
 const configElement = [
     {
-        key: "email",
-        data: "../../static/email.svg",
-        placeholder: "Введите Почту",
-        type: "email",
-        error: "emailError",
+        key: 'email',
+        data: '../../static/email.svg',
+        placeholder: 'Введите Почту',
+        type: 'email',
+        error: 'emailError',
     },
     {
-        key: "password",
-        data: "../../static/password.svg",
-        placeholder: "Введите Пароль",
-        type: "password",
-        error: "passwordError",
-    }
+        key: 'password',
+        data: '../../static/password.svg',
+        placeholder: 'Введите Пароль',
+        type: 'password',
+        error: 'passwordError',
+    },
 ];
 
-export class InputsClass {
+export default class InputsClass {
     render() {
         return inputsTemplate(configElement);
     }
@@ -37,27 +37,26 @@ export class InputsClass {
 
         const emailError = () => {
             if (inputEmail.validity.valueMissing) {
-                errorEmail.classList.add("error-active");
+                errorEmail.classList.add('error-active');
                 errorEmail.textContent = 'Заполните поле';
 
                 return;
             }
 
             if (inputEmail.validity.typeMismatch) {
-                errorEmail.classList.add("error-active");
+                errorEmail.classList.add('error-active');
                 errorEmail.textContent = 'Введите действительный email';
             }
-        }
+        };
 
         const passwordError = () => {
-            errorPassword.classList.add("error-active");
+            errorPassword.classList.add('error-active');
             errorPassword.innerText = 'Заполните поле';
-        }
-
+        };
 
         inputEmail.addEventListener('change', () => {
             if (inputEmail.validity.valid) {
-                errorEmail.classList.remove("error-active");
+                errorEmail.classList.remove('error-active');
 
                 return;
             }
@@ -66,13 +65,13 @@ export class InputsClass {
         });
 
         inputEmail.addEventListener('keydown', () => {
-            errorIncorr.classList.remove("error-active");
-            errorEmail.classList.remove("error-active");
+            errorIncorr.classList.remove('error-active');
+            errorEmail.classList.remove('error-active');
         });
 
         inputPassword.addEventListener('change', () => {
             if (inputPassword.validity.valid) {
-                errorPassword.classList.remove("error-active");
+                errorPassword.classList.remove('error-active');
 
                 return;
             }
@@ -81,20 +80,20 @@ export class InputsClass {
         });
 
         inputPassword.addEventListener('keydown', () => {
-            errorIncorr.classList.remove("error-active");
-            errorPassword.classList.remove("error-active");
+            errorIncorr.classList.remove('error-active');
+            errorPassword.classList.remove('error-active');
         });
 
         form.addEventListener('submit', (e) => {
             let check = 0;
-            if(!inputEmail.validity.valid) {
+            if (!inputEmail.validity.valid) {
                 check++;
                 emailError();
 
                 e.preventDefault();
             }
 
-            if(!inputPassword.validity.valid) {
+            if (!inputPassword.validity.valid) {
                 check++;
                 passwordError();
 
@@ -110,20 +109,20 @@ export class InputsClass {
                 });
 
                 login(formJson)
-                    .then(({isAuth}) => {
+                    .then(({ isAuth }) => {
                         if (!isAuth) {
-                            errorIncorr.classList.add("error-active");
-                            errorIncorr.classList.add("center");
-                            errorIncorr.textContent = "Неверный логин или пароль";
+                            errorIncorr.classList.add('error-active');
+                            errorIncorr.classList.add('center');
+                            errorIncorr.textContent = 'Неверный логин или пароль';
 
                             return;
                         }
 
-                        router.go("/");
+                        router.go('/');
                     })
                     .catch((err) => {
                         console.error(err);
-                    })
+                    });
             }
         });
     }
