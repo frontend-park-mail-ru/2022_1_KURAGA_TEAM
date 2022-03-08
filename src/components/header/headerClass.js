@@ -10,6 +10,7 @@ export default class HeaderClass {
     }
 
     render() {
+        console.log(this.#name);
         return headerTemplate(this.#name);
     }
 
