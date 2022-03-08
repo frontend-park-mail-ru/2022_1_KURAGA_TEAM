@@ -6,9 +6,12 @@ mixin header(item)
         a.font-nav(href="/") Избранное
         div.space
         div.font-nav.name-profile  !{item.name}
-        div.profile.dropdown
-            button.btn-profile
-            div.dropdown-content
-                a.font(href="/") Профиль
-                a.quit.font(href="/") Выйти
+        div.profile-block
+            div.profile.dropdown
+                button.btn-profile
+                div.dropdown-content
+                    a.font(href="/") Профиль
+                    a.quit.font(href="/") Выйти
+            div.arrow
+
 + header(item)

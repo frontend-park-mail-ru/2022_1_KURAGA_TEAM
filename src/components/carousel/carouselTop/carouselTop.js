@@ -49,7 +49,7 @@ export default function template(locals) {
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cbutton class=\"b-carouselTop__next js-carouselTop__next\"\u003E❭\u003C\u002Fbutton\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"b-carousel__wrap js-carouselTop__wrap\" style=\"transform: translateX(0%);\"\u003E";
+            pug_html = pug_html + "\u003Cdiv class=\"b-carouselTop__wrap js-carouselTop__wrap\" style=\"transform: translateX(0%);\"\u003E";
 // iterate [1, 2, 3]
             ;(function () {
                 var $$obj = [1, 2, 3];

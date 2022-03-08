@@ -113,13 +113,21 @@
     column-gap: 10px;
 }
 
+
+.profile-block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-inline-end: 35px;
+}
 .name-profile {
     margin-inline-start: 30px;
 }
 
 .profile {
     float: right;
-    margin-inline-end: 30px;
+
 }
 
 .btn-profile {
@@ -138,9 +146,9 @@
 }
 
 .dropdown-content {
+    right: auto;
     display: none;
     position: absolute;
-    right: 23px;
     background: var(--drop-back);
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 var(--drop-shadow);
@@ -165,7 +173,8 @@
 }
 
 .arrow{
-    width: 10px;
-    height: 10px;
+    margin-inline-start: 10px;
+    width: 15px;
+    height: 9px;
     background-image: url("../../../static/arrow.svg");
 }

@@ -1,10 +1,14 @@
 @import '../components/footer/footer.css';
 @import '../components/button/button.css';
+@import '../components/carousel/carousel.css';
 @import 'src/components/inputs/inputs.css';
 
 @media (min-width: 1728px){
     .select{
-        width: 1468px;
+        width: 1408px;
+    }
+    .b-carouselTop__wrap {
+        margin-inline: -44px;
     }
 }
 
@@ -26,9 +30,7 @@
         width: 425px;
         height: 245px;
     }
-    .dropdown-content{
-        right: -24px;
-    }
+    
 }
 @media (min-width: 1000px) and (max-width: 1450px) {
     .error {
@@ -63,9 +65,6 @@
         padding-bottom: 40px;
         width: 600px;
     }
-    .dropdown-content{
-        right: -20px;
-    }
 
 }
 @media (max-width: 1000px) {
@@ -90,8 +89,6 @@
     .select{
         margin-inline: 22px;
     }
-    .dropdown-content{
-        right: -22px;
-    }
+
 }
 
