@@ -49,11 +49,11 @@ export class carousel {
 
     render() {
         if (this.type == "Pop")
-            return carouselPopTemplate(popMovies,"js-carouselPop","js-carouselPop__prev","js-carouselPop__next","js-carouselPop__wrap","");
+            return carouselTemplate(popMovies,"js-carouselPop","js-carouselPop__prev","js-carouselPop__next","js-carouselPop__wrap","");
         if (this.type == "Top")
-            return carouselPopTemplate(topMovies,"js-carouselTop","js-carouselTop__prev","js-carouselTop__next","js-carouselTop__wrap","top");
+            return carouselTemplate(topMovies,"js-carouselTop","js-carouselTop__prev","js-carouselTop__next","js-carouselTop__wrap","top");
         if (this.type == "Fam")
-            return carouselPopTemplate(popMovies,"js-carouselFam","js-carouselFam__prev","js-carouselFam__next","js-carouselFam__wrap","");
+            return carouselTemplate(popMovies,"js-carouselFam","js-carouselFam__prev","js-carouselFam__next","js-carouselFam__wrap","");
     }
 
     setHandler() {

@@ -8,7 +8,7 @@ export default function template(locals) {
             var block = (this && this.block), attributes = (this && this.attributes) || {};
             pug_html = pug_html + "\n";
             pug_html = pug_html + pug_indent.join("");
-            pug_html = pug_html + "\u003Cdiv class=\"root background\"\u003E\n  ";
+            pug_html = pug_html + "\u003Cdiv class=\"root\"\u003E\n  ";
             pug_html = pug_html + pug_indent.join("");
             pug_html = pug_html + "\u003Cdiv class=\"header\" id=\"header\"\u003E\n    ";
             pug_html = pug_html + pug_indent.join("");

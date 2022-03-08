@@ -18,6 +18,7 @@ body {
     text-decoration: none;
     color: var(--font-color);
     margin: 0;
+    background-color: var(--var-color);
 }
 
 :root {

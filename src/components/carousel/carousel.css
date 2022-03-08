@@ -54,7 +54,7 @@ body {
 
 .b-carousel__wrap {
     display: flex;
-    transition: transform 3s cubic-bezier(0.39, 0.58, 0.57, 1);
+    transition: transform 5s cubic-bezier(0.39, 0.58, 0.57, 1);
     will-change: transform;
     position: relative;
     z-index: 1;
@@ -97,6 +97,7 @@ body {
 }
 
 .desc-mov {
+    cursor: default;
     display: flex;
     border-bottom-left-radius: 21px;
     border-bottom-right-radius: 21px;
@@ -118,6 +119,7 @@ body {
 }
 
 .genre {
+    cursor: default;
     font-weight: 350;
     font-size: 14px;
     line-height: 16px;
@@ -128,6 +130,7 @@ body {
 
 
 .input-like {
+    cursor: pointer;
     font-size: 24px;
     height: 48px;
     width: 0;
@@ -169,6 +172,7 @@ body {
 }
 
 .select {
+    
     place-self: center;
     width: 1280px;
     grid-template-columns: 10px;

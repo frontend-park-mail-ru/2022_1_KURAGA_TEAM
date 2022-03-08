@@ -9,10 +9,10 @@ export default function MovingCarousel(setting) {
     this.prev_slide = () => {
         --privates.opt.position;
 
-        if (privates.opt.position < 0) {
-            privates.sel.wrap.classList.add('s-notransition');
-            privates.opt.position = privates.opt.max_position - 1;
-        }
+        // if (privates.opt.position < 0) {
+        //     privates.sel.wrap.classList.add('s-notransition');
+        //     privates.opt.position = privates.opt.max_position - 1;
+        // }
 
         privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position}00%)`;
     };
@@ -20,9 +20,9 @@ export default function MovingCarousel(setting) {
     this.next_slide = () => {
         ++privates.opt.position;
 
-        if (privates.opt.position >= privates.opt.max_position) {
-            privates.opt.position = 0;
-        }
+         if (privates.opt.position >= privates.opt.max_position) {
+             --privates.opt.position;
+         }
 
         privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position}00%)`;
     };
