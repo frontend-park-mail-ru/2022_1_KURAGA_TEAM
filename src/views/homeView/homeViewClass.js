@@ -18,13 +18,11 @@ export class HomeViewClass {
 
                     return;
                 }
-
-                console.log(data);
                 const header = new HeaderClass();
                 const mainMovie = new MainMovieClass();
-                const carouselPop = new carousel("Pop");
-                const carouselTop = new carousel("Top");
-                const carouselFam = new carousel("Fam");
+                const carouselPop = new carousel(3,3,"Pop");
+                const carouselTop = new carousel(3,3,"Top");
+                const carouselFam = new carousel(3,3,"Fam");
                 const footer = new FooterClass();
 
                 root.innerHTML = homeViewTemplate({
@@ -40,7 +38,6 @@ export class HomeViewClass {
                 carouselTop.setHandler();
                 carouselFam.setHandler();
                 header.setHandler();
-
             })
             .catch((err) => {
                 console.error(err);

@@ -10,11 +10,11 @@ export class RegViewClass {
     render() {
         const footer = new FooterClass();
         const inputs = new InputsClass();
-        const button = new ButtonClass();
+        const button = new ButtonClass("Зарегистрироваться");
 
         root.innerHTML = regViewTemplate({
             inputs: inputs.render(),
-            button: button.render("Зарегистрироваться"),
+            button: button.render(),
             footer: footer.render()});
 
         inputs.setHandler();
