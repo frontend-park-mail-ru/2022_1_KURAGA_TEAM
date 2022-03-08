@@ -51,8 +51,7 @@ export class InputsClass {
 
         const passwordError = () => {
             errorPassword.classList.add("error-active");
-            errorPassword.innerText = 'Пароль должен содержать не менее 8-ми символов,' +
-                '\n в том числе цифры и латинские буквы';
+            errorPassword.innerText = 'Заполните поле';
         }
 
 
@@ -67,18 +66,12 @@ export class InputsClass {
         });
 
         inputEmail.addEventListener('keydown', () => {
+            errorIncorr.classList.remove("error-active");
             errorEmail.classList.remove("error-active");
         });
 
         inputPassword.addEventListener('change', () => {
-            const containsLetters = /^.*[a-zA-Z]+.*$/;
-            const minimum8Chars = /^.{8,}$/;
-            const containsNumbers = /^.*[0-9]+.*$/;
-
-            if (inputPassword.validity.valid &&
-                containsNumbers.test(inputPassword.value) &&
-                containsLetters.test(inputPassword.value) &&
-                minimum8Chars.test(inputPassword.value)) {
+            if (inputPassword.validity.valid) {
                 errorPassword.classList.remove("error-active");
 
                 return;
@@ -88,6 +81,7 @@ export class InputsClass {
         });
 
         inputPassword.addEventListener('keydown', () => {
+            errorIncorr.classList.remove("error-active");
             errorPassword.classList.remove("error-active");
         });
 
@@ -100,14 +94,7 @@ export class InputsClass {
                 e.preventDefault();
             }
 
-            const containsLetters = /^.*[a-zA-Z]+.*$/;
-            const minimum8Chars = /^.{8,}$/;
-            const containsNumbers = /^.*[0-9]+.*$/;
-
-            if(!inputPassword.validity.valid ||
-                !containsNumbers.test(inputPassword.value) ||
-                !containsLetters.test(inputPassword.value) ||
-                !minimum8Chars.test(inputPassword.value)) {
+            if(!inputPassword.validity.valid) {
                 check++;
                 passwordError();
 

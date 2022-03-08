@@ -42,8 +42,8 @@ function ajax({method, path, body}) {
 }
 
 export const ajaxReq = {
-    get: (path) => ajax({path, method: "get"}),
+    get: (params) => ajax({...params, method: "get"}),
     post: (params) => ajax({...params, method: "post"}),
-    delete: (path) => ajax({...params, method: "delete"})
+    delete: (params) => ajax({...params, method: "delete"})
 };
 
