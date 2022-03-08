@@ -1,4 +1,5 @@
-export default function template(locals) {
+/* eslint-disable */
+export default function homeViewTemplate(locals) {
     let pug_html = '';
     const pug_mixins = {};
     let pug_interp;

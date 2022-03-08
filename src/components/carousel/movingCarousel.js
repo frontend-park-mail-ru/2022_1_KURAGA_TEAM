@@ -20,9 +20,9 @@ export default function MovingCarousel(setting) {
     this.next_slide = () => {
         privates.opt.position++;
 
-         if (privates.opt.position >= privates.opt.max_position) {
-             --privates.opt.position;
-         }
+        if (privates.opt.position >= privates.opt.max_position) {
+            --privates.opt.position;
+        }
 
         privates.sel.wrap.style.transform = `translateX(-${privates.opt.position}00%)`;
     };
