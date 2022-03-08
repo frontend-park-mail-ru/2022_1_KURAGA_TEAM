@@ -48,7 +48,7 @@ function ajax({ method, path, body }) {
             }
 
             return {
-                isAuth: false,
+                isAuth: true,
                 isError: false,
                 data: response.json()
                     .then((response) => response),
