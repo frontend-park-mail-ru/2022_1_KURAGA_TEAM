@@ -45,9 +45,7 @@ const topMovies = [
 
 export class carousel {
 
-    constructor(numMovie, numSection, type) {
-        this.numMovie = numMovie;
-        this.numSection = numSection;
+    constructor(type) {
         this.type = type;
     }
 
