@@ -208,8 +208,8 @@ export class InputsClass {
                 });
 
                 registration(formJson)
-                    .then(({isAuth, data}) => {
-                        if (isAuth) {
+                    .then(({isAuth}) => {
+                        if (!isAuth) {
                             errorIncorr.classList.add("error-active center");
                             errorIncorr.textContent = "Ошибка валидации";
 

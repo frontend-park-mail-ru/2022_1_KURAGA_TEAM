@@ -8,7 +8,6 @@ const configUser= {
 
 export class HeaderClass {
     render() {
-
         return headerTemplate(configUser);
     }
     setHandler(){
@@ -16,15 +15,11 @@ export class HeaderClass {
         quit.addEventListener('click', (e) => {
             e.preventDefault();
             logout()
-                .then(({status, responseBody}) => {
-                    if (Number(status) / 100 === 4) {
-
-                    } else {
-                        router.go("/login");
-                    }
+                .then(() => {
+                    router.go("login");
                 })
                 .catch((err) => {
-                    // console.error(err);
+                    console.error(err);
                 })
 
         });

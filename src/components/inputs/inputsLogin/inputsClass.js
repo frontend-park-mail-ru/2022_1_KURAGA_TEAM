@@ -124,8 +124,9 @@ export class InputsClass {
 
                 login(formJson)
                     .then(({isAuth}) => {
-                        if (isAuth) {
-                            errorIncorr.classList.add("error-active center");
+                        if (!isAuth) {
+                            errorIncorr.classList.add("error-active");
+                            errorIncorr.classList.add("center");
                             errorIncorr.textContent = "Неверный логин или пароль";
 
                             return;

@@ -13,46 +13,40 @@ const root = document.getElementById("root");
 
 export class HomeViewClass {
     render() {
-
-        const header = new HeaderClass();
-        const mainMovie = new MainMovieClass();
-        const carouselPop = new CarouselPopClass();
-        const carouselTop = new CarouselTopClass();
-        const carouselFam = new CarouselFamClass();
-        const footer = new FooterClass();
-
-        root.innerHTML = homeViewTemplate({
-            header: header.render(),
-            mainMovie: mainMovie.render(),
-            carouselPop: carouselPop.render(),
-            carouselTop: carouselTop.render(),
-            carouselFam: carouselFam.render(),
-            footer: footer.render()
-        });
-        this.handler();
-        handlerLink();
-        carouselPop.setHandler();
-        carouselTop.setHandler();
-        carouselFam.setHandler();
-        header.setHandler();
-    }
-
-    handler(){
         profile()
-            .then(({status, responseBody}) => {
-                if (Number(status) / 100 === 4) {
+            .then(({isAuth}) => {
+                if (!isAuth) {
                     router.go("/login");
-                } else {
 
+                    return;
+                }
+
+                if (isAuth) {
+                    const header = new HeaderClass();
+                    const mainMovie = new MainMovieClass();
+                    const carouselPop = new CarouselPopClass();
+                    const carouselTop = new CarouselTopClass();
+                    const carouselFam = new CarouselFamClass();
+                    const footer = new FooterClass();
+
+                    root.innerHTML = homeViewTemplate({
+                        header: header.render(),
+                        mainMovie: mainMovie.render(),
+                        carouselPop: carouselPop.render(),
+                        carouselTop: carouselTop.render(),
+                        carouselFam: carouselFam.render(),
+                        footer: footer.render()
+                    });
+
+                    handlerLink();
+                    carouselPop.setHandler();
+                    carouselTop.setHandler();
+                    carouselFam.setHandler();
+                    header.setHandler();
                 }
             })
             .catch((err) => {
                 console.error(err);
             })
     }
-
-
-
-
 }
-
