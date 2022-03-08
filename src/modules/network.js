@@ -1,9 +1,9 @@
-import {ajaxReq} from "./ajax.js";
+import { ajaxReq } from './ajax.js';
 
 export async function registration(form) {
     try {
         return await ajaxReq.post({
-            path: "/signup",
+            path: '/signup',
             body: form,
         });
     } catch (err) {
@@ -14,7 +14,7 @@ export async function registration(form) {
 export async function login(form) {
     try {
         return await ajaxReq.post({
-            path: "/login",
+            path: '/login',
             body: form,
         });
     } catch (err) {
@@ -25,7 +25,7 @@ export async function login(form) {
 export async function logout() {
     try {
         return await ajaxReq.delete({
-            path: "/logout"
+            path: '/logout',
         });
     } catch (err) {
         return err;
@@ -35,10 +35,9 @@ export async function logout() {
 export async function profile() {
     try {
         return await ajaxReq.get({
-            path: "/"
+            path: '/',
         });
     } catch (err) {
         return err;
     }
 }
-

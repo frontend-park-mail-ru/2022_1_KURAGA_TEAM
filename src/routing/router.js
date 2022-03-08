@@ -1,12 +1,12 @@
 class Router {
-   constructor() {
-       this.routes = {};
-   }
+    constructor() {
+        this.routes = {};
+    }
 
-   register(path, view) {
-       this.routes[path] = new view();
-       return this;
-   }
+    register(path, View) {
+        this.routes[path] = new View();
+        return this;
+    }
 
     go(path) {
         window.history.pushState(null, null, path);
@@ -14,15 +14,15 @@ class Router {
         this.routes[window.location.pathname].render();
     }
 
-   start() {
-       const currentView = this.routes[window.location.pathname];
-       currentView.render();
+    start() {
+        const currentView = this.routes[window.location.pathname];
+        currentView.render();
 
-       window.addEventListener('popstate', () => {
-           const currentView = this.routes[window.location.pathname];
-           currentView.render();
-       });
-   }
+        window.addEventListener('popstate', () => {
+            const newView = this.routes[window.location.pathname];
+            newView.render();
+        });
+    }
 }
 
 export default new Router();
