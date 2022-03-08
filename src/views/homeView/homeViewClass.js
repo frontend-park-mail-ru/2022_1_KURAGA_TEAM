@@ -33,31 +33,10 @@ export class HomeViewClass {
         carouselTop.setHandler();
         carouselFam.setHandler();
         setHandler();
+        header.setHandler();
     }
 
-    Handler() {
-        const quit = document.querySelector(".quit");
-        console.log(quit);
-        quit.addEventListener('submit', (e) => {
-            console.log("drdrgdrg");
-            e.preventDefault();
 
-            logout()
-                .then(({status, responseBody}) => {
-                    if (Number(status) / 100 === 4) {
-
-                    } else {
-                        console("move");
-                        router.go("/login");
-                    }
-                })
-                .catch((err) => {
-                    console.error(err);
-                })
-
-        });
-
-    }
 
 
 }
