@@ -2,14 +2,15 @@ import headerTemplate from './header.js';
 import { logout } from '../../modules/network.js';
 import router from '../../routing/router.js';
 
-const configUser = {
-    name: 'admin',
-    src: '',
-};
-
 export default class HeaderClass {
+    #name
+
+    constructor(name) {
+        this.#name = name;
+    }
+
     render() {
-        return headerTemplate(configUser);
+        return headerTemplate(this.#name);
     }
 
     setHandler() {

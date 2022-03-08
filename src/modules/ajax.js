@@ -1,4 +1,4 @@
-const API_URL = 'http://movie-space.ru:1323/api/v1';
+const API_URL = 'http://localhost:1323/api/v1';
 
 function checkStatus(status) {
     let statusInfo;
@@ -54,7 +54,6 @@ function ajax({ method, path, body }) {
             if (statusInfo === 'Client Error'
             || statusInfo === 'Server Error'
             || statusInfo === 'Undefined') {
-                console.log(2);
                 return {
                     isAuth: false,
                     isError: false,
@@ -63,7 +62,6 @@ function ajax({ method, path, body }) {
                 };
             }
 
-            console.log(1);
             return {
                 isAuth: true,
                 isError: false,

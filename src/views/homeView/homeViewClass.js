@@ -18,28 +18,29 @@ export default class HomeViewClass {
 
                     return;
                 }
-                console.log(isAuth);
 
-                const header = new HeaderClass();
-                const mainMovie = new MainMovieClass();
-                const carouselPop = new carousel("Pop");
-                const carouselTop = new carousel("Top");
-                const carouselFam = new carousel("Fam");
-                const footer = new FooterClass();
+                data.then((data) => {
+                    const header = new HeaderClass(data.username);
+                    const mainMovie = new MainMovieClass();
+                    const carouselPop = new carousel("Pop");
+                    const carouselTop = new carousel("Top");
+                    const carouselFam = new carousel("Fam");
+                    const footer = new FooterClass();
 
-                root.innerHTML = homeViewTemplate({
-                    header: header.render(),
-                    mainMovie: mainMovie.render(),
-                    carouselPop: carouselPop.render(),
-                    carouselTop: carouselTop.render(),
-                    carouselFam: carouselFam.render(),
-                    footer: footer.render(),
-                });
-                handlerLink();
-                carouselPop.setHandler();
-                carouselTop.setHandler();
-                carouselFam.setHandler();
-                header.setHandler();
+                    root.innerHTML = homeViewTemplate({
+                        header: header.render(),
+                        mainMovie: mainMovie.render(),
+                        carouselPop: carouselPop.render(),
+                        carouselTop: carouselTop.render(),
+                        carouselFam: carouselFam.render(),
+                        footer: footer.render(),
+                    });
+                    handlerLink();
+                    carouselPop.setHandler();
+                    carouselTop.setHandler();
+                    carouselFam.setHandler();
+                    header.setHandler();
+                })
             })
             .catch((err) => {
                 console.error(err);
