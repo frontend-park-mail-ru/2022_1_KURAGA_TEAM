@@ -6,6 +6,7 @@ function ajax({method, path, body}) {
     return fetch(URL, {
         method,
         body,
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },
