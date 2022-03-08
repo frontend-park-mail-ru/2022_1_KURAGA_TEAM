@@ -11,13 +11,13 @@ const root = document.getElementById("root");
 
 export class HomeViewClass {
     render() {
-        profile()
-            .then(({isAuth, data}) => {
-                if (!isAuth) {
-                    router.go("/login");
-
-                    return;
-                }
+        // profile()
+        //     .then(({isAuth, data}) => {
+        //         if (!isAuth) {
+        //             router.go("/login");
+        //
+        //             return;
+        //         }
                 const header = new HeaderClass();
                 const mainMovie = new MainMovieClass();
                 const carouselPop = new carousel(3,3,"Pop");
@@ -38,9 +38,9 @@ export class HomeViewClass {
                 carouselTop.setHandler();
                 carouselFam.setHandler();
                 header.setHandler();
-            })
-            .catch((err) => {
-                console.error(err);
-            })
+            // })
+            // .catch((err) => {
+            //     console.error(err);
+            // })
     }
 }
