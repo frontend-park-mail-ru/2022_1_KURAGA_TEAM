@@ -20,7 +20,7 @@ export default class HomeViewClass {
                 }
 
                 data.then((data) => {
-                    const header = new HeaderClass("data.username");
+                    const header = new HeaderClass(data.username);
                     const mainMovie = new MainMovieClass();
                     const carouselPop = new carousel("Pop");
                     const carouselTop = new carousel("Top");
