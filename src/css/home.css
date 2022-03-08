@@ -5,6 +5,8 @@
 
 .root {
     display: grid;
+    margin: 0;
+    background-color: var(--back-color);
     grid-template-rows: auto;
     grid-template-columns: auto;
     grid-template-areas:
@@ -13,10 +15,6 @@
     "footer";
 }
 
-.background {
-    margin: 0;
-    background-color: var(--back-color);
-}
 
 
 

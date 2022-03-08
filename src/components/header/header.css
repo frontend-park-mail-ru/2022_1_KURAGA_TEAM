@@ -120,8 +120,10 @@
     align-items: center;
     justify-content: space-around;
     margin-inline-end: 35px;
+    cursor: pointer;
 }
 .name-profile {
+    cursor: pointer;
     margin-inline-start: 30px;
 }
 

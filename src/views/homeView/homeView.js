@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default function template(locals) {
     let pug_html = '';
     const pug_mixins = {};

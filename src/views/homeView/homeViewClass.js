@@ -22,9 +22,9 @@ export default class HomeViewClass {
 
                 const header = new HeaderClass();
                 const mainMovie = new MainMovieClass();
-                const carouselPop = new carousel(3, 3, 'Pop');
-                const carouselTop = new carousel(3, 3, 'Top');
-                const carouselFam = new carousel(3, 3, 'Fam');
+                const carouselPop = new carousel("Pop");
+                const carouselTop = new carousel("Top");
+                const carouselFam = new carousel("Fam");
                 const footer = new FooterClass();
 
                 root.innerHTML = homeViewTemplate({
