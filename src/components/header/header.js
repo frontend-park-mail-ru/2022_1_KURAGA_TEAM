@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default function template(...locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
