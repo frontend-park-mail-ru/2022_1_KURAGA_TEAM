@@ -1,5 +1,27 @@
 const API_URL = "http://movie-space.ru:1323/api/v1";
 
+function checkStatus(status) {
+    let statusInfo;
+
+    switch (Math.round(status / 100)) {
+        case 4: {
+            statusInfo = "Client Error";
+
+            break;
+        }
+        case 5: {
+            statusInfo = "Server Error";
+
+            break;
+        }
+        default: {
+            statusInfo = "Undefined";
+        }
+    }
+
+    return statusInfo;
+}
+
 function ajax({method, path, body}) {
     const URL = API_URL + path;
 
@@ -12,7 +34,11 @@ function ajax({method, path, body}) {
         },
     })
         .then((response) => {
-            if (Math.round(response.status / 100) === 4) {
+            const statusInfo = checkStatus(response.status);
+
+            if (statusInfo === "Client Error"
+            || statusInfo === "Server Error"
+            || statusInfo === "Undefined") {
                 return {
                     isAuth: false,
                     isError: false,

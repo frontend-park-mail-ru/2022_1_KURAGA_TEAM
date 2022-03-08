@@ -10,11 +10,11 @@ export class LoginViewClass {
     render() {
         const footer = new FooterClass();
         const inputs = new InputsClass();
-        const button = new ButtonClass();
+        const button = new ButtonClass("Войти");
 
         root.innerHTML = loginViewTemplate({
             inputs: inputs.render(),
-            button: button.render("Войти"),
+            button: button.render(),
             footer: footer.render()});
 
         inputs.setHandler();
