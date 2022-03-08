@@ -14,7 +14,7 @@ function ajax({method, path, body}) {
         .then((response) => {
             if (response.status / 100 === 4) {
                 return {
-                    isAuth: true,
+                    isAuth: false,
                     isError: false,
                     data: response.json()
                         .then((response) => {
@@ -24,7 +24,7 @@ function ajax({method, path, body}) {
             }
 
             return {
-                isAuth: false,
+                isAuth: true,
                 isError: false,
                 data: response.json()
                     .then((response) => {
