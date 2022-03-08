@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:1323/api/v1";
+const API_URL = "http://movie-space.ru:1323/api/v1";
 
 function ajax({method, path, body}) {
     const URL = API_URL + path;
