@@ -1,4 +1,4 @@
-export function Carousel(setting) {
+export default function MovingCarousel(setting) {
     if (document.querySelector(setting.wrap) === null) {
         console.error(`Carousel not fount selector ${setting.wrap}`);
         return;
