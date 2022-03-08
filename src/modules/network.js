@@ -3,7 +3,7 @@ import {ajaxReq} from "./ajax.js";
 export async function registration(form) {
     try {
         return await ajaxReq.post({
-            path: "/singup",
+            path: "/signup",
             body: form,
         });
     } catch (err) {
@@ -34,9 +34,7 @@ export async function logout() {
 
 export async function profile() {
     try {
-        return await ajaxReq.get({
-            path: "/"
-        });
+        return await ajaxReq.get("/");
     } catch (err) {
         return err;
     }
