@@ -1,5 +1,5 @@
 import carouselTemplate from "./carousel.js";
-import {Carousel} from "./Carousel.js"
+import movingCarousel from "./movingCarousel.js"
 const popMovies = [
     {
         href: "/",
@@ -57,7 +57,7 @@ export class carousel {
     }
 
     setHandler() {
-        let a = new Carousel({
+        let a = new movingCarousel({
             "main": ".js-carousel" + this.type,
             "wrap": ".js-carousel" + this.type + "__wrap",
             "prev": ".js-carousel" + this.type + "__prev",
