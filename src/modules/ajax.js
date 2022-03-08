@@ -4,34 +4,34 @@ function checkStatus(status) {
     let statusInfo;
 
     switch (Math.round(status / 100)) {
-        case 1: {
-            statusInfo = 'Information';
+    case 1: {
+        statusInfo = 'Information';
 
-            break;
-        }
-        case 2: {
-            statusInfo = 'Success';
+        break;
+    }
+    case 2: {
+        statusInfo = 'Success';
 
-            break;
-        }
-        case 3: {
-            statusInfo = 'Redirect';
+        break;
+    }
+    case 3: {
+        statusInfo = 'Redirect';
 
-            break;
-        }
-        case 4: {
-            statusInfo = 'Client Error';
+        break;
+    }
+    case 4: {
+        statusInfo = 'Client Error';
 
-            break;
-        }
-        case 5: {
-            statusInfo = 'Server Error';
+        break;
+    }
+    case 5: {
+        statusInfo = 'Server Error';
 
-            break;
-        }
-        default: {
-            statusInfo = 'Undefined';
-        }
+        break;
+    }
+    default: {
+        statusInfo = 'Undefined';
+    }
     }
 
     return statusInfo;

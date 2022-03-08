@@ -3,7 +3,7 @@ import { logout } from '../../modules/network.js';
 import router from '../../routing/router.js';
 
 export default class HeaderClass {
-    #name
+    #name;
 
     constructor(name) {
         this.#name = name;

@@ -4,7 +4,7 @@ import MainMovieClass from '../../components/mainMovie/mainMovieClass.js';
 import carousel from '../../components/carousel/carouselClass.js';
 import FooterClass from '../../components/footer/footerClass.js';
 import handlerLink from '../../utils/handlerLink.js';
-import { profile } from '../../modules/network.js';
+import {profile} from '../../modules/network.js';
 import router from '../../routing/router.js';
 
 const root = document.getElementById('root');
@@ -12,7 +12,7 @@ const root = document.getElementById('root');
 export default class HomeViewClass {
     render() {
         profile()
-            .then(({ isAuth, data }) => {
+            .then(({isAuth, data}) => {
                 if (!isAuth) {
                     router.go('/login');
 
@@ -22,9 +22,9 @@ export default class HomeViewClass {
                 data.then((data) => {
                     const header = new HeaderClass(data.username);
                     const mainMovie = new MainMovieClass();
-                    const carouselPop = new carousel("Pop");
-                    const carouselTop = new carousel("Top");
-                    const carouselFam = new carousel("Fam");
+                    const carouselPop = new carousel('Pop');
+                    const carouselTop = new carousel('Top');
+                    const carouselFam = new carousel('Fam');
                     const footer = new FooterClass();
 
                     root.innerHTML = homeViewTemplate({
@@ -40,7 +40,7 @@ export default class HomeViewClass {
                     carouselTop.setHandler();
                     carouselFam.setHandler();
                     header.setHandler();
-               })
+                });
             })
             .catch((err) => {
                 console.error(err);
