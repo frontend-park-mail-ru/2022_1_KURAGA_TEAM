@@ -12,7 +12,7 @@ const root = document.getElementById("root");
 export class HomeViewClass {
     render() {
         profile()
-            .then(({isAuth}) => {
+            .then(({isAuth, data}) => {
                 if (!isAuth) {
                     router.go("/login");
 

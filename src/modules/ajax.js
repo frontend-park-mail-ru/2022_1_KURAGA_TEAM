@@ -23,14 +23,14 @@ function ajax({method, path, body}) {
                 }
             }
 
-            return {
-                isAuth: true,
-                isError: false,
-                data: response.json()
-                    .then((response) => {
-                        return response;
-                    })
-            }
+            response.json()
+                .then((data) => {
+                    return {
+                        isAuth: true,
+                        isError: false,
+                        data,
+                    }
+                })
         })
         .catch((err) => {
             return {
