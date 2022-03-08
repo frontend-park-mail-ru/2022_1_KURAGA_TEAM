@@ -13,6 +13,7 @@ function ajax({method, path, body}) {
     })
         .then((response) => {
             if (response.status / 100 === 4) {
+                console.log(1)
                 return {
                     isAuth: false,
                     isError: false,
@@ -23,6 +24,7 @@ function ajax({method, path, body}) {
                 }
             }
 
+            console.log(2)
             return {
                 isAuth: true,
                 isError: false,
@@ -33,6 +35,7 @@ function ajax({method, path, body}) {
             }
         })
         .catch((err) => {
+            console.log(3)
             return {
                 isAuth: false,
                 isError: true,

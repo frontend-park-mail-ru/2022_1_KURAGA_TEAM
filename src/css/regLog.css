@@ -2,9 +2,6 @@
 @import '../components/button/button.css';
 @import '../components/inputs/inputs.css';
 
-body {
-    margin: 0;
-}
 #root {
     width: 100%;
     background: var(--back-color);
