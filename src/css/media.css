@@ -15,7 +15,7 @@
 
 @media (min-width: 1450px) and (max-width: 1600px) {
     #menu{
-        width: 650px;
+        width: 500px;
     }
 
     .formSearch{
@@ -76,7 +76,7 @@
     #menu{
         padding-top: 50px;
         padding-bottom: 40px;
-        width: 600px;
+        width: 500px;
     }
 
 }
