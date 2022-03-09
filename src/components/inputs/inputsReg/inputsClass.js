@@ -213,7 +213,7 @@ export default class InputsClass {
 
                 registration(formJson)
                     .then(({ isAuth,data }) => {
-                        data.than((res) => {
+                        data.then((res) => {
                             if (res.message === "ERROR: Email is not unique") {
                                 errorIncorr.classList.add('error-active');
                                 errorIncorr.classList.add('center');
