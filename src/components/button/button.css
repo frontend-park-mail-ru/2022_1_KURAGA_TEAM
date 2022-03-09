@@ -15,7 +15,6 @@
 }
 .menu-button:active {
     transform: scale(0.94);
-    -webkit-transform: scale(0.94);
 }
 .menu-button:hover {
     background: var(--btn-hover-color);

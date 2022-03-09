@@ -1,20 +1,20 @@
 @font-face {
-    font-family: GT Eesti Pro Display;
+    font-family: "GT Eesti Pro Display";
     src: url("../../static/fonts/gteestiprodisplay_regular.otf") format("otf");
 }
 
 @font-face {
-    font-family: GT Eesti Pro Display Medium;
+    font-family: "GT Eesti Pro Display" Medium;
     src: url("../../static/fonts/gteestiprodisplay_medium.otf") format("otf");
 }
 
 @font-face {
-    font-family: GT Eesti Pro Display Light;
+    font-family: "GT Eesti Pro Display Light";
     src: url("../../static/fonts/gteestiprodisplay_light.otf") format("otf");
 }
 
 body {
-    font-family: GT Eesti Pro Display, arial, sans-serif;
+    font-family: "GT Eesti Pro Display", arial, sans-serif;
     text-decoration: none;
     color: var(--font-color);
     margin: 0;
@@ -22,25 +22,25 @@ body {
 
 :root {
     --back-color: #01090B;
-    --font-color: #FFFFFF;
+    --font-color: #FFF;
     --font-footer-color: #C3C3C2;
     --font-error-color: red;
     --font-first-span-color: grey;
-    --input-back: rgba(255, 255, 255, 0.2);
-    --menu-back: linear-gradient(199.6deg, #8D8D8D -95.93%, rgba(255, 255, 255, 0) 108.19%);
-    --sidebar-back: linear-gradient(206.08deg, rgba(196, 196, 196, 0.45) -40.85%, rgba(196, 196, 196, 0) 97.87%);
+    --input-back: rgb(255 255 255 / 20%);
+    --menu-back: linear-gradient(199.6deg, #8D8D8D -95.93%, rgb(255 255 255 / 0%) 108.19%);
+    --sidebar-back: linear-gradient(206.08deg, rgb(196 196 196 / 45%) -40.85%, rgb(196 196 196 / 0%) 97.87%);
     --btn-color: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
     --btn-hover-color: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
-    --btn-info-color: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
-    --btn-info-hover-color: linear-gradient(56.9deg, rgba(0, 0, 0, 0.4) 456%, rgba(20, 20, 20, 0.168) 16.73%);
-    --nav-back: linear-gradient(180deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 55.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
-    --nav-font-shadow: rgba(0, 0, 0, 0.25);
+    --btn-info-color: linear-gradient(121.9deg, rgb(0 0 0 / 40%) 16.73%, rgb(20 20 20 / 16.8%) 340.95%);
+    --btn-info-hover-color: linear-gradient(56.9deg, rgb(0 0 0 / 40%) 456%, rgb(20 20 20 / 16.8%) 16.73%);
+    --nav-back: linear-gradient(180deg, #070606 6.08%, rgb(7 6 6 / 50%) 55.03%, rgb(14 12 12 / 25%) 78.99%, rgb(27 23 23 / 10%) 90.45%, rgb(27 23 23 / 0%) 100%);
+    --nav-font-shadow: rgb(0 0 0 / 25%);
     --drop-back: linear-gradient(206.08deg, rgb(7 6 6 / 50%) -40.85%, rgb(7 6 6 / 18%) 97.87%);
-    --drop-shadow: rgba(0, 0, 0, 0.2);
-    --drop-back-hover: linear-gradient(121.9deg, rgba(0, 0, 0, 0.4) 16.73%, rgba(20, 20, 20, 0.168) 340.95%);
+    --drop-shadow: rgb(0 0 0 / 20%);
+    --drop-back-hover: linear-gradient(121.9deg, rgb(0 0 0 / 40%) 16.73%, rgb(20 20 20 / 16.8%) 340.95%);
     --btn-carousel-color: #ffffffc2;
     --btn-carousel-back: #ffffff1c;
     --btn-carousel-back-hover: rgb(196 196 196 / 8%);
-    --desc-mov-back: linear-gradient(180deg, rgba(196, 196, 196, 0) -79.55%, #000000 124.95%);
+    --desc-mov-back: linear-gradient(180deg, rgb(196 196 196 / 0%) -79.55%, #000 124.95%);
     --genre-color: #707070;
 }

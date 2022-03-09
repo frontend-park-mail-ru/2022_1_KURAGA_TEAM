@@ -37,7 +37,7 @@
 }
 
 .title-descr {
-    font-family: GT Eesti Pro Display Light, arial, sans-serif;
+    font-family: "GT Eesti Pro Display Light", arial, sans-serif;
     margin-inline: 72px;
     font-weight: 350;
     font-size: 30px;
@@ -46,7 +46,7 @@
 
 .font-other {
     text-decoration: none;
-    font-family: GT Eesti Pro Display Light, arial, sans-serif;
+    font-family: "GT Eesti Pro Display Light", arial, sans-serif;
     font-style: normal;
     font-weight: 350;
     color: var(--font-color);
@@ -92,7 +92,7 @@
 
 .btn-info:active {
     transform: scale(0.94);
-    -webkit-transform: scale(0.94);
+    transform: scale(0.94);
 }
 
 .btn-info:hover {
@@ -101,7 +101,7 @@
 
 .btn:active {
     transform: scale(0.94);
-    -webkit-transform: scale(0.94);
+    transform: scale(0.94);
 }
 
 .btn:hover {
