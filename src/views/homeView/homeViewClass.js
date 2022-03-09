@@ -52,15 +52,15 @@ const topMovies = [
 
 export default class HomeViewClass {
     render() {
-        // profile()
-        //     .then(({isAuth, data}) => {
-        //         if (!isAuth) {
-        //             router.go('/login');
-        //
-        //             return;
-        //         }
-        //
-        //         data.then((data) => {
+        profile()
+            .then(({isAuth, data}) => {
+                if (!isAuth) {
+                    router.go('/login');
+
+                    return;
+                }
+
+                data.then((data) => {
                     const header = new HeaderClass("data.username");
                     const mainMovie = new MainMovieClass();
                     const carouselPop = new carousel('Pop',popMovies,3);
@@ -81,10 +81,10 @@ export default class HomeViewClass {
                     carouselTop.setHandler();
                     carouselFam.setHandler();
                     header.setHandler();
-            //     });
-            // })
-            // .catch((err) => {
-            //     console.error(err);
-            // });
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 }
