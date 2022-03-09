@@ -4,32 +4,32 @@ import MainMovieClass from '../../components/mainMovie/mainMovieClass.js';
 import carousel from '../../components/carousel/carouselClass.js';
 import FooterClass from '../../components/footer/footerClass.js';
 import handlerLink from '../../utils/handlerLink.js';
-import {profile,movies} from '../../modules/network.js';
+import {profile, movies} from '../../modules/network.js';
 import router from '../../routing/router.js';
 
 const root = document.getElementById('root');
 
 const popMovies = [
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны1',
         genre: 'Фантастика1',
     },
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны2',
         genre: 'Фантастика2',
     },
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны3',
         genre: 'Фантастика3',
     },
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны4',
         genre: 'Фантастика4',
@@ -38,19 +38,19 @@ const popMovies = [
 
 const topMovies = [
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны#1',
         genre: 'Фантастика',
     },
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны#2',
         genre: 'Фантастика',
     },
     {
-        img:"star.png",
+        img: "star.png",
         href: '/',
         name: 'Звездные войны#3',
         genre: 'Фантастика',
@@ -59,74 +59,43 @@ const topMovies = [
 
 export default class HomeViewClass {
     render() {
-        profile()
-            .then(({isAuth, data}) => {
-                if (!isAuth) {
-                    router.go('/login');
 
+        Promise.all([profile(), movies()])
+            .then(([user, movies]) => {
+                if(!user.isAuth){
+                    router.go('/login');
                     return;
                 }
+                Promise.all([user.data, movies.data])
+                    .then(([user, mov]) => {
+                        console.log(user, mov);
+                        const header = new HeaderClass(user.username);
+                        const mainMovie = new MainMovieClass();
+                        const carouselPop = new carousel('Pop', movies.moviesCompilation[0].movies, 3);
+                        const carouselTop = new carousel('Top', movies.moviesCompilation[1].movies, 3);
+                        const carouselFam = new carousel('Fam', movies.moviesCompilation[2].movies, 2);
+                        const footer = new FooterClass();
 
-                data.then((data) => {
-                    const header = new HeaderClass(data.username);
-                    const mainMovie = new MainMovieClass();
-                    const carouselPop = new carousel('Pop',popMovies,3);
-                    const carouselTop = new carousel('Top',topMovies,3);
-                    const carouselFam = new carousel('Fam',popMovies,2);
-                    const footer = new FooterClass();
+                        root.innerHTML = homeViewTemplate({
+                            header: header.render(),
+                            mainMovie: mainMovie.render(),
+                            carouselPop: carouselPop.render(),
+                            carouselTop: carouselTop.render(),
+                            carouselFam: carouselFam.render(),
+                            footer: footer.render(),
+                        });
+                        handlerLink();
+                        carouselPop.setHandler();
+                        carouselTop.setHandler();
+                        carouselFam.setHandler();
+                    })
 
-                    root.innerHTML = homeViewTemplate({
-                        header: header.render(),
-                        mainMovie: mainMovie.render(),
-                        carouselPop: carouselPop.render(),
-                        carouselTop: carouselTop.render(),
-                        carouselFam: carouselFam.render(),
-                        footer: footer.render(),
-                    });
-                    handlerLink();
-                    carouselPop.setHandler();
-                    carouselTop.setHandler();
-                    carouselFam.setHandler();
-                    header.setHandler();
-                });
             })
             .catch((err) => {
                 console.error(err);
             });
-        /*movies()
-            .then(({isAuth, data}) => {
-                if (!isAuth) {
-                    router.go('/login');
-
-                    return;
-                }
-                console.log(data);
-            })
-                /*data.then((data) => {
-                   /* const header = new HeaderClass(data.username);
-                    const mainMovie = new MainMovieClass();
-                    const carouselPop = new carousel('Pop',popMovies,3);
-                    const carouselTop = new carousel('Top',topMovies,3);
-                    const carouselFam = new carousel('Fam',popMovies,2);
-                    const footer = new FooterClass();
-
-                    root.innerHTML = homeViewTemplate({
-                        header: header.render(),
-                        mainMovie: mainMovie.render(),
-                        carouselPop: carouselPop.render(),
-                        carouselTop: carouselTop.render(),
-                        carouselFam: carouselFam.render(),
-                        footer: footer.render(),
-                    });
-                    handlerLink();
-                    carouselPop.setHandler();
-                    carouselTop.setHandler();
-                    carouselFam.setHandler();
-                    header.setHandler();*/
-            //     });
-            // })
-            // .catch((err) => {
-            //     console.error(err);
-            // });
     }
+
+
 }
+
