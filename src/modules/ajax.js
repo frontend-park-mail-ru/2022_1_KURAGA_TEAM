@@ -27,6 +27,7 @@ function ajax({ method, path, body }) {
     const URL = API_URL + path;
 
     return fetch(URL, {
+
         method,
         body,
         credentials: 'include',
@@ -35,6 +36,7 @@ function ajax({ method, path, body }) {
         },
     })
         .then((response) => {
+
             const statusInfo = checkStatus(response.status);
 
             if (statusInfo === 'Client Error'
@@ -54,6 +56,7 @@ function ajax({ method, path, body }) {
             };
         })
         .catch((err) => ({
+
             isAuth: false,
             isError: true,
             err,

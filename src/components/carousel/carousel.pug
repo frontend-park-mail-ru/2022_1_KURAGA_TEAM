@@ -6,7 +6,7 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,num)
                 each _ in Array(num)
                     div.b-carousel__item
                         each item in items
-                            div(class=`movie`+`${typeMov}`)(style=`background: url(../../../static/`+item.img +`);background-size: contain;`)
+                            div(class=`movie`+`${typeMov}`)(style=`background: url(../../../static/`+"star.png" +`);background-size: contain;`)
                                 a(href= item.href)
                                     div.ref-mov
                                 div(class=`desc-mov`+`${typeMov}`)
