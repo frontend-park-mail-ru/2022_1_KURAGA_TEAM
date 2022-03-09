@@ -11,21 +11,25 @@ const root = document.getElementById('root');
 
 const popMovies = [
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны1',
         genre: 'Фантастика1',
     },
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны2',
         genre: 'Фантастика2',
     },
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны3',
         genre: 'Фантастика3',
     },
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны4',
         genre: 'Фантастика4',
@@ -34,16 +38,19 @@ const popMovies = [
 
 const topMovies = [
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны#1',
         genre: 'Фантастика',
     },
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны#2',
         genre: 'Фантастика',
     },
     {
+        img:"star.png",
         href: '/',
         name: 'Звездные войны#3',
         genre: 'Фантастика',

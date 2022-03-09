@@ -49,6 +49,16 @@ function pug_escape(e) {
 var pug_has_own_property = Object.prototype.hasOwnProperty;
 var pug_match_html = /["&<>]/;
 
+function pug_style(r) {
+    if (!r) return "";
+    if ("object" == typeof r) {
+        var t = "";
+        for (var e in r) pug_has_own_property.call(r, e) && (t = t + e + ":" + r[e] + ";");
+        return t
+    }
+    return r + ""
+}
+
 export default function template(...locals) {
     var pug_html = "", pug_mixins = {}, pug_interp;
     ;var locals_for_with = (locals || {});
@@ -89,7 +99,7 @@ export default function template(...locals) {
                                     var item = $$obj[pug_index1];
                                     pug_html = pug_html + "\n      ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false) + pug_attr("style", pug_style(`background: url(../../../static/` + item.img + `);background-size: contain;`), true, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
@@ -112,7 +122,7 @@ export default function template(...locals) {
                                     var item = $$obj[pug_index1];
                                     pug_html = pug_html + "\n      ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false) + pug_attr("style", pug_style(`background: url(../../../static/` + item.img + `);background-size: contain;`), true, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
@@ -151,7 +161,7 @@ export default function template(...locals) {
                                     var item = $$obj[pug_index2];
                                     pug_html = pug_html + "\n      ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false) + pug_attr("style", pug_style(`background: url(../../../static/` + item.img + `);background-size: contain;`), true, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
@@ -174,7 +184,7 @@ export default function template(...locals) {
                                     var item = $$obj[pug_index2];
                                     pug_html = pug_html + "\n      ";
                                     pug_html = pug_html + pug_indent.join("");
-                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
+                                    pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`movie` + `${typeMov}`], [true]), false, false) + pug_attr("style", pug_style(`background: url(../../../static/` + item.img + `);background-size: contain;`), true, false)) + "\u003E\u003Ca" + (pug_attr("href", item.href, true, false)) + "\u003E\n          ";
                                     pug_html = pug_html + pug_indent.join("");
                                     pug_html = pug_html + "\u003Cdiv class=\"ref-mov\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fa\u003E\n        ";
                                     pug_html = pug_html + pug_indent.join("");
