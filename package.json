@@ -1,0 +1,37 @@
+{
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "express": "^4.17.3",
+    "express-history-api-fallback": "^2.2.1",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2",
+    "stylelint": "^14.5.3",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0"
+  },
+  "name": "2022_1_kuraga_team",
+  "description": "Frontend репозиторий проекта Netflix",
+  "version": "1.0.0",
+  "main": ".",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "lint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM/issues"
+  },
+  "homepage": "https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM#readme",
+  "dependencies": {
+    "prettier": "^2.5.1"
+  }
+}

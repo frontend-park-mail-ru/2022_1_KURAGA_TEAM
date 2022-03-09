@@ -1,6 +1,7 @@
 # KURAGA TEAM
 
 Frontend репозиторий проекта Netflix
+http://movie-space.ru:8080/
 
 ## Сборка
 
@@ -15,7 +16,6 @@ npm install
 ```
 npm start
 ```
-
 ## Ссылки
 
 + Репозиторий [backend](https://github.com/go-park-mail-ru/2022_1_KuragaTeam)
