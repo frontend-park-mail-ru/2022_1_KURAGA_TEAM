@@ -11,25 +11,25 @@ const root = document.getElementById('root');
 
 const popMovies = [
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны1',
         genre: 'Фантастика1',
     },
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны2',
         genre: 'Фантастика2',
     },
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны3',
         genre: 'Фантастика3',
     },
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны4',
         genre: 'Фантастика4',
@@ -38,19 +38,19 @@ const popMovies = [
 
 const topMovies = [
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны#1',
         genre: 'Фантастика',
     },
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны#2',
         genre: 'Фантастика',
     },
     {
-        img: "star.png",
+        img:"star.png",
         href: '/',
         name: 'Звездные войны#3',
         genre: 'Фантастика',
@@ -70,7 +70,9 @@ export default class HomeViewClass {
                 data.then((data) => {
                     const header = new HeaderClass(data.username);
                     const mainMovie = new MainMovieClass();
-
+                    const carouselPop = new carousel('Pop',popMovies,3);
+                    const carouselTop = new carousel('Top',topMovies,3);
+                    const carouselFam = new carousel('Fam',popMovies,2);
                     const footer = new FooterClass();
 
                     root.innerHTML = homeViewTemplate({
@@ -91,21 +93,5 @@ export default class HomeViewClass {
             .catch((err) => {
                 console.error(err);
             });
-        movies()
-            .then(({isAuth, data}) => {
-                if (!isAuth) {
-                    router.go('/login');
-                    return;
-                }
-                console.log(data);
-                const carouselPop = new carousel('Pop', popMovies, 3);
-                const carouselTop = new carousel('Top', topMovies, 3);
-                const carouselFam = new carousel('Fam', popMovies, 2);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-
-
     }
 }
