@@ -2,24 +2,24 @@ const API_URL = 'http://movie-space.ru:1323/api/v1';
 
 function checkStatus(status) {
     switch (Math.round(status / 100)) {
-        case 1: {
-            return 'Information';
-        }
-        case 2: {
-            return 'Success'
-        }
-        case 3: {
-            return 'Redirect';
-        }
-        case 4: {
-            return 'Client Error';
-        }
-        case 5: {
-            return  'Server Error';
-        }
-        default: {
-            return;
-        }
+    case 1: {
+        return 'Information';
+    }
+    case 2: {
+        return 'Success';
+    }
+    case 3: {
+        return 'Redirect';
+    }
+    case 4: {
+        return 'Client Error';
+    }
+    case 5: {
+        return 'Server Error';
+    }
+    default: {
+
+    }
     }
 }
 
@@ -36,7 +36,6 @@ function ajax({ method, path, body }) {
         },
     })
         .then((response) => {
-
             const statusInfo = checkStatus(response.status);
 
             if (statusInfo === 'Client Error'
