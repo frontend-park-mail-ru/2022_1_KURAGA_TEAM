@@ -1,9 +1,9 @@
-mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov)
+mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,num)
         div.b-carousel(class = car)
             button(class=`b-carousel`+`${typeMov}`+`__prev ${prevBtn}`) ❬
             button(class=`b-carousel`+`${typeMov}`+`__next ${nextBtn}`) ❭
             div(class=`b-carousel`+`${typeMov}`+`__wrap ${wrapMov}`, style="transform: translateX(0%);")
-                each val in [1,2,3]
+                each _ in Array(num)
                     div.b-carousel__item
                         each item in items
                             div(class=`movie`+`${typeMov}`)
@@ -15,4 +15,4 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov)
                                     input#cb.input-like(type = "checkbox")
 
 
-+ carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov)
++ carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,num)
