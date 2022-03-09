@@ -68,12 +68,12 @@ export default class HomeViewClass {
                 }
                 Promise.all([user.data, movies.data])
                     .then(([user, mov]) => {
-                        console.log(user, mov);
+                        console.log(user, [movies.moviesCompilation[0]]);
                         const header = new HeaderClass(user.username);
                         const mainMovie = new MainMovieClass();
-                        const carouselPop = new carousel('Pop', movies.moviesCompilation[0].movies, 3);
-                        const carouselTop = new carousel('Top', movies.moviesCompilation[1].movies, 3);
-                        const carouselFam = new carousel('Fam', movies.moviesCompilation[2].movies, 2);
+                        const carouselPop = new carousel('Pop', [movies.moviesCompilation[0]].movies, 3);
+                        const carouselTop = new carousel('Top', [movies.moviesCompilation[1]].movies, 3);
+                        const carouselFam = new carousel('Fam', [movies.moviesCompilation[2]].movies, 2);
                         const footer = new FooterClass();
 
                         root.innerHTML = homeViewTemplate({
