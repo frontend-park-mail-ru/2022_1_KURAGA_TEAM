@@ -22,6 +22,7 @@
     grid-area: fourth;
 }
 .titleFooter {
+    font-weight: lighter;
     text-align: left;
     color: var(--font-footer-color);
     margin-top: 20px;
@@ -29,6 +30,7 @@
     font-size: 25px;
 }
 .content {
+    font-weight: lighter;
     text-decoration: none;
     color: var(--font-footer-color);
     font-size: 15px;

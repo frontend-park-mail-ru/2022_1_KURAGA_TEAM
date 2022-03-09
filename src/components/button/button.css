@@ -1,4 +1,5 @@
 .menu-button {
+    font-weight: lighter;
     font-family: GT Eesti Pro Display, arial, sans-serif;
     color: var(--font-color);
     font-size: 25px;
