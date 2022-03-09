@@ -45,7 +45,7 @@ export async function profile() {
 export async function movies() {
     try {
         return await ajaxReq.get({
-            path: '/',
+            path: '/movieCompilations',
         });
     } catch (err) {
         return err;
