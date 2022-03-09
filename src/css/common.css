@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: "GT Eesti Pro Display", arial, sans-serif;
+    font-family: "GT Eesti Pro Display", sans-serif;
     text-decoration: none;
     color: var(--font-color);
     margin: 0;
