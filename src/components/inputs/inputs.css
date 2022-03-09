@@ -6,6 +6,7 @@
 }
 
 .error {
+    font-family: "GT Eesti Pro Display", arial, sans-serif;
     display: none;
     font-weight: bold;
     font-size: 18px;
@@ -37,9 +38,10 @@
     height: 32px;
 }
 
-.menu-input::input-placeholder {
+.menu-input::placeholder {
     color: var(--font-color);
     font-size: 20px;
+    font-weight: lighter;
 }
 
 .menu-input {
@@ -52,8 +54,4 @@
     border-radius: 0 10px 10px 0;
     width: 89.5%;
     height: 100%;
-}
-
-.menu-input::placeholder {
-    font-weight: lighter;
 }

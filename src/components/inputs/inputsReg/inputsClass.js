@@ -74,8 +74,8 @@ export default class InputsClass {
 
         const passOneError = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов,'
-                + '\n в том числе Цифры, Латинские буквы и одну Большую';
+            errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов, в том числе Цифры,'
+                + '\n Латинские буквы и одну Большую';
         };
 
         const passTwoError = () => {
@@ -175,7 +175,7 @@ export default class InputsClass {
             const containsNumbers = /^.*[0-9]+.*$/;
             const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
-            if (!inputPassTwo.validity.valid
+            if (!inputPassOne.validity.valid
                 || !containsNumbers.test(inputPassOne.value)
                 || !containsLetters.test(inputPassOne.value)
                 || !minimum8Chars.test(inputPassOne.value)
@@ -196,7 +196,6 @@ export default class InputsClass {
 
             if (inputPassTwo.value.length === 0) {
                 check++;
-                console.log(inputPassTwo.value.length);
                 passTwoError();
 
                 e.preventDefault();

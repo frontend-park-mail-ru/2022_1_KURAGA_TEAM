@@ -38,9 +38,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 650px;
+    width: 500px;
     background: var(--menu-back);
-    backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     border-radius: 20px;
 }
