@@ -37,6 +37,7 @@ export default class HomeViewClass {
                             footer: footer.render(),
                         });
                         handlerLink();
+                        header.setHandler();
                         carouselPop.setHandler();
                         carouselTop.setHandler();
                         carouselFam.setHandler();
