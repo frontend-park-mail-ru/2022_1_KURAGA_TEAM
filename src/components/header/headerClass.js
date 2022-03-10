@@ -19,11 +19,9 @@ export default class HeaderClass {
             e.preventDefault();
             logout()
                 .then(() => {
-                    console.log(1)
                     router.go('login');
                 })
                 .catch((err) => {
-                    console.log(2)
                     console.error(err);
                 });
         });
