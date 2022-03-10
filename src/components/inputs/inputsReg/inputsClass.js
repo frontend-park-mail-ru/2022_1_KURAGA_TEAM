@@ -211,9 +211,9 @@ export default class InputsClass {
                 });
 
                 registration(formJson)
-                    .then(({ isAuth,data }) => {
+                    .then(({ isAuth, data }) => {
                         data.then((res) => {
-                            if (res.message === "ERROR: Email is not unique") {
+                            if (res.message === 'ERROR: Email is not unique') {
                                 errorIncorr.classList.add('error-active');
                                 errorIncorr.classList.add('center');
                                 errorIncorr.textContent = 'Такой пользователь уже существует';
@@ -230,7 +230,7 @@ export default class InputsClass {
                             }
 
                             router.go('/');
-                        })
+                        });
                     })
                     .catch((err) => {
                         console.error(err);

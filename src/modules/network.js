@@ -41,3 +41,13 @@ export async function profile() {
         return err;
     }
 }
+
+export async function movies() {
+    try {
+        return await ajaxReq.get({
+            path: '/movieCompilations',
+        });
+    } catch (err) {
+        return err;
+    }
+}

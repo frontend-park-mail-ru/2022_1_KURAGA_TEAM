@@ -1,4 +1,13 @@
 .idea
 node_modules
 .eslintrc.js
-
+./2022_1_KuragaTeam
+.js
+src/components/button/button.js
+src/components/carousel/carousel.js
+src/components/footer/footer.js
+src/components/header/header.js
+src/components/inputs/inputsReg/inputs.js
+src/views/homeView/homeView.js
+src/views/loginView/loginView.js
+src/views/regView/regView.js

@@ -9,6 +9,10 @@ import router from '../routing/router.js';
 
 export default function handlerLink() {
     Array.from(document.getElementsByTagName('a')).forEach((item) => {
+        if (item.className === "ref") {
+            return;
+        }
+
         item.addEventListener('click', (e) => {
             e.preventDefault();
 
