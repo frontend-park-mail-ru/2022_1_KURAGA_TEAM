@@ -61,15 +61,15 @@ export default class InputsClass {
         };
 
         const emailError = () => {
-            if (inputEmail.validity.typeMismatch) {
+            if (inputEmail.validity.valueMissing) {
                 errorEmail.classList.add('error-active');
-                errorEmail.textContent = 'Введите действительный email';
+                errorEmail.textContent = 'Заполните поле';
 
                 return;
             }
 
             errorEmail.classList.add('error-active');
-            errorEmail.textContent = 'Заполните поле';
+            errorEmail.textContent = 'Введите действительный email';
         };
 
         const passOneError = () => {
@@ -104,7 +104,9 @@ export default class InputsClass {
         });
 
         inputEmail.addEventListener('change', () => {
-            if (inputEmail.validity.valid) {
+            const checkEmail = /.+@.+\..+/i;
+
+            if (checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0) {
                 errorEmail.classList.remove('error-active');
 
                 return;
@@ -163,7 +165,9 @@ export default class InputsClass {
                 e.preventDefault();
             }
 
-            if (!inputEmail.validity.valid) {
+            const checkEmail = /.+@.+\..+/i;
+
+            if (!checkEmail.test(inputEmail.value) || inputEmail.value.length === 0) {
                 check++;
                 emailError();
 
