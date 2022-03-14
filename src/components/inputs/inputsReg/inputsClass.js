@@ -72,10 +72,19 @@ export default class InputsClass {
             errorEmail.textContent = 'Введите действительный email';
         };
 
-        const passOneError = () => {
+        const passOneErrorEmpty = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Пароль должен содержать не менее 8-ми символов, в том числе Цифры,'
-                + '\n Латинские буквы и одну Большую';
+            errorPassOne.textContent = 'Заполните поле';
+        };
+
+        const passOneErrorLength = () => {
+            errorPassOne.classList.add('error-active');
+            errorPassOne.innerText = 'Не меньше 8-ми символов';
+        };
+
+        const passOneErrorAllow = () => {
+            errorPassOne.classList.add('error-active');
+            errorPassOne.innerText = 'Необходимы Цифры и Латинские буквы';
         };
 
         const passTwoError = () => {
@@ -123,19 +132,27 @@ export default class InputsClass {
             const containsLetters = /^.*[a-zA-Z]+.*$/;
             const minimum8Chars = /^.{8,}$/;
             const containsNumbers = /^.*[0-9]+.*$/;
-            const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
-            if (inputPassOne.validity.valid
-                && containsNumbers.test(inputPassOne.value)
-                && containsLetters.test(inputPassOne.value)
-                && minimum8Chars.test(inputPassOne.value)
-                && containsUpperSymbols.test(inputPassOne.value)) {
-                errorPassOne.classList.remove('error-active');
+            if (!inputPassOne.validity.valid) {
+                passOneErrorEmpty();
 
                 return;
             }
 
-            passOneError();
+            if (!minimum8Chars.test(inputPassOne.value)) {
+                passOneErrorLength();
+
+                return;
+            }
+
+            if (!containsNumbers.test(inputPassOne.value)
+                || !containsLetters.test(inputPassOne.value)) {
+                passOneErrorAllow();
+
+                return;
+            }
+
+            errorPassOne.classList.remove('error-active');
         });
 
         inputPassOne.addEventListener('keydown', () => {
@@ -177,15 +194,21 @@ export default class InputsClass {
             const containsLetters = /^.*[a-zA-Z]+.*$/;
             const minimum8Chars = /^.{8,}$/;
             const containsNumbers = /^.*[0-9]+.*$/;
-            const containsUpperSymbols = /^.*[A-Z]+.*$/;
 
-            if (!inputPassOne.validity.valid
-                || !containsNumbers.test(inputPassOne.value)
-                || !containsLetters.test(inputPassOne.value)
-                || !minimum8Chars.test(inputPassOne.value)
-                || !containsUpperSymbols.test(inputPassOne.value)) {
+            if (!inputPassOne.validity.valid) {
                 check++;
-                passOneError();
+                passOneErrorEmpty();
+
+                e.preventDefault();
+            } else if (!minimum8Chars.test(inputPassOne.value)) {
+                check++;
+                passOneErrorLength();
+
+                e.preventDefault();
+            } else if (!containsNumbers.test(inputPassOne.value)
+                || !containsLetters.test(inputPassOne.value)) {
+                check++;
+                passOneErrorAllow();
 
                 e.preventDefault();
             }
@@ -228,7 +251,7 @@ export default class InputsClass {
                             if (!isAuth) {
                                 errorIncorr.classList.add('error-active');
                                 errorIncorr.classList.add('center');
-                                errorIncorr.textContent = 'Ошибка валидации';
+                                errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
 
                                 return;
                             }

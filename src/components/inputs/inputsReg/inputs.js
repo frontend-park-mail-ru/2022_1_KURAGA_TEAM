@@ -46,14 +46,14 @@ export default function inputsTemplate(locals) {
                 if ('number' == typeof $$obj.length) {
                     for (var pug_index0 = 0, $$l = $$obj.length; pug_index0 < $$l; pug_index0++) {
                         var item = $$obj[pug_index0];
-                        pug_html = pug_html + "\u003Cdiv" + (" class=\"element\"" + pug_attr("data-section", item.key, true, false)) + "\u003E\u003Cobject" + (" class=\"svg\"" + " type=\"image\u002Fsvg+xml\"" + pug_attr("data", item.data, true, false)) + "\u003E\u003C\u002Fobject\u003E\u003Cinput" + (" class=\"menu-input\"" + pug_attr("placeholder", item.placeholder, true, false) + pug_attr("type", item.type, true, false) + pug_attr("required", true, true, false) + pug_attr("data-section", item.key, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E\u003Cdiv" + (" class=\"error\"" + pug_attr("data-section", item.error, true, false)) + "\u003E\u003C\u002Fdiv\u003E";
+                        pug_html = pug_html + "\u003Cdiv class=\"papa\"\u003E\u003Cdiv" + (" class=\"element\"" + pug_attr("data-section", item.key, true, false)) + "\u003E\u003Cobject" + (" class=\"svg\"" + " type=\"image\u002Fsvg+xml\"" + pug_attr("data", item.data, true, false)) + "\u003E\u003C\u002Fobject\u003E\u003Cinput" + (" class=\"menu-input\"" + pug_attr("placeholder", item.placeholder, true, false) + pug_attr("type", item.type, true, false) + pug_attr("required", true, true, false) + pug_attr("data-section", item.key, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E\u003Cdiv" + (" class=\"error\"" + pug_attr("data-section", item.error, true, false)) + "\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
                     }
                 } else {
                     var $$l = 0;
                     for (var pug_index0 in $$obj) {
                         $$l++;
                         var item = $$obj[pug_index0];
-                        pug_html = pug_html + "\u003Cdiv" + (" class=\"element\"" + pug_attr("data-section", item.key, true, false)) + "\u003E\u003Cobject" + (" class=\"svg\"" + " type=\"image\u002Fsvg+xml\"" + pug_attr("data", item.data, true, false)) + "\u003E\u003C\u002Fobject\u003E\u003Cinput" + (" class=\"menu-input\"" + pug_attr("placeholder", item.placeholder, true, false) + pug_attr("type", item.type, true, false) + pug_attr("required", true, true, false) + pug_attr("data-section", item.key, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E\u003Cdiv" + (" class=\"error\"" + pug_attr("data-section", item.error, true, false)) + "\u003E\u003C\u002Fdiv\u003E";
+                        pug_html = pug_html + "\u003Cdiv class=\"papa\"\u003E\u003Cdiv" + (" class=\"element\"" + pug_attr("data-section", item.key, true, false)) + "\u003E\u003Cobject" + (" class=\"svg\"" + " type=\"image\u002Fsvg+xml\"" + pug_attr("data", item.data, true, false)) + "\u003E\u003C\u002Fobject\u003E\u003Cinput" + (" class=\"menu-input\"" + pug_attr("placeholder", item.placeholder, true, false) + pug_attr("type", item.type, true, false) + pug_attr("required", true, true, false) + pug_attr("data-section", item.key, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E\u003Cdiv" + (" class=\"error\"" + pug_attr("data-section", item.error, true, false)) + "\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
                     }
                 }
             }).call(this);
