@@ -1,4 +1,4 @@
-import mainMovieTemplate from './mainMovie.js';
+import mainMovieTemplate from './mainMovie.pug';
 
 export default class MainMovieClass {
     render() {

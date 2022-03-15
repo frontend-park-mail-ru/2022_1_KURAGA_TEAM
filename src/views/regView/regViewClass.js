@@ -1,4 +1,4 @@
-import regViewTemplate from './regView.js';
+import regViewTemplate from './regView.pug';
 import FooterClass from '../../components/footer/footerClass.js';
 import InputsClass from '../../components/inputs/inputsReg/inputsClass.js';
 import ButtonClass from '../../components/button/buttonClass.js';

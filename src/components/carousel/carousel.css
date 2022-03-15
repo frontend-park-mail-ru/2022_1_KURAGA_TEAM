@@ -198,23 +198,23 @@
 #cb {
     width: 75px;
     margin: 2px;
-    background: url("../../../static/heart.svg");
+    background: url("../../static/heart.svg");
     visibility: hidden;
 }
 
 input#cb:hover::after {
-    content: url("../../../static/LIKE.svg");
+    content: url("../../static/LIKE.svg");
 }
 
 input#cb::after {
     transition: all .4s ease;
     transition: all .4s ease;
     visibility: visible;
-    content: url("../../../static/heart.svg");
+    content: url("../../static/heart.svg");
     padding: 8px;
 }
 
 input#cb:checked::after {
-    content: url("../../../static/LIKE.svg");
+    content: url("../../static/LIKE.svg");
 }
 

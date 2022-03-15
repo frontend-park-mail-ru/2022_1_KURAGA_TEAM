@@ -1,4 +1,4 @@
-import inputsTemplate from './inputs.js';
+import inputsTemplate from './inputs.pug';
 import { registration } from '../../../modules/network.js';
 import router from '../../../routing/router.js';
 
@@ -35,7 +35,7 @@ const configElement = [
 
 export default class InputsClass {
     render() {
-        return inputsTemplate(configElement);
+        return inputsTemplate({items: configElement});
     }
 
     setHandler() {

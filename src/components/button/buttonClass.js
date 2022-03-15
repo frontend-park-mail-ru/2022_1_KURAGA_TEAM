@@ -1,4 +1,4 @@
-import buttonTemplate from './button.js';
+import buttonTemplate from './button.pug';
 
 export default class ButtonClass {
     #value;
@@ -11,6 +11,6 @@ export default class ButtonClass {
     }
 
     render() {
-        return buttonTemplate(this.#value, this.#cls);
+        return buttonTemplate({value: this.#value, cls: this.#cls});
     }
 }

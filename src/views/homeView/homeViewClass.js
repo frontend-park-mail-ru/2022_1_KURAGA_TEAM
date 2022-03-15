@@ -1,4 +1,4 @@
-import homeViewTemplate from './homeView.js';
+import homeViewTemplate from './homeView.pug';
 import HeaderClass from '../../components/header/headerClass.js';
 import MainMovieClass from '../../components/mainMovie/mainMovieClass.js';
 import carousel from '../../components/carousel/carouselClass.js';

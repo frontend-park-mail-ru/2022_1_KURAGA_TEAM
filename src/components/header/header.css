@@ -10,7 +10,7 @@
 .header {
     margin-bottom: 30px;
     flex-direction: row;
-    background-image: url("../../../static/1-1.webp");
+    background-image: url("../../static/1-1.webp");
     background-size: cover;
     grid-area: header;
     height: 100%;
@@ -96,7 +96,7 @@
     border: 0;
     margin-inline: -40px;
     height: 100%;
-    background: url("../../../static/lupa.png");
+    background: url("../../static/lupa.png");
     background-size: 100%;
 }
 
@@ -136,7 +136,7 @@
 .btn-profile {
     width: 50px;
     height: 50px;
-    background-image: url("../../../static/profile.png");
+    background-image: url("../../static/profile.png");
     cursor: pointer;
     border: 0;
     background-size: contain;
@@ -179,5 +179,5 @@
     margin-inline-start: 10px;
     width: 15px;
     height: 9px;
-    background-image: url("../../../static/arrow.svg");
+    background-image: url("../../static/arrow.svg");
 }

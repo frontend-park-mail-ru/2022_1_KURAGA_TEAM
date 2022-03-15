@@ -1,13 +1,10 @@
-mixin regView(items)
-    div#back
-    object.logo(type="image/svg+xml", data="../../static/Logo.svg")
-    div#back-menu
-        div#menu
-            h1.menu-h1 Регистрация
-            form.menu-form(method="post", action="/", noValidate, enctype="application/json") !{items.inputs} !{items.button}
-            div.text
-                span.first-span Есть аккаунт?
-                a.second-span(href="/login") Войдите
-    div !{items.footer}
-
-+ regView(items)
+div#back
+object.logo(type="image/svg+xml", data="../../static/Logo.svg")
+div#back-menu
+    div#menu
+        h1.menu-h1 Регистрация
+        form.menu-form(method="post", action="/", noValidate, enctype="application/json") !{inputs} !{button}
+        div.text
+            span.first-span Есть аккаунт?
+            a.second-span(href="/login") Войдите
+div !{footer}

@@ -1,4 +1,4 @@
-import footerTemplate from './footer.js';
+import footerTemplate from './footer.pug';
 
 const configIcon = [
     {
@@ -20,6 +20,6 @@ const configIcon = [
 
 export default class FooterClass {
     render() {
-        return footerTemplate(configIcon);
+        return footerTemplate({items: configIcon});
     }
 }

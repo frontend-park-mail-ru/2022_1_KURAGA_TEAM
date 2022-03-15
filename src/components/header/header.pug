@@ -1,17 +1,14 @@
-mixin header(item)
-        object.logo-home(type = "image/png", data = "../static/logo.png")
-        a.font-nav(href="/") Главная
-        a.font-nav(href="/") Фильмы
-        a.font-nav(href="/") Сериалы
-        a.font-nav(href="/") Избранное
-        div.space
-        div.font-nav.name-profile  !{item}
-        div.profile-block
-            div.profile.dropdown
-                button.btn-profile
-                div.dropdown-content
-                    a.font(href="/") Профиль
-                    a.quit.font(href="/login") Выйти
-            div.arrow
-
-+ header(item)
+object.logo-home(type = "image/png", data = "../static/logo.png")
+a.font-nav(href="/") Главная
+a.font-nav(href="/") Фильмы
+a.font-nav(href="/") Сериалы
+a.font-nav(href="/") Избранное
+div.space
+div.font-nav.name-profile  !{item}
+div.profile-block
+    div.profile.dropdown
+        button.btn-profile
+        div.dropdown-content
+            a.font(href="/") Профиль
+            a.quit.font(href="/login") Выйти
+    div.arrow

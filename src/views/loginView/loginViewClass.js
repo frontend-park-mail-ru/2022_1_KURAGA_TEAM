@@ -1,4 +1,4 @@
-import loginViewTemplate from './loginView.js';
+import loginViewTemplate from './loginView.pug';
 import FooterClass from '../../components/footer/footerClass.js';
 import InputsClass from '../../components/inputs/inputsLogin/inputsClass.js';
 import ButtonClass from '../../components/button/buttonClass.js';
