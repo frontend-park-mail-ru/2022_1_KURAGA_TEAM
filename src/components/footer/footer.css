@@ -3,7 +3,7 @@
     display: flex;
     width: 100%;
     position: absolute;
-    background: var(--back-color);
+    background: var(--footer-color);
     height: 150px;
     justify-content: space-between;
 }

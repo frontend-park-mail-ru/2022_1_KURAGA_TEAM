@@ -1,0 +1,27 @@
+@import "../components/headMovie/headMovie.css";
+
+.photo-movie {
+    top: 0;
+    left: 0;
+    background-image: url("../static/AvengersBack.webp");
+    height: 96vh;
+}
+
+.photo-movie__gradient {
+    width: 80%;
+    height: 96vh;
+    background: var(--movie-gradient);
+}
+
+.head-movie {
+    top: 224px;
+    position: absolute;
+    margin-left: 40px;
+    height: 50%;
+}
+
+.first-part-info {
+    display: flex;
+    height: 200px;
+    background: var(--back-color);
+}

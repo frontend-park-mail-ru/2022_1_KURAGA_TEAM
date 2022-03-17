@@ -5,6 +5,7 @@
     font-style: normal;
     font-weight: bold;
     text-shadow: 0 4px 4px var(--nav-font-shadow);
+    cursor: pointer;
 }
 
 .header {
@@ -13,10 +14,14 @@
     background-image: url("../../static/1-1.webp");
     background-size: cover;
     grid-area: header;
-    height: 100%;
+    height: 95vh;
 }
 
 .navbar {
+    z-index: 4;
+    top: 0;
+    position: fixed;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
@@ -26,6 +31,11 @@
     line-height: 28px;
     text-align: center;
     background:  var(--nav-back);
+    transition: background 0.6s linear;
+}
+
+.navbar-color {
+    background: var(--footer-color);
 }
 
 .logo-home {
@@ -48,7 +58,6 @@
     border: 0;
     background-color: transparent;
     width: 100px;
-    transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     font-family: "GT Eesti Pro Display", arial, sans-serif;
 }

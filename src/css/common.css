@@ -43,4 +43,13 @@ body {
     --btn-carousel-back-hover: rgb(196 196 196 / 8%);
     --desc-mov-back: linear-gradient(180deg, rgb(196 196 196 / 0%) -79.55%, #000 124.95%);
     --genre-color: #707070;
+    --movie-gradient: linear-gradient(90deg, #070606 6.08%, rgba(7, 6, 6, 0.5) 75.03%, rgba(14, 12, 12, 0.25) 78.99%, rgba(27, 23, 23, 0.1) 90.45%, rgba(27, 23, 23, 0) 100%);
+    --great-rating: #3BB33B;
+    --our-name: #2C51B1;
+    --our-name-gradient: linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%);
+    --secondary-name: #9B9B9B;
+    --trailer-button: linear-gradient(121.9deg, #6D6D6D 16.73%, #000000 340.95%);
+    --mix-color: #744FA9;
+    --trailer-button-hover: linear-gradient(121.9deg, #4B4B4B 16.73%, rgba(20, 20, 20, 0.294) 340.95%);
+    --footer-color: #020C0F;
 }

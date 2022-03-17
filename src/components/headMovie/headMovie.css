@@ -1,0 +1,117 @@
+.head-movie__name {
+    width: 567px;
+    height: 181px;
+    margin-bottom: 52px;
+}
+
+.head-movie__rating {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+
+.string-rating {
+    display: flex;
+    flex-direction: column;
+    margin-right: 74px;
+}
+
+.rating {
+    color: var(--great-rating);
+    font-weight: bold;
+    font-size: 32px;
+    margin-left: 30px;
+}
+
+.our-name {
+    background-color: var(--our-name);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--our-name-gradient);
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.poisk-name {
+    color: var(--secondary-name);
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.head-movie__info {
+    margin-bottom: 24px;
+    display: flex;
+}
+
+.short-info {
+    font-weight: lighter;
+    font-size: 22px;
+    margin-right: 6px;
+}
+
+.info__genre {
+    margin-right: 16px;
+}
+
+.info__country {
+    margin-right: 16px;
+}
+
+.info__duration {
+    margin-right: 16px;
+}
+
+.head-movie__buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.play-button {
+    font-weight: lighter;
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+    color: var(--font-color);
+    font-size: 20px;
+    height: 44px;
+    width: 232px;
+    border: 0;
+    cursor: pointer;
+    background: var(--btn-color);
+    mix-blend-mode: normal;
+    border-radius: 10px;
+    transition: transform .1s ease-out,background-color .15s linear;
+}
+.play-button:active {
+    transform: scale(0.94);
+}
+.play-button:hover {
+    background: var(--btn-hover-color);
+}
+
+.trailer-button {
+    position: relative;
+    font-weight: lighter;
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+    color: var(--font-color);
+    font-size: 20px;
+    height: 44px;
+    width: 164px;
+    cursor: pointer;
+    border: 3px solid var(--mix-color);
+    background: var(--trailer-button);
+    mix-blend-mode: normal;
+    border-radius: 10px;
+    transition: transform .1s ease-out,background-color .15s linear;
+}
+
+.trailer-button:active {
+    transform: scale(0.94);
+}
+
+.trailer-button:hover {
+    background: var(--trailer-button-hover);
+}
+
+
+
+
+
