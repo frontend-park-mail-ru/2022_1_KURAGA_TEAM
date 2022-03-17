@@ -5,7 +5,7 @@
     left: 0;
     background-size: cover;
     background-image: url("../static/Leo.jpg");
-    height: 765px;
+    height: 700px;
 }
 
 .photo-person__gradient {
@@ -15,7 +15,7 @@
 }
 
 .head-person {
-    top: 224px;
+    top: 164px;
     position: absolute;
     margin-left: 40px;
     height: 50%;

@@ -14,17 +14,19 @@
 }
 
 .head-person__descr{
-    margin: 46px 700px 10px auto;
+    margin-block: 46px;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
-    color:var(--font-color);
+    color: var(--font-color);
+    width: 500px;
 }
 
 .add-photos{
     display: flex;
     justify-content: flex-start;
     column-gap: 22px;
+    margin-bottom: 28px;
 }
 
 .add-photos__photo{
