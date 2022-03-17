@@ -1,0 +1,28 @@
+@import "../components/headPerson/headPerson.css";
+
+.photo-person {
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-image: url("../static/Leo.jpg");
+    height: 765px;
+}
+
+.photo-person__gradient {
+    width: 80%;
+    height: 96vh;
+    background: var(--person-gradient);
+}
+
+.head-person {
+    top: 224px;
+    position: absolute;
+    margin-left: 40px;
+    height: 50%;
+}
+
+.first-part-info {
+    display: flex;
+    height: 200px;
+    background: var(--back-color);
+}
