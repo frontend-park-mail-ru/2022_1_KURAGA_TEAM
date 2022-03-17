@@ -39,7 +39,7 @@ body {
     --drop-shadow: rgb(0 0 0 / 20%);
     --drop-back-hover: linear-gradient(121.9deg, rgb(0 0 0 / 40%) 16.73%, rgb(20 20 20 / 16.8%) 340.95%);
     --btn-carousel-color: #ffffffc2;
-    --btn-carousel-back: #ffffff1c;
+    --btn-carousel-back: rgb(200 200 200 / 10%);
     --btn-carousel-back-hover: rgb(196 196 196 / 8%);
     --desc-mov-back: linear-gradient(180deg, rgb(196 196 196 / 0%) -79.55%, #000 124.95%);
     --genre-color: #707070;

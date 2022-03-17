@@ -17,7 +17,7 @@
 .b-carousel__next {
     border: 0;
     width: 40px;
-    color: var(--btn-carousel-color);
+    /*color: var(--btn-carousel-color);*/
     font-size: 30px;
     position: absolute;
     top: 50%;
@@ -28,6 +28,7 @@
     white-space: nowrap;
     overflow: hidden;
     z-index: 3;
+    color: transparent;
 }
 
 .b-carousel__prev {
@@ -41,10 +42,10 @@
 
 .b-carousel__prev:hover,
 .b-carousel__next:hover {
+    color: var(--btn-carousel-color);
     width: 55px;
     font-size: 40px;
     background-color: var(--btn-carousel-back-hover);
-    transition: all .4s ease;
     transition: all .4s ease;
 }
 
