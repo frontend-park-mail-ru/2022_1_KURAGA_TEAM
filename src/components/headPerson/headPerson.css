@@ -1,117 +1,35 @@
-.head-person__name {
-    width: 567px;
-    height: 181px;
-    margin-bottom: 52px;
+.head-person__name{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 58px;
+    color:var(--font-color);
 }
 
-.head-person__rating {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 40px;
-}
-
-.string-rating {
-    display: flex;
-    flex-direction: column;
-    margin-right: 74px;
-}
-
-.rating {
-    color: var(--great-rating);
-    font-weight: bold;
-    font-size: 32px;
-    margin-left: 30px;
-}
-
-.our-name {
-    background-color: var(--our-name);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-image: var(--our-name-gradient);
+.head-person__job{
+    font-weight: 350;
     font-size: 20px;
-    font-weight: lighter;
-}
-
-.poisk-name {
+    line-height: 23px;
     color: var(--secondary-name);
-    font-size: 20px;
-    font-weight: lighter;
 }
 
-.head-person__info {
-    margin-bottom: 24px;
+.head-person__descr{
+    margin: 46px 700px 10px auto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color:var(--font-color);
+}
+
+.add-photos{
     display: flex;
+    justify-content: flex-start;
+    column-gap: 22px;
 }
 
-.short-info {
-    font-weight: lighter;
-    font-size: 22px;
-    margin-right: 6px;
-}
-
-.info__genre {
-    margin-right: 16px;
-}
-
-.info__country {
-    margin-right: 16px;
-}
-
-.info__duration {
-    margin-right: 16px;
-}
-
-.head-person__buttons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.play-button {
-    font-weight: lighter;
-    font-family: GT Eesti Pro Display, arial, sans-serif;
-    color: var(--font-color);
-    font-size: 20px;
-    height: 44px;
-    width: 232px;
-    border: 0;
-    cursor: pointer;
-    background: var(--btn-color);
-    mix-blend-mode: normal;
+.add-photos__photo{
+    object-fit: cover;
     border-radius: 10px;
-    transition: transform .1s ease-out,background-color .15s linear;
+    width: 252px;
+    height: 212px;
 }
-.play-button:active {
-    transform: scale(0.94);
-}
-.play-button:hover {
-    background: var(--btn-hover-color);
-}
-
-.trailer-button {
-    position: relative;
-    font-weight: lighter;
-    font-family: GT Eesti Pro Display, arial, sans-serif;
-    color: var(--font-color);
-    font-size: 20px;
-    height: 44px;
-    width: 164px;
-    cursor: pointer;
-    border: 3px solid var(--mix-color);
-    background: var(--trailer-button);
-    mix-blend-mode: normal;
-    border-radius: 10px;
-    transition: transform .1s ease-out,background-color .15s linear;
-}
-
-.trailer-button:active {
-    transform: scale(0.94);
-}
-
-.trailer-button:hover {
-    background: var(--trailer-button-hover);
-}
-
-
-
-
-
