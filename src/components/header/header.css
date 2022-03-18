@@ -41,7 +41,7 @@
 .logo-home {
     margin-block: 8px;
     height: 60px;
-    padding-inline-start: 35px;
+    padding-inline-start: 65px;
 }
 
 .space {
@@ -128,7 +128,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-inline-end: 35px;
+    margin-inline-end: 65px;
     cursor: pointer;
 }
 

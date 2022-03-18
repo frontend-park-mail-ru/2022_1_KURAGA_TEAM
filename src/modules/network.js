@@ -51,3 +51,13 @@ export async function movies() {
         return err;
     }
 }
+
+export async function movie(id) {
+    try {
+        return await ajaxReq.get({
+            path: '/movie/' + id,
+        });
+    } catch (err) {
+        return err;
+    }
+}
