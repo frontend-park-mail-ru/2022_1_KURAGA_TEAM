@@ -7,6 +7,7 @@ import handlerLink from '../../utils/handlerLink.js';
 import {profile, movies} from '../../modules/network.js';
 import router from '../../routing/router.js';
 
+const LOGIN_VIEW = '/login';
 const root = document.getElementById('root');
 
 export default class HomeViewClass {
@@ -15,7 +16,7 @@ export default class HomeViewClass {
         Promise.all([profile(), movies()])
             .then(([user, movies]) => {
                 if (!user.isAuth) {
-                    router.go('/login');
+                    router.go(LOGIN_VIEW);
                     return;
                 }
                 Promise.all([user.data, movies.data])

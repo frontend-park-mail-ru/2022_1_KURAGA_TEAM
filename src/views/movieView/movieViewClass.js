@@ -1,7 +1,7 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from '../../components/header/headerClass.js';
 import handlerLink from '../../utils/handlerLink.js';
-import {movie, profile} from '../../modules/network.js';
+import { movie, profile } from '../../modules/network.js';
 import router from "../../routing/router.js";
 import HeadMovieClass from "../../components/headMovie/headMovieClass.js";
 import FooterClass from "../../components/footer/footerClass.js";
@@ -9,30 +9,32 @@ import FirstInfoMovieClass from "../../components/firstInfoMovie/firstInfoMovieC
 import SecondGenreClass from "../../components/secondGende/secondGenre.js";
 import ActorsClass from "../../components/actors/actorsClass.js";
 
+const ERROR = 500;
+const LOGIN_VIEW = '/login';
+const ERROR_VIEW = '/error';
 const root = document.getElementById('root');
 
 export default class MovieViewClass {
     render() {
-        let id = document.location.pathname.slice(7);
+        let id = +/\d+/.exec(window.location.pathname);
 
         Promise.all([profile(), movie(id)])
             .then(([user, movie]) => {
                 if (!user.isAuth) {
-                    router.go('/login');
+                    router.go(LOGIN_VIEW);
 
                     return;
                 }
                 Promise.all([user.data, movie.data])
                     .then(([userRes, movieRes]) => {
-                        if (movieRes.status === 500) {
-                            router.go('/error');
+                        if (movieRes.status === ERROR) {
+                            router.go(ERROR_VIEW);
 
                             return;
                         }
 
                         const header = new HeaderClass(userRes.username);
-                        const headMovie = new HeadMovieClass(movieRes.year, movieRes.genre, movieRes.country,
-                            movieRes.duration, movieRes.age_limit, movieRes.rating, movieRes.kinopoisk_rating);
+                        const headMovie = new HeadMovieClass(movieRes);
                         const firstInfoMovie = new FirstInfoMovieClass(movieRes.rating, movieRes.description);
                         const secondGenre = new SecondGenreClass(movieRes.genre);
                         const actors = new ActorsClass(movieRes.staff);

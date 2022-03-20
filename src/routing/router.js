@@ -16,7 +16,6 @@ class Router {
         if (result !== null) {
             pathname = '/movie/id';
         }
-
         window.history.pushState(null, null, path);
 
         this.routes[pathname].render();
