@@ -5,7 +5,8 @@ export default class carousel {
     constructor(type, movies, num, title) {
         this.type = type;
         this.movies = movies;
-        this.num = num;
+        this.countDiv = Math.ceil(movies.length / num)
+        this.num = num
         this.title = title;
     }
 
@@ -17,6 +18,7 @@ export default class carousel {
             nextBtn: 'js-carouselPop__next',
             wrapMov: 'js-carouselPop__wrap',
             typeMov: '',
+            countDiv: this.countDiv,
             num: this.num,
             title: this.title
         });
@@ -27,7 +29,7 @@ export default class carousel {
             nextBtn: 'js-carouselTop__next',
             wrapMov: 'js-carouselTop__wrap',
             typeMov: 'top',
-            num: this.num,
+            countDiv: this.countDiv,
             title: this.title
         });
         if (this.type === 'Fam') return carouselTemplate({
@@ -37,7 +39,7 @@ export default class carousel {
             nextBtn: 'js-carouselFam__next',
             wrapMov: 'js-carouselFam__wrap',
             typeMov: '',
-            num: this.num,
+            countDiv: this.countDiv,
             title: this.title
         });
     }

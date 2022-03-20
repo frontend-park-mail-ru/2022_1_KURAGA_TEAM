@@ -9,21 +9,21 @@ import FooterClass from "../../components/footer/footerClass.js";
 
 const moviesConfig = [
     {
-        img: "star.png",
+        img: "gucci.jpg",
         href: '/',
-        name: 'Звездные войны1',
+        name: 'Звездныефцвфцвфцв войны1',
         genre: 'Фантастика1',
     },
     {
         img: "star.png",
         href: '/',
-        name: 'Звездные войны2',
+        name: 'Звездные войнфцвфцвы2',
         genre: 'Фантастика2',
     },
     {
         img: "star.png",
         href: '/',
-        name: 'Звездные войны3',
+        name: 'Звездные войны3фцвфцв',
         genre: 'Фантастика3',
     },
     {
@@ -32,6 +32,18 @@ const moviesConfig = [
         name: 'Звездные войны4',
         genre: 'Фантастика4',
     },
+    {
+        img: "star.png",
+        href: '/',
+        name: 'Звездные войны5фцвфцв',
+        genre: 'Фантастика3',
+    },
+    {
+        img: "star.png",
+        href: '/',
+        name: 'Звездные войны6',
+        genre: 'Фантастика4',
+    }
 ];
 
 

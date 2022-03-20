@@ -1,20 +1,21 @@
-mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,num,title)
-        div.select-title= title
-        div.wrap
-            div.b-carousel(class = car)
-                button(class=`b-carousel`+`${typeMov}`+`__prev ${prevBtn}`) ❬
-                button(class=`b-carousel`+`${typeMov}`+`__next ${nextBtn}`) ❭
-                div(class=`b-carousel`+`${typeMov}`+`__wrap ${wrapMov}`, style="transform: translateX(0%);")
-                    each _ in Array(num)
-                        div.b-carousel__item
-                            each item in items
-                                div(class=`movie`+`${typeMov}`)(style=`background: url(../../../static/`+"star.png" +`);background-size: contain;`)
+mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
+    div.select-title= title
+    div.wrap
+        div.b-carousel(class = car)
+            button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
+            button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
+            div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);")
+                - for (var i = 0 ;i < countDiv; ++i)
+                    div.b-carousel__item
+                        each item,index in items
+                            if(index >= i*num && index < (i+1)*num )
+                                div(class=`movie` + `${typeMov}`)(style=`background: url(../../../static/` + item.img + `);background-size: contain;`)
                                     a(href= item.href)
                                         div.ref-mov
-                                    div(class=`desc-mov`+`${typeMov}`)
+                                    div(class=`desc-mov` + `${typeMov}`)
                                         div= item.name
                                         div.genre= item.genre
                                         input#cb.input-like(type = "checkbox")
 
 
-+ carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,num,title)
++ carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
