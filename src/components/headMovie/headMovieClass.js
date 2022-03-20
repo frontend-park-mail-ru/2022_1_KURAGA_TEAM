@@ -3,7 +3,7 @@ import headMovieTemplate from './headMovie.pug'
 export default class HeadMovieClass {
     #info;
 
-    constructor({year, genre, country, duration, age, rating, poiskRating}) {
+    constructor({year, genre, country, duration, age, rating, kinopoisk_rating}) {
         this.#info = {
             year,
             genre,
@@ -11,7 +11,7 @@ export default class HeadMovieClass {
             duration,
             age,
             rating,
-            poiskRating
+            kinopoisk_rating
         };
     }
 

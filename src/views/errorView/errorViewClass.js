@@ -16,7 +16,7 @@ export default class ErrorViewClass {
                     return;
                 }
                 data.then((res) => {
-                    const header = new HeaderClass(res.username);
+                    const header = new HeaderClass(res.user.username);
                     const footer = new FooterClass();
 
                     root.innerHTML = errorViewTemplate({

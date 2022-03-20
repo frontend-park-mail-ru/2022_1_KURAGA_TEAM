@@ -21,7 +21,7 @@ export default class HomeViewClass {
                 }
                 Promise.all([user.data, movies.data])
                     .then(([user, mov]) => {
-                        const header = new HeaderClass(user.username);
+                        const header = new HeaderClass(user.user.username);
                         const mainMovie = new MainMovieClass();
                         const carouselPop = new carousel('Pop', mov.moviesCompilation[0].movies, 3);
                         const carouselTop = new carousel('Top', mov.moviesCompilation[1].movies, 3);

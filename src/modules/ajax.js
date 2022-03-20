@@ -1,5 +1,5 @@
-// const API_URL = 'http://localhost:1323/api/v1';
-const API_URL = 'http://movie-space.ru:1323/api/v1';
+const API_URL = 'http://localhost:1323/api/v1';
+// const API_URL = 'http://movie-space.ru:1323/api/v1';
 
 function checkStatus(status) {
     switch (Math.round(status / 100)) {
@@ -66,5 +66,6 @@ function ajax({ method, path, body }) {
 export const ajaxReq = {
     get: (params) => ajax({ ...params, method: 'get' }),
     post: (params) => ajax({ ...params, method: 'post' }),
+    put: (params) => ajax({ ...params, method: 'put' }),
     delete: (params) => ajax({ ...params, method: 'delete' }),
 };
