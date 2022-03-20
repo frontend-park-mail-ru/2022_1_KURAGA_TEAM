@@ -208,7 +208,6 @@ input#cb:hover::after {
 
 input#cb::after {
     transition: all .4s ease;
-    transition: all .4s ease;
     visibility: visible;
     content: url("../../static/heart.svg");
     padding: 8px;

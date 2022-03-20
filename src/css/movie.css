@@ -1,0 +1,45 @@
+@import "../components/headMovie/headMovie.css";
+@import "../components/firstInfoMovie/firstInfoMovie.css";
+@import "../components/secondGende/secondGenre.css";
+@import "../components/actors/actors.css";
+
+.photo-movie {
+    top: 0;
+    left: 0;
+    background-image: url("../static/AvengersBack.webp");
+    height: 96vh;
+}
+
+.photo-movie__gradient {
+    width: 80%;
+    height: 96vh;
+    background: var(--movie-gradient);
+}
+
+.head-movie {
+    top: 224px;
+    position: absolute;
+    margin-left: 70px;
+    height: 50%;
+}
+
+.first-part-info {
+    margin-left: 70px;
+    margin-top: 100px;
+    display: flex;
+    height: auto;
+}
+
+.second-part-genre {
+    margin-left: 70px;
+    margin-top: 100px;
+}
+
+.third-part-actors {
+    margin-top: 60px;
+    margin-left: 70px;
+}
+
+.final-part-carousel {
+    height: 60px;
+}

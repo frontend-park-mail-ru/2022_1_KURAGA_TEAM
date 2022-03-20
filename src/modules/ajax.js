@@ -18,7 +18,7 @@ function checkStatus(status) {
         return 'Server Error';
     }
     default: {
-
+        return 'Unknown';
     }
     }
 }

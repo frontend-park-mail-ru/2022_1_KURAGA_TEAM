@@ -1,5 +1,6 @@
 .main-movie {
     display: flex;
+    height: 90%;
     justify-content: flex-end;
 }
 
@@ -9,7 +10,7 @@
     width: 573px;
     height: auto;
     border-radius: 32px;
-    margin: 150px 32px 10px;
+    margin: 440px 32px 10px;
     display: grid;
     column-gap: 10px;
     grid-template-rows: auto;
