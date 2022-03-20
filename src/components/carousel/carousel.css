@@ -60,6 +60,7 @@
 
 .b-carousel__item {
     flex: 0 0 100%;
+    width: 1px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -160,6 +161,7 @@
 }
 
 .selection {
+    background-color: var(--back-color);
     display: grid;
     grid-template-columns: auto;
     column-gap: 10px;
@@ -169,11 +171,11 @@
 }
 
 .select {
-    place-self: center;
-    width: 1280px;
-    grid-template-columns: 10px;
-    column-gap: 10px;
-    grid-template-rows: 50px auto;
+    /*place-self: center;*/
+    /*width: 1280px;*/
+    /*grid-template-columns: 10px;*/
+    /*column-gap: 10px;*/
+    /*grid-template-rows: 50px auto;*/
 }
 
 .select-title {
