@@ -17,7 +17,7 @@
 .b-carousel__next {
     border: 0;
     width: 40px;
-    color: var(--btn-carousel-color);
+    /*color: var(--btn-carousel-color);*/
     font-size: 30px;
     position: absolute;
     top: 50%;
@@ -28,6 +28,7 @@
     white-space: nowrap;
     overflow: hidden;
     z-index: 3;
+    color: transparent;
 }
 
 .b-carousel__prev {
@@ -41,10 +42,10 @@
 
 .b-carousel__prev:hover,
 .b-carousel__next:hover {
+    color: var(--btn-carousel-color);
     width: 55px;
     font-size: 40px;
     background-color: var(--btn-carousel-back-hover);
-    transition: all .4s ease;
     transition: all .4s ease;
 }
 
@@ -59,6 +60,7 @@
 
 .b-carousel__item {
     flex: 0 0 100%;
+    width: 1px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -159,6 +161,7 @@
 }
 
 .selection {
+    background-color: var(--back-color);
     display: grid;
     grid-template-columns: auto;
     column-gap: 10px;
@@ -168,11 +171,11 @@
 }
 
 .select {
-    place-self: center;
-    width: 1280px;
-    grid-template-columns: 10px;
-    column-gap: 10px;
-    grid-template-rows: 50px auto;
+    /*place-self: center;*/
+    /*width: 1280px;*/
+    /*grid-template-columns: 10px;*/
+    /*column-gap: 10px;*/
+    /*grid-template-rows: 50px auto;*/
 }
 
 .select-title {

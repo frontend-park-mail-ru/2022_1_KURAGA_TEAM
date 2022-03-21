@@ -62,6 +62,17 @@ export async function movie(id) {
     }
 }
 
+export async function person(id) {
+    try {
+        return await ajaxReq.get({
+            path: '/person/' + id,
+        });
+    } catch (err) {
+        return err;
+    }
+}
+
+
 export async function edit(form) {
     try {
         return await ajaxReq.put({

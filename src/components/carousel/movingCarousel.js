@@ -1,4 +1,6 @@
 export default function MovingCarousel(setting) {
+
+
     if (document.querySelector(setting.wrap) === null) {
         console.error(`Carousel not fount selector ${setting.wrap}`);
         return;
@@ -9,10 +11,12 @@ export default function MovingCarousel(setting) {
     this.prev_slide = () => {
         privates.opt.position--;
 
-        // if (privates.opt.position < 0) {
+         if (privates.opt.position < 0) {
+             // privates.sel.prev.style.color = 'transparent';
+             // privates.sel.prev.style.backgroundColor = 'transparent'
         //     privates.sel.wrap.classList.add('s-notransition');
         //     privates.opt.position = privates.opt.max_position - 1;
-        // }
+         }
 
         privates.sel.wrap.style.transform = `translateX(-${privates.opt.position}00%)`;
     };
@@ -21,6 +25,8 @@ export default function MovingCarousel(setting) {
         privates.opt.position++;
 
         if (privates.opt.position >= privates.opt.max_position) {
+            // privates.sel.next.style.color = 'transparent';
+            // privates.sel.next.style.backgroundColor = 'transparent'
             --privates.opt.position;
         }
 
@@ -41,6 +47,8 @@ export default function MovingCarousel(setting) {
         position: 0,
         max_position: document.querySelector(privates.setting.wrap).children.length,
     };
+
+
 
     if (privates.sel.prev !== null) {
         privates.sel.prev.addEventListener('click', () => {

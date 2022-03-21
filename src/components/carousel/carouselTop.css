@@ -1,7 +1,7 @@
 .b-carouseltop__prev,
 .b-carouseltop__next {
+    color: transparent;
     width: 45px;
-    color: var(--btn-carousel-color);
     font-size: 30px;
     position: absolute;
     top: 50%;
@@ -36,18 +36,18 @@
 }
 
 .b-carouseltop__prev:hover{
+    color: var(--btn-carousel-color);
     width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
-    transition: all .4s ease;
     transition: all .4s ease;
 }
 
 .b-carouseltop__next:hover{
+    color: var(--btn-carousel-color);
     width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
-    transition: all .4s ease;
     transition: all .4s ease;
 }
 

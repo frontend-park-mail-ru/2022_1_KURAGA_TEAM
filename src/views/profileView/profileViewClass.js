@@ -29,7 +29,7 @@ export default class ProfileViewClass {
             const header = new HeaderClass(res.user.username);
             const inputs = new InputsProfileClass(res.user);
             const avatar = new ProfileAvatarClass();
-            const button = new ButtonClass('Редактировать');
+            const button = new ButtonClass('Сохранить');
             const footer = new FooterClass();
 
             root.innerHTML = profileViewTemplate({
