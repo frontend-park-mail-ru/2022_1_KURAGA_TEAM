@@ -17,7 +17,7 @@ import '../src/css/profile.css';
 router.register('/reg', RegViewClass);
 router.register('/login', LoginViewClass);
 router.register('/', HomeViewClass);
-router.register('/movie/id', MovieViewClass);
+router.register('/movie', MovieViewClass);
 router.register('/error', ErrorViewClass);
 router.register('/profile', ProfileViewClass);
 

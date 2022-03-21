@@ -11,11 +11,13 @@ class Router {
 
     go(path) {
         let pathname = path;
-        let result = path.match(/movie\/(\d+)/);
 
-        if (result !== null) {
-            pathname = '/movie/id';
+        const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
+
+        if (regPath !== null) {
+            pathname = '/' + regPath[1];
         }
+
         window.history.pushState(null, null, path);
 
         this.routes[pathname].render();
@@ -24,9 +26,10 @@ class Router {
     start() {
         let pathname = window.location.pathname;
 
-        let result = window.location.pathname.match(/movie\/(\d+)/);
-        if (result !== null) {
-            pathname = '/movie/id';
+        const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
+
+        if (regPath !== null) {
+            pathname = '/' + regPath[1];
         }
 
         if (this.routes[pathname] === undefined) {
@@ -36,12 +39,14 @@ class Router {
         const currentView = this.routes[pathname];
         currentView.render();
 
-        window.addEventListener('popstate', () => {
+        window.addEventListener('popstate', (e) => {
             let pathname = window.location.pathname;
 
-            let result = window.location.pathname.match(/movie\/(\d+)/);
-            if (result !== null) {
-                pathname = '/movie/id';
+            const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
+            console.log(pathname, regPath)
+
+            if (regPath !== null) {
+                pathname = '/' + regPath[1];
             }
 
             const newView = this.routes[pathname];
