@@ -7,6 +7,7 @@ import handlerLink from '../../utils/handlerLink.js';
 import {profile, movies} from '../../modules/network.js';
 import router from '../../routing/router.js';
 
+const LOGIN_VIEW = '/login';
 const root = document.getElementById('root');
 
 export default class HomeViewClass {
@@ -15,12 +16,12 @@ export default class HomeViewClass {
         Promise.all([profile(), movies()])
             .then(([user, movies]) => {
                 if (!user.isAuth) {
-                    router.go('/login');
+                    router.go(LOGIN_VIEW);
                     return;
                 }
                 Promise.all([user.data, movies.data])
                     .then(([user, mov]) => {
-                        const header = new HeaderClass(user.username);
+                        const header = new HeaderClass(user.user.username);
                         const mainMovie = new MainMovieClass();
                         const carouselPop = new carousel('Pop', mov.moviesCompilation[0].movies, 3);
                         const carouselTop = new carousel('Top', mov.moviesCompilation[1].movies, 3);

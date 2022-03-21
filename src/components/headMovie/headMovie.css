@@ -4,6 +4,15 @@
     margin-bottom: 52px;
 }
 
+.short-info.info__genre-first:hover {
+    text-decoration: underline;
+}
+
+.info__genre-first {
+    color: white;
+    text-decoration: none;
+}
+
 .head-movie__rating {
     display: flex;
     flex-direction: row;
@@ -50,7 +59,14 @@
 }
 
 .info__genre {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
     margin-right: 16px;
+}
+
+.info__genre:hover {
+    text-decoration: underline;
 }
 
 .info__country {

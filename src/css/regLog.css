@@ -5,7 +5,7 @@
 #root {
     width: 100%;
     background: var(--back-color);
-    height: 100vh;
+    height: 100%;
 }
 
 #back {
