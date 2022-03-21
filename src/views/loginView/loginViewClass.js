@@ -6,6 +6,8 @@ import handlerLink from '../../utils/handlerLink.js';
 import { profile } from '../../modules/network.js';
 import router from '../../routing/router.js';
 
+import '../../css/regLog.css';
+
 const root = document.getElementById('root');
 
 export default class LoginViewClass {

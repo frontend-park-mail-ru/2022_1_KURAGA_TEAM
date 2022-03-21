@@ -7,6 +7,8 @@ import handlerLink from '../../utils/handlerLink.js';
 import {profile, movies} from '../../modules/network.js';
 import router from '../../routing/router.js';
 
+import '../../css/home.css';
+
 const LOGIN_VIEW = '/login';
 const root = document.getElementById('root');
 

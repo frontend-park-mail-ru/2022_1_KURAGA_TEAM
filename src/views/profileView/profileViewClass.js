@@ -8,6 +8,8 @@ import ProfileAvatarClass from "../../components/profileAvatar/profileAvatarClas
 import {profile} from "../../modules/network";
 import router from "../../routing/router";
 
+import '../../css/profile.css';
+
 const LOGIN_VIEW = '/login';
 const root = document.getElementById('root');
 

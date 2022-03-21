@@ -9,6 +9,8 @@ import FirstInfoMovieClass from "../../components/firstInfoMovie/firstInfoMovieC
 import SecondGenreClass from "../../components/secondGende/secondGenre.js";
 import ActorsClass from "../../components/actors/actorsClass.js";
 
+import '../../css/movie.css';
+
 const ERROR = 500;
 const LOGIN_VIEW = '/login';
 const ERROR_VIEW = '/error';
@@ -16,7 +18,7 @@ const root = document.getElementById('root');
 
 export default class MovieViewClass {
     render() {
-        let id = +/\d+/.exec(window.location.pathname);
+        const id = +/\d+/.exec(window.location.pathname);
 
         Promise.all([profile(), movie(id)])
             .then(([user, movie]) => {
@@ -35,7 +37,7 @@ export default class MovieViewClass {
 
                         const header = new HeaderClass(userRes.user.username);
                         const headMovie = new HeadMovieClass(movieRes);
-                        const firstInfoMovie = new FirstInfoMovieClass(movieRes.rating, movieRes.description);
+                        const firstInfoMovie = new FirstInfoMovieClass(movieRes);
                         const secondGenre = new SecondGenreClass(movieRes.genre);
                         const actors = new ActorsClass(movieRes.staff);
                         const footer = new FooterClass();
