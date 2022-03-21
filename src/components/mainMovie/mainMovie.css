@@ -1,16 +1,16 @@
 .main-movie {
     display: flex;
-    height: 90%;
+    height: 100%;
     justify-content: flex-end;
 }
 
 .sidebar {
     background: var(--sidebar-back);
     backdrop-filter: blur(30px);
-    width: 573px;
-    height: auto;
+    width: 582px;
+    height: 351px;
     border-radius: 32px;
-    margin: 440px 32px 10px;
+    margin: auto 65px 10px;
     display: grid;
     column-gap: 10px;
     grid-template-rows: auto;
