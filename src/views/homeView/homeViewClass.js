@@ -23,9 +23,9 @@ export default class HomeViewClass {
                     .then(([user, mov]) => {
                         const header = new HeaderClass(user.user.username);
                         const mainMovie = new MainMovieClass();
-                        const carouselPop = new carousel('Pop', mov.moviesCompilation[0].movies, 3);
-                        const carouselTop = new carousel('Top', mov.moviesCompilation[1].movies, 3);
-                        const carouselFam = new carousel('Fam', mov.moviesCompilation[2].movies, 2);
+                        const carouselPop = new carousel('Pop', mov.moviesCompilation[0].movies, 4, "Популярное");
+                        const carouselTop = new carousel('Top', mov.moviesCompilation[1].movies, 3, "Лучшее за 2021 год");
+                        const carouselFam = new carousel('Fam', mov.moviesCompilation[2].movies, 4, "Семейное");
                         const footer = new FooterClass();
 
                         root.innerHTML = homeViewTemplate({

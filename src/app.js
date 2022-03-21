@@ -15,6 +15,7 @@ import '../src/css/media.css';
 import '../src/css/regLog.css';
 import '../src/css/movie.css';
 import '../src/css/profile.css';
+import '../src/css/person.css';
 
 
 router.register('/reg', RegViewClass);
