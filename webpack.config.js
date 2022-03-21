@@ -35,7 +35,21 @@ module.exports = {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            Components: path.resolve(__dirname, 'src/components/'),
+            Modules: path.resolve(__dirname, 'src/modules/'),
+            Routing: path.resolve(__dirname, 'src/routing/'),
+            Utils: path.resolve(__dirname, 'src/utils/'),
+        },
     },
     output: {
         publicPath: '/',

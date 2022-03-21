@@ -1,63 +1,61 @@
 import movieViewTemplate from './movieView.pug'
-import HeaderClass from '../../components/header/headerClass.js';
-import handlerLink from '../../utils/handlerLink.js';
-import { movie, profile } from '../../modules/network.js';
-import router from "../../routing/router.js";
-import HeadMovieClass from "../../components/headMovie/headMovieClass.js";
-import FooterClass from "../../components/footer/footerClass.js";
-import FirstInfoMovieClass from "../../components/firstInfoMovie/firstInfoMovieClass.js";
-import SecondGenreClass from "../../components/secondGende/secondGenre.js";
-import ActorsClass from "../../components/actors/actorsClass.js";
+import HeaderClass from 'Components/header/headerClass.js';
+import handlerLink from 'Utils/handlerLink.js';
+import { movie, profile } from 'Modules/network';
+import router from "Routing/router.js";
+import HeadMovieClass from "Components/headMovie/headMovieClass.js";
+import FooterClass from "Components/footer/footerClass.js";
+import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.js";
+import SecondGenreClass from "Components/secondGende/secondGenre.js";
+import ActorsClass from "Components/actors/actorsClass.js";
+import { routes } from "Routing/constRouting";
 
 import '../../css/movie.css';
 
-const ERROR = 500;
-const LOGIN_VIEW = '/login';
-const ERROR_VIEW = '/error';
 const root = document.getElementById('root');
 
 export default class MovieViewClass {
-    render() {
-        const id = +/\d+/.exec(window.location.pathname);
+    async render() {
+        try {
+            const id = +/\d+/.exec(window.location.pathname);
 
-        Promise.all([profile(), movie(id)])
-            .then(([user, movie]) => {
-                if (!user.isAuth) {
-                    router.go(LOGIN_VIEW);
+            const [user, mov] = await Promise.all([profile(), movie(id)]);
 
-                    return;
-                }
-                Promise.all([user.data, movie.data])
-                    .then(([userRes, movieRes]) => {
-                        if (movieRes.status === ERROR) {
-                            router.go(ERROR_VIEW);
+            if (!user.isAuth) {
+                router.go(routes.LOGIN_VIEW);
 
-                            return;
-                        }
+                return;
+            }
 
-                        const header = new HeaderClass(userRes.user.username);
-                        const headMovie = new HeadMovieClass(movieRes);
-                        const firstInfoMovie = new FirstInfoMovieClass(movieRes);
-                        const secondGenre = new SecondGenreClass(movieRes.genre);
-                        const actors = new ActorsClass(movieRes.staff);
-                        const footer = new FooterClass();
+            const [userRes, movieRes] = await Promise.all([user.data, mov.data]);
 
-                        root.innerHTML = movieViewTemplate({
-                            header: header.render(),
-                            headMovie: headMovie.render(),
-                            firstInfoMovie: firstInfoMovie.render(),
-                            secondGenre: secondGenre.render(),
-                            actors: actors.render(),
-                            footer: footer.render()
-                        });
+            if (movieRes.status === routes.ERROR) {
+                router.go(routes.ERROR_VIEW);
 
-                        handlerLink()
-                        firstInfoMovie.setHandlers();
-                        header.setHandler();
-                })
-            })
-            .catch((err) => {
-                console.error(err);
-            })
+                return;
+            }
+
+            const header = new HeaderClass(userRes.user.username);
+            const headMovie = new HeadMovieClass(movieRes);
+            const firstInfoMovie = new FirstInfoMovieClass(movieRes);
+            const secondGenre = new SecondGenreClass(movieRes.genre);
+            const actors = new ActorsClass(movieRes.staff);
+            const footer = new FooterClass();
+
+            root.innerHTML = movieViewTemplate({
+                header: header.render(),
+                headMovie: headMovie.render(),
+                firstInfoMovie: firstInfoMovie.render(),
+                secondGenre: secondGenre.render(),
+                actors: actors.render(),
+                footer: footer.render()
+            });
+
+            handlerLink()
+            firstInfoMovie.setHandlers();
+            header.setHandler();
+        } catch (err) {
+            console.error(err);
+        }
     }
 }

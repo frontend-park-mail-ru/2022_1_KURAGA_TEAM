@@ -1,8 +1,9 @@
 import errorViewTemplate from './error.pug'
-import HeaderClass from "../../components/header/headerClass.js";
-import {profile} from "../../modules/network.js";
-import router from "../../routing/router.js";
-import FooterClass from "../../components/footer/footerClass.js";
+import HeaderClass from 'Components/header/headerClass.js';
+import { profile } from 'Modules/network.js';
+import router from "Routing/router.js";
+import FooterClass from "Components/footer/footerClass.js";
+import { routes } from "Routing/constRouting";
 
 import '../../css/error.css';
 
@@ -14,7 +15,7 @@ export default class ErrorViewClass {
             const { isAuth, data } = await profile();
 
             if (!isAuth) {
-                router.go('/login');
+                router.go(routes.LOGIN_VIEW);
 
                 return;
             }

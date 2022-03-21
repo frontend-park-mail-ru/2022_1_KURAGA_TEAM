@@ -1,40 +1,41 @@
 import regViewTemplate from './regView.pug';
-import FooterClass from '../../components/footer/footerClass.js';
-import InputsClass from '../../components/inputs/inputsReg/inputsClass.js';
-import ButtonClass from '../../components/button/buttonClass.js';
-import handlerLink from '../../utils/handlerLink.js';
-import { profile } from '../../modules/network.js';
-import router from '../../routing/router.js';
+import FooterClass from 'Components/footer/footerClass.js';
+import InputsClass from 'Components/inputs/inputsReg/inputsClass.js';
+import ButtonClass from 'Components/button/buttonClass.js';
+import handlerLink from 'Utils/handlerLink.js';
+import { profile } from 'Modules/network';
+import router from 'Routing/router.js';
+import { routes } from "Routing/constRouting";
 
 import '../../css/regLog.css';
 
 const root = document.getElementById('root');
 
 export default class RegViewClass {
-    render() {
-        profile()
-            .then(({ isAuth }) => {
-                if (isAuth) {
-                    router.go('/');
+    async render() {
+        try {
+            const { isAuth } = await profile();
 
-                    return;
-                }
+            if (isAuth) {
+                router.go(routes.HOME_VIEW);
 
-                const footer = new FooterClass();
-                const inputs = new InputsClass();
-                const button = new ButtonClass('Зарегистрироваться');
+                return;
+            }
 
-                root.innerHTML = regViewTemplate({
-                    inputs: inputs.render(),
-                    button: button.render(),
-                    footer: footer.render(),
-                });
+            const footer = new FooterClass();
+            const inputs = new InputsClass();
+            const button = new ButtonClass('Зарегистрироваться');
 
-                inputs.setHandler();
-                handlerLink();
-            })
-            .catch((err) => {
-                console.error(err);
+            root.innerHTML = regViewTemplate({
+                inputs: inputs.render(),
+                button: button.render(),
+                footer: footer.render(),
             });
+
+            inputs.setHandler();
+            handlerLink();
+        } catch (err) {
+            console.error(err);
+        }
     }
 }
