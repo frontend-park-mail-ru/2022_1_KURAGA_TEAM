@@ -60,7 +60,7 @@ export default class PersonViewClass {
         //         data.then((res) => {
         const header = new HeaderClass("res.username");
         const headPerson = new HeadPersonClass();
-        const carouselPop = new carousel('Pop', moviesConfig, 3, "Фильмография");
+        const carouselPop = new carousel('Pop', moviesConfig, 4, "Фильмография");
         const footer = new FooterClass();
 
         root.innerHTML = personViewTemplate({
