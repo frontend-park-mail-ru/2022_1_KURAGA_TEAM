@@ -12,7 +12,12 @@ const moviesConfig = [
         img: "star.png",
         href: '/',
         name: 'Звездные войны1',
-        genre: 'Фантастика1',
+        genre: [
+            "Боевик",
+            "Приключения",
+            "Фантастика",
+            "Фэнтези"
+        ],
     },
     {
         img: "star.png",
