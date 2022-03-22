@@ -30,6 +30,7 @@ export default class carousel {
             wrapMov: 'js-carouselTop__wrap',
             typeMov: 'top',
             countDiv: this.countDiv,
+            num: this.num,
             title: this.title
         });
         if (this.type === 'Fam') return carouselTemplate({
@@ -40,6 +41,7 @@ export default class carousel {
             wrapMov: 'js-carouselFam__wrap',
             typeMov: '',
             countDiv: this.countDiv,
+            num: this.num,
             title: this.title
         });
     }
