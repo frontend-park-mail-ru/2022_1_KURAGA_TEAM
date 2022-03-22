@@ -26,6 +26,8 @@ export default class ProfileViewClass {
 
             const res = await data;
 
+            console.log(res.user.avatar)
+
             const header = new HeaderClass(res.user);
             const inputs = new InputsProfileClass(res.user);
             const avatar = new ProfileAvatarClass(res.user.avatar);

@@ -141,7 +141,6 @@ export default class InputsProfileClass {
         inputAvatar.addEventListener('change', () => {
             checkAvatar = 1;
             avatarImg.src = URL.createObjectURL(inputAvatar.files[0]);
-            console.log(avatarImg.src);
         });
 
         const response = (isAuth) => {

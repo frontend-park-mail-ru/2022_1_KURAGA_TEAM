@@ -5,7 +5,6 @@ export default class ProfileAvatarClass {
 
     constructor(avatar) {
         this.#avatar = avatar;
-        console.log(avatar)
     }
 
     render() {
