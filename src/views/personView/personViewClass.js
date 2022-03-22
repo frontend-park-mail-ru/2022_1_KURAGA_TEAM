@@ -60,7 +60,7 @@ export default class PersonViewClass {
 
             const res = await data;
 
-            const header = new HeaderClass(res.user.username);
+            const header = new HeaderClass(res.user);
             const headPerson = new HeadPersonClass();
             const carouselPop = new carousel('Pop', moviesConfig, 4, "Фильмография");
             const footer = new FooterClass();

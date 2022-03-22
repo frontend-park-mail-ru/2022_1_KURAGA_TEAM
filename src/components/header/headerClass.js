@@ -3,14 +3,14 @@ import { logout } from '../../modules/network.js';
 import router from '../../routing/router.js';
 
 export default class HeaderClass {
-    #name;
+    #info;
 
-    constructor(name) {
-        this.#name = name;
+    constructor(info) {
+        this.#info = info;
     }
 
     render() {
-        return headerTemplate({item: this.#name});
+        return headerTemplate({item: this.#info});
     }
 
     setHandler() {

@@ -26,9 +26,9 @@ export default class ProfileViewClass {
 
             const res = await data;
 
-            const header = new HeaderClass(res.user.username);
+            const header = new HeaderClass(res.user);
             const inputs = new InputsProfileClass(res.user);
-            const avatar = new ProfileAvatarClass();
+            const avatar = new ProfileAvatarClass(res.user.avatar);
             const button = new ButtonClass('Сохранить');
             const footer = new FooterClass();
 

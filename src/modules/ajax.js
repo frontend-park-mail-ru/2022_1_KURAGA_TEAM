@@ -24,7 +24,7 @@ function checkStatus(status) {
     }
 }
 
-function ajax({ method, path, body }) {
+function ajax({ method, path, body, headers = {'Content-Type': 'application/json'} }) {
     const URL = API_URL + path;
 
     return fetch(URL, {
@@ -32,9 +32,7 @@ function ajax({ method, path, body }) {
         method,
         body,
         credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers,
     })
         .then((response) => {
             const statusInfo = checkStatus(response.status);
