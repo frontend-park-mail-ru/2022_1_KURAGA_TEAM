@@ -17,14 +17,14 @@ export default class HomeViewClass {
         try {
             const [user, movie] = await Promise.all([profile(), movies()]);
 
-            if (!user.isAuth) {
-                router.go(routes.LOGIN_VIEW);
-                return;
-            }
+            // if (!user.isAuth) {
+            //     router.go(routes.LOGIN_VIEW);
+            //     return;
+            // }
 
             const [userInfo, movieInfo] = await Promise.all([user.data, movie.data])
 
-            const header = new HeaderClass(userInfo.user.username);
+            const header = new HeaderClass("userInfo.user.username");
             const mainMovie = new MainMovieClass();
             const carouselPop = new carousel('Pop', movieInfo.moviesCompilation[0].movies, 3);
             const carouselTop = new carousel('Top', movieInfo.moviesCompilation[1].movies, 3);
