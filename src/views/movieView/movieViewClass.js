@@ -35,7 +35,7 @@ export default class MovieViewClass {
                 return;
             }
 
-            const header = new HeaderClass(userRes.user.username);
+            const header = new HeaderClass(userRes.user);
             const headMovie = new HeadMovieClass(movieRes);
             const firstInfoMovie = new FirstInfoMovieClass(movieRes);
             const secondGenre = new SecondGenreClass(movieRes.genre);

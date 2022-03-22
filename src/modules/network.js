@@ -83,3 +83,17 @@ export async function edit(form) {
         return err;
     }
 }
+
+export async function avatar(form) {
+    try {
+        return await ajaxReq.put({
+            path: '/avatar',
+            body: form,
+            headers: {
+
+            }
+        });
+    } catch (err) {
+        return err;
+    }
+}

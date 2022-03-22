@@ -1,5 +1,5 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
-import { edit } from "../../../modules/network.js";
+import { edit, avatar } from "../../../modules/network.js";
 import router from "../../../routing/router";
 
 const configElement = [
@@ -67,7 +67,7 @@ export default class InputsProfileClass {
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
 
         const inputAvatar = document.querySelector('input[class="profile-avatar__input"]');
-        const avatar = document.querySelector('.profile-avatar');
+        const avatarImg = document.querySelector('.profile-avatar');
 
         const errorIncorr = document.querySelector('div[data-section="profile-info"]');
 
@@ -140,9 +140,24 @@ export default class InputsProfileClass {
         let checkAvatar = 0;
         inputAvatar.addEventListener('change', () => {
             checkAvatar = 1;
-            avatar.src = URL.createObjectURL(inputAvatar.files[0]);
-            console.log(avatar.src);
+            avatarImg.src = URL.createObjectURL(inputAvatar.files[0]);
+            console.log(avatarImg.src);
         });
+
+        const response = (isAuth) => {
+            if (!isAuth) {
+                errorIncorr.classList.add('error-active');
+                errorIncorr.classList.add('center');
+                errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
+
+                return;
+            }
+
+            errorIncorr.classList.add('error-active');
+            errorIncorr.classList.add('center');
+            errorIncorr.classList.add('success');
+            errorIncorr.textContent = 'Информация обновлена!'
+        }
 
         form.addEventListener('submit', (e) => {
             let check = 0;
@@ -189,9 +204,13 @@ export default class InputsProfileClass {
             if (check === 0) {
                 e.preventDefault();
 
+                let kolReg = 0;
+
                 let formJson = '';
+                let formData = new FormData();
 
                 if (caseForm !== 3) {
+                    kolReg++;
                     formJson = JSON.stringify({
                         username: inputName.value.trim(),
                         password: inputPassOne.value,
@@ -199,7 +218,8 @@ export default class InputsProfileClass {
                 }
 
                 if (checkAvatar === 1) {
-                    let formData = new FormData(avatar.src);
+                    kolReg += 2;
+                    formData.append('file', inputAvatar.files[0]);
                 }
 
                 if (caseForm === 3 && checkAvatar === 0) {
@@ -210,27 +230,52 @@ export default class InputsProfileClass {
                     return;
                 }
 
-                edit(formJson)
-                    .then(({ isAuth }) => {
-                        if (!isAuth) {
+                if (kolReg === 1) {
+                    edit(formJson)
+                        .then(({ isAuth }) => {
+                            response(isAuth);
+
+                            const name = document.getElementsByClassName('font-nav name-profile');
+                            name[0].textContent = inputName.value.trim();
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                        });
+                }
+
+                if (kolReg === 2) {
+                    avatar(formData)
+                        .then(({ isAuth }) => {
+                            response(isAuth);
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                        });
+                }
+
+                if (kolReg === 3) {
+                    Promise.all([edit(formJson), avatar(formData)])
+                        .then(([text, file]) => {
+                            if (!text.isAuth || !file.isAuth) {
+                                errorIncorr.classList.add('error-active');
+                                errorIncorr.classList.add('center');
+                                errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
+
+                                return;
+                            }
+
                             errorIncorr.classList.add('error-active');
                             errorIncorr.classList.add('center');
-                            errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
+                            errorIncorr.classList.add('success');
+                            errorIncorr.textContent = 'Информация обновлена!'
 
-                            return;
-                        }
-
-                        errorIncorr.classList.add('error-active');
-                        errorIncorr.classList.add('center');
-                        errorIncorr.classList.add('success');
-                        errorIncorr.textContent = 'Информация обновлена!'
-
-                        const name = document.getElementsByClassName('font-nav name-profile');
-                        name[0].textContent = inputName.value.trim();
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
+                            const name = document.getElementsByClassName('font-nav name-profile');
+                            name[0].textContent = inputName.value.trim();
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                        });
+                }
             }
         });
     }

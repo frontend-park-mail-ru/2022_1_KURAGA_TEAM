@@ -22,7 +22,7 @@ export default class ErrorViewClass {
 
             const res = await data;
 
-            const header = new HeaderClass(res.user.username);
+            const header = new HeaderClass(res.user);
             const footer = new FooterClass();
 
             root.innerHTML = errorViewTemplate({

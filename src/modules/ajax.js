@@ -1,5 +1,5 @@
-const API_URL = 'http://localhost:1323/api/v1';
-// const API_URL = 'http://movie-space.ru:1323/api/v1';
+// const API_URL = 'http://localhost:1323/api/v1';
+const API_URL = 'http://movie-space.ru:1323/api/v1';
 
 function checkStatus(status) {
     switch (Math.round(status / 100)) {
@@ -24,7 +24,7 @@ function checkStatus(status) {
     }
 }
 
-function ajax({ method, path, body }) {
+function ajax({ method, path, body, headers = {'Content-Type': 'application/json'} }) {
     const URL = API_URL + path;
 
     return fetch(URL, {
@@ -32,9 +32,7 @@ function ajax({ method, path, body }) {
         method,
         body,
         credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers,
     })
         .then((response) => {
             const statusInfo = checkStatus(response.status);

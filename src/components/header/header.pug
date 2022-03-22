@@ -5,10 +5,10 @@ a.font-nav(href="/") Фильмы
 a.font-nav(href="/") Сериалы
 a.font-nav(href="/") Избранное
 div.space
-div.font-nav.name-profile  !{item}
+div.font-nav.name-profile  !{item.username}
 div.profile-block
     div.profile.dropdown
-        button.btn-profile
+        button.btn-profile(style=`background-image: url(\"${item.avatar}\");`)
         div.dropdown-content
             a.font(href="/profile") Профиль
             a.quit.font(href="/login") Выйти
