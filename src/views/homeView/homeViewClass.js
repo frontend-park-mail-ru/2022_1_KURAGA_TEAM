@@ -6,7 +6,7 @@ import FooterClass from 'Components/footer/footerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
 import {profile, movies} from 'Modules/network';
 import router from 'Routing/router.js';
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 
 import '../../css/home.css';
 
@@ -26,9 +26,9 @@ export default class HomeViewClass {
 
             const header = new HeaderClass(userInfo.user.username);
             const mainMovie = new MainMovieClass();
-            const carouselPop = new carousel('Pop', movieInfo.moviesCompilation[0].movies, 3);
-            const carouselTop = new carousel('Top', movieInfo.moviesCompilation[1].movies, 3);
-            const carouselFam = new carousel('Fam', movieInfo.moviesCompilation[2].movies, 2);
+            const carouselPop = new carousel('Pop', movieInfo.moviesCompilation[0].movies, 4, movieInfo.moviesCompilation[0].compilation_name);
+            const carouselTop = new carousel('Top', movieInfo.moviesCompilation[1].movies, 3, movieInfo.moviesCompilation[1].compilation_name);
+            const carouselFam = new carousel('Fam', movieInfo.moviesCompilation[2].movies, 4, movieInfo.moviesCompilation[2].compilation_name);
             const footer = new FooterClass();
 
             root.innerHTML = homeViewTemplate({

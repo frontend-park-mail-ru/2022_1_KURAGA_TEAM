@@ -13,7 +13,7 @@ import '../../css/person.css';
 
 const moviesConfig = [
     {
-        id: 5,
+        id: 8,
         picture: "gucci.jpg",
         name: 'Звездные войны1',
         genre: [
@@ -34,6 +34,12 @@ const moviesConfig = [
         picture: "star.png",
         name: 'Звездные войны3фцвфцв',
         genre: 'Фантастика3',
+    },
+    {
+        id: 5,
+        picture: "star.png",
+        name: 'Звездные войны4',
+        genre: 'Фантастика4',
     },
     {
         id: 5,
