@@ -115,7 +115,7 @@ export default class InputsClass {
         inputEmail.addEventListener('change', () => {
             const checkEmail = /.+@.+\..+/i;
 
-            if (checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0) {
+            if (checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0 && inputEmail.validity.valid) {
                 errorEmail.classList.remove('error-active');
 
                 return;
@@ -184,7 +184,7 @@ export default class InputsClass {
 
             const checkEmail = /.+@.+\..+/i;
 
-            if (!checkEmail.test(inputEmail.value) || inputEmail.value.length === 0) {
+            if (!checkEmail.test(inputEmail.value) || inputEmail.value.length === 0 || !inputEmail.validity.valid) {
                 check++;
                 emailError();
 

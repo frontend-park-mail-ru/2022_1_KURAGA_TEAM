@@ -1,5 +1,5 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
-import {edit} from "../../../modules/network";
+import { edit } from "../../../modules/network.js";
 import router from "../../../routing/router";
 
 const configElement = [
@@ -66,6 +66,9 @@ export default class InputsProfileClass {
         const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
 
+        const inputAvatar = document.querySelector('input[class="profile-avatar__input"]');
+        const avatar = document.querySelector('.profile-avatar');
+
         const errorIncorr = document.querySelector('div[data-section="profile-info"]');
 
         const nameError = () => {
@@ -84,7 +87,7 @@ export default class InputsProfileClass {
         };
 
         inputName.addEventListener('change', () => {
-            if (inputName.value.trim() === '' || inputName.value.length === 1) {
+            if (inputName.value.trim() === '' || inputName.value.length === 1 || inputName.value.match(/<script>/) !== null) {
                 nameError();
 
                 return;
@@ -134,6 +137,13 @@ export default class InputsProfileClass {
             errorPassOne.classList.remove('error-active');
         });
 
+        let checkAvatar = 0;
+        inputAvatar.addEventListener('change', () => {
+            checkAvatar = 1;
+            avatar.src = URL.createObjectURL(inputAvatar.files[0]);
+            console.log(avatar.src);
+        });
+
         form.addEventListener('submit', (e) => {
             let check = 0;
             let caseForm = 0;
@@ -142,7 +152,7 @@ export default class InputsProfileClass {
                 caseForm = 1;
             }
 
-            if (!inputName.validity.valid || inputName.value.trim() === '' || inputName.value.length === 1) {
+            if (!inputName.validity.valid || inputName.value.trim() === '' || inputName.value.length === 1 || inputName.value.match(/<script>/) !== null) {
                 check++;
                 nameError();
 
@@ -188,7 +198,11 @@ export default class InputsProfileClass {
                     });
                 }
 
-                if (formJson === '') {
+                if (checkAvatar === 1) {
+                    let formData = new FormData(avatar.src);
+                }
+
+                if (caseForm === 3 && checkAvatar === 0) {
                     errorIncorr.classList.add('error-active');
                     errorIncorr.classList.add('center');
                     errorIncorr.textContent = 'Информация не изменилась';

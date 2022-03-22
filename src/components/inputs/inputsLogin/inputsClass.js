@@ -43,10 +43,8 @@ export default class InputsClass {
                 return;
             }
 
-            if (inputEmail.validity.typeMismatch) {
-                errorEmail.classList.add('error-active');
-                errorEmail.textContent = 'Введите действительный email';
-            }
+            errorEmail.classList.add('error-active');
+            errorEmail.textContent = 'Введите действительный email';
         };
 
         const passwordError = () => {
@@ -55,7 +53,9 @@ export default class InputsClass {
         };
 
         inputEmail.addEventListener('change', () => {
-            if (inputEmail.validity.valid) {
+            const checkEmail = /.+@.+\..+/i;
+
+            if (checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0 && inputEmail.validity.valid) {
                 errorEmail.classList.remove('error-active');
 
                 return;
@@ -93,9 +93,11 @@ export default class InputsClass {
                 e.preventDefault();
             }
 
-            if (!inputPassword.validity.valid) {
+            const checkEmail = /.+@.+\..+/i;
+
+            if (!checkEmail.test(inputEmail.value) || inputEmail.value.length === 0 || !inputEmail.validity.valid) {
                 check++;
-                passwordError();
+                emailError();
 
                 e.preventDefault();
             }
