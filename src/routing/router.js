@@ -1,3 +1,6 @@
+import { parseRegExp } from './parseRegExp.js';
+import { routes } from "./constRouting.js";
+
 class Router {
     constructor() {
         this.routes = {};
@@ -12,11 +15,7 @@ class Router {
     go(path) {
         let pathname = path;
 
-        const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
-
-        if (regPath !== null) {
-            pathname = '/' + regPath[1];
-        }
+        pathname = parseRegExp(pathname);
 
         window.history.pushState(null, null, path);
 
@@ -26,14 +25,10 @@ class Router {
     start() {
         let pathname = window.location.pathname;
 
-        const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
-
-        if (regPath !== null) {
-            pathname = '/' + regPath[1];
-        }
+        pathname = parseRegExp(pathname);
 
         if (this.routes[pathname] === undefined) {
-            pathname = '/error';
+            pathname = routes.ERROR_VIEW;
         }
 
         const currentView = this.routes[pathname];
@@ -42,12 +37,7 @@ class Router {
         window.addEventListener('popstate', (e) => {
             let pathname = window.location.pathname;
 
-            const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
-            console.log(pathname, regPath)
-
-            if (regPath !== null) {
-                pathname = '/' + regPath[1];
-            }
+            pathname = parseRegExp(pathname);
 
             const newView = this.routes[pathname];
             newView.render();

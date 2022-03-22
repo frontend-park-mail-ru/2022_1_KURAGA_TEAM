@@ -3,6 +3,5 @@ div.group__staff
     each staff in staffs
         div.group__person
             img.person__photo(src=`../../static/${staff.photo}`)
-            a.person__name(href='.') #{staff.name}
+            a.person__name(href=`/person/${staff.id}`) #{staff.name}
             div.person__position #{staff.position}
-

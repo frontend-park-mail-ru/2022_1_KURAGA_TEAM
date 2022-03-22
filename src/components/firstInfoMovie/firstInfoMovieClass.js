@@ -5,9 +5,9 @@ export default class FirstInfoMovieClass {
 
     #description
 
-    constructor(...params) {
-        this.#rating = params[0];
-        this.#description = params[1];
+    constructor({rating, description}) {
+        this.#rating = rating;
+        this.#description = description;
     }
 
     render() {
