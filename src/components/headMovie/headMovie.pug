@@ -1,17 +1,18 @@
 img.head-movie__name(src="../../static/AvengersName.png")
 div.head-movie__rating
     div.string-rating
-        div.rating.our-rating 8.9
+        div.rating.our-rating #{info.rating}
         div.our-name MovieSpace
     div.string-rating
-        div.rating.poisk-rating 7.9
+        div.rating.poisk-rating #{info.kinopoisk_rating}
         div.poisk-name КиноПоиск
 div.head-movie__info
-    div.short-info.info__year 2012,
-    div.short-info.info__genre фантастика, боевик
-    div.short-info.info__country США
-    div.short-info.info__duration 2 ч 17 мин
-    div.short-info.info__age 12+
+    div.short-info.info__year #{info.year},
+    a.short-info.info__genre-first(href='.') #{info.genre[0]},
+    a.short-info.info__genre(href='.') #{info.genre[1]}
+    div.short-info.info__country #{info.country}
+    div.short-info.info__duration #{info.duration}
+    div.short-info.info__age #{info.age_limit}+
 div.head-movie__buttons
     button.play-button Смотреть фильм
     button.trailer-button Трейлер

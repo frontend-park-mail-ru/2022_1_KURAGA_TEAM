@@ -9,13 +9,12 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
                     div.b-carousel__item
                         each item,index in items
                             if(index >= i*num && index < (i+1)*num )
-                                div(class=`movie` + `${typeMov}`)(style=`background: url(../../../static/` + item.img + `);background-size: contain;`)
-                                    a(href= item.href)
+                                div(class=`movie`+`${typeMov}`)(style=`background: url(../../../static/`+item.picture+`);background-size: contain;`)
+                                    a(href=`/movie/${item.id}`)
                                         div.ref-mov
                                     div(class=`desc-mov` + `${typeMov}`)
                                         div= item.name
                                         div.genre= item.genre
                                         input#cb.input-like(type = "checkbox")
-
 
 + carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)

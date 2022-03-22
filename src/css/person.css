@@ -26,3 +26,7 @@
     height: 200px;
     background: var(--back-color);
 }
+
+.margin-bottom {
+    margin-bottom: 50px;
+}

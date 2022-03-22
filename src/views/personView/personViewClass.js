@@ -1,82 +1,81 @@
 import personViewTemplate from './personView.pug'
-import HeaderClass from '../../components/header/headerClass.js';
-import handlerLink from '../../utils/handlerLink.js';
-import {profile} from '../../modules/network.js';
-import router from "../../routing/router.js";
-import HeadPersonClass from "../../components/headPerson/headPerson.js";
-import carousel from '../../components/carousel/carouselClass.js';
-import FooterClass from "../../components/footer/footerClass.js";
+import HeaderClass from 'Components/header/headerClass.js';
+import handlerLink from 'Utils/handlerLink.js';
+import { person, profile } from 'Modules/network';
+import router from "Routing/router.js";
+import { routes } from "Routing/constRouting";
+import HeadPersonClass from "Components/headPerson/headPerson.js";
+import carousel from 'Components/carousel/carouselClass.js';
+import FooterClass from "Components/footer/footerClass.js";
+
+import '../../css/person.css';
+
 
 const moviesConfig = [
     {
-        img: "gucci.jpg",
-        href: '/',
-        name: 'Звездныефцвфцвфцв войны1',
-        genre: 'Фантастика1',
+        id: 5,
+        picture: "gucci.jpg",
+        name: 'Звездные войны1',
+        genre: [
+            "Боевик",
+            "Приключения",
+            "Фантастика",
+            "Фэнтези"
+        ],
     },
     {
-        img: "star.png",
-        href: '/',
+        id: 5,
+        picture: "star.png",
         name: 'Звездные войнфцвфцвы2',
         genre: 'Фантастика2',
     },
     {
-        img: "star.png",
-        href: '/',
+        id: 5,
+        picture: "star.png",
         name: 'Звездные войны3фцвфцв',
         genre: 'Фантастика3',
     },
     {
-        img: "star.png",
-        href: '/',
+        id: 5,
+        picture: "star.png",
         name: 'Звездные войны4',
-        genre: 'Фантастика4',
-    },
-    {
-        img: "star.png",
-        href: '/',
-        name: 'Звездные войны5фцвфцв',
-        genre: 'Фантастика3',
-    },
-    {
-        img: "star.png",
-        href: '/',
-        name: 'Звездные войны6',
         genre: 'Фантастика4',
     }
 ];
 
-
 const root = document.getElementById('root');
 
 export default class PersonViewClass {
-    render() {
-        // profile()
-        //     .then(({ isAuth, data }) => {
-        //         if (!isAuth) {
-        //             router.go('login');
-        //             return;
-        //         }
-        //         data.then((res) => {
-        const header = new HeaderClass("res.username");
-        const headPerson = new HeadPersonClass();
-        const carouselPop = new carousel('Pop', moviesConfig, 4, "Фильмография");
-        const footer = new FooterClass();
+  
+    async render() {
+        try {
+            const { isAuth, data } = await profile();
 
-        root.innerHTML = personViewTemplate({
-            header: header.render(),
-            headPerson: headPerson.render(),
-            carouselPop: carouselPop.render(),
-            footer: footer.render()
-        });
+            if (!isAuth) {
+                router.go(routes.LOGIN_VIEW);
 
-        handlerLink()
-        header.setHandler();
-        carouselPop.setHandler();
-        //     })
-        // })
-        // .catch((err) => {
-        //     console.error(err);
-        // })
+                return;
+            }
+
+            const res = await data;
+
+            const header = new HeaderClass(res.user.username);
+            const headPerson = new HeadPersonClass();
+            const carouselPop = new carousel('Pop', moviesConfig, 4, "Фильмография");
+            const footer = new FooterClass();
+
+            root.innerHTML = personViewTemplate({
+                header: header.render(),
+                headPerson: headPerson.render(),
+                carouselPop: carouselPop.render(),
+                footer: footer.render()
+            });
+
+            handlerLink()
+            header.setHandler();
+            carouselPop.setHandler();
+        } catch (err) {
+            console.error(err);
+        }
     }
 }

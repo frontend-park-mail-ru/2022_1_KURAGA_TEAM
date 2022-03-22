@@ -1,4 +1,7 @@
 @import "../components/headMovie/headMovie.css";
+@import "../components/firstInfoMovie/firstInfoMovie.css";
+@import "../components/secondGende/secondGenre.css";
+@import "../components/actors/actors.css";
 
 .photo-movie {
     top: 0;
@@ -16,12 +19,27 @@
 .head-movie {
     top: 224px;
     position: absolute;
-    margin-left: 40px;
+    margin-left: 70px;
     height: 50%;
 }
 
 .first-part-info {
+    margin-left: 70px;
+    margin-top: 100px;
     display: flex;
-    height: 200px;
-    background: var(--back-color);
+    height: auto;
+}
+
+.second-part-genre {
+    margin-left: 70px;
+    margin-top: 100px;
+}
+
+.third-part-actors {
+    margin-top: 60px;
+    margin-left: 70px;
+}
+
+.final-part-carousel {
+    height: 60px;
 }

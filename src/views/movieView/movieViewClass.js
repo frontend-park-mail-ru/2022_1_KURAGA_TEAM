@@ -1,38 +1,61 @@
 import movieViewTemplate from './movieView.pug'
-import HeaderClass from '../../components/header/headerClass.js';
-import handlerLink from '../../utils/handlerLink.js';
-import { profile } from '../../modules/network.js';
-import router from "../../routing/router.js";
-import HeadMovieClass from "../../components/headMovie/headMovie.js";
-import FooterClass from "../../components/footer/footerClass.js";
+import HeaderClass from 'Components/header/headerClass.js';
+import handlerLink from 'Utils/handlerLink.js';
+import { movie, profile } from 'Modules/network';
+import router from "Routing/router.js";
+import HeadMovieClass from "Components/headMovie/headMovieClass.js";
+import FooterClass from "Components/footer/footerClass.js";
+import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.js";
+import SecondGenreClass from "Components/secondGende/secondGenre.js";
+import ActorsClass from "Components/actors/actorsClass.js";
+import { routes } from "Routing/constRouting";
+
+import '../../css/movie.css';
 
 const root = document.getElementById('root');
 
 export default class MovieViewClass {
-    render() {
-        // profile()
-        //     .then(({ isAuth, data }) => {
-        //         if (!isAuth) {
-        //             router.go('login');
-        //             return;
-        //         }
-        //         data.then((res) => {
-                    const header = new HeaderClass("res.username");
-                    const headMovie = new HeadMovieClass();
-                    const footer = new FooterClass();
+    async render() {
+        try {
+            const id = +/\d+/.exec(window.location.pathname);
 
-                    root.innerHTML = movieViewTemplate({
-                        header: header.render(),
-                        headMovie: headMovie.render(),
-                        footer: footer.render()
-                    });
+            const [user, mov] = await Promise.all([profile(), movie(id)]);
 
-                    handlerLink()
-                    header.setHandler();
-            //     })
-            // })
-            // .catch((err) => {
-            //     console.error(err);
-            // })
+            if (!user.isAuth) {
+                router.go(routes.LOGIN_VIEW);
+
+                return;
+            }
+
+            const [userRes, movieRes] = await Promise.all([user.data, mov.data]);
+
+            if (movieRes.status === routes.ERROR) {
+                router.go(routes.ERROR_VIEW);
+
+                return;
+            }
+
+            const header = new HeaderClass(userRes.user.username);
+            const headMovie = new HeadMovieClass(movieRes);
+            const firstInfoMovie = new FirstInfoMovieClass(movieRes);
+            const secondGenre = new SecondGenreClass(movieRes.genre);
+            const actors = new ActorsClass(movieRes.staff);
+            const footer = new FooterClass();
+
+            root.innerHTML = movieViewTemplate({
+                header: header.render(),
+                headMovie: headMovie.render(),
+                firstInfoMovie: firstInfoMovie.render(),
+                secondGenre: secondGenre.render(),
+                actors: actors.render(),
+                footer: footer.render()
+            });
+
+            handlerLink()
+            firstInfoMovie.setHandlers();
+            header.setHandler();
+        } catch (err) {
+            console.error(err);
+        }
     }
 }
