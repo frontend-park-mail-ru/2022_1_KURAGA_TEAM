@@ -16,12 +16,7 @@ const moviesConfig = [
         id: 8,
         picture: "gucci.jpg",
         name: 'Звездные войны1',
-        genre: [
-            "Боевик",
-            "Приключения",
-            "Фантастика",
-            "Фэнтези"
-        ],
+        genre: [],
     },
     {
         id: 5,

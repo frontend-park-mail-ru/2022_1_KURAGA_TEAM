@@ -51,7 +51,7 @@
 
 .b-carousel__wrap {
     display: flex;
-    transition: transform 5s cubic-bezier(0.39, 0.58, 0.57, 1);
+    transition: transform 0.75s ease-in-out;
     will-change: transform;
     position: relative;
     z-index: 1;
