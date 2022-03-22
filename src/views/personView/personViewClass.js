@@ -13,34 +13,46 @@ import '../../css/person.css';
 
 const moviesConfig = [
     {
-        img: "star.png",
-        href: '/',
+        id: 8,
+        picture: "gucci.jpg",
         name: 'Звездные войны1',
-        genre: 'Фантастика1',
+        genre: [
+            "Боевик",
+            "Приключения",
+            "Фантастика",
+            "Фэнтези"
+        ],
     },
     {
-        img: "star.png",
-        href: '/',
-        name: 'Звездные войны2',
+        id: 5,
+        picture: "star.png",
+        name: 'Звездные войнфцвфцвы2',
         genre: 'Фантастика2',
     },
     {
-        img: "star.png",
-        href: '/',
-        name: 'Звездные войны3',
+        id: 5,
+        picture: "star.png",
+        name: 'Звездные войны3фцвфцв',
         genre: 'Фантастика3',
     },
     {
-        img: "star.png",
-        href: '/',
+        id: 5,
+        picture: "star.png",
         name: 'Звездные войны4',
         genre: 'Фантастика4',
     },
+    {
+        id: 5,
+        picture: "star.png",
+        name: 'Звездные войны4',
+        genre: 'Фантастика4',
+    }
 ];
 
 const root = document.getElementById('root');
 
 export default class PersonViewClass {
+  
     async render() {
         try {
             const { isAuth, data } = await profile();
@@ -55,7 +67,7 @@ export default class PersonViewClass {
 
             const header = new HeaderClass(res.user.username);
             const headPerson = new HeadPersonClass();
-            const carouselPop = new carousel('Pop', moviesConfig, 3, "Фильмография");
+            const carouselPop = new carousel('Pop', moviesConfig, 4, "Фильмография");
             const footer = new FooterClass();
 
             root.innerHTML = personViewTemplate({

@@ -10,8 +10,8 @@
 
 .photo-person__gradient {
     width: 80%;
-    height: 96vh;
-    background: var(--person-gradient);
+    height: 700px;
+    background: var(--movie-gradient);
 }
 
 .head-person {
