@@ -17,7 +17,6 @@
 .b-carousel__next {
     border: 0;
     width: 40px;
-    /*color: var(--btn-carousel-color);*/
     font-size: 30px;
     position: absolute;
     top: 50%;
@@ -32,21 +31,24 @@
 }
 
 .b-carousel__prev {
+    background-color: transparent;
     left: 0;
+    transition: all .4s ease;
 }
 
 .b-carousel__next {
+    background-color: transparent;
     left: auto;
     right: 0;
+    transition: all .4s ease;
 }
 
-.b-carousel__prev:hover,
-.b-carousel__next:hover {
+.b-carousel__prev-hover,
+.b-carousel__next-hover {
     color: var(--btn-carousel-color);
     width: 55px;
     font-size: 40px;
     background-color: var(--btn-carousel-back-hover);
-    transition: all .4s ease;
 }
 
 .b-carousel__wrap {

@@ -144,8 +144,6 @@
 }
 
 .btn-profile {
-    margin-bottom: 30px;
-    margin-top: 30px;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -156,7 +154,6 @@
 }
 
 .dropdown {
-
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -165,7 +162,7 @@
 .dropdown-content {
     right: auto;
     display: none;
-    margin: 114px;
+    margin: 50px;
     position: absolute;
     background: var(--drop-back);
     border-radius: 5px;

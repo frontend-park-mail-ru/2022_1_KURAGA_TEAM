@@ -4,6 +4,8 @@
 @import "../components/actors/actors.css";
 
 .photo-movie {
+    display: flex;
+    align-items: center;
     top: 0;
     left: 0;
     background-size: cover;
@@ -17,7 +19,6 @@
 }
 
 .head-movie {
-    top: 224px;
     position: absolute;
     margin-left: 70px;
     height: 50%;
