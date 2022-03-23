@@ -25,14 +25,17 @@
 
 }
 
-
 .b-carouseltop__prev{
+    background-color: transparent;
     left: 0;
+    transition: all .4s ease;
 }
 
 .b-carouseltop__next {
+    background-color: transparent;
     left: auto;
     right: 0;
+    transition: all .4s ease;
 }
 
 .b-carouseltop__prev:hover{
@@ -40,7 +43,7 @@
     width: 55px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
-    transition: all .4s ease;
+
 }
 
 .b-carouseltop__next:hover{

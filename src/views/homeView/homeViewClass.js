@@ -9,6 +9,7 @@ import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
 import {routes} from "Routing/constRouting";
 
+
 import '../../css/home.css';
 
 
