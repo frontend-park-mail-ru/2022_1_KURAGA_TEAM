@@ -7,6 +7,7 @@ import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPerson.js";
 import carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from "Components/footer/footerClass.js";
+import BaseViewClass from '../baseView/baseViewClass.js';
 
 import '../../css/person.css';
 
@@ -46,7 +47,7 @@ const moviesConfig = [
 
 const root = document.getElementById('root');
 
-export default class PersonViewClass {
+export default class PersonViewClass extends BaseViewClass {
   
     async render() {
         try {
@@ -65,13 +66,13 @@ export default class PersonViewClass {
             const carouselPop = new carousel('Pop', moviesConfig, 4, "Фильмография");
             const footer = new FooterClass();
 
-            root.innerHTML = personViewTemplate({
+            super.render(personViewTemplate,{
                 header: header.render(),
                 headPerson: headPerson.render(),
                 carouselPop: carouselPop.render(),
                 footer: footer.render()
             });
-
+            
             handlerLink()
             header.setHandler();
             carouselPop.setHandler();

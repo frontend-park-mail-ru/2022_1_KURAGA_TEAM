@@ -21,7 +21,7 @@
     font-size: 30px;
     position: absolute;
     top: 50%;
-    background-color: var(--btn-carousel-back);
+    background-color: transparent;
     height: 100%;
     transform: translateY(-50%) translateZ(0);
     cursor: pointer;

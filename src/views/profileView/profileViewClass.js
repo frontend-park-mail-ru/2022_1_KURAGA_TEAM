@@ -8,12 +8,13 @@ import ProfileAvatarClass from "Components/profileAvatar/profileAvatarClass";
 import {profile} from "Modules/network";
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
+import BaseViewClass from '../baseView/baseViewClass.js';
 
 import '../../css/profile.css';
 
 const root = document.getElementById('root');
 
-export default class ProfileViewClass {
+export default class ProfileViewClass  extends BaseViewClass{
     async render() {
         try {
             const {isAuth, data} = await profile();
@@ -34,13 +35,14 @@ export default class ProfileViewClass {
             const button = new ButtonClass('Сохранить');
             const footer = new FooterClass();
 
-            root.innerHTML = profileViewTemplate({
+            super.render(profileViewTemplate,{
                 header: header.render(),
                 inputs: inputs.render(),
                 avatar: avatar.render(),
                 button: button.render(),
                 footer: footer.render()
             });
+            
 
             handlerLink();
             inputs.setHandler();

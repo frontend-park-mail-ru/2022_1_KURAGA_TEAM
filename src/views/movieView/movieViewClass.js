@@ -9,12 +9,13 @@ import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.j
 import SecondGenreClass from "Components/secondGende/secondGenre.js";
 import ActorsClass from "Components/actors/actorsClass.js";
 import { routes } from "Routing/constRouting";
+import BaseViewClass from '../baseView/baseViewClass.js';
 
 import '../../css/movie.css';
 
 const root = document.getElementById('root');
 
-export default class MovieViewClass {
+export default class MovieViewClass extends BaseViewClass {
     async render() {
         try {
             const id = +/\d+/.exec(window.location.pathname);
@@ -43,7 +44,8 @@ export default class MovieViewClass {
             const actors = new ActorsClass(movieRes.staff);
             const footer = new FooterClass();
 
-            root.innerHTML = movieViewTemplate({
+
+            super.render(movieViewTemplate,{
                 picture: movieRes.picture,
                 header: header.render(),
                 headMovie: headMovie.render(),
@@ -52,6 +54,7 @@ export default class MovieViewClass {
                 actors: actors.render(),
                 footer: footer.render()
             });
+
 
             handlerLink()
             firstInfoMovie.setHandlers();

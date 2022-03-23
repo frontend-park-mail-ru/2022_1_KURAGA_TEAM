@@ -6,12 +6,13 @@ import handlerLink from 'Utils/handlerLink.js';
 import { profile } from 'Modules/network';
 import router from 'Routing/router.js';
 import { routes } from "Routing/constRouting";
+import BaseViewClass from '../baseView/baseViewClass.js';
 
 import '../../css/regLog.css';
 
 const root = document.getElementById('root');
 
-export default class LoginViewClass {
+export default class LoginViewClass extends BaseViewClass{
     async render() {
         try {
             const {isAuth} = await profile();
@@ -26,12 +27,12 @@ export default class LoginViewClass {
             const inputs = new InputsClass();
             const button = new ButtonClass('Войти');
 
-            root.innerHTML = loginViewTemplate({
+            super.render(loginViewTemplate,{
                 inputs: inputs.render(),
                 button: button.render(),
                 footer: footer.render(),
             });
-
+            
             inputs.setHandler();
             handlerLink();
         } catch (err) {

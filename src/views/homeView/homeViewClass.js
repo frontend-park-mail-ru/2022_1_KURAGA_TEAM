@@ -7,13 +7,12 @@ import handlerLink from 'Utils/handlerLink.js';
 import {profile, movies} from 'Modules/network';
 import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 
 import '../../css/home.css';
 
-const root = document.getElementById('root');
 
-export default class HomeViewClass {
+export default class HomeViewClass extends BaseViewClass{
     async render() {
         try {
 
@@ -33,7 +32,7 @@ export default class HomeViewClass {
             const carouselFam = new carousel('Fam', movieInfo[2].movies, 4, movieInfo[2].compilation_name);
             const footer = new FooterClass();
 
-            root.innerHTML = homeViewTemplate({
+            super.render(homeViewTemplate,{
                 header: header.render(),
                 mainMovie: mainMovie.render(),
                 carouselPop: carouselPop.render(),
@@ -41,6 +40,7 @@ export default class HomeViewClass {
                 carouselFam: carouselFam.render(),
                 footer: footer.render(),
             });
+            
 
             handlerLink();
             header.setHandler();
