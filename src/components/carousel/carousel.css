@@ -73,9 +73,19 @@
 
 }
 
+.movie__href {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.movie__href:hover {
+    text-decoration: underline;
+}
+
 .movie {
     /*background: url("../../../static/star.png");*/
-    /*background-size: contain;*/
+    background-size: contain;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 50px;

@@ -6,7 +6,7 @@
 .photo-movie {
     top: 0;
     left: 0;
-    background-image: url("../static/AvengersBack.webp");
+    background-size: cover;
     height: 96vh;
 }
 

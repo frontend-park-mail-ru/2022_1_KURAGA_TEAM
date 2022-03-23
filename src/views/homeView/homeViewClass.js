@@ -6,7 +6,8 @@ import FooterClass from 'Components/footer/footerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
 import {profile, movies} from 'Modules/network';
 import router from 'Routing/router.js';
-import {routes} from "Routing/constRouting";
+import BaseViewClass from '../baseView/baseViewClass.js';
+import { routes } from "Routing/constRouting";
 
 import '../../css/home.css';
 
@@ -15,6 +16,7 @@ const root = document.getElementById('root');
 export default class HomeViewClass {
     async render() {
         try {
+
             const [user, movie] = await Promise.all([profile(), movies()]);
 
             if (!user.isAuth) {
@@ -24,7 +26,7 @@ export default class HomeViewClass {
 
             const [userInfo, movieInfo] = await Promise.all([user.data, movie.data])
 
-            const header = new HeaderClass(userInfo.user.username);
+            const header = new HeaderClass(userInfo.user);
             const mainMovie = new MainMovieClass();
             const carouselPop = new carousel('Pop', movieInfo[0].movies, 4, movieInfo[0].compilation_name);
             const carouselTop = new carousel('Top', movieInfo[1].movies, 3, movieInfo[1].compilation_name);
@@ -39,6 +41,7 @@ export default class HomeViewClass {
                 carouselFam: carouselFam.render(),
                 footer: footer.render(),
             });
+
             handlerLink();
             header.setHandler();
             carouselPop.setHandler();

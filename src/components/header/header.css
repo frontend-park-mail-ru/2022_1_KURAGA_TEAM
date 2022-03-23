@@ -134,6 +134,7 @@
 
 .name-profile {
     cursor: pointer;
+    text-decoration: none;
     margin-inline-start: 30px;
 }
 

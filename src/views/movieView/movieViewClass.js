@@ -1,7 +1,7 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import { movie, profile } from 'Modules/network';
+import {login, movie, profile} from 'Modules/network';
 import router from "Routing/router.js";
 import HeadMovieClass from "Components/headMovie/headMovieClass.js";
 import FooterClass from "Components/footer/footerClass.js";
@@ -35,6 +35,7 @@ export default class MovieViewClass {
                 return;
             }
 
+            console.log(movieRes)
             const header = new HeaderClass(userRes.user);
             const headMovie = new HeadMovieClass(movieRes);
             const firstInfoMovie = new FirstInfoMovieClass(movieRes);
@@ -43,6 +44,7 @@ export default class MovieViewClass {
             const footer = new FooterClass();
 
             root.innerHTML = movieViewTemplate({
+                picture: movieRes.picture,
                 header: header.render(),
                 headMovie: headMovie.render(),
                 firstInfoMovie: firstInfoMovie.render(),

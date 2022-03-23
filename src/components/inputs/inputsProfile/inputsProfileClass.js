@@ -71,6 +71,8 @@ export default class InputsProfileClass {
 
         const errorIncorr = document.querySelector('div[data-section="profile-info"]');
 
+        const miniAvatar = document.querySelector('.btn-profile');
+
         const nameError = () => {
             errorName.classList.add('error-active');
             errorName.textContent = 'Заполните поле';
@@ -157,6 +159,7 @@ export default class InputsProfileClass {
             errorIncorr.classList.add('success');
             errorIncorr.textContent = 'Информация обновлена!'
         }
+
 
         form.addEventListener('submit', (e) => {
             let check = 0;
@@ -246,6 +249,8 @@ export default class InputsProfileClass {
                     avatar(formData)
                         .then(({ isAuth }) => {
                             response(isAuth);
+
+                            miniAvatar.style.backgroundImage = `url(${URL.createObjectURL(inputAvatar.files[0])})`;
                         })
                         .catch((err) => {
                             console.error(err);
