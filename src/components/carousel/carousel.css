@@ -16,8 +16,8 @@
 .b-carousel__prev,
 .b-carousel__next {
     border: 0;
-    width: 40px;
-    font-size: 30px;
+    width: 54px;
+    font-size: 50px;
     position: absolute;
     top: 50%;
     background-color: transparent;
@@ -46,8 +46,8 @@
 .b-carousel__prev-hover,
 .b-carousel__next-hover {
     color: var(--btn-carousel-color);
-    width: 40px;
-    font-size: 25px;
+    width: 54px;
+    font-size: 40px;
     background-color: var(--btn-carousel-back-hover);
 }
 
@@ -67,8 +67,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
+    justify-content: space-around;
 }
 
 .b-carousel__img {
@@ -158,6 +157,7 @@
     top: 4px;
     right: 0;
     z-index: 2;
+    background: url("../../static/heart.svg");
 }
 
 .title {
