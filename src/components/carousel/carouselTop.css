@@ -40,7 +40,7 @@
 
 .b-carouseltop__prev:hover{
     color: var(--btn-carousel-color);
-    width: 55px;
+    width: 40px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
 
@@ -48,7 +48,7 @@
 
 .b-carouseltop__next:hover{
     color: var(--btn-carousel-color);
-    width: 55px;
+    width: 40px;
     font-size: 40px;
     background-color: rgb(196 196 196 / 8%);
     transition: all .4s ease;

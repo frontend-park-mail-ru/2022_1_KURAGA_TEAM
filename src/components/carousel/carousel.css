@@ -46,8 +46,8 @@
 .b-carousel__prev-hover,
 .b-carousel__next-hover {
     color: var(--btn-carousel-color);
-    width: 55px;
-    font-size: 40px;
+    width: 40px;
+    font-size: 25px;
     background-color: var(--btn-carousel-back-hover);
 }
 
@@ -58,6 +58,7 @@
     position: relative;
     z-index: 1;
     height: 100%;
+
 }
 
 .b-carousel__item {
@@ -66,7 +67,8 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+
 }
 
 .b-carousel__img {
@@ -101,6 +103,8 @@
     "refMov "
     "descMov"
 }
+
+
 
 .ref-mov {
     grid-area: movie;

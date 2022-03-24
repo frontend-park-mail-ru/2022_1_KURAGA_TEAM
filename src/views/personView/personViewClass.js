@@ -23,25 +23,25 @@ const moviesConfig = [
         id: 5,
         picture: "star.png",
         name: 'Звездные войнфцвфцвы2',
-        genre: 'Фантастика2',
+        genre: ['Фантастика3','Фантастика2'],
     },
     {
         id: 5,
         picture: "star.png",
         name: 'Звездные войны3фцвфцв',
-        genre: 'Фантастика3',
+        genre: ['Фантастика4'],
     },
     {
         id: 5,
         picture: "star.png",
         name: 'Звездные войны4',
-        genre: 'Фантастика4',
+        genre: ['Фантастика4','afdawd'],
     },
     {
         id: 5,
         picture: "star.png",
         name: 'Звездные войны4',
-        genre: 'Фантастика4',
+        genre: ['Фантастика4','afdawd','awdawdawd'],
     }
 ];
 
@@ -72,7 +72,7 @@ export default class PersonViewClass extends BaseViewClass {
                 carouselPop: carouselPop.render(),
                 footer: footer.render()
             });
-            
+
             handlerLink()
             header.setHandler();
             carouselPop.setHandler();
