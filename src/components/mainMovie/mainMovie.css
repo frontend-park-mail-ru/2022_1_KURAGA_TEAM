@@ -2,110 +2,111 @@
     display: flex;
     height: 100%;
     justify-content: flex-end;
+
 }
 
 .sidebar {
-    background: var(--sidebar-back);
-    backdrop-filter: blur(30px);
-    width: 582px;
-    height: 351px;
-    border-radius: 32px;
-    margin: auto 65px 10px;
-    display: grid;
-    column-gap: 10px;
-    grid-template-rows: auto;
-    row-gap: 10px;
-    padding-top: 15px;
-    grid-template-columns: 300px auto;
-    grid-template-areas:
-    "title title"
-    "btn btnInfo"
+background: var(--sidebar-back);
+backdrop-filter: blur(30px);
+width: 582px;
+height: 351px;
+border-radius: 32px;
+margin: auto 65px 10px;
+display: grid;
+column-gap: 10px;
+grid-template-rows: auto;
+row-gap: 10px;
+padding-top: 15px;
+grid-template-columns: 300px auto;
+grid-template-areas:
+"title title"
+"btn btnInfo"
 }
 
 .title-main-movie {
-    cursor: default;
-    text-align: center;
-    grid-area: title;
+cursor: default;
+text-align: center;
+grid-area: title;
 }
 
 .title-name {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 60px;
-    line-height: 80px;
-    align-items: center;
-    text-align: center;
+font-style: normal;
+font-weight: 500;
+font-size: 60px;
+line-height: 80px;
+align-items: center;
+text-align: center;
 }
 
 .title-descr {
-    font-family: "GT Eesti Pro Display Light", arial, sans-serif;
-    margin-inline: 72px;
-    font-weight: 350;
-    font-size: 30px;
-    line-height: 35px;
+font-family: "GT Eesti Pro Display Light", arial, sans-serif;
+margin-inline: 72px;
+font-weight: 350;
+font-size: 30px;
+line-height: 35px;
 }
 
 .font-other {
-    text-decoration: none;
-    font-family: "GT Eesti Pro Display Light", arial, sans-serif;
-    font-style: normal;
-    font-weight: 350;
-    color: var(--font-color);
+text-decoration: none;
+font-family: "GT Eesti Pro Display Light", arial, sans-serif;
+font-style: normal;
+font-weight: 350;
+color: var(--font-color);
 }
 
 .btn {
-    width: auto;
-    grid-area: btn;
-    margin-inline-start: 53px;
-    padding-block: 5px;
-    padding-inline: 29px;
-    margin-block-end: 39px;
-    margin-block-start: 30px;
-    font-size: 20px;
-    line-height: 28px;
-    place-self: center;
-    background: var(--btn-color);
-    mix-blend-mode: normal;
-    border-radius: 7px;
-    justify-self: center;
-    transition: transform .1s ease-out, background-color .15s linear;
+width: auto;
+grid-area: btn;
+margin-inline-start: 53px;
+padding-block: 5px;
+padding-inline: 29px;
+margin-block-end: 39px;
+margin-block-start: 30px;
+font-size: 20px;
+line-height: 28px;
+place-self: center;
+background: var(--btn-color);
+mix-blend-mode: normal;
+border-radius: 7px;
+justify-self: center;
+transition: transform .1s ease-out, background-color .15s linear;
 }
 
 .btn-info {
-    width: auto;
-    grid-area: btnInfo;
-    margin: 15px;
-    margin-block-end: 39px;
-    margin-block-start: 30px;
-    padding-block: 5px;
-    padding-inline: 40px;
-    font-style: normal;
-    font-weight: 350;
-    font-size: 20px;
-    line-height: 28px;
-    place-self: center;
-    background: var(--btn-info-color);
-    mix-blend-mode: normal;
-    backdrop-filter: blur(15px);
-    border-radius: 5px;
-    transition: transform .1s ease-out, background-color .15s linear;
+width: auto;
+grid-area: btnInfo;
+margin: 15px;
+margin-block-end: 39px;
+margin-block-start: 30px;
+padding-block: 5px;
+padding-inline: 40px;
+font-style: normal;
+font-weight: 350;
+font-size: 20px;
+line-height: 28px;
+place-self: center;
+background: var(--btn-info-color);
+mix-blend-mode: normal;
+backdrop-filter: blur(15px);
+border-radius: 5px;
+transition: transform .1s ease-out, background-color .15s linear;
 }
 
 .btn-info:active {
-    transform: scale(0.94);
-    transform: scale(0.94);
+transform: scale(0.94);
+transform: scale(0.94);
 }
 
 .btn-info:hover {
-    background: var(--btn-info-hover-color);
+background: var(--btn-info-hover-color);
 }
 
 .btn:active {
-    transform: scale(0.94);
-    transform: scale(0.94);
+transform: scale(0.94);
+transform: scale(0.94);
 }
 
 .btn:hover {
-    background: var(--btn-hover-color);
+background: var(--btn-hover-color);
 }
 
