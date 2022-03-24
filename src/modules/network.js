@@ -62,10 +62,30 @@ export async function movie(id) {
     }
 }
 
+export async function movieCompilationMovie(id) {
+    try {
+        return await ajaxReq.get({
+            path: '/movieCompilations/movie/'+ id,
+        });
+    } catch (err) {
+        return err;
+    }
+}
+
 export async function person(id) {
     try {
         return await ajaxReq.get({
             path: '/person/' + id,
+        });
+    } catch (err) {
+        return err;
+    }
+}
+
+export async function movieCompilationPerson(id) {
+    try {
+        return await ajaxReq.get({
+            path: '/movieCompilations/person/'+ id,
         });
     } catch (err) {
         return err;
@@ -97,3 +117,5 @@ export async function avatar(form) {
         return err;
     }
 }
+
+
