@@ -1,11 +1,18 @@
 .head-movie__name {
     width: 567px;
+    background-size: contain;
+    object-fit: contain;
     height: 181px;
-    margin-bottom: 52px;
+    background-repeat: no-repeat;
+    margin-bottom: 50px;
 }
 
 .short-info.info__genre-first:hover {
     text-decoration: underline;
+}
+
+.info__year {
+    padding-right: 10px;
 }
 
 .info__genre-first {

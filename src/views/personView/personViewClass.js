@@ -8,9 +8,9 @@ import HeadPersonClass from "Components/headPerson/headPersonClass.js";
 import carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from "Components/footer/footerClass.js";
 import BaseViewClass from '../baseView/baseViewClass.js';
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import '../../css/person.css';
-
 
 // const moviesConfig = [
 //     {
@@ -45,11 +45,12 @@ import '../../css/person.css';
 //     }
 // ];
 
-
-
 export default class PersonViewClass extends BaseViewClass {
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
+
             const id = +/\d+/.exec(window.location.pathname);
 
             const [user, pers,car] = await Promise.all([profile(), person(id),movieCompilationPerson(id)]);

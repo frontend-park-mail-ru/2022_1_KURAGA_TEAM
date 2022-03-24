@@ -1,4 +1,4 @@
-img.head-movie__name(src=`${info.name_picture}`)
+div.head-movie__name(style=`background-image: url(\"${info.name_picture}\");`)
 div.head-movie__rating
     div.string-rating
         div.rating.our-rating #{info.rating}
@@ -7,7 +7,7 @@ div.head-movie__rating
         div.rating.poisk-rating #{info.kinopoisk_rating}
         div.poisk-name КиноПоиск
 div.head-movie__info
-    div.short-info.info__year #{info.year},
+    div.short-info.info__year #{info.year}
     a.short-info.info__genre-first(href='.') #{info.genre[0]},
     a.short-info.info__genre(href='.') #{info.genre[1]}
     div.short-info.info__country #{info.country}
