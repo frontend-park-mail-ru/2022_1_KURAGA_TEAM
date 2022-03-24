@@ -9,7 +9,7 @@ import {profile} from "Modules/network";
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
-import LoaderViewClass from "../loaderView/loaderViewClass";
+import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/profile.css';
 

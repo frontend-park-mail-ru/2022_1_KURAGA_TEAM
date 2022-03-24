@@ -8,7 +8,7 @@ import HeadPersonClass from "Components/headPerson/headPersonClass.js";
 import carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from "Components/footer/footerClass.js";
 import BaseViewClass from '../baseView/baseViewClass.js';
-import LoaderViewClass from "../loaderView/loaderViewClass";
+import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/person.css';
 

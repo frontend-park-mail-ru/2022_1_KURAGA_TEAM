@@ -8,7 +8,7 @@ import {profile, movies, mainHomeMovie} from 'Modules/network';
 import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
 import {routes} from "Routing/constRouting";
-import LoaderViewClass from "../loaderView/loaderViewClass";
+import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/home.css';
 

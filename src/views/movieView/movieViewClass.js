@@ -11,7 +11,7 @@ import ActorsClass from "Components/actors/actorsClass.js";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import carousel from 'Components/carousel/carouselClass.js';
-import LoaderViewClass from "../loaderView/loaderViewClass";
+import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/movie.css';
 
