@@ -8,14 +8,15 @@ import {profile, movies} from 'Modules/network';
 import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
 import {routes} from "Routing/constRouting";
-
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import '../../css/home.css';
-
 
 export default class HomeViewClass extends BaseViewClass{
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
 
             const [user, movie] = await Promise.all([profile(), movies()]);
 
@@ -41,7 +42,7 @@ export default class HomeViewClass extends BaseViewClass{
                 carouselFam: carouselFam.render(),
                 footer: footer.render(),
             });
-            
+
 
             handlerLink();
             header.setHandler();

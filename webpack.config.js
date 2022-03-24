@@ -14,7 +14,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: 'babel-loaderView',
                     options: {
                         presets: [
                             ['@babel/preset-env', { targets: "defaults" }]
@@ -25,19 +25,19 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                use: 'svg-inline-loader'
+                use: 'svg-inline-loaderView'
             },
             {
                 test: /\.pug$/,
-                loader: 'pug-loader',
+                loader: 'pug-loaderView',
             },
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loaderView"],
             },
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: 'ts-loaderView',
                 exclude: /node_modules/,
             },
         ]

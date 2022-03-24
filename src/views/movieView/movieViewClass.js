@@ -11,13 +11,16 @@ import ActorsClass from "Components/actors/actorsClass.js";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import carousel from 'Components/carousel/carouselClass.js';
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import '../../css/movie.css';
-
 
 export default class MovieViewClass extends BaseViewClass {
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
+
             const id = +/\d+/.exec(window.location.pathname);
 
             const [user, mov,car] = await Promise.all([profile(), movie(id),movieCompilationMovie(id)]);
@@ -34,7 +37,7 @@ export default class MovieViewClass extends BaseViewClass {
                 router.go(routes.ERROR_VIEW);
                 return;
             }
-            console.log(movieRes);
+
             const header = new HeaderClass(userRes.user);
             const headMovie = new HeadMovieClass(movieRes);
             const firstInfoMovie = new FirstInfoMovieClass(movieRes);
@@ -42,7 +45,6 @@ export default class MovieViewClass extends BaseViewClass {
             const actors = new ActorsClass(movieRes.staff);
             const carouselPop = new carousel('Pop', movieCarousel.movies, 4, movieCarousel.compilation_name);
             const footer = new FooterClass();
-
 
             super.render(movieViewTemplate,{
                 picture: movieRes.picture,
@@ -54,7 +56,6 @@ export default class MovieViewClass extends BaseViewClass {
                 carouselPop: carouselPop.render(),
                 footer: footer.render()
             });
-
 
             handlerLink()
             firstInfoMovie.setHandlers();

@@ -9,14 +9,16 @@ import {profile} from "Modules/network";
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import '../../css/profile.css';
-
-const root = document.getElementById('root');
 
 export default class ProfileViewClass  extends BaseViewClass{
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
+
             const {isAuth, data} = await profile();
 
             if (!isAuth) {
