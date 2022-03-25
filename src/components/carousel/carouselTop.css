@@ -72,10 +72,9 @@
 .desc-movtop {
     cursor: default;
     display: flex;
+    padding-inline: 5px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    column-gap: 15px;
-    font-style: normal;
     font-size: 16px;
     line-height: 19px;
     background: var(--desc-mov-back);
@@ -83,9 +82,8 @@
     grid-area: descMov;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: flex-start;
+    align-content: space-around;
     justify-content: space-evenly;
-    padding-inline-start: 36px;
     text-decoration: none;
     font-weight: normal;
 }

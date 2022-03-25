@@ -112,10 +112,9 @@
 .desc-mov {
     cursor: default;
     display: flex;
+    padding-inline: 5px;
     border-bottom-left-radius: 21px;
     border-bottom-right-radius: 21px;
-    column-gap: 15px;
-    font-style: normal;
     font-size: 16px;
     line-height: 19px;
     background: var(--desc-mov-back);
@@ -123,7 +122,7 @@
     grid-area: descMov;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: center;
+    align-content: space-around;
     justify-content: space-evenly;
     text-decoration: none;
     font-weight: normal;
@@ -165,15 +164,10 @@
 
 }
 
-.select {
-    /*place-self: center;*/
-    /*width: 1280px;*/
-    /*grid-template-columns: 10px;*/
-    /*column-gap: 10px;*/
-    /*grid-template-rows: 50px auto;*/
-}
 
 .select-title {
+
+
     inline-size: max-content;
     font-size: 28px;
     line-height: 42px;
@@ -193,40 +187,56 @@
     grid-template-rows: auto;
 }
 
-#trigger {
-
-    display: none;
-}
-.checker {
-    cursor: pointer;
-    background-image: url("../../static/heart.webp");
-    background-size: auto 100%;
-    width: 40px;
-    height: 40px;
-
-}
-.checker:hover {
-    background-image: url("../../static/LIKE.webp");
-    background-size: auto 100%;
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-}
-#trigger:checked + .checker {
-    background-image: url("../../static/LIKE.webp");
-    background-size: auto 100%;
-    width: 40px;
-    height: 40px;
+.input-like {
+    /*cursor: pointer;*/
+    /*font-size: 24px;*/
+    /*height: 48px;*/
+    /*width: 0;*/
+    /*padding: 0 42px 0 15px;*/
+    /*border: none;*/
+    /*border-bottom: 2px solid transparent;*/
+    /*outline: none;*/
+    /*background: transparent;*/
+    /*transition: .4s cubic-bezier(0, 0.8, 0, 1);*/
+    /*position: absolute;*/
+    /*top: 4px;*/
+    /*right: 0;*/
+    /*z-index: 2;*/
 }
 
-/*input#cb::after {*/
-/*    transition: all .4s ease;*/
-/*    visibility: visible;*/
-/*    content: url("../../static/heart.svg");*/
-/*    padding: 8px;*/
-/*}*/
+#cb {
 
-/*input#cb:checked::after {*/
-/*    content: url("../../static/LIKE.svg");*/
-/*}*/
+    width: 36px;
+    height: 36px;
+    visibility: hidden;
+}
 
+#cb:hover::after {
+    display: block;
+    content: ' ';
+    background-image: url("../../static/activeLike.png");
+    background-size: 44px 36px;
+    height: 36px;
+    width: 44px;
+}
+
+#cb::after {
+    transition: all .1s ease;
+    visibility: visible;
+    display: block;
+    content: ' ';
+    background-image: url("../../static/heart.png");
+    background-size: 36px 36px;
+    height: 36px;
+    width: 36px;
+    /*padding: 8px;*/
+}
+
+#cb:checked::after {
+    display: block;
+    content: ' ';
+    background-image: url("../../static/activeLike.png");
+    background-size: 44px 36px;
+    height: 36px;
+    width: 44px;
+}

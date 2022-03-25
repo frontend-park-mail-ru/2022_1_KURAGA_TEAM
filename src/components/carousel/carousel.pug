@@ -18,7 +18,6 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
                                             div.genre= item.genre[0] + "/" + item.genre[1]
                                         else
                                             div.genre= item.genre
-                                        input#trigger(type = "checkbox")
-                                        label.checker(for="trigger")
+                                        input#cb.input-like(type = "checkbox")
 
 + carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
