@@ -28,7 +28,7 @@ body {
     --font-first-span-color: grey;
     --input-back: rgb(255 255 255 / 20%);
     --menu-back: linear-gradient(199.6deg, #8D8D8D -95.93%, rgb(255 255 255 / 0%) 108.19%);
-    --sidebar-back: linear-gradient(206.08deg, rgb(196 196 196 / 45%) -40.85%, rgb(196 196 196 / 0%) 97.87%);
+    --sidebar-back: linear-gradient(206.08deg, rgb(98 98 98 / 38%) -40.85%, rgb(56 56 56 / 56%) 97.87%);
     --btn-color: linear-gradient(90deg, #C951AB -12.3%, #2B54BC 93.57%);
     --btn-hover-color: linear-gradient(90deg, #A6418D -12.3%, #24469D 93.57%);
     --btn-info-color: linear-gradient(121.9deg, rgb(0 0 0 / 40%) 16.73%, rgb(20 20 20 / 16.8%) 340.95%);
