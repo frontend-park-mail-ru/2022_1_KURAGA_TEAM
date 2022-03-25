@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
     mode: 'production',
@@ -62,7 +63,8 @@ module.exports = {
             template: path.resolve(__dirname, 'src', 'index.html'),
             inject: 'body'
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new FaviconsWebpackPlugin('./src/static/favicon.png')
     ],
     devServer: {
         allowedHosts: [
