@@ -54,7 +54,7 @@
 
 .movietop {
     /*background: url("../../../../static/star.png");*/
-    /*background-size: contain;*/
+    background-size: contain;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 50px;

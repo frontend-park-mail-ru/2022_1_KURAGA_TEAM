@@ -88,7 +88,7 @@
 
 .movie {
     /*background: url("../../../static/star.png");*/
-    background-size: contain;
+    background-size: cover;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 50px;
@@ -123,9 +123,8 @@
     grid-area: descMov;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: flex-start;
+    align-content: center;
     justify-content: space-evenly;
-    padding-inline-start: 36px;
     text-decoration: none;
     font-weight: normal;
 
@@ -139,26 +138,6 @@
     color: var(--genre-color);
 }
 
-
-
-
-.input-like {
-    cursor: pointer;
-    font-size: 24px;
-    height: 48px;
-    width: 0;
-    padding: 0 42px 0 15px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    background: transparent;
-    transition: .4s cubic-bezier(0, 0.8, 0, 1);
-    position: absolute;
-    top: 4px;
-    right: 0;
-    z-index: 2;
-    background: url("../../static/heart.svg");
-}
 
 .title {
     text-align: center;
@@ -214,25 +193,40 @@
     grid-template-rows: auto;
 }
 
-#cb {
-    width: 75px;
-    margin: 2px;
-    background: url("../../static/heart.svg");
-    visibility: hidden;
+#trigger {
+
+    display: none;
+}
+.checker {
+    cursor: pointer;
+    background-image: url("../../static/heart.webp");
+    background-size: auto 100%;
+    width: 40px;
+    height: 40px;
+
+}
+.checker:hover {
+    background-image: url("../../static/LIKE.webp");
+    background-size: auto 100%;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+}
+#trigger:checked + .checker {
+    background-image: url("../../static/LIKE.webp");
+    background-size: auto 100%;
+    width: 40px;
+    height: 40px;
 }
 
-input#cb:hover::after {
-    content: url("../../static/LIKE.svg");
-}
+/*input#cb::after {*/
+/*    transition: all .4s ease;*/
+/*    visibility: visible;*/
+/*    content: url("../../static/heart.svg");*/
+/*    padding: 8px;*/
+/*}*/
 
-input#cb::after {
-    transition: all .4s ease;
-    visibility: visible;
-    content: url("../../static/heart.svg");
-    padding: 8px;
-}
-
-input#cb:checked::after {
-    content: url("../../static/LIKE.svg");
-}
+/*input#cb:checked::after {*/
+/*    content: url("../../static/LIKE.svg");*/
+/*}*/
 
