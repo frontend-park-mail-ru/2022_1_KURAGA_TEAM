@@ -51,6 +51,13 @@
     background-color: var(--btn-carousel-back-hover);
 }
 
+.b-carousel__prev:hover,
+.b-carousel__next:hover{
+    color: var(--btn-carousel-color);
+    background-color: rgb(0 0 0 / 75%);
+    transition: all .4s ease;
+}
+
 .b-carousel__wrap {
     display: flex;
     transition: transform 0.75s ease-in-out;
