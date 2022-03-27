@@ -3,7 +3,6 @@ import FooterClass from 'Components/footer/footerClass.js';
 import InputsClass from 'Components/inputs/inputsLogin/inputsClass.js';
 import ButtonClass from 'Components/button/buttonClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import { profile } from 'Modules/network';
 import router from 'Routing/router.js';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';

@@ -1,7 +1,7 @@
 import headerTemplate from './header.pug';
 import { logout } from '../../modules/network.js';
-import router from '../../routing/router.js';
-import { routes } from "Routing/constRouting";
+import UserModel from "../../models/User.js"
+
 export default class HeaderClass {
     #info;
 
@@ -30,13 +30,7 @@ export default class HeaderClass {
 
         quit.addEventListener('click', (e) => {
             e.preventDefault();
-            logout()
-                .then(() => {
-                    router.go(routes.LOGIN_VIEW);
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
+            UserModel.quit();
         });
     }
 }

@@ -1,7 +1,8 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import {login, movie, profile,movieCompilationMovie} from 'Modules/network';
+import {login, movie,movieCompilationMovie} from 'Modules/network';
+import UserModel from "../../models/User.js"
 import router from "Routing/router.js";
 import HeadMovieClass from "Components/headMovie/headMovieClass.js";
 import FooterClass from "Components/footer/footerClass.js";
@@ -23,22 +24,27 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const [user, mov,car] = await Promise.all([profile(), movie(id),movieCompilationMovie(id)]);
+            const [mov,car] = await Promise.all([movie(id),movieCompilationMovie(id)]);
 
-            if (!user.isAuth) {
+
+
+            const {isAuth, body} = await UserModel.auth();
+            if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
-
                 return;
             }
+            const userData = await Promise.resolve(body);
 
-            const [userRes, movieRes,movieCarousel] = await Promise.all([user.data, mov.data,car.data]);
+
+
+            const [movieRes,movieCarousel] = await Promise.all([mov.data,car.data]);
 
             if (movieRes.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
                 return;
             }
 
-            const header = new HeaderClass(userRes.user);
+            const header = new HeaderClass(userData.user)
             const headMovie = new HeadMovieClass(movieRes);
             const firstInfoMovie = new FirstInfoMovieClass(movieRes);
             const secondGenre = new SecondGenreClass(movieRes.genre);

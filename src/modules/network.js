@@ -1,36 +1,5 @@
 import { ajaxReq } from './ajax.js';
 
-export async function registration(form) {
-    try {
-        return await ajaxReq.post({
-            path: '/signup',
-            body: form,
-        });
-    } catch (err) {
-        return err;
-    }
-}
-
-export async function login(form) {
-    try {
-        return await ajaxReq.post({
-            path: '/login',
-            body: form,
-        });
-    } catch (err) {
-        return err;
-    }
-}
-
-export async function logout() {
-    try {
-        return await ajaxReq.delete({
-            path: '/logout',
-        });
-    } catch (err) {
-        return err;
-    }
-}
 
 
 export async function movies() {
@@ -94,30 +63,5 @@ export async function movieCompilationPerson(id) {
     }
 }
 
-
-export async function edit(form) {
-    try {
-        return await ajaxReq.put({
-            path: '/edit',
-            body: form,
-        });
-    } catch (err) {
-        return err;
-    }
-}
-
-export async function avatar(form) {
-    try {
-        return await ajaxReq.put({
-            path: '/avatar',
-            body: form,
-            headers: {
-
-            }
-        });
-    } catch (err) {
-        return err;
-    }
-}
 
 

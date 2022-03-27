@@ -1,7 +1,8 @@
 import personViewTemplate from './personView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import { person, profile,movieCompilationPerson } from 'Modules/network';
+import { person,movieCompilationPerson } from 'Modules/network';
+import UserModel from "../../models/User.js"
 import router from "Routing/router.js";
 import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPersonClass.js";
@@ -21,18 +22,20 @@ export default class PersonViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const [user, pers,car] = await Promise.all([profile(), person(id),movieCompilationPerson(id)]);
+            const [pers,car] = await Promise.all([person(id),movieCompilationPerson(id)]);
 
-            if (!user.isAuth) {
+            const {isAuth, body} = await UserModel.auth();
+            if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+            const userData = await Promise.resolve(body);
 
-            const [userRes, personRes,movieCarousel] = await Promise.all([user.data, pers.data,car.data]);
+            const [personRes,movieCarousel] = await Promise.all([pers.data,car.data]);
 
 
-            console.log(personRes);
-            const header = new HeaderClass(userRes.user);
+
+            const header = new HeaderClass(userData.user);
             const headPerson = new HeadPersonClass(personRes);
             const carouselPop = new carousel('Pop', movieCarousel.movies, 4, movieCarousel.compilation_name);
             const footer = new FooterClass();

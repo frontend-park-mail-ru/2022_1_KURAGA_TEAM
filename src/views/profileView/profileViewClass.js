@@ -5,7 +5,7 @@ import handlerLink from "Utils/handlerLink.js";
 import InputsProfileClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import ButtonClass from "Components/button/buttonClass";
 import ProfileAvatarClass from "Components/profileAvatar/profileAvatarClass";
-import {profile} from "Modules/network";
+import UserModel from "../../models/User.js"
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
@@ -19,21 +19,19 @@ export default class ProfileViewClass  extends BaseViewClass{
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, data} = await profile();
 
+            const {isAuth, body} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
-
                 return;
             }
+            const userData = await Promise.resolve(body);
 
-            const res = await data;
 
-            console.log(res.user.avatar)
 
-            const header = new HeaderClass(res.user);
-            const inputs = new InputsProfileClass(res.user);
-            const avatar = new ProfileAvatarClass(res.user.avatar);
+            const header = new HeaderClass(userData.user);
+            const inputs = new InputsProfileClass(userData.user);
+            const avatar = new ProfileAvatarClass(userData.user.avatar);
             const button = new ButtonClass('Сохранить');
             const footer = new FooterClass();
 
