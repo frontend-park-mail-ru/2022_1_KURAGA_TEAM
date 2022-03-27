@@ -23,20 +23,14 @@ export default class HomeViewClass extends BaseViewClass {
             loader.render();
 
 
-            UserModel.auth().then((authData) => {
-                if (!authData.isAuth) {
-                        router.go(routes.LOGIN_VIEW);
-                        return;
-                    }
-               authData.body.data.then((user) =>{
-                   console.log(user);
-               });
-            });
+            const {isAuth, body} = await UserModel.auth();
+            if (!isAuth) {
+                router.go(routes.LOGIN_VIEW);
+                return;
+            }
+            const userData = await Promise.resolve(body);
 
-            // if (!user.isAuth) {
-            //     router.go(routes.LOGIN_VIEW);
-            //     return;
-            // }
+
 
             //const [user, movie, main] = await Promise.all([profile(), movies(), mainHomeMovie()]);
             // if (!user.isAuth) {
@@ -46,8 +40,8 @@ export default class HomeViewClass extends BaseViewClass {
             // const [userInfo, movieInfo,mainMov] = await Promise.all([user.data, movie.data, main.data])
 
 
-           // const header = new HeaderClass(user);
             // console.log(header);
+            const header = new HeaderClass(userData.user);
             // const mainMovie = new MainMovieClass(mainMov);
             // const carouselPop = new carousel('Pop', movieInfo[0].movies, 4, movieInfo[0].compilation_name);
             // const carouselTop = new carousel('Top', movieInfo[1].movies, 3, movieInfo[1].compilation_name);
@@ -56,7 +50,7 @@ export default class HomeViewClass extends BaseViewClass {
 
             super.render(homeViewTemplate, {
                 // picture: mainMov.picture,
-                //header: header.render(),
+                header: header.render(),
                 // mainMovie: mainMovie.render(),
                 // carouselPop: carouselPop.render(),
                 // carouselTop: carouselTop.render(),
@@ -66,7 +60,7 @@ export default class HomeViewClass extends BaseViewClass {
 
 
             // handlerLink();
-            // header.setHandler();
+            header.setHandler();
             // carouselPop.setHandler();
             // carouselTop.setHandler();
             // carouselFam.setHandler();

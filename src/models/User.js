@@ -6,8 +6,6 @@ export default class UserModel {
     nickname;
     avatar;
 
-
-
      async profile() {
         try {
             return await ajaxReq.get({
@@ -24,15 +22,11 @@ export default class UserModel {
             this.prototype.profile()
                 .then((body) => {
                      res({
-                         isAuth: body.status === 200,
-                         body: body
+                         isAuth: body.isAuth,
+                         body: body.data
                      });
                 })
                 .catch(() => {
-                    // res({
-                    //     authenticated: false,
-                    //     avatar: '/static/img/default_avatar_150px.webp',
-                    // });
                 });
         });
     }

@@ -16,12 +16,14 @@ export default class RegViewClass extends BaseViewClass {
     async render() {
         try {
 
-            UserModel.auth().then((authData) => {
-                if (authData.isAuth) {
-                    router.go(routes.HOME_VIEW);
-                    return;
-                }
-            });
+            const { isAuth } = await UserModel.auth();
+            console.log(isAuth);
+            if (isAuth) {
+                router.go(routes.HOME_VIEW);
+                return;
+            }
+
+
 
             const footer = new FooterClass();
             const inputs = new InputsClass();

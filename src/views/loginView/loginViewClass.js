@@ -14,6 +14,7 @@ import '../../css/regLog.css';
 const root = document.getElementById('root');
 
 export default class LoginViewClass extends BaseViewClass{
+
     async render() {
         try {
 

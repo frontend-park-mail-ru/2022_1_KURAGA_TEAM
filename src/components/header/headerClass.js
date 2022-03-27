@@ -1,7 +1,7 @@
 import headerTemplate from './header.pug';
 import { logout } from '../../modules/network.js';
 import router from '../../routing/router.js';
-
+import { routes } from "Routing/constRouting";
 export default class HeaderClass {
     #info;
 
@@ -32,7 +32,7 @@ export default class HeaderClass {
             e.preventDefault();
             logout()
                 .then(() => {
-                    router.go('login');
+                    router.go(routes.LOGIN_VIEW);
                 })
                 .catch((err) => {
                     console.error(err);
