@@ -7,7 +7,7 @@ import { profile } from 'Modules/network';
 import router from 'Routing/router.js';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
-
+import UserModel from "../../models/User.js"
 import '../../css/regLog.css';
 
 const root = document.getElementById('root');
@@ -15,13 +15,13 @@ const root = document.getElementById('root');
 export default class RegViewClass extends BaseViewClass {
     async render() {
         try {
-            const { isAuth } = await profile();
 
-            if (isAuth) {
-                router.go(routes.HOME_VIEW);
-
-                return;
-            }
+            UserModel.auth().then((authData) => {
+                if (authData.isAuth) {
+                    router.go(routes.HOME_VIEW);
+                    return;
+                }
+            });
 
             const footer = new FooterClass();
             const inputs = new InputsClass();

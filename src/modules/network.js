@@ -32,15 +32,6 @@ export async function logout() {
     }
 }
 
-export async function profile() {
-    try {
-        return await ajaxReq.get({
-            path: '/profile',
-        });
-    } catch (err) {
-        return err;
-    }
-}
 
 export async function movies() {
     try {
