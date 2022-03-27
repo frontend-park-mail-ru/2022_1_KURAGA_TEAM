@@ -1,23 +1,21 @@
 @import "../components/headPerson/headPerson.css";
 
 .photo-person {
-    top: 0;
-    left: 0;
+
     background-size: cover;
-    height: 700px;
+
 }
 
 .photo-person__gradient {
+    padding-top: 146px;
     width: 80%;
-    height: 700px;
     background: var(--movie-gradient);
 }
 
 .head-person {
-    top: 164px;
-    position: absolute;
+    display: flex;
     margin-left: 70px;
-    height: 50%;
+    flex-direction: column;
 }
 
 .first-part-info {

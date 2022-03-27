@@ -14,8 +14,8 @@
 }
 
 .head-person__descr{
-    margin-block: 46px;
     font-weight: 500;
+    margin-block: 46px;
     font-size: 18px;
     line-height: 21px;
     color: var(--font-color);
@@ -27,6 +27,7 @@
     justify-content: flex-start;
     column-gap: 22px;
     margin-bottom: 28px;
+
 }
 
 .add-photos__photo{
