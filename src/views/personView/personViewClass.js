@@ -15,6 +15,7 @@ import '../../css/person.css';
 
 
 export default class PersonViewClass extends BaseViewClass {
+    #user;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -30,12 +31,14 @@ export default class PersonViewClass extends BaseViewClass {
                 return;
             }
             const userData = await Promise.resolve(body);
+            this.#user = new UserModel(userData.user);
+
 
             const [personRes,movieCarousel] = await Promise.all([pers.data,car.data]);
 
 
 
-            const header = new HeaderClass(userData.user);
+            const header = new HeaderClass(this.#user.userData);
             const headPerson = new HeadPersonClass(personRes);
             const carouselPop = new carousel('Pop', movieCarousel.movies, 4, movieCarousel.compilation_name);
             const footer = new FooterClass();

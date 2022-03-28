@@ -1,5 +1,4 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
-// import { edit, avatar } from "../../../modules/network.js";
 import UserModel from "../../../models/User"
 import router from "../../../routing/router";
 

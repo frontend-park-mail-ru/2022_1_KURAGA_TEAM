@@ -1,15 +1,16 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import {login, movie,movieCompilationMovie} from 'Modules/network';
+import {movieCompilationMovie} from 'Modules/network';
 import UserModel from "../../models/User.js"
+import MovieModel from "../../models/Movie.js"
 import router from "Routing/router.js";
 import HeadMovieClass from "Components/headMovie/headMovieClass.js";
 import FooterClass from "Components/footer/footerClass.js";
 import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.js";
 import SecondGenreClass from "Components/secondGende/secondGenre.js";
 import ActorsClass from "Components/actors/actorsClass.js";
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
@@ -17,6 +18,9 @@ import LoaderViewClass from "../loaderView/loaderViewClass.js";
 import '../../css/movie.css';
 
 export default class MovieViewClass extends BaseViewClass {
+    #user;
+    #movie;
+
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -24,36 +28,46 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const [mov,car] = await Promise.all([movie(id),movieCompilationMovie(id)]);
+            const [car] = await Promise.all([movieCompilationMovie(id)]);
 
 
-
-            const {isAuth, body} = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await Promise.resolve(body);
 
 
+            const userData = await Promise.resolve(userBody);
+            this.#user = new UserModel(userData.user);
 
-            const [movieRes,movieCarousel] = await Promise.all([mov.data,car.data]);
 
-            if (movieRes.status === routes.ERROR) {
-                router.go(routes.ERROR_VIEW);
-                return;
-            }
+            const {movBody} = await MovieModel.getMovie(id);
+            console.log(movBody);
+            const movData = await Promise.resolve(movBody);
+            console.log(movData);
+            this.#movie = new MovieModel(movData);
 
-            const header = new HeaderClass(userData.user)
-            const headMovie = new HeadMovieClass(movieRes);
-            const firstInfoMovie = new FirstInfoMovieClass(movieRes);
-            const secondGenre = new SecondGenreClass(movieRes.genre);
-            const actors = new ActorsClass(movieRes.staff);
+
+            // if (movieRes.status === routes.ERROR) {
+            //     router.go(routes.ERROR_VIEW);
+            //     return;
+            // }
+
+
+            const [movieCarousel] = await Promise.all([car.data]);
+
+
+            const header = new HeaderClass(this.#user.userData);
+            const headMovie = new HeadMovieClass(this.#movie.movieData);
+            const firstInfoMovie = new FirstInfoMovieClass(this.#movie.movieData);
+            const secondGenre = new SecondGenreClass(this.#movie.movieData);
+            const actors = new ActorsClass(this.#movie.movieData);
             const carouselPop = new carousel('Pop', movieCarousel.movies, 4, movieCarousel.compilation_name);
             const footer = new FooterClass();
 
-            super.render(movieViewTemplate,{
-                picture: movieRes.picture,
+            super.render(movieViewTemplate, {
+                movieImg: this.#movie.movieData,
                 header: header.render(),
                 headMovie: headMovie.render(),
                 firstInfoMovie: firstInfoMovie.render(),
@@ -64,7 +78,7 @@ export default class MovieViewClass extends BaseViewClass {
             });
 
             handlerLink()
-            firstInfoMovie.setHandlers();
+            //firstInfoMovie.setHandlers();
             carouselPop.setHandler();
             header.setHandler();
         } catch (err) {

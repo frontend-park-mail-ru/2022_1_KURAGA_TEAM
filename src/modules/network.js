@@ -12,26 +12,16 @@ export async function movies() {
     }
 }
 
-export async function mainHomeMovie() {
-    try {
-        return await ajaxReq.get({
-            path: '/mainMovie',
-        });
-    } catch (err) {
-        return err;
-    }
-}
 
-
-export async function movie(id) {
-    try {
-        return await ajaxReq.get({
-            path: '/movie/' + id,
-        });
-    } catch (err) {
-        return err;
-    }
-}
+// export async function movie(id) {
+//     try {
+//         return await ajaxReq.get({
+//             path: '/movie/' + id,
+//         });
+//     } catch (err) {
+//         return err;
+//     }
+// }
 
 export async function movieCompilationMovie(id) {
     try {

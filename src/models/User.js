@@ -3,9 +3,24 @@ import router from '../routing/router.js';
 import { routes } from '../routing/constRouting.js';
 
 export default class UserModel {
-    email;
-    nickname;
-    avatar;
+    constructor(userData) {
+
+        this.userData = {
+            username: userData.username,
+            email: userData.email,
+            avatar: userData.avatar
+        }
+    }
+    get userData(){
+        return this._u;
+    }
+    set userData(data) {
+        this._u = {
+            username: data.username,
+            email: data.email,
+            avatar: data.avatar
+        }
+    }
 
 
     async registration(form) {
@@ -77,14 +92,13 @@ export default class UserModel {
     }
 
 
-
     static auth(){
         return new Promise((res) => {
             this.prototype.profile()
                 .then((body) => {
                      res({
                          isAuth: body.isAuth,
-                         body: body.data
+                         userBody: body.data
                      });
                 })
                 .catch(() => {
@@ -161,3 +175,4 @@ export default class UserModel {
 
 
 }
+

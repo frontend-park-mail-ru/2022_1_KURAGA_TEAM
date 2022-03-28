@@ -10,6 +10,7 @@ import '../../css/error.css';
 const root = document.getElementById('root');
 
 export default class ErrorViewClass extends BaseViewClass{
+    #user;
     async render() {
         try {
 
@@ -18,9 +19,10 @@ export default class ErrorViewClass extends BaseViewClass{
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await body;
+            const userData = await Promise.resolve(body);
+            this.#user = new UserModel(userData.user);
 
-            const header = new HeaderClass(userData.user);
+            const header = new HeaderClass(this.#user.userData);
             const footer = new FooterClass();
 
 

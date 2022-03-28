@@ -14,6 +14,7 @@ import LoaderViewClass from "../loaderView/loaderViewClass.js";
 import '../../css/profile.css';
 
 export default class ProfileViewClass  extends BaseViewClass{
+    #user;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -26,10 +27,11 @@ export default class ProfileViewClass  extends BaseViewClass{
                 return;
             }
             const userData = await Promise.resolve(body);
+            this.#user = new UserModel(userData.user);
 
 
 
-            const header = new HeaderClass(userData.user);
+            const header = new HeaderClass(this.#user.userData);
             const inputs = new InputsProfileClass(userData.user);
             const avatar = new ProfileAvatarClass(userData.user.avatar);
             const button = new ButtonClass('Сохранить');

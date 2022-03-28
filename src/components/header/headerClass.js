@@ -1,5 +1,4 @@
 import headerTemplate from './header.pug';
-import { logout } from '../../modules/network.js';
 import UserModel from "../../models/User.js"
 
 export default class HeaderClass {

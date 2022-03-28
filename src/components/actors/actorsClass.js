@@ -4,7 +4,7 @@ export default class ActorsClass {
     #staff;
 
     constructor(staff) {
-        this.#staff = staff;
+        this.#staff = staff.staff;
     }
 
     render() {
