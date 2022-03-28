@@ -275,6 +275,7 @@ export default class InputsProfileClass {
 
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
+                            miniAvatar.style.backgroundImage = `url(${URL.createObjectURL(inputAvatar.files[0])})`;
                         })
                         .catch((err) => {
                             console.error(err);
