@@ -21,6 +21,7 @@ body {
 }
 
 :root {
+    --progress-bar: #5B5B5B;
     --back-color: #01090B;
     --font-color: #FFF;
     --font-footer-color: #C3C3C2;

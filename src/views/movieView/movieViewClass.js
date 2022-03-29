@@ -1,7 +1,7 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import {login, movie, profile,movieCompilationMovie} from 'Modules/network';
+import { login, movie, profile, movieCompilationMovie } from 'Modules/network';
 import router from "Routing/router.js";
 import HeadMovieClass from "Components/headMovie/headMovieClass.js";
 import FooterClass from "Components/footer/footerClass.js";
