@@ -12,38 +12,6 @@ import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/person.css';
 
-// const moviesConfig = [
-//     {
-//         id: 8,
-//         picture: "gucci.jpg",
-//         name: 'Звездные войны1',
-//         genre: [],
-//     },
-//     {
-//         id: 5,
-//         picture: "star.png",
-//         name: 'Звездные войнфцвфцвы2',
-//         genre: ['Фантастика3','Фантастика2'],
-//     },
-//     {
-//         id: 5,
-//         picture: "star.png",
-//         name: 'Звездные войны3фцвфцв',
-//         genre: ['Фантастика4'],
-//     },
-//     {
-//         id: 5,
-//         picture: "star.png",
-//         name: 'Звездные войны4',
-//         genre: ['Фантастика4','afdawd'],
-//     },
-//     {
-//         id: 5,
-//         picture: "star.png",
-//         name: 'Звездные войны4',
-//         genre: ['Фантастика4','afdawd','awdawdawd'],
-//     }
-// ];
 
 export default class PersonViewClass extends BaseViewClass {
     async render() {
@@ -59,6 +27,7 @@ export default class PersonViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+
             const [userRes, personRes,movieCarousel] = await Promise.all([user.data, pers.data,car.data]);
 
 
