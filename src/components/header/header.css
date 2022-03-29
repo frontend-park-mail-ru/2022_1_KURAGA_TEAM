@@ -128,8 +128,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-inline-end: 65px;
+    margin-inline-end: 33px;
     cursor: pointer;
+    height: 82px;
+    width: 62px;
 }
 
 .name-profile {
@@ -162,7 +164,7 @@
 .dropdown-content {
     right: auto;
     display: none;
-    margin: 50px;
+    margin-block: 66px;
     position: absolute;
     background: var(--drop-back);
     border-radius: 5px;
@@ -183,6 +185,6 @@
     border-radius: 5px;
 }
 
-.dropdown:hover .dropdown-content {
+.profile-block:hover .dropdown-content {
     display: block;
 }

@@ -1,17 +1,15 @@
 import carouselTemplate from './carousel.pug';
 import movingCarousel from './movingCarousel.js';
 
-export default class carousel {
-    constructor(type, movies, num, title) {
+export default class Carousel {
+    constructor(type, compilation) {
         this.type = type;
-        this.movies = movies;
-        this.countDiv = Math.ceil(movies.length / num)
-        this.num = num
-        this.title = title;
+        this.movies = compilation.movies;
+        this.title = compilation.compilation_name;
     }
 
     render() {
-        if (this.type === 'Pop') return carouselTemplate({
+        if (this.type === "Pop") return carouselTemplate({
             type: this.type,
             items: this.movies,
             car: 'js-carouselPop',
@@ -19,11 +17,11 @@ export default class carousel {
             nextBtn: 'js-carouselPop__next',
             wrapMov: 'js-carouselPop__wrap',
             typeMov: '',
-            countDiv: this.countDiv,
-            num: this.num,
+            countDiv: Math.ceil(this.movies.length / 4),
+            num: 4,
             title: this.title
         });
-        if (this.type === 'Top') return carouselTemplate({
+        if (this.type === "Top") return carouselTemplate({
             type: this.type,
             items: this.movies,
             car: 'js-carouselTop',
@@ -31,11 +29,11 @@ export default class carousel {
             nextBtn: 'js-carouselTop__next',
             wrapMov: 'js-carouselTop__wrap',
             typeMov: 'top',
-            countDiv: this.countDiv,
-            num: this.num,
+            countDiv: Math.ceil(this.movies.length / 2),
+            num: 2,
             title: this.title
         });
-        if (this.type === 'Fam') return carouselTemplate({
+        if (this.type === "Fam") return carouselTemplate({
             type: this.type,
             items: this.movies,
             car: 'js-carouselFam',
@@ -43,8 +41,8 @@ export default class carousel {
             nextBtn: 'js-carouselFam__next',
             wrapMov: 'js-carouselFam__wrap',
             typeMov: '',
-            countDiv: this.countDiv,
-            num: this.num,
+            countDiv: Math.ceil(this.movies.length / 4),
+            num: 4,
             title: this.title
         });
     }

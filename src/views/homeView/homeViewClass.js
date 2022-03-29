@@ -1,22 +1,23 @@
 import homeViewTemplate from './homeView.pug';
 import HeaderClass from 'Components/header/headerClass.js';
 import MainMovieClass from 'Components/mainMovie/mainMovieClass.js';
-import carousel from 'Components/carousel/carouselClass.js';
+import Carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from 'Components/footer/footerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import {movies} from 'Modules/network';
 import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
 import {routes} from "Routing/constRouting";
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
+import MovieCompilationModel from "../../models/MovieCompilation"
 import '../../css/home.css';
 
 
 export default class HomeViewClass extends BaseViewClass {
     #user;
     #mainMovie;
+    #movieCompilations = [];
 
     async render() {
 
@@ -38,15 +39,24 @@ export default class HomeViewClass extends BaseViewClass {
             this.#mainMovie = new MovieModel(mainMovieData);
 
 
-            
-            const [movie] = await Promise.all([movies()]);
-            const [movieInfo] = await Promise.all([movie.data])
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
+            const movieCompilationsData = await Promise.resolve(movCompBody);
+            movieCompilationsData.forEach((movieCompilationData) => {
+                console.log(movieCompilationData);
+                this.#movieCompilations.push(new MovieCompilationModel(movieCompilationData))
+            });
+
+
 
             const header = new HeaderClass(this.#user.userData);
             const mainMovie = new MainMovieClass(this.#mainMovie.movieData);
-            const carouselPop = new carousel('Pop', movieInfo[0].movies, 4, movieInfo[0].compilation_name);
-            const carouselTop = new carousel('Top', movieInfo[1].movies, 3, movieInfo[1].compilation_name);
-            const carouselFam = new carousel('Fam', movieInfo[2].movies, 4, movieInfo[2].compilation_name);
+            // const carousels = [];
+            // this.#movieCompilations.forEach((movieCompilation, index) => {
+            //     carousels.push(new Carousel(index, movieCompilation.movieCompilationData));
+            // });
+            const carouselPop = new Carousel("Pop", this.#movieCompilations[0].movieCompilationData);
+            const carouselTop = new Carousel("Top", this.#movieCompilations[1].movieCompilationData);
+            const carouselFam = new Carousel("Fam", this.#movieCompilations[2].movieCompilationData);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {

@@ -1,8 +1,9 @@
 import personViewTemplate from './personView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import { person,movieCompilationPerson } from 'Modules/network';
 import UserModel from "../../models/User.js"
+import PersonModel from "../../models/Person.js"
+import MovieCompilationModel from "../../models/MovieCompilation"
 import router from "Routing/router.js";
 import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPersonClass.js";
@@ -16,6 +17,8 @@ import '../../css/person.css';
 
 export default class PersonViewClass extends BaseViewClass {
     #user;
+    #person;
+    #movieCompilation;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -23,28 +26,36 @@ export default class PersonViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const [pers,car] = await Promise.all([person(id),movieCompilationPerson(id)]);
 
-            const {isAuth, body} = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await Promise.resolve(body);
+            const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
 
-            const [personRes,movieCarousel] = await Promise.all([pers.data,car.data]);
+            const {persBody} = await PersonModel.getPerson(id);
+            const persData = await Promise.resolve(persBody);
+            this.#person = new PersonModel(persData);
+
+
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilationPerson(id);
+            const movieCompilationData = await Promise.resolve(movCompBody);
+            this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
 
 
 
-            const header = new HeaderClass(this.#user.userData);
-            const headPerson = new HeadPersonClass(personRes);
-            const carouselPop = new carousel('Pop', movieCarousel.movies, 4, movieCarousel.compilation_name);
+
+
+            const header = new HeaderClass("this.#user.userData");
+            const headPerson = new HeadPersonClass(this.#person.personData);
+            const carouselPop = new carousel('Pop', this.#movieCompilation.movieCompilationData);
             const footer = new FooterClass();
 
             super.render(personViewTemplate,{
-                photo: personRes.photo,
+                personImg: this.#person.personData,
                 header: header.render(),
                 headPerson: headPerson.render(),
                 carouselPop: carouselPop.render(),

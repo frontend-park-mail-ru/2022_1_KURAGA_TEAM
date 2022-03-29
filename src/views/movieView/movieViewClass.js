@@ -1,9 +1,9 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import {movieCompilationMovie} from 'Modules/network';
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
+import MovieCompilationModel from "../../models/MovieCompilation"
 import router from "Routing/router.js";
 import HeadMovieClass from "Components/headMovie/headMovieClass.js";
 import FooterClass from "Components/footer/footerClass.js";
@@ -20,15 +20,14 @@ import '../../css/movie.css';
 export default class MovieViewClass extends BaseViewClass {
     #user;
     #movie;
+    #movieCompilation;
 
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const id = +/\d+/.exec(window.location.pathname);
 
-            const [car] = await Promise.all([movieCompilationMovie(id)]);
 
 
             const {isAuth, userBody} = await UserModel.auth();
@@ -36,11 +35,11 @@ export default class MovieViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-
             const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
+
+            const id = +/\d+/.exec(window.location.pathname);
 
             const {movBody} = await MovieModel.getMovie(id);
             console.log(movBody);
@@ -54,8 +53,10 @@ export default class MovieViewClass extends BaseViewClass {
             //     return;
             // }
 
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
+            const movieCompilationData = await Promise.resolve(movCompBody);
+            this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
 
-            const [movieCarousel] = await Promise.all([car.data]);
 
 
             const header = new HeaderClass(this.#user.userData);
@@ -63,7 +64,7 @@ export default class MovieViewClass extends BaseViewClass {
             const firstInfoMovie = new FirstInfoMovieClass(this.#movie.movieData);
             const secondGenre = new SecondGenreClass(this.#movie.movieData);
             const actors = new ActorsClass(this.#movie.movieData);
-            const carouselPop = new carousel('Pop', movieCarousel.movies, 4, movieCarousel.compilation_name);
+            const carouselPop = new carousel('Pop', this.#movieCompilation.movieCompilationData);
             const footer = new FooterClass();
 
             super.render(movieViewTemplate, {
@@ -78,7 +79,7 @@ export default class MovieViewClass extends BaseViewClass {
             });
 
             handlerLink()
-            //firstInfoMovie.setHandlers();
+            firstInfoMovie.setHandlers();
             carouselPop.setHandler();
             header.setHandler();
         } catch (err) {
