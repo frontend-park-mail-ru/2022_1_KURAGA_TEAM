@@ -37,8 +37,129 @@ export default class PlayerViewClass extends BaseViewClass {
             });
 
             handlerLink()
+            this.setHandler();
         } catch (err) {
             console.error(err);
         }
+    }
+
+    setHandler() {
+        const videoContainer = document.querySelector('.video-container');
+        const video = document.querySelector('.player');
+        video.play();
+
+        const playPauseButton = document.querySelector('.play-pause');
+        const play = playPauseButton.querySelector('.play__svg');
+        const pause = playPauseButton.querySelector('.pause__svg');
+        play.style.display = 'none';
+        pause.style.display = '';
+
+        const rewindButton = document.querySelector('.rewind');
+        const forwardButton = document.querySelector('.forward');
+
+        const volumeButton = document.querySelector('.volume');
+        const volumeFull = volumeButton.querySelector('.volume-full__svg');
+        const volumeMute = volumeButton.querySelector('.volume-mute__svg');
+        volumeMute.style.display = 'none';
+        volumeFull.style.display = '';
+
+        const fullScreenButton = document.querySelector('.full');
+        const fullSize = fullScreenButton.querySelector('.full__svg');
+        const minSize = fullScreenButton.querySelector('.min__svg');
+        minSize.style.display = 'none';
+        fullSize.style.display = '';
+
+        const progressTime = document.querySelector('.progress-time');
+        const progressBar = document.querySelector('.progress-bar');
+        const watchBar = document.querySelector('.watched-bar');
+        watchBar.style.width = '0';
+
+        const playPause = () => {
+            if (video.paused) {
+                video.play();
+                play.style.display = 'none';
+                pause.style.display = '';
+
+                return;
+            }
+
+            video.pause();
+            play.style.display = '';
+            pause.style.display = 'none';
+        }
+
+        const forward = () => {
+            video.currentTime += 10;
+        }
+
+        const rewind = () => {
+            video.currentTime -= 10;
+        }
+
+        video.addEventListener('timeupdate', () => {
+            watchBar.style.width = ((video.currentTime / video.duration) * 100) + '%';
+
+            const totalSecondsRemaining = video.duration - video.currentTime;
+            const hoursRemaining = Math.floor(totalSecondsRemaining / 3600);
+            const minutesRemaining = Math.floor(totalSecondsRemaining / 60);
+            const secondsRemaining = Math.floor(totalSecondsRemaining - minutesRemaining * 60);
+
+            progressTime.textContent =
+                `${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
+        });
+
+        progressBar.addEventListener('click', (e) => {
+           const pos = (e.pageX - (progressBar.offsetLeft + progressBar.offsetParent.offsetLeft)) / progressBar.offsetWidth;
+
+           video.currentTime = pos * video.duration;
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+
+                playPause();
+            }
+
+            if (e.code === 'ArrowRight') {
+                forward();
+            }
+
+            if (e.code === 'ArrowLeft') {
+                rewind();
+            }
+        });
+
+        playPauseButton.addEventListener('click', playPause);
+
+        rewindButton.addEventListener('click', rewind);
+
+        forwardButton.addEventListener('click', forward);
+
+        volumeButton.addEventListener('click', () => {
+            if (video.muted) {
+                volumeFull.style.display = '';
+                volumeMute.style.display = 'none';
+            } else {
+                volumeFull.style.display = 'none';
+                volumeMute.style.display = '';
+            }
+
+            video.muted = !video.muted;
+        });
+
+        fullScreenButton.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                videoContainer.requestFullscreen();
+                minSize.style.display = '';
+                fullSize.style.display = 'none';
+
+                return;
+            }
+
+            minSize.style.display = 'none';
+            fullSize.style.display = '';
+            document.exitFullscreen();
+        });
     }
 }

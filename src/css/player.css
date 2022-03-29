@@ -8,6 +8,7 @@
 }
 
 .exit {
+    cursor: pointer;
     position: fixed;
     top: 0;
     left: 0;
@@ -15,6 +16,11 @@
     color: white;
     margin-left: 70px;
     padding-top: 4vmin;
+    transition: all .2s linear;
+}
+
+.exit:hover {
+    transform: scale(1.2);
 }
 
 .player {
@@ -55,6 +61,7 @@
     height: 120%;
     width: 20%;
     background: var(--mix-color);
+    transition: all 0.2s linear;
 }
 
 .playhead {
@@ -63,10 +70,6 @@
     border-radius: 50%;
     height: 18px;
     width: 18px;
-}
-
-.progress-time {
-
 }
 
 .controls {
@@ -126,6 +129,9 @@
     fill: none;
 }
 
+.min__svg {
+    fill: none;
+}
 .full__svg {
     fill: none;
 }
