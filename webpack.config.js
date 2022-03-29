@@ -64,7 +64,7 @@ module.exports = {
             inject: 'body'
         }),
         new MiniCssExtractPlugin(),
-        new FaviconsWebpackPlugin('./src/static/favicon.png')
+        new FaviconsWebpackPlugin('./src/static/favicon.webp')
     ],
     devServer: {
         allowedHosts: [
