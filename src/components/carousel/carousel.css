@@ -91,9 +91,6 @@
     color: var(--font-color);
 }
 
-.movie__href:hover {
-    text-decoration: underline;
-}
 
 .movie {
     transition: all .3s ease;
