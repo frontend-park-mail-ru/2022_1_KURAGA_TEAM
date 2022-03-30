@@ -28,7 +28,7 @@ export default class Carousel {
             prevBtn: 'js-carouselTop__prev',
             nextBtn: 'js-carouselTop__next',
             wrapMov: 'js-carouselTop__wrap',
-            typeMov: 'top',
+            typeMov: 'Top',
             countDiv: Math.ceil(this.movies.length / 2),
             num: 2,
             title: this.title
