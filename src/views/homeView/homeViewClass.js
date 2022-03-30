@@ -12,7 +12,6 @@ import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/home.css';
 
-
 export default class HomeViewClass extends BaseViewClass{
 
     async render() {
@@ -47,6 +46,7 @@ export default class HomeViewClass extends BaseViewClass{
 
 
             handlerLink();
+            this.setHandler();
             header.setHandler();
             carouselPop.setHandler();
             carouselTop.setHandler();
@@ -54,5 +54,14 @@ export default class HomeViewClass extends BaseViewClass{
         } catch (err) {
             console.error(err);
         }
+    }
+
+    setHandler() {
+        const homeNavbar = document.querySelector('.home-js');
+
+        homeNavbar.style.backgroundColor = '#2C51B1';
+        homeNavbar.style.webkitBackgroundClip = 'text';
+        homeNavbar.style.webkitTextFillColor = 'transparent';
+        homeNavbar.style.backgroundImage = 'linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)';
     }
 }

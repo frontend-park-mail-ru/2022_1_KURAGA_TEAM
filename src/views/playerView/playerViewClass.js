@@ -48,6 +48,9 @@ export default class PlayerViewClass extends BaseViewClass {
         const video = document.querySelector('.player');
         video.play();
 
+        const controlsContainers = document.querySelector('.controls-container');
+        const exit = document.querySelector('.exit');
+
         const playPauseButton = document.querySelector('.play-pause');
         const play = playPauseButton.querySelector('.play__svg');
         const pause = playPauseButton.querySelector('.pause__svg');
@@ -73,6 +76,26 @@ export default class PlayerViewClass extends BaseViewClass {
         const progressBar = document.querySelector('.progress-bar');
         const watchBar = document.querySelector('.watched-bar');
         watchBar.style.width = '0';
+
+        let displayTime;
+
+        const displayControls = () => {
+            controlsContainers.style.opacity = '1';
+            exit.style.opacity = '1';
+            document.body.style.cursor = 'initial';
+
+            if (displayTime) {
+                clearTimeout(displayTime);
+            }
+
+            displayTime = setTimeout(() => {
+                controlsContainers.style.opacity = '0';
+                exit.style.opacity = '0';
+                document.body.style.cursor = 'none';
+            }, 5000);
+        }
+
+        displayControls();
 
         const playPause = () => {
             if (video.paused) {
@@ -114,6 +137,18 @@ export default class PlayerViewClass extends BaseViewClass {
            video.currentTime = pos * video.duration;
         });
 
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                minSize.style.display = 'none';
+                fullSize.style.display = '';
+
+                return;
+            }
+
+            minSize.style.display = '';
+            fullSize.style.display = 'none';
+        });
+
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
                 e.preventDefault();
@@ -128,6 +163,12 @@ export default class PlayerViewClass extends BaseViewClass {
             if (e.code === 'ArrowLeft') {
                 rewind();
             }
+
+            displayControls();
+        });
+
+        document.addEventListener('mousemove', () => {
+            displayControls();
         });
 
         playPauseButton.addEventListener('click', playPause);
@@ -151,14 +192,10 @@ export default class PlayerViewClass extends BaseViewClass {
         fullScreenButton.addEventListener('click', () => {
             if (!document.fullscreenElement) {
                 videoContainer.requestFullscreen();
-                minSize.style.display = '';
-                fullSize.style.display = 'none';
 
                 return;
             }
 
-            minSize.style.display = 'none';
-            fullSize.style.display = '';
             document.exitFullscreen();
         });
     }

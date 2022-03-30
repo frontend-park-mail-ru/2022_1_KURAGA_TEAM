@@ -21,7 +21,7 @@
     will-change: transform;
     position: relative;
     z-index: 1;
-    height: 100%;
+    height: 245px;
 
 }
 
@@ -64,9 +64,14 @@
     row-gap: 10px;
     border-radius: 12px;
     margin-inline-start: 0;
+    transition: all .2s ease;
     grid-template-areas:
     "refMov "
     "descMov"
+}
+
+.movietop:hover {
+    transform: scale(1.05);
 }
 
 .desc-movtop {
