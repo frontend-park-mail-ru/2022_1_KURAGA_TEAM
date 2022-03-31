@@ -1,4 +1,4 @@
-@import './carouselTop.css';
+@import './carouselTop.scss';
 
 .wrap {
     margin: 10px auto;
@@ -120,7 +120,6 @@
     font-size: 16px;
     line-height: 19px;
     background: var(--desc-mov-back);
-    backdrop-filter: blur(5px);
     grid-area: descMov;
     flex-wrap: wrap;
     flex-direction: column;

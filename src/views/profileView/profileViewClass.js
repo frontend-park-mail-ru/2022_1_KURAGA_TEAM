@@ -11,7 +11,7 @@ import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
-import '../../css/profile.css';
+import '../../css/profile.scss';
 
 export default class ProfileViewClass  extends BaseViewClass{
     async render() {

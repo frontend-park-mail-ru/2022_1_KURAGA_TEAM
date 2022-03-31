@@ -7,11 +7,6 @@ const configIcon = [
         src: '../../static/telegram.png',
     },
     {
-        key: 'instagram',
-        href: 'https://www.instagram.com/danyatarnovskiy/',
-        src: '../../static/insta.png',
-    },
-    {
         key: 'vk',
         href: 'https://vk.com/dtarnovsky',
         src: '../../static/vk.png',

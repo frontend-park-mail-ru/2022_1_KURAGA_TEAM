@@ -86,26 +86,74 @@
 }
 @media (max-width: 1000px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
-
     .logo {
         width: 136px;
         height: 80px;
         left: 10px;
     }
 
-    #menu{
+    #menu {
+        padding-top: 30px;
+        padding-bottom: 30px;
         width: 90%
     }
 
-    #footer {
-        height: auto;
+    .menu-h1 {
+        font-size: 35px;
+    }
+
+    .papa {
+        height: 85px;
+    }
+
+    .error {
+        font-size: 16px;
+    }
+
+    .menu-button {
+        font-size: 22px;
     }
 
     .text {
+        font-size: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media (max-width: 700px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
+
+    .titleFooter {
+        font-size: 22px;
+    }
+
+    #footer {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .left {
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    #second-footer {
+        margin-left: 0;
+    }
+
+    #third-footer {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .ref {
+        margin-right: 0;
     }
 }
 
