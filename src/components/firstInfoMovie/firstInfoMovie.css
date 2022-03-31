@@ -1,5 +1,6 @@
 .first-part-info__rating {
-    margin-right: 62px;
+    margin-bottom: 30px;
+    width: 210px;
 }
 
 .first-part-info__rating-flex {
@@ -81,5 +82,5 @@
 .first-part-info__text {
     font-size: 20px;
     font-weight: lighter;
-    width: 500px;
+    width: 700px;
 }
