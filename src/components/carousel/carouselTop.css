@@ -16,7 +16,7 @@
 }
 
 .b-carouselTop {
-    height: 246px;
+    height: 100%;
     border-radius: 5px;
     width: 100%;
     overflow: hidden;
@@ -35,12 +35,14 @@
 }
 
 .b-carouselTop__prev{
+    height: 100%;
     background-color: transparent;
     left: 0;
     transition: all .4s ease;
 }
 
 .b-carouselTop__next {
+    height: 100%;
     background-color: transparent;
     left: auto;
     right: 0;
@@ -55,7 +57,7 @@
 }
 
 .movieTop {
-    transition: all .3s ease;
+    transition: all 0.1s ease;
     background-size: cover;
     display: grid;
     grid-template-columns: auto;
@@ -65,16 +67,10 @@
     height: 235px;
     row-gap: 10px;
     border-radius: 12px;
-    margin-inline-start: 0;
+    margin-inline: 20px;
     grid-template-areas:
     "refMov "
     "descMov"
-}
-
-.movieTop:hover{
-    width: 425px;
-    height: 246px;
-    background-size: cover;
 }
 
 .desc-movTop {

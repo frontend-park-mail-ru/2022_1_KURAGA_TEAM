@@ -3,12 +3,13 @@
 .wrap {
     margin: 10px auto;
     width: 100%;
+    height: 100%;
 }
 
 .b-carousel {
-    height: 200px;
     border-radius: 5px;
     width: 100%;
+    height: 100%;
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
@@ -32,13 +33,14 @@
 }
 
 .b-carousel__prev {
-
+    height: 100%;
     background-color: transparent;
     left: 0;
     transition: all .4s ease;
 }
 
 .b-carousel__next {
+    height: 100%;
     background-color: transparent;
     left: auto;
     right: 0;
@@ -67,6 +69,7 @@
     position: relative;
     z-index: 1;
     height: 100%;
+    /*overflow-x: scroll;*/
 
 }
 
@@ -76,7 +79,9 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    height: 100%;
+
+
 }
 
 .b-carousel__img {
@@ -88,12 +93,12 @@
 .movie__href {
     cursor: pointer;
     text-decoration: none;
+    display: block;
     color: var(--font-color);
 }
 
-
 .movie {
-    transition: all .3s ease;
+    transition: all 0.1s ease;
     background-size: cover;
     background-position-x: center;
     display: grid;
@@ -104,17 +109,12 @@
     height: 180px;
     row-gap: 10px;
     border-radius: 24px;
-    margin-inline-start: 0;
+    margin-inline: 20px;
     grid-template-areas:
     "refMov "
     "descMov"
 }
 
-.movie:hover{
-    width: 320px;
-    height: 190px;
-    background-size: cover;
-}
 
 
 
