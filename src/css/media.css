@@ -148,6 +148,12 @@
         height: 40px;
     }
 
+    .logo {
+        top: 10px;
+        width: 120px;
+        height: 70px;
+    }
+
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
 
     .titleFooter {
