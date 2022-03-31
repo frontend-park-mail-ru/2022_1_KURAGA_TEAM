@@ -218,9 +218,10 @@
 
 #cb {
 
-    width: 36px;
+    width: 44px;
     height: 36px;
     visibility: hidden;
+    text-align: -webkit-center;
 }
 
 #cb:hover::after {
@@ -248,6 +249,7 @@
     display: block;
     content: ' ';
     background-image: url("../../static/activeLike.png");
+    background-position: center;
     background-size: 44px 36px;
     height: 36px;
     width: 44px;

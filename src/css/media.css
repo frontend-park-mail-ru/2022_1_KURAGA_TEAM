@@ -7,9 +7,7 @@
     /*.select{*/
     /*    width: 1408px;*/
     /*}*/
-    .b-carouselTop__wrap {
-        margin-inline: -44px;
-    }
+
 }
 
 @media (min-width: 1450px) and (max-width: 1600px) {
@@ -110,21 +108,21 @@
 @media (min-width: 1400px) and ( max-width: 1800px) {
     .movie {
         width: calc(6vw + 300px);
-        height: calc(3.75vw + 180px);
+        height: calc(0.5vw + 180px);
     }
     .movieTop{
         width: calc(6vw + 405px);
-        height: calc(3.75vw + 235px);
+        height: calc(3.5vw + 235px);
     }
 }
 
 @media (min-width: 1800px) {
     .movie {
-        width: calc(15vw + 300px);
-        height: calc(9vh + 180px);
+        width: calc(20vw + 300px);
+        height: calc(6vw + 180px);
     }
     .movieTop{
-        width: calc(15vw + 405px);
-        height: calc(9vh + 235px);
+        width: calc(20vw + 405px);
+        height: calc(10vw + 235px);
     }
 }

@@ -1,5 +1,9 @@
 export default function MovingCarousel(setting) {
 
+    if (privates.opt.position >= privates.opt.max_position) {
+        console.log("sefsef");
+    }
+
 
     if (document.querySelector(setting.wrap) === null) {
         console.error(`Carousel not fount selector ${setting.wrap}`);
