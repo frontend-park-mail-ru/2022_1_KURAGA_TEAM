@@ -33,6 +33,7 @@
 }
 
 .b-carousel__prev {
+    visibility: hidden;
     height: 100%;
     background-color: transparent;
     left: 0;
@@ -40,6 +41,7 @@
 }
 
 .b-carousel__next {
+    visibility: hidden;
     height: 100%;
     background-color: transparent;
     left: auto;

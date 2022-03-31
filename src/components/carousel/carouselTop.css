@@ -35,6 +35,7 @@
 }
 
 .b-carouselTop__prev{
+    visibility: hidden;
     height: 100%;
     background-color: transparent;
     left: 0;
@@ -42,6 +43,7 @@
 }
 
 .b-carouselTop__next {
+    visibility: hidden;
     height: 100%;
     background-color: transparent;
     left: auto;

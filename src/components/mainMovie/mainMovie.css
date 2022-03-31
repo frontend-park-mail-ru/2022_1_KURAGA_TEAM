@@ -84,7 +84,7 @@
     font-size: 20px;
     line-height: 28px;
     place-self: center;
-    background: var(--btn-info-color);
+    background: var(--trailer-button);
     mix-blend-mode: normal;
     backdrop-filter: blur(15px);
     border-radius: 5px;
@@ -97,7 +97,7 @@
 }
 
 .btn-info:hover {
-    background: var(--btn-info-hover-color);
+    background: var(--trailer-button-hover);
 }
 
 .btn:active {
