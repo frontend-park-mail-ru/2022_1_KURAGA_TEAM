@@ -13,9 +13,16 @@
     border-radius: 10px;
     transition: transform .1s ease-out,background-color .15s linear;
 }
-.menu-button:active {
-    transform: scale(0.94);
+
+@mixin transform($scale) {
+    -webkit-transform: $scale;
+    transform: $scale;
 }
+
+.menu-button:active {
+    @include transform(scale(0.94));
+}
+
 .menu-button:hover {
     background: var(--btn-hover-color);
 }

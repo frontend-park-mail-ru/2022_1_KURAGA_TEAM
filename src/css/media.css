@@ -1,5 +1,5 @@
 @import '../components/footer/footer.css';
-@import '../components/button/button.css';
+@import '../components/button/button.scss';
 @import '../components/carousel/carousel.css';
 @import '../components/inputs/inputs.css';
 
@@ -124,6 +124,30 @@
 }
 
 @media (max-width: 700px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+
+    .papa {
+        height: 75px;
+    }
+
+    .element {
+        height: 40px;
+    }
+
+    .menu-input {
+        font-size: 18px;
+    }
+
+    .svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .menu-button {
+        font-size: 20px;
+        height: 40px;
+    }
+
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
 
     .titleFooter {

@@ -1,6 +1,30 @@
 @import '../components/footer/footer.css';
-@import '../components/button/button.css';
 @import '../components/inputs/inputs.css';
+.menu-button {
+  font-weight: lighter;
+  font-family: GT Eesti Pro Display, arial, sans-serif;
+  color: var(--font-color);
+  font-size: 25px;
+  height: 50px;
+  margin-top: 20px;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  background: var(--btn-color);
+  mix-blend-mode: normal;
+  border-radius: 10px;
+  transition: transform 0.1s ease-out, background-color 0.15s linear;
+}
+
+.menu-button:active {
+  -webkit-transform: scale(0.94);
+  transform: scale(0.94);
+}
+
+.menu-button:hover {
+  background: var(--btn-hover-color);
+}
+
 #root {
   width: 100%;
   background: var(--back-color);
