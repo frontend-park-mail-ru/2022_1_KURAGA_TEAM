@@ -20,6 +20,8 @@
     "morgan": "^1.10.0",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
+    "sass": "^1.49.10",
+    "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
     "stylelint": "^14.5.3",
     "stylelint-config-prettier": "^9.0.3",
