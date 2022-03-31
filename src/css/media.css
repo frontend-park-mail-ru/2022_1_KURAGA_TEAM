@@ -93,9 +93,10 @@
     }
 
     #menu {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        width: 90%
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 90%;
+        max-width: 600px;
     }
 
     .menu-h1 {
@@ -127,7 +128,7 @@
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
 
     .papa {
-        height: 75px;
+        height: 70px;
     }
 
     .element {
@@ -148,10 +149,22 @@
         height: 40px;
     }
 
+    .error {
+        padding-top: 1px;
+    }
+
     .logo {
         top: 10px;
         width: 120px;
         height: 70px;
+    }
+
+    .menu-button {
+        margin-top: 5px;
+    }
+
+    .text {
+        margin-top: 0;
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
@@ -167,6 +180,7 @@
     }
 
     .left {
+        width: 90%;
         margin-left: 0;
         flex-direction: column;
     }
@@ -176,14 +190,24 @@
     }
 
     #third-footer {
-        width: 60%;
+        width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         margin-bottom: 20px;
     }
 
     .ref {
-        margin-right: 0;
+        margin-right: 30px;
+    }
+}
+
+@media (max-height: 450px) {
+    #back {
+        height: 100vw;
+    }
+
+    #back-menu {
+        height: 100vw;
     }
 }
 
