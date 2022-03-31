@@ -107,22 +107,47 @@
 
 @media (min-width: 1400px) and ( max-width: 1800px) {
     .movie {
+        grid-template-rows: auto calc(1vw + 40px);
         width: calc(5vw + 300px);
         height: calc(0.5vw + 180px);
     }
-    .movieTop{
+
+    .movieTop {
         width: calc(6vw + 405px);
         height: calc(3.5vw + 235px);
     }
+
+    .desc-mov {
+
+        font-size: calc(1vw + 0px);
+    }
+
+    .genre {
+        font-size: calc(1vw + 0px);
+    }
+
+
 }
 
 @media (min-width: 1800px) {
     .movie {
+        grid-template-rows: auto calc(1vw + 40px);
         width: calc(12vw + 300px);
         height: calc(6vw + 180px);
     }
-    .movieTop{
+
+    .movieTop {
         width: calc(20vw + 405px);
         height: calc(10vw + 235px);
     }
+    .desc-mov {
+
+        font-size: calc(1vw + 0px);
+    }
+
+    .genre {
+        font-size: calc(1vw + 0px);
+    }
+
+
 }
