@@ -4,7 +4,7 @@
 @import '../components/inputs/inputs.css';
 
 @media (min-width: 1728px) {
-    
+
 }
 
 @media (min-width: 1450px) and (max-width: 1600px) {
@@ -114,13 +114,23 @@
         height: calc(3.5vw + 235px);
     }
 
-    .desc-mov {
+    .desc-mov,
+    .genre{
 
         font-size: calc(1vw + 0px);
     }
 
-    .genre {
-        font-size: calc(1vw + 0px);
+    .select-title{
+        font-size: calc(1vw + 20px);
+    }
+
+    #cb,
+    #cb:hover::after,
+    #cb::after,
+    #cb:checked::after{
+        background-size: calc(1vw + 30px) calc(1vw + 30px);
+        height: calc(1vw + 30px);
+        width: calc(1vw + 30px);
     }
 
 
@@ -137,14 +147,23 @@
         width: calc(20vw + 405px);
         height: calc(10vw + 235px);
     }
-    .desc-mov {
+    .desc-mov,
+    .genre{
 
         font-size: calc(1vw + 0px);
     }
 
-    .genre {
-        font-size: calc(1vw + 0px);
+    .select-title{
+        font-size: calc(1vw + 24px);
     }
 
+    #cb,
+    #cb:hover::after,
+    #cb::after,
+    #cb:checked::after{
+        background-size: calc(1vw + 30px) calc(1vw + 30px);
+        height: calc(1vw + 30px);
+        width: calc(1vw + 30px);
+    }
 
 }

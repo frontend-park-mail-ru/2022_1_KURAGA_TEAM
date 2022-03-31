@@ -218,41 +218,51 @@
     /*z-index: 2;*/
 }
 
-#cb {
-
+.like-size{
+    background-size: 36px 36px;
     width: 36px;
     height: 36px;
+}
+
+#cb{
     visibility: hidden;
     text-align: -webkit-center;
 }
-
-#cb:hover::after {
-    display: block;
-    content: ' ';
-    background-image: url("../../static/activeLike.png");
+#cb,
+#cb:hover::after,
+#cb::after,
+#cb:checked::after{
     background-size: 36px 36px;
     height: 36px;
     width: 36px;
 }
+#cb:hover::after  {
+    display: block;
+    content: ' ';
+    background-image: url("../../static/activeLike.png");
+    /*background-size: 36px 36px;*/
+    /*height: 36px;*/
+    /*width: 36px;*/
+}
 
-#cb::after {
+#cb::after  {
     transition: all .1s ease;
     visibility: visible;
     display: block;
     content: ' ';
     background-image: url("../../static/heart.png");
-    background-size: 36px 36px;
-    height: 36px;
-    width: 36px;
+    /*background-size: 36px 36px;*/
+    /*height: 36px;*/
+    /*width: 36px;*/
     /*padding: 8px;*/
 }
 
-#cb:checked::after {
+#cb:checked::after  {
     display: block;
     content: ' ';
     background-image: url("../../static/activeLike.png");
     background-position: center;
-    background-size: 36px 36px;
-    height: 36px;
-    width: 36px;
+    /*background-size: 36px 36px;*/
+    /*height: 36px;*/
+    /*width: 36px;*/
 }
