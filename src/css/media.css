@@ -100,7 +100,7 @@
     }
 
     .menu-h1 {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     .papa {
@@ -136,7 +136,7 @@
     }
 
     .menu-input {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .svg {
@@ -145,7 +145,7 @@
     }
 
     .menu-button {
-        font-size: 20px;
+        font-size: 18px;
         height: 40px;
     }
 
@@ -164,6 +164,7 @@
     }
 
     .text {
+        font-size: 18px;
         margin-top: 0;
     }
 
