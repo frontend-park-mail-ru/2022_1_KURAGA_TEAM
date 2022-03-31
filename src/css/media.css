@@ -4,10 +4,7 @@
 @import '../components/inputs/inputs.css';
 
 @media (min-width: 1728px) {
-    /*.select{*/
-    /*    width: 1408px;*/
-    /*}*/
-
+    
 }
 
 @media (min-width: 1450px) and (max-width: 1600px) {
