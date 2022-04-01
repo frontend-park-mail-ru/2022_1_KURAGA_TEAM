@@ -86,6 +86,14 @@
 }
 @media (max-width: 1000px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    .div-logo {
+        height: 80px;
+    }
+
+    #back {
+        height: calc(100vh + 80px);
+    }
+
     .logo {
         width: 136px;
         height: 80px;
@@ -122,6 +130,9 @@
 
 @media (max-width: 700px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    .div-logo {
+        height: 60px;
+    }
 
     .papa {
         height: 65px;
@@ -177,7 +188,7 @@
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
 
     .titleFooter {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     #footer {
