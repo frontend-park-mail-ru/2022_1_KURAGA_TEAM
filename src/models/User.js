@@ -23,7 +23,7 @@ export default class UserModel {
     }
 
 
-    async registration(form) {
+    static async registration(form) {
         try {
             return await ajaxReq.post({
                 path: '/signup',

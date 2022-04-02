@@ -1,5 +1,5 @@
-.b-carouseltop__prev,
-.b-carouseltop__next {
+.b-carouselTop__prev,
+.b-carouselTop__next {
     color: transparent;
     width: 54px;
     font-size: 50px;
@@ -15,7 +15,16 @@
     z-index: 3;
 }
 
-.b-carouseltop__wrap {
+.b-carouselTop {
+    height: 100%;
+    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.b-carouselTop__wrap {
     display: flex;
     transition: transform 0.75s ease-in-out;
     will-change: transform;
@@ -25,27 +34,32 @@
 
 }
 
-.b-carouseltop__prev{
+.b-carouselTop__prev{
+    visibility: hidden;
+    height: 100%;
     background-color: transparent;
     left: 0;
     transition: all .4s ease;
 }
 
-.b-carouseltop__next {
+.b-carouselTop__next {
+    visibility: hidden;
+    height: 100%;
     background-color: transparent;
     left: auto;
     right: 0;
     transition: all .4s ease;
 }
 
-.b-carouseltop__prev:hover,
-.b-carouseltop__next:hover{
+.b-carouselTop__prev:hover,
+.b-carouselTop__next:hover{
     color: var(--btn-carousel-color);
     background-color: rgb(0 0 0 / 75%);
     transition: all .4s ease;
 }
 
-.movietop {
+.movieTop {
+    transition: all 0.1s ease;
     background-size: cover;
     display: grid;
     grid-template-columns: auto;
@@ -55,13 +69,13 @@
     height: 235px;
     row-gap: 10px;
     border-radius: 12px;
-    margin-inline-start: 0;
+    margin-inline: 20px;
     grid-template-areas:
     "refMov "
     "descMov"
 }
 
-.desc-movtop {
+.desc-movTop {
     cursor: default;
     display: flex;
     padding-inline: 5px;
