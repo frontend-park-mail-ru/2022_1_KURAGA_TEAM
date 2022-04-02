@@ -51,7 +51,7 @@ export default class MovieModel {
     }
 
 
-    async movies() {
+    static async movies() {
         try {
             return await ajaxReq.get({
                 path: '/movieCompilations',
@@ -61,7 +61,7 @@ export default class MovieModel {
         }
     }
 
-    async mainHomeMovie() {
+    static async mainHomeMovie() {
         try {
             return await ajaxReq.get({
                 path: '/mainMovie',
@@ -72,7 +72,7 @@ export default class MovieModel {
     }
 
 
-    async movie(id) {
+    static async movie(id) {
         try {
             return await ajaxReq.get({
                 path: '/movie/' + id,
@@ -85,7 +85,7 @@ export default class MovieModel {
 
     static mainMov() {
         return new Promise((movie) => {
-            this.prototype.mainHomeMovie()
+            this.mainHomeMovie()
                 .then((body) => {
                     movie({
                         isAuth: body.isAuth,
@@ -101,7 +101,7 @@ export default class MovieModel {
 
     static getMovie(id) {
         return new Promise((movie) => {
-            this.prototype.movie(id)
+            this.movie(id)
                 .then((body) => {
                     movie({
                         isAuth: body.isAuth,

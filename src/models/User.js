@@ -23,7 +23,7 @@ export default class UserModel {
     }
 
 
-    async registration(form) {
+    static async registration(form) {
         try {
             return await ajaxReq.post({
                 path: '/signup',
@@ -34,7 +34,7 @@ export default class UserModel {
         }
     }
 
-    async login(form) {
+    static async login(form) {
         try {
             return await ajaxReq.post({
                 path: '/login',
@@ -45,7 +45,7 @@ export default class UserModel {
         }
     }
 
-    async logout() {
+    static async logout() {
         try {
             return await ajaxReq.delete({
                 path: '/logout',
@@ -57,7 +57,7 @@ export default class UserModel {
 
 
 
-     async profile() {
+     static async profile() {
         try {
             return await ajaxReq.get({
                 path: '/profile',
@@ -67,7 +67,7 @@ export default class UserModel {
         }
     }
 
-    async edit(form) {
+    static async edit(form) {
         try {
             return await ajaxReq.put({
                 path: '/edit',
@@ -78,7 +78,7 @@ export default class UserModel {
         }
     }
 
-    async avatar(form) {
+    static async avatar(form) {
         try {
             return await ajaxReq.put({
                 path: '/avatar',
@@ -94,7 +94,7 @@ export default class UserModel {
 
     static auth(){
         return new Promise((res) => {
-            this.prototype.profile()
+            this.profile()
                 .then((body) => {
                      res({
                          isAuth: body.isAuth,
@@ -108,7 +108,7 @@ export default class UserModel {
 
     static quit(){
         return new Promise((res) => {
-            this.prototype.logout()
+            this.logout()
                 .then(() => {
                     router.go(routes.LOGIN_VIEW);
                 })
@@ -119,7 +119,7 @@ export default class UserModel {
     }
 
     static reg(formJson){
-        this.prototype.registration(formJson)
+        this.registration(formJson)
             .then(({ isAuth, data }) => {
                 data.then((res) => {
                     if (res.message === 'ERROR: Email is not unique') {
@@ -147,7 +147,7 @@ export default class UserModel {
     }
 
     static login(formJson){
-        this.prototype.login(formJson)
+        this.login(formJson)
             .then(({ isAuth }) => {
                 if (!isAuth) {
                     errorIncorr.classList.add('error-active');
@@ -165,12 +165,12 @@ export default class UserModel {
     }
 
     static editProfile(formJson){
-        return this.prototype.edit(formJson);
+        return this.edit(formJson);
 
     }
 
     static editAvatar(formData){
-        return this.prototype.avatar(formData);
+        return this.avatar(formData);
     }
 
 
