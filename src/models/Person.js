@@ -5,7 +5,7 @@ import { routes } from '../routing/constRouting.js';
 export default class PersonModel {
     constructor(personData) {
 
-        this.personData = {
+        this.data = {
             addit_photo_1: personData.addit_photo_1,
             addit_photo_2: personData.addit_photo_2,
             description: personData.description,
@@ -17,19 +17,7 @@ export default class PersonModel {
     }
 
     get personData() {
-        return this._p;
-    }
-
-    set personData(data) {
-        this._p = {
-            addit_photo_1: data.addit_photo_1,
-            addit_photo_2: data.addit_photo_2,
-            description: data.description,
-            id: data.id,
-            name: data.name,
-            photo: data.photo,
-            position: data.position
-        }
+        return this.data;
     }
 
 

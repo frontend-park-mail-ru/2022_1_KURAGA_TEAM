@@ -5,21 +5,14 @@ import { routes } from '../routing/constRouting.js';
 export default class UserModel {
     constructor(userData) {
 
-        this.userData = {
+        this.data = {
             username: userData.username,
             email: userData.email,
             avatar: userData.avatar
         }
     }
     get userData(){
-        return this._u;
-    }
-    set userData(data) {
-        this._u = {
-            username: data.username,
-            email: data.email,
-            avatar: data.avatar
-        }
+        return this.data;
     }
 
 

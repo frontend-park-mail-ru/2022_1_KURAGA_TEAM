@@ -16,16 +16,17 @@
         flex-grow: 2;
     }
 
-    /*.select{*/
-    /*    ransform: scale(1, 2);*/
-    /*}*/
-    /*!*.movie{*!*/
-    /*!*    transform: scale(1.5);*!*/
-    /*!*}*!*/
-    /*.movieTop{*/
-    /*    width: 425px;*/
-    /*    height: 245px;*/
-    /*}*/
+
+    .movie {
+        grid-template-rows: auto calc(1vh + 50px);
+        width: calc(5vw + 300px);
+        height: calc(5vh + 180px);
+    }
+
+    .movieTop {
+        width: calc(5vw + 405px);
+        height: calc(5vh + 235px);
+    }
 
 }
 
@@ -96,41 +97,24 @@
         align-items: center;
     }
 
-    /*.select{*/
-    /*    margin-inline: 22px;*/
-    /*}*/
 
 }
 
-@media (min-width: 1400px) and ( max-width: 1800px) {
+
+@media (min-width: 1600px) and (max-width: 1800px) {
     .movie {
-        grid-template-rows: auto calc(1vw + 40px);
-        width: calc(5vw + 300px);
-        height: calc(0.5vw + 180px);
+        grid-template-rows: auto calc(1vh + 50px);
+        width: calc(6vw + 300px);
+        height: calc(6vh + 180px);
     }
 
     .movieTop {
         width: calc(6vw + 405px);
-        height: calc(3.5vw + 235px);
+        height: calc(6vh + 235px);
     }
 
-    .desc-mov,
-    .genre{
-
-        font-size: calc(1vw + 0px);
-    }
-
-    .select-title{
-        font-size: calc(1vw + 20px);
-    }
-
-    #cb,
-    #cb:hover::after,
-    #cb::after,
-    #cb:checked::after{
-        background-size: calc(1vw + 30px) calc(1vw + 30px);
-        height: calc(1vw + 30px);
-        width: calc(1vw + 30px);
+    .movieTop {
+        grid-template-rows: auto calc(1vw + 50px);
     }
 
 
@@ -138,32 +122,54 @@
 
 @media (min-width: 1800px) {
     .movie {
-        grid-template-rows: auto calc(1vw + 40px);
+        grid-template-rows: auto calc(3vh + 50px);
         width: calc(12vw + 300px);
-        height: calc(6vw + 180px);
+        height: calc(12vh + 180px);
     }
 
     .movieTop {
-        width: calc(20vw + 405px);
-        height: calc(10vw + 235px);
+        width: calc(12vw + 405px);
+        height: calc(12vh + 235px);
     }
-    .desc-mov,
-    .genre{
 
+    .movieTop {
+        grid-template-rows: auto calc(1vw + 50px);
+    }
+
+
+}
+
+
+@media (min-width: 1450px) {
+    .sidebar {
+        margin-inline: calc(1vw + 20px);
+    }
+
+    .title-name {
+        font-size: calc(1vw + 60px);
+    }
+
+    .title-descr {
+        font-size: calc(1vw + 30px);
+    }
+
+    .desc-mov,
+    .desc-movTop,
+    .genre {
         font-size: calc(1vw + 0px);
     }
 
-    .select-title{
+
+    .select-title {
         font-size: calc(1vw + 24px);
     }
 
     #cb,
     #cb:hover::after,
     #cb::after,
-    #cb:checked::after{
+    #cb:checked::after {
         background-size: calc(1vw + 30px) calc(1vw + 30px);
         height: calc(1vw + 30px);
         width: calc(1vw + 30px);
     }
-
 }

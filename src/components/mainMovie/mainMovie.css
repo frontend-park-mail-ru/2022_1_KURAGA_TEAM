@@ -8,9 +8,7 @@
 .sidebar {
     align-content: center;
     width: 582px;
-    /*height: 351px;*/
     border-radius: 32px;
-    /*margin: auto 32px 48px auto;*/
     display: grid;
     column-gap: 10px;
     grid-template-rows: auto;

@@ -5,7 +5,7 @@ import {routes} from '../routing/constRouting.js';
 export default class MovieCompilationModel {
 
     constructor(movieCompilationData) {
-        this.movieCompilationData = {
+        this.data = {
             compilation_name: movieCompilationData.compilation_name,
             movies: movieCompilationData.movies
         }
@@ -15,9 +15,6 @@ export default class MovieCompilationModel {
         return this.data;
     }
 
-    set movieCompilationData(data) {
-        this.data = data;
-    }
 
 
     static async movies() {

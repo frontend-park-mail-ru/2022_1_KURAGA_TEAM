@@ -5,7 +5,7 @@ import {routes} from '../routing/constRouting.js';
 export default class MovieModel {
 
     constructor(movieData) {
-        this.movieData = {
+        this.data = {
             id: movieData.id,
             name: movieData.name,
             genre: movieData.genre,
@@ -29,9 +29,6 @@ export default class MovieModel {
         return this.data;
     }
 
-    set movieData(data) {
-        this.data = data;
-    }
 
 
     static async movies() {
