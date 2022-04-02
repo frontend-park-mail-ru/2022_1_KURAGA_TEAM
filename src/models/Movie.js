@@ -26,28 +26,11 @@ export default class MovieModel {
     }
 
     get movieData() {
-        return this._u;
+        return this.data;
     }
 
     set movieData(data) {
-        this._u = {
-            id: data.id,
-            name: data.name,
-            genre: data.genre,
-            picture: data.picture,
-            tagline: data.tagline,
-            age_limit: data.age_limit,
-            country: data.country,
-            description: data.description,
-            duration: data.duration,
-            kinopoisk_rating: data.kinopoisk_rating,
-            name_picture: data.name_picture,
-            rating: data.rating,
-            staff: data.staff,
-            trailer: data.trailer,
-            video: data.video,
-            year: data.year
-        }
+        this.data = data;
     }
 
 

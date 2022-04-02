@@ -27,9 +27,6 @@ export default class MovieViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-
-
-
             const {isAuth, userBody} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -38,25 +35,19 @@ export default class MovieViewClass extends BaseViewClass {
             const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
-
             const id = +/\d+/.exec(window.location.pathname);
 
             const {movBody} = await MovieModel.getMovie(id);
-            console.log(movBody);
             const movData = await Promise.resolve(movBody);
-            console.log(movData);
+            if (movData.status === routes.ERROR) {
+                router.go(routes.ERROR_VIEW);
+                return;
+            }
             this.#movie = new MovieModel(movData);
-
-
-            // if (movieRes.status === routes.ERROR) {
-            //     router.go(routes.ERROR_VIEW);
-            //     return;
-            // }
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
-
 
 
             const header = new HeaderClass(this.#user.userData);

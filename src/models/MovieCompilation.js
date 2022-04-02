@@ -12,14 +12,11 @@ export default class MovieCompilationModel {
     }
 
     get movieCompilationData() {
-        return this._u;
+        return this.data;
     }
 
     set movieCompilationData(data) {
-        this._u = {
-            compilation_name: data.compilation_name,
-            movies: data.movies
-        }
+        this.data = data;
     }
 
 

@@ -25,7 +25,6 @@ export default class ErrorViewClass extends BaseViewClass{
             const header = new HeaderClass(this.#user.userData);
             const footer = new FooterClass();
 
-
             super.render(errorViewTemplate,{
                 header: header.render(),
                 footer: footer.render()

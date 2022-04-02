@@ -35,19 +35,13 @@ export default class PersonViewClass extends BaseViewClass {
             const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
-
             const {persBody} = await PersonModel.getPerson(id);
             const persData = await Promise.resolve(persBody);
             this.#person = new PersonModel(persData);
 
-
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationPerson(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
-
-
-
-
 
             const header = new HeaderClass("this.#user.userData");
             const headPerson = new HeadPersonClass(this.#person.personData);
