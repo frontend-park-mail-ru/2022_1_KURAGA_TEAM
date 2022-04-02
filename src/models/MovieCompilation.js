@@ -23,7 +23,7 @@ export default class MovieCompilationModel {
     }
 
 
-    async movies() {
+    static async movies() {
         try {
             return await ajaxReq.get({
                 path: '/movieCompilations',
@@ -33,7 +33,7 @@ export default class MovieCompilationModel {
         }
     }
 
-    async movieCompilationMovie(id) {
+    static async movieCompilationMovie(id) {
         try {
             return await ajaxReq.get({
                 path: '/movieCompilations/movie/' + id,
@@ -43,7 +43,7 @@ export default class MovieCompilationModel {
         }
     }
 
-    async movieCompilationPerson(id) {
+    static async movieCompilationPerson(id) {
         try {
             return await ajaxReq.get({
                 path: '/movieCompilations/person/'+ id,
@@ -56,7 +56,7 @@ export default class MovieCompilationModel {
 
     static getMovieCompilations() {
         return new Promise((movieCompilations) => {
-            this.prototype.movies()
+            this.movies()
                 .then((body) => {
                     movieCompilations({
                         isAuth: body.isAuth,
@@ -72,7 +72,7 @@ export default class MovieCompilationModel {
 
     static getMovieCompilationMovie(id) {
         return new Promise((movieCompilation) => {
-            this.prototype.movieCompilationMovie(id)
+            this.movieCompilationMovie(id)
                 .then((body) => {
                     movieCompilation({
                         isAuth: body.isAuth,
@@ -87,7 +87,7 @@ export default class MovieCompilationModel {
 
     static getMovieCompilationPerson(id) {
         return new Promise((movieCompilation) => {
-            this.prototype.movieCompilationPerson(id)
+            this.movieCompilationPerson(id)
                 .then((body) => {
                     movieCompilation({
                         isAuth: body.isAuth,

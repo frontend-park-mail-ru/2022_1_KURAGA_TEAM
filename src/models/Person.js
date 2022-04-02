@@ -33,7 +33,7 @@ export default class PersonModel {
     }
 
 
-    async person(id) {
+    static async person(id) {
         try {
             return await ajaxReq.get({
                 path: '/person/' + id,
@@ -45,7 +45,7 @@ export default class PersonModel {
 
     static getPerson(id) {
         return new Promise((person) => {
-            this.prototype.person(id)
+            this.person(id)
                 .then((body) => {
                     person({
                         isAuth: body.isAuth,
