@@ -1,14 +1,15 @@
 import playerTemplate from './player.pug';
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import { movie } from "Modules/network";
 import { routes } from "Routing/constRouting";
+import MovieModel from "../../models/Movie.js"
 import router from "Routing/router";
 import handlerLink from "Utils/handlerLink";
 
 import '../../css/player.css';
 
 export default class PlayerViewClass extends BaseViewClass {
+    #movie;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -18,18 +19,18 @@ export default class PlayerViewClass extends BaseViewClass {
 
             const check = window.location.pathname.indexOf('trailer');
 
-            const mov = await movie(id);
-
-            const movieRes = await mov.data;
-
-            if (movieRes.status === routes.ERROR) {
+            const {movBody} = await MovieModel.getMovie(id);
+            const movData = await Promise.resolve(movBody);
+            if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
                 return;
             }
+            this.#movie = new MovieModel(movData);
 
-            let video = movieRes.video;
+
+            let video = this.#movie.video;
             if (check !== -1) {
-                video = movieRes.trailer;
+                video = this.#movie.trailer;
             }
 
             super.render(playerTemplate, {

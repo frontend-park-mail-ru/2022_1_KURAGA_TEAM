@@ -4,7 +4,7 @@ export default class SecondGenreClass {
     #genres
 
     constructor(genres) {
-        this.#genres = genres;
+        this.#genres = genres.genre;
     }
 
     render() {

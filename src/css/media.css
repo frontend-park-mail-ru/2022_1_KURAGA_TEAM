@@ -3,15 +3,24 @@
 @import '../components/carousel/carousel.css';
 @import '../components/inputs/inputs.css';
 
+
 @media (min-width: 1728px){
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
 
-    .b-carouselTop__wrap {
-        margin-inline: -44px;
-    }
 }
 
 @media (min-width: 1450px) and (max-width: 1600px) {
+
+    .formSearch {
+        flex-grow: 2;
+    }
+
+
+    .movie {
+        grid-template-rows: auto calc(1vh + 50px);
+        width: calc(5vw + 300px);
+        height: calc(5vh + 180px);
+    }
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
 
     #menu{
@@ -20,21 +29,15 @@
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ*/
 
-    .formSearch{
-        flex-grow: 2;
-    }
 
-    .movie{
-        width: 330px;
-        height: 194px;
-    }
 
-    .movieTop{
-        width: 425px;
-        height: 245px;
+    .movieTop {
+        width: calc(5vw + 405px);
+        height: calc(5vh + 235px);
     }
 
 }
+
 @media (min-width: 1000px) and (max-width: 1450px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
 
@@ -77,13 +80,15 @@
         font-size: 20px;
     }
 
-    #menu{
+    #menu {
         padding-top: 50px;
         padding-bottom: 40px;
         width: 500px;
     }
 
+
 }
+
 @media (max-width: 1000px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     .div-logo {
@@ -101,6 +106,7 @@
     }
 
     #menu {
+
         padding-top: 20px;
         padding-bottom: 20px;
         width: 85%;
@@ -219,6 +225,7 @@
     }
 }
 
+
 @media (max-height: 450px) {
     #back {
         height: 100vw;
@@ -229,3 +236,84 @@
     }
 }
 
+
+@media (min-width: 1600px) and (max-width: 1800px) {
+    .movie {
+        grid-template-rows: auto calc(1vh + 50px);
+        width: calc(6vw + 300px);
+        height: calc(6vh + 180px);
+    }
+
+    .movieTop {
+        width: calc(6vw + 405px);
+        height: calc(6vh + 235px);
+    }
+
+    .movieTop {
+        grid-template-rows: auto calc(1vw + 50px);
+    }
+
+
+}
+
+@media (min-width: 1800px) {
+    .movie {
+        grid-template-rows: auto calc(3vh + 50px);
+        width: calc(12vw + 300px);
+        height: calc(12vh + 180px);
+    }
+
+    .movieTop {
+        width: calc(12vw + 405px);
+        height: calc(12vh + 235px);
+    }
+
+    .movieTop {
+        grid-template-rows: auto calc(1vw + 50px);
+    }
+
+
+}
+
+
+@media (min-width: 1450px) {
+    .sidebar {
+        width: calc(1vw + 582px);
+        margin-inline: calc(2vw + 30px);
+    }
+    .btn,
+    .btn-info{
+        margin-inline: auto;
+        font-size: calc(1vw + 8px);
+        line-height: calc(1vw + 20px);
+
+    }
+
+    .title-name {
+        font-size: calc(1vw + 60px);
+    }
+
+    .title-descr {
+        font-size: calc(1vw + 20px);
+    }
+
+    .desc-mov,
+    .desc-movTop,
+    .genre {
+        font-size: calc(1vw + 0px);
+    }
+
+
+    .select-title {
+        font-size: calc(1vw + 24px);
+    }
+
+    #cb,
+    #cb:hover::after,
+    #cb::after,
+    #cb:checked::after {
+        background-size: calc(1vw + 30px) calc(1vw + 30px);
+        height: calc(1vw + 30px);
+        width: calc(1vw + 30px);
+    }
+}

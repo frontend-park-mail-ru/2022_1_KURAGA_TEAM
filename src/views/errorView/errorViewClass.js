@@ -1,6 +1,6 @@
 import errorViewTemplate from './error.pug'
 import HeaderClass from 'Components/header/headerClass.js';
-import { profile } from 'Modules/network.js';
+import UserModel from "../../models/User.js"
 import router from "Routing/router.js";
 import FooterClass from "Components/footer/footerClass.js";
 import { routes } from "Routing/constRouting";
@@ -10,20 +10,20 @@ import '../../css/error.css';
 const root = document.getElementById('root');
 
 export default class ErrorViewClass extends BaseViewClass{
+    #user;
     async render() {
         try {
-            const { isAuth, data } = await profile();
 
+            const {isAuth, body} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
-
                 return;
             }
+            const userData = await Promise.resolve(body);
+            this.#user = new UserModel(userData.user);
 
-            const res = await data;
-            const header = new HeaderClass(res.user);
+            const header = new HeaderClass(this.#user.userData);
             const footer = new FooterClass();
-
 
             super.render(errorViewTemplate,{
                 header: header.render(),

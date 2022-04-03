@@ -1,6 +1,6 @@
 div.sidebar
     div.font.title-main-movie
-        div.title-name #{info.name}
+        div.head-movie__name(style=`background-image: url(\"${info.name_picture}\");`)
         div.title-descr "#{info.tagline}"
     a.btn.font-other(href=`/player/${info.id}/movie`) Смотреть онлайн
     a.btn-info.font-other(href=`/movie/${info.id}`) О фильме
