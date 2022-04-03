@@ -19,15 +19,15 @@ export default class HomeViewClass extends BaseViewClass{
             const loader = new LoaderViewClass();
             loader.render();
 
-            const [user, movie, main] = await Promise.all([profile(), movies(), mainHomeMovie()]);
-            if (!user.isAuth) {
-                router.go(routes.LOGIN_VIEW);
-                return;
-            }
-            const [userInfo, movieInfo,mainMov] = await Promise.all([user.data, movie.data, main.data])
+            const [movie, main] = await Promise.all([movies(), mainHomeMovie()]);
+            //const [user, movie, main] = await Promise.all([profile(), movies(), mainHomeMovie()]);
+            // if (!user.isAuth) {
+            //     router.go(routes.LOGIN_VIEW);
+            //     return;
+            // }
+             const [movieInfo,mainMov] = await Promise.all([movie.data, main.data])
 
-            console.log(mainMov);
-            const header = new HeaderClass(userInfo.user);
+            const header = new HeaderClass("userInfo.user");
             const mainMovie = new MainMovieClass(mainMov);
             const carouselPop = new carousel('Pop', movieInfo[0].movies, 4, movieInfo[0].compilation_name);
             const carouselTop = new carousel('Top', movieInfo[1].movies, 3, movieInfo[1].compilation_name);
