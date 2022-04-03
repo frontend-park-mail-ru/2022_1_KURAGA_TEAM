@@ -14,7 +14,7 @@
     background-image: url("../../static/1-1.webp");
     background-size: cover;
     grid-area: header;
-    height: 95vh;
+    height: 90vh;
 }
 
 .navbar {
@@ -166,7 +166,7 @@
     display: none;
     margin-block: 66px;
     position: absolute;
-    background: var(--drop-back);
+    background: var(--trailer-button);
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 var(--drop-shadow);
     z-index: 1;
@@ -192,7 +192,7 @@
 }
 
 .dropdown-content a:hover {
-    background: var(--drop-back-hover);
+    background: var(--trailer-button-hover);
     border-radius: 5px;
 }
 

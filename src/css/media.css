@@ -142,7 +142,15 @@
 
 @media (min-width: 1450px) {
     .sidebar {
-        margin-inline: calc(1vw + 20px);
+        width: calc(1vw + 582px);
+        margin-inline: calc(2vw + 30px);
+    }
+    .btn,
+    .btn-info{
+        margin-inline: auto;
+        font-size: calc(1vw + 8px);
+        line-height: calc(1vw + 20px);
+
     }
 
     .title-name {
@@ -150,7 +158,7 @@
     }
 
     .title-descr {
-        font-size: calc(1vw + 30px);
+        font-size: calc(1vw + 20px);
     }
 
     .desc-mov,
