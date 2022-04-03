@@ -3,25 +3,26 @@ import FooterClass from 'Components/footer/footerClass.js';
 import InputsClass from 'Components/inputs/inputsLogin/inputsClass.js';
 import ButtonClass from 'Components/button/buttonClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import { profile } from 'Modules/network';
 import router from 'Routing/router.js';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
+import UserModel from "../../models/User.js"
 
 import '../../css/regLog.scss';
 
 const root = document.getElementById('root');
 
 export default class LoginViewClass extends BaseViewClass{
+
     async render() {
         try {
-            const {isAuth} = await profile();
 
+            const {isAuth, userBody} = await UserModel.auth();
             if (isAuth) {
                 router.go(routes.HOME_VIEW);
-
                 return;
             }
+
 
             const footer = new FooterClass();
             const inputs = new InputsClass();

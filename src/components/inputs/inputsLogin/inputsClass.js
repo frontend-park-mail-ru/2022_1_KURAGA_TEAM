@@ -1,5 +1,5 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
-import { login } from '../../../modules/network.js';
+import UserModel from "../../../models/User"
 import router from '../../../routing/router.js';
 
 const configElement = [
@@ -110,21 +110,7 @@ export default class InputsClass {
                     password: inputPassword.value,
                 });
 
-                login(formJson)
-                    .then(({ isAuth }) => {
-                        if (!isAuth) {
-                            errorIncorr.classList.add('error-active');
-                            errorIncorr.classList.add('center');
-                            errorIncorr.textContent = 'Неверный логин или пароль';
-
-                            return;
-                        }
-
-                        router.go('/');
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                    });
+                UserModel.log(formJson);
             }
         });
     }

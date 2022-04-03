@@ -1,5 +1,5 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
-import { edit, avatar } from "../../../modules/network.js";
+import UserModel from "../../../models/User"
 import router from "../../../routing/router";
 
 const configElement = [
@@ -241,7 +241,7 @@ export default class InputsProfileClass {
                 }
 
                 if (kolReg === 1) {
-                    edit(formJson)
+                    UserModel.editProfile(formJson)
                         .then(({ isAuth }) => {
                             response(isAuth);
 
@@ -255,10 +255,9 @@ export default class InputsProfileClass {
                 }
 
                 if (kolReg === 2) {
-                    avatar(formData)
+                    UserModel.editAvatar(formData)
                         .then(({ isAuth }) => {
                             response(isAuth);
-
                             miniAvatar.style.backgroundImage = `url(${URL.createObjectURL(inputAvatar.files[0])})`;
                         })
                         .catch((err) => {
@@ -267,7 +266,7 @@ export default class InputsProfileClass {
                 }
 
                 if (kolReg === 3) {
-                    Promise.all([edit(formJson), avatar(formData)])
+                    Promise.all([UserModel.editProfile(formJson), UserModel.editAvatar(formData)])
                         .then(([text, file]) => {
                             if (!text.isAuth || !file.isAuth) {
                                 errorIncorr.classList.add('error-active');
@@ -287,6 +286,7 @@ export default class InputsProfileClass {
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
                             this.#info.username = inputName.value.trim();
+
                         })
                         .catch((err) => {
                             console.error(err);

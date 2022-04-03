@@ -1,7 +1,7 @@
 mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
     div.select-title= title
     div.wrap
-        div.b-carousel(class = car)
+        div(class = car + ` b-carousel`+ `${typeMov}`)
             button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
             button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
             div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);")

@@ -1,7 +1,6 @@
 import inputsTemplate from './inputs.pug';
-import { registration } from '../../../modules/network.js';
 import router from '../../../routing/router.js';
-
+import UserModel from "../../../models/User"
 const configElement = [
     {
         key: 'name',
@@ -237,31 +236,8 @@ export default class InputsClass {
                     password: inputPassOne.value,
                 });
 
-                registration(formJson)
-                    .then(({ isAuth, data }) => {
-                        data.then((res) => {
-                            if (res.message === 'ERROR: Email is not unique') {
-                                errorIncorr.classList.add('error-active');
-                                errorIncorr.classList.add('center');
-                                errorIncorr.textContent = 'Такой пользователь уже существует';
+                UserModel.reg(formJson);
 
-                                return;
-                            }
-
-                            if (!isAuth) {
-                                errorIncorr.classList.add('error-active');
-                                errorIncorr.classList.add('center');
-                                errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
-
-                                return;
-                            }
-
-                            router.go('/');
-                        });
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                    });
             }
         });
     }

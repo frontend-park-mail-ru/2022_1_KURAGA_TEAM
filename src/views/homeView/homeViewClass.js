@@ -1,41 +1,61 @@
 import homeViewTemplate from './homeView.pug';
 import HeaderClass from 'Components/header/headerClass.js';
 import MainMovieClass from 'Components/mainMovie/mainMovieClass.js';
-import carousel from 'Components/carousel/carouselClass.js';
+import Carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from 'Components/footer/footerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
-import {profile, movies, mainHomeMovie} from 'Modules/network';
 import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
 import {routes} from "Routing/constRouting";
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
-
+import UserModel from "../../models/User.js"
+import MovieModel from "../../models/Movie.js"
+import MovieCompilationModel from "../../models/MovieCompilation"
 import '../../css/home.css';
-
-export default class HomeViewClass extends BaseViewClass{
+export default class HomeViewClass extends BaseViewClass {
+    #user;
+    #mainMovie;
+    #movieCompilations = [];
 
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const [movie, main] = await Promise.all([movies(), mainHomeMovie()]);
-            //const [user, movie, main] = await Promise.all([profile(), movies(), mainHomeMovie()]);
-            // if (!user.isAuth) {
-            //     router.go(routes.LOGIN_VIEW);
-            //     return;
-            // }
-             const [movieInfo,mainMov] = await Promise.all([movie.data, main.data])
+            const {isAuth, userBody} = await UserModel.auth();
 
-            const header = new HeaderClass("userInfo.user");
-            const mainMovie = new MainMovieClass(mainMov);
-            const carouselPop = new carousel('Pop', movieInfo[0].movies, 4, movieInfo[0].compilation_name);
-            const carouselTop = new carousel('Top', movieInfo[1].movies, 3, movieInfo[1].compilation_name);
-            const carouselFam = new carousel('Fam', movieInfo[2].movies, 4, movieInfo[2].compilation_name);
+            if (!isAuth) {
+                router.go(routes.LOGIN_VIEW);
+                return;
+            }
+
+            const userData = await Promise.resolve(userBody);
+            this.#user = new UserModel(userData.user);
+
+            const { movBody } = await MovieModel.mainMov();
+            const mainMovieData = await Promise.resolve(movBody);
+            this.#mainMovie = new MovieModel(mainMovieData);
+
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
+            const movieCompilationsData = await Promise.resolve(movCompBody);
+            movieCompilationsData.forEach((movieCompilationData) => {
+                console.log(movieCompilationData);
+                this.#movieCompilations.push(new MovieCompilationModel(movieCompilationData))
+            });
+
+            const header = new HeaderClass(this.#user.userData);
+            const mainMovie = new MainMovieClass(this.#mainMovie.movieData);
+            // const carousels = [];
+            // this.#movieCompilations.forEach((movieCompilation, index) => {
+            //     carousels.push(new Carousel(index, movieCompilation.movieCompilationData));
+            // });
+            const carouselPop = new Carousel("Pop", this.#movieCompilations[0].movieCompilationData);
+            const carouselTop = new Carousel("Top", this.#movieCompilations[1].movieCompilationData);
+            const carouselFam = new Carousel("Fam", this.#movieCompilations[2].movieCompilationData);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {
-                picture: mainMov.picture,
+                mainMovieImg: this.#mainMovie.movieData,
                 header: header.render(),
                 mainMovie: mainMovie.render(),
                 carouselPop: carouselPop.render(),
@@ -43,7 +63,6 @@ export default class HomeViewClass extends BaseViewClass{
                 carouselFam: carouselFam.render(),
                 footer: footer.render(),
             });
-
 
             handlerLink();
             this.setHandler();
