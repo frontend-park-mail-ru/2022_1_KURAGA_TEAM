@@ -1,9 +1,11 @@
 import movieViewTemplate from './movieView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
+
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
 import MovieCompilationModel from "../../models/MovieCompilation"
+
 import router from "Routing/router.js";
 import HeadMovieClass from "Components/headMovie/headMovieClass.js";
 import FooterClass from "Components/footer/footerClass.js";

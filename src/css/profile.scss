@@ -18,6 +18,11 @@
     width: 100%;
 }
 
+@mixin backdrop-filter($blur) {
+    -webkit-backdrop-filter: $blur;
+    backdrop-filter: $blur;
+}
+
 .menu-profile {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -26,7 +31,7 @@
     align-items: center;
     width: 850px;
     background: var(--menu-back);
-    backdrop-filter: blur(5px);
+    @include backdrop-filter(blur(5px));
     border-radius: 20px;
 }
 
@@ -59,8 +64,4 @@
 .profile-email {
     background: none;
     backdrop-filter: none;
-}
-
-.success {
-    color: green;
 }

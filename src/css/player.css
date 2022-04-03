@@ -1,0 +1,138 @@
+.video-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+}
+
+.exit {
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    color: white;
+    margin-left: 70px;
+    padding-top: 4vmin;
+    transition: all .2s linear;
+}
+
+.exit:hover {
+    transform: scale(1.2);
+}
+
+.player {
+    width: 100%;
+    height: 100vh;
+}
+
+.controls-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 4vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s linear;
+}
+
+.progress-controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar {
+    cursor: pointer;
+    margin-right: 14px;
+    width: 88%;
+    height: 5px;
+    display: flex;
+    align-items: center;
+    background: var(--progress-bar);
+}
+
+.watched-bar {
+    display: inline-block;
+    height: 120%;
+    width: 20%;
+    background: var(--mix-color);
+    transition: all 0.2s linear;
+}
+
+.playhead {
+    background: var(--mix-color);
+    display: inline-block;
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+}
+
+.controls {
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls__button {
+    cursor: pointer;
+    background: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    height: 60px;
+    width: 60px;
+    margin: 0 10px;
+    opacity: 0.7;
+    transition: all .2s linear;
+}
+
+.controls__button:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.controls__space {
+    height: 100%;
+    width: 100%;
+}
+
+.controls__button-svg {
+    fill: white;
+    stroke: white;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 100%;
+    height: 100%;
+}
+
+.rewind {
+    width: 70px;
+    height: 70px;
+}
+
+.rewind__svg {
+    stroke: none;
+}
+
+.forward__svg {
+    stroke: none;
+}
+
+.setting__svg {
+    fill: none;
+}
+
+.min__svg {
+    fill: none;
+}
+.full__svg {
+    fill: none;
+}

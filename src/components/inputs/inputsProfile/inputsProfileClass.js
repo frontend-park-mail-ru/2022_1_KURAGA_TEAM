@@ -139,6 +139,11 @@ export default class InputsProfileClass {
             errorPassOne.classList.remove('error-active');
         });
 
+        inputPassTwo.addEventListener('keydown', () => {
+            errorIncorr.classList.remove('error-active');
+            errorPassTwo.classList.remove('error-active');
+        });
+
         let checkAvatar = 0;
         inputAvatar.addEventListener('change', () => {
             checkAvatar = 1;
@@ -157,6 +162,7 @@ export default class InputsProfileClass {
             errorIncorr.classList.add('error-active');
             errorIncorr.classList.add('center');
             errorIncorr.classList.add('success');
+            errorIncorr.classList.remove('not-success');
             errorIncorr.textContent = 'Информация обновлена!'
         }
 
@@ -204,6 +210,7 @@ export default class InputsProfileClass {
             }
 
             if (check === 0) {
+                errorPassTwo.classList.remove('error-active');
                 e.preventDefault();
 
                 let kolReg = 0;
@@ -227,6 +234,7 @@ export default class InputsProfileClass {
                 if (caseForm === 3 && checkAvatar === 0) {
                     errorIncorr.classList.add('error-active');
                     errorIncorr.classList.add('center');
+                    errorIncorr.classList.add('not-success');
                     errorIncorr.textContent = 'Информация не изменилась';
 
                     return;
@@ -239,6 +247,7 @@ export default class InputsProfileClass {
 
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
+                            this.#info.username = inputName.value.trim();
                         })
                         .catch((err) => {
                             console.error(err);
@@ -262,6 +271,7 @@ export default class InputsProfileClass {
                             if (!text.isAuth || !file.isAuth) {
                                 errorIncorr.classList.add('error-active');
                                 errorIncorr.classList.add('center');
+                                errorIncorr.classList.add('not-success');
                                 errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
 
                                 return;
@@ -270,11 +280,13 @@ export default class InputsProfileClass {
                             errorIncorr.classList.add('error-active');
                             errorIncorr.classList.add('center');
                             errorIncorr.classList.add('success');
+                            errorIncorr.classList.remove('not-success');
                             errorIncorr.textContent = 'Информация обновлена!'
 
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
-                            miniAvatar.style.backgroundImage = `url(${URL.createObjectURL(inputAvatar.files[0])})`;
+                            this.#info.username = inputName.value.trim();
+
                         })
                         .catch((err) => {
                             console.error(err);

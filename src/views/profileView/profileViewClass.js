@@ -11,7 +11,7 @@ import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
-import '../../css/profile.css';
+import '../../css/profile.scss';
 
 export default class ProfileViewClass  extends BaseViewClass{
     #user;
@@ -47,10 +47,20 @@ export default class ProfileViewClass  extends BaseViewClass{
             
 
             handlerLink();
+            this.setHandler();
             inputs.setHandler();
             header.setHandler();
         } catch (err) {
             console.error(err);
         }
+    }
+
+    setHandler() {
+        const profileNavbar = document.querySelector('.name-profile');
+
+        profileNavbar.style.backgroundColor = '#2C51B1';
+        profileNavbar.style.webkitBackgroundClip = 'text';
+        profileNavbar.style.webkitTextFillColor = 'transparent';
+        profileNavbar.style.backgroundImage = 'linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)';
     }
 }

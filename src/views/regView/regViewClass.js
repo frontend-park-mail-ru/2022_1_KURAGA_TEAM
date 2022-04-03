@@ -9,6 +9,7 @@ import BaseViewClass from '../baseView/baseViewClass.js';
 import UserModel from "../../models/User.js"
 import '../../css/regLog.css';
 
+
 const root = document.getElementById('root');
 
 export default class RegViewClass extends BaseViewClass {

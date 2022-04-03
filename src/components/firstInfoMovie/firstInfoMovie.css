@@ -1,7 +1,14 @@
 .first-part-info__rating {
-    margin-right: 62px;
+    margin-bottom: 30px;
+    width: 210px;
 }
+
+.first-part-info__rating-flex {
+    display: flex;
+}
+
 .first-part-info__our-rating {
+    margin-right: 20px;
     height: auto;
     text-align: start;
     color: var(--great-rating);
@@ -23,8 +30,19 @@
 }
 
 .first-part-info__our-name {
+    padding-top: 10px;
     font-weight: lighter;
     font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.first-part-info__our-name-rt {
+    font-weight: lighter;
+    font-size: 20px;
+    background-color: var(--our-name);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--our-name-gradient);
 }
 
 .first-part-info__your-rating {
@@ -38,7 +56,7 @@
     color: var(--font-color);
     font-size: 16px;
     height: 44px;
-    width: 96px;
+    width: 100%;
     border: 0;
     cursor: pointer;
     background: var(--btn-color);
@@ -64,5 +82,5 @@
 .first-part-info__text {
     font-size: 20px;
     font-weight: lighter;
-    width: 500px;
+    width: 700px;
 }

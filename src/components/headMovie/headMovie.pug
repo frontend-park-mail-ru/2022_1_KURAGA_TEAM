@@ -14,7 +14,7 @@ div.head-movie__info
     div.short-info.info__duration #{info.duration}
     div.short-info.info__age #{info.age_limit}+
 div.head-movie__buttons
-    button.play-button Смотреть фильм
-    button.trailer-button Трейлер
+    a.play-button(href=`/player/${info.id}/movie`) Смотреть фильм
+    a.trailer-button(href=`/player/${info.id}/trailer`) Трейлер
     input#cb(type="checkbox")
 

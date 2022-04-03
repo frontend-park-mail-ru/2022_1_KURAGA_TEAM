@@ -83,7 +83,7 @@ export default class InputsClass {
 
         const passOneErrorAllow = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Необходимы Цифры и Латинские буквы';
+            errorPassOne.innerText = 'Только Цифры и Латинские буквы';
         };
 
         const passTwoError = () => {

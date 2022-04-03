@@ -1,16 +1,15 @@
 @import '../components/footer/footer.css';
-@import '../components/button/button.css';
+@import '../components/button/button.scss';
 @import '../components/carousel/carousel.css';
 @import '../components/inputs/inputs.css';
 
-@media (min-width: 1728px) {
+
+@media (min-width: 1728px){
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
 
 }
 
 @media (min-width: 1450px) and (max-width: 1600px) {
-    #menu {
-        width: 500px;
-    }
 
     .formSearch {
         flex-grow: 2;
@@ -22,6 +21,15 @@
         width: calc(5vw + 300px);
         height: calc(5vh + 180px);
     }
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+
+    #menu{
+        width: 500px;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ*/
+
+
 
     .movieTop {
         width: calc(5vw + 405px);
@@ -31,8 +39,14 @@
 }
 
 @media (min-width: 1000px) and (max-width: 1450px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+
     .error {
         font-size: 14px;
+    }
+
+    .papa {
+        height: 75px;
     }
 
     .element {
@@ -76,6 +90,15 @@
 }
 
 @media (max-width: 1000px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    .div-logo {
+        height: 80px;
+    }
+
+    #back {
+        height: calc(100vh + 80px);
+    }
+
     .logo {
         width: 136px;
         height: 80px;
@@ -83,21 +106,134 @@
     }
 
     #menu {
-        width: 90%
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 85%;
+        max-width: 600px;
     }
 
-    #footer {
-        height: auto;
+    .menu-h1 {
+        font-size: 30px;
+    }
+
+    .papa {
+        height: 85px;
+    }
+
+    .error {
+        font-size: 16px;
+    }
+
+    .menu-button {
+        font-size: 22px;
     }
 
     .text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    .div-logo {
+        height: 60px;
     }
 
+    .papa {
+        height: 65px;
+    }
 
+    .element {
+        height: 35px;
+    }
+
+    .menu-input {
+        font-size: 16px;
+    }
+
+    .menu-input::placeholder {
+        font-size: 14px;
+    }
+
+    .svg {
+        margin: 5px 20px 5px 5px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-button {
+        font-size: 18px;
+        height: 40px;
+        margin-top: 5px;
+    }
+
+    .error {
+        font-size: 14px;
+        padding-top: 1px;
+    }
+
+    .logo {
+        top: 10px;
+        width: 120px;
+        height: 60px;
+    }
+
+    .text {
+        margin-top: 5px;
+    }
+
+    .first-span {
+        font-size: 18px;
+    }
+
+    .second-span {
+        font-size: 18px;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
+
+    .titleFooter {
+        font-size: 20px;
+    }
+
+    #footer {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .left {
+        width: 85%;
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    #second-footer {
+        margin-left: 0;
+    }
+
+    #third-footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .ref {
+        margin-right: 30px;
+    }
+}
+
+
+@media (max-height: 450px) {
+    #back {
+        height: 100vw;
+    }
+
+    #back-menu {
+        height: 100vw;
+    }
 }
 
 

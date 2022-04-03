@@ -33,8 +33,8 @@ module.exports = {
                 loader: 'pug-loader',
             },
             {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                test: /\.s?css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.tsx?$/,
@@ -64,7 +64,7 @@ module.exports = {
             inject: 'body'
         }),
         new MiniCssExtractPlugin(),
-        new FaviconsWebpackPlugin('./src/static/favicon.png')
+        new FaviconsWebpackPlugin('./src/static/favicon.webp')
     ],
     devServer: {
         allowedHosts: [

@@ -69,10 +69,22 @@
     height: 235px;
     row-gap: 10px;
     border-radius: 12px;
+
     margin-inline: 20px;
+    //transition: all .2s ease;
     grid-template-areas:
     "refMov "
     "descMov"
+}
+
+
+.movieTop:hover {
+    transform: scale(1.05);
+}
+
+@mixin backdrop-filter($blur) {
+    -webkit-backdrop-filter: $blur;
+    backdrop-filter: $blur;
 }
 
 .desc-movTop {
@@ -84,7 +96,7 @@
     font-size: 16px;
     line-height: 19px;
     background: var(--desc-mov-back);
-    backdrop-filter: blur(5px);
+    @include backdrop-filter(blur(5px));
     grid-area: descMov;
     flex-wrap: wrap;
     flex-direction: column;

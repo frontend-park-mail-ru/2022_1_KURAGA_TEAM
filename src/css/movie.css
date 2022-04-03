@@ -14,7 +14,7 @@
 
 .photo-movie__gradient {
     width: 80%;
-    height: 90vh;
+    height: 96vh;
     background: var(--movie-gradient);
 }
 
@@ -28,12 +28,13 @@
     margin-left: 70px;
     margin-top: 100px;
     display: flex;
+    flex-direction: column;
     height: auto !important;
 }
 
 .second-part-genre {
     margin-left: 70px;
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .third-part-actors {

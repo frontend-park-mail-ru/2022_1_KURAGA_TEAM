@@ -6,12 +6,16 @@
     font-weight: bold;
     text-shadow: 0 4px 4px var(--nav-font-shadow);
     cursor: pointer;
+    transition: all .2s linear;
+}
+
+.font-nav:hover {
+    color: var(--mix-color);
 }
 
 .header {
     margin-bottom: 30px;
     flex-direction: row;
-    background-image: url("../../static/1-1.webp");
     background-size: cover;
     grid-area: header;
     height: 90vh;

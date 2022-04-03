@@ -28,6 +28,12 @@ export default class MovieModel {
     get movieData() {
         return this.data;
     }
+    get video(){
+        return this.data.video;
+    }
+    get trailer(){
+        return this.data.trailer;
+    }
 
 
 

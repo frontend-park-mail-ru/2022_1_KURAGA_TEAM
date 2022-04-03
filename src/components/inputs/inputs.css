@@ -32,6 +32,14 @@
     border-radius: 10px;
 }
 
+.success {
+    color: green;
+}
+
+.not-success {
+    color: var(--font-error-color)
+}
+
 .svg {
     margin: 8px 20px 10px 10px;
     width: 32px;
