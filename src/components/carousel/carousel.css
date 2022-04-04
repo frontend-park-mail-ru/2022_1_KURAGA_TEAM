@@ -100,7 +100,7 @@
 }
 
 .movie {
-    //transition: all 0.1s ease;
+    margin: 10px;
     background-size: cover;
     background-position-x: center;
     display: grid;

@@ -23,13 +23,28 @@ export default class HeaderClass {
             }
 
             navbar.classList.remove('navbar-color');
-        })
+        });
 
         const quit = document.querySelector('.quit');
 
         quit.addEventListener('click', (e) => {
             e.preventDefault();
             UserModel.quit();
+        });
+        const verticalNavbar = document.querySelector('#Capa_1');
+        verticalNavbar.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("1");
+            const verticalMenu = document.querySelector(".menu-mobile__vertical");
+            if (verticalMenu.style.display === 'flex') {
+                console.log("2");
+                verticalMenu.style.display = 'none';
+                verticalNavbar.classList.remove('menuSymbol__action');
+
+            } else {
+                verticalMenu.style.display = 'flex';
+                verticalNavbar.classList.add('menuSymbol__action');
+            }
         });
     }
 }

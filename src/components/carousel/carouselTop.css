@@ -58,6 +58,7 @@
 }
 
 .movieTop {
+  margin: 10px;
   transition: all 0.1s ease;
   background-size: cover;
   display: grid;
