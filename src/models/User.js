@@ -1,20 +1,19 @@
-import { ajaxReq } from '../modules/ajax.js';
+import { ajaxReq } from 'Modules/ajax';
 import router from '../routing/router.js';
-import { routes } from '../routing/constRouting.js';
+import { routes } from 'Routing/constRouting';
 
 export default class UserModel {
     constructor(userData) {
-
         this.data = {
             username: userData.username,
             email: userData.email,
             avatar: userData.avatar
         }
     }
+
     get userData(){
         return this.data;
     }
-
 
     static async registration(form) {
         try {
@@ -112,6 +111,8 @@ export default class UserModel {
     }
 
     static reg(formJson){
+        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
+
         this.registration(formJson)
             .then(({ isAuth, data }) => {
                 data.then((res) => {
@@ -139,7 +140,9 @@ export default class UserModel {
             });
     }
 
-    static login(formJson){
+    static log(formJson){
+        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
+
         this.login(formJson)
             .then(({ isAuth }) => {
                 if (!isAuth) {

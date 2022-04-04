@@ -17,25 +17,24 @@ export default class HomeViewClass extends BaseViewClass {
     #mainMovie;
     #movieCompilations = [];
 
-
     async render() {
-
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
             const {isAuth, userBody} = await UserModel.auth();
+
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+
             const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
-            const {movBody} = await MovieModel.mainMov();
+            const { movBody } = await MovieModel.mainMov();
             const mainMovieData = await Promise.resolve(movBody);
             this.#mainMovie = new MovieModel(mainMovieData);
-
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
@@ -43,8 +42,6 @@ export default class HomeViewClass extends BaseViewClass {
                 console.log(movieCompilationData);
                 this.#movieCompilations.push(new MovieCompilationModel(movieCompilationData))
             });
-
-
 
             const header = new HeaderClass(this.#user.userData);
             const mainMovie = new MainMovieClass(this.#mainMovie.movieData);
@@ -66,7 +63,6 @@ export default class HomeViewClass extends BaseViewClass {
                 carouselFam: carouselFam.render(),
                 footer: footer.render(),
             });
-
 
             handlerLink();
             this.setHandler();

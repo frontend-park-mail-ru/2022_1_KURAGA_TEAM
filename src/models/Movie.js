@@ -1,4 +1,4 @@
-import {ajaxReq} from '../modules/ajax.js';
+import {ajaxReq} from 'Modules/ajax';
 import router from '../routing/router.js';
 import {routes} from '../routing/constRouting.js';
 
@@ -28,10 +28,10 @@ export default class MovieModel {
     get movieData() {
         return this.data;
     }
-    get video(){
+    get video() {
         return this.data.video;
     }
-    get trailer(){
+    get trailer() {
         return this.data.trailer;
     }
 

@@ -19,7 +19,7 @@ export default class PlayerViewClass extends BaseViewClass {
 
             const check = window.location.pathname.indexOf('trailer');
 
-            const {movBody} = await MovieModel.getMovie(id);
+            const { movBody } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);

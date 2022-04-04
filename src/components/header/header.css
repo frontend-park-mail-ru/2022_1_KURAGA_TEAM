@@ -170,13 +170,15 @@
 
 .dropdown-content {
     right: auto;
-    display: none;
+    opacity: 0;
+    display: block;
     margin-block: 66px;
     position: absolute;
     background: var(--trailer-button);
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 var(--drop-shadow);
     z-index: 1;
+    transition: all .1s linear;
 }
 
 
@@ -278,5 +280,5 @@
 }
 
 .profile-block:hover .dropdown-content {
-    display: block;
+    opacity: 1;
 }

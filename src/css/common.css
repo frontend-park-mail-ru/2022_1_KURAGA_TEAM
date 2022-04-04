@@ -36,6 +36,9 @@ body {
     --btn-info-hover-color: linear-gradient(56.9deg, rgb(0 0 0 / 40%) 456%, rgb(20 20 20 / 16.8%) 16.73%);
     --nav-back: linear-gradient(180deg, #070606 6.08%, rgb(7 6 6 / 68%) 55.03%, rgb(14 12 12 / 42%) 78.99%, rgb(27 23 23 / 10%) 90.45%, rgb(27 23 23 / 0%) 100%);
     --nav-font-shadow: rgb(0 0 0 / 25%);
+    --popup-serials: #222;
+    --movie-gradient-mobile: linear-gradient(180deg, rgba(1, 9, 11, 0) 2%, #01090B 80%);
+    /*--drop-back: linear-gradient(206.08deg, rgb(98 98 98 / 38%) -40.85%, rgb(56 56 56 / 56%) 97.87%);*/
     --drop-back: linear-gradient(206.08deg, rgb(0 0 0 / 81%) -40.85%, rgb(46 45 45 / 92%) 97.87%);
     --drop-shadow: rgb(0 0 0 / 20%);
     --drop-back-hover: linear-gradient(121.9deg, rgb(0 0 0 / 40%) 16.73%, rgb(20 20 20 / 16.8%) 340.95%);

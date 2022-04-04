@@ -110,7 +110,7 @@ export default class InputsClass {
                     password: inputPassword.value,
                 });
 
-                UserModel.login(formJson);
+                UserModel.log(formJson);
             }
         });
     }
