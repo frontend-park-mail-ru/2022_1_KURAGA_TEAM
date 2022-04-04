@@ -3,24 +3,7 @@
 @import '../components/carousel/carousel.css';
 @import '../components/inputs/inputs.css';
 
-
-@media (min-width: 1728px){
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
-
-}
-
 @media (min-width: 1450px) and (max-width: 1600px) {
-
-    .formSearch {
-        flex-grow: 2;
-    }
-
-
-    .movie {
-        grid-template-rows: auto calc(1vh + 50px);
-        width: calc(5vw + 300px);
-        height: calc(5vh + 180px);
-    }
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
 
     #menu{
@@ -29,7 +12,15 @@
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ*/
 
+    .formSearch {
+        flex-grow: 2;
+    }
 
+    .movie {
+        grid-template-rows: auto calc(1vh + 50px);
+        width: calc(5vw + 300px);
+        height: calc(5vh + 180px);
+    }
 
     .movieTop {
         width: calc(5vw + 405px);
@@ -86,7 +77,41 @@
         width: 500px;
     }
 
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
 
+    .menu-profile {
+        width: 800px;
+    }
+
+    .profile-avatar {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+
+    .photo-movie {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 67vw;
+    }
+
+    .photo-movie__gradient {
+        position: absolute;
+        top: 0;
+        height: 57vw;
+    }
+
+    .head-movie__name {
+        margin-bottom: 0;
+        width: 470px;
+    }
+
+    .first-part-info {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -106,7 +131,6 @@
     }
 
     #menu {
-
         padding-top: 20px;
         padding-bottom: 20px;
         width: 85%;
@@ -117,20 +141,59 @@
         font-size: 30px;
     }
 
-    .papa {
-        height: 85px;
+
+    .text {
+        font-size: 20px;
     }
 
     .error {
+        font-size: 14px;
+    }
+
+    .papa {
+        height: 75px;
+    }
+
+    .element {
+        height: 40px;
+    }
+
+    .svg {
+        height: 26px;
+        width: 26px;
+    }
+
+    .menu-input::placeholder {
+        font-size: 16px;
+    }
+
+    .menu-input {
         font-size: 16px;
     }
 
     .menu-button {
         font-size: 22px;
+        margin-top: 20px;
+        height: 40px;
     }
 
-    .text {
-        font-size: 20px;
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+
+    .profile-avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profile-avatar__input-button {
+        height: 39px;
+    }
+
+    .menu-profile {
+        width: 85%;
+    }
+
+    .menu-form-avatar {
+        margin-right: 70px;
     }
 }
 
@@ -223,16 +286,94 @@
     .ref {
         margin-right: 30px;
     }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+
+    .profile-avatar {
+        width: 130px;
+        height: 130px;
+    }
+
+    .profile-avatar__input-button {
+        font-size: 16px;
+        width: 150px;
+    }
+
+    .menu-form__profile {
+        flex-direction: column;
+    }
+
+    .menu-form-avatar {
+        margin-right: 0;
+        margin-bottom: 50px;
+    }
+
+    .navbar {
+        transition: none;
+        position: sticky !important;
+    }
+
+    .back-profile {
+        height: 130vh;
+    }
+
+    .back-menu-profile {
+        height: 130vh;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+
+    .exit {
+        margin-left: 26px;
+        padding-top: 9vmin;
+    }
+
+    .controls__button {
+        width: 214px;
+    }
+
+    .progress-controls {
+        width: 95%;
+    }
+
+    .photo-movie {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .photo-movie__gradient {
+        position: absolute;
+        top: 24vh;
+        height: 8vh;
+        width: 100%;
+        background: var(--movie-gradient-mobile);
+    }
 }
 
-
 @media (max-height: 450px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
+
     #back {
         height: 100vw;
     }
 
     #back-menu {
         height: 100vw;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+
+    .navbar {
+        transition: none;
+        position: sticky !important;
+    }
+
+    .back-profile {
+        height: 160vh;
+    }
+
+    .back-menu-profile {
+        height: 160vh;
     }
 }
 
@@ -301,11 +442,6 @@
     .desc-movTop,
     .genre {
         font-size: calc(1vw + 0px);
-    }
-
-
-    .select-title {
-        font-size: calc(1vw + 24px);
     }
 
     #cb,

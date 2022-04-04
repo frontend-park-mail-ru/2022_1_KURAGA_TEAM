@@ -7,14 +7,16 @@
 
 .error {
     font-family: "GT Eesti Pro Display", arial, sans-serif;
-    display: none;
+    display: block;
+    opacity: 0;
     font-size: 18px;
     color: var(--font-error-color);
     padding-top: 4px;
+    transition: all .1s linear;
 }
 
 .error-active {
-    display: block;
+    opacity: 1;
 }
 
 .center {
@@ -56,7 +58,7 @@
     font-size: 20px;
     color: var(--font-color);
     outline: none;
-    padding: 0;
+    padding: 0 20px 0 0;
     border: 0;
     background: rgb(0 0 0 / 0%);
     border-radius: 0 10px 10px 0;

@@ -111,6 +111,8 @@ export default class UserModel {
     }
 
     static reg(formJson){
+        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
+
         this.registration(formJson)
             .then(({ isAuth, data }) => {
                 data.then((res) => {
@@ -139,6 +141,8 @@ export default class UserModel {
     }
 
     static log(formJson){
+        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
+
         this.login(formJson)
             .then(({ isAuth }) => {
                 if (!isAuth) {
