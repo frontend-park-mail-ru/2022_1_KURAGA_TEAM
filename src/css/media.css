@@ -227,6 +227,7 @@
 
     /* для main movie*/
     .main-movie{
+        height: auto;
         justify-content: center;
     }
     .sidebar{
