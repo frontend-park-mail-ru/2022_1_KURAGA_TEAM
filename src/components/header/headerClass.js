@@ -23,13 +23,23 @@ export default class HeaderClass {
             }
 
             navbar.classList.remove('navbar-color');
-        })
+        });
 
         const quit = document.querySelector('.quit');
 
         quit.addEventListener('click', (e) => {
             e.preventDefault();
             UserModel.quit();
+        });
+        const verticalNavbar = document.querySelector('#Capa_1');
+        verticalNavbar.addEventListener('click', (e) => {
+            console.log("1");
+            e.preventDefault();
+            const verticalMenu = document.querySelector(".menu-mobile__vertical");
+            if (verticalMenu.style.display === 'flex') {
+                console.log("srgd");
+                verticalMenu.style.display = 'none';
+            } else verticalMenu.style.display = 'flex';
         });
     }
 }

@@ -6,6 +6,7 @@
 }
 
 .sidebar {
+    margin-inline: 30px;
     align-content: center;
     width: 582px;
     border-radius: 32px;

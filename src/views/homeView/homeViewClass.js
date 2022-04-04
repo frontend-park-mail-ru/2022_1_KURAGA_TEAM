@@ -81,7 +81,6 @@ export default class HomeViewClass extends BaseViewClass {
 
     setHandler() {
         const homeNavbar = document.querySelector('.home-js');
-
         homeNavbar.style.backgroundColor = '#2C51B1';
         homeNavbar.style.webkitBackgroundClip = 'text';
         homeNavbar.style.webkitTextFillColor = 'transparent';

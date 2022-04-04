@@ -4,8 +4,8 @@
 @import '../components/inputs/inputs.css';
 
 
-@media (min-width: 1728px){
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+@media (min-width: 1728px) {
+
 
 }
 
@@ -16,31 +16,28 @@
     }
 
 
-    .movie {
-        grid-template-rows: auto calc(1vh + 50px);
-        width: calc(5vw + 300px);
-        height: calc(5vh + 180px);
-    }
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
-
-    #menu{
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    #menu {
         width: 500px;
     }
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ*/
-
-
-
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ*/
+    /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
     .movieTop {
         width: calc(5vw + 405px);
         height: calc(5vh + 235px);
     }
 
+    .movie {
+        grid-template-rows: auto calc(1vh + 50px);
+        width: calc(5vw + 300px);
+        height: calc(5vh + 180px);
+    }
+
 }
 
 @media (min-width: 1000px) and (max-width: 1450px) {
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
-
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     .error {
         font-size: 14px;
     }
@@ -90,11 +87,7 @@
 }
 
 @media (max-width: 1000px) {
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
-    .div-logo {
-        height: 80px;
-    }
-
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     #back {
         height: calc(100vh + 80px);
     }
@@ -132,10 +125,42 @@
     .text {
         font-size: 20px;
     }
+
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
+    .div-logo {
+        height: 80px;
+    }
+
+    .desktop-navbar {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: flex;
+        cursor: pointer;
+    }
+    .menu-mobile:hover{
+
+    }
+
+
+    .logo-home {
+        padding-inline-start: 0;
+        height: 50px;
+    }
+
+    .profile-block {
+        margin-inline-end: 70px;
+    }
+
+    .btn-profile {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media (max-width: 700px) {
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     .div-logo {
         height: 60px;
     }
@@ -191,8 +216,7 @@
         font-size: 18px;
     }
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФУТЕРА*/
-
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ФУТЕРА*/
     .titleFooter {
         font-size: 20px;
     }
@@ -238,6 +262,7 @@
 
 
 @media (min-width: 1600px) and (max-width: 1800px) {
+    /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
     .movie {
         grid-template-rows: auto calc(1vh + 50px);
         width: calc(6vw + 300px);
@@ -257,6 +282,7 @@
 }
 
 @media (min-width: 1800px) {
+    /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
     .movie {
         grid-template-rows: auto calc(3vh + 50px);
         width: calc(12vw + 300px);
@@ -277,12 +303,14 @@
 
 
 @media (min-width: 1450px) {
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
     .sidebar {
         width: calc(1vw + 582px);
         margin-inline: calc(2vw + 30px);
     }
+
     .btn,
-    .btn-info{
+    .btn-info {
         margin-inline: auto;
         font-size: calc(1vw + 8px);
         line-height: calc(1vw + 20px);
