@@ -33,13 +33,18 @@ export default class HeaderClass {
         });
         const verticalNavbar = document.querySelector('#Capa_1');
         verticalNavbar.addEventListener('click', (e) => {
-            console.log("1");
             e.preventDefault();
+            console.log("1");
             const verticalMenu = document.querySelector(".menu-mobile__vertical");
             if (verticalMenu.style.display === 'flex') {
-                console.log("srgd");
+                console.log("2");
                 verticalMenu.style.display = 'none';
-            } else verticalMenu.style.display = 'flex';
+                verticalNavbar.classList.remove('menuSymbol__action');
+
+            } else {
+                verticalMenu.style.display = 'flex';
+                verticalNavbar.classList.add('menuSymbol__action');
+            }
         });
     }
 }

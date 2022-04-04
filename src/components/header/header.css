@@ -199,14 +199,21 @@
 
 .menu-mobile{
     display: none;
-    fill: #fff;
     margin-inline-start: 70px;
     justify-content: flex-start;
 }
-#Capa_1:hover{
 
-    transform: scale(1.2);
-    transition: all .2s ease;
+
+.menuSymbol{
+    transition-property: transform fill;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    fill: white;
+}
+
+.menuSymbol__action{
+    transform: scale(1.2) rotate(360deg);
+    fill: var(--mix-color);
 }
 
 
