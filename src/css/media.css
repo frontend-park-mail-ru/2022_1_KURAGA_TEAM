@@ -157,6 +157,11 @@
         width: 40px;
         height: 40px;
     }
+
+    /* для main movie*/
+    .main-movie{
+        justify-content: center;
+    }
 }
 
 @media (max-width: 700px) {
