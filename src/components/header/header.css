@@ -21,22 +21,23 @@
     background-size: cover;
     grid-area: header;
     height: 90vh;
+    width: 100vw;
 }
 
 .navbar {
     z-index: 4;
     top: 0;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     display: flex;
-    flex-flow: row wrap;
+    /* flex-flow: row wrap; */
     justify-content: flex-start;
-    column-gap: 30px;
+    /* column-gap: 30px; */
     align-items: center;
     font-size: 22px;
-    line-height: 28px;
+    /* line-height: 28px; */
     text-align: center;
-    background:  var(--nav-back);
+    background: var(--nav-back);
     transition: background 0.6s linear;
 }
 
@@ -47,7 +48,7 @@
 .logo-home {
     margin-block: 8px;
     height: 60px;
-    padding-inline-start: 65px;
+    margin-inline-start: 3vw;
 }
 
 .space {
@@ -199,7 +200,7 @@
 
 .menu-mobile{
     display: none;
-    margin-inline-start: 70px;
+    margin-inline-start: 3vw;
     justify-content: flex-start;
 }
 
@@ -234,7 +235,7 @@
     color: var(--font-color);
     font-style: normal;
     font-weight: bold;
-    padding: 10px 25vw 10px 10px;
+    padding: 10px 50vw 10px 10px;
     /* padding-block-start: 10px; */
     text-shadow: 0 4px 4px var(--nav-font-shadow);
     cursor: pointer;

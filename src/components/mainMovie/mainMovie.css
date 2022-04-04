@@ -15,10 +15,19 @@
     grid-template-rows: auto;
     row-gap: 10px;
     padding-top: 15px;
-    grid-template-columns: 300px auto;
+    grid-template-columns: auto auto;
     grid-template-areas:
 "title title"
 "btn btnInfo"
+}
+
+.main-movie__name {
+    /*width: 567px;*/
+    background-size: contain;
+    object-fit: contain;
+    height: 181px;
+    background-repeat: no-repeat;
+    margin-bottom: 50px;
 }
 
 .title-main-movie {
@@ -38,7 +47,7 @@
 
 .title-descr {
     font-family: "GT Eesti Pro Display Light", arial, sans-serif;
-    margin-inline: 72px;
+    margin-inline: 6vw;
     font-weight: 350;
     font-size: 30px;
     line-height: 35px;
@@ -55,12 +64,8 @@
 .btn {
     width: auto;
     grid-area: btn;
-    margin-inline-start: 53px;
     padding-block: 5px;
     padding-inline: 29px;
-    margin: 30px;
-    margin-block-end: 39px;
-    margin-block-start: 30px;
     font-size: 20px;
     line-height: 28px;
     place-self: center;
@@ -74,9 +79,6 @@
 .btn-info {
     width: auto;
     grid-area: btnInfo;
-    margin: 15px;
-    margin-block-end: 39px;
-    margin-block-start: 30px;
     padding-block: 5px;
     padding-inline: 40px;
     font-style: normal;
@@ -85,7 +87,6 @@
     line-height: 28px;
     place-self: center;
     background: var(--trailer-button);
-    mix-blend-mode: normal;
     backdrop-filter: blur(15px);
     border-radius: 5px;
     transition: transform .1s ease-out, background-color .15s linear;

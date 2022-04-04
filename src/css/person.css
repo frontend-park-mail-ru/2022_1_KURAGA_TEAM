@@ -10,6 +10,7 @@
 }
 
 .photo-person__gradient {
+    width: 100%;
     height: 100%;
     background: var(--movie-gradient);
 }

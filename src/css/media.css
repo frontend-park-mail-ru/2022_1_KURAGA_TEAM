@@ -127,6 +127,9 @@
     }
 
     /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
+    .header{
+        height: 100%;
+    }
     .div-logo {
         height: 80px;
     }
@@ -150,7 +153,7 @@
     }
 
     .profile-block {
-        margin-inline-end: 70px;
+        margin-inline-end: 3vw;
     }
 
     .btn-profile {
@@ -161,6 +164,30 @@
     /* для main movie*/
     .main-movie{
         justify-content: center;
+    }
+    .sidebar{
+        margin-inline: 3vw;
+        align-content: center;
+        width: 100%;
+        border-radius: 32px;
+        display: grid;
+        column-gap: 10px;
+        grid-template-rows: auto;
+        grid-template-areas:
+        "title title"
+        "btn btnInfo";
+
+    }
+    .btn{
+        padding-inline: 2vw;
+        font-size: 5vh;
+    }
+    .title-descr {
+        font-size: 6vh;
+    }
+    .btn-info {
+        padding-inline: 4vw;
+        font-size: 5vh;
     }
 }
 
