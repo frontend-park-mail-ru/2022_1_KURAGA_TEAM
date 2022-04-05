@@ -22,12 +22,12 @@
 }
 
 .main-movie__name {
-    /*width: 567px;*/
+    width: auto;
+    background-position-x: center;
     background-size: contain;
     object-fit: contain;
     height: 181px;
     background-repeat: no-repeat;
-    margin-bottom: 50px;
 }
 
 .title-main-movie {

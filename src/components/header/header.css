@@ -16,26 +16,24 @@
 }
 
 .header {
+
     margin-bottom: 30px;
     flex-direction: row;
     background-size: cover;
     grid-area: header;
     height: 90vh;
-    width: 100vw;
+
 }
 
 .navbar {
     z-index: 4;
     top: 0;
+    width: 100%;
     position: fixed;
-    width: 100vw;
     display: flex;
-    /* flex-flow: row wrap; */
     justify-content: flex-start;
-    /* column-gap: 30px; */
     align-items: center;
     font-size: 22px;
-    /* line-height: 28px; */
     text-align: center;
     background: var(--nav-back);
     transition: background 0.6s linear;
