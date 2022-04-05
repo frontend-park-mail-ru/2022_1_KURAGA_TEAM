@@ -251,19 +251,17 @@
     /*width: 36px;*/
 }
 
-#cb::after  {
-    transition: all .1s ease;
+#cb::after {
+    transition: all 1s ease;
     visibility: visible;
     display: block;
     content: ' ';
     background-image: url("../../static/heart.png");
-    /*background-size: 36px 36px;*/
-    /*height: 36px;*/
-    /*width: 36px;*/
-    /*padding: 8px;*/
 }
 
 #cb:checked::after  {
+
+    transform: scale(1.2) rotate(360deg);
     display: block;
     content: ' ';
     background-image: url("../../static/activeLike.png");
