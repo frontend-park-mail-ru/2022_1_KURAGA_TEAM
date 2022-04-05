@@ -29,8 +29,8 @@ export default class Carousel {
             nextBtn: 'js-carouselTop__next',
             wrapMov: 'js-carouselTop__wrap',
             typeMov: 'Top',
-            countDiv: Math.ceil(this.movies.length / 2),
-            num: 2,
+            countDiv: Math.ceil(this.movies.length / 3),
+            num: 3,
             title: this.title
         });
         if (this.type === "Fam") return carouselTemplate({

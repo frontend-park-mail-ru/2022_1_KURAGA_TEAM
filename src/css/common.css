@@ -18,6 +18,9 @@ body {
     text-decoration: none;
     color: var(--font-color);
     margin: 0;
+    width: 100%;
+    max-width: 100%;
+
 }
 
 :root {
