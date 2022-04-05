@@ -598,7 +598,32 @@
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА */
+    .controls {
+        display: block;
+        width: auto;
+    }
+
     .series__text {
+        display: none;
+    }
+
+    .rewind {
+        display: none;
+    }
+
+    .forward {
+        display: none;
+    }
+
+    .volume {
+        display: none;
+    }
+
+    .series {
+        display: none;
+    }
+
+    .full {
         display: none;
     }
 }

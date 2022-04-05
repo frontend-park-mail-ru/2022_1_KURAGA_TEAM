@@ -55,8 +55,15 @@ export default class PlayerViewClass extends BaseViewClass {
         const playPauseButton = document.querySelector('.play-pause');
         const play = playPauseButton.querySelector('.play__svg');
         const pause = playPauseButton.querySelector('.pause__svg');
-        play.style.display = 'none';
-        pause.style.display = '';
+
+        if (window.screen.width <= 700) {
+            play.style.display = '';
+            pause.style.display = 'none';
+        } else {
+            play.style.display = 'none';
+            pause.style.display = '';
+        }
+
 
         const rewindButton = document.querySelector('.rewind');
         const forwardButton = document.querySelector('.forward');
@@ -168,7 +175,7 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
-        document.addEventListener('mousemove', () => {
+        document.addEventListener('pointermove', () => {
             displayControls();
         });
 
