@@ -522,6 +522,7 @@
     }
 
     .photo-movie {
+        box-shadow: 0 -108px 35px #01090b inset;
         height: 300px;
         position: relative;
         background-size: contain;
@@ -534,7 +535,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        bottom: -57vw;
+        bottom: -50vw;
         position: absolute;
         margin-left: 0;
     }
@@ -584,13 +585,8 @@
         margin-right: 8px;
     }
 
-
     .photo-movie__gradient {
-        position: absolute;
-        bottom: 0;
-        height: 32vh;
-        width: 100%;
-        background: var(--movie-gradient-mobile);
+        display: none;
     }
 
     .head-movie__buttons {
@@ -654,6 +650,8 @@
 
     .group__staff::-webkit-scrollbar {
         height: 0;
+        width: 0;
+        background: var(--back-color);
     }
 
     .first-part-info__our-rating {

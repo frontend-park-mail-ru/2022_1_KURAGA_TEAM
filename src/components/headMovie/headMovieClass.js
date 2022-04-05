@@ -8,7 +8,6 @@ export default class HeadMovieClass {
     }
 
     render() {
-        console.log(this.#info)
         return headMovieTemplate({
            info: this.#info
         });
