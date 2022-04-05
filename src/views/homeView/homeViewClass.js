@@ -39,7 +39,6 @@ export default class HomeViewClass extends BaseViewClass {
             const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
             movieCompilationsData.forEach((movieCompilationData) => {
-                console.log(movieCompilationData);
                 this.#movieCompilations.push(new MovieCompilationModel(movieCompilationData))
             });
 
