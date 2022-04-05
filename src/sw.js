@@ -4,12 +4,6 @@ const cacheUrls = [
     '/main.css',
     '/index.html',
     '/bundle.js',
-    // '/index.html',
-    // '/app.js',
-    // '/views/offlineView/offline.pug',
-    // '/views/offlineView/offline.scss',
-    // '/views/offlineView/offlineViewClass.js',
-    // '/modules/ajax.js'
 ];
 
 this.addEventListener('install', (event) => {
