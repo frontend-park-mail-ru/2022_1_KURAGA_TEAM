@@ -217,6 +217,12 @@
     }
 
     /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
+    .header{
+        height: 100%;
+    }
+    .font-nav{
+        padding-inline: 0;
+    }
     .photo-person__gradient{
         background: none;
 
@@ -250,6 +256,9 @@
     }
 
     /* для main movie*/
+    .main-movie__name{
+        height: 60px;
+    }
     .main-movie{
         height: auto;
         justify-content: center;
@@ -267,16 +276,16 @@
         "btn btnInfo";
 
     }
-    .btn{
-        padding-inline: 2vw;
-        font-size: 5vh;
-    }
+
     .title-descr {
-        font-size: 6vh;
+        margin-top: 10px;
+        line-height: 22px;
+        font-size: 25px
     }
+    .btn,
     .btn-info {
-        padding-inline: 4vw;
-        font-size: 5vh;
+        padding-inline: 4px;
+        font-size: 18px;
     }
 }
 
