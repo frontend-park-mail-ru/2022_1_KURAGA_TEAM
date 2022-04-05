@@ -7,19 +7,18 @@ import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import '../../css/error.css';
 
-const root = document.getElementById('root');
-
 export default class ErrorViewClass extends BaseViewClass{
     #user;
     async render() {
         try {
+            const {isAuth, userBody} = await UserModel.auth();
 
-            const {isAuth, body} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await Promise.resolve(body);
+
+            const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
             const header = new HeaderClass(this.#user.userData);

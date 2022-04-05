@@ -29,6 +29,16 @@
 }
 
 @media (min-width: 1000px) and (max-width: 1450px) {
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+    .error-text__404 {
+        text-align: center;
+        font-size: 70px;
+    }
+
+    .error-text__info {
+        font-size: 22px;
+    }
+
     /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     .error {
         font-size: 14px;
@@ -113,6 +123,22 @@
 }
 
 @media (max-width: 1000px) {
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+
+    .error-img {
+        width: 535px;
+        height: 392px;
+    }
+
+    .error-text__404 {
+        text-align: center;
+        font-size: 50px;
+    }
+
+    .error-text__info {
+        font-size: 18px;
+    }
+
     /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     #back {
         height: calc(100vh + 80px);
@@ -257,6 +283,29 @@
 }
 
 @media (max-width: 700px) {
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+    .error-text__404 {
+        margin-right: 15px;
+        padding-left: 10px;
+        font-size: 45px;
+    }
+
+    .error-text {
+        margin-top: 50px;
+    }
+
+    .error-text__info {
+        text-align: center;
+        margin-right: 15px;
+        padding-left: 15px;
+        font-size: 16px;
+    }
+
+    .error-img {
+        width: 232px;
+        height: 183px;
+    }
+
     /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
     .div-logo {
         height: 60px;
@@ -395,16 +444,112 @@
     }
 
     .photo-movie {
+        height: 300px;
+        position: relative;
         background-size: contain;
         background-repeat: no-repeat;
     }
 
+    .head-movie {
+        bottom: -31vw;
+        position: absolute;
+        margin-left: 20px;
+    }
+
+    .first-part-info {
+        margin-top: 400px;
+    }
+
+    .head-movie__name {
+        margin-left: 22vw;
+        width: 232px;
+        height: 58px;
+        margin-bottom: 30px;
+    }
+
+    .head-movie__rating {
+        margin-left: 9vw;
+        margin-bottom: 20px;
+    }
+
+    .head-movie__info {
+        margin-left: 2vw;
+        margin-bottom: 40px;
+    }
+
+    .short-info {
+        font-size: 14px;
+        margin-right: 1px;
+    }
+
+    .info__year {
+        padding-right: 7px;
+    }
+
+    .info__genre {
+        margin-right: 8px;
+    }
+
+    .info__country {
+        margin-right: 8px;
+    }
+
+    .info__duration {
+        margin-right: 8px;
+    }
+
+
     .photo-movie__gradient {
         position: absolute;
-        top: 24vh;
+        top: 53vw;
         height: 8vh;
         width: 100%;
         background: var(--movie-gradient-mobile);
+    }
+
+    .head-movie__buttons {
+        width: 90%;
+    }
+
+    .play-button {
+        font-size: 14px;
+        width: 130px;
+    }
+
+    .trailer-button {
+        width: 130px;
+        font-size: 14px;
+    }
+
+    .first-part-info {
+        margin-top: 290px;
+        margin-left: 20px;
+    }
+
+    .first-part-info__text {
+        width: 80%;
+    }
+
+    .second-part-genre {
+        margin-left: 20px;
+    }
+
+    .third-part-actors {
+        margin-left: 20px;
+    }
+
+    .group__staff {
+        overflow: scroll;
+        width: 80%;
+    }
+
+    .group__staff::-webkit-scrollbar {
+        width: 0;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА */
+    .series__text {
+        display: none;
     }
 }
 
