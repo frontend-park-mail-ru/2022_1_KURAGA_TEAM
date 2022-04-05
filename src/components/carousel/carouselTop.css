@@ -71,7 +71,17 @@
     border-radius: 12px;
     margin-inline: 20px;
     grid-template-areas: "refMov " "descMov";
+
 }
+
+.boxShadow {
+    width: 80%;
+    max-width: 550px;
+    margin: 2em auto;
+    padding: 1em;
+
+}
+
 
 .movieTop:hover {
     transform: scale(1.05);

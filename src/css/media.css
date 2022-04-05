@@ -287,6 +287,24 @@
         padding-inline: 4px;
         font-size: 18px;
     }
+    /*карусель*/
+    .select-mobile{
+        display: block;
+    }
+    .select{
+        display: none;
+    }
+    .movie{
+        margin: 4px;
+        width: 283px;
+        height: 140px;
+        border-radius: 8px;
+    }
+    .desc-mov{
+        padding-inline: 5px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
 }
 
 @media (max-width: 700px) {

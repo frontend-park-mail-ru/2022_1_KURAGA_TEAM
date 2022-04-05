@@ -173,6 +173,9 @@
     font-size: 30px;
     line-height: 35px;
 }
+.select-mobile{
+    display: none;
+}
 
 .selection {
     background-color: var(--back-color);
@@ -252,6 +255,7 @@
 }
 
 #cb::after {
+    transition-property: transform;
     transition: all 1s ease;
     visibility: visible;
     display: block;
