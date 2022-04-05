@@ -86,7 +86,6 @@
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-
     .menu-profile {
         width: 800px;
     }
@@ -99,7 +98,6 @@
 
 @media (min-width: 1000px) and (max-width: 1250px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
-
     .photo-movie {
         background-repeat: no-repeat;
         background-size: contain;
@@ -124,7 +122,6 @@
 
 @media (max-width: 1000px) {
     /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
-
     .error-img {
         width: 535px;
         height: 392px;
@@ -198,7 +195,6 @@
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-
     .profile-avatar {
         width: 150px;
         height: 150px;
@@ -217,16 +213,19 @@
     }
 
     /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
-    .header{
+    .header {
         height: 100%;
     }
-    .font-nav{
+
+    .font-nav {
         padding-inline: 0;
     }
-    .photo-person__gradient{
+
+    .photo-person__gradient {
         background: none;
 
     }
+
     .div-logo {
         height: 80px;
     }
@@ -256,14 +255,16 @@
     }
 
     /* для main movie*/
-    .main-movie__name{
+    .main-movie__name {
         height: 60px;
     }
-    .main-movie{
+
+    .main-movie {
         height: auto;
         justify-content: center;
     }
-    .sidebar{
+
+    .sidebar {
         margin-inline: 3vw;
         align-content: center;
         width: 100%;
@@ -282,10 +283,40 @@
         line-height: 22px;
         font-size: 25px
     }
+
     .btn,
     .btn-info {
         padding-inline: 4px;
         font-size: 18px;
+    }
+
+    /*карусель*/
+    .select-mobile {
+        display: block;
+    }
+
+    .select {
+        display: none;
+    }
+
+    .movie {
+        margin: 4px;
+        width: 283px;
+        height: 140px;
+        border-radius: 8px;
+    }
+
+    .desc-mov {
+        justify-self: center;
+        width: 100%;
+        padding-inline: 5px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        font-size: 15px;
+    }
+
+    .genre {
+       display: none;
     }
 }
 
@@ -408,7 +439,6 @@
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-
     .profile-avatar {
         width: 130px;
         height: 130px;
@@ -639,7 +669,6 @@
 
 @media (max-height: 450px) {
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
-
     #back {
         height: 100vw;
     }
@@ -649,7 +678,6 @@
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-
     .navbar {
         transition: none;
         position: sticky !important;
@@ -674,8 +702,8 @@
     }
 
     .movieTop {
-        width: calc(6vw + 405px);
-        height: calc(6vh + 235px);
+        width: calc(6vw + 422px);
+        height: calc(6vh + 240px);
     }
 
     .movieTop {
@@ -694,8 +722,8 @@
     }
 
     .movieTop {
-        width: calc(12vw + 405px);
-        height: calc(12vh + 235px);
+        width: calc(12vw + 422px);
+        height: calc(12vh + 240px);
     }
 
     .movieTop {

@@ -9,6 +9,44 @@ export default class Carousel {
     }
 
     render() {
+        if (this.type === "MobilePop") return carouselTemplate({
+            type: this.type,
+            items: this.movies,
+            car: 'js-carouselMobilePop',
+            prevBtn: 'js-carouselMobilePop__prev',
+            nextBtn: 'js-carouselMobilePop__next',
+            wrapMov: 'js-carouselMobilePop__wrap',
+            typeMov: '',
+            countDiv: Math.ceil(this.movies.length / 2),
+            num: 2,
+            title: this.title
+        });
+
+        if (this.type === "MobileTop") return carouselTemplate({
+            type: this.type,
+            items: this.movies,
+            car: 'js-carouselMobileTop',
+            prevBtn: 'js-carouselMobileTop__prev',
+            nextBtn: 'js-carouselMobileTop__next',
+            wrapMov: 'js-carouselMobileTop__wrap',
+            typeMov: 'Top',
+            countDiv: Math.ceil(this.movies.length / 1),
+            num: 1,
+            title: this.title
+        });
+        if (this.type === "MobileFam") return carouselTemplate({
+            type: this.type,
+            items: this.movies,
+            car: 'js-carouselMobileFam',
+            prevBtn: 'js-carouselMobileFam__prev',
+            nextBtn: 'js-carouselMobileFam__next',
+            wrapMov: 'js-carouselMobileFam__wrap',
+            typeMov: '',
+            countDiv: Math.ceil(this.movies.length / 2),
+            num: 2,
+            title: this.title
+        });
+
         if (this.type === "Pop") return carouselTemplate({
             type: this.type,
             items: this.movies,
