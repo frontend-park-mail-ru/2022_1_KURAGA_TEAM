@@ -98,6 +98,12 @@
     display: block;
     color: var(--font-color);
 }
+.movieTop__href {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: var(--font-color);
+}
 
 .movie {
     margin: 10px;
