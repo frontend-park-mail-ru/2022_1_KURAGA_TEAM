@@ -312,7 +312,7 @@
 
     .movie {
         margin: 4px;
-        width: 283px;
+        width: 152px;
         height: 140px;
         border-radius: 8px;
     }
@@ -320,7 +320,7 @@
     .desc-mov {
         justify-content: center;
         align-content: flex-start;
-        width: 100%;
+        /*width: 100%;*/
         padding-inline: 5px;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
