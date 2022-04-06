@@ -223,7 +223,7 @@
 
     .photo-person__gradient {
         background: none;
-
+        height: 60%;
     }
 
     .div-logo {
@@ -319,7 +319,6 @@
 
     .desc-mov {
         justify-content: center;
-        align-content: flex-start;
         /*width: 100%;*/
         padding-inline: 5px;
         border-bottom-left-radius: 8px;
@@ -698,6 +697,39 @@
 
     .full {
         display: none;
+    }
+
+    /* страница актера*/
+    .photo-person {
+        box-shadow: 0 -108px 35px #01090b inset;
+        height: 300px;
+        position: relative;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-bottom: 250px;
+    }
+    .head-person {
+        align-content: center;
+        justify-content: flex-end;
+        margin-inline: 3vw;
+    }
+
+    .head-person__name {
+        font-size: 32px;
+    }
+    .head-person__descr {
+        width: fit-content;
+        font-weight: 500;
+        margin-block: 10px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .add-photos{
+        justify-content: space-evenly;
+    }
+    .add-photos__photo {
+        width: calc(6vw + 120px);
+        height: calc(6vh + 80px);
     }
 }
 
