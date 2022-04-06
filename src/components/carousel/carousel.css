@@ -229,10 +229,8 @@
 
 #cbMovie,
 #cb,
-#cbMovie:hover::after,
 #cbMovie::after,
 #cbMovie:checked::after,
-#cb:hover::after,
 #cb::after,
 #cb:checked::after{
     background-size: 36px 36px;
@@ -240,15 +238,6 @@
     width: 36px;
 }
 
-#cbMovie:hover::after,
-#cb:hover::after  {
-    display: block;
-    content: ' ';
-    background-image: url("../../static/activeLike.png");
-    /*background-size: 36px 36px;*/
-    /*height: 36px;*/
-    /*width: 36px;*/
-}
 #cbMovie::after,
 #cb::after {
     transition-property: transform;
