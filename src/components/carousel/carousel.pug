@@ -13,7 +13,7 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
                                     a(href=`/movie/${item.id}`)
                                         div.ref-mov
                                     div(class=`desc-mov` + `${typeMov}`)
-                                        a.movie__href(href=`/movie/${item.id}`)= item.name
+                                        a(class=`movie` + `${typeMov}`+ '__href')(href=`/movie/${item.id}`)= item.name
                                         if (item.genre.length > 1)
                                             div.genre= item.genre[0] + "/" + item.genre[1]
                                         else
