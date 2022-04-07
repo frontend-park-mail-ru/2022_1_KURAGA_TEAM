@@ -7,7 +7,6 @@ import PersonViewClass from './views/personView/personViewClass.js';
 import ErrorViewClass from "./views/errorView/errorViewClass.js";
 import ProfileViewClass from "./views/profileView/profileViewClass.js";
 import PlayerViewClass from "./views/playerView/playerViewClass";
-import OfflineViewClass from "./views/offlineView/offlineViewClass";
 
 import '../src/css/common.css';
 import '../src/css/media.css';

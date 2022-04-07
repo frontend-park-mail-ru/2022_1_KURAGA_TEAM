@@ -1,5 +1,6 @@
 .offline-back {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -8,6 +9,16 @@
 }
 
 .offline-text {
+  text-align: center;
+  width: 70%;
   font-size: 80px;
-  color: white;
+  background-color: var(--our-name);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--our-name-gradient);
+  margin-bottom: 100px;
+}
+
+.offline-img {
+  width: 30%;
 }

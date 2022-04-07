@@ -1,9 +1,10 @@
 const CACHE_NAME = 'offlinePage'
 const cacheUrls = [
     '/',
-    '/main.css',
-    '/index.html',
-    '/bundle.js',
+    './main.css',
+    './index.html',
+    './bundle.js',
+    './static/offline.gif'
 ];
 
 this.addEventListener('install', (event) => {
