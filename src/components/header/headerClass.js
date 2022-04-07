@@ -34,10 +34,8 @@ export default class HeaderClass {
         const verticalNavbar = document.querySelector('#Capa_1');
         verticalNavbar.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log("1");
             const verticalMenu = document.querySelector(".menu-mobile__vertical");
             if (verticalMenu.style.display === 'flex') {
-                console.log("2");
                 verticalMenu.style.display = 'none';
                 verticalNavbar.classList.remove('menuSymbol__action');
 
@@ -46,5 +44,16 @@ export default class HeaderClass {
                 verticalNavbar.classList.add('menuSymbol__action');
             }
         });
+        // const profileIcon = document.querySelector('.profile-block');
+        // profileIcon.addEventListener('touch', (e) => {
+        //     e.preventDefault();
+        //     const profileMenu = document.querySelector(".dropdown-content");
+        //     if (profileMenu.style.display === 'block') {
+        //         profileMenu.style.display = 'none';
+        //     } else {
+        //         profileMenu.style.display = 'block';
+        //     }
+        // });
+
     }
 }

@@ -46,6 +46,7 @@ export default class PersonViewClass extends BaseViewClass {
             const header = new HeaderClass("this.#user.userData");
             const headPerson = new HeadPersonClass(this.#person.personData);
             const carouselPop = new carousel('Pop', this.#movieCompilation.movieCompilationData);
+            const carouselPopMobile = new carousel("MobilePop",this.#movieCompilation.movieCompilationData);
             const footer = new FooterClass();
 
             super.render(personViewTemplate,{
@@ -53,12 +54,14 @@ export default class PersonViewClass extends BaseViewClass {
                 header: header.render(),
                 headPerson: headPerson.render(),
                 carouselPop: carouselPop.render(),
+                carouselPopMobile: carouselPopMobile.render(),
                 footer: footer.render()
             });
 
             handlerLink()
             header.setHandler();
             carouselPop.setHandler();
+            carouselPopMobile.setHandler();
         } catch (err) {
             console.error(err);
         }
