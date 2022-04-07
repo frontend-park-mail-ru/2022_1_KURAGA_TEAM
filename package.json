@@ -55,6 +55,7 @@
   },
   "homepage": "https://github.com/frontend-park-mail-ru/2022_1_KURAGA_TEAM#readme",
   "dependencies": {
+    "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@babel/runtime": "^7.17.7",
     "prettier": "^2.5.1"

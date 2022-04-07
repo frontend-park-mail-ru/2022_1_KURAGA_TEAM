@@ -1,20 +1,15 @@
 const CACHE_NAME = 'offlinePage'
 const cacheUrls = [
-    '/login',
+    '/',
     '/main.css',
     '/index.html',
     '/bundle.js',
 ];
 
 this.addEventListener('install', (event) => {
-    // задержим обработку события
-    // если произойдёт ошибка, serviceWorker не установится
     event.waitUntil(
-        // находим в глобальном хранилище Cache-объект с нашим именем
-        // если такого не существует, то он будет создан
         caches.open(CACHE_NAME)
             .then((cache) => {
-                // загружаем в наш cache необходимые файлы
                 return cache.addAll(cacheUrls);
             })
             .catch((err) => {
@@ -24,24 +19,15 @@ this.addEventListener('install', (event) => {
 });
 
 this.addEventListener('fetch', (event) => {
+    if (navigator.onLine) {
+        return fetch(event.request);
+    }
 
-    /** online first */
-    // if (navigator.onLine) {
-    //     return fetch(event.request);
-    // }
-
-    /** cache first */
     event.respondWith(
-        // ищем запрашиваемый ресурс в хранилище кэша
         caches
             .match(event.request)
             .then((cachedResponse) => {
-                // выдаём кэш, если он есть
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
-
-                return fetch(event.request);
+                return cachedResponse;
             })
             .catch((err) => {
                 console.error('smth went wrong with caches.match: ', err);

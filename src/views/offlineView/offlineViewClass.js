@@ -1,13 +1,10 @@
 import offlineTemplate from './offline.pug'
 import BaseViewClass from "../baseView/baseViewClass";
 
-import './offline.scss';
+import '../../css/offline.scss';
 
-class offlineViewClass extends BaseViewClass {
+export default class OfflineViewClass extends BaseViewClass {
     render() {
         super.render(offlineTemplate)
     }
 }
-
-const offline = new offlineViewClass();
-offline.render();

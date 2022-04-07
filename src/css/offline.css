@@ -1,0 +1,15 @@
+.offline-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: var(--back-color);
+}
+
+.offline-text {
+  font-size: 80px;
+  color: white;
+}
+
+/*# sourceMappingURL=offline.css.map */
