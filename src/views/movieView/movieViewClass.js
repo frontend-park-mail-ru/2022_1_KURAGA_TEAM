@@ -18,6 +18,7 @@ import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/movie.css';
+import OfflineViewClass from "../offlineView/offlineViewClass";
 
 export default class MovieViewClass extends BaseViewClass {
     #user;
@@ -28,6 +29,13 @@ export default class MovieViewClass extends BaseViewClass {
         try {
             const loader = new LoaderViewClass();
             loader.render();
+
+            if (!navigator.onLine) {
+                const offline = new OfflineViewClass();
+                offline.render();
+
+                return;
+            }
 
             const {isAuth, userBody} = await UserModel.auth();
 

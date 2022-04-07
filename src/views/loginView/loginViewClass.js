@@ -9,6 +9,7 @@ import BaseViewClass from '../baseView/baseViewClass.js';
 import UserModel from "../../models/User.js"
 
 import '../../css/regLog.scss';
+import OfflineViewClass from "../offlineView/offlineViewClass";
 
 const root = document.getElementById('root');
 
@@ -16,6 +17,12 @@ export default class LoginViewClass extends BaseViewClass{
 
     async render() {
         try {
+            if (!navigator.onLine) {
+                const offline = new OfflineViewClass();
+                offline.render();
+
+                return;
+            }
 
             const {isAuth, userBody} = await UserModel.auth();
             if (isAuth) {

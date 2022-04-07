@@ -12,6 +12,7 @@ import BaseViewClass from '../baseView/baseViewClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/profile.scss';
+import OfflineViewClass from "../offlineView/offlineViewClass";
 
 export default class ProfileViewClass  extends BaseViewClass{
     #user;
@@ -20,6 +21,12 @@ export default class ProfileViewClass  extends BaseViewClass{
             const loader = new LoaderViewClass();
             loader.render();
 
+            if (!navigator.onLine) {
+                const offline = new OfflineViewClass();
+                offline.render();
+
+                return;
+            }
 
             const {isAuth, userBody} = await UserModel.auth();
             if (!isAuth) {

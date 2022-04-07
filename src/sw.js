@@ -1,9 +1,5 @@
 const CACHE_NAME = 'offlinePage'
 const cacheUrls = [
-    '/',
-    './main.css',
-    './index.html',
-    './bundle.js',
     './static/offline.gif'
 ];
 
@@ -21,6 +17,12 @@ this.addEventListener('install', (event) => {
 
 this.addEventListener('fetch', (event) => {
     if (navigator.onLine) {
+        if (event.request.method === 'GET') {
+            caches.open(CACHE_NAME).then((cache) => {
+                cache.add(event.request.url);
+            });
+        }
+
         return fetch(event.request);
     }
 

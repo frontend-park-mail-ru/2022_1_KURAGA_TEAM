@@ -13,6 +13,7 @@ import BaseViewClass from '../baseView/baseViewClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
 import '../../css/person.css';
+import OfflineViewClass from "../offlineView/offlineViewClass";
 
 
 export default class PersonViewClass extends BaseViewClass {
@@ -23,6 +24,13 @@ export default class PersonViewClass extends BaseViewClass {
         try {
             const loader = new LoaderViewClass();
             loader.render();
+
+            if (!navigator.onLine) {
+                const offline = new OfflineViewClass();
+                offline.render();
+
+                return;
+            }
 
             const id = +/\d+/.exec(window.location.pathname);
 
