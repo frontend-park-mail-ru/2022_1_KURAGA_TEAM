@@ -1,5 +1,6 @@
 import { parseRegExp } from './parseRegExp.js';
 import { routes } from "./constRouting.js";
+import OfflineViewClass from "../views/offlineView/offlineViewClass";
 
 class Router {
     constructor() {
@@ -23,6 +24,13 @@ class Router {
     }
 
     start() {
+        if (!navigator.onLine) {
+            const offline = new OfflineViewClass();
+            offline.render();
+
+            return;
+        }
+
         let pathname = window.location.pathname;
 
         pathname = parseRegExp(pathname);

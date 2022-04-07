@@ -7,7 +7,6 @@ import router from "Routing/router";
 import handlerLink from "Utils/handlerLink";
 
 import '../../css/player.css';
-import OfflineViewClass from "../offlineView/offlineViewClass";
 
 export default class PlayerViewClass extends BaseViewClass {
     #movie;
@@ -15,13 +14,6 @@ export default class PlayerViewClass extends BaseViewClass {
         try {
             const loader = new LoaderViewClass();
             loader.render();
-
-            if (!navigator.onLine) {
-                const offline = new OfflineViewClass();
-                offline.render();
-
-                return;
-            }
 
             const id = +/\d+/.exec(window.location.pathname);
 

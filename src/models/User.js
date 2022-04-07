@@ -59,23 +59,14 @@ export default class UserModel {
         }
     }
 
-    static async edit(form) {
+    static async edit(form, csrfToken) {
         try {
             return await ajaxReq.put({
                 path: '/edit',
                 body: form,
-            });
-        } catch (err) {
-            return err;
-        }
-    }
-
-    static async avatar(form) {
-        try {
-            return await ajaxReq.put({
-                path: '/avatar',
-                body: form,
                 headers: {
+                    'Content-Type': 'application/json',
+                    'csrf-token': csrfToken
                 }
             });
         } catch (err) {
@@ -83,6 +74,29 @@ export default class UserModel {
         }
     }
 
+    static async avatar(form, csrfToken) {
+        try {
+            return await ajaxReq.put({
+                path: '/avatar',
+                body: form,
+                headers: {
+                    'csrf-token': csrfToken
+                }
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async token() {
+        try {
+            return await ajaxReq.get({
+                path: '/csrf',
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 
     static auth(){
         return new Promise((res) => {
@@ -140,7 +154,7 @@ export default class UserModel {
             });
     }
 
-    static log(formJson){
+    static log(formJson) {
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
         this.login(formJson)
@@ -160,13 +174,28 @@ export default class UserModel {
             });
     }
 
-    static editProfile(formJson){
-        return this.edit(formJson);
+    static async editProfile(formJson) {
+        try {
+            const { data } = await this.token();
 
+            const { message } = await data;
+
+            return this.edit(formJson, message);
+        } catch (err) {
+            return err;
+        }
     }
 
-    static editAvatar(formData){
-        return this.avatar(formData);
+    static async editAvatar(formData) {
+        try {
+            const { data } = await this.token();
+
+            const { message } = await data;
+
+            return this.avatar(formData, message);
+        } catch (err) {
+            return err;
+        }
     }
 
 

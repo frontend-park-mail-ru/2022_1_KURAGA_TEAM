@@ -7,30 +7,18 @@ import router from 'Routing/router.js';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import UserModel from "../../models/User.js"
-import '../../css/regLog.css';
-import OfflineViewClass from "../offlineView/offlineViewClass";
 
-
-const root = document.getElementById('root');
+import '../../css/regLog.scss';
 
 export default class RegViewClass extends BaseViewClass {
     async render() {
         try {
-            if (!navigator.onLine) {
-                const offline = new OfflineViewClass();
-                offline.render();
-
-                return;
-            }
-
             const { isAuth } = await UserModel.auth();
             console.log(isAuth);
             if (isAuth) {
                 router.go(routes.HOME_VIEW);
                 return;
             }
-
-
 
             const footer = new FooterClass();
             const inputs = new InputsClass();

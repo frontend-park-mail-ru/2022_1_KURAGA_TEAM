@@ -11,8 +11,9 @@ import LoaderViewClass from "../loaderView/loaderViewClass.js";
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
 import MovieCompilationModel from "../../models/MovieCompilation"
+
 import '../../css/home.css';
-import OfflineViewClass from "../offlineView/offlineViewClass";
+
 export default class HomeViewClass extends BaseViewClass {
     #user;
     #mainMovie;
@@ -22,13 +23,6 @@ export default class HomeViewClass extends BaseViewClass {
         try {
             const loader = new LoaderViewClass();
             loader.render();
-
-            if (!navigator.onLine) {
-                const offline = new OfflineViewClass();
-                offline.render();
-
-                return;
-            }
 
             const {isAuth, userBody} = await UserModel.auth();
 

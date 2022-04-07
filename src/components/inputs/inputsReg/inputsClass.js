@@ -55,6 +55,14 @@ export default class InputsClass {
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
         const nameError = () => {
+            if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
+                || inputName.value.match(/<img>/) !== null) {
+                errorName.classList.add('error-active');
+                errorName.textContent = 'Неправильные данные';
+
+                return;
+            }
+
             errorName.classList.add('error-active');
             errorName.textContent = 'Заполните поле';
         };
@@ -92,7 +100,8 @@ export default class InputsClass {
         };
 
         inputName.addEventListener('change', () => {
-            if (inputName.value.trim() === '') {
+            if (inputName.value.trim() === '' || inputName.value.length === 1
+                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img>/) !== null) {
                 nameError();
 
                 return;

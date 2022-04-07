@@ -74,6 +74,14 @@ export default class InputsProfileClass {
         const miniAvatar = document.querySelector('.btn-profile');
 
         const nameError = () => {
+            if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
+                || inputName.value.match(/<img>/) !== null) {
+                errorName.classList.add('error-active');
+                errorName.textContent = 'Неправильные данные';
+
+                return;
+            }
+
             errorName.classList.add('error-active');
             errorName.textContent = 'Заполните поле';
         };
@@ -89,7 +97,8 @@ export default class InputsProfileClass {
         };
 
         inputName.addEventListener('change', () => {
-            if (inputName.value.trim() === '' || inputName.value.length === 1 || inputName.value.match(/<script>/) !== null) {
+            if (inputName.value.trim() === '' || inputName.value.length === 1
+                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img>/) !== null) {
                 nameError();
 
                 return;
@@ -258,6 +267,7 @@ export default class InputsProfileClass {
                     UserModel.editAvatar(formData)
                         .then(({ isAuth }) => {
                             response(isAuth);
+
                             miniAvatar.style.backgroundImage = `url(${URL.createObjectURL(inputAvatar.files[0])})`;
                         })
                         .catch((err) => {
