@@ -15,24 +15,23 @@
 
 .head-person__descr{
     font-weight: 500;
-    margin-block: 46px;
+    margin: 20px 50vw 20px 0;
     font-size: 18px;
     line-height: 21px;
     color: var(--font-color);
-    width: 500px;
 }
 
 .add-photos{
-    display: flex;
-    justify-content: flex-start;
-    column-gap: 22px;
-    margin-bottom: 28px;
+display: flex;
+justify-content: flex-start;
+column-gap: 22px;
+margin-bottom: 28px;
 
 }
 
 .add-photos__photo{
-    object-fit: cover;
-    border-radius: 10px;
-    width: 252px;
-    height: 212px;
+object-fit: cover;
+border-radius: 10px;
+width: 252px;
+height: 212px;
 }

@@ -26,6 +26,8 @@
         height: calc(5vh + 180px);
     }
 
+
+
 }
 
 @media (min-width: 1000px) and (max-width: 1450px) {
@@ -238,6 +240,9 @@
         display: flex;
         cursor: pointer;
     }
+    .space{
+        display: none;
+    }
 
 
     .logo-home {
@@ -246,7 +251,7 @@
     }
 
     .profile-block {
-        margin-inline-end: 3vw;
+        margin-inline-end: 4vw;
     }
 
     .btn-profile {
@@ -254,8 +259,17 @@
         height: 40px;
     }
     .dropdown-content a {
-        font-size: 14px;
+        font-size: 16px;
         padding: 15px 6px;
+    }
+    .name-profile-mobile {
+        font-size: 16px;
+        padding: 6px 12px;
+        display: block;
+        color: var(--mix-color);
+    }
+    .name-profile{
+        display: none;
     }
 
     /* для main movie*/
@@ -269,7 +283,7 @@
     }
 
     .sidebar {
-        margin-inline: 3vw;
+        margin-inline: 4vw;
         align-content: center;
         width: 100%;
         border-radius: 32px;
@@ -500,6 +514,7 @@
     .navbar {
         transition: none;
         position: sticky !important;
+        justify-content: space-between;
     }
 
     .back-profile {
@@ -616,8 +631,8 @@
     }
 
     .first-part-info__text {
-        width: 95%;
-        font-size: 18px;
+        max-width: fit-content;
+        font-size: 14px;
     }
 
     .second-part-genre {
@@ -719,7 +734,7 @@
     .head-person {
         align-content: center;
         justify-content: flex-end;
-        margin-inline: 3vw;
+        margin-inline: 4vw;
     }
 
     .head-person__name {
@@ -729,12 +744,10 @@
         width: fit-content;
         font-weight: 500;
         margin-block: 10px;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 16px;
     }
-    .add-photos{
-        justify-content: space-evenly;
-    }
+
     .add-photos__photo {
         width: calc(6vw + 120px);
         height: calc(6vh + 80px);
@@ -753,8 +766,10 @@
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
     .navbar {
+
         transition: none;
         position: sticky !important;
+        justify-content: space-between;
     }
 
     .back-profile {

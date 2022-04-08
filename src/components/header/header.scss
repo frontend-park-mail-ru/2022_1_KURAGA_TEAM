@@ -1,11 +1,10 @@
 
 
 .font-nav {
-    font-family: "GT Eesti Pro Display Medium", arial, serif;
     text-decoration: none;
     color: var(--font-color);
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     padding-inline: 20px;
     text-shadow: 0 4px 4px var(--nav-font-shadow);
     cursor: pointer;
@@ -48,7 +47,7 @@
 .logo-home {
     margin-block: 8px;
     height: 60px;
-    margin-inline-start: 3vw;
+    margin-inline-start: 4vw;
 }
 
 .space {
@@ -145,6 +144,11 @@
     cursor: pointer;
     text-decoration: none;
 }
+.name-profile-mobile {
+    cursor: pointer;
+    text-decoration: none;
+    display: none;
+}
 
 .profile {
     float: right;
@@ -170,21 +174,24 @@
 
 .dropdown-content {
     right: auto;
-    opacity: 0;
-    display: block;
+    display: none;
     margin-block: 66px;
     position: absolute;
-    background: var(--trailer-button);
+    background: var(--drop-back);
     border-radius: 5px;
+    text-shadow: 0 4px 4px var(--nav-font-shadow);
     box-shadow: 0 8px 16px 0 var(--drop-shadow);
     z-index: 1;
     transition: all .1s linear;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--font-color);
 }
 
 
 
 .dropdown-content a {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--font-color);
     padding: 12px 16px;
     text-decoration: none;
@@ -196,13 +203,9 @@
     border-radius: 5px;
 }
 
-.profile-block:hover .dropdown-content {
-    display: block;
-}
-
 .menu-mobile{
     display: none;
-    margin-inline-start: 3vw;
+    margin-inline-start: 4vw;
     justify-content: flex-start;
 }
 
@@ -222,7 +225,7 @@
 
 
 .menu-mobile__vertical{
-    top: 84px;
+    top: 87px;
     flex-direction: column;
     position: absolute;
     align-items: flex-start;
@@ -232,38 +235,17 @@
     display: none;
 }
 .menu-mobile__nav{
-    font-family: "GT Eesti Pro Display Medium", arial, serif;
+    font-weight: 500;
     text-decoration: none;
     color: var(--font-color);
-    font-style: normal;
-    font-weight: bold;
-    padding: 10px 50vw 10px 10px;
+    font-size: 20px;
+    padding: 10px 30vw 10px 10px;
     /* padding-block-start: 10px; */
     text-shadow: 0 4px 4px var(--nav-font-shadow);
     cursor: pointer;
     transition: all .2s linear;
 }
 
-.dropdown-content {
-    right: auto;
-    display: none;
-    margin-block: 66px;
-    position: absolute;
-    background: var(--trailer-button);
-    border-radius: 5px;
-    box-shadow: 0 8px 16px 0 var(--drop-shadow);
-    z-index: 1;
-}
-/*.dropdown-content::before{*/
-/*    top: -16px;*/
-/*    right: 9px;*/
-/*    left: auto;*/
-/*    border: 8px solid transparent;*/
-/*    border-bottom-color: var(--drop-back);*/
-/*    position: absolute;*/
-/*    display: inline-block;*/
-/*    content: "";*/
-/*}*/
 
 
 .dropdown-content a {
@@ -280,5 +262,5 @@
 }
 
 .profile-block:hover .dropdown-content {
-    opacity: 1;
+    display: block;
 }

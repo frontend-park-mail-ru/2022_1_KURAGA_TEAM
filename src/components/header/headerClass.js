@@ -44,16 +44,18 @@ export default class HeaderClass {
                 verticalNavbar.classList.add('menuSymbol__action');
             }
         });
-        // const profileIcon = document.querySelector('.profile-block');
-        // profileIcon.addEventListener('touch', (e) => {
-        //     e.preventDefault();
-        //     const profileMenu = document.querySelector(".dropdown-content");
-        //     if (profileMenu.style.display === 'block') {
-        //         profileMenu.style.display = 'none';
-        //     } else {
-        //         profileMenu.style.display = 'block';
-        //     }
-        // });
+        const profileIcon = document.querySelector('.btn-profile');
+        profileIcon.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const profileMenu = document.querySelector(".dropdown-content");
+
+
+            if (profileMenu.style.display === 'block') {
+                profileMenu.style.display = 'none';
+            } else {
+                profileMenu.style.display = 'block';
+            }
+        });
 
     }
 }
