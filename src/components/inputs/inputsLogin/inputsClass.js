@@ -6,14 +6,14 @@ const configElement = [
     {
         key: 'email',
         data: '../../static/email.svg',
-        placeholder: 'Введите Почту',
+        placeholder: 'Почта',
         type: 'email',
         error: 'emailError',
     },
     {
         key: 'password',
         data: '../../static/password.svg',
-        placeholder: 'Введите Пароль',
+        placeholder: 'Пароль',
         type: 'password',
         error: 'passwordError',
     },

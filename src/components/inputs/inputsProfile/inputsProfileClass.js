@@ -6,7 +6,7 @@ const configElement = [
     {
         key: 'name',
         data: '../../static/name.svg',
-        placeholder: 'Ваше новое Имя',
+        placeholder: 'Новое Имя',
         type: 'text',
         error: 'nameError',
     },
@@ -20,7 +20,7 @@ const configElement = [
     {
         key: 'passwordFirst',
         data: '../../static/password.svg',
-        placeholder: 'Ваш новый Пароль',
+        placeholder: 'Новый Пароль',
         type: 'password',
         error: 'passOneError',
     },
