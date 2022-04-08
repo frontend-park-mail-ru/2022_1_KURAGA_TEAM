@@ -246,7 +246,7 @@
     }
 
     .profile-block {
-        margin-inline-end: 3vw;
+        margin-inline-end: 4vw;
     }
 
     .btn-profile {
@@ -254,8 +254,17 @@
         height: 40px;
     }
     .dropdown-content a {
-        font-size: 14px;
+        font-size: 16px;
         padding: 15px 6px;
+    }
+    .name-profile-mobile {
+        font-size: 16px;
+        padding: 6px 12px;
+        display: block;
+        color: var(--mix-color);
+    }
+    .name-profile{
+        display: none;
     }
 
     /* для main movie*/
@@ -269,7 +278,7 @@
     }
 
     .sidebar {
-        margin-inline: 3vw;
+        margin-inline: 4vw;
         align-content: center;
         width: 100%;
         border-radius: 32px;
@@ -719,7 +728,7 @@
     .head-person {
         align-content: center;
         justify-content: flex-end;
-        margin-inline: 3vw;
+        margin-inline: 4vw;
     }
 
     .head-person__name {
