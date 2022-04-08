@@ -238,6 +238,9 @@
         display: flex;
         cursor: pointer;
     }
+    .space{
+        display: none;
+    }
 
 
     .logo-home {
@@ -509,6 +512,7 @@
     .navbar {
         transition: none;
         position: sticky !important;
+        justify-content: space-between;
     }
 
     .back-profile {
@@ -764,6 +768,7 @@
     .navbar {
         transition: none;
         position: sticky !important;
+        justify-content: space-between;
     }
 
     .back-profile {
