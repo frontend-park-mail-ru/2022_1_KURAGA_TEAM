@@ -26,6 +26,8 @@
         height: calc(5vh + 180px);
     }
 
+
+
 }
 
 @media (min-width: 1000px) and (max-width: 1450px) {
@@ -629,8 +631,8 @@
     }
 
     .first-part-info__text {
-        width: 95%;
-        font-size: 18px;
+        max-width: fit-content;
+        font-size: 14px;
     }
 
     .second-part-genre {
@@ -742,12 +744,10 @@
         width: fit-content;
         font-weight: 500;
         margin-block: 10px;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 16px;
     }
-    .add-photos{
-        justify-content: space-evenly;
-    }
+
     .add-photos__photo {
         width: calc(6vw + 120px);
         height: calc(6vh + 80px);
@@ -766,6 +766,7 @@
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
     .navbar {
+
         transition: none;
         position: sticky !important;
         justify-content: space-between;

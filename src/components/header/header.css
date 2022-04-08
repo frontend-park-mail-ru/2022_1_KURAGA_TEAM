@@ -1,9 +1,8 @@
 .font-nav {
-    font-family: "GT Eesti Pro Display Medium", arial, serif;
     text-decoration: none;
     color: var(--font-color);
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     padding-inline: 20px;
     text-shadow: 0 4px 4px var(--nav-font-shadow);
     cursor: pointer;
@@ -182,8 +181,7 @@
     box-shadow: 0 8px 16px 0 var(--drop-shadow);
     z-index: 1;
     transition: all .1s linear;
-    text-shadow: 0 4px 4px var(--nav-font-shadow);
-    font-family: "GT Eesti Pro Display Medium", arial, serif;
+    font-weight: 500;
     text-decoration: none;
     color: var(--font-color);
 }
@@ -235,7 +233,7 @@
     display: none;
 }
 .menu-mobile__nav{
-    font-family: "GT Eesti Pro Display Medium", arial, serif;
+    font-weight: 500;
     text-decoration: none;
     color: var(--font-color);
     font-size: 20px;
