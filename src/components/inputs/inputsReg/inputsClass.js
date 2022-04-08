@@ -56,7 +56,7 @@ export default class InputsClass {
 
         const nameError = () => {
             if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
-                || inputName.value.match(/<img>/) !== null) {
+                || inputName.value.match(/<img/) !== null) {
                 errorName.classList.add('error-active');
                 errorName.textContent = 'Неправильные данные';
 
@@ -101,7 +101,7 @@ export default class InputsClass {
 
         inputName.addEventListener('change', () => {
             if (inputName.value.trim() === '' || inputName.value.length === 1
-                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img>/) !== null) {
+                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
                 nameError();
 
                 return;

@@ -15,9 +15,17 @@ this.addEventListener('install', (event) => {
     );
 });
 
+const checkUrl = (url) => {
+    if (url.match(/\/api/) || url.match(/\/posters/) || url.match(/\/logos/) || url.match(/\/avatars/)) {
+        return false;
+    }
+
+    return true;
+}
+
 this.addEventListener('fetch', (event) => {
     if (navigator.onLine) {
-        if (event.request.method === 'GET') {
+        if (event.request.method === 'GET' && checkUrl(event.request.url)) {
             caches.open(CACHE_NAME).then((cache) => {
                 cache.add(event.request.url);
             });

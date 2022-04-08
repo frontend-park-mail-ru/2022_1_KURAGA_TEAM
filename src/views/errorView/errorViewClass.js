@@ -5,7 +5,7 @@ import router from "Routing/router.js";
 import FooterClass from "Components/footer/footerClass.js";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
-import '../../css/error.css';
+import '../../css/error.scss';
 
 export default class ErrorViewClass extends BaseViewClass{
     #user;

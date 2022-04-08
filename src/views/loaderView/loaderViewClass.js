@@ -1,6 +1,6 @@
 import loaderViewTemplate from './loader.pug';
 
-import './loader.css';
+import './loader.scss';
 
 const root = document.getElementById('root');
 

@@ -245,7 +245,7 @@
     visibility: visible;
     display: block;
     content: ' ';
-    background-image: url("../../static/heart.png");
+    background-image: url("../static/heart.png");
 }
 #cbMovie:checked::after,
 #cb:checked::after  {
@@ -253,7 +253,7 @@
     transform: scale(1.2) rotate(360deg);
     display: block;
     content: ' ';
-    background-image: url("../../static/activeLike.png");
+    background-image: url("../static/activeLike.png");
     background-position: center;
     /*background-size: 36px 36px;*/
     /*height: 36px;*/
