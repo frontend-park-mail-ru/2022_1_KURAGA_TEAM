@@ -14,7 +14,7 @@ export default class RegViewClass extends BaseViewClass {
     async render() {
         try {
             const { isAuth } = await UserModel.auth();
-            console.log(isAuth);
+
             if (isAuth) {
                 router.go(routes.HOME_VIEW);
                 return;

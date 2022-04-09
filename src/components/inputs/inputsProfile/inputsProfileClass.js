@@ -6,7 +6,7 @@ const configElement = [
     {
         key: 'name',
         data: '../../static/name.svg',
-        placeholder: 'Ваше новое Имя',
+        placeholder: 'Новое Имя',
         type: 'text',
         error: 'nameError',
     },
@@ -20,7 +20,7 @@ const configElement = [
     {
         key: 'passwordFirst',
         data: '../../static/password.svg',
-        placeholder: 'Ваш новый Пароль',
+        placeholder: 'Новый Пароль',
         type: 'password',
         error: 'passOneError',
     },
@@ -75,7 +75,7 @@ export default class InputsProfileClass {
 
         const nameError = () => {
             if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
-                || inputName.value.match(/<img>/) !== null) {
+                || inputName.value.match(/<img/) !== null) {
                 errorName.classList.add('error-active');
                 errorName.textContent = 'Неправильные данные';
 
@@ -98,7 +98,7 @@ export default class InputsProfileClass {
 
         inputName.addEventListener('change', () => {
             if (inputName.value.trim() === '' || inputName.value.length === 1
-                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img>/) !== null) {
+                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
                 nameError();
 
                 return;
@@ -184,7 +184,8 @@ export default class InputsProfileClass {
                 caseForm = 1;
             }
 
-            if (!inputName.validity.valid || inputName.value.trim() === '' || inputName.value.length === 1 || inputName.value.match(/<script>/) !== null) {
+            if (!inputName.validity.valid || inputName.value.trim() === '' || inputName.value.length === 1
+                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
                 check++;
                 nameError();
 

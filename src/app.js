@@ -8,8 +8,8 @@ import ErrorViewClass from "./views/errorView/errorViewClass.js";
 import ProfileViewClass from "./views/profileView/profileViewClass.js";
 import PlayerViewClass from "./views/playerView/playerViewClass";
 
-import '../src/css/common.css';
-import '../src/css/media.css';
+import './css/common.scss';
+import './css/media.scss';
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker

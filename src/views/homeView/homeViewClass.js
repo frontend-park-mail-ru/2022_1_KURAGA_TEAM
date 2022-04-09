@@ -6,13 +6,13 @@ import FooterClass from 'Components/footer/footerClass.js';
 import handlerLink from 'Utils/handlerLink.js';
 import router from 'Routing/router.js';
 import BaseViewClass from '../baseView/baseViewClass.js';
-import {routes} from "Routing/constRouting";
+import { routes } from "Routing/constRouting";
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
 import MovieCompilationModel from "../../models/MovieCompilation"
 
-import '../../css/home.css';
+import '../../css/home.scss';
 
 export default class HomeViewClass extends BaseViewClass {
     #user;

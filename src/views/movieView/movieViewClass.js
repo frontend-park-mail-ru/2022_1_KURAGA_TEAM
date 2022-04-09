@@ -17,7 +17,7 @@ import BaseViewClass from '../baseView/baseViewClass.js';
 import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
-import '../../css/movie.css';
+import '../../css/movie.scss';
 
 export default class MovieViewClass extends BaseViewClass {
     #user;
@@ -41,7 +41,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const {movBody} = await MovieModel.getMovie(id);
+            const { movBody } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
@@ -49,7 +49,7 @@ export default class MovieViewClass extends BaseViewClass {
             }
             this.#movie = new MovieModel(movData);
 
-            const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
+            const { movCompBody } = await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
 

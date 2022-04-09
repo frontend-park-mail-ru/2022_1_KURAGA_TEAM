@@ -5,21 +5,21 @@ const configElement = [
     {
         key: 'name',
         data: '../../static/name.svg',
-        placeholder: 'Введите Имя',
+        placeholder: 'Имя',
         type: 'text',
         error: 'nameError',
     },
     {
         key: 'email',
         data: '../../static/email.svg',
-        placeholder: 'Введите Почту',
+        placeholder: 'Почта',
         type: 'email',
         error: 'emailError',
     },
     {
         key: 'passwordFirst',
         data: '../../static/password.svg',
-        placeholder: 'Введите Пароль',
+        placeholder: 'Пароль',
         type: 'password',
         error: 'passOneError',
     },
@@ -56,7 +56,7 @@ export default class InputsClass {
 
         const nameError = () => {
             if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
-                || inputName.value.match(/<img>/) !== null) {
+                || inputName.value.match(/<img/) !== null) {
                 errorName.classList.add('error-active');
                 errorName.textContent = 'Неправильные данные';
 
@@ -101,7 +101,7 @@ export default class InputsClass {
 
         inputName.addEventListener('change', () => {
             if (inputName.value.trim() === '' || inputName.value.length === 1
-                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img>/) !== null) {
+                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
                 nameError();
 
                 return;

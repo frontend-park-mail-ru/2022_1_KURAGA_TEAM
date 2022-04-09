@@ -33,8 +33,17 @@ module.exports = {
                 loader: 'pug-loader',
             },
             {
-                test: /\.s?css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                        }
+                    },
+                    "sass-loader"
+                ]
             },
             {
                 test: /\.tsx?$/,
