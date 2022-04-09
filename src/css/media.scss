@@ -279,6 +279,7 @@
   }
 
   /* для main movie*/
+
   .main-movie__name {
     height: 60px;
   }
@@ -289,7 +290,7 @@
   }
 
   .sidebar {
-    margin-inline: 4vw;
+    margin: 4vw;
     align-content: center;
     width: 100%;
     border-radius: 32px;
@@ -315,6 +316,10 @@
   }
 
   /*карусель*/
+  .first {
+    margin-top: -50px;
+  }
+
   .b-carouselTop__prev,
   .b-carouselTop__next,
   .b-carousel__next,
@@ -339,6 +344,7 @@
     width: 212px;
     height: 140px;
     border-radius: 8px;
+    grid-template-rows: auto 55px;
   }
 
   .desc-mov {
@@ -360,15 +366,16 @@
   }
 
   .genre {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 375px) {
-
+  .genre,
   .desc-mov {
     font-size: 10px;
   }
+
   #cb,
   #cb::after,
   #cb:checked::after {
