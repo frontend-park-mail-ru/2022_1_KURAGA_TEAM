@@ -46,9 +46,8 @@
 }
 
 .title-descr {
-    font-family: "GT Eesti Pro Display Light", arial, sans-serif;
     margin-inline: 6vw;
-    font-weight: 350;
+    font-weight: 300;
     font-size: 30px;
     line-height: 35px;
     margin-bottom: 10px;
@@ -56,8 +55,6 @@
 
 .font-other {
     text-decoration: none;
-    font-family: "GT Eesti Pro Display Light", arial, sans-serif;
-    font-style: normal;
     font-weight: 350;
     color: var(--font-color);
 }

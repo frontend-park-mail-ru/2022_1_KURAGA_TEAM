@@ -139,6 +139,7 @@
 .desc-mov {
     cursor: default;
     display: flex;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 72%);
     padding-inline: 5px;
     border-bottom-left-radius: 21px;
     border-bottom-right-radius: 21px;
@@ -250,7 +251,7 @@
 #cbMovie:checked::after,
 #cb:checked::after  {
 
-    transform: scale(1.2) rotate(360deg);
+    transform: scale(1.2);
     display: block;
     content: ' ';
     background-image: url("../../static/activeLike.png");
