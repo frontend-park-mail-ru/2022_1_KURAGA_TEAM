@@ -90,7 +90,13 @@ export default class HomeViewClass extends BaseViewClass {
     setHandler() {
         const homeNavbarMobile = document.querySelector('.homeMobile-js');
         const homeNavbar = document.querySelector('.home-js');
+        const nameProfile = document.querySelector('.name-profile-mobile');
 
+        /*копипаста костыль*/
+        nameProfile.style.backgroundColor = '#2C51B1';
+        nameProfile.style.webkitBackgroundClip = 'text';
+        nameProfile.style.webkitTextFillColor = 'transparent';
+        nameProfile.style.backgroundImage = 'linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)';
         homeNavbarMobile.style.backgroundColor = '#2C51B1';
         homeNavbarMobile.style.webkitBackgroundClip = 'text';
         homeNavbarMobile.style.webkitTextFillColor = 'transparent';

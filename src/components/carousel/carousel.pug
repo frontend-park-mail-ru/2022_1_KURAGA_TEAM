@@ -15,9 +15,13 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
                                     div(class=`desc-mov` + `${typeMov}`)
                                         a(class=`movie` + `${typeMov}`+ '__href')(href=`/movie/${item.id}`)= item.name
                                         if (item.genre.length > 1)
-                                            div.genre= item.genre[0] + "/" + item.genre[1]
+                                            a.genre(href=`/movie/${item.id}`)= item.genre[0] + "/" + item.genre[1]
                                         else
                                             div.genre= item.genre
                                         input#cb.input-like(type = "checkbox")
+
+
+
+
 
 + carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)

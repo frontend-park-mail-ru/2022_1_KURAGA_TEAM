@@ -16,6 +16,7 @@
 }
 
 .b-carouselTop {
+  padding-inline: 3vw;
   height: 100%;
   border-radius: 5px;
   width: 100%;
@@ -79,7 +80,16 @@
 }
 
 
-.movieTop:hover {
+//.movieTop:hover .desc-movTop {
+//
+//  transform: scaleY(1.05);
+//}
+//.movieTop:after .desc-movTop {
+//
+//  transform: scaleY(1);
+//}
+
+.movieTop:hover{
   transform: scale(1.05);
 }
 
@@ -92,8 +102,8 @@
   cursor: default;
   display: flex;
   padding-inline: 5px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   font-size: 16px;
   line-height: 19px;
   background: var(--desc-mov-back);
@@ -106,4 +116,5 @@
   text-decoration: none;
   font-weight: normal;
 }
+
 

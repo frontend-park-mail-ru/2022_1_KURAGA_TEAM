@@ -4,18 +4,19 @@
 @import '../components/mainMovie/mainMovie.scss';
 
 .root {
-    display: grid;
-    margin: 0;
-    background-color: var(--back-color);
-    grid-template-rows: auto;
-    grid-template-columns: auto;
-    grid-template-areas:
+  display: grid;
+  margin: 0;
+  background-color: var(--back-color);
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  grid-template-areas:
     "header"
     "main"
     "footer";
 }
-.first{
-    margin-top: -50px;
+
+.first {
+  margin-top: -75px;
 }
 
 

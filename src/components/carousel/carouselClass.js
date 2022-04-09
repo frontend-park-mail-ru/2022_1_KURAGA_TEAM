@@ -67,17 +67,17 @@ export default class Carousel {
         for (let i = 0; i < 4; i++) {
             const wrap = document.querySelector(`.js-carousel${this.id}`);
 
-            const buttonCaruselPrev = document.querySelector(`.js-carousel${this.id}__prev`);
-            const buttonCaruselNext = document.querySelector(`.js-carousel${this.id}__next`);
+            const buttonCarouselPrev = document.querySelector(`.js-carousel${this.id}__prev`);
+            const buttonCarouselNext = document.querySelector(`.js-carousel${this.id}__next`);
 
             wrap.addEventListener('mouseover', () => {
-                buttonCaruselPrev.classList.add('b-carousel__prev-hover');
-                buttonCaruselNext.classList.add('b-carousel__next-hover');
+                buttonCarouselPrev.classList.add('b-carousel__prev-hover');
+                buttonCarouselNext.classList.add('b-carousel__next-hover');
             });
 
             wrap.addEventListener('mouseout', () => {
-                buttonCaruselPrev.classList.remove('b-carousel__prev-hover');
-                buttonCaruselNext.classList.remove('b-carousel__next-hover');
+                buttonCarouselPrev.classList.remove('b-carousel__prev-hover');
+                buttonCarouselNext.classList.remove('b-carousel__next-hover');
             });
         }
 
@@ -87,5 +87,8 @@ export default class Carousel {
             prev: `.js-carousel${this.id}__prev`,
             next: `.js-carousel${this.id}__next`,
         });
+
+
+
     }
 }
