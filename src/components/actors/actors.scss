@@ -25,6 +25,8 @@
 }
 
 .person__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-decoration: none;
     color: white;
     font-size: 20px;
