@@ -16,7 +16,7 @@
 }
 
 .b-carouselTop {
-  padding-inline: 3vw;
+  padding-inline: 4vw;
   height: 100%;
   border-radius: 5px;
   width: 100%;
@@ -60,7 +60,8 @@
 }
 
 .movieTop {
-  margin: 10px;
+  transform: scale(0.95);
+  margin-inline-end: 20px;
   transition: all 0.1s ease;
   background-size: cover;
   display: grid;
@@ -71,8 +72,6 @@
   height: 235px;
   row-gap: 10px;
   border-radius: 12px;
-
-  margin-inline: 20px;
   //transition: all .2s ease;
   grid-template-areas:
     "refMov "
@@ -90,7 +89,7 @@
 //}
 
 .movieTop:hover{
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 @mixin backdrop-filter($blur) {
@@ -107,6 +106,7 @@
   font-size: 16px;
   line-height: 19px;
   background: var(--desc-mov-back);
+  text-shadow: 0 4px 4px rgb(0 0 0 / 72%);
   @include backdrop-filter(blur(5px));
   grid-area: descMov;
   flex-wrap: wrap;

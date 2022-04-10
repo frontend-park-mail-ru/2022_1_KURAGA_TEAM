@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     background-size: cover;
-    height: 100%;
+    height: 96vh;
 }
 
 .photo-person__gradient {
@@ -16,7 +16,7 @@
 }
 .head-person {
     display: flex;
-    margin: 164px auto auto 70px;
+    margin: 120px auto auto 4vw;
     flex-direction: column;
 }
 
@@ -26,6 +26,7 @@
     background: var(--back-color);
 }
 
-.margin-bottom {
-    margin-bottom: 50px;
+.margin-person {
+  margin-top: -44px;
+  margin-bottom: 50px;
 }
