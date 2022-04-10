@@ -1,0 +1,69 @@
+.head-person__name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 58px;
+  color: var(--font-color);
+}
+
+.head-person__job {
+  font-weight: 350;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--secondary-name);
+}
+
+.head-person__descr {
+  font-weight: 500;
+  margin: 20px 60vw 20px 0;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--font-color);
+}
+
+.add-photos {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 22px;
+  margin-bottom: 28px;
+}
+
+.add-photos__photo {
+  object-fit: cover;
+  border-radius: 10px;
+  width: 252px;
+  height: 212px;
+}
+
+.photo-person {
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  height: 100%;
+}
+
+.photo-person__gradient {
+  width: 100%;
+  height: 100%;
+  background: var(--movie-gradient);
+}
+
+.head-person {
+  display: flex;
+  margin: 164px auto auto 70px;
+  flex-direction: column;
+}
+
+.first-part-info {
+  display: flex;
+  height: 200px;
+  background: var(--back-color);
+}
+
+.margin-bottom {
+  margin-bottom: 50px;
+}
+
+/*# sourceMappingURL=person.css.map */

@@ -44,8 +44,8 @@ export default class PersonViewClass extends BaseViewClass {
 
             const header = new HeaderClass("this.#user.userData");
             const headPerson = new HeadPersonClass(this.#person.personData);
-            const carouselPop = new carousel('Pop', this.#movieCompilation.movieCompilationData);
-            const carouselPopMobile = new carousel("MobilePop",this.#movieCompilation.movieCompilationData);
+            const carouselPop = new carousel(0, this.#movieCompilation.movieCompilationData, false);
+            const carouselPopMobile = new carousel(0, this.#movieCompilation.movieCompilationData, true);
             const footer = new FooterClass();
 
             super.render(personViewTemplate,{

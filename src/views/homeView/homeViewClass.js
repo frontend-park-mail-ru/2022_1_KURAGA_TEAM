@@ -34,7 +34,7 @@ export default class HomeViewClass extends BaseViewClass {
             const userData = await Promise.resolve(userBody);
             this.#user = new UserModel(userData.user);
 
-            const { movBody } = await MovieModel.mainMov();
+            const {movBody} = await MovieModel.mainMov();
             const mainMovieData = await Promise.resolve(movBody);
             this.#mainMovie = new MovieModel(mainMovieData);
 
@@ -46,40 +46,42 @@ export default class HomeViewClass extends BaseViewClass {
 
             const header = new HeaderClass(this.#user.userData);
             const mainMovie = new MainMovieClass(this.#mainMovie.movieData);
-            // const carousels = [];
-            // this.#movieCompilations.forEach((movieCompilation, index) => {
-            //     carousels.push(new Carousel(index, movieCompilation.movieCompilationData));
-            // });
-            const carouselPop = new Carousel("Pop", this.#movieCompilations[0].movieCompilationData);
-            const carouselTop = new Carousel("Top", this.#movieCompilations[1].movieCompilationData);
-            const carouselFam = new Carousel("Fam", this.#movieCompilations[2].movieCompilationData);
-            const carouselPopMobile = new Carousel("MobilePop",this.#movieCompilations[0].movieCompilationData);
-            const carouselTopMobile = new Carousel("MobileTop", this.#movieCompilations[1].movieCompilationData);
-            const carouselFamMobile = new Carousel("MobileFam", this.#movieCompilations[2].movieCompilationData);
+            const carousels = [];
+            const carouselsMobile = [];
+            this.#movieCompilations.forEach((movieCompilation, index) => {
+                carousels.push(new Carousel(index, movieCompilation.movieCompilationData,false));
+                carouselsMobile.push(new Carousel(index, movieCompilation.movieCompilationData,true));
+            });
+
+            console.log(carousels);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {
                 mainMovieImg: this.#mainMovie.movieData,
                 header: header.render(),
                 mainMovie: mainMovie.render(),
-                carouselPop: carouselPop.render(),
-                carouselTop: carouselTop.render(),
-                carouselFam: carouselFam.render(),
-                carouselPopMobile: carouselPopMobile.render(),
-                carouselTopMobile: carouselTopMobile.render(),
-                carouselFamMobile: carouselFamMobile.render(),
+                carouselPop: carousels[0].render(),
+                carouselTop: carousels[1].render(),
+                carouselAct: carousels[2].render(),
+                carouselFam: carousels[3].render(),
+                carouselPopMobile: carouselsMobile[0].render(),
+                carouselTopMobile: carouselsMobile[1].render(),
+                carouselActMobile: carouselsMobile[2].render(),
+                carouselFamMobile: carouselsMobile[3].render(),
                 footer: footer.render(),
             });
+            console.log(carouselsMobile[2]);
 
             handlerLink();
             this.setHandler();
+
             header.setHandler();
-            carouselPop.setHandler();
-            carouselTop.setHandler();
-            carouselFam.setHandler();
-            carouselPopMobile.setHandler();
-            carouselTopMobile.setHandler();
-            carouselFamMobile.setHandler();
+            carousels.forEach((carousel) => {
+                carousel.setHandler();
+            });
+            carouselsMobile.forEach((carousel) => {
+                carousel.setHandler();
+            });
         } catch (err) {
             console.error(err);
         }
@@ -88,7 +90,13 @@ export default class HomeViewClass extends BaseViewClass {
     setHandler() {
         const homeNavbarMobile = document.querySelector('.homeMobile-js');
         const homeNavbar = document.querySelector('.home-js');
+        const nameProfile = document.querySelector('.name-profile-mobile');
 
+        /*копипаста костыль*/
+        nameProfile.style.backgroundColor = '#2C51B1';
+        nameProfile.style.webkitBackgroundClip = 'text';
+        nameProfile.style.webkitTextFillColor = 'transparent';
+        nameProfile.style.backgroundImage = 'linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)';
         homeNavbarMobile.style.backgroundColor = '#2C51B1';
         homeNavbarMobile.style.webkitBackgroundClip = 'text';
         homeNavbarMobile.style.webkitTextFillColor = 'transparent';
