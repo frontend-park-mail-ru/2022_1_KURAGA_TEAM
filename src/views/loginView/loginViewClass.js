@@ -8,7 +8,7 @@ import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import UserModel from "../../models/User.js"
 
-import '../../css/regLog.scss';
+import '../regView/regLog.scss';
 
 const root = document.getElementById('root');
 

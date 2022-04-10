@@ -12,7 +12,7 @@ import FooterClass from "Components/footer/footerClass.js";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
-import '../../css/person.scss';
+import './person.scss';
 
 export default class PersonViewClass extends BaseViewClass {
     #user;

@@ -1,7 +1,7 @@
-@import "../components/headMovie/headMovie.scss";
-@import "../components/firstInfoMovie/firstInfoMovie.scss";
-@import "../components/secondGende/secondGenre.scss";
-@import "../components/actors/actors.scss";
+@import "../../components/headMovie/headMovie";
+@import "../../components/firstInfoMovie/firstInfoMovie";
+@import "../../components/secondGende/secondGenre";
+@import "../../components/actors/actors";
 
 .photo-movie {
     display: flex;

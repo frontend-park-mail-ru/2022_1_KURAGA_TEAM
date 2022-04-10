@@ -8,7 +8,7 @@ import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import UserModel from "../../models/User.js"
 
-import '../../css/regLog.scss';
+import './regLog.scss';
 
 export default class RegViewClass extends BaseViewClass {
     async render() {

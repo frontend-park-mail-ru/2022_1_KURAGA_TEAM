@@ -12,7 +12,7 @@ import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
 import MovieCompilationModel from "../../models/MovieCompilation"
 
-import '../../css/home.scss';
+import './home.scss';
 
 export default class HomeViewClass extends BaseViewClass {
     #user;

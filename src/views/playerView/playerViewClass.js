@@ -6,7 +6,7 @@ import MovieModel from "../../models/Movie.js"
 import router from "Routing/router";
 import handlerLink from "Utils/handlerLink";
 
-import '../../css/player.scss';
+import './player.scss';
 
 export default class PlayerViewClass extends BaseViewClass {
     #movie;

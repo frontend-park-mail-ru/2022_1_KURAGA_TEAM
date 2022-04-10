@@ -1,6 +1,6 @@
-@import '../components/footer/footer';
-@import '../components/button/button';
-@import '../components/inputs/inputs';
+@import '../../components/footer/footer';
+@import '../../components/button/button';
+@import '../../components/inputs/inputs';
 
 #root {
     width: 100%;
@@ -10,7 +10,7 @@
 
 #back {
     position: absolute;
-    background: url("../static/root.webp");
+    background: url("../../static/root.webp");
     width: 100%;
     height: 100vh;
     opacity: 0.3;

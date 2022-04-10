@@ -16,6 +16,10 @@ this.addEventListener('install', (event) => {
 });
 
 const checkUrl = (url) => {
+    const unUrl = {
+
+    };
+
     if (url.match(/\/api/) || url.match(/\/posters/) || url.match(/\/logos/) || url.match(/\/avatars/)) {
         return false;
     }

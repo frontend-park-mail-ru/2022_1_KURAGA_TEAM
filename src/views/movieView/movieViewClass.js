@@ -17,7 +17,7 @@ import BaseViewClass from '../baseView/baseViewClass.js';
 import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
 
-import '../../css/movie.scss';
+import './movie.scss';
 
 export default class MovieViewClass extends BaseViewClass {
     #user;

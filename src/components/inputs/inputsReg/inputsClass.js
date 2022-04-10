@@ -1,6 +1,6 @@
 import inputsTemplate from './inputs.pug';
-import router from '../../../routing/router.js';
 import UserModel from "../../../models/User"
+
 const configElement = [
     {
         key: 'name',
