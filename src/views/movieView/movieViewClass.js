@@ -41,7 +41,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const { movBody } = await MovieModel.getMovie(id);
+            const {movBody} = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
@@ -49,7 +49,7 @@ export default class MovieViewClass extends BaseViewClass {
             }
             this.#movie = new MovieModel(movData);
 
-            const { movCompBody } = await MovieCompilationModel.getMovieCompilationMovie(id);
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
 
@@ -59,8 +59,8 @@ export default class MovieViewClass extends BaseViewClass {
             const firstInfoMovie = new FirstInfoMovieClass(this.#movie.movieData);
             const secondGenre = new SecondGenreClass(this.#movie.movieData);
             const actors = new ActorsClass(this.#movie.movieData);
-             const carouselPop = new carousel('Pop', this.#movieCompilation.movieCompilationData);
-             const carouselPopMobile = new carousel("MobilePop",this.#movieCompilation.movieCompilationData);
+            const carouselPop = new carousel(0, this.#movieCompilation.movieCompilationData, false);
+            const carouselPopMobile = new carousel(0, this.#movieCompilation.movieCompilationData, true);
             const footer = new FooterClass();
 
             super.render(movieViewTemplate, {
@@ -70,15 +70,15 @@ export default class MovieViewClass extends BaseViewClass {
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
                 actors: actors.render(),
-                 carouselPop: carouselPop.render(),
-                 carouselPopMobile: carouselPopMobile.render(),
+                carouselPop: carouselPop.render(),
+                carouselPopMobile: carouselPopMobile.render(),
                 footer: footer.render()
             });
 
             handlerLink()
             firstInfoMovie.setHandlers();
-             carouselPop.setHandler();
-             carouselPopMobile.setHandler();
+            carouselPop.setHandler();
+            carouselPopMobile.setHandler();
             header.setHandler();
         } catch (err) {
             console.error(err);

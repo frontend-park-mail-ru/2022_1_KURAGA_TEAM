@@ -738,12 +738,12 @@
 
   /* страница актера*/
   .photo-person {
+    margin-bottom: 300px;
     box-shadow: 0 -108px 35px #01090b inset;
     height: 300px;
     position: relative;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-bottom: 250px;
   }
   .head-person {
     align-content: center;
@@ -760,6 +760,8 @@
     margin-block: 10px;
     font-size: 14px;
     line-height: 16px;
+    margin: 20px 14vw 20px 0;
+
   }
 
   .add-photos__photo {
