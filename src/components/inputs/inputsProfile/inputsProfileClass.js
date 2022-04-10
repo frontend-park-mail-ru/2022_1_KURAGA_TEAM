@@ -56,6 +56,7 @@ export default class InputsProfileClass {
 
         const divEmail = document.querySelector('div[data-section="email"]');
         divEmail.classList.add('profile-email');
+        divEmail.classList.remove('element');
         const inputEmail = document.querySelector('input[data-section="email"]');
         inputEmail.readOnly = true;
         inputEmail.value = this.#info.email;

@@ -179,6 +179,10 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
+        document.addEventListener('touchstart', () => {
+            displayControls();
+        })
+
         playPauseButton.addEventListener('click', playPause);
 
         rewindButton.addEventListener('click', rewind);
