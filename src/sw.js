@@ -17,14 +17,22 @@ this.addEventListener('install', (event) => {
 
 const checkUrl = (url) => {
     const unUrl = {
-
+        api: /\/api/,
+        posters: /\/posters/,
+        logos: /\/logos/,
+        avatars: /\/avatars/,
+        persons: /\/persons/,
     };
 
-    if (url.match(/\/api/) || url.match(/\/posters/) || url.match(/\/logos/) || url.match(/\/avatars/)) {
-        return false;
-    }
+    let check = true;
 
-    return true;
+    Object.values(unUrl).forEach(value => {
+       if (url.match(value)) {
+           check = false;
+       }
+    });
+
+    return check;
 }
 
 this.addEventListener('fetch', (event) => {

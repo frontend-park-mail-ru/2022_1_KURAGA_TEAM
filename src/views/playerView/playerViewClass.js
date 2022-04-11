@@ -19,14 +19,14 @@ export default class PlayerViewClass extends BaseViewClass {
 
             const check = window.location.pathname.indexOf('trailer');
 
-            const { movBody } = await MovieModel.getMovie(id);
+            const { isAuth, movBody } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
+
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
                 return;
             }
             this.#movie = new MovieModel(movData);
-
 
             let video = this.#movie.video;
             if (check !== -1) {
@@ -48,6 +48,8 @@ export default class PlayerViewClass extends BaseViewClass {
         const videoContainer = document.querySelector('.video-container');
         const video = document.querySelector('.player');
         video.play();
+
+        const noVideo = document.querySelector('.novideo');
 
         const controlsContainers = document.querySelector('.controls-container');
         const exit = document.querySelector('.exit');
@@ -135,6 +137,14 @@ export default class PlayerViewClass extends BaseViewClass {
             const minutesRemaining = Math.floor(totalSecondsRemaining / 60);
             const secondsRemaining = Math.floor(totalSecondsRemaining - minutesRemaining * 60);
 
+            if (isNaN(totalSecondsRemaining)) {
+                noVideo.style.display = 'flex';
+
+                progressTime.textContent = '00:00:00';
+
+                return;
+            }
+
             progressTime.textContent =
                 `${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
         });
@@ -179,7 +189,7 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
-        document.addEventListener('touchstart', () => {
+        document.addEventListener('touchend', () => {
             displayControls();
         })
 

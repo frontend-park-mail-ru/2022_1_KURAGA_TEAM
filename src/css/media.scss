@@ -391,7 +391,7 @@
 
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .select-title {
-    margin-inline-start: 20px;
+    margin-inline-start: 4vw;
     font-size: 26px;
   }
 
@@ -481,13 +481,11 @@
 
   #footer {
     flex-direction: column;
-    align-items: center;
     height: auto;
   }
 
   .left {
-    width: 85%;
-    margin-left: 0;
+    margin-left: 4vw;
     flex-direction: column;
   }
 
@@ -638,17 +636,18 @@
 
   .first-part-info {
     margin-top: 260px;
-    margin-left: 20px;
+    margin-left: 4vw;
   }
 
   .first-part-info__text {
+    padding-right: 4vw;
     max-width: fit-content;
     font-size: 14px;
   }
 
   .second-part-genre {
     font-size: 26px;
-    margin-left: 20px;
+    margin-left: 4vw;
   }
 
   .second-part-genre__genres {
@@ -660,7 +659,7 @@
   }
 
   .third-part-actors {
-    margin-left: 20px;
+    margin-left: 4vw;
   }
 
   .group__staff {

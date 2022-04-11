@@ -89,6 +89,7 @@ export default class MovieModel {
         return new Promise((movie) => {
             this.movie(id)
                 .then((body) => {
+                    console.log(status)
                     movie({
                         isAuth: body.isAuth,
                         movBody: body.data

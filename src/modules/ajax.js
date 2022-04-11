@@ -28,7 +28,6 @@ function ajax({ method, path, body, headers = {'Content-Type': 'application/json
     const URL = API_URL + path;
 
     return fetch(URL, {
-
         method,
         body,
         credentials: 'include',
