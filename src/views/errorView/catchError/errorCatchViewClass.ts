@@ -1,6 +1,6 @@
 import errorViewTemplate from './error.pug'
-import FooterClass from "Components/footer/footerClass.js";
-import BaseViewClass from '../../baseView/baseViewClass.js';
+import FooterClass from "Components/footer/footerClass.ts";
+import BaseViewClass from '../../baseView/baseViewClass';
 
 import './error.scss';
 

@@ -1,23 +1,23 @@
 import firstInfoMovie from './firstInfoMovie.pug'
 
 export default class FirstInfoMovieClass {
-    #rating
+    private readonly rating: number;
 
-    #description
+    private readonly description: string;
 
-    constructor({rating, description}) {
-        this.#rating = rating;
-        this.#description = description;
+    constructor({ rating, description }: { rating: number, description: string }) {
+        this.rating = rating;
+        this.description = description;
     }
 
     render() {
         return firstInfoMovie({
-            rating: this.#rating,
-            description: this.#description
+            rating: this.rating,
+            description: this.description
         });
     }
 
-    setHandlers() {
+    setHandlers(): void {
         const button = document.querySelector('.your-rating__button');
         const error = document.querySelector('.first-part-info__error');
 

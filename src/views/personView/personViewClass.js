@@ -8,9 +8,9 @@ import router from "Routing/router.ts";
 import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPersonClass.js";
 import carousel from 'Components/carousel/carouselClass.js';
-import FooterClass from "Components/footer/footerClass.js";
-import BaseViewClass from '../baseView/baseViewClass.js';
-import LoaderViewClass from "../loaderView/loaderViewClass.js";
+import FooterClass from "Components/footer/footerClass.ts";
+import BaseViewClass from '../baseView/baseViewClass.ts';
+import LoaderViewClass from "../loaderView/loaderViewClass.ts";
 
 import './person.scss';
 

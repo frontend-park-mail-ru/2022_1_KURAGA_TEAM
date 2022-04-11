@@ -1,6 +1,6 @@
 import profileViewTemplate from './profileView.pug';
 import HeaderClass from "Components/header/headerClass.js";
-import FooterClass from "Components/footer/footerClass.js";
+import FooterClass from "Components/footer/footerClass.ts";
 import handlerLink from "Utils/handlerLink.ts";
 import InputsProfileClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import ButtonClass from "Components/button/buttonClass";
@@ -8,28 +8,40 @@ import ProfileAvatarClass from "Components/profileAvatar/profileAvatarClass";
 import UserModel from "../../models/User.js"
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
-import BaseViewClass from '../baseView/baseViewClass.js';
-import LoaderViewClass from "../loaderView/loaderViewClass.js";
+import BaseViewClass from '../baseView/baseViewClass';
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './profile.scss';
 
+interface UserData {
+    username: string,
+    email: string,
+    avatar: string,
+}
+
+interface User {
+    user: UserData,
+}
+
 export default class ProfileViewClass  extends BaseViewClass{
-    #user;
+    private user: UserModel;
+
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
+            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
 
             const userData = await Promise.resolve(userBody);
-            this.#user = new UserModel(userData.user);
+            this.user = new UserModel(userData.user);
 
-            const header = new HeaderClass(this.#user.userData);
+            const header = new HeaderClass(this.user.userData);
             const inputs = new InputsProfileClass(userData.user);
             const avatar = new ProfileAvatarClass(userData.user.avatar);
             const button = new ButtonClass('Сохранить');
@@ -48,13 +60,13 @@ export default class ProfileViewClass  extends BaseViewClass{
             this.setHandler();
             inputs.setHandler();
             header.setHandler();
-        } catch (err) {
+        } catch {
             router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
-    setHandler() {
-        const profileNavbar = document.querySelector('.name-profile');
+    setHandler(): void {
+        const profileNavbar: HTMLAnchorElement = document.querySelector('.name-profile');
 
         profileNavbar.style.backgroundColor = '#2C51B1';
         profileNavbar.style.webkitBackgroundClip = 'text';

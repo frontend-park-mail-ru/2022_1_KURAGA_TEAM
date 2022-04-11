@@ -1,7 +1,7 @@
 import inputsTemplate from './inputs.pug';
 import UserModel from "../../../models/User"
-import {regExp} from "Components/inputs/utils/regExp/regExp";
-import {textErrors} from "Components/inputs/utils/textErrors/textErrors";
+import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
+import { regExp } from "Components/inputs/utils/regExp/regExp";
 
 const configElement = [
     {
@@ -39,29 +39,27 @@ export default class InputsClass {
         return inputsTemplate({items: configElement});
     }
 
-    setHandler() {
+    setHandler(): void {
         const form = document.querySelector('.menu-form');
 
-        const inputName = document.querySelector('input[data-section="name"]');
+        const inputName: HTMLInputElement = document.querySelector('input[data-section="name"]');
         const errorName = document.querySelector('div[data-section="nameError"]');
 
-        const inputEmail = document.querySelector('input[data-section="email"]');
+        const inputEmail: HTMLInputElement = document.querySelector('input[data-section="email"]');
         const errorEmail = document.querySelector('div[data-section="emailError"]');
 
-        const inputPassOne = document.querySelector('input[data-section="passwordFirst"]');
+        const inputPassOne: HTMLInputElement = document.querySelector('input[data-section="passwordFirst"]');
         const errorPassOne = document.querySelector('div[data-section="passOneError"]');
 
-        const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
+        const inputPassTwo: HTMLInputElement = document.querySelector('input[data-section="passwordSecond"]');
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
 
-        const errorIncorr = document.querySelector('div[data-section="incorrect"]');
-
-        const nameValid = () => {
+        const nameValid: () => boolean = () => {
             return inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
                 || inputName.value.match(/<img/) !== null;
         }
 
-        const nameError = () => {
+        const nameError: () => void = () => {
             if (nameValid()) {
                 errorName.classList.add('error-active');
                 errorName.textContent = textErrors.wrongData;
@@ -73,7 +71,7 @@ export default class InputsClass {
             errorName.textContent = textErrors.empty;
         };
 
-        const emailError = () => {
+        const emailError: () => void = () => {
             if (inputEmail.validity.valueMissing) {
                 errorEmail.classList.add('error-active');
                 errorEmail.textContent = textErrors.empty;
@@ -85,22 +83,22 @@ export default class InputsClass {
             errorEmail.textContent = textErrors.wrongEmail;
         };
 
-        const passOneErrorEmpty = () => {
+        const passOneErrorEmpty: () => void = () => {
             errorPassOne.classList.add('error-active');
             errorPassOne.textContent = textErrors.empty;
         };
 
-        const passOneErrorLength = () => {
+        const passOneErrorLength: () => void = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = textErrors.shortPass;
+            errorPassOne.textContent = textErrors.shortPass;
         };
 
-        const passOneErrorAllow = () => {
+        const passOneErrorAllow: () => void = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = textErrors.wrongPass;
+            errorPassOne.textContent = textErrors.wrongPass;
         };
 
-        const passTwoError = () => {
+        const passTwoError: () => void = () => {
             errorPassTwo.classList.add('error-active');
             errorPassTwo.textContent = textErrors.secondPassErr;
         };
@@ -180,7 +178,7 @@ export default class InputsClass {
             errorPassTwo.classList.remove('error-active');
         });
 
-        const validation = (e) => {
+        const validation: (e: any) => void = (e) => {
             let check = 0;
             if (!inputName.validity.valid || inputName.value.trim() === '' || nameValid()) {
                 check++;

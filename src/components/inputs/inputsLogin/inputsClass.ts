@@ -25,13 +25,13 @@ export default class InputsClass {
         return inputsTemplate({items: configElement});
     }
 
-    setHandler() {
+    setHandler(): void {
         const form = document.querySelector('.menu-form');
 
-        const inputEmail = document.querySelector('input[data-section="email"]');
+        const inputEmail: HTMLInputElement = document.querySelector('input[data-section="email"]');
         const errorEmail = document.querySelector('div[data-section="emailError"]');
 
-        const inputPassword = document.querySelector('input[data-section="password"]');
+        const inputPassword: HTMLInputElement = document.querySelector('input[data-section="password"]');
         const errorPassword = document.querySelector('div[data-section="passwordError"]');
 
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
@@ -50,7 +50,7 @@ export default class InputsClass {
 
         const passwordError = () => {
             errorPassword.classList.add('error-active');
-            errorPassword.innerText = textErrors.empty;
+            errorPassword.textContent = textErrors.empty;
         };
 
         inputEmail.addEventListener('change', () => {

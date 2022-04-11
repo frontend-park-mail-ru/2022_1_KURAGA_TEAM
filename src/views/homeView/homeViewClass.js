@@ -2,12 +2,12 @@ import homeViewTemplate from './homeView.pug';
 import HeaderClass from 'Components/header/headerClass.js';
 import MainMovieClass from 'Components/mainMovie/mainMovieClass.js';
 import Carousel from 'Components/carousel/carouselClass.js';
-import FooterClass from 'Components/footer/footerClass.js';
+import FooterClass from 'Components/footer/footerClass.ts';
 import handlerLink from 'Utils/handlerLink.ts';
 import router from 'Routing/router.ts';
-import BaseViewClass from '../baseView/baseViewClass.js';
+import BaseViewClass from '../baseView/baseViewClass.ts';
 import { routes } from "Routing/constRouting";
-import LoaderViewClass from "../loaderView/loaderViewClass.js";
+import LoaderViewClass from "../loaderView/loaderViewClass.ts";
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
 import MovieCompilationModel from "../../models/MovieCompilation"

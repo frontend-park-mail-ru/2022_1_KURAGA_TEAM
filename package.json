@@ -58,6 +58,7 @@
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@babel/runtime": "^7.17.7",
+    "@types/pug": "^2.0.6",
     "prettier": "^2.5.1"
   }
 }

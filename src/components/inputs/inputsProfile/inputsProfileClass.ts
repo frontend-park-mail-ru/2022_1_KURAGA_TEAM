@@ -2,8 +2,8 @@ import inputsTemplate from '../inputsReg/inputs.pug';
 import UserModel from "../../../models/User"
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
-import {regExp} from "Components/inputs/utils/regExp/regExp";
-import {textErrors} from "Components/inputs/utils/textErrors/textErrors";
+import { regExp } from "Components/inputs/utils/regExp/regExp";
+import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
 
 const configElement = [
     {
@@ -36,11 +36,16 @@ const configElement = [
     },
 ];
 
-export default class InputsProfileClass {
-    #info;
+interface Info {
+    username: string,
+    email: string,
+}
 
-    constructor({username, email}) {
-        this.#info = {
+export default class InputsProfileClass {
+    private info: Info;
+
+    constructor({ username, email }: { username: string, email: string }) {
+        this.info = {
             username,
             email
         }
@@ -50,32 +55,34 @@ export default class InputsProfileClass {
         return inputsTemplate({items: configElement});
     }
 
-    setHandler() {
+    setHandler(): void {
         const form = document.querySelector('.form-profile');
 
-        const inputName = document.querySelector('input[data-section="name"]');
-        inputName.value = this.#info.username;
+        const inputName: HTMLInputElement = document.querySelector('input[data-section="name"]');
+        inputName.value = this.info.username;
+
         const errorName = document.querySelector('div[data-section="nameError"]');
 
         const divEmail = document.querySelector('div[data-section="email"]');
         divEmail.classList.add('profile-email');
         divEmail.classList.remove('element');
-        const inputEmail = document.querySelector('input[data-section="email"]');
-        inputEmail.readOnly = true;
-        inputEmail.value = this.#info.email;
 
-        const inputPassOne = document.querySelector('input[data-section="passwordFirst"]');
+        const inputEmail: HTMLInputElement = document.querySelector('input[data-section="email"]');
+        inputEmail.readOnly = true;
+        inputEmail.value = this.info.email;
+
+        const inputPassOne: HTMLInputElement = document.querySelector('input[data-section="passwordFirst"]');
         const errorPassOne = document.querySelector('div[data-section="passOneError"]');
 
-        const inputPassTwo = document.querySelector('input[data-section="passwordSecond"]');
+        const inputPassTwo: HTMLInputElement = document.querySelector('input[data-section="passwordSecond"]');
         const errorPassTwo = document.querySelector('div[data-section="passTwoError"]');
 
-        const inputAvatar = document.querySelector('input[class="profile-avatar__input"]');
-        const avatarImg = document.querySelector('.profile-avatar');
+        const inputAvatar: HTMLInputElement = document.querySelector('input[class="profile-avatar__input"]');
+        const avatarImg: HTMLImageElement = document.querySelector('.profile-avatar');
 
         const errorIncorr = document.querySelector('div[data-section="profile-info"]');
 
-        const miniAvatar = document.querySelector('.btn-profile');
+        const miniAvatar: HTMLDivElement = document.querySelector('.btn-profile');
 
         const nameValid = () => {
             return inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
@@ -96,12 +103,12 @@ export default class InputsProfileClass {
 
         const passOneErrorLength = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = textErrors.shortPass;
+            errorPassOne.textContent = textErrors.shortPass;
         };
 
         const passOneErrorAllow = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = textErrors.wrongPass;
+            errorPassOne.textContent = textErrors.wrongPass;
         };
 
         inputName.addEventListener('change', () => {
@@ -182,7 +189,7 @@ export default class InputsProfileClass {
             let check = 0;
             let caseForm = 0;
 
-            if (inputName.value.trim() === this.#info.username) {
+            if (inputName.value.trim() === this.info.username) {
                 caseForm = 1;
             }
 
@@ -254,7 +261,7 @@ export default class InputsProfileClass {
 
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
-                            this.#info.username = inputName.value.trim();
+                            this.info.username = inputName.value.trim();
                         })
                         .catch(() => {
                             router.go(routes.ERROR_CATCH_VIEW);
@@ -293,7 +300,7 @@ export default class InputsProfileClass {
 
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
-                            this.#info.username = inputName.value.trim();
+                            this.info.username = inputName.value.trim();
 
                         })
                         .catch(() => {
