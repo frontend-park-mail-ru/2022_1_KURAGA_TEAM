@@ -1,7 +1,7 @@
 //const API_URL = 'http://localhost:1323/api/v1';
 const API_URL = 'http://movie-space.ru:1323/api/v1';
 
-function checkStatus(status) {
+function checkStatus(status: number): string {
     switch (Math.round(status / 100)) {
     case 1: {
         return 'Information';
@@ -24,7 +24,11 @@ function checkStatus(status) {
     }
 }
 
-function ajax({ method, path, body, headers = {'Content-Type': 'application/json'} }) {
+function ajax(
+    { method, path, body, headers = {'Content-Type': 'application/json'} }
+        : {method: string, path: string, body: any, headers: {"Content-Type": string}})
+    : Promise<{isAuth: boolean, isError: boolean, data: Promise<object>}
+    | {isAuth: boolean, isError: boolean, err: any}> {
     const URL = API_URL + path;
 
     return fetch(URL, {

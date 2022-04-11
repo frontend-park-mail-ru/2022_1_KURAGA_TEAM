@@ -1,4 +1,4 @@
-export function parseRegExp(pathname) {
+export function parseRegExp(pathname: string): string {
     const regPath = pathname.match(/(\b\w+\b)\/(\d+)/);
 
     if (regPath !== null) {

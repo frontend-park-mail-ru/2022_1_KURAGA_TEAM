@@ -2,8 +2,8 @@ import loginViewTemplate from './loginView.pug';
 import FooterClass from 'Components/footer/footerClass.js';
 import InputsClass from 'Components/inputs/inputsLogin/inputsClass.js';
 import ButtonClass from 'Components/button/buttonClass.js';
-import handlerLink from 'Utils/handlerLink.js';
-import router from 'Routing/router.js';
+import handlerLink from 'Utils/handlerLink.ts';
+import router from 'Routing/router.ts';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import UserModel from "../../models/User.js"

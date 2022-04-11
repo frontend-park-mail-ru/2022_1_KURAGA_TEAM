@@ -1,7 +1,7 @@
 import errorViewTemplate from './error.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import UserModel from "../../../models/User.js"
-import router from "Routing/../routing/router";
+import router from "Routing/router";
 import FooterClass from "Components/footer/footerClass.js";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../../baseView/baseViewClass.js';

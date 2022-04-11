@@ -1,4 +1,4 @@
-import router from './routing/router.js';
+import router from 'Routing/router.ts';
 import { routes } from "Routing/constRouting";
 import RegViewClass from './views/regView/regViewClass.js';
 import LoginViewClass from './views/loginView/loginViewClass.js';

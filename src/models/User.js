@@ -1,5 +1,5 @@
 import { ajaxReq } from 'Modules/ajax';
-import router from '../routing/router.js';
+import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
 
 export default class UserModel {

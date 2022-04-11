@@ -1,4 +1,4 @@
-import router from '../routing/router.js';
+import router from '../routing/router';
 
 /**
  * Функция находит все элементы-ссылки на странице и навешивает на них обработчик клика, по которому
@@ -7,7 +7,7 @@ import router from '../routing/router.js';
  * @function handlerLink
  * */
 
-export default function handlerLink() {
+export default function handlerLink(): void {
     Array.from(document.getElementsByTagName('a')).forEach((item) => {
         if (item.className === "ref") {
             return;
