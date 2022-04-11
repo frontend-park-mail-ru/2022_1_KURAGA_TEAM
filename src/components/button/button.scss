@@ -15,6 +15,7 @@
 }
 
 @mixin transform($scale) {
+    -webkit-transform: $scale;
     transform: $scale;
 }
 
