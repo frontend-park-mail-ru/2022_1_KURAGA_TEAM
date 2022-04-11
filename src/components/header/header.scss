@@ -43,10 +43,12 @@
   background: var(--footer-color);
 }
 
+.logo-link{
+  margin-inline: 4vw;
+}
 .logo-home {
   margin-block: 8px;
   height: 60px;
-  margin-inline: 4vw;
 }
 
 .space {
@@ -131,12 +133,10 @@
 .profile-block {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-inline-end: 33px;
+  margin-inline-end: 4vw;
   cursor: pointer;
   height: 82px;
-  width: 62px;
+  align-items: center;
 }
 
 .name-profile {

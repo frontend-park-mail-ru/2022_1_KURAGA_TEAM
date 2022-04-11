@@ -42,7 +42,7 @@ export default class PersonViewClass extends BaseViewClass {
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
 
-            const header = new HeaderClass("this.#user.userData");
+            const header = new HeaderClass(this.#user.userData);
             const headPerson = new HeadPersonClass(this.#person.personData);
             const carouselPop = new carousel(0, this.#movieCompilation.movieCompilationData, false);
             const carouselPopMobile = new carousel(0, this.#movieCompilation.movieCompilationData, true);

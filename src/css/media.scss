@@ -262,11 +262,11 @@
     font-size: 18px;
     padding: 10px 10px 10px 10px;
   }
-  .dropdown-content{
+  .dropdown-content {
     width: 30vw;
     text-align: end;
   }
-  .dropdown{
+  .dropdown {
     justify-content: flex-end;
   }
   .name-profile-mobile {
@@ -317,6 +317,29 @@
   }
 
   /*карусель*/
+  .b-carousel{
+    padding-inline: 0;
+  }
+  .movieTop:hover,
+  .movieTop{
+    transform: scale(1);
+    margin-inline-end: 0;
+  }
+
+  .movie,
+  .movie:hover {
+    transform: scale(0.95);
+  }
+
+  #cbMovie:hover::after,
+  #cb:hover::after {
+    background-image: url("../static/heart.png");
+  }
+
+  #cbMovie:checked::after,
+  #cb:checked::after {
+    background-image: url("../static/activeLike.png");
+  }
   .first {
     margin-top: -50px;
   }
@@ -744,7 +767,7 @@
   .head-person {
     align-content: center;
     justify-content: flex-end;
-    margin-inline: 4vw;
+    margin: 160px auto auto 4vw;
   }
 
   .head-person__name {
@@ -851,39 +874,75 @@
 
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1800px) and (max-width: 2800px) {
+  .main-movie {
+    justify-content: center;
+  }
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .movie {
-    grid-template-rows: auto calc(3vh + 50px);
+    grid-template-rows: auto calc(3vh + 40px);
     width: calc(12vw + 300px);
     height: calc(12vh + 180px);
   }
 
   .movieTop {
-    width: calc(12vw + 422px);
-    height: calc(12vh + 240px);
+    width: calc(15vw + 422px);
+    height: calc(10vh + 240px);
   }
 
   .movieTop {
-    grid-template-rows: auto calc(1vw + 50px);
+    grid-template-rows: auto calc(1vw + 40px);
+  }
+  .desc-mov,
+  .desc-movTop{
+    font-size: 20px;
+  }
+  .genre{
+    font-size: 18px;
+  }
+
+
+}
+
+@media (min-width: 2800px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .movie {
+    height: calc(15vh + 180px);
+    grid-template-rows: auto calc(3vh + 40px);
+    width: calc(15vw + 300px);
+  }
+  .main-movie {
+    margin: 0;
+    justify-content: center;
+  }
+
+
+
+
+  .movieTop {
+    width: calc(15vw + 422px);
+    height: calc(10vh + 240px);
+  }
+
+  .movieTop {
+    grid-template-rows: auto calc(1vw + 40px);
   }
 
 
 }
 
 
-@media (min-width: 1450px) {
+@media (min-width: 1450px) and (max-width: 1800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
   .sidebar {
     width: calc(1vw + 582px);
-    margin-inline: calc(2vw + 30px);
   }
+
 
   .btn,
   .btn-info {
     margin-inline: auto;
-    font-size: calc(1vw + 8px);
-    line-height: calc(1vw + 20px);
+    font-size: calc(1vh + 20px);
 
   }
 
