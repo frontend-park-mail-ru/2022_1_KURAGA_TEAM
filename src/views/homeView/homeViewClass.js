@@ -53,7 +53,6 @@ export default class HomeViewClass extends BaseViewClass {
                 carouselsMobile.push(new Carousel(index, movieCompilation.movieCompilationData,true));
             });
 
-            console.log(carousels);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {
@@ -70,7 +69,6 @@ export default class HomeViewClass extends BaseViewClass {
                 carouselFamMobile: carouselsMobile[3].render(),
                 footer: footer.render(),
             });
-            console.log(carouselsMobile[2]);
 
             handlerLink();
             this.setHandler();

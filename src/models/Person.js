@@ -1,6 +1,6 @@
-import { ajaxReq } from '../modules/ajax.js';
+import { ajaxReq } from 'Modules/ajax';
 import router from '../routing/router.js';
-import { routes } from '../routing/constRouting.js';
+import { routes } from 'Routing/constRouting';
 
 export default class PersonModel {
     constructor(personData) {
@@ -41,7 +41,7 @@ export default class PersonModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
 

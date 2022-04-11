@@ -1,10 +1,10 @@
 import errorViewTemplate from './error.pug'
 import HeaderClass from 'Components/header/headerClass.js';
-import UserModel from "../../models/User.js"
-import router from "Routing/router.js";
+import UserModel from "../../../models/User.js"
+import router from "Routing/../routing/router";
 import FooterClass from "Components/footer/footerClass.js";
 import { routes } from "Routing/constRouting";
-import BaseViewClass from '../baseView/baseViewClass.js';
+import BaseViewClass from '../../baseView/baseViewClass.js';
 import './error.scss';
 
 export default class ErrorViewClass extends BaseViewClass{
@@ -31,7 +31,7 @@ export default class ErrorViewClass extends BaseViewClass{
             
             
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 }

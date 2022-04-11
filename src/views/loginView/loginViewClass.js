@@ -36,7 +36,7 @@ export default class LoginViewClass extends BaseViewClass{
             inputs.setHandler();
             handlerLink();
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 }

@@ -62,7 +62,7 @@ export default class PersonViewClass extends BaseViewClass {
             carouselPop.setHandler();
             carouselPopMobile.setHandler();
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 }

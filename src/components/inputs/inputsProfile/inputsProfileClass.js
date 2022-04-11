@@ -1,6 +1,9 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
 import UserModel from "../../../models/User"
 import router from "../../../routing/router";
+import { routes } from "Routing/constRouting";
+import {regExp} from "Components/inputs/utils/regExp/regExp";
+import {textErrors} from "Components/inputs/utils/textErrors/textErrors";
 
 const configElement = [
     {
@@ -74,32 +77,35 @@ export default class InputsProfileClass {
 
         const miniAvatar = document.querySelector('.btn-profile');
 
+        const nameValid = () => {
+            return inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
+                || inputName.value.match(/<img/) !== null;
+        }
+
         const nameError = () => {
-            if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
-                || inputName.value.match(/<img/) !== null) {
+            if (nameValid()) {
                 errorName.classList.add('error-active');
-                errorName.textContent = 'Неправильные данные';
+                errorName.textContent = textErrors.wrongData;
 
                 return;
             }
 
             errorName.classList.add('error-active');
-            errorName.textContent = 'Заполните поле';
+            errorName.textContent = textErrors.empty;
         };
 
         const passOneErrorLength = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Не меньше 8-ми символов';
+            errorPassOne.innerText = textErrors.shortPass;
         };
 
         const passOneErrorAllow = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Необходимы Цифры и Латинские буквы';
+            errorPassOne.innerText = textErrors.wrongPass;
         };
 
         inputName.addEventListener('change', () => {
-            if (inputName.value.trim() === '' || inputName.value.length === 1
-                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
+            if (inputName.value.trim() === '' || nameValid()) {
                 nameError();
 
                 return;
@@ -120,22 +126,18 @@ export default class InputsProfileClass {
         });
 
         inputPassOne.addEventListener('change', () => {
-            const containsLetters = /^.*[a-zA-Z]+.*$/;
-            const minimum8Chars = /^.{8,}$/;
-            const containsNumbers = /^.*[0-9]+.*$/;
-
             if (inputPassOne.value.length === 0) {
                 return;
             }
 
-            if (!minimum8Chars.test(inputPassOne.value)) {
+            if (!regExp.minimum8Chars.test(inputPassOne.value)) {
                 passOneErrorLength();
 
                 return;
             }
 
-            if (!containsNumbers.test(inputPassOne.value)
-                || !containsLetters.test(inputPassOne.value)) {
+            if (!regExp.containsNumbers.test(inputPassOne.value)
+                || !regExp.containsLetters.test(inputPassOne.value)) {
                 passOneErrorAllow();
 
                 return;
@@ -164,7 +166,7 @@ export default class InputsProfileClass {
             if (!isAuth) {
                 errorIncorr.classList.add('error-active');
                 errorIncorr.classList.add('center');
-                errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
+                errorIncorr.textContent = textErrors.serverError;
 
                 return;
             }
@@ -173,11 +175,10 @@ export default class InputsProfileClass {
             errorIncorr.classList.add('center');
             errorIncorr.classList.add('success');
             errorIncorr.classList.remove('not-success');
-            errorIncorr.textContent = 'Информация обновлена!'
+            errorIncorr.textContent = textErrors.success;
         }
 
-
-        form.addEventListener('submit', (e) => {
+        const validation = (e) => {
             let check = 0;
             let caseForm = 0;
 
@@ -185,27 +186,22 @@ export default class InputsProfileClass {
                 caseForm = 1;
             }
 
-            if (!inputName.validity.valid || inputName.value.trim() === '' || inputName.value.length === 1
-                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
+            if (!inputName.validity.valid || inputName.value.trim() === '' || nameValid()) {
                 check++;
                 nameError();
 
                 e.preventDefault();
             }
 
-            const containsLetters = /^.*[a-zA-Z]+.*$/;
-            const minimum8Chars = /^.{8,}$/;
-            const containsNumbers = /^.*[0-9]+.*$/;
-
             if (inputPassOne.value.length === 0) {
                 caseForm += 2;
-            } else if (!inputPassOne.validity.valueMissing && !minimum8Chars.test(inputPassOne.value)) {
+            } else if (!inputPassOne.validity.valueMissing && !regExp.minimum8Chars.test(inputPassOne.value)) {
                 check++;
                 passOneErrorLength();
 
                 e.preventDefault();
-            } else if (!containsNumbers.test(inputPassOne.value)
-                || !containsLetters.test(inputPassOne.value)) {
+            } else if (!regExp.containsNumbers.test(inputPassOne.value)
+                || !regExp.containsLetters.test(inputPassOne.value)) {
                 check++;
                 passOneErrorAllow();
 
@@ -215,7 +211,7 @@ export default class InputsProfileClass {
             if (inputPassOne.value.length !== 0 && inputPassTwo.value !== inputPassOne.value) {
                 check++;
                 errorPassTwo.classList.add('error-active');
-                errorPassTwo.textContent = 'Пароли не совпадают';
+                errorPassTwo.textContent = textErrors.secondPassErr;
 
                 e.preventDefault();
             }
@@ -246,7 +242,7 @@ export default class InputsProfileClass {
                     errorIncorr.classList.add('error-active');
                     errorIncorr.classList.add('center');
                     errorIncorr.classList.add('not-success');
-                    errorIncorr.textContent = 'Информация не изменилась';
+                    errorIncorr.textContent = textErrors.sameInfo;
 
                     return;
                 }
@@ -260,8 +256,8 @@ export default class InputsProfileClass {
                             name[0].textContent = inputName.value.trim();
                             this.#info.username = inputName.value.trim();
                         })
-                        .catch((err) => {
-                            console.error(err);
+                        .catch(() => {
+                            router.go(routes.ERROR_CATCH_VIEW);
                         });
                 }
 
@@ -272,8 +268,8 @@ export default class InputsProfileClass {
 
                             miniAvatar.style.backgroundImage = `url(${URL.createObjectURL(inputAvatar.files[0])})`;
                         })
-                        .catch((err) => {
-                            console.error(err);
+                        .catch(() => {
+                            router.go(routes.ERROR_CATCH_VIEW);
                         });
                 }
 
@@ -284,7 +280,7 @@ export default class InputsProfileClass {
                                 errorIncorr.classList.add('error-active');
                                 errorIncorr.classList.add('center');
                                 errorIncorr.classList.add('not-success');
-                                errorIncorr.textContent = 'Упс... У нас что-то пошло не так!';
+                                errorIncorr.textContent = textErrors.serverError;
 
                                 return;
                             }
@@ -293,18 +289,22 @@ export default class InputsProfileClass {
                             errorIncorr.classList.add('center');
                             errorIncorr.classList.add('success');
                             errorIncorr.classList.remove('not-success');
-                            errorIncorr.textContent = 'Информация обновлена!'
+                            errorIncorr.textContent = textErrors.success;
 
                             const name = document.getElementsByClassName('font-nav name-profile');
                             name[0].textContent = inputName.value.trim();
                             this.#info.username = inputName.value.trim();
 
                         })
-                        .catch((err) => {
-                            console.error(err);
+                        .catch(() => {
+                            router.go(routes.ERROR_CATCH_VIEW);
                         });
                 }
             }
+        }
+
+        form.addEventListener('submit', (e) => {
+            validation(e);
         });
     }
 }

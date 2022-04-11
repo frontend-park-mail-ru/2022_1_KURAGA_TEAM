@@ -1,6 +1,7 @@
 import inputsTemplate from '../inputsReg/inputs.pug';
 import UserModel from "../../../models/User"
-import router from '../../../routing/router.js';
+import { regExp } from "Components/inputs/utils/regExp/regExp";
+import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
 
 const configElement = [
     {
@@ -38,24 +39,22 @@ export default class InputsClass {
         const emailError = () => {
             if (inputEmail.validity.valueMissing) {
                 errorEmail.classList.add('error-active');
-                errorEmail.textContent = 'Заполните поле';
+                errorEmail.textContent = textErrors.empty;
 
                 return;
             }
 
             errorEmail.classList.add('error-active');
-            errorEmail.textContent = 'Введите действительный email';
+            errorEmail.textContent = textErrors.wrongEmail;
         };
 
         const passwordError = () => {
             errorPassword.classList.add('error-active');
-            errorPassword.innerText = 'Заполните поле';
+            errorPassword.innerText = textErrors.empty;
         };
 
         inputEmail.addEventListener('change', () => {
-            const checkEmail = /.+@.+\..+/i;
-
-            if (checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0 && inputEmail.validity.valid) {
+            if (regExp.checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0 && inputEmail.validity.valid) {
                 errorEmail.classList.remove('error-active');
 
                 return;
@@ -84,7 +83,7 @@ export default class InputsClass {
             errorPassword.classList.remove('error-active');
         });
 
-        form.addEventListener('submit', (e) => {
+        const validation = (e) => {
             let check = 0;
             if (!inputEmail.validity.valid) {
                 check++;
@@ -93,9 +92,7 @@ export default class InputsClass {
                 e.preventDefault();
             }
 
-            const checkEmail = /.+@.+\..+/i;
-
-            if (!checkEmail.test(inputEmail.value) || inputEmail.value.length === 0 || !inputEmail.validity.valid) {
+            if (!regExp.checkEmail.test(inputEmail.value) || inputEmail.value.length === 0 || !inputEmail.validity.valid) {
                 check++;
                 emailError();
 
@@ -112,6 +109,10 @@ export default class InputsClass {
 
                 UserModel.log(formJson);
             }
+        }
+
+        form.addEventListener('submit', (e) => {
+            validation(e);
         });
     }
 }

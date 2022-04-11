@@ -1,6 +1,6 @@
-import {ajaxReq} from '../modules/ajax.js';
+import { ajaxReq } from 'Modules/ajax';
 import router from '../routing/router.js';
-import {routes} from '../routing/constRouting.js';
+import { routes } from 'Routing/constRouting';
 
 export default class MovieCompilationModel {
 
@@ -58,7 +58,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
 
@@ -74,7 +74,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
     }
@@ -89,7 +89,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
     }

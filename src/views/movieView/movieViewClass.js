@@ -12,7 +12,7 @@ import FooterClass from "Components/footer/footerClass.js";
 import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.js";
 import SecondGenreClass from "Components/secondGende/secondGenre.js";
 import ActorsClass from "Components/actors/actorsClass.js";
-import {routes} from "Routing/constRouting";
+import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass.js';
 import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass.js";
@@ -53,7 +53,6 @@ export default class MovieViewClass extends BaseViewClass {
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
 
-
             const header = new HeaderClass(this.#user.userData);
             const headMovie = new HeadMovieClass(this.#movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(this.#movie.movieData);
@@ -75,13 +74,23 @@ export default class MovieViewClass extends BaseViewClass {
                 footer: footer.render()
             });
 
-            handlerLink()
+            handlerLink();
+            this.setHandler();
             firstInfoMovie.setHandlers();
             carouselPop.setHandler();
             carouselPopMobile.setHandler();
             header.setHandler();
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
+        }
+    }
+
+    setHandler() {
+        const staff = document.querySelector('.group__staff');
+        const staffText = document.querySelector('.third-part-actors');
+
+        if (staff.childNodes.length === 0) {
+            staffText.style.display = 'none';
         }
     }
 }

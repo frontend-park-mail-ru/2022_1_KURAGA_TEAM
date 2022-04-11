@@ -33,7 +33,6 @@
 }
 
 @mixin backdrop-filter($blur) {
-    -webkit-backdrop-filter: $blur;
     backdrop-filter: $blur;
 }
 
@@ -54,7 +53,7 @@
     display: block;
     font-family: "GT Eesti Pro Display Medium", arial, sans-serif;
     margin-bottom: 30px;
-    font-size: 40px;
+    font-size: 36px;
     color: var(--font-color);
 }
 

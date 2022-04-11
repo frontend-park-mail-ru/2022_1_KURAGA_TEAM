@@ -14,9 +14,7 @@ class Router {
     }
 
     go(path) {
-        let pathname = path;
-
-        pathname = parseRegExp(pathname);
+        const pathname = parseRegExp(path);
 
         window.history.pushState(null, null, path);
 
@@ -31,9 +29,7 @@ class Router {
             return;
         }
 
-        let pathname = window.location.pathname;
-
-        pathname = parseRegExp(pathname);
+        let pathname = parseRegExp(window.location.pathname);
 
         if (this.routes[pathname] === undefined) {
             pathname = routes.ERROR_VIEW;
@@ -43,9 +39,7 @@ class Router {
         currentView.render();
 
         window.addEventListener('popstate', (e) => {
-            let pathname = window.location.pathname;
-
-            pathname = parseRegExp(pathname);
+            const pathname = parseRegExp(window.location.pathname);
 
             const newView = this.routes[pathname];
             newView.render();

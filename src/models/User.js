@@ -119,7 +119,7 @@ export default class UserModel {
                     router.go(routes.LOGIN_VIEW);
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
     }
@@ -150,7 +150,7 @@ export default class UserModel {
                 });
             })
             .catch((err) => {
-                console.error(err);
+                router.go(routes.ERROR_CATCH_VIEW);
             });
     }
 
@@ -170,7 +170,7 @@ export default class UserModel {
                 router.go('/');
             })
             .catch((err) => {
-                console.error(err);
+                router.go(routes.ERROR_CATCH_VIEW);
             });
     }
 

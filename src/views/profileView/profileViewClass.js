@@ -49,7 +49,7 @@ export default class ProfileViewClass  extends BaseViewClass{
             inputs.setHandler();
             header.setHandler();
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 

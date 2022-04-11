@@ -1,6 +1,6 @@
 import {ajaxReq} from 'Modules/ajax';
 import router from '../routing/router.js';
-import {routes} from '../routing/constRouting.js';
+import { routes } from 'Routing/constRouting';
 
 export default class MovieModel {
 
@@ -79,7 +79,7 @@ export default class MovieModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
 
@@ -89,14 +89,13 @@ export default class MovieModel {
         return new Promise((movie) => {
             this.movie(id)
                 .then((body) => {
-                    console.log(status)
                     movie({
                         isAuth: body.isAuth,
                         movBody: body.data
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
 

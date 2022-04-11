@@ -22,6 +22,12 @@ export default class FirstInfoMovieClass {
         const error = document.querySelector('.first-part-info__error');
 
         button.addEventListener('click', () => {
+            if (error.classList.length === 2) {
+                error.classList.remove('first-part-info__error-active');
+
+                return;
+            }
+
             error.classList.add('first-part-info__error-active');
         })
     }

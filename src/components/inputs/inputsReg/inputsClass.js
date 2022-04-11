@@ -1,5 +1,7 @@
 import inputsTemplate from './inputs.pug';
 import UserModel from "../../../models/User"
+import {regExp} from "Components/inputs/utils/regExp/regExp";
+import {textErrors} from "Components/inputs/utils/textErrors/textErrors";
 
 const configElement = [
     {
@@ -54,54 +56,57 @@ export default class InputsClass {
 
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
+        const nameValid = () => {
+            return inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
+                || inputName.value.match(/<img/) !== null;
+        }
+
         const nameError = () => {
-            if (inputName.value.length === 1 || inputName.value.match(/<script>/) !== null
-                || inputName.value.match(/<img/) !== null) {
+            if (nameValid()) {
                 errorName.classList.add('error-active');
-                errorName.textContent = 'Неправильные данные';
+                errorName.textContent = textErrors.wrongData;
 
                 return;
             }
 
             errorName.classList.add('error-active');
-            errorName.textContent = 'Заполните поле';
+            errorName.textContent = textErrors.empty;
         };
 
         const emailError = () => {
             if (inputEmail.validity.valueMissing) {
                 errorEmail.classList.add('error-active');
-                errorEmail.textContent = 'Заполните поле';
+                errorEmail.textContent = textErrors.empty;
 
                 return;
             }
 
             errorEmail.classList.add('error-active');
-            errorEmail.textContent = 'Введите действительный email';
+            errorEmail.textContent = textErrors.wrongEmail;
         };
 
         const passOneErrorEmpty = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.textContent = 'Заполните поле';
+            errorPassOne.textContent = textErrors.empty;
         };
 
         const passOneErrorLength = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Не меньше 8-ми символов';
+            errorPassOne.innerText = textErrors.shortPass;
         };
 
         const passOneErrorAllow = () => {
             errorPassOne.classList.add('error-active');
-            errorPassOne.innerText = 'Только Цифры и Латинские буквы';
+            errorPassOne.innerText = textErrors.wrongPass;
         };
 
         const passTwoError = () => {
             errorPassTwo.classList.add('error-active');
-            errorPassTwo.textContent = 'Заполните поле';
+            errorPassTwo.textContent = textErrors.secondPassErr;
         };
 
         inputName.addEventListener('change', () => {
-            if (inputName.value.trim() === '' || inputName.value.length === 1
-                || inputName.value.match(/<script>/) !== null || inputName.value.match(/<img/) !== null) {
+            if (inputName.value.trim() === '' || nameValid()) {
                 nameError();
 
                 return;
@@ -121,9 +126,7 @@ export default class InputsClass {
         });
 
         inputEmail.addEventListener('change', () => {
-            const checkEmail = /.+@.+\..+/i;
-
-            if (checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0 && inputEmail.validity.valid) {
+            if (regExp.checkEmail.test(inputEmail.value) && inputEmail.value.length !== 0 && inputEmail.validity.valid) {
                 errorEmail.classList.remove('error-active');
 
                 return;
@@ -137,24 +140,20 @@ export default class InputsClass {
         });
 
         inputPassOne.addEventListener('change', () => {
-            const containsLetters = /^.*[a-zA-Z]+.*$/;
-            const minimum8Chars = /^.{8,}$/;
-            const containsNumbers = /^.*[0-9]+.*$/;
-
             if (!inputPassOne.validity.valid) {
                 passOneErrorEmpty();
 
                 return;
             }
 
-            if (!minimum8Chars.test(inputPassOne.value)) {
+            if (!regExp.minimum8Chars.test(inputPassOne.value)) {
                 passOneErrorLength();
 
                 return;
             }
 
-            if (!containsNumbers.test(inputPassOne.value)
-                || !containsLetters.test(inputPassOne.value)) {
+            if (!regExp.containsNumbers.test(inputPassOne.value)
+                || !regExp.containsLetters.test(inputPassOne.value)) {
                 passOneErrorAllow();
 
                 return;
@@ -181,40 +180,34 @@ export default class InputsClass {
             errorPassTwo.classList.remove('error-active');
         });
 
-        form.addEventListener('submit', (e) => {
+        const validation = (e) => {
             let check = 0;
-            if (!inputName.validity.valid || inputName.value.trim() === '' || inputEmail.value.length === 1) {
+            if (!inputName.validity.valid || inputName.value.trim() === '' || nameValid()) {
                 check++;
                 nameError();
 
                 e.preventDefault();
             }
 
-            const checkEmail = /.+@.+\..+/i;
-
-            if (!checkEmail.test(inputEmail.value) || inputEmail.value.length === 0 || !inputEmail.validity.valid) {
+            if (!regExp.checkEmail.test(inputEmail.value) || inputEmail.value.length === 0 || !inputEmail.validity.valid) {
                 check++;
                 emailError();
 
                 e.preventDefault();
             }
 
-            const containsLetters = /^.*[a-zA-Z]+.*$/;
-            const minimum8Chars = /^.{8,}$/;
-            const containsNumbers = /^.*[0-9]+.*$/;
-
             if (!inputPassOne.validity.valid) {
                 check++;
                 passOneErrorEmpty();
 
                 e.preventDefault();
-            } else if (!minimum8Chars.test(inputPassOne.value)) {
+            } else if (!regExp.minimum8Chars.test(inputPassOne.value)) {
                 check++;
                 passOneErrorLength();
 
                 e.preventDefault();
-            } else if (!containsNumbers.test(inputPassOne.value)
-                || !containsLetters.test(inputPassOne.value)) {
+            } else if (!regExp.containsNumbers.test(inputPassOne.value)
+                || !regExp.containsLetters.test(inputPassOne.value)) {
                 check++;
                 passOneErrorAllow();
 
@@ -224,7 +217,7 @@ export default class InputsClass {
             if (inputPassTwo.value !== inputPassOne.value) {
                 check++;
                 errorPassTwo.classList.add('error-active');
-                errorPassTwo.textContent = 'Пароли не совпадают';
+                errorPassTwo.textContent = textErrors.secondPassErr;
 
                 e.preventDefault();
             }
@@ -246,8 +239,11 @@ export default class InputsClass {
                 });
 
                 UserModel.reg(formJson);
-
             }
+        }
+
+        form.addEventListener('submit', (e) => {
+            validation(e);
         });
     }
 }

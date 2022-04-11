@@ -17,6 +17,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
+                        sourceMap: true,
                         presets: [
                             ['@babel/preset-env', { targets: "defaults" }]
                         ],

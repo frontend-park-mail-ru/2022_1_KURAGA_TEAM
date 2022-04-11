@@ -19,7 +19,6 @@
 }
 
 @mixin backdrop-filter($blur) {
-    -webkit-backdrop-filter: $blur;
     backdrop-filter: $blur;
 }
 
