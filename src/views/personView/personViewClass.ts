@@ -22,6 +22,7 @@ export default class PersonViewClass extends BaseViewClass {
     private user:UserModel;
     private person : PersonModel;
     private movieCompilation: MovieCompilationModel;
+    private movieCompilationMobile: MovieCompilationModel;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -44,29 +45,32 @@ export default class PersonViewClass extends BaseViewClass {
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationPerson(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
-            this.movieCompilation = new MovieCompilationModel(movieCompilationData);
+
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
+            this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
 
             const header = new HeaderClass(this.user.userData);
             const headPerson = new HeadPersonClass(this.person.personData);
-            const carouselPop = new carousel(0, this.movieCompilation.movieCompilationData, false);
-            const carouselPopMobile = new carousel(0, this.movieCompilation.movieCompilationData, true);
             const footer = new FooterClass();
 
             super.render(personViewTemplate,{
                 personImg: this.person.personData,
                 header: header.render(),
                 headPerson: headPerson.render(),
-                carouselPop: carouselPop.render(),
-                carouselPopMobile: carouselPopMobile.render(),
+                select: this.compilationsRender(this.movieCompilation),
+                selectMobile :this.compilationsRender(this.movieCompilationMobile),
                 footer: footer.render()
             });
 
-            handlerLink()
+            handlerLink();
             header.setHandler();
-            carouselPop.setHandler();
-            carouselPopMobile.setHandler();
+            this.movieCompilation.setHandler();
+            this.movieCompilationMobile.setHandler();
         } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);
         }
+    }
+    compilationsRender(movieCompilation : MovieCompilationModel) : string{
+        return '<div class = "margin-bottom movie-carousel">'+movieCompilation.render()+'</div>';
     }
 }

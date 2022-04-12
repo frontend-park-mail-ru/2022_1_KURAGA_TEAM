@@ -27,6 +27,7 @@ export default class MovieViewClass extends BaseViewClass {
     private user: UserModel;
     private movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
+    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
@@ -47,6 +48,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             const { movBody } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
+            console.log(movData);
 
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
@@ -57,7 +59,9 @@ export default class MovieViewClass extends BaseViewClass {
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
-            this.movieCompilation = new MovieCompilationModel(movieCompilationData);
+
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
+            this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
 
 
             const header = new HeaderClass(this.user.userData);
@@ -65,8 +69,6 @@ export default class MovieViewClass extends BaseViewClass {
             const firstInfoMovie = new FirstInfoMovieClass(this.movie.movieData);
             const secondGenre = new SecondGenreClass(this.movie.movieData);
             const actors = new ActorsClass(this.movie.movieData);
-            const carouselPop = new carousel(0, this.movieCompilation.movieCompilationData, false);
-            const carouselPopMobile = new carousel(0, this.movieCompilation.movieCompilationData, true);
             const footer = new FooterClass();
 
             super.render(movieViewTemplate, {
@@ -76,16 +78,17 @@ export default class MovieViewClass extends BaseViewClass {
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
                 actors: actors.render(),
-                carouselPop: carouselPop.render(),
-                carouselPopMobile: carouselPopMobile.render(),
+                select: this.compilationsRender(this.movieCompilation),
+                selectMobile :this.compilationsRender(this.movieCompilationMobile),
                 footer: footer.render()
             });
 
             handlerLink();
             this.setHandler();
             firstInfoMovie.setHandlers();
-            carouselPop.setHandler();
-            carouselPopMobile.setHandler();
+            this.movieCompilation.setHandler();
+            this.movieCompilationMobile.setHandler();
+
             header.setHandler();
         } catch (err) {
             console.error(err)
@@ -100,5 +103,8 @@ export default class MovieViewClass extends BaseViewClass {
         if (staff.childNodes.length === 0) {
             staffText.style.display = 'none';
         }
+    }
+    compilationsRender(movieCompilation : MovieCompilationModel) : string{
+        return '<div class = "margin-bottom movie-carousel margin-person">'+movieCompilation.render()+'</div>';
     }
 }
