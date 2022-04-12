@@ -1,8 +1,8 @@
 import personViewTemplate from './personView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
 import handlerLink from 'Utils/handlerLink.ts';
-import UserModel from "../../models/User.js"
-import PersonModel from "../../models/Person.js"
+import UserModel from "../../models/User"
+import PersonModel from "../../models/Person"
 import MovieCompilationModel from "../../models/MovieCompilation"
 import router from "Routing/router.ts";
 import { routes } from "Routing/constRouting";

@@ -43,8 +43,8 @@ export default class HomeViewClass extends BaseViewClass {
             const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            this.movieCompilations = movieCompilationsData.map((movieCompilationData,index) => new MovieCompilationModel(index,movieCompilationData,false))
-            this.movieCompilationsMobile = movieCompilationsData.map((movieCompilationData,index) => new MovieCompilationModel(index,movieCompilationData,true))
+            this.movieCompilations = movieCompilationsData.map((movieCompilationData, index) => new MovieCompilationModel(index, movieCompilationData, false))
+            this.movieCompilationsMobile = movieCompilationsData.map((movieCompilationData, index) => new MovieCompilationModel(index, movieCompilationData, true))
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
@@ -54,18 +54,22 @@ export default class HomeViewClass extends BaseViewClass {
 
             const footer = new FooterClass();
 
+
+
             super.render(homeViewTemplate, {
                 mainMovieImg: this.mainMovie.movieData,
                 header: header.render(),
                 mainMovie: mainMovie.render(),
-                carouselPop: this.movieCompilations[0].render(),
-                carouselTop: this.movieCompilations[1].render(),
-                carouselAct: this.movieCompilations[2].render(),
-                carouselFam: this.movieCompilations[3].render(),
-                carouselPopMobile: this.movieCompilationsMobile[0].render(),
-                carouselTopMobile: this.movieCompilationsMobile[1].render(),
-                carouselActMobile: this.movieCompilationsMobile[2].render(),
-                carouselFamMobile: this.movieCompilationsMobile[3].render(),
+                select: this.homeCompilationsRender(this.movieCompilations),
+                selectMobile :this.homeCompilationsRender(this.movieCompilationsMobile),
+                // carouselPop: this.movieCompilations[0].render(),
+                // carouselTop: this.movieCompilations[1].render(),
+                // carouselAct: this.movieCompilations[2].render(),
+                // carouselFam: this.movieCompilations[3].render(),
+                // carouselPopMobile: this.movieCompilationsMobile[0].render(),
+                // carouselTopMobile: this.movieCompilationsMobile[1].render(),
+                // carouselActMobile: this.movieCompilationsMobile[2].render(),
+                // carouselFamMobile: this.movieCompilationsMobile[3].render(),
                 footer: footer.render(),
             });
 
@@ -93,5 +97,25 @@ export default class HomeViewClass extends BaseViewClass {
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");
+    }
+
+    homeCompilationsRender(movieCompilations : MovieCompilationModel[]){
+        let select = '';
+        movieCompilations.forEach((carousel,index) => {
+            let carouselBlock = '';
+            switch(index){
+                case 0:
+                    carouselBlock = '<div class = "first">'+carousel.render()+'</div>';
+                    break;
+                case movieCompilations.length-1:
+                    carouselBlock = '<div class = "margin-bottom">'+carousel.render()+'</div>';
+                    break;
+                default:
+                    carouselBlock = '<div>'+carousel.render()+'</div>';
+            }
+            select += carouselBlock;
+
+        });
+        return select;
     }
 }
