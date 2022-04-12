@@ -2,7 +2,7 @@
     width: 567px;
     background-size: contain;
     object-fit: contain;
-    height: 181px;
+    height: 110px;
     background-repeat: no-repeat;
     margin-bottom: 50px;
 }
@@ -21,6 +21,7 @@
 }
 
 .head-movie__rating {
+    cursor: default;
     display: flex;
     flex-direction: row;
     margin-bottom: 40px;
@@ -55,6 +56,7 @@
 }
 
 .head-movie__info {
+    cursor: default;
     margin-bottom: 24px;
     display: flex;
 }

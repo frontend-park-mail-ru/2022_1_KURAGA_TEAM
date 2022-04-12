@@ -1,7 +1,527 @@
-@import '../components/footer/footer.scss';
-@import '../components/button/button.scss';
-@import '../components/carousel/carousel.scss';
-@import '../components/inputs/inputs.scss';
+@charset "UTF-8";
+#footer {
+  cursor: default;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  background: var(--footer-color);
+  height: 150px;
+  justify-content: space-between;
+}
+
+.left {
+  margin-left: 4vw;
+  width: 60%;
+  display: flex;
+}
+
+#second-footer {
+  margin-left: 20px;
+  display: block;
+  width: 350px;
+}
+
+#third-footer {
+  text-align: end;
+  display: block;
+  grid-area: fourth;
+}
+
+.titleFooter {
+  font-weight: lighter;
+  text-align: left;
+  color: var(--font-footer-color);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.content {
+  font-weight: lighter;
+  text-decoration: none;
+  color: var(--font-footer-color);
+  font-size: 15px;
+}
+
+.refer {
+  height: 39px;
+  width: 39px;
+  margin-top: 20px;
+  transition: transform 0.1s linear;
+}
+
+.refer:hover {
+  transform: scale(1.2);
+}
+
+.ref {
+  margin-right: 70px;
+}
+
+.menu-button {
+  font-weight: lighter;
+  font-family: GT Eesti Pro Display, arial, sans-serif;
+  color: var(--font-color);
+  font-size: 25px;
+  height: 50px;
+  margin-top: 20px;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  background: var(--btn-color);
+  mix-blend-mode: normal;
+  border-radius: 10px;
+  transition: transform 0.1s ease-out, background-color 0.15s linear;
+}
+
+.menu-button:active {
+  -webkit-transform: scale(0.94);
+  transform: scale(0.94);
+}
+
+.menu-button:hover {
+  background: var(--btn-hover-color);
+}
+
+.b-carouselTop__prev,
+.b-carouselTop__next {
+  color: transparent;
+  width: 54px;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  background-color: var(--btn-carousel-back);
+  height: 100%;
+  border: 0;
+  transform: translateY(-50%) translateZ(0);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.b-carouselTop {
+  padding-inline: 4vw;
+  height: 100%;
+  border-radius: 5px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.b-carouselTop__wrap {
+  display: flex;
+  transition: transform 0.75s ease-in-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.b-carouselTop__prev {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carouselTop__next {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: auto;
+  right: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carouselTop__prev:hover,
+.b-carouselTop__next:hover {
+  color: var(--btn-carousel-color);
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.4s ease;
+}
+
+.movieTop {
+  transform: scale(0.95);
+  margin-inline-end: 20px;
+  transition: all 0.1s ease;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 50px;
+  column-gap: 10px;
+  width: 405px;
+  height: 235px;
+  row-gap: 10px;
+  border-radius: 12px;
+  grid-template-areas: "refMov " "descMov";
+}
+
+.movieTop:hover {
+  transform: scale(1);
+}
+
+.desc-movTop {
+  cursor: default;
+  display: flex;
+  padding-inline: 5px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  font-size: 16px;
+  line-height: 19px;
+  background: var(--desc-mov-back);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  grid-area: descMov;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-evenly;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.wrap {
+  margin: 0 0 10px auto;
+  width: 100%;
+  height: 100%;
+}
+
+.b-carousel {
+  padding-inline: 4vw;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.b-carousel__prev,
+.b-carousel__next {
+  border: 0;
+  width: 54px;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  background-color: transparent;
+  height: 100%;
+  transform: translateY(-50%) translateZ(0);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 3;
+  color: transparent;
+}
+
+.b-carousel__prev {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carousel__next {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: auto;
+  right: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carousel__prev-hover,
+.b-carousel__next-hover {
+  color: var(--btn-carousel-color);
+  width: 54px;
+  font-size: 40px;
+  background-color: var(--btn-carousel-back-hover);
+}
+
+.b-carousel__prev:hover,
+.b-carousel__next:hover {
+  color: var(--btn-carousel-color);
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.4s ease;
+}
+
+.b-carousel__wrap {
+  display: flex;
+  transition: transform 0.75s ease-in-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.b-carousel__item {
+  flex: 0 0 100%;
+  width: 1px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.b-carousel__img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie__href {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: var(--font-color);
+}
+
+.movieTop__href {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: var(--font-color);
+}
+
+.movie {
+  transform: scale(0.95);
+  margin-inline-end: 20px;
+  background-size: cover;
+  background-position-x: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 50px;
+  column-gap: 10px;
+  width: 300px;
+  height: 180px;
+  row-gap: 10px;
+  border-radius: 24px;
+  /*margin-inline-start: 0;*/
+  overflow: visible;
+  transition: all 0.2s ease;
+  grid-template-areas: "refMov " "descMov";
+}
+
+.movie:hover {
+  transform: scale(1);
+}
+
+.ref-mov {
+  grid-area: movie;
+}
+
+.desc-mov {
+  cursor: default;
+  display: flex;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
+  padding-inline: 5px;
+  border-bottom-left-radius: 21px;
+  border-bottom-right-radius: 21px;
+  font-size: 14px;
+  background: var(--desc-mov-back);
+  grid-area: descMov;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-evenly;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.genre {
+  font-weight: 350;
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--genre-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  grid-area: title;
+}
+
+.title-name {
+  font-size: 96px;
+  line-height: 111px;
+}
+
+.title-descr {
+  font-weight: 350;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.select-mobile {
+  display: none;
+}
+
+.selection {
+  background-color: var(--back-color);
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 10px;
+  grid-template-rows: auto;
+  row-gap: 10px;
+}
+
+.select-title {
+  inline-size: max-content;
+  font-size: 28px;
+  line-height: 42px;
+  margin-inline-start: 4vw;
+  margin-block-start: 60px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.select-movies {
+  width: 1280px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  column-gap: 28px;
+  grid-template-rows: auto;
+}
+
+.like-size {
+  background-size: 36px 36px;
+  width: 36px;
+  height: 36px;
+}
+
+#cbMovie,
+#cb {
+  visibility: hidden;
+  text-align: -webkit-center;
+}
+
+#cbMovie:hover::after,
+#cb:hover::after {
+  display: block;
+  content: " ";
+  background-image: url("../static/activeLike.png");
+  background-position: center;
+}
+
+#cbMovie,
+#cb,
+#cbMovie::after,
+#cbMovie:checked::after,
+#cb::after,
+#cb:checked::after {
+  margin-left: -8px;
+  background-size: 36px 36px;
+  height: 36px;
+  width: 36px;
+}
+
+#cbMovie::after,
+#cb::after {
+  cursor: pointer;
+  transition-property: transform;
+  transition: all 0.1s ease;
+  visibility: visible;
+  display: block;
+  content: " ";
+  background-image: url("../static/heart.png");
+}
+
+#cbMovie:checked::after,
+#cb:checked::after {
+  transform: scale(1.2);
+  display: block;
+  content: " ";
+  background-image: url("../static/activeLike.png");
+  background-position: center;
+  /*background-size: 36px 36px;*/
+  /*height: 36px;*/
+  /*width: 36px;*/
+}
+
+#like {
+  display: block;
+}
+
+#like-active {
+  display: none;
+}
+
+.menu-form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.error {
+  font-family: "GT Eesti Pro Display", arial, sans-serif;
+  display: block;
+  opacity: 0;
+  font-size: 18px;
+  color: var(--font-error-color);
+  padding-top: 2px;
+  height: 30px;
+  transition: all 0.1s linear;
+}
+
+.error-active {
+  opacity: 1;
+}
+
+.center {
+  text-align: center;
+}
+
+.element {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background: var(--input-back);
+  backdrop-filter: blur(60px);
+  border-radius: 10px;
+}
+
+.success {
+  color: green;
+}
+
+.not-success {
+  color: var(--font-error-color);
+}
+
+.svg {
+  margin: 8px 20px 10px 10px;
+  width: 32px;
+  height: 32px;
+}
+
+.menu-input::placeholder {
+  color: var(--font-color);
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.menu-input {
+  font-size: 20px;
+  color: var(--font-color);
+  outline: none;
+  padding: 0 20px 0 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 0 10px 10px 0;
+  width: 89.5%;
+  height: 100%;
+}
+
+.papa {
+  height: 85px;
+}
 
 @media (min-width: 1450px) and (max-width: 1600px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
@@ -25,10 +545,7 @@
     width: calc(5vw + 300px);
     height: calc(5vh + 180px);
   }
-
-
 }
-
 @media (min-width: 1000px) and (max-width: 1450px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
   .error-text__404 {
@@ -96,7 +613,6 @@
     height: 180px;
   }
 }
-
 @media (min-width: 1000px) and (max-width: 1250px) {
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
   .photo-movie {
@@ -126,7 +642,6 @@
     font-size: 60px;
   }
 }
-
 @media (max-width: 1000px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
   .error-img {
@@ -179,7 +694,6 @@
   .menu-h1 {
     font-size: 30px;
   }
-
 
   .text {
     font-size: 20px;
@@ -261,10 +775,10 @@
     display: flex;
     cursor: pointer;
   }
+
   .space {
     display: none;
   }
-
 
   .logo-home {
     padding-inline-start: 0;
@@ -279,29 +793,33 @@
     width: 40px;
     height: 40px;
   }
+
   .dropdown-content a {
     font-size: 18px;
     padding: 10px 10px 10px 10px;
   }
+
   .dropdown-content {
     width: 30vw;
     text-align: end;
   }
+
   .dropdown {
     justify-content: flex-end;
   }
+
   .name-profile-mobile {
     font-size: 18px;
     display: block;
     color: var(--mix-color);
     padding: 10px 10px 10px 10px;
   }
+
   .name-profile {
     display: none;
   }
 
   /* для main movie*/
-
   .main-movie__name {
     height: 60px;
   }
@@ -319,61 +837,61 @@
     display: grid;
     column-gap: 10px;
     grid-template-rows: auto;
-    grid-template-areas:
-        "title title"
-        "btn btnInfo";
-
+    grid-template-areas: "title title" "btn btnInfo";
   }
 
   .title-descr {
     margin-top: 10px;
     line-height: 22px;
-    font-size: 25px
+    font-size: 25px;
   }
 
   .btn,
-  .btn-info {
+.btn-info {
     padding: 2px 9px;
     font-size: 16px;
   }
 
   /*карусель*/
-  .b-carousel{
+  .b-carousel {
     padding-inline: 0;
   }
+
   .movieTop:hover,
-  .movieTop{
+.movieTop {
     transform: scale(1);
     margin-inline-end: 0;
   }
 
   .movie,
-  .movie:hover {
+.movie:hover {
     transform: scale(0.95);
   }
 
   #cbMovie:hover::after,
-  #cb:hover::after {
+#cb:hover::after {
     background-image: url("../static/heart.png");
   }
 
   #cbMovie:checked::after,
-  #cb:checked::after {
+#cb:checked::after {
     background-image: url("../static/activeLike.png");
   }
+
   .first {
     margin-top: -50px;
   }
 
   .b-carouselTop__prev,
-  .b-carouselTop__next,
-  .b-carousel__next,
-  .b-carousel__prev {
+.b-carouselTop__next,
+.b-carousel__next,
+.b-carousel__prev {
     display: none;
   }
+
   .b-carouselTop__wrap,
-  .b-carousel__wrap {
-    overflow: scroll
+.b-carousel__wrap {
+    overflow: scroll;
   }
 
   .select-mobile {
@@ -400,12 +918,14 @@
     border-bottom-right-radius: 8px;
     font-size: 12px;
   }
+
   .desc-movTop {
     justify-content: center;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     font-size: 16px;
   }
+
   .movie__href {
     width: 118px;
   }
@@ -414,25 +934,22 @@
     font-size: 12px;
   }
 }
-
 @media (max-width: 375px) {
   .genre,
-  .desc-mov {
+.desc-mov {
     font-size: 10px;
   }
 
   #cb,
-  #cb::after,
-  #cb:checked::after {
+#cb::after,
+#cb:checked::after {
     margin-inline: -2px;
     background-size: 28px 28px;
     height: 28px;
     width: 28px;
   }
 }
-
 @media (max-width: 700px) {
-
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .select-title {
     margin-inline-start: 4vw;
@@ -799,6 +1316,7 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
   .head-person {
     align-content: center;
     justify-content: flex-end;
@@ -808,6 +1326,7 @@
   .head-person__name {
     font-size: 32px;
   }
+
   .head-person__descr {
     width: fit-content;
     font-weight: 500;
@@ -815,7 +1334,6 @@
     font-size: 14px;
     line-height: 16px;
     margin: 20px 14vw 20px 0;
-
   }
 
   .add-photos__photo {
@@ -823,7 +1341,6 @@
     height: calc(6vh + 80px);
   }
 }
-
 @media (max-height: 450px) {
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
   #back {
@@ -836,7 +1353,6 @@
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
   .navbar {
-
     transition: none;
     position: sticky !important;
     justify-content: space-between;
@@ -887,8 +1403,6 @@
     width: 70%;
   }
 }
-
-
 @media (min-width: 1600px) and (max-width: 1800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .movie {
@@ -905,14 +1419,12 @@
   .movieTop {
     grid-template-rows: auto calc(1vw + 50px);
   }
-
-
 }
-
 @media (min-width: 1800px) and (max-width: 2800px) {
   .main-movie {
     justify-content: center;
   }
+
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .movie {
     grid-template-rows: auto calc(3vh + 40px);
@@ -928,17 +1440,16 @@
   .movieTop {
     grid-template-rows: auto calc(1vw + 40px);
   }
+
   .desc-mov,
-  .desc-movTop{
+.desc-movTop {
     font-size: 20px;
   }
-  .genre{
+
+  .genre {
     font-size: 18px;
   }
-
-
 }
-
 @media (min-width: 2800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .movie {
@@ -946,13 +1457,11 @@
     grid-template-rows: auto calc(3vh + 40px);
     width: calc(15vw + 300px);
   }
+
   .main-movie {
     margin: 0;
     justify-content: center;
   }
-
-
-
 
   .movieTop {
     width: calc(15vw + 422px);
@@ -962,23 +1471,17 @@
   .movieTop {
     grid-template-rows: auto calc(1vw + 40px);
   }
-
-
 }
-
-
 @media (min-width: 1450px) and (max-width: 1800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
   .sidebar {
     width: calc(1vw + 582px);
   }
 
-
   .btn,
-  .btn-info {
+.btn-info {
     margin-inline: auto;
     font-size: calc(1vh + 20px);
-
   }
 
   .title-name {
@@ -990,16 +1493,18 @@
   }
 
   .desc-mov,
-  .desc-movTop,
-  .genre {
+.desc-movTop,
+.genre {
     font-size: calc(1vw + 0px);
   }
 
   #cb,
-  #cb::after,
-  #cb:checked::after {
+#cb::after,
+#cb:checked::after {
     background-size: calc(1vw + 30px) calc(1vw + 30px);
     height: calc(1vw + 30px);
     width: calc(1vw + 30px);
   }
 }
+
+/*# sourceMappingURL=media.css.map */

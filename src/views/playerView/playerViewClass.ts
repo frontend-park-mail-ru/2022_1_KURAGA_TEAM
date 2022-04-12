@@ -16,11 +16,11 @@ export default class PlayerViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const id = +/\d+/.exec(window.location.pathname);
+            const idx = +/\d+/.exec(window.location.pathname);
 
             const check = window.location.pathname.indexOf('trailer');
 
-            const { movBody } = await MovieModel.getMovie(id);
+            const { movBody } = await MovieModel.getMovie(idx);
             const movData = await Promise.resolve(movBody);
 
             if (movData.status === routes.ERROR) {
@@ -35,6 +35,7 @@ export default class PlayerViewClass extends BaseViewClass {
             }
 
             super.render(playerTemplate, {
+                id: this.movie.id,
                 video,
             });
 

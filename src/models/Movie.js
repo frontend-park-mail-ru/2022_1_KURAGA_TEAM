@@ -34,8 +34,9 @@ export default class MovieModel {
     get trailer() {
         return this.data.trailer;
     }
-
-
+    get id() {
+        return this.data.id;
+    }
 
     static async movies() {
         try {
