@@ -89,3 +89,28 @@ export interface mainMovieData{
     name_picture: string;
     tagline: string;
 }
+
+export interface movingCarouselData{
+    main: string;
+    wrap: string;
+    prev: string;
+    next: string;
+}
+
+export interface privatesMovingCarousel{
+    setting: movingCarouselData;
+    sel?: selInfo;
+    opt?: optInfo;
+}
+export interface  optInfo{
+    position: number;
+    max_position: number;
+}
+
+export interface selInfo{
+    main: HTMLElement;
+    wrap: HTMLElement;
+    children: HTMLCollection;
+    prev: HTMLElement;
+    next: HTMLElement;
+}
