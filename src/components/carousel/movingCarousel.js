@@ -1,8 +1,12 @@
+import { routes } from "Routing/constRouting";
+import router from "Routing/router";
+
 export default function MovingCarousel(setting) {
 
 
     if (document.querySelector(setting.wrap) === null) {
-        console.error(`Carousel not fount selector ${setting.wrap}`);
+        router.go(routes.ERROR_CATCH_VIEW);
+
         return;
     }
 

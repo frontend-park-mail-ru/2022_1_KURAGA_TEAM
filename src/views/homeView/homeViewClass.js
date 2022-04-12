@@ -2,12 +2,12 @@ import homeViewTemplate from './homeView.pug';
 import HeaderClass from 'Components/header/headerClass.js';
 import MainMovieClass from 'Components/mainMovie/mainMovieClass.js';
 import Carousel from 'Components/carousel/carouselClass.js';
-import FooterClass from 'Components/footer/footerClass.js';
-import handlerLink from 'Utils/handlerLink.js';
-import router from 'Routing/router.js';
-import BaseViewClass from '../baseView/baseViewClass.js';
+import FooterClass from 'Components/footer/footerClass.ts';
+import handlerLink from 'Utils/handlerLink.ts';
+import router from 'Routing/router.ts';
+import BaseViewClass from '../baseView/baseViewClass.ts';
 import { routes } from "Routing/constRouting";
-import LoaderViewClass from "../loaderView/loaderViewClass.js";
+import LoaderViewClass from "../loaderView/loaderViewClass.ts";
 import UserModel from "../../models/User.js"
 import MovieModel from "../../models/Movie.js"
 import MovieCompilationModel from "../../models/MovieCompilation"
@@ -53,7 +53,6 @@ export default class HomeViewClass extends BaseViewClass {
                 carouselsMobile.push(new Carousel(index, movieCompilation.movieCompilationData,true));
             });
 
-            console.log(carousels);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {
@@ -70,7 +69,6 @@ export default class HomeViewClass extends BaseViewClass {
                 carouselFamMobile: carouselsMobile[3].render(),
                 footer: footer.render(),
             });
-            console.log(carouselsMobile[2]);
 
             handlerLink();
             this.setHandler();

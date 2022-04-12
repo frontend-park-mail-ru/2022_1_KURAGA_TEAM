@@ -1,6 +1,6 @@
 import {ajaxReq} from 'Modules/ajax';
-import router from '../routing/router.js';
-import {routes} from '../routing/constRouting.js';
+import router from 'Routing/router.ts';
+import { routes } from 'Routing/constRouting';
 
 export default class MovieModel {
 
@@ -79,7 +79,7 @@ export default class MovieModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
 
@@ -95,7 +95,7 @@ export default class MovieModel {
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
 

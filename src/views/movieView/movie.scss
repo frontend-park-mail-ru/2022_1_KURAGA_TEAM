@@ -1,0 +1,54 @@
+@import "../../components/headMovie/headMovie";
+@import "../../components/firstInfoMovie/firstInfoMovie";
+@import "../../components/secondGende/secondGenre";
+@import "../../components/actors/actors";
+
+.photo-movie {
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    height: 96vh;
+}
+
+.photo-movie__gradient {
+    width: 80%;
+    height: 96vh;
+    background: var(--movie-gradient);
+}
+
+.head-movie {
+    position: absolute;
+    margin-left: 4vw;
+    height: 50%;
+}
+
+.first-part-info {
+    margin-left: 4vw;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    height: auto !important;
+}
+
+.second-part-genre {
+    margin-left: 4vw;
+    margin-top: 40px;
+}
+
+.third-part-actors {
+    margin-top: 40px;
+    margin-left: 4vw;
+    margin-bottom: 20px;
+}
+
+.movie-carousel {
+    margin-top: -20px;
+}
+
+
+.carousel-title {
+    font-size: 28px !important;
+}
+

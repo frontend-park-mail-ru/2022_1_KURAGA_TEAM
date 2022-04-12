@@ -1,18 +1,18 @@
 import personViewTemplate from './personView.pug'
 import HeaderClass from 'Components/header/headerClass.js';
-import handlerLink from 'Utils/handlerLink.js';
+import handlerLink from 'Utils/handlerLink.ts';
 import UserModel from "../../models/User.js"
 import PersonModel from "../../models/Person.js"
 import MovieCompilationModel from "../../models/MovieCompilation"
-import router from "Routing/router.js";
+import router from "Routing/router.ts";
 import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPersonClass.js";
 import carousel from 'Components/carousel/carouselClass.js';
-import FooterClass from "Components/footer/footerClass.js";
-import BaseViewClass from '../baseView/baseViewClass.js';
-import LoaderViewClass from "../loaderView/loaderViewClass.js";
+import FooterClass from "Components/footer/footerClass.ts";
+import BaseViewClass from '../baseView/baseViewClass.ts';
+import LoaderViewClass from "../loaderView/loaderViewClass.ts";
 
-import '../../css/person.scss';
+import './person.scss';
 
 export default class PersonViewClass extends BaseViewClass {
     #user;
@@ -62,7 +62,7 @@ export default class PersonViewClass extends BaseViewClass {
             carouselPop.setHandler();
             carouselPopMobile.setHandler();
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 }

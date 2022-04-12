@@ -1,9 +1,9 @@
-//{
-//  "compilerOptions": {
-//    "noImplicitAny": true,
-//    "module": "es6",
-//    "target": "es5",
-//    "allowJs": true,
-//    "moduleResolution": "node"
-//  }
-//}
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es6",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true
+  },
+}
