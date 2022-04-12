@@ -1,20 +1,22 @@
-import { ajaxReq } from 'Modules/ajax';
+import {ajaxReq} from 'Modules/ajax';
 import router from 'Routing/router.ts';
-import { routes } from 'Routing/constRouting';
-
+import {routes} from 'Routing/constRouting';
+import carouselTemplate from 'Components/carousel/carousel.pug';
+import movingCarousel from 'Components/carousel/movingCarousel';
 export default class MovieCompilationModel {
 
-    constructor(movieCompilationData) {
+    constructor(index,movieCompilationData,isMobile) {
         this.data = {
-            compilation_name: movieCompilationData.compilation_name,
-            movies: movieCompilationData.movies
+            id: index,
+            compilationName: movieCompilationData.compilation_name,
+            movies: movieCompilationData.movies,
+            isMobile: isMobile
         }
     }
 
     get movieCompilationData() {
         return this.data;
     }
-
 
 
     static async movies() {
@@ -40,7 +42,7 @@ export default class MovieCompilationModel {
     static async movieCompilationPerson(id) {
         try {
             return await ajaxReq.get({
-                path: '/movieCompilations/person/'+ id,
+                path: '/movieCompilations/person/' + id,
             });
         } catch (err) {
             return err;
@@ -94,5 +96,87 @@ export default class MovieCompilationModel {
         });
     }
 
+    render() {
+
+        if (this.data.compilationName === "Лучшее за 2011 год" && this.data.isMobile === true)
+            return carouselTemplate({
+                items: this.data.movies,
+                car: `js-carousel${this.data.id}`,
+                prevBtn: `js-carousel${this.data.id}__prev`,
+                nextBtn: `js-carousel${this.data.id}__next`,
+                wrapMov: `js-carousel${this.data.id}__wrap`,
+                typeMov: 'Top',
+                num: 1,
+                countDiv: Math.ceil(this.data.movies.length / 1),
+                compilationName: this.data.compilationName
+            });
+        if (this.data.isMobile === true)
+            return carouselTemplate({
+                items: this.data.movies,
+                car: `js-carousel${this.data.id}`,
+                prevBtn: `js-carousel${this.data.id}__prev`,
+                nextBtn: `js-carousel${this.data.id}__next`,
+                wrapMov: `js-carousel${this.data.id}__wrap`,
+                typeMov: '',
+                num: 2,
+                countDiv: Math.ceil(this.data.movies.length / 2),
+                compilationName: this.data.compilationName
+            });
+        if (this.data.compilationName === "Лучшее за 2011 год")
+            return carouselTemplate({
+                items: this.data.movies,
+                car: `js-carousel${this.data.id}`,
+                prevBtn: `js-carousel${this.data.id}__prev`,
+                nextBtn: `js-carousel${this.data.id}__next`,
+                wrapMov: `js-carousel${this.data.id}__wrap`,
+                typeMov: 'Top',
+                num: 3,
+                countDiv: Math.ceil(this.data.movies.length / 3),
+                compilationName: this.data.compilationName
+            });
+
+
+        return carouselTemplate({
+            items: this.data.movies,
+            car: `js-carousel${this.data.id}`,
+            prevBtn: `js-carousel${this.data.id}__prev`,
+            nextBtn: `js-carousel${this.data.id}__next`,
+            wrapMov: `js-carousel${this.data.id}__wrap`,
+            typeMov: '',
+            countDiv: Math.ceil(this.data.movies.length / 4),
+            num: 4,
+            compilationName: this.data.compilationName
+        });
+
+    }
+
+    setHandler() {
+        for (let i = 0; i < 4; i++) {
+            const wrap = document.querySelector(`.js-carousel${this.data.id}`);
+
+            const buttonCarouselPrev = document.querySelector(`.js-carousel${this.data.id}__prev`);
+            const buttonCarouselNext = document.querySelector(`.js-carousel${this.data.id}__next`);
+
+            wrap.addEventListener('mouseover', () => {
+                buttonCarouselPrev.classList.add('b-carousel__prev-hover');
+                buttonCarouselNext.classList.add('b-carousel__next-hover');
+            });
+
+            wrap.addEventListener('mouseout', () => {
+                buttonCarouselPrev.classList.remove('b-carousel__prev-hover');
+                buttonCarouselNext.classList.remove('b-carousel__next-hover');
+            });
+        }
+
+        const a = new movingCarousel({
+            main: `.js-carousel${this.data.id}`,
+            wrap: `.js-carousel${this.data.id}__wrap`,
+            prev: `.js-carousel${this.data.id}__prev`,
+            next: `.js-carousel${this.data.id}__next`,
+        });
+
+
+
+    }
 }
 

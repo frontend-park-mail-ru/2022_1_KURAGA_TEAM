@@ -5,7 +5,7 @@ import handlerLink from "Utils/handlerLink.ts";
 import InputsProfileClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import ButtonClass from "Components/button/buttonClass";
 import ProfileAvatarClass from "Components/profileAvatar/profileAvatarClass";
-import UserModel from "../../models/User.js"
+import UserModel from "../../models/User"
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
