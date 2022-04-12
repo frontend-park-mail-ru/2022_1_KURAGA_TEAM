@@ -1,13 +1,13 @@
 import actorsTemplate from './actors.pug'
 
-interface Staff {
-    staff: object,
+interface Staffs {
+    staff: Staff,
 }
 
 export default class ActorsClass {
     private readonly staffs: object;
 
-    constructor(staff: Staff) {
+    constructor(staff: Staffs) {
         this.staffs = staff.staff;
     }
 

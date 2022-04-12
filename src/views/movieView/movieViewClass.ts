@@ -14,7 +14,6 @@ import SecondGenreClass from "Components/secondGende/secondGenre.ts";
 import ActorsClass from "Components/actors/actorsClass";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
-import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './movie.scss';
