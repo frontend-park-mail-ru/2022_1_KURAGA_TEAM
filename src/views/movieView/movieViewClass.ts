@@ -91,8 +91,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             header.setHandler();
         } catch (err) {
-            console.error(err)
-            // router.go(routes.ERROR_CATCH_VIEW);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
