@@ -47,8 +47,6 @@ export default class UserModel {
         }
     }
 
-
-
      static async profile() {
         try {
             return await ajaxReq.get({
