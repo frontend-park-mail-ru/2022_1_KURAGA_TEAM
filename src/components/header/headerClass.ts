@@ -1,5 +1,5 @@
 import headerTemplate from './header.pug';
-import UserModel from '../../models/User.js';
+import UserModel from '../../models/User';
 
 export default class HeaderClass {
     private readonly info: object;

@@ -15,7 +15,7 @@ const root = document.getElementById('root');
 export default class LoginViewClass extends BaseViewClass{
     async render() {
         try {
-            const {isAuth}: {isAuth: boolean} = await UserModel.auth();
+            const {isAuth}: {isAuth?: boolean} = await UserModel.auth();
 
             if (isAuth) {
                 router.go(routes.HOME_VIEW);

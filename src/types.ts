@@ -4,3 +4,4 @@ interface Staff {
     name: string,
     position: string,
 }
+

@@ -30,7 +30,7 @@ export default class PersonViewClass extends BaseViewClass {
             const id = +/\d+/.exec(window.location.pathname);
 
 
-            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<User> } = await UserModel.auth();
             console.log(isAuth,userBody);
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);

@@ -29,7 +29,7 @@ export default class HomeViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} : {isAuth : boolean,userBody: Promise<User>} = await UserModel.auth();
+            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<User> } = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;

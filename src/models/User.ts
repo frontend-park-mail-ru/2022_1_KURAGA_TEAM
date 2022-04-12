@@ -3,7 +3,7 @@ import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
 
 export default class UserModel {
-     // data: { username: string; email: string; avatar: string; };
+    data: { username: string; email: string; avatar: string; };
     constructor(userData) {
         this.data = {
             username: userData.username,
