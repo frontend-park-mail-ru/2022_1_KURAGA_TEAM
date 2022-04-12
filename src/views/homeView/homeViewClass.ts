@@ -1,7 +1,6 @@
 import homeViewTemplate from './homeView.pug';
 import HeaderClass from 'Components/header/headerClass';
 import MainMovieClass from 'Components/mainMovie/mainMovieClass';
-import Carousel from 'Components/carousel/carouselClass';
 import FooterClass from 'Components/footer/footerClass.ts';
 import handlerLink from 'Utils/handlerLink.ts';
 import router from 'Routing/router.ts';
@@ -49,7 +48,6 @@ export default class HomeViewClass extends BaseViewClass {
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
 
-            console.log(this.movieCompilations[0].movieCompilationData);
 
 
             const footer = new FooterClass();
@@ -60,8 +58,8 @@ export default class HomeViewClass extends BaseViewClass {
                 mainMovieImg: this.mainMovie.movieData,
                 header: header.render(),
                 mainMovie: mainMovie.render(),
-                select: this.homeCompilationsRender(this.movieCompilations),
-                selectMobile :this.homeCompilationsRender(this.movieCompilationsMobile),
+                select: this.compilationsRender(this.movieCompilations),
+                selectMobile :this.compilationsRender(this.movieCompilationsMobile),
                 // carouselPop: this.movieCompilations[0].render(),
                 // carouselTop: this.movieCompilations[1].render(),
                 // carouselAct: this.movieCompilations[2].render(),
@@ -99,7 +97,7 @@ export default class HomeViewClass extends BaseViewClass {
         homeNavbar.classList.add("headline-style");
     }
 
-    homeCompilationsRender(movieCompilations : MovieCompilationModel[]){
+    compilationsRender(movieCompilations : MovieCompilationModel[]){
         let select = '';
         movieCompilations.forEach((carousel,index) => {
             let carouselBlock = '';
