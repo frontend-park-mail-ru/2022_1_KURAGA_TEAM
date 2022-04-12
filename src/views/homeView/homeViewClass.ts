@@ -11,11 +11,8 @@ import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie"
 import MovieCompilationModel from "../../models/MovieCompilation"
 import '../../css/home.scss';
+import { User } from "../../types";
 
-interface User {
-    user: object
-
-}
 
 export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
@@ -29,12 +26,13 @@ export default class HomeViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<User> } = await UserModel.auth();
+            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<any> } = await UserModel.auth();
+
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await Promise.resolve(userBody);
+            const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
             const {movBody} = await MovieModel.mainMov();

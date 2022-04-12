@@ -1,11 +1,8 @@
 import secondGenreTemplate from './secondGenre.pug'
-
-interface Genres {
-    genre: object,
-}
+import { Genre, Genres } from "../../types";
 
 export default class SecondGenreClass {
-    private readonly genres: object;
+    private readonly genres: Genre;
 
     constructor(genres: Genres) {
         this.genres = genres.genre;

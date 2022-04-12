@@ -10,8 +10,6 @@ import UserModel from "../../models/User"
 
 import '../regView/regLog.scss';
 
-const root = document.getElementById('root');
-
 export default class LoginViewClass extends BaseViewClass{
     async render() {
         try {

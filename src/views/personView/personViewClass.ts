@@ -10,18 +10,17 @@ import HeadPersonClass from "Components/headPerson/headPersonClass";
 import FooterClass from "Components/footer/footerClass";
 import BaseViewClass from '../baseView/baseViewClass';
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import { User } from "../../types";
 
 import './person.scss';
 
-interface User {
-    user: UserModel,
-}
 
 export default class PersonViewClass extends BaseViewClass {
     private user:UserModel;
     private person : PersonModel;
     private movieCompilation: MovieCompilationModel;
     private movieCompilationMobile: MovieCompilationModel;
+
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -29,14 +28,13 @@ export default class PersonViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
+            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<any> } = await UserModel.auth();
 
-            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<User> } = await UserModel.auth();
-            console.log(isAuth,userBody);
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await Promise.resolve(userBody);
+            const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
             const {persBody} = await PersonModel.getPerson(id);
