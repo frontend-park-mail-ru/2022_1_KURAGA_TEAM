@@ -1,6 +1,7 @@
 import { routes } from "Routing/constRouting";
 import router from "Routing/router";
 
+
 export default function MovingCarousel(setting) {
 
 

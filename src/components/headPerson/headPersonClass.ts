@@ -1,15 +1,15 @@
 import headPersonTemplate from './headPerson.pug'
 
 export default class HeadPersonClass {
-    #info;
+    private readonly info: object;
 
-    constructor(info) {
-        this.#info = info
+    constructor(info: object) {
+        this.info = info
     }
 
     render() {
         return headPersonTemplate({
-            info: this.#info
+            info: this.info
         });
     }
 }

@@ -1,5 +1,5 @@
 import errorViewTemplate from './error.pug'
-import HeaderClass from 'Components/header/headerClass.js';
+import HeaderClass from 'Components/header/headerClass';
 import UserModel from "../../../models/User.js"
 import router from "Routing/router";
 import FooterClass from "Components/footer/footerClass";

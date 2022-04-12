@@ -1,20 +1,17 @@
 import movieViewTemplate from './movieView.pug'
-import HeaderClass from 'Components/header/headerClass.js';
-import handlerLink from 'Utils/handlerLink.ts';
-
-import UserModel from "../../models/User.js"
-import MovieModel from "../../models/Movie.js"
+import HeaderClass from 'Components/header/headerClass';
+import handlerLink from 'Utils/handlerLink';
+import UserModel from "../../models/User"
+import MovieModel from "../../models/Movie"
 import MovieCompilationModel from "../../models/MovieCompilation"
-
 import router from "Routing/router.ts";
-import HeadMovieClass from "Components/headMovie/headMovieClass.ts";
-import FooterClass from "Components/footer/footerClass.ts";
-import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.ts";
-import SecondGenreClass from "Components/secondGende/secondGenre.ts";
+import HeadMovieClass from "Components/headMovie/headMovieClass";
+import FooterClass from "Components/footer/footerClass";
+import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass";
+import SecondGenreClass from "Components/secondGende/secondGenre";
 import ActorsClass from "Components/actors/actorsClass";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
-import carousel from 'Components/carousel/carouselClass.js';
 import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './movie.scss';

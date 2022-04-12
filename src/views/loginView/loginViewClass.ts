@@ -6,7 +6,7 @@ import handlerLink from 'Utils/handlerLink';
 import router from 'Routing/router.ts';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
-import UserModel from "../../models/User.js"
+import UserModel from "../../models/User"
 
 import '../regView/regLog.scss';
 

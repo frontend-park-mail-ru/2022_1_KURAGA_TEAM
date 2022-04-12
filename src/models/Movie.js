@@ -1,10 +1,29 @@
 import {ajaxReq} from 'Modules/ajax';
 import router from 'Routing/router.ts';
-import { routes } from 'Routing/constRouting';
+import {routes} from 'Routing/constRouting';
 
 export default class MovieModel {
+    // data: {
+    //     id: number;
+    //     name: string;
+    //     genre: string;
+    //     picture: string;
+    //     tagline: string;
+    //     age_limit: string;
+    //     country: string;
+    //     description: string;
+    //     duration: string;
+    //     kinopoisk_rating: string;
+    //     name_picture: string;
+    //     rating: string;
+    //     staff: string;
+    //     trailer: string;
+    //     video: string;
+    //     year: string;
+    // };
 
     constructor(movieData) {
+
         this.data = {
             id: movieData.id,
             name: movieData.name,
@@ -28,12 +47,15 @@ export default class MovieModel {
     get movieData() {
         return this.data;
     }
+
     get video() {
         return this.data.video;
     }
+
     get trailer() {
         return this.data.trailer;
     }
+
     get id() {
         return this.data.id;
     }

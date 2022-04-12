@@ -1,5 +1,5 @@
 import profileViewTemplate from './profileView.pug';
-import HeaderClass from "Components/header/headerClass.js";
+import HeaderClass from "Components/header/headerClass";
 import FooterClass from "Components/footer/footerClass.ts";
 import handlerLink from "Utils/handlerLink.ts";
 import InputsProfileClass from "Components/inputs/inputsProfile/inputsProfileClass";

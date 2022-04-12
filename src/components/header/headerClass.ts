@@ -2,14 +2,14 @@ import headerTemplate from './header.pug';
 import UserModel from "../../models/User.js"
 
 export default class HeaderClass {
-    #info;
+    private readonly info: object;
 
     constructor(info) {
-        this.#info = info;
+        this.info = info;
     }
 
     render() {
-        return headerTemplate({item: this.#info});
+        return headerTemplate({item: this.info});
     }
 
     setHandler() {
@@ -31,10 +31,10 @@ export default class HeaderClass {
             e.preventDefault();
             UserModel.quit();
         });
-        const verticalNavbar = document.querySelector('#Capa_1');
+        const verticalNavbar: HTMLElement = document.querySelector('#Capa_1');
         verticalNavbar.addEventListener('click', (e) => {
             e.preventDefault();
-            const verticalMenu = document.querySelector(".menu-mobile__vertical");
+            const verticalMenu: HTMLElement = document.querySelector(".menu-mobile__vertical");
             if (verticalMenu.style.display === 'flex') {
                 verticalMenu.style.display = 'none';
                 verticalNavbar.classList.remove('menuSymbol__action');
@@ -47,7 +47,7 @@ export default class HeaderClass {
         const profileIcon = document.querySelector('.btn-profile');
         profileIcon.addEventListener('touchstart', (e) => {
             e.preventDefault();
-            const profileMenu = document.querySelector(".dropdown-content");
+            const profileMenu: HTMLElement = document.querySelector(".dropdown-content");
 
 
             if (profileMenu.style.display === 'block') {

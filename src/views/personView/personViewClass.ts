@@ -1,14 +1,13 @@
 import personViewTemplate from './personView.pug'
-import HeaderClass from 'Components/header/headerClass.js';
-import handlerLink from 'Utils/handlerLink.ts';
+import HeaderClass from 'Components/header/headerClass';
+import handlerLink from 'Utils/handlerLink';
 import UserModel from "../../models/User"
 import PersonModel from "../../models/Person"
 import MovieCompilationModel from "../../models/MovieCompilation"
-import router from "Routing/router.ts";
+import router from "Routing/router";
 import { routes } from "Routing/constRouting";
-import HeadPersonClass from "Components/headPerson/headPersonClass.js";
-import carousel from 'Components/carousel/carouselClass.js';
-import FooterClass from "Components/footer/footerClass.ts";
+import HeadPersonClass from "Components/headPerson/headPersonClass";
+import FooterClass from "Components/footer/footerClass";
 import BaseViewClass from '../baseView/baseViewClass';
 import LoaderViewClass from "../loaderView/loaderViewClass";
 
