@@ -1,9 +1,9 @@
 import homeViewTemplate from './homeView.pug';
 import HeaderClass from 'Components/header/headerClass';
 import MainMovieClass from 'Components/mainMovie/mainMovieClass';
-import FooterClass from 'Components/footer/footerClass.ts';
-import handlerLink from 'Utils/handlerLink.ts';
-import router from 'Routing/router.ts';
+import FooterClass from 'Components/footer/footerClass';
+import handlerLink from 'Utils/handlerLink';
+import router from 'Routing/router';
 import BaseViewClass from '../baseView/baseViewClass';
 import {routes} from "Routing/constRouting";
 import LoaderViewClass from "../loaderView/loaderViewClass";
@@ -47,9 +47,6 @@ export default class HomeViewClass extends BaseViewClass {
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
-
-
-
             const footer = new FooterClass();
 
 
@@ -60,14 +57,6 @@ export default class HomeViewClass extends BaseViewClass {
                 mainMovie: mainMovie.render(),
                 select: this.compilationsRender(this.movieCompilations),
                 selectMobile :this.compilationsRender(this.movieCompilationsMobile),
-                // carouselPop: this.movieCompilations[0].render(),
-                // carouselTop: this.movieCompilations[1].render(),
-                // carouselAct: this.movieCompilations[2].render(),
-                // carouselFam: this.movieCompilations[3].render(),
-                // carouselPopMobile: this.movieCompilationsMobile[0].render(),
-                // carouselTopMobile: this.movieCompilationsMobile[1].render(),
-                // carouselActMobile: this.movieCompilationsMobile[2].render(),
-                // carouselFamMobile: this.movieCompilationsMobile[3].render(),
                 footer: footer.render(),
             });
 
