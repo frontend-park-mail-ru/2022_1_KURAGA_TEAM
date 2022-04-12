@@ -18,10 +18,6 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './movie.scss';
 
-interface User {
-    user: object,
-}
-
 export default class MovieViewClass extends BaseViewClass {
     private user: UserModel;
     private movie: MovieModel;
@@ -33,14 +29,14 @@ export default class MovieViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<any> } = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
 
-            const userData = await Promise.resolve(userBody);
+            const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
             const id = +/\d+/.exec(window.location.pathname);

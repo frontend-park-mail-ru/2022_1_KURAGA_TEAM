@@ -13,16 +13,6 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './profile.scss';
 
-interface UserData {
-    username: string,
-    email: string,
-    avatar: string,
-}
-
-interface User {
-    user: UserData,
-}
-
 export default class ProfileViewClass  extends BaseViewClass{
     private user: UserModel;
 
@@ -31,14 +21,14 @@ export default class ProfileViewClass  extends BaseViewClass{
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<any> } = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
 
-            const userData = await Promise.resolve(userBody);
+            const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
             const header = new HeaderClass(this.user.userData);

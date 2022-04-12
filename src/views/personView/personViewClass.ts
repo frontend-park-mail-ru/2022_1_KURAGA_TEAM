@@ -7,22 +7,18 @@ import MovieCompilationModel from "../../models/MovieCompilation"
 import router from "Routing/router.ts";
 import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPersonClass.js";
-import carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from "Components/footer/footerClass.ts";
 import BaseViewClass from '../baseView/baseViewClass';
 import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './person.scss';
 
-interface User {
-    user: object,
-}
-
 export default class PersonViewClass extends BaseViewClass {
     private user:UserModel;
     private person : PersonModel;
     private movieCompilation: MovieCompilationModel;
     private movieCompilationMobile: MovieCompilationModel;
+
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -30,13 +26,12 @@ export default class PersonViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-
-            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<any> } = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData = await Promise.resolve(userBody);
+            const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
             const {persBody} = await PersonModel.getPerson(id);

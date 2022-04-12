@@ -1,9 +1,9 @@
 import headMovieTemplate from './headMovie.pug'
 
 export default class HeadMovieClass {
-    private readonly info: object;
+    private readonly info: InfoHeadMovie;
 
-    constructor(info: object) {
+    constructor(info: InfoHeadMovie) {
         this.info = info
     }
 
