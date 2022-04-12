@@ -9,15 +9,19 @@ import { routes } from "Routing/constRouting";
 import HeadPersonClass from "Components/headPerson/headPersonClass.js";
 import carousel from 'Components/carousel/carouselClass.js';
 import FooterClass from "Components/footer/footerClass.ts";
-import BaseViewClass from '../baseView/baseViewClass.ts';
-import LoaderViewClass from "../loaderView/loaderViewClass.ts";
+import BaseViewClass from '../baseView/baseViewClass';
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import './person.scss';
 
+interface User {
+    user: object,
+}
+
 export default class PersonViewClass extends BaseViewClass {
-    #user;
-    #person;
-    #movieCompilation;
+    private user:UserModel;
+    private person : PersonModel;
+    private movieCompilation: MovieCompilationModel;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -26,30 +30,30 @@ export default class PersonViewClass extends BaseViewClass {
             const id = +/\d+/.exec(window.location.pathname);
 
 
-            const {isAuth, userBody} = await UserModel.auth();
+            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
             const userData = await Promise.resolve(userBody);
-            this.#user = new UserModel(userData.user);
+            this.user = new UserModel(userData.user);
 
             const {persBody} = await PersonModel.getPerson(id);
             const persData = await Promise.resolve(persBody);
-            this.#person = new PersonModel(persData);
+            this.person = new PersonModel(persData);
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationPerson(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
-            this.#movieCompilation = new MovieCompilationModel(movieCompilationData);
+            this.movieCompilation = new MovieCompilationModel(movieCompilationData);
 
-            const header = new HeaderClass(this.#user.userData);
-            const headPerson = new HeadPersonClass(this.#person.personData);
-            const carouselPop = new carousel(0, this.#movieCompilation.movieCompilationData, false);
-            const carouselPopMobile = new carousel(0, this.#movieCompilation.movieCompilationData, true);
+            const header = new HeaderClass(this.user.userData);
+            const headPerson = new HeadPersonClass(this.person.personData);
+            const carouselPop = new carousel(0, this.movieCompilation.movieCompilationData, false);
+            const carouselPopMobile = new carousel(0, this.movieCompilation.movieCompilationData, true);
             const footer = new FooterClass();
 
             super.render(personViewTemplate,{
-                personImg: this.#person.personData,
+                personImg: this.person.personData,
                 header: header.render(),
                 headPerson: headPerson.render(),
                 carouselPop: carouselPop.render(),
