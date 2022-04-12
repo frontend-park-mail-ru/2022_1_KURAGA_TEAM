@@ -1,23 +1,22 @@
-import {ajaxReq} from 'Modules/ajax';
+import { ajaxReq } from 'Modules/ajax';
 import router from 'Routing/router.ts';
-import {routes} from 'Routing/constRouting';
+import { routes } from 'Routing/constRouting';
 import carouselTemplate from 'Components/carousel/carousel.pug';
 import movingCarousel from 'Components/carousel/movingCarousel';
-export default class MovieCompilationModel {
 
-    constructor(index,movieCompilationData,isMobile) {
+export default class MovieCompilationModel {
+    constructor(index, movieCompilationData, isMobile) {
         this.data = {
             id: index,
             compilationName: movieCompilationData.compilation_name,
             movies: movieCompilationData.movies,
-            isMobile: isMobile
-        }
+            isMobile,
+        };
     }
 
     get movieCompilationData() {
         return this.data;
     }
-
 
     static async movies() {
         try {
@@ -32,7 +31,7 @@ export default class MovieCompilationModel {
     static async movieCompilationMovie(id) {
         try {
             return await ajaxReq.get({
-                path: '/movieCompilations/movie/' + id,
+                path: `/movieCompilations/movie/${id}`,
             });
         } catch (err) {
             return err;
@@ -42,13 +41,12 @@ export default class MovieCompilationModel {
     static async movieCompilationPerson(id) {
         try {
             return await ajaxReq.get({
-                path: '/movieCompilations/person/' + id,
+                path: `/movieCompilations/person/${id}`,
             });
         } catch (err) {
             return err;
         }
     }
-
 
     static getMovieCompilations() {
         return new Promise((movieCompilations) => {
@@ -56,14 +54,13 @@ export default class MovieCompilationModel {
                 .then((body) => {
                     movieCompilations({
                         isAuth: body.isAuth,
-                        movCompBody: body.data
+                        movCompBody: body.data,
                     });
                 })
                 .catch((err) => {
                     router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
-
     }
 
     static getMovieCompilationMovie(id) {
@@ -72,7 +69,7 @@ export default class MovieCompilationModel {
                 .then((body) => {
                     movieCompilation({
                         isAuth: body.isAuth,
-                        movCompBody: body.data
+                        movCompBody: body.data,
                     });
                 })
                 .catch((err) => {
@@ -87,7 +84,7 @@ export default class MovieCompilationModel {
                 .then((body) => {
                     movieCompilation({
                         isAuth: body.isAuth,
-                        movCompBody: body.data
+                        movCompBody: body.data,
                     });
                 })
                 .catch((err) => {
@@ -97,8 +94,7 @@ export default class MovieCompilationModel {
     }
 
     render() {
-
-        if (this.data.compilationName === "Лучшее за 2011 год" && this.data.isMobile === true)
+        if (this.data.compilationName === 'Лучшее за 2011 год' && this.data.isMobile === true) {
             return carouselTemplate({
                 items: this.data.movies,
                 car: `js-carousel${this.data.id}`,
@@ -108,9 +104,10 @@ export default class MovieCompilationModel {
                 typeMov: 'Top',
                 num: 1,
                 countDiv: Math.ceil(this.data.movies.length / 1),
-                compilationName: this.data.compilationName
+                compilationName: this.data.compilationName,
             });
-        if (this.data.isMobile === true)
+        }
+        if (this.data.isMobile === true) {
             return carouselTemplate({
                 items: this.data.movies,
                 car: `js-carousel${this.data.id}`,
@@ -120,9 +117,10 @@ export default class MovieCompilationModel {
                 typeMov: '',
                 num: 2,
                 countDiv: Math.ceil(this.data.movies.length / 2),
-                compilationName: this.data.compilationName
+                compilationName: this.data.compilationName,
             });
-        if (this.data.compilationName === "Лучшее за 2011 год")
+        }
+        if (this.data.compilationName === 'Лучшее за 2011 год') {
             return carouselTemplate({
                 items: this.data.movies,
                 car: `js-carousel${this.data.id}`,
@@ -132,9 +130,9 @@ export default class MovieCompilationModel {
                 typeMov: 'Top',
                 num: 3,
                 countDiv: Math.ceil(this.data.movies.length / 3),
-                compilationName: this.data.compilationName
+                compilationName: this.data.compilationName,
             });
-
+        }
 
         return carouselTemplate({
             items: this.data.movies,
@@ -145,9 +143,8 @@ export default class MovieCompilationModel {
             typeMov: '',
             countDiv: Math.ceil(this.data.movies.length / 4),
             num: 4,
-            compilationName: this.data.compilationName
+            compilationName: this.data.compilationName,
         });
-
     }
 
     setHandler() {
@@ -174,9 +171,5 @@ export default class MovieCompilationModel {
             prev: `.js-carousel${this.data.id}__prev`,
             next: `.js-carousel${this.data.id}__next`,
         });
-
-
-
     }
 }
-

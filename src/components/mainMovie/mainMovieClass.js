@@ -4,12 +4,12 @@ export default class MainMovieClass {
     #info;
 
     constructor(info) {
-        this.#info = info
+        this.#info = info;
     }
 
     render() {
         return mainMovieTemplate({
-            info: this.#info
+            info: this.#info,
         });
     }
 }

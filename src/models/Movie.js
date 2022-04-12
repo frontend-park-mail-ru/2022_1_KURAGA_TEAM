@@ -1,9 +1,8 @@
-import {ajaxReq} from 'Modules/ajax';
+import { ajaxReq } from 'Modules/ajax';
 import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
 
 export default class MovieModel {
-
     constructor(movieData) {
         this.data = {
             id: movieData.id,
@@ -21,19 +20,22 @@ export default class MovieModel {
             staff: movieData.staff,
             trailer: movieData.trailer,
             video: movieData.video,
-            year: movieData.year
-        }
+            year: movieData.year,
+        };
     }
 
     get movieData() {
         return this.data;
     }
+
     get video() {
         return this.data.video;
     }
+
     get trailer() {
         return this.data.trailer;
     }
+
     get id() {
         return this.data.id;
     }
@@ -58,17 +60,15 @@ export default class MovieModel {
         }
     }
 
-
     static async movie(id) {
         try {
             return await ajaxReq.get({
-                path: '/movie/' + id,
+                path: `/movie/${id}`,
             });
         } catch (err) {
             return err;
         }
     }
-
 
     static mainMov() {
         return new Promise((movie) => {
@@ -76,14 +76,13 @@ export default class MovieModel {
                 .then((body) => {
                     movie({
                         isAuth: body.isAuth,
-                        movBody: body.data
+                        movBody: body.data,
                     });
                 })
                 .catch((err) => {
                     router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
-
     }
 
     static getMovie(id) {
@@ -92,14 +91,12 @@ export default class MovieModel {
                 .then((body) => {
                     movie({
                         isAuth: body.isAuth,
-                        movBody: body.data
+                        movBody: body.data,
                     });
                 })
                 .catch((err) => {
                     router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
-
     }
 }
-

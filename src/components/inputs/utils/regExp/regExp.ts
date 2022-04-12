@@ -3,4 +3,4 @@ export const regExp = {
     containsLetters: /^.*[a-zA-Z]+.*$/,
     minimum8Chars: /^.{8,}$/,
     containsNumbers: /^.*[0-9]+.*$/,
-}
+};

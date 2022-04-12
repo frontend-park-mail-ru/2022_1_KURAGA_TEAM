@@ -1,5 +1,5 @@
 import headerTemplate from './header.pug';
-import UserModel from "../../models/User.js"
+import UserModel from '../../models/User.js';
 
 export default class HeaderClass {
     #info;
@@ -9,7 +9,7 @@ export default class HeaderClass {
     }
 
     render() {
-        return headerTemplate({item: this.#info});
+        return headerTemplate({ item: this.#info });
     }
 
     setHandler() {
@@ -34,11 +34,10 @@ export default class HeaderClass {
         const verticalNavbar = document.querySelector('#Capa_1');
         verticalNavbar.addEventListener('click', (e) => {
             e.preventDefault();
-            const verticalMenu = document.querySelector(".menu-mobile__vertical");
+            const verticalMenu = document.querySelector('.menu-mobile__vertical');
             if (verticalMenu.style.display === 'flex') {
                 verticalMenu.style.display = 'none';
                 verticalNavbar.classList.remove('menuSymbol__action');
-
             } else {
                 verticalMenu.style.display = 'flex';
                 verticalNavbar.classList.add('menuSymbol__action');
@@ -47,8 +46,7 @@ export default class HeaderClass {
         const profileIcon = document.querySelector('.btn-profile');
         profileIcon.addEventListener('touchstart', (e) => {
             e.preventDefault();
-            const profileMenu = document.querySelector(".dropdown-content");
-
+            const profileMenu = document.querySelector('.dropdown-content');
 
             if (profileMenu.style.display === 'block') {
                 profileMenu.style.display = 'none';
@@ -56,6 +54,5 @@ export default class HeaderClass {
                 profileMenu.style.display = 'block';
             }
         });
-
     }
 }

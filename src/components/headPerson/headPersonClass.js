@@ -1,15 +1,15 @@
-import headPersonTemplate from './headPerson.pug'
+import headPersonTemplate from './headPerson.pug';
 
 export default class HeadPersonClass {
     #info;
 
     constructor(info) {
-        this.#info = info
+        this.#info = info;
     }
 
     render() {
         return headPersonTemplate({
-            info: this.#info
+            info: this.#info,
         });
     }
 }

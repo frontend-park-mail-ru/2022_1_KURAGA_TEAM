@@ -4,7 +4,6 @@ import { routes } from 'Routing/constRouting';
 
 export default class PersonModel {
     constructor(personData) {
-
         this.data = {
             addit_photo_1: personData.addit_photo_1,
             addit_photo_2: personData.addit_photo_2,
@@ -12,19 +11,18 @@ export default class PersonModel {
             id: personData.id,
             name: personData.name,
             photo: personData.photo,
-            position: personData.position
-        }
+            position: personData.position,
+        };
     }
 
     get personData() {
         return this.data;
     }
 
-
     static async person(id) {
         try {
             return await ajaxReq.get({
-                path: '/person/' + id,
+                path: `/person/${id}`,
             });
         } catch (err) {
             return err;
@@ -37,13 +35,12 @@ export default class PersonModel {
                 .then((body) => {
                     person({
                         isAuth: body.isAuth,
-                        persBody: body.data
+                        persBody: body.data,
                     });
                 })
                 .catch((err) => {
                     router.go(routes.ERROR_CATCH_VIEW);
                 });
         });
-
     }
 }
