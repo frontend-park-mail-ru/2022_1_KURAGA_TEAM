@@ -59,6 +59,7 @@ export default class MovieViewClass extends BaseViewClass {
             const movieCompilationData = await Promise.resolve(movCompBody);
             this.movieCompilation = new MovieCompilationModel(movieCompilationData);
 
+
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(this.movie.movieData);
@@ -86,8 +87,9 @@ export default class MovieViewClass extends BaseViewClass {
             carouselPop.setHandler();
             carouselPopMobile.setHandler();
             header.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch (err) {
+            console.error(err)
+            // router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
