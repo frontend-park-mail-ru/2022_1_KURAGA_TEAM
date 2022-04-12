@@ -40,7 +40,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const { movBody } = await MovieModel.getMovie(id);
+            const { movBody }: {movBody?: Promise<any> } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
             console.log(movData);
 
@@ -51,7 +51,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             this.movie = new MovieModel(movData);
 
-            const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
+            const {movCompBody}: {movCompBody?: Promise<any> } = await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
 
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);

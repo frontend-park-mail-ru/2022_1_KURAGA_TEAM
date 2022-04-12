@@ -39,3 +39,53 @@ export interface User {
     user: UserData
 }
 
+export interface PersonData {
+    addit_photo_1: string;
+    addit_photo_2: string;
+    description: string;
+    id: number;
+    name: string;
+    photo: string;
+    position: string;
+}
+
+export interface MovieData {
+
+    id: number;
+    name: string;
+    genre: string;
+    picture: string;
+    tagline: string;
+    age_limit: string;
+    country: string;
+    description: string;
+    duration: string;
+    kinopoisk_rating: string;
+    name_picture: string;
+    rating: string;
+    staff: string;
+    trailer: string;
+    video: string;
+    year: string;
+
+}
+
+export interface MovieCompilationData{
+    id: number;
+    movies: Array<MovieData>;
+    compilationName: string;
+    isMobile: boolean;
+}
+export interface InfoHeadPerson {
+    name: string;
+    position: string;
+    description: string;
+    addit_photo_1: string;
+    addit_photo_2: string;
+
+}
+
+export interface mainMovieData{
+    name_picture: string;
+    tagline: string;
+}

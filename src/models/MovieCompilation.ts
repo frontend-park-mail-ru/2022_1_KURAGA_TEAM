@@ -3,14 +3,17 @@ import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
 import carouselTemplate from 'Components/carousel/carousel.pug';
 import movingCarousel from 'Components/carousel/movingCarousel';
+import { MovieCompilationData } from "../types";
 
 export default class MovieCompilationModel {
+    data: MovieCompilationData;
+
     constructor(index, movieCompilationData, isMobile) {
         this.data = {
             id: index,
             compilationName: movieCompilationData.compilation_name,
             movies: movieCompilationData.movies,
-            isMobile,
+            isMobile: isMobile,
         };
     }
 
@@ -147,7 +150,7 @@ export default class MovieCompilationModel {
         });
     }
 
-    setHandler() {
+    setHandler():void {
         for (let i = 0; i < 4; i++) {
             const wrap = document.querySelector(`.js-carousel${this.data.id}`);
 

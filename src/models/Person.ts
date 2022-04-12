@@ -1,28 +1,13 @@
 import { ajaxReq } from 'Modules/ajax';
 import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
-
+import { PersonData } from "../types";
 export default class PersonModel {
 
-    // data: {
-    //     addit_photo_1: string;
-    //     addit_photo_2: string;
-    //     description: string;
-    //     id: number;
-    //     name: string;
-    //     photo: string;
-    //     position: string;
-    // };
-    constructor(personData) {
-        this.data = {
-            addit_photo_1: personData.addit_photo_1,
-            addit_photo_2: personData.addit_photo_2,
-            description: personData.description,
-            id: personData.id,
-            name: personData.name,
-            photo: personData.photo,
-            position: personData.position,
-        };
+    data: PersonData;
+
+    constructor(personData : PersonData) {
+        this.data = personData;
     }
 
     get personData() {

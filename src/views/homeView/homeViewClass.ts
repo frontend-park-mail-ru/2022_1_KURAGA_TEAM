@@ -35,11 +35,11 @@ export default class HomeViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            const {movBody} = await MovieModel.mainMov();
+            const {movBody}: {movBody?: Promise<any> } = await MovieModel.mainMov();
             const mainMovieData = await Promise.resolve(movBody);
             this.mainMovie = new MovieModel(mainMovieData);
 
-            const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
+            const {movCompBody}: {movCompBody?: Promise<any> } = await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
             this.movieCompilations = movieCompilationsData.map((movieCompilationData, index) => new MovieCompilationModel(index, movieCompilationData, false))

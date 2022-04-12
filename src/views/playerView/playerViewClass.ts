@@ -2,7 +2,7 @@ import playerTemplate from './player.pug';
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import { routes } from "Routing/constRouting";
-import MovieModel from "../../models/Movie.js"
+import MovieModel from "../../models/Movie"
 import router from "Routing/router";
 import handlerLink from "Utils/handlerLink";
 
@@ -20,7 +20,7 @@ export default class PlayerViewClass extends BaseViewClass {
 
             const check = window.location.pathname.indexOf('trailer');
 
-            const { movBody } = await MovieModel.getMovie(idx);
+            const { movBody }: {movBody?: Promise<any> } = await MovieModel.getMovie(idx);
             const movData = await Promise.resolve(movBody);
 
             if (movData.status === routes.ERROR) {
