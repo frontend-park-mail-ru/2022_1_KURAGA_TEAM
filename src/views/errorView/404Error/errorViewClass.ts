@@ -5,6 +5,7 @@ import router from "Routing/router";
 import FooterClass from "Components/footer/footerClass";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../../baseView/baseViewClass';
+import { User } from "../../../types";
 
 import './error.scss';
 

@@ -1,15 +1,15 @@
-interface Staff {
+export interface Staff {
     id: number,
     photo: string,
     name: string,
     position: string,
 }
 
-interface Staffs {
+export interface Staffs {
     staff: Staff,
 }
 
-interface InfoHeadMovie {
+export interface InfoHeadMovie {
     id: number,
     name_picture: string,
     rating: number,
@@ -21,20 +21,20 @@ interface InfoHeadMovie {
     age_limit: number,
 }
 
-interface Genre {
+export interface Genre {
     genre: Array<string>,
 }
 
-interface Genres {
+export interface Genres {
     genre: Genre
 }
 
-interface UserData {
+export interface UserData {
     username: string,
     email: string,
     avatar: string,
 }
 
-interface User {
+export interface User {
     user: UserData
 }

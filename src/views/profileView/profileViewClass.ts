@@ -10,6 +10,7 @@ import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import { User } from "../../types";
 
 import './profile.scss';
 

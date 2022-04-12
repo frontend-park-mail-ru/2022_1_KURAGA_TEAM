@@ -10,6 +10,7 @@ import HeadPersonClass from "Components/headPerson/headPersonClass.js";
 import FooterClass from "Components/footer/footerClass.ts";
 import BaseViewClass from '../baseView/baseViewClass';
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import { User } from "../../types";
 
 import './person.scss';
 

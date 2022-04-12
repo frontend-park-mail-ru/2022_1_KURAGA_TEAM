@@ -10,6 +10,8 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserModel from "../../models/User"
 import MovieModel from "../../models/Movie"
 import MovieCompilationModel from "../../models/MovieCompilation"
+import { User } from "../../types";
+
 import '../../css/home.scss';
 
 export default class HomeViewClass extends BaseViewClass {

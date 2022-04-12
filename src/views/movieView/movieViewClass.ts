@@ -15,6 +15,7 @@ import ActorsClass from "Components/actors/actorsClass";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import { User } from "../../types";
 
 import './movie.scss';
 
