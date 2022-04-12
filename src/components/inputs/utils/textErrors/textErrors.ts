@@ -8,4 +8,4 @@ export const textErrors = {
     success: 'Информация обновлена!',
     secondPassErr: 'Пароли не совпадают',
     sameInfo: 'Информация не изменилась',
-}
+};

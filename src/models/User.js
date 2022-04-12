@@ -3,13 +3,13 @@ import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
 
 export default class UserModel {
-    // data: { username: string; email: string; avatar: string; };
+     // data: { username: string; email: string; avatar: string; };
     constructor(userData) {
         this.data = {
             username: userData.username,
             email: userData.email,
-            avatar: userData.avatar
-        }
+            avatar: userData.avatar,
+        };
     }
 
 
@@ -49,7 +49,7 @@ export default class UserModel {
         }
     }
 
-     static async profile() {
+    static async profile() {
         try {
             return await ajaxReq.get({
                 path: '/profile',
@@ -66,8 +66,8 @@ export default class UserModel {
                 body: form,
                 headers: {
                     'Content-Type': 'application/json',
-                    'csrf-token': csrfToken
-                }
+                    'csrf-token': csrfToken,
+                },
             });
         } catch (err) {
             return err;
@@ -80,8 +80,8 @@ export default class UserModel {
                 path: '/avatar',
                 body: form,
                 headers: {
-                    'csrf-token': csrfToken
-                }
+                    'csrf-token': csrfToken,
+                },
             });
         } catch (err) {
             return err;
@@ -98,21 +98,21 @@ export default class UserModel {
         }
     }
 
-    static auth(){
+    static auth() {
         return new Promise((res) => {
             this.profile()
                 .then((body) => {
-                     res({
-                         isAuth: body.isAuth,
-                         userBody: body.data
-                     });
+                    res({
+                        isAuth: body.isAuth,
+                        userBody: body.data,
+                    });
                 })
                 .catch(() => {
                 });
         });
     }
 
-    static quit(){
+    static quit() {
         return new Promise((res) => {
             this.logout()
                 .then(() => {
@@ -124,7 +124,7 @@ export default class UserModel {
         });
     }
 
-    static reg(formJson){
+    static reg(formJson) {
         const errorIncorr = document.querySelector('div[data-section="incorrect"]');
 
         this.registration(formJson)
@@ -197,7 +197,4 @@ export default class UserModel {
             return err;
         }
     }
-
-
 }
-

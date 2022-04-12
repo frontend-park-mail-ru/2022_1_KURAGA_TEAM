@@ -10,8 +10,7 @@ export default class Carousel {
     }
 
     render() {
-
-        if (this.title === "Лучшее за 2011 год" && this.isMobile === true)
+        if (this.title === 'Лучшее за 2011 год' && this.isMobile === true) {
             return carouselTemplate({
                 items: this.movies,
                 car: `js-carousel${this.id}`,
@@ -21,9 +20,10 @@ export default class Carousel {
                 typeMov: 'Top',
                 num: 1,
                 countDiv: Math.ceil(this.movies.length / 1),
-                title: this.title
+                title: this.title,
             });
-        if (this.isMobile === true)
+        }
+        if (this.isMobile === true) {
             return carouselTemplate({
                 items: this.movies,
                 car: `js-carousel${this.id}`,
@@ -33,9 +33,10 @@ export default class Carousel {
                 typeMov: '',
                 num: 2,
                 countDiv: Math.ceil(this.movies.length / 2),
-                title: this.title
+                title: this.title,
             });
-        if (this.title === "Лучшее за 2011 год")
+        }
+        if (this.title === 'Лучшее за 2011 год') {
             return carouselTemplate({
                 items: this.movies,
                 car: `js-carousel${this.id}`,
@@ -45,9 +46,9 @@ export default class Carousel {
                 typeMov: 'Top',
                 num: 3,
                 countDiv: Math.ceil(this.movies.length / 3),
-                title: this.title
+                title: this.title,
             });
-
+        }
 
         return carouselTemplate({
             items: this.movies,
@@ -58,9 +59,8 @@ export default class Carousel {
             typeMov: '',
             countDiv: Math.ceil(this.movies.length / 4),
             num: 4,
-            title: this.title
+            title: this.title,
         });
-
     }
 
     setHandler() {
@@ -87,8 +87,5 @@ export default class Carousel {
             prev: `.js-carousel${this.id}__prev`,
             next: `.js-carousel${this.id}__next`,
         });
-
-
-
     }
 }

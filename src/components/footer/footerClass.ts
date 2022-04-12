@@ -15,6 +15,6 @@ const configIcon = [
 
 export default class FooterClass {
     render() {
-        return footerTemplate({items: configIcon});
+        return footerTemplate({ items: configIcon });
     }
 }

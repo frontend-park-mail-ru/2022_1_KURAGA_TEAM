@@ -14,7 +14,7 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 import './person.scss';
 
 interface User {
-    user: object,
+    user: UserModel,
 }
 
 export default class PersonViewClass extends BaseViewClass {
@@ -30,7 +30,8 @@ export default class PersonViewClass extends BaseViewClass {
             const id = +/\d+/.exec(window.location.pathname);
 
 
-            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<User> } = await UserModel.auth();
+            console.log(isAuth,userBody);
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
@@ -39,6 +40,7 @@ export default class PersonViewClass extends BaseViewClass {
             this.user = new UserModel(userData.user);
 
             const {persBody} = await PersonModel.getPerson(id);
+            console.log(persBody);
             const persData = await Promise.resolve(persBody);
             this.person = new PersonModel(persData);
 

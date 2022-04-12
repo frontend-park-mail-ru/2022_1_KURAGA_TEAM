@@ -1,5 +1,5 @@
 import headerTemplate from './header.pug';
-import UserModel from "../../models/User.js"
+import UserModel from '../../models/User.js';
 
 export default class HeaderClass {
     private readonly info: object;
@@ -38,7 +38,6 @@ export default class HeaderClass {
             if (verticalMenu.style.display === 'flex') {
                 verticalMenu.style.display = 'none';
                 verticalNavbar.classList.remove('menuSymbol__action');
-
             } else {
                 verticalMenu.style.display = 'flex';
                 verticalNavbar.classList.add('menuSymbol__action');
@@ -48,14 +47,11 @@ export default class HeaderClass {
         profileIcon.addEventListener('touchstart', (e) => {
             e.preventDefault();
             const profileMenu: HTMLElement = document.querySelector(".dropdown-content");
-
-
             if (profileMenu.style.display === 'block') {
                 profileMenu.style.display = 'none';
             } else {
                 profileMenu.style.display = 'block';
             }
         });
-
     }
 }

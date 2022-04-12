@@ -1,4 +1,4 @@
-import headPersonTemplate from './headPerson.pug'
+import headPersonTemplate from './headPerson.pug';
 
 export default class HeadPersonClass {
     private readonly info: object;

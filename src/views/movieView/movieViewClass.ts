@@ -60,6 +60,7 @@ export default class MovieViewClass extends BaseViewClass {
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
             this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
 
+
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(this.movie.movieData);
@@ -86,7 +87,7 @@ export default class MovieViewClass extends BaseViewClass {
             this.movieCompilationMobile.setHandler();
 
             header.setHandler();
-        } catch {
+        } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);
         }
     }

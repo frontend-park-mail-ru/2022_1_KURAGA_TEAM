@@ -4,19 +4,19 @@ import LoginViewClass from './views/loginView/loginViewClass';
 import HomeViewClass from './views/homeView/homeViewClass';
 import MovieViewClass from './views/movieView/movieViewClass';
 import PersonViewClass from './views/personView/personViewClass';
-import ErrorViewClass from "./views/errorView/404Error/errorViewClass";
-import ProfileViewClass from "./views/profileView/profileViewClass";
-import PlayerViewClass from "./views/playerView/playerViewClass";
-import ErrorCatchViewClass from "./views/errorView/catchError/errorCatchViewClass";
+import ErrorViewClass from './views/errorView/404Error/errorViewClass';
+import ProfileViewClass from './views/profileView/profileViewClass';
+import PlayerViewClass from './views/playerView/playerViewClass';
+import ErrorCatchViewClass from './views/errorView/catchError/errorCatchViewClass';
 
 import './css/common.scss';
 import './css/media.scss';
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-        .register('sw.js', {scope: '/'})
+        .register('sw.js', { scope: '/' })
         .catch((err) => {
-             console.error(err);
+            console.error(err);
         });
 }
 
