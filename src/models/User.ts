@@ -97,7 +97,7 @@ export default class UserModel {
     }
 
     static auth() {
-        return new Promise((res) => {
+        return new Promise<{isAuth: boolean,userBody}>((res) => {
             this.profile()
                 .then((body) => {
                     res({

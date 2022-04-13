@@ -28,7 +28,7 @@ export default class MovieViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<any> } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);

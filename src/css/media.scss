@@ -245,6 +245,7 @@
   }
 
   .photo-person__gradient {
+    padding-top: 0;
     background: none;
     height: 60%;
   }
@@ -799,6 +800,7 @@
     background-repeat: no-repeat;
   }
   .head-person {
+    height: auto;
     align-content: center;
     justify-content: flex-end;
     margin: 160px auto auto 4vw;

@@ -17,8 +17,8 @@ import { User } from "../../types";
 export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
     private mainMovie: MovieModel;
-    private movieCompilations: MovieCompilationModel[];
-    private movieCompilationsMobile: MovieCompilationModel[];
+    private movieCompilations: Array<MovieCompilationModel>;
+    private movieCompilationsMobile: Array<MovieCompilationModel>;
 
 
     async render() {
@@ -26,7 +26,7 @@ export default class HomeViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<any> } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -95,7 +95,7 @@ export default class HomeViewClass extends BaseViewClass {
                     carouselBlock = '<div class = "first">'+carousel.render()+'</div>';
                     break;
                 case movieCompilations.length-1:
-                    carouselBlock = '<div class = "margin-bottom">'+carousel.render()+'</div>';
+                    carouselBlock = '<div class = "last">'+carousel.render()+'</div>';
                     break;
                 default:
                     carouselBlock = '<div>'+carousel.render()+'</div>';

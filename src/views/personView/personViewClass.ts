@@ -28,7 +28,7 @@ export default class PersonViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<any> } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -69,6 +69,6 @@ export default class PersonViewClass extends BaseViewClass {
         }
     }
     compilationsRender(movieCompilation : MovieCompilationModel) : string{
-        return '<div class = "margin-bottom movie-carousel">'+movieCompilation.render()+'</div>';
+        return '<div class = "margin-bottom margin-person">'+movieCompilation.render()+'</div>';
     }
 }

@@ -15,7 +15,7 @@ export default class ErrorViewClass extends BaseViewClass{
     async render() {
         try {
 
-            const {isAuth, userBody}: { isAuth?: boolean, userBody?: Promise<any> } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
