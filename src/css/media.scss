@@ -237,6 +237,7 @@
 
   /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
   .header {
+    background-position-x: center;
     height: 100%;
   }
 
@@ -346,6 +347,8 @@
   .movieTop{
     transform: scale(1);
     margin-inline-end: 0;
+    margin-inline: 1vw;
+    background-position-x: center;
   }
 
   .movie,
@@ -374,7 +377,7 @@
   }
   .b-carouselTop__wrap,
   .b-carousel__wrap {
-    overflow: scroll
+    overflow-x: scroll;
   }
 
   #selectMobile {
@@ -569,6 +572,7 @@
   }
 
   .navbar {
+    height: 22%;
     transition: none;
     position: sticky !important;
     justify-content: space-between;
@@ -837,7 +841,7 @@
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
   .navbar {
-
+    height: 22%;
     transition: none;
     position: sticky !important;
     justify-content: space-between;
