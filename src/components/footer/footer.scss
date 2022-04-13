@@ -14,13 +14,13 @@
     display: flex;
 }
 
-#second-footer{
+#second-footer {
     margin-left: 20px;
     display: block;
     width: 350px;
 }
 
-#third-footer{
+#third-footer {
     text-align: end;
     display: block;
     grid-area: fourth;
@@ -46,7 +46,7 @@
     height: 39px;
     width: 39px;
     margin-top: 20px;
-    transition: transform .1s linear;
+    transition: transform 0.1s linear;
 }
 
 .refer:hover {

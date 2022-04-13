@@ -1,8 +1,8 @@
-import FooterClass from 'Components/footer/footerClass.ts';
-import errorViewTemplate from './error.pug';
-import BaseViewClass from '../../baseView/baseViewClass';
+import FooterClass from "Components/footer/footerClass.ts";
+import errorViewTemplate from "./error.pug";
+import BaseViewClass from "../../baseView/baseViewClass";
 
-import './error.scss';
+import "./error.scss";
 
 export default class ErrorCatchViewClass extends BaseViewClass {
     render() {

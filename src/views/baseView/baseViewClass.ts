@@ -1,7 +1,7 @@
-const root = document.getElementById('root');
+const root = document.getElementById("root");
 
 export default class BaseViewClass {
-    render(template, props: any = '') {
+    render(template, props: any = "") {
         window.scrollTo(0, 0);
 
         root.innerHTML = template(props);

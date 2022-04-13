@@ -109,7 +109,7 @@
     background: var(--btn-color);
     mix-blend-mode: normal;
     border-radius: 10px;
-    transition: transform .1s ease-out,background-color .15s linear;
+    transition: transform 0.1s ease-out, background-color 0.15s linear;
 }
 .play-button:active {
     transform: scale(0.94);
@@ -135,7 +135,7 @@
     background: transparent;
     mix-blend-mode: normal;
     border-radius: 10px;
-    transition: transform .1s ease-out,background-color .15s linear;
+    transition: transform 0.1s ease-out, background-color 0.15s linear;
 }
 
 .trailer-button:active {
@@ -145,8 +145,3 @@
 .trailer-button:hover {
     background: var(--trailer-button-hover);
 }
-
-
-
-
-

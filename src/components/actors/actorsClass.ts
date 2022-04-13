@@ -1,4 +1,4 @@
-import actorsTemplate from './actors.pug'
+import actorsTemplate from "./actors.pug";
 import { Staff, Staffs } from "../../types";
 
 export default class ActorsClass {
@@ -9,6 +9,6 @@ export default class ActorsClass {
     }
 
     render() {
-        return actorsTemplate({staffs: this.staffs});
+        return actorsTemplate({ staffs: this.staffs });
     }
 }

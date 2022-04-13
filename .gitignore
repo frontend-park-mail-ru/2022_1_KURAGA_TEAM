@@ -4,3 +4,5 @@ node_modules
 ./2022_1_KuragaTeam
 .js
 /build
+.prettierignore
+.prettierrc.json

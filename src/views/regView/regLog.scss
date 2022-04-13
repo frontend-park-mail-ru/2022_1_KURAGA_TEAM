@@ -1,6 +1,6 @@
-@import '../../components/footer/footer';
-@import '../../components/button/button';
-@import '../../components/inputs/inputs';
+@import "../../components/footer/footer";
+@import "../../components/button/button";
+@import "../../components/inputs/inputs";
 
 #root {
     width: 100%;
@@ -58,7 +58,7 @@
     color: var(--font-color);
 }
 
-.text{
+.text {
     margin-top: 10px;
 }
 

@@ -1,8 +1,8 @@
-import loaderViewTemplate from './loader.pug';
+import loaderViewTemplate from "./loader.pug";
 
-import './loader.scss';
+import "./loader.scss";
 
-const root = document.getElementById('root');
+const root = document.getElementById("root");
 
 export default class LoaderViewClass {
     render() {

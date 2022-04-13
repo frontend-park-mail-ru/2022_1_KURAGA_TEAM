@@ -29,5 +29,5 @@
 }
 
 .second-part-genre__div .second-part-genre__genres:not(:last-child):after {
-    content: ', ';
+    content: ", ";
 }

@@ -1,4 +1,4 @@
-import { parseRegExp } from './parseRegExp';
+import { parseRegExp } from "./parseRegExp";
 import { routes } from "./constRouting";
 import OfflineViewClass from "../views/offlineView/offlineViewClass";
 
@@ -40,7 +40,7 @@ class Router {
         const currentView = this.routes[pathname];
         currentView.render();
 
-        window.addEventListener('popstate', () => {
+        window.addEventListener("popstate", () => {
             const pathname = parseRegExp(window.location.pathname);
 
             const newView = this.routes[pathname];

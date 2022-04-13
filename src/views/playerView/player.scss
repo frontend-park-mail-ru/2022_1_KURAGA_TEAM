@@ -16,7 +16,7 @@
     color: white;
     margin-left: 70px;
     padding-top: 4vmin;
-    transition: all .2s linear;
+    transition: all 0.2s linear;
 }
 
 .exit:hover {
@@ -47,7 +47,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all .2s linear;
+    transition: all 0.2s linear;
 }
 
 .progress-controls {
@@ -100,7 +100,7 @@
     width: 60px;
     margin: 0 10px;
     opacity: 0.7;
-    transition: all .2s linear;
+    transition: all 0.2s linear;
 }
 
 .controls__button:hover {

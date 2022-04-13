@@ -23,7 +23,7 @@
     background: var(--btn-info-hover-color);
     mix-blend-mode: normal;
     border-radius: 5px;
-    transition: transform .1s ease-out,background-color .15s linear;
+    transition: transform 0.1s ease-out, background-color 0.15s linear;
 }
 
 .profile-avatar__input-button:hover {

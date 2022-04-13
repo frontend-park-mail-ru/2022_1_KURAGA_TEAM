@@ -1,9 +1,9 @@
-@import '../../components/profileAvatar/profileAvatar';
+@import "../../components/profileAvatar/profileAvatar";
 
 .back-profile {
     position: absolute;
     background: url("../../static/backProfile.webp");
-    Background-size: cover;
+    background-size: cover;
     width: 100%;
     height: 100vh;
     opacity: 0.3;
@@ -67,5 +67,5 @@
     height: 50px;
     background: none;
     backdrop-filter: none;
-    border-radius: 10px
+    border-radius: 10px;
 }

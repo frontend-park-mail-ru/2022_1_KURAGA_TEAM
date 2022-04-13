@@ -1,12 +1,11 @@
-import { ajaxReq } from 'Modules/ajax';
-import router from 'Routing/router.ts';
-import { routes } from 'Routing/constRouting';
+import { ajaxReq } from "Modules/ajax";
+import router from "Routing/router.ts";
+import { routes } from "Routing/constRouting";
 import { PersonData } from "../types";
 export default class PersonModel {
-
     data: PersonData;
 
-    constructor(personData : PersonData) {
+    constructor(personData: PersonData) {
         this.data = personData;
     }
 

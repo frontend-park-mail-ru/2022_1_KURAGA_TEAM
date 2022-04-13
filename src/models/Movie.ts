@@ -1,14 +1,12 @@
-import {ajaxReq} from 'Modules/ajax';
-import router from 'Routing/router.ts';
-import {routes} from 'Routing/constRouting';
-import {MovieData} from "../types";
+import { ajaxReq } from "Modules/ajax";
+import router from "Routing/router.ts";
+import { routes } from "Routing/constRouting";
+import { MovieData } from "../types";
 
 export default class MovieModel {
-
     data: MovieData;
 
     constructor(movieData: MovieData) {
-
         this.data = movieData;
     }
 
@@ -31,7 +29,7 @@ export default class MovieModel {
     static async movies() {
         try {
             return await ajaxReq.get({
-                path: '/movieCompilations',
+                path: "/movieCompilations",
             });
         } catch (err) {
             return err;
@@ -41,7 +39,7 @@ export default class MovieModel {
     static async mainHomeMovie() {
         try {
             return await ajaxReq.get({
-                path: '/mainMovie',
+                path: "/mainMovie",
             });
         } catch (err) {
             return err;

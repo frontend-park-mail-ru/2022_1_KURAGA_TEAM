@@ -19,7 +19,7 @@
 .first-part-info__error {
     width: 106px;
     display: none;
-    transition: all .1s ease-out;
+    transition: all 0.1s ease-out;
     margin-top: 20px;
     font-size: 20px;
     color: var(--font-error-color);
@@ -62,7 +62,7 @@
     background: var(--btn-color);
     mix-blend-mode: normal;
     border-radius: 10px;
-    transition: transform .1s ease-out,background-color .15s linear;
+    transition: transform 0.1s ease-out, background-color 0.15s linear;
 }
 
 .your-rating__button:active {

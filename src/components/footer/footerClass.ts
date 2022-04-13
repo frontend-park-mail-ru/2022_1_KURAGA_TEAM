@@ -1,15 +1,15 @@
-import footerTemplate from './footer.pug';
+import footerTemplate from "./footer.pug";
 
 const configIcon = [
     {
-        key: 'telegram',
-        href: '/',
-        src: '../../static/telegram.png',
+        key: "telegram",
+        href: "/",
+        src: "../../static/telegram.png",
     },
     {
-        key: 'vk',
-        href: 'https://vk.com/dtarnovsky',
-        src: '../../static/vk.png',
+        key: "vk",
+        href: "https://vk.com/dtarnovsky",
+        src: "../../static/vk.png",
     },
 ];
 

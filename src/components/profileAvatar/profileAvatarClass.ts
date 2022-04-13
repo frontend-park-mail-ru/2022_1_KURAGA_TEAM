@@ -1,4 +1,4 @@
-import profileAvatarTemplate from './profileAvatar.pug';
+import profileAvatarTemplate from "./profileAvatar.pug";
 
 export default class ProfileAvatarClass {
     private readonly avatar: string;
@@ -8,7 +8,6 @@ export default class ProfileAvatarClass {
     }
 
     render() {
-        return profileAvatarTemplate({avatar: this.avatar});
+        return profileAvatarTemplate({ avatar: this.avatar });
     }
-
 }

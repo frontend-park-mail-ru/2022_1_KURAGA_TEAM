@@ -1,4 +1,4 @@
-import secondGenreTemplate from './secondGenre.pug'
+import secondGenreTemplate from "./secondGenre.pug";
 import { Genre, Genres } from "../../types";
 
 export default class SecondGenreClass {
@@ -9,6 +9,6 @@ export default class SecondGenreClass {
     }
 
     render() {
-        return secondGenreTemplate({genres: this.genres})
+        return secondGenreTemplate({ genres: this.genres });
     }
 }
