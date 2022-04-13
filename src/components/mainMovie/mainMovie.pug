@@ -1,11 +1,7 @@
-mixin mainMovie(items)
-        div.sidebar
-            div.font.title-main-movie
-                div.title-name 1+1
-                div.title-descr «Sometimes you have to reach into someone else's world to find out what's missing in your own»
-            div.btn
-                a.font-other(href="/") Смотреть онлайн
-            div.btn-info
-                a.font-other(href="/") О фильме
+div.sidebar
+    div.font.title-main-movie
+        div.main-movie__name(style=`background-image: url(\"${info.name_picture}\");`)
+        div.title-descr "#{info.tagline}"
+    a.btn.font-other(href=`/player/${info.id}/movie`) Смотреть онлайн
+    a.btn-info.font-other(href=`/movie/${info.id}`) О фильме
 
-+ mainMovie(items)

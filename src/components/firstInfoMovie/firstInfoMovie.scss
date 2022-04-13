@@ -1,0 +1,87 @@
+.first-part-info__rating {
+    margin-bottom: 30px;
+    width: 210px;
+}
+
+.first-part-info__rating-flex {
+    display: flex;
+}
+
+.first-part-info__our-rating {
+    margin-right: 20px;
+    height: auto;
+    text-align: start;
+    color: var(--great-rating);
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.first-part-info__error {
+    width: 106px;
+    display: none;
+    transition: all 0.1s ease-out;
+    margin-top: 20px;
+    font-size: 20px;
+    color: var(--font-error-color);
+}
+
+.first-part-info__error-active {
+    display: block;
+}
+
+.first-part-info__our-name {
+    padding-top: 10px;
+    font-weight: lighter;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.first-part-info__our-name-rt {
+    font-weight: lighter;
+    font-size: 20px;
+    background-color: var(--our-name);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--our-name-gradient);
+}
+
+.first-part-info__your-rating {
+    padding-top: 14px;
+    margin-right: 280px;
+}
+
+.your-rating__button {
+    font-weight: lighter;
+    font-family: GT Eesti Pro Display, arial, sans-serif;
+    color: var(--font-color);
+    font-size: 16px;
+    height: 44px;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    background: var(--btn-color);
+    mix-blend-mode: normal;
+    border-radius: 10px;
+    transition: transform 0.1s ease-out, background-color 0.15s linear;
+}
+
+.your-rating__button:active {
+    transform: scale(0.94);
+}
+
+.your-rating__button:hover {
+    background: var(--btn-hover-color);
+}
+
+.your-rating__text {
+    cursor: default;
+    padding-top: 26px;
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.first-part-info__text {
+    font-size: 20px;
+    font-weight: lighter;
+    width: 700px;
+}

@@ -3,3 +3,6 @@ node_modules
 .eslintrc.js
 ./2022_1_KuragaTeam
 .js
+/build
+.prettierignore
+.prettierrc.json

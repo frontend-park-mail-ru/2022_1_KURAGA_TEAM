@@ -1,17 +1,8 @@
-mixin homeView(items)
-    .root
-        div#header.header
-            div.navbar !{items.header}
-            div.main-movie !{items.mainMovie}
-        div.selection
-            div.select
-                div.select-title Популярное
-                div.wrap !{items.carouselPop}
-                div.select-title Лучшее за 2021 год
-                div.wrap !{items.carouselTop}
-                div.select-title Семейное
-                div.wrap !{items.carouselFam}
-        div !{items.footer}
-
-
-+ homeView(items)
+.root
+    div#header.header(style=`background-image: linear-gradient( rgb(4 4 4 / 62%), rgba(0, 0, 0, 0.5) ), url(\"${mainMovieImg.picture}\");`)
+            div.navbar !{header}
+            div.main-movie !{mainMovie}
+    div.selection
+        div#select !{select}
+        div#selectMobile !{selectMobile}
+    div !{footer}

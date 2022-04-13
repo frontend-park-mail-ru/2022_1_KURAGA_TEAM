@@ -1,0 +1,53 @@
+.group {
+    font-size: 28px;
+}
+
+.group__staff {
+    display: flex;
+    flex-direction: row;
+}
+
+.group__person {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.person__photo {
+    border-radius: 50%;
+    width: 108px;
+    height: 108px;
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+    margin-bottom: 16px;
+    transition: all 0.2s linear;
+}
+
+.person__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: lighter;
+    width: 112px;
+    margin-bottom: 16px;
+}
+
+.person__name:hover {
+    text-decoration: underline;
+}
+
+.person__position {
+    color: var(--secondary-name);
+    font-size: 20px;
+    font-weight: lighter;
+}
+.person__href {
+    text-decoration: none;
+}
+
+.person__photo:hover {
+    transform: scale(1.1);
+}

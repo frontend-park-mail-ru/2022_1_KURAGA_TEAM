@@ -1,0 +1,35 @@
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    object-fit: cover;
+}
+
+.profile-avatar__input {
+    display: none;
+}
+
+.profile-avatar__input-button {
+    display: flex;
+    font-weight: lighter;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 175px;
+    text-align: center;
+    height: 41px;
+    background: var(--btn-info-hover-color);
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    transition: transform 0.1s ease-out, background-color 0.15s linear;
+}
+
+.profile-avatar__input-button:hover {
+    background: var(--btn-info-color);
+}
+
+.profile-avatar__input-button:active {
+    transform: scale(0.94);
+}
