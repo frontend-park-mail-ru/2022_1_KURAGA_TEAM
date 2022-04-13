@@ -20,17 +20,12 @@ const checkUrl = (url) => {
         logos: /\/logos/,
         avatars: /\/avatars/,
         persons: /\/persons/,
+        trailers: /\/trailers/,
     };
 
-    let check = true;
+    const checkS = (value) => url.match(value);
 
-    Object.values(unUrl).forEach((value) => {
-        if (url.match(value)) {
-            check = false;
-        }
-    });
-
-    return check;
+    return !Object.values(unUrl).some(checkS);
 };
 
 this.addEventListener('fetch', (event) => {

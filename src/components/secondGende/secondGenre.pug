@@ -1,7 +1,4 @@
 div.second-part-genre__genre Жанры
 div.second-part-genre__div
     each genre, index in genres
-        if index === genres.length - 1
-            a.second-part-genre__genres(href='.') #{genre}
-        else
-            a.second-part-genre__genres(href='.') #{genre},
+        a.second-part-genre__genres(href='.') #{genre}

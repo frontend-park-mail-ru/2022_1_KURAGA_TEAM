@@ -44,7 +44,6 @@ export default class MovieViewClass extends BaseViewClass {
 
             const { movBody } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
-            console.log(movData);
 
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
