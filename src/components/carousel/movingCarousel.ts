@@ -1,14 +1,16 @@
 import { routes } from 'Routing/constRouting';
 import router from 'Routing/router';
+import { movingCarouselData,privatesMovingCarousel,selInfo,optInfo } from "../../types";
 
-export default function MovingCarousel(setting) {
+export default function MovingCarousel(setting: movingCarouselData) {
     if (document.querySelector(setting.wrap) === null) {
         router.go(routes.ERROR_CATCH_VIEW);
 
         return;
     }
 
-    const privates = {};
+
+
 
     this.prev_slide = () => {
         if (privates.opt.position - 1 <= 0) {
@@ -37,7 +39,7 @@ export default function MovingCarousel(setting) {
         privates.sel.wrap.style.transform = `translateX(-${privates.opt.position}00%)`;
     };
 
-    privates.setting = setting;
+    const privates:privatesMovingCarousel = {setting};
 
     privates.sel = {
         main: document.querySelector(privates.setting.main),

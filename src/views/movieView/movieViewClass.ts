@@ -1,16 +1,14 @@
 import movieViewTemplate from './movieView.pug'
-import HeaderClass from 'Components/header/headerClass.js';
-import handlerLink from 'Utils/handlerLink.ts';
-
-import UserModel from "../../models/User.js"
-import MovieModel from "../../models/Movie.js"
+import HeaderClass from 'Components/header/headerClass';
+import handlerLink from 'Utils/handlerLink';
+import UserModel from "../../models/User"
+import MovieModel from "../../models/Movie"
 import MovieCompilationModel from "../../models/MovieCompilation"
-
 import router from "Routing/router.ts";
-import HeadMovieClass from "Components/headMovie/headMovieClass.ts";
-import FooterClass from "Components/footer/footerClass.ts";
-import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass.ts";
-import SecondGenreClass from "Components/secondGende/secondGenre.ts";
+import HeadMovieClass from "Components/headMovie/headMovieClass";
+import FooterClass from "Components/footer/footerClass";
+import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass";
+import SecondGenreClass from "Components/secondGende/secondGenre";
 import ActorsClass from "Components/actors/actorsClass";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
@@ -30,7 +28,7 @@ export default class MovieViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody}: { isAuth: boolean, userBody: Promise<any> } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -42,7 +40,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const { movBody } = await MovieModel.getMovie(id);
+            const { movBody }: {movBody?: Promise<any> } = await MovieModel.getMovie(id);
             const movData = await Promise.resolve(movBody);
 
             if (movData.status === routes.ERROR) {
@@ -52,7 +50,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             this.movie = new MovieModel(movData);
 
-            const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
+            const {movCompBody}: {movCompBody?: Promise<any> } = await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
 
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);

@@ -1,17 +1,17 @@
 import { ajaxReq } from 'Modules/ajax';
 import router from 'Routing/router.ts';
 import { routes } from 'Routing/constRouting';
+import { UserData } from "../types";
 
 export default class UserModel {
-    constructor(userData) {
-        this.data = {
-            username: userData.username,
-            email: userData.email,
-            avatar: userData.avatar,
-        };
+    data: UserData;
+
+    constructor(userData : UserData) {
+        this.data = userData;
     }
 
-    get userData() {
+
+    get userData(){
         return this.data;
     }
 
@@ -97,7 +97,7 @@ export default class UserModel {
     }
 
     static auth() {
-        return new Promise((res) => {
+        return new Promise<{isAuth: boolean,userBody}>((res) => {
             this.profile()
                 .then((body) => {
                     res({

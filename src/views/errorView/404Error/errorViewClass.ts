@@ -1,6 +1,6 @@
 import errorViewTemplate from './error.pug'
-import HeaderClass from 'Components/header/headerClass.js';
-import UserModel from "../../../models/User.js"
+import HeaderClass from 'Components/header/headerClass';
+import UserModel from "../../../models/User"
 import router from "Routing/router";
 import FooterClass from "Components/footer/footerClass";
 import { routes } from "Routing/constRouting";
@@ -14,7 +14,8 @@ export default class ErrorViewClass extends BaseViewClass{
 
     async render() {
         try {
-            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<any> } = await UserModel.auth();
+
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);

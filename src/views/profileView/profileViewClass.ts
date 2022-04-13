@@ -1,5 +1,5 @@
 import profileViewTemplate from './profileView.pug';
-import HeaderClass from "Components/header/headerClass.js";
+import HeaderClass from "Components/header/headerClass";
 import FooterClass from "Components/footer/footerClass.ts";
 import handlerLink from "Utils/handlerLink.ts";
 import InputsProfileClass from "Components/inputs/inputsProfile/inputsProfileClass";
@@ -22,8 +22,7 @@ export default class ProfileViewClass  extends BaseViewClass{
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody }: { isAuth: boolean, userBody: Promise<any> } = await UserModel.auth();
-
+            const {isAuth, userBody} = await UserModel.auth();
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;

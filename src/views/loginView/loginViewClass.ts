@@ -6,14 +6,14 @@ import handlerLink from 'Utils/handlerLink';
 import router from 'Routing/router.ts';
 import { routes } from "Routing/constRouting";
 import BaseViewClass from '../baseView/baseViewClass';
-import UserModel from "../../models/User.js"
+import UserModel from "../../models/User"
 
 import '../regView/regLog.scss';
 
 export default class LoginViewClass extends BaseViewClass{
     async render() {
         try {
-            const {isAuth}: {isAuth: boolean} = await UserModel.auth();
+            const {isAuth} = await UserModel.auth();
 
             if (isAuth) {
                 router.go(routes.HOME_VIEW);

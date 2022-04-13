@@ -18,6 +18,9 @@
 .first {
   margin-top: -75px;
 }
+.last{
+  margin-bottom: 50px;
+}
 
 .headline-style {
   background-color: #2C51B1;
@@ -26,5 +29,8 @@
   background-image: linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%);
 }
 
+::-webkit-scrollbar {
+ color: transparent;
+}
 
 

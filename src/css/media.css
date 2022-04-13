@@ -373,7 +373,7 @@
   inline-size: max-content;
   font-size: 28px;
   line-height: 42px;
-  margin-inline-start: 4vw;
+  margin-inline-start: 5vw;
   margin-block-start: 60px;
   font-style: normal;
   font-weight: 500;
@@ -751,6 +751,7 @@
 
   /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
   .header {
+    background-position-x: center;
     height: 100%;
   }
 
@@ -759,6 +760,7 @@
   }
 
   .photo-person__gradient {
+    padding-top: 0;
     background: none;
     height: 60%;
   }
@@ -861,6 +863,8 @@
 .movieTop {
     transform: scale(1);
     margin-inline-end: 0;
+    margin-inline: 1vw;
+    background-position-x: center;
   }
 
   .movie,
@@ -891,7 +895,7 @@
 
   .b-carouselTop__wrap,
 .b-carousel__wrap {
-    overflow: scroll;
+    overflow-x: scroll;
   }
 
   #selectMobile {
@@ -1086,6 +1090,7 @@
   }
 
   .navbar {
+    height: 22%;
     transition: none;
     position: sticky !important;
     justify-content: space-between;
@@ -1318,6 +1323,7 @@
   }
 
   .head-person {
+    height: auto;
     align-content: center;
     justify-content: flex-end;
     margin: 160px auto auto 4vw;
@@ -1353,6 +1359,7 @@
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
   .navbar {
+    height: 22%;
     transition: none;
     position: sticky !important;
     justify-content: space-between;
