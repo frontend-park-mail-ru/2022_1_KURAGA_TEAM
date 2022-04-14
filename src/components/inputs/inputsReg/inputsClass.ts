@@ -76,7 +76,8 @@ export default class InputsClass {
                 inputName.value.match(/<script>/) !== null ||
                 inputName.value.match(/<a/) !== null ||
                 inputName.value.match(/<img/) !== null ||
-                inputName.value.length > 50
+                inputName.value.match(/<img/) !== null ||
+                !(regExp.checkUsername.test(inputName.value))
             );
         };
 

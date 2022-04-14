@@ -1,14 +1,15 @@
 import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
-
+import { UserData } from "../../types";
 export default class HeaderClass {
-    private readonly info: object;
+    private readonly info: UserData;
 
     constructor(info) {
         this.info = info;
     }
 
     render() {
+
         return headerTemplate({ item: this.info });
     }
 

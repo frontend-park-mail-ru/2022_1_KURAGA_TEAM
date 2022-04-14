@@ -643,6 +643,10 @@
   }
 }
 @media (max-width: 1000px) {
+  ::-webkit-scrollbar {
+    color: rgba(0, 0, 0, 0);
+  }
+
   /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
   .error-img {
     width: 535px;

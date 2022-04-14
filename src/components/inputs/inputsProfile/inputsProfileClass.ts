@@ -101,12 +101,14 @@ export default class InputsProfileClass {
             document.querySelector(".btn-profile");
 
         const nameValid = () => {
+            console.log(inputName.value);
             return (
                 inputName.value.length === 1 ||
                 inputName.value.match(/<script>/) !== null ||
                 inputName.value.match(/<a/) !== null ||
                 inputName.value.match(/<img/) !== null ||
-                inputName.value.length > 50
+                inputName.value.match(/<img/) !== null ||
+                !(regExp.checkUsername.test(inputName.value))
             );
         };
 
