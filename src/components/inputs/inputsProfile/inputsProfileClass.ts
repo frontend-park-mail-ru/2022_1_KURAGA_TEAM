@@ -103,7 +103,6 @@ export default class InputsProfileClass {
         const nameValid = () => {
             console.log(inputName.value);
             return (
-                inputName.value.length === 1 ||
                 inputName.value.match(/<script>/) !== null ||
                 inputName.value.match(/<a/) !== null ||
                 inputName.value.match(/<img/) !== null ||
