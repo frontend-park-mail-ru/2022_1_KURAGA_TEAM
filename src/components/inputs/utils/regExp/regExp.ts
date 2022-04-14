@@ -1,5 +1,5 @@
 export const regExp = {
-    checkEmail: /.+@.+\..+/i,
+    checkEmail: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i,
     containsLetters: /^.*[a-zA-Z]+.*$/,
     minimum8Chars: /^.{8,}$/,
     containsNumbers: /^.*[0-9]+.*$/,
