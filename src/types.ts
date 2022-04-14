@@ -111,3 +111,8 @@ export interface selInfo {
     prev: HTMLElement;
     next: HTMLElement;
 }
+
+export interface Info {
+    username: string;
+    email: string;
+}

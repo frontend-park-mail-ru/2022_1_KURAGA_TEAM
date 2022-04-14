@@ -28,7 +28,7 @@ const configElement = [
     {
         key: "passwordSecond",
         data: "../../static/password.svg",
-        placeholder: "Повторите Пароль",
+        placeholder: "Повторите пароль",
         type: "password",
         error: "passTwoError",
     },
@@ -74,7 +74,9 @@ export default class InputsClass {
             return (
                 inputName.value.length === 1 ||
                 inputName.value.match(/<script>/) !== null ||
-                inputName.value.match(/<img/) !== null
+                inputName.value.match(/<a/) !== null ||
+                inputName.value.match(/<img/) !== null ||
+                inputName.value.length > 50
             );
         };
 
@@ -146,7 +148,8 @@ export default class InputsClass {
             if (
                 regExp.checkEmail.test(inputEmail.value) &&
                 inputEmail.value.length !== 0 &&
-                inputEmail.validity.valid
+                inputEmail.validity.valid &&
+                inputEmail.value.length < 250
             ) {
                 errorEmail.classList.remove("error-active");
 
@@ -163,6 +166,13 @@ export default class InputsClass {
         inputPassOne.addEventListener("change", () => {
             if (!inputPassOne.validity.valid) {
                 passOneErrorEmpty();
+
+                return;
+            }
+
+            if (inputPassOne.value.length > 50) {
+                errorPassOne.classList.add("error-active");
+                errorPassOne.textContent = textErrors.tooLong;
 
                 return;
             }
