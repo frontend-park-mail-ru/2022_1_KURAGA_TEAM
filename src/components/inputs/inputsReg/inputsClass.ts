@@ -149,7 +149,7 @@ export default class InputsClass {
                 regExp.checkEmail.test(inputEmail.value) &&
                 inputEmail.value.length !== 0 &&
                 inputEmail.validity.valid &&
-                inputEmail.value.length < 250
+                inputEmail.value.length < 50
             ) {
                 errorEmail.classList.remove("error-active");
 
