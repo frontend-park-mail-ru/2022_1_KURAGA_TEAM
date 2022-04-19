@@ -7,6 +7,7 @@ import PersonViewClass from "./views/personView/personViewClass";
 import ErrorViewClass from "./views/errorView/404Error/errorViewClass";
 import ProfileViewClass from "./views/profileView/profileViewClass";
 import PlayerViewClass from "./views/playerView/playerViewClass";
+import FavoritesViewClass from "./views/favoritesView/favoritesViewClass";
 import ErrorCatchViewClass from "./views/errorView/catchError/errorCatchViewClass";
 
 import "./css/common.scss";
@@ -27,5 +28,6 @@ router.register("/404", ErrorViewClass);
 router.register("/errors", ErrorCatchViewClass);
 router.register("/profile", ProfileViewClass);
 router.register("/player", PlayerViewClass);
+router.register("/favorites", FavoritesViewClass);
 
 router.start();
