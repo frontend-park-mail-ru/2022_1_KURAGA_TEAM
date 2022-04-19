@@ -8,6 +8,10 @@ import ErrorViewClass from "./views/errorView/404Error/errorViewClass";
 import ProfileViewClass from "./views/profileView/profileViewClass";
 import PlayerViewClass from "./views/playerView/playerViewClass";
 import ErrorCatchViewClass from "./views/errorView/catchError/errorCatchViewClass";
+import SerialViewClass from "./views/serialView/serialViewClass";
+import FilmsViewClass from "./views/filmsView/filmsViewClass";
+import SerialsViewClass from "./views/serialsView/serialsViewClass";
+import GenreViewClass from "./views/genreView/genreViewClass";
 
 import "./css/common.scss";
 import "./css/media.scss";
@@ -27,5 +31,9 @@ router.register("/404", ErrorViewClass);
 router.register("/errors", ErrorCatchViewClass);
 router.register("/profile", ProfileViewClass);
 router.register("/player", PlayerViewClass);
+router.register("/serial", SerialViewClass);
+router.register("/movies", FilmsViewClass);
+router.register("/serials", SerialsViewClass);
+router.register("/genre", GenreViewClass);
 
 router.start();

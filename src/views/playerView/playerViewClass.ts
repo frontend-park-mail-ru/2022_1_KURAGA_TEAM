@@ -213,13 +213,9 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
-        document.addEventListener("pointermove", () => {
-            displayControls();
-        });
+        document.addEventListener("pointermove", displayControls);
 
-        document.addEventListener("touchend", () => {
-            displayControls();
-        });
+        document.addEventListener("touchend", displayControls);
 
         playPauseButton.addEventListener("click", playPause);
 
@@ -292,7 +288,7 @@ export default class PlayerViewClass extends BaseViewClass {
             video.muted = !video.muted;
         });
 
-        fullScreenButton.addEventListener("click", () => {
+        const fullScreenChange = () => {
             if (!document.fullscreenElement) {
                 videoContainer.requestFullscreen();
 
@@ -300,6 +296,9 @@ export default class PlayerViewClass extends BaseViewClass {
             }
 
             document.exitFullscreen();
-        });
+        }
+
+        fullScreenButton.addEventListener("click", fullScreenChange);
+        document.addEventListener("dblclick", fullScreenChange);
     }
 }

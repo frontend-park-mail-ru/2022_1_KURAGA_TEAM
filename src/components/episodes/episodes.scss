@@ -1,0 +1,26 @@
+.episodes__text {
+  font-size: 28px;
+  margin-right: 40px;
+}
+
+.episodes__season {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 3px solid var(--mix-color);
+  font-weight: lighter;
+  background: transparent;
+  color: var(--font-color);
+  transition: transform 0.1s ease-out, background-color 0.15s linear;
+}
+
+.episodes__season:active {
+  transform: scale(0.94);
+}
+
+.episodes__season:hover {
+  background: var(--trailer-button-hover);
+}

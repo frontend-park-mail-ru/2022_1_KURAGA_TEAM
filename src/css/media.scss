@@ -581,7 +581,7 @@
     }
 
     .back-menu-profile {
-        height: 124vh;
+        height: 130vh;
     }
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
@@ -697,7 +697,7 @@
     }
 
     .second-part-genre__genres {
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .group {
@@ -888,6 +888,36 @@
     .head-movie__buttons {
         width: 70%;
     }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА*/
+  .series__text {
+    display: none;
+  }
+
+  .rewind {
+    display: none;
+  }
+
+  .forward {
+    display: none;
+  }
+
+  .volume {
+    display: none;
+  }
+
+  .series {
+    display: none;
+  }
+
+  .full {
+    display: none;
+  }
+
+  .controls {
+    display: block;
+    width: auto;
+  }
 }
 
 @media (min-width: 1600px) and (max-width: 1800px) {
@@ -991,4 +1021,69 @@
         height: calc(1vw + 30px);
         width: calc(1vw + 30px);
     }
+}
+
+@media (min-width: 2000px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    height: 300px;
+  }
+}
+
+
+@media (min-width: 1450px) and (max-width: 1700px) {
+    //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 21vw;
+    height: 200px;
+  }
+}
+
+@media (min-width: 1250px) and (max-width: 1450px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 20vw;
+    height: 170px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 27vw;
+    height: 185px;
+  }
+
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
+  .episodes {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1000px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 27vw;
+    height: 170px;
+  }
+}
+
+@media (max-width: 750px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .all-films__text {
+    margin-top: 30px;
+    font-size: 50px;
+  }
+
+  .test {
+    width: 38vw;
+    height: 110px;
+  }
+
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
+  .episodes {
+    margin-bottom: -240px;
+    margin-top: 270px;
+  }
 }
