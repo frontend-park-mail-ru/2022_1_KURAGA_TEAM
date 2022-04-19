@@ -106,6 +106,9 @@ export default class MovieCompilationModel {
             compilationName: this.data.compilationName,
         };
 
+
+
+
         if (
             this.data.compilationName === "Лучшее за 2011 год" &&
             this.data.isMobile === true
@@ -114,7 +117,7 @@ export default class MovieCompilationModel {
                 ...common,
                 typeMov: "Top",
                 num: 1,
-                countDiv: Math.ceil(this.data.movies.length / 1),
+                countDiv: Math.ceil(this.data.movies.length / 1)
             });
         }
         if (this.data.isMobile === true) {
