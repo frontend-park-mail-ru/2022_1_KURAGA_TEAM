@@ -1,10 +1,11 @@
 .list-films {
   display: flex;
-  flex-direction: row;
-  margin-left: 4vw;
-  flex-wrap: wrap;
+  margin-inline: 4vw;
   margin-top: 70px;
   background: var(--back-color);
+  row-gap: 4vw;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .test {

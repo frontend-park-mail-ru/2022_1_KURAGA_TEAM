@@ -9,6 +9,9 @@ module.exports = {
     performance: {
         hints: false,
     },
+    optimization: {
+        minimize: false,
+    },
     module: {
         rules: [
             {

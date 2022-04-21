@@ -8,14 +8,20 @@ import BaseViewClass from "../baseView/baseViewClass";
 import { User } from "../../types";
 import handlerLink from "Utils/handlerLink";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
-
+import MovieCompilationModel from "../../models/MovieCompilation";
+import LoaderViewClass from "../loaderView/loaderViewClass";
 import "../filmsView/films.scss";
 
 export default class SerialsViewClass extends BaseViewClass {
     private user: UserModel;
+    private movieCompilation: MovieCompilationModel;
+    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
+
             const { isAuth, userBody } = await UserModel.auth();
 
             if (!isAuth) {
@@ -26,8 +32,51 @@ export default class SerialsViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
+            const movieCompilationData = {
+                compilation_name: 'Топ рейтинга', movies: [
+                    {
+                        id: 7,
+                        name: 'Зеленая миля',
+                        genre: ['Драма', 'Криминал'],
+                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    },
+                    {
+                        id: 7,
+                        name: 'Зеленая миля',
+                        genre: ['Драма', 'Криминал'],
+                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    },
+                    {
+                        id: 7,
+                        name: 'Зеленая миля',
+                        genre: ['Драма', 'Криминал'],
+                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    }, {
+                        id: 7,
+                        name: 'Зеленая миля',
+                        genre: ['Драма', 'Криминал'],
+                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    },
+                    {
+                        id: 7,
+                        name: 'Зеленая миля',
+                        genre: ['Драма', 'Криминал'],
+                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    },
+                    {
+                        id: 7,
+                        name: 'Зеленая миля',
+                        genre: ['Драма', 'Криминал'],
+                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    }]
+            }
+
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
+            this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
+
+
             const header = new HeaderClass(this.user.userData);
-            const listFilms = new ListFilmsClass();
+            const listFilms = new ListFilmsClass(this.movieCompilation);
             const footer = new FooterClass();
 
             super.render(serialsViewTemplate, {
