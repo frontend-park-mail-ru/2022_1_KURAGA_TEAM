@@ -106,9 +106,6 @@ export default class MovieCompilationModel {
             compilationName: this.data.compilationName,
         };
 
-
-
-
         if (
             this.data.compilationName === "Лучшее за 2011 год" &&
             this.data.isMobile === true
@@ -128,20 +125,21 @@ export default class MovieCompilationModel {
                 countDiv: Math.ceil(this.data.movies.length / 2),
             });
         }
+
         if (this.data.compilationName === "Лучшее за 2011 год") {
             return carouselTemplate({
                 ...common,
                 typeMov: "Top",
-                num: 3,
-                countDiv: Math.ceil(this.data.movies.length / 3),
+                countDiv: 1,
+                num: this.data.movies.length,
             });
         }
 
         return carouselTemplate({
             ...common,
             typeMov: "",
-            countDiv: Math.ceil(this.data.movies.length / 4),
-            num: 4,
+            countDiv: 1,
+            num: this.data.movies.length,
         });
     }
 

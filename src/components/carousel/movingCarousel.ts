@@ -23,22 +23,29 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
         privates.opt.position--;
         privates.sel.next.style.visibility = "visible";
-        privates.sel.wrap.style.transform = `translateX(-${privates.opt.position}00%)`;
+
+
+
+        privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length/privates.opt.max_position)*privates.opt.position}px)`;
     };
 
     this.next_slide = () => {
         privates.opt.position++;
-        if (privates.opt.position + 1 >= privates.opt.max_position) {
+        if (privates.opt.position >= privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position) {
             privates.sel.next.style.visibility = "hidden";
         } else {
             privates.sel.next.style.visibility = "visible";
         }
 
-        if (privates.opt.position >= privates.opt.max_position) {
-            --privates.opt.position;
-        }
+
+        privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length/privates.opt.max_position)*privates.opt.position}px)`;
+
+        // if (privates.opt.position >= privates.opt.max_position) {
+        //     --privates.opt.position;
+        // }
+
         privates.sel.prev.style.visibility = "visible";
-        privates.sel.wrap.style.transform = `translateX(-${privates.opt.position}00%)`;
+
     };
 
     const privates: privatesMovingCarousel = { setting };
@@ -52,9 +59,9 @@ export default function MovingCarousel(setting: movingCarouselData) {
     };
 
     privates.opt = {
+        length: privates.sel.wrap.offsetWidth,
         position: 0,
-        max_position: document.querySelector(privates.setting.wrap).children
-            .length,
+        max_position: document.querySelector(privates.setting.wrap).children.length,
     };
     if (privates.opt.max_position > 1) {
         privates.sel.next.style.visibility = "visible";
@@ -62,6 +69,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
     if (privates.sel.prev !== null) {
         privates.sel.prev.addEventListener("click", () => {
+            console.log(privates.sel.wrap.offsetWidth);
             this.prev_slide();
         });
     }

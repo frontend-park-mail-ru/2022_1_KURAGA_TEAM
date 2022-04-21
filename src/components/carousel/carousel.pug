@@ -2,11 +2,8 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
     div.select-title= compilationName
     div.wrap
         div(class = car + ` b-carousel`+ `${typeMov}`)
-            button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
-            button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
             div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);")
                 - for (var i = 0 ;i < countDiv; ++i)
-                    div.b-carousel__item
                         each item,index in items
                             if(index >= i*num && index < (i+1)*num )
                                 div(class=`movie`+`${typeMov}`, style=`background-image: url(\"${item.picture}\");`)
@@ -19,6 +16,8 @@ mixin carousel(items,car,prevBtn,nextBtn,wrapMov,typeMov,countDiv,num,title)
                                         else
                                             div.genre= item.genre
                                         input#cb.input-like(type = "checkbox")
+        button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
+        button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
 
 
 
