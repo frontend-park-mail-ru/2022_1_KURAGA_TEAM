@@ -8,6 +8,7 @@ import { routes } from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import { User } from "../../types";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
+import LoaderViewClass from "../loaderView/loaderViewClass";
 
 import "./films.scss";
 
@@ -16,6 +17,9 @@ export default class FilmsViewClass extends BaseViewClass {
 
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
+
             const { isAuth, userBody } = await UserModel.auth();
 
             if (!isAuth) {
