@@ -236,6 +236,9 @@
   }
 
   /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
+  .search{
+    margin-inline: 10px;
+  }
   .header {
     background-position-x: center;
     height: 100%;
@@ -1015,6 +1018,9 @@
 }
 
 @media (min-width: 2000px) {
+  .search-menu {
+    margin: 6rem auto auto auto ;
+  }
   .logo-home {
     height: calc(3vw + 40px);
   }

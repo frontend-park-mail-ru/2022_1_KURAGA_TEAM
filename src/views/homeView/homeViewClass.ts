@@ -89,7 +89,6 @@ export default class HomeViewClass extends BaseViewClass {
         const homeNavbarMobile = document.querySelector(".homeMobile-js");
         const homeNavbar = document.querySelector(".home-js");
         const nameProfile = document.querySelector(".name-profile-mobile");
-
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");

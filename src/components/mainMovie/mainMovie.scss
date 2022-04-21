@@ -9,9 +9,9 @@
   align-content: center;
   border-radius: 32px;
   display: grid;
-  column-gap: 10px;
   grid-template-rows: auto;
   row-gap: 10px;
+  column-gap: 20px;
   grid-template-columns: auto auto;
   grid-template-areas:
         "title title"
