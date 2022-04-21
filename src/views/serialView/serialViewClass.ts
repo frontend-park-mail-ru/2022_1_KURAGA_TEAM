@@ -83,6 +83,10 @@ export default class SerialViewClass extends BaseViewClass {
                 header: header.render(),
                 headMovie: headMovie.render(),
                 episodes: episodes.render(),
+                series: this.compilationsRender(this.movieCompilation),
+                seriesMobile: this.compilationsRender(
+                    this.movieCompilationMobile
+                ),
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
                 actors: actors.render(),
@@ -116,7 +120,7 @@ export default class SerialViewClass extends BaseViewClass {
     }
     compilationsRender(movieCompilation: MovieCompilationModel): string {
         return (
-            '<div class = "margin-bottom movie-carousel margin-person">' +
+            '<div class = "margin-person">' +
             movieCompilation.render() +
             "</div>"
         );

@@ -338,6 +338,9 @@
     }
 
     /*карусель*/
+  .series-margin {
+     margin-top: 230px;
+  }
     .b-carousel {
         padding-inline: 0;
     }
@@ -378,11 +381,11 @@
         overflow-x: scroll;
     }
 
-    #selectMobile {
+    .selectMobile {
         display: block;
     }
 
-    #select {
+    .select {
         display: none;
     }
 
