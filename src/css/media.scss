@@ -116,6 +116,9 @@
 }
 
 @media (max-width: 1000px) {
+  body{
+    overflow-x: hidden;
+  }
   ::-webkit-scrollbar {
     color: rgba(0, 0, 0, 0);
   }
@@ -332,10 +335,16 @@
 
   /*карусель*/
   .b-carousel {
+    overflow-x: scroll;
     padding-inline: 0;
+  }
+  .b-carouselTop{
+    overflow-x: scroll;
   }
   .movieTop:hover,
   .movieTop {
+    width: 90vw;
+    height: 60vw;
     transform: scale(1);
     margin-inline-end: 0;
     margin-inline: 1vw;
@@ -368,7 +377,6 @@
   }
   .b-carouselTop__wrap,
   .b-carousel__wrap {
-    overflow-x: scroll;
   }
 
   #selectMobile {
@@ -381,8 +389,8 @@
 
   .movie {
     margin: 4px;
-    width: 212px;
-    height: 140px;
+    width: 48vw;
+    height: 30vw;
     border-radius: 8px;
     grid-template-rows: auto 55px;
   }
@@ -883,17 +891,34 @@
   }
 }
 
-
-
+@media (min-width: 1000px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
+  .sidebar {
+    width: calc(1vw + 582px);
+  }
+}
+@media (min-width: 1800px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
+  .main-movie{
+    justify-content:center;
+  }
+  .sidebar {
+    transform: scale(1.3);
+    margin: 0;
+  }
+}
+@media (min-width: 2800px) {
+  .sidebar{
+    transform: scale(3);
+  }
+}
 
 
 
 
 @media (min-width: 1450px) and (max-width: 1800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
-  .sidebar {
-    width: calc(1vw + 582px);
-  }
+
 
   .btn,
   .btn-info {
@@ -964,9 +989,28 @@
   }
 
 
-  .main-movie__name{
-    height: 140px;
+
+  .movie{
+    height: calc(3vw + 215px);
+    grid-template-rows: auto 70px;
+    width: calc(3vw + 380px);
+
   }
+  .movieTop{
+    height: calc(3vw + 250px);
+    grid-template-rows: auto 70px;
+    width: calc(3vw + 464px);
+  }
+  .desc-mov{
+    font-size: 24px;
+  }
+  .genre{
+    font-size: 20px;
+  }
+  .desc-movTop{
+    font-size: 24px;
+  }
+
 
 }
 

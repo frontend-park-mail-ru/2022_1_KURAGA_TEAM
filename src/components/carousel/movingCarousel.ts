@@ -1,4 +1,4 @@
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 import router from "Routing/router";
 import {
     movingCarouselData,
@@ -8,6 +8,7 @@ import {
 } from "../../types";
 
 export default function MovingCarousel(setting: movingCarouselData) {
+
     if (document.querySelector(setting.wrap) === null) {
         router.go(routes.ERROR_CATCH_VIEW);
 
@@ -15,40 +16,60 @@ export default function MovingCarousel(setting: movingCarouselData) {
     }
 
     this.prev_slide = () => {
-        if (privates.opt.position - 1 <= 0) {
+        const numMovies = Math.round(window.screen.width / privates.opt.length * privates.opt.max_position);
+        console.log(privates.opt.position, numMovies);
+
+        if (privates.opt.position >= numMovies) {
+            privates.opt.position -= numMovies;
+            privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+        } else {
+            privates.opt.position--;
+            privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+
+        }
+
+        if (privates.opt.position <= 0) {
             privates.sel.prev.style.visibility = "hidden";
         } else {
             privates.sel.prev.style.visibility = "visible";
         }
 
-        privates.opt.position--;
+
         privates.sel.next.style.visibility = "visible";
-
-
-
-        privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length/privates.opt.max_position)*privates.opt.position}px)`;
+        // console.log(window.screen.width,privates.opt.length,privates.opt.max_position,privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position)
+        privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
     };
 
     this.next_slide = () => {
-        privates.opt.position++;
-        if (privates.opt.position >= privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position) {
+        const numMovies = Math.round(window.screen.width / privates.opt.length * privates.opt.max_position);
+        if (numMovies === privates.opt.max_position) {
             privates.sel.next.style.visibility = "hidden";
+            privates.sel.prev.style.visibility = "hidden";
         } else {
-            privates.sel.next.style.visibility = "visible";
+            if (privates.opt.max_position - privates.opt.position >= 2 * numMovies) {
+                privates.opt.position += numMovies;
+                privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+            } else {
+                privates.opt.position++;
+                privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+
+            }
+            if (privates.opt.max_position - numMovies <= privates.opt.position) {
+                privates.sel.next.style.visibility = "hidden";
+            } else {
+                privates.sel.next.style.visibility = "visible";
+            }
+            privates.sel.prev.style.visibility = "visible";
         }
 
 
-        privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length/privates.opt.max_position)*privates.opt.position}px)`;
 
-        // if (privates.opt.position >= privates.opt.max_position) {
-        //     --privates.opt.position;
-        // }
 
-        privates.sel.prev.style.visibility = "visible";
+
 
     };
 
-    const privates: privatesMovingCarousel = { setting };
+    const privates: privatesMovingCarousel = {setting};
 
     privates.sel = {
         main: document.querySelector(privates.setting.main),
@@ -69,7 +90,6 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
     if (privates.sel.prev !== null) {
         privates.sel.prev.addEventListener("click", () => {
-            console.log(privates.sel.wrap.offsetWidth);
             this.prev_slide();
         });
     }

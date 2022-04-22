@@ -26,8 +26,8 @@
 .b-carousel__prev,
 .b-carousel__next {
   border: 0;
-  width: 54px;
-  font-size: 50px;
+  width: calc(2vw + 40px);
+  font-size: calc(1vw + 50px);
   position: absolute;
   top: 50%;
   background-color: transparent;
@@ -38,21 +38,17 @@
   overflow: hidden;
   z-index: 3;
   color: transparent;
+  visibility: hidden;
 }
 
 .b-carousel__prev {
-  visibility: hidden;
-  height: 100%;
-  background-color: transparent;
+
   left: 0;
   transition: all 0.4s ease;
 }
 
 .b-carousel__next {
-  visibility: hidden;
-  height: 100%;
-  background-color: transparent;
-  left: auto;
+
   right: 0;
   transition: all 0.4s ease;
 }
@@ -74,7 +70,7 @@
 
 .b-carousel__wrap {
   display: flex;
-  transition: transform .6s ease-in-out;
+  transition: transform .75s ease-in-out;
   will-change: transform;
   position: relative;
   z-index: 1;

@@ -1,8 +1,8 @@
 .b-carouselTop__prev,
 .b-carouselTop__next {
   border: 0;
-  width: 54px;
-  font-size: 50px;
+  width: calc(2vw + 50px);
+  font-size: calc(1vw + 60px);
   position: absolute;
   top: 50%;
   background-color: transparent;
