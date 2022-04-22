@@ -1,17 +1,6 @@
 div.select-title= compilationName
 div.wrap
     div(class = car + ` b-carousel`+ `${typeMov}`)
-        div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);")
-            each item,index in items
-                            div(class=`movie`+`${typeMov}`, style=`background-image: url(\"${item.picture}\");`)
-                                a(href=`/movie/${item.id}`)
-                                    div.ref-mov
-                                div(class=`desc-mov` + `${typeMov}`)
-                                    a(class=`movie` + `${typeMov}`+ '__href')(href=`/movie/${item.id}`)= item.name
-                                    if (item.genre.length > 1)
-                                        a.genre(href=`/movie/${item.id}`)= item.genre[0] + "/" + item.genre[1]
-                                    else
-                                        div.genre= item.genre
-                                    input#cb.input-like(type = "checkbox")
+        div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);") !{items}
     button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
     button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭

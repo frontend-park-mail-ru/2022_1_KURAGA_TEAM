@@ -2,17 +2,17 @@ import movieTemplate from "./movie.pug";
 import {MovieData} from "../../types";
 
 export default class MovieClass {
-    private readonly info: MovieData;
-
-    constructor(info: MovieData) {
-        this.info = info;
-
+    private readonly movies: Array<MovieData>;
+    private readonly typeMov: string;
+    constructor(info:Array<MovieData>,typeMov?: string) {
+        this.movies = info;
+        this.typeMov =  typeMov;
     }
 
-    render(typeMov?: string) {
+    render() {
         return movieTemplate({
-            info: this.info,
-            typeMov: typeMov
+            items: this.movies,
+            typeMov: this.typeMov
         });
     }
 }
