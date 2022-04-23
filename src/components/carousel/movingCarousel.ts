@@ -16,7 +16,8 @@ export default function MovingCarousel(setting: movingCarouselData) {
     }
 
     this.prev_slide = () => {
-        const numMovies = Math.round(window.screen.width / privates.opt.length * privates.opt.max_position);
+        const numMovies = Math.floor(window.screen.width / (privates.opt.length+20) * privates.opt.max_position);
+        console.log(numMovies);
         console.log(privates.opt.position, numMovies);
 
         if (privates.opt.position >= numMovies) {
@@ -24,7 +25,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
             privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
         } else {
             privates.opt.position--;
-            privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+            privates.sel.wrap.style.transform = `translateX(-${((privates.opt.length / privates.opt.max_position)) * privates.opt.position}px)`;
 
         }
 
@@ -37,11 +38,11 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
         privates.sel.next.style.visibility = "visible";
         // console.log(window.screen.width,privates.opt.length,privates.opt.max_position,privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position)
-        privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+        privates.sel.wrap.style.transform = `translateX(-${((privates.opt.length / privates.opt.max_position) ) * privates.opt.position}px)`;
     };
 
     this.next_slide = () => {
-        const numMovies = Math.round(window.screen.width / privates.opt.length * privates.opt.max_position);
+        const numMovies = Math.floor(window.screen.width / privates.opt.length * privates.opt.max_position);
         if (numMovies === privates.opt.max_position) {
             privates.sel.next.style.visibility = "hidden";
             privates.sel.prev.style.visibility = "hidden";
