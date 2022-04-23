@@ -100,6 +100,7 @@ export interface privatesMovingCarousel {
     opt?: optInfo;
 }
 export interface optInfo {
+    length: number;
     position: number;
     max_position: number;
 }

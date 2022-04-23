@@ -1,9 +1,10 @@
-import { ajaxReq } from "Modules/ajax";
+import {ajaxReq} from "Modules/ajax";
 import router from "Routing/router.ts";
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 import carouselTemplate from "Components/carousel/carousel.pug";
 import movingCarousel from "Components/carousel/movingCarousel";
-import { MovieCompilationData } from "../types";
+import {MovieCompilationData} from "../types";
+import MovieClass from "Components/movie/movieClass";
 
 export default class MovieCompilationModel {
     data: MovieCompilationData;
@@ -97,8 +98,9 @@ export default class MovieCompilationModel {
     }
 
     render() {
+        const Top = new MovieClass(this.data.movies, "Top");
+        const unTop = new MovieClass(this.data.movies, "");
         const common = {
-            items: this.data.movies,
             car: `js-carousel${this.data.id}`,
             prevBtn: `js-carousel${this.data.id}__prev`,
             nextBtn: `js-carousel${this.data.id}__next`,
@@ -106,39 +108,19 @@ export default class MovieCompilationModel {
             compilationName: this.data.compilationName,
         };
 
-        if (
-            this.data.compilationName === "Лучшее за 2011 год" &&
-            this.data.isMobile === true
-        ) {
-            return carouselTemplate({
-                ...common,
-                typeMov: "Top",
-                num: 1,
-                countDiv: Math.ceil(this.data.movies.length / 1),
-            });
-        }
-        if (this.data.isMobile === true) {
-            return carouselTemplate({
-                ...common,
-                typeMov: "",
-                num: 2,
-                countDiv: Math.ceil(this.data.movies.length / 2),
-            });
-        }
+
         if (this.data.compilationName === "Лучшее за 2011 год") {
             return carouselTemplate({
                 ...common,
+                items: Top.render(),
                 typeMov: "Top",
-                num: 3,
-                countDiv: Math.ceil(this.data.movies.length / 3),
             });
         }
 
         return carouselTemplate({
             ...common,
+            items: unTop.render(),
             typeMov: "",
-            countDiv: Math.ceil(this.data.movies.length / 4),
-            num: 4,
         });
     }
 
