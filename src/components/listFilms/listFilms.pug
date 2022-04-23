@@ -1,12 +1,1 @@
-div.list-films
-         each item,index in info.movies
-             div(class=`movie`, style=`background-image: url(\"${item.picture}\");`)
-                 a(href=`/movie/${item.id}`)
-                     div.ref-mov
-                 div(class=`desc-mov`)
-                     a(class=`movie__href`)(href=`/movie/${item.id}`)= item.name
-                     if (item.genre.length > 1)
-                         a.genre(href=`/movie/${item.id}`)= item.genre[0] + "/" + item.genre[1]
-                     else
-                         div.genre= item.genre
-                     input#cb.input-like(type = "checkbox")
+div.list-films !{items}

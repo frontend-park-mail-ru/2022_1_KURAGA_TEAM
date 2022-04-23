@@ -1,5 +1,5 @@
 import listFilmsTemplate from './listFilms.pug'
-
+import MovieClass from "Components/movie/movieClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 
 export default class ListFilmsClass {
@@ -10,9 +10,10 @@ export default class ListFilmsClass {
     }
     render() {
 
+        const unTop = new MovieClass(this.info.movieCompilationData.movies, "");
         
         return listFilmsTemplate({
-            info: this.info.movieCompilationData,
+            items: unTop.render(),
         });
     }
 }

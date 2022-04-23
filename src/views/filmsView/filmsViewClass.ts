@@ -15,7 +15,6 @@ import "./films.scss";
 export default class FilmsViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
-    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
@@ -72,8 +71,13 @@ export default class FilmsViewClass extends BaseViewClass {
             }
 
 
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
-            this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
+            const { movCompBody }: { movCompBody?: Promise<any> } =
+                await MovieCompilationModel.getMovies();
+            const movieCompilationsData = await Promise.resolve(movCompBody);
+
+            console.log(movieCompilationsData,movieCompilationData);
+
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData, false);
 
 
             const header = new HeaderClass(this.user.userData);

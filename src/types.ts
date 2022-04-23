@@ -69,10 +69,10 @@ export interface MovieData {
 }
 
 export interface MovieCompilationData {
-    id: number;
+    id?: number;
     movies: Array<MovieData>;
-    compilationName: string;
-    isMobile: boolean;
+    compilationName?: string;
+    isMobile?: boolean;
 }
 export interface InfoHeadPerson {
     name: string;

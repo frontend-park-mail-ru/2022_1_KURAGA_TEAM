@@ -10,12 +10,18 @@ export default class MovieCompilationModel {
     data: MovieCompilationData;
 
     constructor(index, movieCompilationData, isMobile) {
-        this.data = {
-            id: index,
-            compilationName: movieCompilationData.compilation_name,
-            movies: movieCompilationData.movies,
-            isMobile: isMobile,
-        };
+        if(Array.isArray(movieCompilationData)){
+            this.data = {
+                movies: movieCompilationData,
+            };
+        } else {
+            this.data = {
+                id: index,
+                compilationName: movieCompilationData.compilation_name,
+                movies: movieCompilationData.movies,
+                isMobile: isMobile,
+            };
+        }
     }
 
     get movieCompilationData() {
@@ -46,6 +52,15 @@ export default class MovieCompilationModel {
         try {
             return await ajaxReq.get({
                 path: `/movieCompilations/person/${id}`,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+    static async allMovies() {
+        try {
+            return await ajaxReq.get({
+                path: `/movies`,
             });
         } catch (err) {
             return err;
@@ -96,6 +111,22 @@ export default class MovieCompilationModel {
                 });
         });
     }
+
+    static getMovies() {
+        return new Promise((movieCompilation) => {
+            this.allMovies()
+                .then((body) => {
+                    movieCompilation({
+                        isAuth: body.isAuth,
+                        movCompBody: body.data,
+                    });
+                })
+                .catch((err) => {
+                    router.go(routes.ERROR_CATCH_VIEW);
+                });
+        });
+    }
+
 
     render() {
         const Top = new MovieClass(this.data.movies, "Top");

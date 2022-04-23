@@ -1,7 +1,6 @@
 .list-films {
   display: flex;
-  margin-inline: 4vw;
-  margin-top: 70px;
+  margin: 70px 4vw 30px 4vw;
   background: var(--back-color);
   row-gap: 4vw;
   flex-wrap: wrap;
