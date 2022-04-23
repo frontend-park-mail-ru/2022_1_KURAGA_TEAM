@@ -10,19 +10,33 @@ export default class HeaderClass {
     }
 
     render() {
-        const searchConfig = {res: "результат", movie: "Фильм", serial: "Сериал", person: "Персона"}
+        const searchConfig = {
+            res: "результат",
+            categories: [{
+                topic: "Фильмы",
+                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+            }, {
+                topic: "Сериалы",
+                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+            }, {
+                topic: "Персоны",
+                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+            }
+            ]
+        }
         return headerTemplate({item: this.info, search: searchConfig});
     }
 
     setHandler() {
-        const navbar = document.querySelector(".navbar");
+        const navbar:HTMLElement = document.querySelector(".navbar");
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > 15) {
-                navbar.classList.add("navbar-color");
 
+                navbar.classList.add("navbar-color");
                 return;
             }
+
 
             navbar.classList.remove("navbar-color");
         });
@@ -77,8 +91,10 @@ export default class HeaderClass {
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
             searchMenuRes.style.display = "flex";
+            navbar.style.position = "absolute";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
+
             if (screenWidth <= 1000) {
                 logo.style.display = "none";
             }
@@ -94,12 +110,14 @@ export default class HeaderClass {
             searchCloseBtn.style.display = "none";
             searchBtn.style.display = "block";
             searchMenuRes.style.display = "none";
-
+            navbar.style.position = "fixed";
             const screenWidth = window.screen.width;
 
             if (screenWidth <= 1000) {
                 logo.style.display = "block";
             }
         })
+
+
     }
 }

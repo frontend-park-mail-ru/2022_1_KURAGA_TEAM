@@ -2,7 +2,7 @@
 .b-carouselTop__next {
   border: 0;
   width: calc(2vw + 50px);
-  font-size: calc(1vw + 60px);
+  font-size: calc(1vw + 40px);
   position: absolute;
   top: 50%;
   background-color: transparent;
@@ -98,6 +98,7 @@
 }
 
 .desc-movTop {
+  margin-bottom: -1px;
     cursor: default;
     display: flex;
     padding-inline: 5px;
