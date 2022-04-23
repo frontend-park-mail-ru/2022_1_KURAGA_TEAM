@@ -9,6 +9,9 @@ module.exports = {
     performance: {
         hints: false,
     },
+    optimization: {
+        minimize: false,
+    },
     module: {
         rules: [
             {
@@ -47,7 +50,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },

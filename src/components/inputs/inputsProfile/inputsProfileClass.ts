@@ -4,12 +4,13 @@ import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import { regExp } from "Components/inputs/utils/regExp/regExp";
 import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
+import { Info } from "../../../types";
 
 const configElement = [
     {
         key: "name",
         data: "../../static/name.svg",
-        placeholder: "Новое Имя",
+        placeholder: "Новое имя",
         type: "text",
         error: "nameError",
     },
@@ -23,23 +24,18 @@ const configElement = [
     {
         key: "passwordFirst",
         data: "../../static/password.svg",
-        placeholder: "Новый Пароль",
+        placeholder: "Новый пароль",
         type: "password",
         error: "passOneError",
     },
     {
         key: "passwordSecond",
         data: "../../static/password.svg",
-        placeholder: "Повторите Пароль",
+        placeholder: "Повторите пароль",
         type: "password",
         error: "passTwoError",
     },
 ];
-
-interface Info {
-    username: string;
-    email: string;
-}
 
 export default class InputsProfileClass {
     private info: Info;
@@ -107,8 +103,9 @@ export default class InputsProfileClass {
         const nameValid = () => {
             console.log(inputName.value);
             return (
-                inputName.value.length === 1 ||
                 inputName.value.match(/<script>/) !== null ||
+                inputName.value.match(/<a/) !== null ||
+                inputName.value.match(/<img/) !== null ||
                 inputName.value.match(/<img/) !== null ||
                 !(regExp.checkUsername.test(inputName.value))
             );
@@ -159,6 +156,13 @@ export default class InputsProfileClass {
 
         inputPassOne.addEventListener("change", () => {
             if (inputPassOne.value.length === 0) {
+                return;
+            }
+
+            if (inputPassOne.value.length > 50) {
+                errorPassOne.classList.add("error-active");
+                errorPassOne.textContent = textErrors.tooLong;
+
                 return;
             }
 

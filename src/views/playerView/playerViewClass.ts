@@ -79,8 +79,15 @@ export default class PlayerViewClass extends BaseViewClass {
             volumeButton.querySelector(".volume-full__svg");
         const volumeMute: SVGElement =
             volumeButton.querySelector(".volume-mute__svg");
+        const volumeHalf: SVGElement =
+            volumeButton.querySelector(".volume-half__svg");
         volumeMute.style.display = "none";
+        volumeHalf.style.display = "none";
         volumeFull.style.display = "";
+
+        const volumeReg: HTMLDivElement = document.querySelector('.volume__popUp');
+        const volumeBar: HTMLDivElement = document.querySelector('.volume-bar');
+        volumeBar.style.width = video.volume * 100 + '%';
 
         const fullScreenButton = document.querySelector(".full");
         const fullSize: SVGElement =
@@ -206,13 +213,9 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
-        document.addEventListener("pointermove", () => {
-            displayControls();
-        });
+        document.addEventListener("pointermove", displayControls);
 
-        document.addEventListener("touchend", () => {
-            displayControls();
-        });
+        document.addEventListener("touchend", displayControls);
 
         playPauseButton.addEventListener("click", playPause);
 
@@ -220,19 +223,72 @@ export default class PlayerViewClass extends BaseViewClass {
 
         forwardButton.addEventListener("click", forward);
 
-        volumeButton.addEventListener("click", () => {
-            if (video.muted) {
-                volumeFull.style.display = "";
-                volumeMute.style.display = "none";
-            } else {
+        let click = false;
+
+        volumeReg.addEventListener('click', (e: any) => {
+            click = true;
+
+            const pos =
+                (e.pageX -
+                    (volumeReg.offsetLeft +
+                        // @ts-ignore
+                        volumeReg.offsetParent.offsetLeft)) /
+                volumeReg.offsetWidth;
+
+            video.volume = pos - 0.17;
+            volumeBar.style.width = video.volume * 100 + '%';
+
+            if (Number(video.volume.toFixed(2)) === 0) {
                 volumeFull.style.display = "none";
+                volumeHalf.style.display = "none";
+                volumeMute.style.display = "";
+
+                return;
+            }
+
+            if (Number(video.volume.toFixed(2)) <= 0.35) {
+                volumeFull.style.display = "none";
+                volumeMute.style.display = "none";
+                volumeHalf.style.display = "";
+
+                return;
+            }
+
+            volumeFull.style.display = "";
+            volumeMute.style.display = "none";
+            volumeHalf.style.display = "none";
+        });
+
+        volumeButton.addEventListener("click", () => {
+            if (click) {
+                click = false;
+
+                return;
+            }
+
+            if (video.muted) {
+                volumeBar.style.width = video.volume * 100 + '%';
+
+                if (Number(video.volume.toFixed(2)) <= 0.35) {
+                    volumeFull.style.display = "none";
+                    volumeMute.style.display = "none";
+                    volumeHalf.style.display = "";
+                } else {
+                    volumeFull.style.display = "";
+                    volumeMute.style.display = "none";
+                    volumeHalf.style.display = "none";
+                }
+            } else {
+                volumeBar.style.width = '0';
+                volumeFull.style.display = "none";
+                volumeHalf.style.display = "none";
                 volumeMute.style.display = "";
             }
 
             video.muted = !video.muted;
         });
 
-        fullScreenButton.addEventListener("click", () => {
+        const fullScreenChange = () => {
             if (!document.fullscreenElement) {
                 videoContainer.requestFullscreen();
 
@@ -240,6 +296,9 @@ export default class PlayerViewClass extends BaseViewClass {
             }
 
             document.exitFullscreen();
-        });
+        }
+
+        fullScreenButton.addEventListener("click", fullScreenChange);
+        document.addEventListener("dblclick", fullScreenChange);
     }
 }

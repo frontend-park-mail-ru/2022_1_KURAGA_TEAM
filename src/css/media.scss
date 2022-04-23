@@ -86,33 +86,34 @@
 }
 
 @media (min-width: 1000px) and (max-width: 1250px) {
-  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
-  .photo-movie {
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 67vw;
-  }
 
-  .photo-movie__gradient {
-    position: absolute;
-    top: 0;
-    height: 57vw;
-  }
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+    .photo-movie {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 67vw;
+    }
 
-  .head-movie__name {
-    margin-bottom: 0;
-    width: 470px;
-  }
+    .photo-movie__gradient {
+        position: absolute;
+        top: 0;
+        height: 67vw;
+    }
 
-  .first-part-info {
-    margin-top: 0;
-  }
+    .head-movie__name {
+        margin-bottom: 0;
+        width: 470px;
+    }
 
-  /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
-  .novideo__text {
-    margin-left: 30px;
-    font-size: 60px;
-  }
+    .first-part-info {
+        margin-top: 0;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
+    .novideo__text {
+        margin-left: 30px;
+        font-size: 60px;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -416,6 +417,7 @@
   .genre {
     font-size: 12px;
   }
+
 }
 
 @media (max-width: 375px) {
@@ -435,340 +437,462 @@
 }
 
 @media (max-width: 700px) {
-  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
-  .select-title {
-    margin-inline-start: 4vw;
-    font-size: 26px;
-  }
-
-  /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
-  .error-text__404 {
-    margin-right: 15px;
-    padding-left: 10px;
-    font-size: 45px;
-  }
-
-  .error-text {
-    margin-top: 50px;
-  }
-
-  .error-text__info {
-    text-align: center;
-    margin-right: 15px;
-    padding-left: 15px;
-    font-size: 16px;
-  }
-
-  .error-img {
-    width: 232px;
-    height: 183px;
-  }
-
-  /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
-  .div-logo {
-    height: 60px;
-  }
-
-  .papa {
-    height: 65px;
-  }
-
-  .element {
-    height: 35px;
-  }
-
-  .menu-input {
-    font-size: 16px;
-  }
-
-  .menu-input::placeholder {
-    font-size: 14px;
-  }
-
-  .svg {
-    margin: 5px 20px 5px 5px;
-    width: 24px;
-    height: 24px;
-  }
-
-  .menu-button {
-    font-size: 18px;
-    height: 40px;
-    margin-top: 5px;
-  }
-
-  .error {
-    font-size: 14px;
-    padding-top: 1px;
-  }
-
-  .logo {
-    top: 10px;
-    width: 120px;
-    height: 60px;
-  }
-
-  .text {
-    margin-top: 5px;
-  }
-
-  .first-span {
-    font-size: 16px;
-  }
-
-  .second-span {
-    font-size: 16px;
-  }
-
-  /*МЕДИА ЗАПРОСЫ ДЛЯ ФУТЕРА*/
-  .titleFooter {
-    font-size: 20px;
-  }
-
-  #footer {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .left {
-    margin-left: 4vw;
-    flex-direction: column;
-  }
-
-  #second-footer {
-    margin-left: 0;
-  }
-
-  #third-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .ref {
-    margin-right: 30px;
-  }
-
-  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-  .profile-avatar {
-    width: 130px;
-    height: 130px;
-  }
-
-  .profile-avatar__input-button {
-    font-size: 16px;
-    width: 150px;
-  }
-
-  .menu-form__profile {
-    flex-direction: column;
-  }
-
-  .menu-form-avatar {
-    margin-right: 0;
-    margin-bottom: 50px;
-  }
-
-  .navbar {
-    height: 22%;
-    transition: none;
-    position: sticky !important;
-    justify-content: space-between;
-  }
-
-  .back-profile {
-    height: 130vh;
-  }
-
-  .back-menu-profile {
-    height: 124vh;
-  }
-
-  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
-  .exit {
-    margin-left: 26px;
-    padding-top: 9vmin;
-  }
-
-  .controls__button {
-    width: 214px;
-  }
-
-  .progress-controls {
-    width: 95%;
-  }
-
-  .photo-movie {
-    box-shadow: 0 -108px 35px #01090b inset;
-    height: 300px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  .head-movie {
-    width: 100%;
-    height: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    bottom: -50vw;
-    position: absolute;
-    margin-left: 0;
-  }
-
-  .head-movie__name {
-    margin-left: 0;
-    width: 150px;
-    height: 58px;
-    margin-bottom: 30px;
-  }
-
-  .head-movie__rating {
-    margin-left: 0;
-    width: 70%;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .string-rating {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .head-movie__info {
-    margin-left: 2vw;
-    margin-bottom: 40px;
-  }
-
-  .short-info {
-    font-size: 14px;
-    margin-right: 1px;
-  }
-
-  .info__year {
-    padding-right: 7px;
-  }
-
-  .info__genre {
-    margin-right: 8px;
-  }
-
-  .info__country {
-    margin-right: 8px;
-  }
-
-  .info__duration {
-    margin-right: 8px;
-  }
-
-  .photo-movie__gradient {
-    display: none;
-  }
-
-  .head-movie__buttons {
-    width: 90%;
-  }
-
-  .play-button {
-    font-size: 14px;
-    width: 130px;
-  }
-
-  .trailer-button {
-    width: 130px;
-    font-size: 14px;
-  }
-
-  .first-part-info {
-    margin-top: 260px;
-    margin-left: 4vw;
-  }
-
-  .first-part-info__text {
-    padding-right: 4vw;
-    max-width: fit-content;
-    font-size: 14px;
-  }
-
-  .second-part-genre {
-    font-size: 26px;
-    margin-left: 4vw;
-  }
-
-  .second-part-genre__genres {
-    font-size: 18px;
-  }
-
-  .group {
-    font-size: 26px;
-  }
-
-  .third-part-actors {
-    margin-left: 4vw;
-  }
-
-  .group__staff {
-    overflow: scroll;
-    width: 100%;
-  }
-
-  .person__photo {
-    width: 90px;
-    height: 90px;
-  }
-
-  .person__position {
-    font-size: 18px;
-  }
-
-  .person__name {
-    font-size: 18px;
-  }
-
-  .group__staff::-webkit-scrollbar {
-    height: 0;
-    width: 0;
-    background: var(--back-color);
-  }
-
-  .first-part-info__our-rating {
-    font-size: 62px;
-  }
-
-  .first-part-info__our-name {
-    font-size: 18px;
-  }
-
-  .first-part-info__our-name-rt {
-    font-size: 18px;
-  }
-
-  .your-rating__button {
-    width: 90%;
-  }
-
-  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА */
-  .novideo__text {
-    margin-left: 20px;
-    font-size: 40px;
-  }
-
-  .novideo__img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .novideo {
-    left: 12vw;
-  }
-
-  .controls {
-    display: block;
-    width: auto;
-  }
-
+    /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+    .select-title {
+        margin-inline-start: 4vw;
+        font-size: 26px;
+    }
+
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+    .error-text__404 {
+        margin-right: 15px;
+        padding-left: 10px;
+        font-size: 45px;
+    }
+
+    .error-text {
+        margin-top: 50px;
+    }
+
+    .error-text__info {
+        text-align: center;
+        margin-right: 15px;
+        padding-left: 15px;
+        font-size: 16px;
+    }
+
+    .error-img {
+        width: 232px;
+        height: 183px;
+    }
+
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+    .div-logo {
+        height: 60px;
+    }
+
+    .papa {
+        height: 65px;
+    }
+
+    .element {
+        height: 35px;
+    }
+
+    .menu-input {
+        font-size: 16px;
+    }
+
+    .menu-input::placeholder {
+        font-size: 14px;
+    }
+
+    .svg {
+        margin: 5px 20px 5px 5px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-button {
+        font-size: 18px;
+        height: 40px;
+        margin-top: 5px;
+    }
+
+    .error {
+        font-size: 14px;
+        padding-top: 1px;
+    }
+
+    .logo {
+        top: 10px;
+        width: 120px;
+        height: 60px;
+    }
+
+    .text {
+        margin-top: 5px;
+    }
+
+    .first-span {
+        font-size: 16px;
+    }
+
+    .second-span {
+        font-size: 16px;
+    }
+
+    /*МЕДИА ЗАПРОСЫ ДЛЯ ФУТЕРА*/
+    .titleFooter {
+        font-size: 20px;
+    }
+
+    #footer {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left {
+        margin-left: 4vw;
+        flex-direction: column;
+    }
+
+    #second-footer {
+        margin-left: 0;
+    }
+
+    #third-footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .ref {
+        margin-right: 30px;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+    .profile-avatar {
+        width: 130px;
+        height: 130px;
+    }
+
+    .profile-avatar__input-button {
+        font-size: 16px;
+        width: 150px;
+    }
+
+    .menu-form__profile {
+        flex-direction: column;
+    }
+
+    .menu-form-avatar {
+        margin-right: 0;
+        margin-bottom: 50px;
+    }
+
+    .navbar {
+        height: 22%;
+        transition: none;
+        position: sticky !important;
+        justify-content: space-between;
+    }
+
+    .back-profile {
+        height: 130vh;
+    }
+
+    .back-menu-profile {
+        height: 130vh;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+    .exit {
+        margin-left: 26px;
+        padding-top: 9vmin;
+    }
+
+    .controls__button {
+        width: 214px;
+    }
+
+    .progress-controls {
+        width: 95%;
+    }
+
+    .photo-movie {
+        box-shadow: 0 -108px 35px #01090b inset;
+        height: 300px;
+        position: relative;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .head-movie {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        bottom: -50vw;
+        position: absolute;
+        margin-left: 0;
+    }
+
+    .head-movie__name {
+        margin-left: 0;
+        width: 150px;
+        height: 58px;
+        margin-bottom: 30px;
+    }
+
+    .head-movie__rating {
+        margin-left: 0;
+        width: 70%;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .string-rating {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .head-movie__info {
+        margin-left: 2vw;
+        margin-bottom: 40px;
+    }
+
+    .short-info {
+        font-size: 14px;
+        margin-right: 1px;
+    }
+
+    .info__year {
+        padding-right: 7px;
+    }
+
+    .info__genre {
+        margin-right: 8px;
+    }
+
+    .info__country {
+        margin-right: 8px;
+    }
+
+    .info__duration {
+        margin-right: 8px;
+    }
+
+    .photo-movie__gradient {
+        display: none;
+    }
+
+    .head-movie__buttons {
+        width: 90%;
+    }
+
+    .play-button {
+        font-size: 14px;
+        width: 130px;
+    }
+
+    .trailer-button {
+        width: 130px;
+        font-size: 14px;
+    }
+
+    .first-part-info {
+        margin-top: 260px;
+        margin-left: 4vw;
+    }
+
+    .first-part-info__text {
+        padding-right: 4vw;
+        max-width: fit-content;
+        font-size: 14px;
+    }
+
+    .second-part-genre {
+        font-size: 26px;
+        margin-left: 4vw;
+    }
+
+    .second-part-genre__genres {
+        font-size: 15px;
+    }
+
+    .group {
+        font-size: 26px;
+    }
+
+    .third-part-actors {
+        margin-left: 4vw;
+    }
+
+    .group__staff {
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .person__photo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .person__position {
+        font-size: 18px;
+    }
+
+    .person__name {
+        font-size: 18px;
+    }
+
+    .group__staff::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+        background: var(--back-color);
+    }
+
+    .first-part-info__our-rating {
+        font-size: 62px;
+    }
+
+    .first-part-info__our-name {
+        font-size: 18px;
+    }
+
+    .first-part-info__our-name-rt {
+        font-size: 18px;
+    }
+
+    .your-rating__button {
+        width: 90%;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА */
+    .novideo__text {
+        margin-left: 20px;
+        font-size: 40px;
+    }
+
+    .novideo__img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .novideo {
+        left: 12vw;
+    }
+
+    .controls {
+        display: block;
+        width: auto;
+    }
+
+    .series__text {
+        display: none;
+    }
+
+    .rewind {
+        display: none;
+    }
+
+    .forward {
+        display: none;
+    }
+
+    .volume {
+        display: none;
+    }
+
+    .series {
+        display: none;
+    }
+
+    .full {
+        display: none;
+    }
+
+    /* страница актера*/
+    .photo-person {
+        margin-bottom: 300px;
+        box-shadow: 0 -108px 35px #01090b inset;
+        height: 300px;
+        position: relative;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .head-person {
+        height: auto;
+        align-content: center;
+        justify-content: flex-end;
+        margin: 160px auto auto 4vw;
+    }
+
+    .head-person__name {
+        font-size: 32px;
+    }
+    .head-person__descr {
+        width: fit-content;
+        font-weight: 500;
+        margin-block: 10px;
+        font-size: 14px;
+        line-height: 16px;
+        margin: 20px 14vw 20px 0;
+    }
+
+    .add-photos__photo {
+        width: calc(6vw + 120px);
+        height: calc(6vh + 80px);
+    }
+}
+
+@media (max-height: 450px) {
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
+    #back {
+        height: 100vw;
+    }
+
+    #back-menu {
+        height: 100vw;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+    .navbar {
+        height: 22%;
+        transition: none;
+        position: sticky !important;
+        justify-content: space-between;
+    }
+
+    .back-profile {
+        height: 160vh;
+    }
+
+    .back-menu-profile {
+        height: 160vh;
+    }
+
+    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+    .head-movie {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        bottom: -50vw;
+        position: absolute;
+        margin-left: 0;
+    }
+
+    .photo-movie {
+        box-shadow: 0 -108px 35px #01090b inset;
+    }
+
+    .first-part-info {
+        margin-top: 400px;
+    }
+
+    .head-movie__rating {
+        width: 40%;
+        justify-content: space-between;
+    }
+
+    .string-rating {
+        margin-right: 0;
+    }
+
+    .head-movie__name {
+        width: 380px;
+    }
+
+    .head-movie__buttons {
+        width: 70%;
+    }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА*/
   .series__text {
     display: none;
   }
@@ -793,45 +917,12 @@
     display: none;
   }
 
-  /* страница актера*/
-  .photo-person {
-    margin-bottom: 300px;
-    box-shadow: 0 -108px 35px #01090b inset;
-    height: 300px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .head-person {
-    height: auto;
-    align-content: center;
-    justify-content: flex-end;
-    margin: 160px auto auto 4vw;
-  }
-
-  .head-person__name {
-    font-size: 32px;
-  }
-  .head-person__descr {
-    width: fit-content;
-    font-weight: 500;
-    margin-block: 10px;
-    font-size: 14px;
-    line-height: 16px;
-    margin: 20px 14vw 20px 0;
-  }
-
-  .add-photos__photo {
-    width: calc(6vw + 120px);
-    height: calc(6vh + 80px);
+  .controls {
+    display: block;
+    width: auto;
   }
 }
 
-@media (max-height: 450px) {
-  /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
-  #back {
-    height: 100vw;
-  }
 
   #back-menu {
     height: 100vw;
@@ -1015,4 +1106,70 @@
 }
 
 
+
+
+@media (min-width: 2000px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    height: 300px;
+  }
+}
+
+
+@media (min-width: 1450px) and (max-width: 1700px) {
+    //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 21vw;
+    height: 200px;
+  }
+}
+
+@media (min-width: 1250px) and (max-width: 1450px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 20vw;
+    height: 170px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 27vw;
+    height: 185px;
+  }
+
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
+  .episodes {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1000px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .test {
+    width: 27vw;
+    height: 170px;
+  }
+}
+
+@media (max-width: 750px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .all-films__text {
+    margin-top: 30px;
+    font-size: 50px;
+  }
+
+  .test {
+    width: 38vw;
+    height: 110px;
+  }
+
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
+  .episodes {
+    margin-bottom: -240px;
+    margin-top: 270px;
+  }
+}
 
