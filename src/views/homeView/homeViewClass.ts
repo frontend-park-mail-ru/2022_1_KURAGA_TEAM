@@ -42,6 +42,7 @@ export default class HomeViewClass extends BaseViewClass {
                 await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
+            console.log(movieCompilationsData);
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
@@ -89,7 +90,6 @@ export default class HomeViewClass extends BaseViewClass {
         const homeNavbarMobile = document.querySelector(".homeMobile-js");
         const homeNavbar = document.querySelector(".home-js");
         const nameProfile = document.querySelector(".name-profile-mobile");
-
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");

@@ -1,5 +1,4 @@
 @import url("../static/fonts/GTEestiProDisplay/stylesheet.css");
-
 html {
   height: 100%;
   overflow: hidden;
@@ -135,3 +134,5 @@ body::-webkit-scrollbar-thumb {
   );
   --footer-color: #031014;
 }
+
+/*# sourceMappingURL=common.css.map */
