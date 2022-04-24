@@ -48,10 +48,12 @@ export default class SerialViewClass extends BaseViewClass {
 
             if (movData.status === routes.ERROR) {
                 router.go(routes.ERROR_VIEW);
+
                 return;
             }
 
             this.movie = new MovieModel(movData);
+            console.log(movData, 1)
 
             const { movCompBody }: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovieCompilationMovie(id);

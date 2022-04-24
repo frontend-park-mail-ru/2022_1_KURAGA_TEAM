@@ -87,7 +87,7 @@
 .b-carouselTop__next {
   border: 0;
   width: calc(2vw + 50px);
-  font-size: calc(1vw + 60px);
+  font-size: calc(1vw + 40px);
   position: absolute;
   top: 50%;
   background-color: transparent;
@@ -166,6 +166,7 @@
 }
 
 .desc-movTop {
+  margin-bottom: -1px;
   cursor: default;
   display: flex;
   padding-inline: 5px;
@@ -213,7 +214,7 @@
 .b-carousel__next {
   border: 0;
   width: calc(2vw + 40px);
-  font-size: calc(1vw + 50px);
+  font-size: calc(1vw + 30px);
   position: absolute;
   top: 50%;
   background-color: transparent;
@@ -315,6 +316,7 @@
 }
 
 .desc-mov {
+  margin-bottom: -1px;
   cursor: default;
   display: flex;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
@@ -864,7 +866,7 @@
   }
 
   .b-carouselTop {
-    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   .movieTop:hover,
@@ -916,7 +918,7 @@
     width: 48vw;
     height: 30vw;
     border-radius: 8px;
-    grid-template-rows: auto 55px;
+    grid-template-rows: auto 40px;
   }
 
   .desc-mov {
@@ -1652,7 +1654,15 @@
 /* HEADER*/
 @media (min-width: 1000px) {
   .navbar {
-    font-size: calc(1vw + 12px);
+    font-size: calc(1vw + 8px);
+  }
+
+  .menu__input {
+    font-size: calc(1vw + 10px);
+  }
+
+  .menu__input::placeholder {
+    font-size: calc(1vw + 5px);
   }
 
   .logo-home {
@@ -1695,7 +1705,7 @@
 
   .movie {
     height: calc(3vw + 215px);
-    grid-template-rows: auto 70px;
+    grid-template-rows: auto 80px;
     width: calc(3vw + 380px);
   }
 

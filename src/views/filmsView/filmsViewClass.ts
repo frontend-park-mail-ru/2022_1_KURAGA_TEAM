@@ -26,60 +26,18 @@ export default class FilmsViewClass extends BaseViewClass {
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
+
                 return;
             }
 
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            const movieCompilationData = {
-                compilation_name: 'Топ рейтинга', movies: [
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    }, {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    }]
-            }
-
-
             const { movCompBody }: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovies();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            console.log(movieCompilationsData,movieCompilationData);
-
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData, false);
-
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -94,8 +52,8 @@ export default class FilmsViewClass extends BaseViewClass {
             this.setHandler();
             handlerLink();
             header.setHandler();
-        } catch (err) {
-            console.error(err);
+        } catch {
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 

@@ -33,13 +33,10 @@ export default class GenreViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-
-
             const movieCompilationData = {compilation_name: 'Топ рейтинга', movies: {id: 7, name: 'Зеленая миля', genre: "Array(2)", picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'}}
 
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
             this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
-
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -53,8 +50,8 @@ export default class GenreViewClass extends BaseViewClass {
 
             handlerLink();
             header.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch (err) {
+            console.error(err);
         }
     }
 }

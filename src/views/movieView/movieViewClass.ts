@@ -50,6 +50,7 @@ export default class MovieViewClass extends BaseViewClass {
             }
 
             this.movie = new MovieModel(movData);
+            console.log(movData, 1)
 
             const { movCompBody }: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovieCompilationMovie(id);
