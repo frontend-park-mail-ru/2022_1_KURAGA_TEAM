@@ -340,7 +340,7 @@
     padding-inline: 0;
   }
   .b-carouselTop{
-    overflow-x: scroll;
+    overflow-y: hidden;
   }
   .movieTop:hover,
   .movieTop {
@@ -393,7 +393,7 @@
     width: 48vw;
     height: 30vw;
     border-radius: 8px;
-    grid-template-rows: auto 55px;
+    grid-template-rows: auto 40px;
   }
 
   .desc-mov {
@@ -1143,7 +1143,13 @@
 @media (min-width: 1000px){
 
   .navbar {
-    font-size: calc(1vw + 12px);
+    font-size: calc(1vw + 8px);
+  }
+  .menu__input {
+    font-size: calc(1vw + 10px);
+  }
+  .menu__input::placeholder {
+    font-size: calc(1vw + 5px);
   }
   .logo-home {
     height: calc(1vw + 50px);
@@ -1181,7 +1187,7 @@
 
   .movie{
     height: calc(3vw + 215px);
-    grid-template-rows: auto 70px;
+    grid-template-rows: auto 80px;
     width: calc(3vw + 380px);
 
   }

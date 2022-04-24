@@ -27,7 +27,7 @@
 .b-carousel__next {
   border: 0;
   width: calc(2vw + 40px);
-  font-size: calc(1vw + 50px);
+  font-size: calc(1vw + 30px);
   position: absolute;
   top: 50%;
   background-color: transparent;
@@ -133,6 +133,7 @@
 }
 
 .desc-mov {
+  margin-bottom: -1px;
   cursor: default;
   display: flex;
   text-shadow: 0 4px 4px rgb(0 0 0 / 72%);
