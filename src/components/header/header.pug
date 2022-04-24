@@ -13,7 +13,7 @@ div.desktop-navbar
     a.font-nav.home-js(href="/") Главная
     a.font-nav.movie-js(href="/movies") Фильмы
     a.font-nav.serials-js(href="/serials") Сериалы
-    a.font-nav.favourite-js(href="/") Избранное
+    a.font-nav.favourite-js(href=`/favorites`) Избранное
 div.space
 div.search
     svg.search__btn(width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
@@ -25,7 +25,7 @@ div.search
     svg.close-btn(width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="HeaderContent__icon--39VdR HeaderContent__close-icon--30A_k" data-tid="f934d019")
         path(d="M14.7071 13.2929C15.0976 13.6834 15.0976 14.3166 14.7071 14.7071C14.3166 15.0976 13.6834 15.0976 13.2929 14.7071L9.56569 10.9799C9.36768 10.7819 9.26867 10.6829 9.15451 10.6458C9.05409 10.6132 8.94591 10.6132 8.84549 10.6458C8.73133 10.6829 8.63232 10.7819 8.43432 10.9799L4.70711 14.7071C4.31658 15.0976 3.68342 15.0976 3.29289 14.7071C2.90237 14.3166 2.90237 13.6834 3.29289 13.2929L7.0201 9.56569C7.21811 9.36768 7.31711 9.26867 7.35421 9.15451C7.38684 9.05409 7.38684 8.94591 7.35421 8.84549C7.31711 8.73133 7.21811 8.63232 7.0201 8.43432L3.29289 4.70711C2.90237 4.31658 2.90237 3.68342 3.29289 3.29289C3.68342 2.90237 4.31658 2.90237 4.70711 3.29289L8.43432 7.0201C8.63232 7.21811 8.73133 7.31711 8.84549 7.35421C8.94591 7.38684 9.05409 7.38684 9.15451 7.35421C9.26867 7.31711 9.36768 7.21811 9.56569 7.0201L13.2929 3.29289C13.6834 2.90237 14.3166 2.90237 14.7071 3.29289C15.0976 3.68342 15.0976 4.31658 14.7071 4.70711L10.9799 8.43431C10.7819 8.63232 10.6829 8.73133 10.6458 8.84549C10.6132 8.94591 10.6132 9.05409 10.6458 9.15451C10.6829 9.26867 10.7819 9.36768 10.9799 9.56569L14.7071 13.2929Z")
     form.search__form
-        input.menu__input(placeholder="Поиск", type="text", maxlength="80",autocorrect="off", spellcheck="false", autocapitalize="off", autocomplete="off")
+        input.menu__input#live-search(placeholder="Поиск", type="text", maxlength="80",autocorrect="off", spellcheck="false", autocapitalize="off", autocomplete="off")
         div.search-menu
             div.font-search Возможно, вы искали
             a.font-menu-search.padding-names(href="/") !{search.res}

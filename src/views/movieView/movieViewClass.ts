@@ -21,7 +21,6 @@ export default class MovieViewClass extends BaseViewClass {
     private user: UserModel;
     private movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
-    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
@@ -56,15 +55,11 @@ export default class MovieViewClass extends BaseViewClass {
                 await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
 
+            console.log(movData);
             this.movieCompilation = new MovieCompilationModel(
                 0,
                 movieCompilationData,
                 false
-            );
-            this.movieCompilationMobile = new MovieCompilationModel(
-                0,
-                movieCompilationData,
-                true
             );
 
             const header = new HeaderClass(this.user.userData);
@@ -84,9 +79,6 @@ export default class MovieViewClass extends BaseViewClass {
                 secondGenre: secondGenre.render(),
                 actors: actors.render(),
                 select: this.compilationsRender(this.movieCompilation),
-                selectMobile: this.compilationsRender(
-                    this.movieCompilationMobile
-                ),
                 footer: footer.render(),
             });
 
@@ -94,7 +86,6 @@ export default class MovieViewClass extends BaseViewClass {
             this.setHandler();
             firstInfoMovie.setHandlers();
             this.movieCompilation.setHandler();
-            this.movieCompilationMobile.setHandler();
 
             header.setHandler();
         } catch (err) {

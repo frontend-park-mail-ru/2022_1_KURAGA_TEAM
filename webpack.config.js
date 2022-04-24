@@ -87,4 +87,5 @@ module.exports = {
         static: path.resolve(__dirname, 'src'),
         port: 8080,
     },
+
 };
