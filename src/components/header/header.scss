@@ -1,249 +1,307 @@
 .font-nav {
-    text-decoration: none;
-    color: var(--font-color);
-    font-style: normal;
-    font-weight: 500;
-    padding-inline: 20px;
-    text-shadow: 0 4px 4px var(--nav-font-shadow);
-    cursor: pointer;
-    transition: all 0.2s linear;
+  text-decoration: none;
+  color: var(--font-color);
+  font-style: normal;
+  font-weight: 500;
+  padding-inline: 20px;
+  text-shadow: 0 4px 4px var(--nav-font-shadow);
+  cursor: pointer;
+  transition: all 0.2s linear;
 }
 
 .menu-mobile__nav:hover,
 .font-nav:hover {
-    color: var(--mix-color);
+  color: var(--mix-color);
 }
 
 .header {
-    margin-bottom: 30px;
-    flex-direction: row;
-    background-size: cover;
-    grid-area: header;
-    height: 88vh;
+  margin-bottom: 30px;
+  flex-direction: row;
+  background-size: cover;
+  grid-area: header;
+  height: 88vh;
 }
 
 .navbar {
-    z-index: 4;
-    top: 0;
-    width: 100%;
-    position: fixed;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 22px;
-    text-align: center;
-    background: var(--nav-back);
-    transition: background 0.6s linear;
+  z-index: 4;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 22px;
+  text-align: center;
+  background: var(--nav-back);
+  transition: background 0.6s linear;
 }
 
 .navbar-color {
-    background: var(--footer-color);
+  background: var(--footer-color);
 }
 
 .logo-link {
-    margin-inline: 4vw;
+  margin-inline: 4vw;
 }
+
 .logo-home {
-    margin-block: 8px;
-    height: 60px;
+  margin-block: 8px;
+  height: 60px;
 }
 
 .space {
-    flex-grow: 1;
-}
 
-.form-search {
-    width: 300px;
-    position: relative;
-    height: 34px;
-}
-
-.input-search[type="text"] {
-    border: 0;
-    background-color: transparent;
-    width: 100px;
-    transition: width 0.4s ease-in-out;
-    font-family: "GT Eesti Pro Display", arial, sans-serif;
-}
-
-::placeholder {
-    color: var(--font-color);
-    font-family: "GT Eesti Pro Display", arial, sans-serif;
-    text-decoration: none;
-    font-style: normal;
-    font-weight: bold;
-    opacity: 1;
-}
-
-.input-search {
-    color: var(--font-color);
-    font-size: 24px;
-    height: 100%;
-    width: 0;
-    padding: 0 42px 0 15px;
-    font-family: "GT Eesti Pro Display", arial, sans-serif;
-    border: none;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    background: transparent;
-    transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-}
-
-.input-search:focus {
-    width: 300px;
-    z-index: 1;
-    border-bottom: 2px solid var(--font-color);
-}
-
-.input-search[type="text"]:focus {
-    width: 90%;
-}
-
-.btn-search {
-    cursor: pointer;
-    width: 34px;
-    border: 0;
-    margin-inline: -40px;
-    height: 100%;
-    background: url("../static/lupa.png");
-    background-size: 100%;
 }
 
 .search {
-    text-decoration: none;
-    font-style: normal;
-    font-weight: bold;
-    color: var(--font-color);
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
-    column-gap: 10px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row-reverse;
+}
+.close-btn,
+.search__btn {
+  cursor: pointer;
+  transition: all 0.2s linear;
 }
 
+.close-btn{
+  transform: scale(1.5);
+  margin-inline-start: 10px;
+  place-self: center;
+  fill: var(--font-color);
+  cursor: pointer;
+  transition: all 0.2s linear;
+  display: none;
+}
+
+.close-btn:hover{
+  fill: var(--mix-color);
+  transform: scale(1.2);
+}
+.search__btn:hover {
+  transform: scale(1.1);
+}
+.search-topic{
+  height: 5vw;
+  background: rgba(112,99,99,.26);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+
+.search-menu {
+  display: none;
+  z-index: 3;
+  border-radius: 10px;
+  background: var(--search-back);
+  margin: 4rem auto auto auto;
+  position: absolute;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: fit-content;
+  max-height: 80vh;
+  padding-bottom: 30px;
+}
+
+.menu__input {
+  background: rgba(0,0,0,0);
+  display: none;
+  font-family: "GT Eesti Pro Display", sans-serif;
+  color: var(--font-color);
+  padding-inline-start: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  font-size: 22px;
+  background: var(--drop-back);
+}
+.menu__input:focus{
+  outline:none;
+}
+
+.menu__input::placeholder {
+  color: var(--font-color);
+  font-size: 20px;
+}
+
+.menu__input:focus {
+  background-color: var(--font-color);
+}
+
+
+
+
+.submit {
+  display: none;
+}
+
+.search__form{
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+.padding-names{
+  padding-inline: 10px;
+}
+.font-search{
+  padding: 10px;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--genre-color);
+}
+.font-res{
+
+  text-decoration: none;
+  color: var(--font-color);
+  font-style: normal;
+  font-weight: 500;
+  text-shadow: 0 4px 4px var(--nav-font-shadow);
+  cursor: pointer;
+  transition: all .2s linear;
+}
+
+.font-topics{
+  margin: 30px auto 10px 0;
+  font-weight: 400;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--font-color);
+}
+.font-menu-search {
+  text-decoration: none;
+  color: var(--font-color);
+  font-style: normal;
+  font-weight: 500;
+  text-shadow: 0 4px 4px var(--nav-font-shadow);
+  cursor: pointer;
+  transition: all .2s linear;
+}
+
+
 .profile-block {
-    display: flex;
-    flex-direction: row;
-    margin-inline-end: 4vw;
-    cursor: pointer;
-    height: 82px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-inline-end: 4vw;
+  cursor: pointer;
+  height: 82px;
+  align-items: center;
 }
 
 .name-profile {
-    cursor: pointer;
-    text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .name-profile-mobile {
-    cursor: pointer;
-    text-decoration: none;
-    display: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: none;
 }
 
 .profile {
-    float: right;
+  float: right;
 }
 
 .btn-profile {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 0;
-    background-size: cover;
-    background-color: transparent;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 0;
+  background-size: cover;
+  background-color: transparent;
 }
 
 .dropdown {
-    position: relative;
-    padding-block: 30px;
-    display: flex;
-    justify-content: space-around;
+  position: relative;
+  padding-block: 30px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .dropdown-content {
-    right: auto;
-    display: none;
-    margin-block: 66px;
-    position: absolute;
-    background: var(--drop-back);
-    border-radius: 5px;
-    text-shadow: 0 4px 4px var(--nav-font-shadow);
-    z-index: 1;
-    transition: all 0.1s linear;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--font-color);
+  right: auto;
+  display: none;
+  margin-block: 66px;
+  position: absolute;
+  background: var(--drop-back);
+  border-radius: 5px;
+  text-shadow: 0 4px 4px var(--nav-font-shadow);
+  z-index: 1;
+  transition: all 0.1s linear;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--font-color);
 }
 
 .dropdown-content a {
-    transition: all 0.2s linear;
-    font-size: 18px;
-    color: var(--font-color);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  transition: all 0.2s linear;
+  font-size: 18px;
+  color: var(--font-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
+.font-menu-search:hover,
 .dropdown-content a:hover {
-    color: var(--mix-color);
+  color: var(--mix-color);
 }
 
 .menu-mobile {
-    display: none;
-    margin-inline: 4vw;
-    justify-content: flex-start;
+  display: none;
+  margin-inline: 4vw;
+  justify-content: flex-start;
 }
 
 .menuSymbol {
-    transition-property: transform fill;
-    transition-duration: 1s;
-    transition-timing-function: ease;
-    fill: white;
+  transition-property: transform fill;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  fill: white;
 }
 
 .menuSymbol__action {
-    transform: scale(1.2) rotate(360deg);
-    fill: var(--mix-color);
+  transform: scale(1.2) rotate(360deg);
+  fill: var(--mix-color);
 }
 
 .menu-mobile__vertical {
-    top: 87px;
-    flex-direction: column;
-    position: absolute;
-    align-items: flex-start;
-    background: var(--drop-back);
-    border-radius: 5px;
-    box-shadow: 0 8px 16px 0 var(--drop-shadow);
-    display: none;
+  top: 80px;
+  flex-direction: column;
+  position: absolute;
+  align-items: flex-start;
+  background: var(--drop-back);
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 var(--drop-shadow);
+  display: none;
 }
 
 .menu-mobile__nav {
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--font-color);
-    font-size: 20px;
-    padding: 10px 20vw 10px 10px;
-    /* padding-block-start: 10px; */
-    text-shadow: 0 4px 4px var(--nav-font-shadow);
-    cursor: pointer;
-    transition: all 0.2s linear;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--font-color);
+  font-size: 20px;
+  padding: 10px 20vw 10px 10px;
+  /* padding-block-start: 10px; */
+  text-shadow: 0 4px 4px var(--nav-font-shadow);
+  cursor: pointer;
+  transition: all 0.2s linear;
 }
 
 .dropdown-content a {
-    font-size: 16px;
-    color: var(--font-color);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  font-size: 16px;
+  color: var(--font-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 .profile-block:hover .dropdown-content {
-    display: block;
+  display: block;
 }

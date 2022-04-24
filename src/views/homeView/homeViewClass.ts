@@ -17,7 +17,6 @@ export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
     private mainMovie: MovieModel;
     private movieCompilations: Array<MovieCompilationModel>;
-    private movieCompilationsMobile: Array<MovieCompilationModel>;
 
     async render() {
         try {
@@ -42,6 +41,7 @@ export default class HomeViewClass extends BaseViewClass {
                 await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
+            console.log(movieCompilationsData);
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
@@ -50,10 +50,7 @@ export default class HomeViewClass extends BaseViewClass {
                         false
                     )
             );
-            this.movieCompilationsMobile = movieCompilationsData.map(
-                (movieCompilationData, index) =>
-                    new MovieCompilationModel(index, movieCompilationData, true)
-            );
+            
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
@@ -64,9 +61,6 @@ export default class HomeViewClass extends BaseViewClass {
                 header: header.render(),
                 mainMovie: mainMovie.render(),
                 select: this.compilationsRender(this.movieCompilations),
-                selectMobile: this.compilationsRender(
-                    this.movieCompilationsMobile
-                ),
                 footer: footer.render(),
             });
 
@@ -75,9 +69,6 @@ export default class HomeViewClass extends BaseViewClass {
 
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
-                carousel.setHandler();
-            });
-            this.movieCompilationsMobile.forEach((carousel) => {
                 carousel.setHandler();
             });
         } catch (err) {
@@ -89,7 +80,6 @@ export default class HomeViewClass extends BaseViewClass {
         const homeNavbarMobile = document.querySelector(".homeMobile-js");
         const homeNavbar = document.querySelector(".home-js");
         const nameProfile = document.querySelector(".name-profile-mobile");
-
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");

@@ -69,10 +69,10 @@ export interface MovieData {
 }
 
 export interface MovieCompilationData {
-    id: number;
+    id?: number;
     movies: Array<MovieData>;
-    compilationName: string;
-    isMobile: boolean;
+    compilationName?: string;
+    isMobile?: boolean;
 }
 export interface InfoHeadPerson {
     name: string;
@@ -100,6 +100,7 @@ export interface privatesMovingCarousel {
     opt?: optInfo;
 }
 export interface optInfo {
+    length: number;
     position: number;
     max_position: number;
 }
@@ -110,4 +111,9 @@ export interface selInfo {
     children: HTMLCollection;
     prev: HTMLElement;
     next: HTMLElement;
+}
+
+export interface Info {
+    username: string;
+    email: string;
 }

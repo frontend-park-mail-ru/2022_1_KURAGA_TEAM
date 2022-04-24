@@ -1,230 +1,239 @@
 @import "./carouselTop.scss";
 
 .wrap {
-    margin: 0 0 10px auto;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 .b-carousel {
-    padding-inline: 4vw;
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    box-sizing: border-box;
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-flow: column;
+  margin: auto;
+  box-sizing: border-box;
+  padding-inline: 4vw;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.b-carousel::-webkit-scrollbar {
+  height: 0;
 }
 
 .b-carousel__prev,
 .b-carousel__next {
-    border: 0;
-    width: 54px;
-    font-size: 50px;
-    position: absolute;
-    top: 50%;
-    background-color: transparent;
-    height: 100%;
-    transform: translateY(-50%) translateZ(0);
-    cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    z-index: 3;
-    color: transparent;
+  border: 0;
+  width: calc(2vw + 40px);
+  font-size: calc(1vw + 30px);
+  position: absolute;
+  top: 50%;
+  background-color: transparent;
+  height: 100%;
+  transform: translateY(-50%) translateZ(0);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 3;
+  color: transparent;
+  visibility: hidden;
 }
 
 .b-carousel__prev {
-    visibility: hidden;
-    height: 100%;
-    background-color: transparent;
-    left: 0;
-    transition: all 0.4s ease;
+
+  left: 0;
+  transition: all 0.4s ease;
 }
 
 .b-carousel__next {
-    visibility: hidden;
-    height: 100%;
-    background-color: transparent;
-    left: auto;
-    right: 0;
-    transition: all 0.4s ease;
+
+  right: 0;
+  transition: all 0.4s ease;
 }
 
 .b-carousel__prev-hover,
 .b-carousel__next-hover {
-    color: var(--btn-carousel-color);
-    width: 54px;
-    font-size: 40px;
-    background-color: var(--btn-carousel-back-hover);
+  color: var(--btn-carousel-color);
+  width: 54px;
+  font-size: 40px;
+  background-color: var(--btn-carousel-back-hover);
 }
 
 .b-carousel__prev:hover,
 .b-carousel__next:hover {
-    color: var(--btn-carousel-color);
-    background-color: rgb(0 0 0 / 75%);
-    transition: all 0.4s ease;
+  color: var(--btn-carousel-color);
+  background-color: rgb(0 0 0 / 75%);
+  transition: all 0.4s ease;
 }
 
 .b-carousel__wrap {
-    display: flex;
-    transition: transform 0.75s ease-in-out;
-    will-change: transform;
-    position: relative;
-    z-index: 1;
-    height: 100%;
+  display: flex;
+  transition: transform .75s ease-in-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  height: 100%;
 }
 
 .b-carousel__item {
-    flex: 0 0 100%;
-    width: 1px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    height: 100%;
+  flex: 0 0 100%;
+  width: 1px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .b-carousel__img {
-    height: 100%;
-    object-fit: cover;
+  height: 100%;
+  object-fit: cover;
 }
 
 .movie__href {
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    color: var(--font-color);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: var(--font-color);
 }
 
 .movieTop__href {
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    color: var(--font-color);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: var(--font-color);
 }
 
 .movie {
-    transform: scale(0.95);
-    margin-inline-end: 20px;
-    background-size: cover;
-    background-position-x: center;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto 50px;
-    column-gap: 10px;
-    width: 320px;
-    height: 180px;
-    row-gap: 10px;
-    border-radius: 24px;
-    /*margin-inline-start: 0;*/
-    overflow: visible;
-    transition: all 0.2s ease;
-    grid-template-areas:
+  transform: scale(0.95);
+  background-size: cover;
+  background-position-x: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 50px;
+  column-gap: 10px;
+  width: 320px;
+  height: 180px;
+  row-gap: 10px;
+  border-radius: 24px;
+  overflow: visible;
+  transition: all 0.2s ease;
+  grid-template-areas:
         "refMov "
         "descMov";
 }
 
 .movie:hover {
-    transform: scale(1);
+  transform: scale(1);
+}
+
+.series:hover {
+  transform: scale(1);
 }
 
 .ref-mov {
-    grid-area: movie;
+  grid-area: movie;
 }
 
 .desc-mov {
-    cursor: default;
-    display: flex;
-    text-shadow: 0 4px 4px rgb(0 0 0 / 72%);
-    padding-inline: 5px;
-    border-bottom-left-radius: 21px;
-    border-bottom-right-radius: 21px;
-    font-size: 14px;
-    background: var(--desc-mov-back);
-    grid-area: descMov;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: space-around;
-    justify-content: space-evenly;
-    text-decoration: none;
-    font-weight: normal;
+  margin-bottom: -1px;
+  cursor: default;
+  display: flex;
+  text-shadow: 0 4px 4px rgb(0 0 0 / 72%);
+  padding-inline: 5px;
+  border-bottom-left-radius: 21px;
+  border-bottom-right-radius: 21px;
+  font-size: 14px;
+  background: var(--desc-mov-back);
+  grid-area: descMov;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-evenly;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 .genre {
-    font-weight: 350;
-    font-size: 14px;
-    line-height: 14px;
-    color: var(--genre-color);
-    text-decoration: none;
-    cursor: pointer;
+  font-weight: 350;
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--genre-color);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .title {
-    text-align: center;
-    grid-area: title;
+  text-align: center;
+  grid-area: title;
 }
 
 .title-name {
-    font-size: 96px;
-    line-height: 111px;
+  font-size: 96px;
+  line-height: 111px;
 }
 
 .title-descr {
-    font-weight: 350;
-    font-size: 30px;
-    line-height: 35px;
+  font-weight: 350;
+  font-size: 30px;
+  line-height: 35px;
 }
+
 
 #selectMobile {
-    display: none;
+  display: none;
 }
 
+
 .selection {
-    background-color: var(--back-color);
-    display: grid;
-    grid-template-columns: auto;
-    column-gap: 10px;
-    grid-template-rows: auto;
-    row-gap: 10px;
+  overflow-x: hidden;
+  background-color: var(--back-color);
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 10px;
+  grid-template-rows: auto;
+  row-gap: 10px;
 }
 
 .select-title {
-    inline-size: max-content;
-    font-size: 28px;
-    line-height: 42px;
-    margin-inline-start: 4vw;
-    margin-block-start: 60px;
-    font-style: normal;
-    font-weight: 500;
+  inline-size: max-content;
+  font-size: 28px;
+  line-height: 42px;
+  margin-inline-start: 4vw;
+  margin-block-start: 60px;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .select-movies {
-    width: 1280px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
-    column-gap: 28px;
-    grid-template-rows: auto;
+  width: 1280px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  column-gap: 28px;
+  grid-template-rows: auto;
 }
 
 .like-size {
-    background-size: 36px 36px;
-    width: 36px;
-    height: 36px;
+  background-size: 36px 36px;
+  width: 36px;
+  height: 36px;
 }
 
 #cbMovie,
 #cb {
-    visibility: hidden;
-    text-align: -webkit-center;
+  visibility: hidden;
+  text-align: -webkit-center;
 }
 
 #cbMovie:hover::after,
 #cb:hover::after {
-    display: block;
-    content: " ";
-    background-image: url("../static/activeLike.png");
-    background-position: center;
+  display: block;
+  content: " ";
+  background-image: url("../static/activeLike.png");
+  background-position: center;
 }
 
 #cbMovie,
@@ -233,39 +242,50 @@
 #cbMovie:checked::after,
 #cb::after,
 #cb:checked::after {
-    margin-left: -8px;
-    background-size: 36px 36px;
-    height: 36px;
-    width: 36px;
+  margin-left: -8px;
+  background-size: 36px 36px;
+  height: 36px;
+  width: 36px;
 }
 
 #cbMovie::after,
 #cb::after {
-    cursor: pointer;
-    transition-property: transform;
-    transition: all 0.1s ease;
-    visibility: visible;
-    display: block;
-    content: " ";
-    background-image: url("../static/heart.png");
+  cursor: pointer;
+  transition-property: transform;
+  transition: all 0.1s ease;
+  visibility: visible;
+  display: block;
+  content: " ";
+  background-image: url("../static/heart.png");
 }
 
 #cbMovie:checked::after,
 #cb:checked::after {
-    transform: scale(1.2);
-    display: block;
-    content: " ";
-    background-image: url("../static/activeLike.png");
-    background-position: center;
-    /*background-size: 36px 36px;*/
-    /*height: 36px;*/
-    /*width: 36px;*/
+  transform: scale(1.2);
+  display: block;
+  content: " ";
+  background-image: url("../static/activeLike.png");
+  background-position: center;
+  /*background-size: 36px 36px;*/
+  /*height: 36px;*/
+  /*width: 36px;*/
 }
 
 #like {
-    display: block;
+  display: block;
 }
 
 #like-active {
-    display: none;
+  display: none;
 }
+
+.out-movie{
+  transition: background-color;
+}
+//.out-movie:hover{
+//  max-height: 150%;
+//  height: fit-content;
+//  padding: 10px;
+//  background: linear-gradient(0deg, rgba(47, 48, 49, 0.85), rgba(47, 48, 49, 0.85));
+//  border-radius: 24px;
+//}

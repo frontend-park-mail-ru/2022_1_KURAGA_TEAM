@@ -1,8 +1,10 @@
 import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
-import { UserData } from "../../types";
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
+import {UserData} from "../../types";
+
+
 export default class HeaderClass {
     private readonly info: UserData;
 
@@ -10,20 +12,41 @@ export default class HeaderClass {
         this.info = info;
     }
 
+
+
     render() {
 
-        return headerTemplate({ item: this.info });
+    const searchConfig = {
+            res: "результат",
+            categories: [{
+                topic: "Фильмы",
+                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+            }, {
+                topic: "Сериалы",
+                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+            }, {
+                topic: "Персоны",
+                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+            }
+            ]
+        }
+        return headerTemplate({item: this.info, search: searchConfig});
     }
 
     setHandler() {
-        const navbar = document.querySelector(".navbar");
+
+        const navbar:HTMLElement = document.querySelector(".navbar");
+
+
+
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > 15) {
-                navbar.classList.add("navbar-color");
 
+                navbar.classList.add("navbar-color");
                 return;
             }
+
 
             navbar.classList.remove("navbar-color");
         });
@@ -34,30 +57,84 @@ export default class HeaderClass {
             e.preventDefault();
             UserModel.quit();
         });
+
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
-            const verticalMenu: HTMLElement = document.querySelector(
-                ".menu-mobile__vertical"
-            );
-            if (verticalMenu.style.display === "flex") {
-                verticalMenu.style.display = "none";
-                verticalNavbar.classList.remove("menuSymbol__action");
-            } else {
-                verticalMenu.style.display = "flex";
-                verticalNavbar.classList.add("menuSymbol__action");
+            if (logo.style.display == "block") {
+                const verticalMenu: HTMLElement = document.querySelector(
+                    ".menu-mobile__vertical"
+                );
+                if (verticalMenu.style.display === "flex") {
+                    verticalMenu.style.display = "none";
+                    verticalNavbar.classList.remove("menuSymbol__action");
+                } else {
+                    verticalMenu.style.display = "flex";
+                    verticalNavbar.classList.add("menuSymbol__action");
+                }
             }
         });
         const profileIcon = document.querySelector(".btn-profile");
         profileIcon.addEventListener("touchstart", (e) => {
             e.preventDefault();
-            const profileMenu: HTMLElement =
-                document.querySelector(".dropdown-content");
-            if (profileMenu.style.display === "block") {
-                profileMenu.style.display = "none";
-            } else {
-                profileMenu.style.display = "block";
+            if (logo.style.display == "block") {
+                const profileMenu: HTMLElement =
+                    document.querySelector(".dropdown-content");
+                if (profileMenu.style.display === "block") {
+                    profileMenu.style.display = "none";
+                } else {
+                    profileMenu.style.display = "block";
+                }
             }
         });
+
+        const searchBtn: HTMLElement = document.querySelector(".search__btn");
+        const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
+        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
+
+        searchBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const searchMenu: HTMLElement =
+                document.querySelector(".menu__input");
+            searchMenu.style.display = "block";
+            searchBtn.style.display = "none";
+            searchCloseBtn.style.display = "block";
+            //searchMenuRes.style.display = "flex";
+            navbar.style.position = "absolute";
+            const screenWidth = window.screen.width;
+            const logo: HTMLElement = document.querySelector(".logo-link");
+
+            if (screenWidth <= 1000) {
+                logo.style.display = "none";
+            }
+
+        })
+
+        const logo: HTMLElement = document.querySelector(".logo-link");
+        const searchMenu: HTMLElement =
+            document.querySelector(".menu__input");
+        searchCloseBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            searchMenu.style.display = "none";
+            searchCloseBtn.style.display = "none";
+            searchBtn.style.display = "block";
+            searchMenuRes.style.display = "none";
+            navbar.style.position = "fixed";
+            const screenWidth = window.screen.width;
+
+            if (screenWidth <= 1000) {
+                logo.style.display = "block";
+            }
+        })
+
+        const a = document.querySelector("#live-search");
+        a.addEventListener("keyup",function(){
+            searchMenuRes.style.display = "flex";
+
+            console.log(this.value);
+        });
+
     }
 }

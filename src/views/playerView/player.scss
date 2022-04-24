@@ -216,3 +216,46 @@
 .series:hover .series__popUp__content {
     display: block;
 }
+
+.volume:hover .volume__popUp__content {
+    display: flex;
+}
+
+.volume:hover .volume__popUp {
+    display: flex;
+}
+
+.volume__popUp {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    width: 82px;
+    height: 40px;
+    display: none;
+    align-items: center;
+
+    &__content {
+        background-color: var(--progress-bar);
+        display: none;
+        align-items: center;
+        height: 4px;
+        width: 70px;
+        margin-left: 10px;
+    }
+}
+
+.volume-bar {
+    display: inline-block;
+    height: 120%;
+    width: 20%;
+    background: var(--mix-color);
+    transition: all 0.2s linear;
+}
+
+.level {
+    background: var(--mix-color);
+    display: inline-block;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+}
