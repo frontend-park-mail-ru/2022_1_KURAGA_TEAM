@@ -9,8 +9,11 @@ export default class HeaderClass {
         this.info = info;
     }
 
+
+
     render() {
-        const searchConfig = {
+
+    const searchConfig = {
             res: "результат",
             categories: [{
                 topic: "Фильмы",
@@ -28,7 +31,11 @@ export default class HeaderClass {
     }
 
     setHandler() {
+
         const navbar:HTMLElement = document.querySelector(".navbar");
+
+
+
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > 15) {
@@ -90,7 +97,7 @@ export default class HeaderClass {
             searchMenu.style.display = "block";
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
-            searchMenuRes.style.display = "flex";
+            //searchMenuRes.style.display = "flex";
             navbar.style.position = "absolute";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
@@ -102,10 +109,11 @@ export default class HeaderClass {
         })
 
         const logo: HTMLElement = document.querySelector(".logo-link");
+        const searchMenu: HTMLElement =
+            document.querySelector(".menu__input");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            const searchMenu: HTMLElement =
-                document.querySelector(".menu__input");
+
             searchMenu.style.display = "none";
             searchCloseBtn.style.display = "none";
             searchBtn.style.display = "block";
@@ -118,6 +126,12 @@ export default class HeaderClass {
             }
         })
 
+        const a = document.querySelector("#live-search");
+        a.addEventListener("keyup",function(){
+            searchMenuRes.style.display = "flex";
+
+            console.log(this.value);
+        });
 
     }
 }

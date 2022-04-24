@@ -128,6 +128,10 @@
   transform: scale(1);
 }
 
+.series:hover {
+  transform: scale(1);
+}
+
 .ref-mov {
   grid-area: movie;
 }
@@ -274,3 +278,14 @@
 #like-active {
   display: none;
 }
+
+.out-movie{
+  transition: background-color;
+}
+//.out-movie:hover{
+//  max-height: 150%;
+//  height: fit-content;
+//  padding: 10px;
+//  background: linear-gradient(0deg, rgba(47, 48, 49, 0.85), rgba(47, 48, 49, 0.85));
+//  border-radius: 24px;
+//}
