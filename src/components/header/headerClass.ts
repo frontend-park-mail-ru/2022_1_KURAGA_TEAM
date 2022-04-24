@@ -1,6 +1,9 @@
 import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
+import router from "Routing/router";
+import { routes } from "Routing/constRouting";
 import {UserData} from "../../types";
+
 
 export default class HeaderClass {
     private readonly info: UserData;
