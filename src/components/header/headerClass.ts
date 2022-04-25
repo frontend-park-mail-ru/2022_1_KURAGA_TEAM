@@ -59,7 +59,7 @@ export default class HeaderClass {
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
             console.log("sefsef")
-            if (logo.style.display == "block") {
+            if (logo.style.display != "none") {
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
                 );
@@ -92,7 +92,6 @@ export default class HeaderClass {
 
         searchBtn.addEventListener("click", (e) => {
             e.preventDefault();
-
             const searchMenu: HTMLElement =
                 document.querySelector(".menu__input");
             searchMenu.style.display = "block";
