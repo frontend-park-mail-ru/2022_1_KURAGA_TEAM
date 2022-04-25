@@ -348,7 +348,7 @@
     height: 60vw;
     transform: scale(1);
     margin-inline-end: 0;
-    margin-inline: 1vw;
+    margin-inline: 2vw;
     background-position-x: center;
   }
 
@@ -388,8 +388,11 @@
     display: none;
   }
 
+  .wrap{
+    padding-inline: 4px;
+  }
   .movie {
-    margin: 4px;
+    margin-inline: 1vw;
     width: 48vw;
     height: 30vw;
     border-radius: 8px;
@@ -418,6 +421,14 @@
     font-size: 12px;
   }
 
+  .list-films{
+    display: flex;
+    margin: 20px auto auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
 }
 
 @media (max-width: 375px) {
@@ -435,6 +446,25 @@
     width: 28px;
   }
 }
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .photo-person {
+    height: 100%;
+    background-position-x: right;
+  }
+  .head-person__descr {
+    margin: 20px 40vw 20px 0;
+  }
+  .head-person {
+    height: 110%;
+  }
+
+  .photo-person__gradient {
+    height: 100%;
+    background: var(--movie-gradient);
+  }
+}
+
 
 @media (max-width: 700px) {
     /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
@@ -573,7 +603,7 @@
     }
 
     .navbar {
-        height: 22%;
+        //height: 22%;
         transition: none;
         position: sticky !important;
         justify-content: space-between;
@@ -797,7 +827,7 @@
 
     /* страница актера*/
     .photo-person {
-        margin-bottom: 300px;
+        margin-bottom: 350px;
         box-shadow: 0 -108px 35px #01090b inset;
         height: 300px;
         position: relative;
@@ -841,7 +871,7 @@
 
     /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
     .navbar {
-        height: 22%;
+        //height: 22%;
         transition: none;
         position: sticky !important;
         justify-content: space-between;
@@ -930,7 +960,7 @@
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
   .navbar {
-    height: 22%;
+    //height: 22%;
     transition: none;
     position: sticky !important;
     justify-content: space-between;
