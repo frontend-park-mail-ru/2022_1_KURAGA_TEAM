@@ -14,7 +14,10 @@ div.head-movie__info
     div.short-info.info__duration #{info.duration}
     div.short-info.info__age #{info.age_limit}+
 div.head-movie__buttons
-    a.play-button(href=`/player/${info.id}/movie`) Смотреть фильм
+    if (info.is_movie)
+        a.play-button(href=`/player/${info.id}/movie`) Смотреть фильм
+    else
+        a.play-button(href=`/player/${info.id}/seas=1/ep=1`) Смотреть сериал
     a.trailer-button(href=`/player/${info.id}/trailer`) Трейлер
     input#cbMovie(type="checkbox")
 
