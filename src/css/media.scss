@@ -428,6 +428,19 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+  .padding-names{
+      padding-inline: 10px;
+  }
+  .search-topic {
+    height: fit-content;
+    padding-block: 10px;
+  }
+  .font-topics {
+    font-size: 22px;
+  }
+  .font-menu-search {
+    font-size: 30px;
+  }
 
 }
 

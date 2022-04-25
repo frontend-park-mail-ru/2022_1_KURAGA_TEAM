@@ -1,60 +1,68 @@
-import genreViewTemplate from "./genreView.pug";
+import filmsViewTemplate from "./searchView.pug";
 import HeaderClass from "Components/header/headerClass";
 import UserModel from "../../models/User";
+import handlerLink from "Utils/handlerLink";
 import router from "Routing/router";
 import FooterClass from "Components/footer/footerClass";
 import {routes} from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import {User} from "../../types";
-import handlerLink from "Utils/handlerLink";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import "../filmsView/films.scss";
+import "./search.scss";
 
-export default class GenreViewClass extends BaseViewClass {
+export default class SearchViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
 
     async render() {
         try {
-
             const loader = new LoaderViewClass();
             loader.render();
 
             const {isAuth, userBody} = await UserModel.auth();
 
-
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
+            const searchConfig = {
+                res: "результат",
+                categories: [{
+                    topic: "Фильмы",
+                    results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+                }, {
+                    topic: "Сериалы",
+                    results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+                }, {
+                    topic: "Персоны",
+                    results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+                }
+                ]
+            }
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
 
-
-            const movieCompilationData = {compilation_name: 'Топ рейтинга', movies: {id: 7, name: 'Зеленая миля', genre: "Array(2)", picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'}}
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
-
-
-
             const header = new HeaderClass(this.user.userData);
-            const listFilms = new ListFilmsClass(this.movieCompilation);
             const footer = new FooterClass();
 
-            super.render(genreViewTemplate, {
+            super.render(filmsViewTemplate, {
                 header: header.render(),
-                listFilms: listFilms.render(),
+                search: searchConfig,
                 footer: footer.render(),
             });
 
+            this.setHandler();
             handlerLink();
             header.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch (err) {
+            console.error(err);
         }
+    }
+
+    setHandler(): void {
+
     }
 }

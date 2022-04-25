@@ -23,7 +23,6 @@ export default class SerialViewClass extends BaseViewClass {
     private user: UserModel;
     private movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
-    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
@@ -60,12 +59,6 @@ export default class SerialViewClass extends BaseViewClass {
             this.movieCompilation = new MovieCompilationModel(
                 0,
                 movieCompilationData,
-                false
-            );
-            this.movieCompilationMobile = new MovieCompilationModel(
-                0,
-                movieCompilationData,
-                true
             );
 
             const header = new HeaderClass(this.user.userData);
@@ -84,16 +77,10 @@ export default class SerialViewClass extends BaseViewClass {
                 headMovie: headMovie.render(),
                 episodes: episodes.render(),
                 series: this.compilationsRender(this.movieCompilation),
-                seriesMobile: this.compilationsRender(
-                    this.movieCompilationMobile
-                ),
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
                 actors: actors.render(),
                 select: this.compilationsRender(this.movieCompilation),
-                selectMobile: this.compilationsRender(
-                    this.movieCompilationMobile
-                ),
                 footer: footer.render(),
             });
 
@@ -101,7 +88,6 @@ export default class SerialViewClass extends BaseViewClass {
             this.setHandler();
             firstInfoMovie.setHandlers();
             this.movieCompilation.setHandler();
-            this.movieCompilationMobile.setHandler();
 
             header.setHandler();
         } catch (err) {

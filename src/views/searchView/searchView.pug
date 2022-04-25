@@ -1,0 +1,11 @@
+div.navbar !{header}
+div.all-films__text Результаты поиска
+div.results
+    each item in search.categories
+        div.topic
+            a.font-topics.padding-names(href="/") !{item.topic}
+        each res in item.results
+            div.search-topic
+                a.font-menu-search.padding-names(href="/") !{res.name}
+                a.genre.padding-names !{res.info}
+div !{footer}

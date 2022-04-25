@@ -9,7 +9,6 @@ export default class ListFilmsClass {
         this.info = info;
     }
     render() {
-
         const unTop = new MovieClass(this.info.movieCompilationData.movies, "");
         
         return listFilmsTemplate({

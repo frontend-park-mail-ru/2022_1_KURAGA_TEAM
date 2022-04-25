@@ -58,7 +58,6 @@ export default class MovieViewClass extends BaseViewClass {
             this.movieCompilation = new MovieCompilationModel(
                 0,
                 movieCompilationData,
-                false
             );
 
             const header = new HeaderClass(this.user.userData);

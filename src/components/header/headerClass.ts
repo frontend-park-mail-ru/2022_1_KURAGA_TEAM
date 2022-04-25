@@ -98,7 +98,7 @@ export default class HeaderClass {
             searchMenu.style.display = "block";
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
-            navbar.style.position = "absolute";
+            //navbar.style.position = "absolute";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
 

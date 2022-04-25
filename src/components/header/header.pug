@@ -29,12 +29,7 @@ div.search
         div.search-menu
             div.font-search Возможно, вы искали
             a.font-menu-search.padding-names(href="/") !{search.res}
-            each item in search.categories
-                a.font-topics.padding-names(href="/") !{item.topic}
-                each res in item.results
-                    div.search-topic
-                        a.font-menu-search.padding-names(href="/") !{res.name}
-                        a.genre.padding-names !{res.info}
+            a.font-search(href ="/search") Показать все результаты
 a.font-nav.name-profile(href='/profile')  !{item.username}
 div.profile-block
     div.profile.dropdown
