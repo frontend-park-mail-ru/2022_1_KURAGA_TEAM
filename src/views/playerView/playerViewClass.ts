@@ -43,7 +43,7 @@ export default class PlayerViewClass extends BaseViewClass {
                     super.render(playerTemplate, {
                         id: this.movie.id,
                         video,
-                        seasons: this.movie.data.seasons,
+                        episodes: this.movie.data.seasons[numberSeas].episodes,
                         season: numberSeas + 1,
                         episode: numberEpis + 1,
                     });
@@ -77,9 +77,13 @@ export default class PlayerViewClass extends BaseViewClass {
             series.style.display = '';
         }
 
+        const seriesPopUp: HTMLDivElement = document.querySelector('.series__popUp');
+
         const videoContainer = document.querySelector(".video-container");
         const video: HTMLVideoElement = document.querySelector(".player");
         video.play();
+
+
 
         const noVideo: HTMLDivElement = document.querySelector(".novideo");
 
@@ -245,6 +249,8 @@ export default class PlayerViewClass extends BaseViewClass {
         document.addEventListener("pointermove", displayControls);
 
         document.addEventListener("touchend", displayControls);
+
+        seriesPopUp.addEventListener("scroll", displayControls);
 
         playPauseButton.addEventListener("click", playPause);
 

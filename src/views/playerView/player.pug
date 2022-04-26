@@ -50,7 +50,14 @@ div.video-container
             button.controls__button.series
                 div.series__popUp
                     div.series__popUp__content
-                        div.season-number #{season} сезон #{episode} серия
+                        div.season-number
+                            div.episode-number #{season} сезон #{episode} серия
+                            each value in episodes
+                                a.season-number__episode(href=`/player/${id}/seas=${season}/ep=${value.number}`)
+                                    div.episode__img(style=`background-image: url('../../static/backProfile.webp');`)
+                                    div.episode__div
+                                        div.episode__name #{value.number}. #{value.name}
+                                        div.episode__desc #{value.description}
                 svg.controls__button-svg.series__svg(xmlns="http://www.w3.org/2000/svg" width="40" height="40")
                     path(fill-rule="evenodd" clip-rule="evenodd" d="M5.218 14.092C5 14.52 5 15.08 5 16.2v8.6c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874C6.52 28 7.08 28 8.2 28h15.6c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874C27 26.48 27 25.92 27 24.8v-8.6c0-1.12 0-1.68-.218-2.108a2 2 0 0 0-.874-.874C25.48 13 24.92 13 23.8 13H8.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874ZM11.8 11c-.747 0-1.329 0-1.8.029 0-1.007.011-1.532.218-1.937a2 2 0 0 1 .874-.874C11.52 8 12.08 8 13.2 8h15.6c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874C32 9.52 32 10.08 32 11.2v8.6c0 1.12 0 1.68-.218 2.108a2 2 0 0 1-.874.874c-.405.207-.93.217-1.937.218.029-.471.029-1.053.029-1.8v-5.4c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311C26.72 11 25.88 11 24.2 11H11.8Z" fill="#fff")
                 span.series__text Серии сезона
