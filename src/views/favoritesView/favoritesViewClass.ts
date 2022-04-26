@@ -15,7 +15,6 @@ import {User} from "../../types";
 export default class FavoritesViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilations: Array<MovieCompilationModel>;
-    private movieCompilationsMobile: Array<MovieCompilationModel>;
 
     async render() {
         try {
@@ -43,13 +42,9 @@ export default class FavoritesViewClass extends BaseViewClass {
                     new MovieCompilationModel(
                         index,
                         movieCompilationData,
-                        false
                     )
             );
-            this.movieCompilationsMobile = movieCompilationsData.map(
-                (movieCompilationData, index) =>
-                    new MovieCompilationModel(index, movieCompilationData, true)
-            );
+
 
             console.log("aefef1");
            const header = new HeaderClass(this.user.userData);
@@ -58,7 +53,6 @@ export default class FavoritesViewClass extends BaseViewClass {
             super.render(homeViewTemplate, {
                header: header.render(),
                 select: this.compilationsRender(this.movieCompilations),
-                selectMobile: this.compilationsRender(this.movieCompilationsMobile),
                 footer: footer.render(),
             });
 
@@ -67,9 +61,6 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
-                carousel.setHandler();
-            });
-            this.movieCompilationsMobile.forEach((carousel) => {
                 carousel.setHandler();
             });
         } catch (err) {

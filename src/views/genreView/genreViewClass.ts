@@ -16,7 +16,6 @@ import "../filmsView/films.scss";
 export default class GenreViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
-    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
@@ -35,8 +34,8 @@ export default class GenreViewClass extends BaseViewClass {
 
             const movieCompilationData = {compilation_name: 'Топ рейтинга', movies: {id: 7, name: 'Зеленая миля', genre: "Array(2)", picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'}}
 
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
-            this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
+
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);

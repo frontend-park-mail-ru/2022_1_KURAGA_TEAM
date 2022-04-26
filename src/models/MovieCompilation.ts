@@ -7,9 +7,9 @@ import {MovieCompilationData} from "../types";
 import MovieClass from "Components/movie/movieClass";
 
 export default class MovieCompilationModel {
-    data: MovieCompilationData;
+    private readonly data: MovieCompilationData;
 
-    constructor(index, movieCompilationData, isMobile) {
+    constructor(index, movieCompilationData) {
         if(Array.isArray(movieCompilationData)){
             this.data = {
                 movies: movieCompilationData,
@@ -19,7 +19,6 @@ export default class MovieCompilationModel {
                 id: index,
                 compilationName: movieCompilationData.compilation_name,
                 movies: movieCompilationData.movies,
-                isMobile: isMobile,
             };
         }
     }

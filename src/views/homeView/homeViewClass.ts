@@ -47,7 +47,6 @@ export default class HomeViewClass extends BaseViewClass {
                     new MovieCompilationModel(
                         index,
                         movieCompilationData,
-                        false
                     )
             );
             

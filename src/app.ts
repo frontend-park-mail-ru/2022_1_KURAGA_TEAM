@@ -12,6 +12,7 @@ import ErrorCatchViewClass from "./views/errorView/catchError/errorCatchViewClas
 import FilmsViewClass from "./views/filmsView/filmsViewClass";
 import SerialsViewClass from "./views/serialsView/serialsViewClass";
 import GenreViewClass from "./views/genreView/genreViewClass";
+import SearchViewClass from "./views/searchView/searchViewClass";
 
 import "./css/common.scss";
 import "./css/media.scss";
@@ -35,6 +36,6 @@ router.register("/favorites", FavoritesViewClass);
 router.register("/movies", FilmsViewClass);
 router.register("/series", SerialsViewClass);
 router.register("/genre", GenreViewClass);
-
+router.register("/search", SearchViewClass);
 
 router.start();

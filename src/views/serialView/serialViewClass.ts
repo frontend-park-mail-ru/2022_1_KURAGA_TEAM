@@ -1,4 +1,4 @@
-import movieViewTemplate from "./movieView.pug";
+import serialViewTemplate from "./serialView.pug";
 import HeaderClass from "Components/header/headerClass";
 import handlerLink from "Utils/handlerLink";
 import UserModel from "../../models/User";
@@ -13,12 +13,13 @@ import ActorsClass from "Components/actors/actorsClass";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import {MovieData, User} from "../../types";
+import { User } from "../../types";
 import EpisodesClass from "../../components/episodes/episodesClass";
 
-import "./movie.scss";
+import "../movieView/movie.scss";
+import "./serial.scss";
 
-export default class MovieViewClass extends BaseViewClass {
+export default class SerialViewClass extends BaseViewClass {
     private user: UserModel;
     private movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
@@ -67,59 +68,21 @@ export default class MovieViewClass extends BaseViewClass {
                 this.movie.movieData
             );
             const secondGenre = new SecondGenreClass(this.movie.movieData);
+            const actors = new ActorsClass(this.movie.movieData);
             const footer = new FooterClass();
 
-            if (this.movie.movieData.staff === null) {
-                if (this.movie.movieData.is_movie) {
-                    super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        headMovie: headMovie.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
-                    });
-                } else {
-                    super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        episodes: episodes.render(),
-                        headMovie: headMovie.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
-                    });
-                }
-            } else {
-                const actors = new ActorsClass(this.movie.movieData);
-
-                if (this.movie.movieData.is_movie) {
-                    super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        headMovie: headMovie.render(),
-                        actors: actors.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
-                    });
-                } else {
-                    super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        episodes: episodes.render(),
-                        headMovie: headMovie.render(),
-                        actors: actors.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
-                    });
-                }
-            }
+            super.render(serialViewTemplate, {
+                movieImg: this.movie.movieData,
+                header: header.render(),
+                headMovie: headMovie.render(),
+                episodes: episodes.render(),
+                series: this.compilationsRender(this.movieCompilation),
+                firstInfoMovie: firstInfoMovie.render(),
+                secondGenre: secondGenre.render(),
+                actors: actors.render(),
+                select: this.compilationsRender(this.movieCompilation),
+                footer: footer.render(),
+            });
 
             handlerLink();
             this.setHandler();
@@ -128,21 +91,22 @@ export default class MovieViewClass extends BaseViewClass {
 
             header.setHandler();
         } catch (err) {
-            console.error(err);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
     setHandler(): void {
-        const episodes: HTMLDivElement = document.querySelector(".episodes");
+        const staff = document.querySelector(".group__staff");
+        const staffText: HTMLDivElement =
+            document.querySelector(".third-part-actors");
 
-        if (episodes.childNodes.length === 0) {
-            episodes.style.marginTop = "0";
+        if (staff.childNodes.length === 0) {
+            staffText.style.display = "none";
         }
     }
-
     compilationsRender(movieCompilation: MovieCompilationModel): string {
         return (
-            '<div class = "margin-bottom movie-carousel margin-person">' +
+            '<div class = "margin-person">' +
             movieCompilation.render() +
             "</div>"
         );

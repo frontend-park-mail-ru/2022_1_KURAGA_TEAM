@@ -87,37 +87,37 @@
 
 @media (min-width: 1000px) and (max-width: 1250px) {
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
-    .photo-movie {
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 67vw;
-    }
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+  .photo-movie {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 67vw;
+  }
 
-    .photo-movie__gradient {
-        position: absolute;
-        top: 0;
-        height: 67vw;
-    }
+  .photo-movie__gradient {
+    position: absolute;
+    top: 0;
+    height: 67vw;
+  }
 
-    .head-movie__name {
-        margin-bottom: 0;
-        width: 470px;
-    }
+  .head-movie__name {
+    margin-bottom: 0;
+    width: 470px;
+  }
 
-    .first-part-info {
-        margin-top: 0;
-    }
+  .first-part-info {
+    margin-top: 0;
+  }
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
-    .novideo__text {
-        margin-left: 30px;
-        font-size: 60px;
-    }
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
+  .novideo__text {
+    margin-left: 30px;
+    font-size: 60px;
+  }
 }
 
 @media (max-width: 1000px) {
-  body{
+  body {
     overflow-x: hidden;
   }
   ::-webkit-scrollbar {
@@ -230,7 +230,7 @@
   }
 
   /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
-  .search{
+  .search {
     margin-inline: 10px;
   }
   .header {
@@ -339,7 +339,7 @@
     overflow-x: scroll;
     padding-inline: 0;
   }
-  .b-carouselTop{
+  .b-carouselTop {
     overflow-y: hidden;
   }
   .movieTop:hover,
@@ -348,7 +348,7 @@
     height: 60vw;
     transform: scale(1);
     margin-inline-end: 0;
-    margin-inline: 1vw;
+    margin-inline: 2vw;
     background-position-x: center;
   }
 
@@ -380,16 +380,11 @@
   .b-carousel__wrap {
   }
 
-  #selectMobile {
-    display: block;
+  .wrap {
+    padding-inline: 4px;
   }
-
-  #select {
-    display: none;
-  }
-
   .movie {
-    margin: 4px;
+    margin-inline: 1vw;
     width: 48vw;
     height: 30vw;
     border-radius: 8px;
@@ -418,6 +413,27 @@
     font-size: 12px;
   }
 
+  .list-films {
+    display: flex;
+    margin: 20px auto auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .padding-names {
+    padding-inline: 10px;
+  }
+  .search-topic {
+    height: fit-content;
+    padding-block: 10px;
+  }
+  .font-topics {
+    font-size: 22px;
+  }
+  .font-menu-search {
+    font-size: 30px;
+  }
+
 }
 
 @media (max-width: 375px) {
@@ -436,247 +452,267 @@
   }
 }
 
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .photo-person {
+    height: 100%;
+    background-position-x: right;
+  }
+  .head-person__descr {
+    margin: 20px 40vw 20px 0;
+  }
+  .head-person {
+    height: 110%;
+  }
+
+  .photo-person__gradient {
+    height: 100%;
+    background: var(--movie-gradient);
+  }
+}
+
+
 @media (max-width: 750px) {
-    /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
-    .select-title {
-        margin-inline-start: 4vw;
-        font-size: 26px;
-    }
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .select-title {
+    margin-inline-start: 4vw;
+    font-size: 26px;
+  }
 
-    /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
-    .error-text__404 {
-        margin-right: 15px;
-        padding-left: 10px;
-        font-size: 45px;
-    }
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+  .error-text__404 {
+    margin-right: 15px;
+    padding-left: 10px;
+    font-size: 45px;
+  }
 
-    .error-text {
-        margin-top: 50px;
-    }
+  .error-text {
+    margin-top: 50px;
+  }
 
-    .error-text__info {
-        text-align: center;
-        margin-right: 15px;
-        padding-left: 15px;
-        font-size: 16px;
-    }
+  .error-text__info {
+    text-align: center;
+    margin-right: 15px;
+    padding-left: 15px;
+    font-size: 16px;
+  }
 
-    .error-img {
-        width: 232px;
-        height: 183px;
-    }
+  .error-img {
+    width: 232px;
+    height: 183px;
+  }
 
-    /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
-    .div-logo {
-        height: 60px;
-    }
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+  .div-logo {
+    height: 60px;
+  }
 
-    .papa {
-        height: 65px;
-    }
+  .papa {
+    height: 65px;
+  }
 
-    .element {
-        height: 35px;
-    }
+  .element {
+    height: 35px;
+  }
 
-    .menu-input {
-        font-size: 16px;
-    }
+  .menu-input {
+    font-size: 16px;
+  }
 
-    .menu-input::placeholder {
-        font-size: 14px;
-    }
+  .menu-input::placeholder {
+    font-size: 14px;
+  }
 
-    .svg {
-        margin: 5px 20px 5px 5px;
-        width: 24px;
-        height: 24px;
-    }
+  .svg {
+    margin: 5px 20px 5px 5px;
+    width: 24px;
+    height: 24px;
+  }
 
-    .menu-button {
-        font-size: 18px;
-        height: 40px;
-        margin-top: 5px;
-    }
+  .menu-button {
+    font-size: 18px;
+    height: 40px;
+    margin-top: 5px;
+  }
 
-    .error {
-        font-size: 14px;
-        padding-top: 1px;
-    }
+  .error {
+    font-size: 14px;
+    padding-top: 1px;
+  }
 
-    .logo {
-        top: 10px;
-        width: 120px;
-        height: 60px;
-    }
+  .logo {
+    top: 10px;
+    width: 120px;
+    height: 60px;
+  }
 
-    .text {
-        margin-top: 5px;
-    }
+  .text {
+    margin-top: 5px;
+  }
 
-    .first-span {
-        font-size: 16px;
-    }
+  .first-span {
+    font-size: 16px;
+  }
 
-    .second-span {
-        font-size: 16px;
-    }
+  .second-span {
+    font-size: 16px;
+  }
 
-    /*МЕДИА ЗАПРОСЫ ДЛЯ ФУТЕРА*/
-    .titleFooter {
-        font-size: 20px;
-    }
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ФУТЕРА*/
+  .titleFooter {
+    font-size: 20px;
+  }
 
-    #footer {
-        flex-direction: column;
-        height: auto;
-    }
+  #footer {
+    flex-direction: column;
+    height: auto;
+  }
 
-    .left {
-        margin-left: 4vw;
-        flex-direction: column;
-    }
+  .left {
+    margin-left: 4vw;
+    flex-direction: column;
+  }
 
-    #second-footer {
-        margin-left: 0;
-        width: 130%;
-    }
+  #second-footer {
+    margin-left: 0;
+    width: 130%;
+  }
 
-    #third-footer {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
+  #third-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 
-    .ref {
-        margin-right: 30px;
-    }
+  .ref {
+    margin-right: 30px;
+  }
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-    .profile-avatar {
-        width: 130px;
-        height: 130px;
-    }
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .profile-avatar {
+    width: 130px;
+    height: 130px;
+  }
 
-    .profile-avatar__input-button {
-        font-size: 16px;
-        width: 150px;
-    }
+  .profile-avatar__input-button {
+    font-size: 16px;
+    width: 150px;
+  }
 
-    .menu-form__profile {
-        flex-direction: column;
-    }
+  .menu-form__profile {
+    flex-direction: column;
+  }
 
-    .menu-form-avatar {
-        margin-right: 0;
-        margin-bottom: 50px;
-    }
+  .menu-form-avatar {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
 
-    .navbar {
-        height: 22%;
-        transition: none;
-        position: sticky !important;
-        justify-content: space-between;
-    }
+  .navbar {
+    //height: 22%;
+    transition: none;
+    position: sticky !important;
+    justify-content: space-between;
+  }
 
-    .back-profile {
-        height: 130vh;
-    }
+  .back-profile {
+    height: 130vh;
+  }
 
-    .back-menu-profile {
-        height: 130vh;
-    }
+  .back-menu-profile {
+    height: 130vh;
+  }
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА*/
-    .exit {
-        margin-left: 26px;
-        padding-top: 9vmin;
-    }
+  .exit {
+    margin-left: 26px;
+    padding-top: 9vmin;
+  }
 
-    .controls__button {
-        width: 214px;
-    }
+  .controls__button {
+    width: 214px;
+  }
 
-    .progress-controls {
-        width: 95%;
-    }
+  .progress-controls {
+    width: 95%;
+  }
 
-    .novideo__text {
-        margin-left: 20px;
-        font-size: 40px;
-    }
+  .novideo__text {
+    margin-left: 20px;
+    font-size: 40px;
+  }
 
-    .novideo__img {
-        width: 70px;
-        height: 70px;
-    }
+  .novideo__img {
+    width: 70px;
+    height: 70px;
+  }
 
-    .novideo {
-        left: 12vw;
-    }
+  .novideo {
+    left: 12vw;
+  }
 
-    .controls {
-        display: block;
-        width: auto;
-    }
+  .controls {
+    display: block;
+    width: auto;
+  }
 
-    .series__text {
-        display: none;
-    }
+  .series__text {
+    display: none;
+  }
 
-    .rewind {
-        display: none;
-    }
+  .rewind {
+    display: none;
+  }
 
-    .forward {
-        display: none;
-    }
+  .forward {
+    display: none;
+  }
 
-    .volume {
-        display: none;
-    }
+  .volume {
+    display: none;
+  }
 
-    .series {
-        display: none;
-    }
+  .series {
+    display: none;
+  }
 
-    .full {
-        display: none;
-    }
+  .full {
+    display: none;
+  }
 
-    /* страница актера*/
-    .photo-person {
-        margin-bottom: 300px;
-        box-shadow: 0 -108px 35px #01090b inset;
-        height: 300px;
-        position: relative;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-    .head-person {
-        height: auto;
-        align-content: center;
-        justify-content: flex-end;
-        margin: 160px auto auto 4vw;
-    }
+  /* страница актера*/
+  .photo-person {
+    margin-bottom: 350px;
+    box-shadow: 0 -108px 35px #01090b inset;
+    height: 300px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .head-person {
+    height: auto;
+    align-content: center;
+    justify-content: flex-end;
+    margin: 160px auto auto 4vw;
+  }
 
-    .head-person__name {
-        font-size: 32px;
-    }
-    .head-person__descr {
-        width: fit-content;
-        font-weight: 500;
-        margin-block: 10px;
-        font-size: 14px;
-        line-height: 16px;
-        margin: 20px 14vw 20px 0;
-    }
+  .head-person__name {
+    font-size: 32px;
+  }
+  .head-person__descr {
+    width: fit-content;
+    font-weight: 500;
+    margin-block: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 20px 14vw 20px 0;
+  }
 
-    .add-photos__photo {
-        width: calc(6vw + 120px);
-        height: calc(6vh + 80px);
-    }
+  .add-photos__photo {
+    width: calc(6vw + 120px);
+    height: calc(6vh + 80px);
+  }
 }
 
 @media (max-width: 500px) {
@@ -834,161 +870,161 @@
 
 @media (min-width: 500px) and (max-width: 750px) {
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
-    .first-part-info__text {
-      padding-right: 4vw;
-      max-width: fit-content;
-      font-size: 14px;
-    }
+  .first-part-info__text {
+    padding-right: 4vw;
+    max-width: fit-content;
+    font-size: 14px;
+  }
 
-    .photo-movie {
-      box-shadow: 0 -108px 35px #01090b inset;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 63vw;
-    }
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 63vw;
+  }
 
-    .head-movie {
-      width: 100%;
-      height: 85%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      bottom: -43vw;
-      position: absolute;
-      margin-left: 0;
-    }
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -43vw;
+    position: absolute;
+    margin-left: 0;
+  }
 
-    .head-movie__name {
+  .head-movie__name {
     margin-left: 0;
     width: 150px;
     height: 58px;
     margin-bottom: 30px;
-    }
+  }
 
-    .head-movie__rating {
+  .head-movie__rating {
     margin-left: 0;
     width: 70%;
     justify-content: space-between;
     margin-bottom: 20px;
-    }
+  }
 
-    .string-rating {
-      margin-left: 0;
-      margin-right: 0;
-    }
+  .string-rating {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-    .head-movie__info {
-      margin-left: 2vw;
-      margin-bottom: 40px;
-    }
+  .head-movie__info {
+    margin-left: 2vw;
+    margin-bottom: 40px;
+  }
 
-    .short-info {
-      font-size: 14px;
-      margin-right: 1px;
-    }
+  .short-info {
+    font-size: 14px;
+    margin-right: 1px;
+  }
 
-    .info__year {
-      padding-right: 7px;
-    }
+  .info__year {
+    padding-right: 7px;
+  }
 
-    .info__genre {
-      margin-right: 8px;
-    }
+  .info__genre {
+    margin-right: 8px;
+  }
 
-    .info__country {
-      margin-right: 8px;
-    }
+  .info__country {
+    margin-right: 8px;
+  }
 
-    .info__duration {
-      margin-right: 8px;
-    }
+  .info__duration {
+    margin-right: 8px;
+  }
 
-    .photo-movie__gradient {
-      display: none;
-    }
+  .photo-movie__gradient {
+    display: none;
+  }
 
-    .head-movie__buttons {
-      width: 90%;
-    }
+  .head-movie__buttons {
+    width: 90%;
+  }
 
-    .play-button {
-      font-size: 14px;
-      width: 130px;
-    }
+  .play-button {
+    font-size: 14px;
+    width: 130px;
+  }
 
-    .trailer-button {
-      width: 130px;
-      font-size: 14px;
-    }
+  .trailer-button {
+    width: 130px;
+    font-size: 14px;
+  }
 
-    .first-part-info {
-      margin-top: 290px;
-    }
+  .first-part-info {
+    margin-top: 290px;
+  }
 
 }
 
 @media (max-height: 450px) {
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
-    #back {
-        height: 100vw;
-    }
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
+  #back {
+    height: 100vw;
+  }
 
-    #back-menu {
-        height: 100vw;
-    }
+  #back-menu {
+    height: 100vw;
+  }
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-    .navbar {
-        height: 22%;
-        transition: none;
-        position: sticky !important;
-        justify-content: space-between;
-    }
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .navbar {
+    //height: 22%;
+    transition: none;
+    position: sticky !important;
+    justify-content: space-between;
+  }
 
-    .back-profile {
-        height: 160vh;
-    }
+  .back-profile {
+    height: 160vh;
+  }
 
-    .back-menu-profile {
-        height: 160vh;
-    }
+  .back-menu-profile {
+    height: 160vh;
+  }
 
-    /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
-    .head-movie {
-        width: 100%;
-        height: 85%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        bottom: -50vw;
-        position: absolute;
-        margin-left: 0;
-    }
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -50vw;
+    position: absolute;
+    margin-left: 0;
+  }
 
-    .photo-movie {
-        box-shadow: 0 -108px 35px #01090b inset;
-    }
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+  }
 
-    .first-part-info {
-        margin-top: 400px;
-    }
+  .first-part-info {
+    margin-top: 400px;
+  }
 
-    .head-movie__rating {
-        width: 40%;
-        justify-content: space-between;
-    }
+  .head-movie__rating {
+    width: 40%;
+    justify-content: space-between;
+  }
 
-    .string-rating {
-        margin-right: 0;
-    }
+  .string-rating {
+    margin-right: 0;
+  }
 
-    .head-movie__name {
-        width: 380px;
-    }
+  .head-movie__name {
+    width: 380px;
+  }
 
-    .head-movie__buttons {
-        width: 70%;
-    }
+  .head-movie__buttons {
+    width: 70%;
+  }
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА*/
   .series__text {
@@ -1021,14 +1057,13 @@
   }
 
 
-
   #back-menu {
     height: 100vw;
   }
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
   .navbar {
-    height: 22%;
+    //height: 22%;
     transition: none;
     position: sticky !important;
     justify-content: space-between;
@@ -1086,23 +1121,23 @@
     width: calc(1vw + 582px);
   }
 }
+
 @media (min-width: 1800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
-  .main-movie{
-    justify-content:center;
+  .main-movie {
+    justify-content: center;
   }
   .sidebar {
     transform: scale(1.3);
     margin: 0;
   }
 }
+
 @media (min-width: 2800px) {
-  .sidebar{
+  .sidebar {
     transform: scale(3);
   }
 }
-
-
 
 
 @media (min-width: 1450px) and (max-width: 1800px) {
@@ -1140,7 +1175,7 @@
 
 
 /* HEADER*/
-@media (min-width: 1000px){
+@media (min-width: 1000px) {
 
   .navbar {
     font-size: calc(1vw + 8px);
@@ -1164,7 +1199,7 @@
 
 @media (min-width: 2000px) {
   .search-menu {
-    margin: 6rem auto auto auto ;
+    margin: 6rem auto auto auto;
   }
   .logo-home {
     height: calc(3vw + 40px);
@@ -1179,37 +1214,34 @@
   .dropdown-content {
     margin-block: calc(1vw + 82px);
   }
-  .profile-block{
+  .profile-block {
     height: calc(3vw + 90px);
   }
 
 
-
-  .movie{
+  .movie {
     height: calc(3vw + 215px);
     grid-template-rows: auto 80px;
     width: calc(3vw + 380px);
 
   }
-  .movieTop{
+  .movieTop {
     height: calc(3vw + 250px);
     grid-template-rows: auto 70px;
     width: calc(3vw + 464px);
   }
-  .desc-mov{
+  .desc-mov {
     font-size: 24px;
   }
-  .genre{
+  .genre {
     font-size: 20px;
   }
-  .desc-movTop{
+  .desc-movTop {
     font-size: 24px;
   }
 
 
 }
-
-
 
 
 @media (min-width: 2000px) {
@@ -1221,7 +1253,7 @@
 
 
 @media (min-width: 1450px) and (max-width: 1700px) {
-    //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
   .test {
     width: 21vw;
     height: 200px;
@@ -1316,6 +1348,9 @@
   .first-part-info {
     margin-top: 40px;
   }
+  .sidebar{
+      margin: 16vw;
+  }
 }
 
 @media (max-width: 750px) {
@@ -1336,4 +1371,7 @@
     margin-top: 270px;
   }
 }
+
+
+
 

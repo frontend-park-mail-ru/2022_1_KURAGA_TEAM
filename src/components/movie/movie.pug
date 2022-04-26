@@ -1,12 +1,12 @@
-each item,index in items
+each item in items
     div.out-movie
         div(class=`movie` + `${typeMov}`, style=`background-image: url(\"${item.picture}\");`)
             a(href=`/movie/${item.id}`)
                 div.ref-mov
             div(class=`desc-mov` + `${typeMov}`)
                 a(class=`movie` + `${typeMov}` + '__href')(href=`/movie/${item.id}`)= item.name
-                if (item.genre.length > 1)
-                    a.genre(href=`/movie/${item.id}`)= item.genre[0] + "/" + item.genre[1]
-                else
-                    div.genre= item.genre
+                //if (item.genre.length > 1)
+                //    a.genre(href=`/movie/${item.id}`)= item.genre[0] + "/" + item.genre[1]
+                //else
+                //    div.genre= item.genre
                 input#cb.input-like(type = "checkbox")

@@ -1,7 +1,7 @@
 import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
 import router from "Routing/router";
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
 
 
@@ -13,10 +13,9 @@ export default class HeaderClass {
     }
 
 
-
     render() {
 
-    const searchConfig = {
+        const searchConfig = {
             res: "результат",
             categories: [{
                 topic: "Фильмы",
@@ -35,9 +34,7 @@ export default class HeaderClass {
 
     setHandler() {
 
-        const navbar:HTMLElement = document.querySelector(".navbar");
-
-
+        const navbar: HTMLElement = document.querySelector(".navbar");
 
 
         window.addEventListener("scroll", () => {
@@ -61,7 +58,8 @@ export default class HeaderClass {
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
-            if (logo.style.display == "block") {
+            console.log("sefsef")
+            if (logo.style.display != "none") {
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
                 );
@@ -94,14 +92,12 @@ export default class HeaderClass {
 
         searchBtn.addEventListener("click", (e) => {
             e.preventDefault();
-
             const searchMenu: HTMLElement =
                 document.querySelector(".menu__input");
             searchMenu.style.display = "block";
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
-            //searchMenuRes.style.display = "flex";
-            navbar.style.position = "absolute";
+            //navbar.style.position = "absolute";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
 
@@ -114,6 +110,9 @@ export default class HeaderClass {
         const logo: HTMLElement = document.querySelector(".logo-link");
         const searchMenu: HTMLElement =
             document.querySelector(".menu__input");
+
+        const a = document.querySelector("#live-search");
+
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
@@ -129,8 +128,7 @@ export default class HeaderClass {
             }
         })
 
-        const a = document.querySelector("#live-search");
-        a.addEventListener("keyup",function(){
+        a.addEventListener("keyup", function () {
             searchMenuRes.style.display = "flex";
 
             console.log(this.value);

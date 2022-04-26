@@ -4,4 +4,5 @@ export const routes = {
     ERROR_VIEW: "/404",
     ERROR_CATCH_VIEW: "/errors",
     HOME_VIEW: "/",
+    SEARCH_VIEW: "/search"
 };

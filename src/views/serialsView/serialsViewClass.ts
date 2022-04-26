@@ -16,7 +16,6 @@ import "../filmsView/films.scss";
 export default class SerialsViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
-    private movieCompilationMobile: MovieCompilationModel;
 
     async render() {
         try {
@@ -72,8 +71,9 @@ export default class SerialsViewClass extends BaseViewClass {
                     }]
             }
 
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData, false);
-            this.movieCompilationMobile = new MovieCompilationModel(0, movieCompilationData, true);
+
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
+
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);

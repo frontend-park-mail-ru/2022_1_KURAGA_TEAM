@@ -1,0 +1,14 @@
+div.navbar !{header}
+div.all-films__text Результаты поиска
+div.results
+    each item in search.categories
+        div.topic
+            a.font-topics.padding-names !{item.topic}
+        each res in item.results
+            div.search-topic
+                if item.topic == "Персоны"
+                    a.font-menu-search.padding-names(href=`/person/${res.id}`) !{res.name}
+                else
+                    a.font-menu-search.padding-names(href=`/movie/${res.id}`) !{res.name}
+                a.genre.padding-names !{res.info}
+div !{footer}
