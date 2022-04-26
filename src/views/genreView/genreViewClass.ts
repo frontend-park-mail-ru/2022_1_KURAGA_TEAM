@@ -10,6 +10,7 @@ import handlerLink from "Utils/handlerLink";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
+
 import "../filmsView/films.scss";
 
 export default class GenreViewClass extends BaseViewClass {
@@ -18,12 +19,10 @@ export default class GenreViewClass extends BaseViewClass {
 
     async render() {
         try {
-
             const loader = new LoaderViewClass();
             loader.render();
 
             const {isAuth, userBody} = await UserModel.auth();
-
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -33,12 +32,9 @@ export default class GenreViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-
-
             const movieCompilationData = {compilation_name: 'Топ рейтинга', movies: {id: 7, name: 'Зеленая миля', genre: "Array(2)", picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'}}
 
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
-
 
 
             const header = new HeaderClass(this.user.userData);
@@ -53,8 +49,8 @@ export default class GenreViewClass extends BaseViewClass {
 
             handlerLink();
             header.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch (err) {
+            console.error(err);
         }
     }
 }

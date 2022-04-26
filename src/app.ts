@@ -9,7 +9,6 @@ import ProfileViewClass from "./views/profileView/profileViewClass";
 import PlayerViewClass from "./views/playerView/playerViewClass";
 import FavoritesViewClass from "./views/favoritesView/favoritesViewClass";
 import ErrorCatchViewClass from "./views/errorView/catchError/errorCatchViewClass";
-import SerialViewClass from "./views/serialView/serialViewClass";
 import FilmsViewClass from "./views/filmsView/filmsViewClass";
 import SerialsViewClass from "./views/serialsView/serialsViewClass";
 import GenreViewClass from "./views/genreView/genreViewClass";
@@ -34,9 +33,8 @@ router.register("/errors", ErrorCatchViewClass);
 router.register("/profile", ProfileViewClass);
 router.register("/player", PlayerViewClass);
 router.register("/favorites", FavoritesViewClass);
-router.register("/serial", SerialViewClass);
 router.register("/movies", FilmsViewClass);
-router.register("/serials", SerialsViewClass);
+router.register("/series", SerialsViewClass);
 router.register("/genre", GenreViewClass);
 router.register("/search", SearchViewClass);
 

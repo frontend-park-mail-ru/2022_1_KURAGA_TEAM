@@ -17,6 +17,7 @@ export default class PlayerViewClass extends BaseViewClass {
             loader.render();
 
             const idx = +/\d+/.exec(window.location.pathname);
+            console.log()
 
             const check = window.location.pathname.indexOf("trailer");
 
@@ -29,16 +30,37 @@ export default class PlayerViewClass extends BaseViewClass {
                 return;
             }
             this.movie = new MovieModel(movData);
+            console.log(this.movie)
 
-            let video = this.movie.video;
-            if (check !== -1) {
-                video = this.movie.trailer;
+            let video = this.movie.trailer;
+            if (check === -1) {
+                if (!this.movie.movieData.is_movie) {
+                    const arrPath = window.location.pathname.split('/');
+                    const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
+                    const numberEpis = +/\d+/.exec(arrPath[4]) - 1;
+
+                    video = this.movie.data.seasons[numberSeas].episodes[numberEpis].video
+                    super.render(playerTemplate, {
+                        id: this.movie.id,
+                        video,
+                        seasons: this.movie.data.seasons,
+                        season: numberSeas + 1,
+                        episode: numberEpis + 1,
+                    });
+                } else {
+                    video = this.movie.video;
+
+                    super.render(playerTemplate, {
+                        id: this.movie.id,
+                        video,
+                    });
+                }
+            } else {
+                super.render(playerTemplate, {
+                    id: this.movie.id,
+                    video,
+                });
             }
-
-            super.render(playerTemplate, {
-                id: this.movie.id,
-                video,
-            });
 
             handlerLink();
             this.setHandler();
@@ -48,6 +70,13 @@ export default class PlayerViewClass extends BaseViewClass {
     }
 
     setHandler() {
+        const series: HTMLButtonElement = document.querySelector('.series');
+        series.style.display = 'none';
+
+        if (!window.location.pathname.match(/trailer/) && !this.movie.data.is_movie) {
+            series.style.display = '';
+        }
+
         const videoContainer = document.querySelector(".video-container");
         const video: HTMLVideoElement = document.querySelector(".player");
         video.play();

@@ -56,8 +56,10 @@ export interface MovieData {
     picture: string;
     tagline: string;
     age_limit: string;
+    is_movie: boolean;
     country: string;
     description: string;
+    seasons: any;
     duration: string;
     kinopoisk_rating: string;
     name_picture: string;
@@ -66,7 +68,6 @@ export interface MovieData {
     trailer: string;
     video: string;
     year: string;
-    is_movie:boolean;
 }
 
 export interface MovieCompilationData {

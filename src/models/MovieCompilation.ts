@@ -7,7 +7,7 @@ import {MovieCompilationData} from "../types";
 import MovieClass from "Components/movie/movieClass";
 
 export default class MovieCompilationModel {
-    data: MovieCompilationData;
+    private readonly data: MovieCompilationData;
 
     constructor(index, movieCompilationData) {
         if(Array.isArray(movieCompilationData)){

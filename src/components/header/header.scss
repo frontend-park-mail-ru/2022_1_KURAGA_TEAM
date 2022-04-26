@@ -82,8 +82,10 @@
   transform: scale(1.1);
 }
 .search-topic{
+  border-radius: 5px;
+  margin-bottom: 10px;
   height: 5vw;
-  background: rgba(112,99,99,.26);
+  background: var(--search-topic-color);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -105,7 +107,6 @@
   width: 100%;
   height: fit-content;
   max-height: 80vh;
-  padding-bottom: 30px;
 }
 
 .menu__input {
@@ -170,7 +171,7 @@
   font-weight: 400;
   font-size: calc(1vw + 8px);
   text-decoration: none;
-  color: var(--font-color);
+  color: var(--secondary-name);
 }
 .font-topics:hover{
   text-decoration: var(--font-color);

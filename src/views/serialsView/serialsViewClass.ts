@@ -10,6 +10,7 @@ import handlerLink from "Utils/handlerLink";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
+
 import "../filmsView/films.scss";
 
 export default class SerialsViewClass extends BaseViewClass {
@@ -70,7 +71,9 @@ export default class SerialsViewClass extends BaseViewClass {
                     }]
             }
 
+
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
+
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);

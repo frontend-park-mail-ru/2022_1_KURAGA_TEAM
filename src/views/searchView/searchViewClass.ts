@@ -31,13 +31,13 @@ export default class SearchViewClass extends BaseViewClass {
                 res: "результат",
                 categories: [{
                     topic: "Фильмы",
-                    results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+                    results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
                 }, {
                     topic: "Сериалы",
-                    results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+                    results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
                 }, {
                     topic: "Персоны",
-                    results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
+                    results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
                 }
                 ]
             }
