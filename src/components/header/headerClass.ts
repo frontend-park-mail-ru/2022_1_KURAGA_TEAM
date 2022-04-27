@@ -132,8 +132,11 @@ export default class HeaderClass {
         const res = document.getElementById("res");
         a.addEventListener("keyup", function () {
             searchMenuRes.style.display = "flex";
+            let formData = new FormData();
+            formData.append("search", this.value);
+            UserModel.getSearchMainRes(formData);
 
-            res.textContent = this.value;
+            //res.textContent = this.value;
         });
 
     }
