@@ -95,6 +95,15 @@ export default class UserModel {
             return err;
         }
     }
+    static async getSearch() {
+        try {
+            return await ajaxReq.get({
+                path: "/searchRes",
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 
     static async token() {
         try {
@@ -215,13 +224,14 @@ export default class UserModel {
     }
 
 
-    static async getSearchMainRes(formData) {
+    static getSearchMainRes(formData) {
         const mainRes = document.getElementById("res");
+
         this.search(formData)
             .then(({isAuth, data}) => {
                 data.then((res) => {
-                    res = "result!"
-                    mainRes.textContent = res;
+
+                    mainRes.textContent = formData.get("search");
 
                 });
             })
@@ -230,17 +240,36 @@ export default class UserModel {
             });
     }
 
-    static async getSearchRes(formData) {
-        this.search(formData)
-            .then(({isAuth, data}) => {
-                data.then((res) => {
-
-
-                    router.go("/login");
+    static getSearchRes() {
+        return new Promise((searchRes) => {
+            this.getSearch()
+                .then((body) => {
+                    const result = {
+                        categories: [{
+                            topic: "Фильмы",
+                            results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
+                        }, {
+                            topic: "Сериалы",
+                            results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
+                        }, {
+                            topic: "Персоны",
+                            results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
+                        }
+                        ]
+                    }
+                    const fulfilled = Promise.resolve(result);
+                    body = {
+                        isAuth: true,
+                        data: fulfilled,
+                    }
+                    searchRes({
+                        isAuth: body.isAuth,
+                        searchBody: body.data,
+                    });
+                })
+                .catch((err) => {
+                    router.go(routes.ERROR_CATCH_VIEW);
                 });
-            })
-            .catch((err) => {
-                router.go(routes.ERROR_CATCH_VIEW);
-            });
+        });
     }
 }

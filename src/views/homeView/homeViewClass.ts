@@ -5,13 +5,13 @@ import FooterClass from "Components/footer/footerClass";
 import handlerLink from "Utils/handlerLink";
 import router from "Routing/router";
 import BaseViewClass from "../baseView/baseViewClass";
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import "../../css/home.scss";
-import { User } from "../../types";
+import {User} from "../../types";
 
 export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
@@ -23,7 +23,7 @@ export default class HomeViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -32,12 +32,11 @@ export default class HomeViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            const { movBody }: { movBody?: Promise<any> } =
-                await MovieModel.mainMov();
+            const {movBody}: { movBody?: Promise<any> } = await MovieModel.mainMov();
             const mainMovieData = await Promise.resolve(movBody);
             this.mainMovie = new MovieModel(mainMovieData);
 
-            const { movCompBody }: { movCompBody?: Promise<any> } =
+            const {movCompBody}: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
@@ -49,7 +48,7 @@ export default class HomeViewClass extends BaseViewClass {
                         movieCompilationData,
                     )
             );
-            
+
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);

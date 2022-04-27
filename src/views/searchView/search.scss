@@ -1,6 +1,14 @@
 @import "../../components/listFilms/listFilms";
 
+.search__text {
+  font-size: 50px;
+  font-weight: 500;
+  color: white;
+  margin-top: 10vw;
+}
+
 .results {
+  width: 50vw;
   margin: 30px 4vw;
 }
 .topic{
@@ -9,4 +17,11 @@
 .search-pic{
   width: 10%;
   height: 10%;
+}
+.search-main{
+  display: flex;
+}
+.search-back{
+  filter: brightness(0.8);
+  width: 50vw;
 }

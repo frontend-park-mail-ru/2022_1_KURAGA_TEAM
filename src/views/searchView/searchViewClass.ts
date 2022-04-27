@@ -15,7 +15,7 @@ import "./search.scss";
 export default class SearchViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
-    private searchRes;
+    private searchRes: object;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -28,22 +28,14 @@ export default class SearchViewClass extends BaseViewClass {
                 return;
             }
 
-            this.searchRes = {
-                categories: [{
-                    topic: "Фильмы",
-                    results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
-                }, {
-                    topic: "Сериалы",
-                    results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
-                }, {
-                    topic: "Персоны",
-                    results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
-                }
-                ]
-            }
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
+
+            const {searchBody}: { searchBody?: Promise<any> } = await UserModel.getSearchRes();
+            const searchData = await Promise.resolve(searchBody);
+            this.searchRes = searchData;
+            console.log(searchBody,searchData);
 
             const header = new HeaderClass(this.user.userData);
             const footer = new FooterClass();

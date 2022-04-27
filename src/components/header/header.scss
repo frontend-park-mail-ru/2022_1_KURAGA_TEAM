@@ -93,6 +93,12 @@
   justify-content: center;
 }
 
+#all-res-topic{
+  text-decoration: none;
+}
+#all-res-topic:hover{
+  text-decoration: underline;
+}
 
 
 .search-menu {
@@ -153,6 +159,7 @@
   padding: 10px;
   font-weight: 300;
   font-size: 14px;
+  text-decoration: none;
   color: var(--genre-color);
 }
 .font-res{

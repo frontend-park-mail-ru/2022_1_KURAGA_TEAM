@@ -16,7 +16,7 @@ export default class HeaderClass {
     render() {
 
         const searchConfig = {
-            res: "..."
+            res: ""
         }
         return headerTemplate({item: this.info, search: searchConfig});
     }
@@ -106,8 +106,6 @@ export default class HeaderClass {
             console.log(document.getElementById("live-search"));
             const a:HTMLInputElement = document.querySelector("#live-search");
             a.value = "";
-            const mainRes = document.getElementById("res");
-            mainRes.textContent = "...";
             searchMenu.style.display = "none";
             searchCloseBtn.style.display = "none";
             searchBtn.style.display = "block";

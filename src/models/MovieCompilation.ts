@@ -124,7 +124,6 @@ export default class MovieCompilationModel {
         return new Promise((movieCompilation) => {
             this.allMovies()
                 .then((body) => {
-                    console.log(body);
                     movieCompilation({
                         isAuth: body.isAuth,
                         movCompBody: body.data,
@@ -136,7 +135,6 @@ export default class MovieCompilationModel {
         });
     }
     static getSeries() {
-
         return new Promise((movieCompilation) => {
             this.allSeries()
                 .then((body) => {
@@ -179,7 +177,7 @@ export default class MovieCompilationModel {
                     const fulfilled = Promise.resolve(result);
                     body = {
                         isAuth: true,
-                        data: fulfilled
+                        data: fulfilled,
                     }
                     movieCompilation({
                         isAuth: body.isAuth,
