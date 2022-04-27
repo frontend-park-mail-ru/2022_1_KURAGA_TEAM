@@ -1,0 +1,27 @@
+.list-films {
+  display: flex;
+  margin: 70px 4vw 30px 4vw;
+  background: var(--back-color);
+  row-gap: 4vw;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.test {
+  width: 22vw;
+  margin-right: 30px;
+  height: 260px;
+  margin-bottom: 50px;
+  background: red;
+  border: 2px solid white;
+}
+
+.all-films__text {
+  font-size: 50px;
+  font-weight: 500;
+  color: white;
+  margin-left: 4vw;
+  margin-top: 6vw;
+}
+
+/*# sourceMappingURL=films.css.map */
