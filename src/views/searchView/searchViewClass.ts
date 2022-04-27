@@ -29,7 +29,17 @@ export default class SearchViewClass extends BaseViewClass {
             }
 
             this.searchRes = {
-                categories: []
+                categories: [{
+                    topic: "Фильмы",
+                    results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
+                }, {
+                    topic: "Сериалы",
+                    results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
+                }, {
+                    topic: "Персоны",
+                    results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
+                }
+                ]
             }
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
@@ -54,19 +64,8 @@ export default class SearchViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
-        this.searchRes = {
-            categories: [{
-                topic: "Фильмы",
-                results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
-            }, {
-                topic: "Сериалы",
-                results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
-            }, {
-                topic: "Персоны",
-                results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
-            }
-            ]
-        }
+
+
 
     }
 }

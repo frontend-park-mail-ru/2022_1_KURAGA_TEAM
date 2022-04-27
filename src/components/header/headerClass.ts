@@ -16,18 +16,7 @@ export default class HeaderClass {
     render() {
 
         const searchConfig = {
-            res: "результат",
-            categories: [{
-                topic: "Фильмы",
-                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
-            }, {
-                topic: "Сериалы",
-                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
-            }, {
-                topic: "Персоны",
-                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
-            }
-            ]
+            res: "..."
         }
         return headerTemplate({item: this.info, search: searchConfig});
     }
@@ -58,7 +47,7 @@ export default class HeaderClass {
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
-            console.log("sefsef")
+
             if (logo.style.display != "none") {
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
@@ -114,7 +103,11 @@ export default class HeaderClass {
         const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            document.getElementById("res").textContent = "";
+            console.log(document.getElementById("live-search"));
+            const a:HTMLInputElement = document.querySelector("#live-search");
+            a.value = "";
+            const mainRes = document.getElementById("res");
+            mainRes.textContent = "...";
             searchMenu.style.display = "none";
             searchCloseBtn.style.display = "none";
             searchBtn.style.display = "block";
