@@ -16,18 +16,7 @@ export default class HeaderClass {
     render() {
 
         const searchConfig = {
-            res: "результат",
-            categories: [{
-                topic: "Фильмы",
-                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
-            }, {
-                topic: "Сериалы",
-                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
-            }, {
-                topic: "Персоны",
-                results: [{name: "Мстители", info: "жанр"}, {name: "Мстители2", info: "жанр2"}]
-            }
-            ]
+            res: "..."
         }
         return headerTemplate({item: this.info, search: searchConfig});
     }
@@ -58,7 +47,7 @@ export default class HeaderClass {
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
-            console.log("sefsef")
+
             if (logo.style.display != "none") {
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
@@ -88,7 +77,7 @@ export default class HeaderClass {
 
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
-        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
+
 
         searchBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -97,7 +86,6 @@ export default class HeaderClass {
             searchMenu.style.display = "block";
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
-            //navbar.style.position = "absolute";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
 
@@ -111,11 +99,15 @@ export default class HeaderClass {
         const searchMenu: HTMLElement =
             document.querySelector(".menu__input");
 
-        const a = document.querySelector("#live-search");
 
+        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
-
+            console.log(document.getElementById("live-search"));
+            const a:HTMLInputElement = document.querySelector("#live-search");
+            a.value = "";
+            const mainRes = document.getElementById("res");
+            mainRes.textContent = "...";
             searchMenu.style.display = "none";
             searchCloseBtn.style.display = "none";
             searchBtn.style.display = "block";
@@ -128,10 +120,16 @@ export default class HeaderClass {
             }
         })
 
+        //const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
+        const a = document.querySelector("#live-search");
+        const res = document.getElementById("res");
         a.addEventListener("keyup", function () {
             searchMenuRes.style.display = "flex";
+            let formData = new FormData();
+            formData.append("search", this.value);
+            UserModel.getSearchMainRes(formData);
 
-            console.log(this.value);
+            //res.textContent = this.value;
         });
 
     }

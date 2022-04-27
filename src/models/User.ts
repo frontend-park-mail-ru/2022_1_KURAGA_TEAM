@@ -1,7 +1,7 @@
-import { ajaxReq } from "Modules/ajax";
+import {ajaxReq} from "Modules/ajax";
 import router from "Routing/router.ts";
-import { routes } from "Routing/constRouting";
-import { UserData } from "../types";
+import {routes} from "Routing/constRouting";
+import {UserData} from "../types";
 
 export default class UserModel {
     data: UserData;
@@ -85,6 +85,17 @@ export default class UserModel {
         }
     }
 
+    static async search(form) {
+        try {
+            return await ajaxReq.post({
+                path: "/search",
+                body: form,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
     static async token() {
         try {
             return await ajaxReq.get({
@@ -95,6 +106,7 @@ export default class UserModel {
         }
     }
 
+
     static auth() {
         return new Promise<{ isAuth: boolean; userBody }>((res) => {
             this.profile()
@@ -104,7 +116,8 @@ export default class UserModel {
                         userBody: body.data,
                     });
                 })
-                .catch(() => {});
+                .catch(() => {
+                });
         });
     }
 
@@ -120,13 +133,14 @@ export default class UserModel {
         });
     }
 
+
     static reg(formJson) {
         const errorIncorr = document.querySelector(
             'div[data-section="incorrect"]'
         );
 
         this.registration(formJson)
-            .then(({ isAuth, data }) => {
+            .then(({isAuth, data}) => {
                 data.then((res) => {
                     if (res.message === "ERROR: Email is not unique") {
                         errorIncorr.classList.add("error-active");
@@ -160,7 +174,7 @@ export default class UserModel {
         );
 
         this.login(formJson)
-            .then(({ isAuth }) => {
+            .then(({isAuth}) => {
                 if (!isAuth) {
                     errorIncorr.classList.add("error-active");
                     errorIncorr.classList.add("center");
@@ -178,9 +192,9 @@ export default class UserModel {
 
     static async editProfile(formJson) {
         try {
-            const { data } = await this.token();
+            const {data} = await this.token();
 
-            const { message } = await data;
+            const {message} = await data;
 
             return this.edit(formJson, message);
         } catch (err) {
@@ -190,13 +204,43 @@ export default class UserModel {
 
     static async editAvatar(formData) {
         try {
-            const { data } = await this.token();
+            const {data} = await this.token();
 
-            const { message } = await data;
+            const {message} = await data;
 
             return this.avatar(formData, message);
         } catch (err) {
             return err;
         }
+    }
+
+
+    static async getSearchMainRes(formData) {
+        const mainRes = document.getElementById("res");
+        this.search(formData)
+            .then(({isAuth, data}) => {
+                data.then((res) => {
+                    res = "result!"
+                    mainRes.textContent = res;
+
+                });
+            })
+            .catch((err) => {
+                router.go(routes.ERROR_CATCH_VIEW);
+            });
+    }
+
+    static async getSearchRes(formData) {
+        this.search(formData)
+            .then(({isAuth, data}) => {
+                data.then((res) => {
+
+
+                    router.go("/login");
+                });
+            })
+            .catch((err) => {
+                router.go(routes.ERROR_CATCH_VIEW);
+            });
     }
 }

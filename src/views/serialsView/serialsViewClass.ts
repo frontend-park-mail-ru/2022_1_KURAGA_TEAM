@@ -32,47 +32,11 @@ export default class SerialsViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            const movieCompilationData = {
-                compilation_name: 'Топ рейтинга', movies: [
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    }, {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    },
-                    {
-                        id: 7,
-                        name: 'Зеленая миля',
-                        genre: ['Драма', 'Криминал'],
-                        picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                    }]
-            }
+            const { movCompBody }: { movCompBody?: Promise<any> } =
+                await MovieCompilationModel.getSeries();
+            const movieCompilationsData = await Promise.resolve(movCompBody);
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
 
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
 
 
             const header = new HeaderClass(this.user.userData);

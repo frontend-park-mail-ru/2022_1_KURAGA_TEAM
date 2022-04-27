@@ -15,7 +15,7 @@ import "./search.scss";
 export default class SearchViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
-
+    private searchRes;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -27,8 +27,8 @@ export default class SearchViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const searchConfig = {
-                res: "результат",
+
+            this.searchRes = {
                 categories: [{
                     topic: "Фильмы",
                     results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
@@ -50,19 +50,22 @@ export default class SearchViewClass extends BaseViewClass {
 
             super.render(filmsViewTemplate, {
                 header: header.render(),
-                search: searchConfig,
+                search: this.searchRes,
                 footer: footer.render(),
             });
 
             this.setHandler();
             handlerLink();
             header.setHandler();
+
         } catch (err) {
             console.error(err);
         }
     }
 
     setHandler(): void {
+
+
 
     }
 }
