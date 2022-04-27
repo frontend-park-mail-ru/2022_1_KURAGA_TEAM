@@ -4,4 +4,14 @@
   margin-block: 50px;
 }
 
+.footer-poster {
+  width: 100vw;
+  height: 20vw;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+}
+
 /*# sourceMappingURL=favorites.css.map */
