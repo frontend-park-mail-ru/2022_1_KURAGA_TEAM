@@ -52,7 +52,7 @@ export interface PersonData {
 export interface MovieData {
     id: number;
     name: string;
-    genre: Array<string>;
+    genre: Array<GenreData>;
     picture: string;
     tagline: string;
     age_limit: string;
@@ -68,6 +68,11 @@ export interface MovieData {
     trailer: string;
     video: string;
     year: string;
+}
+
+export interface GenreData{
+    id: number;
+    name:string;
 }
 
 export interface MovieCompilationData {

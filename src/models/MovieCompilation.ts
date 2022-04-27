@@ -138,47 +138,47 @@ export default class MovieCompilationModel {
         return new Promise((movieCompilation) => {
             this.allSeries()
                 .then((body) => {
-                    const result = {compilation_name: 'Топ рейтинга', movies: [
-                            {
-                                id: 7,
-                                name: 'Зеленая миля',
-                                genre: ['Драма', 'Криминал'],
-                                picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            },
-                            {
-                                id: 7,
-                                name: 'Зеленая миля',
-                                genre: ['Драма', 'Криминал'],
-                                picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            },
-                            {
-                                id: 7,
-                                name: 'Зеленая миля',
-                                genre: ['Драма', 'Криминал'],
-                                picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            }, {
-                                id: 7,
-                                name: 'Зеленая миля',
-                                genre: ['Драма', 'Криминал'],
-                                picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            },
-                            {
-                                id: 7,
-                                name: 'Зеленая миля',
-                                genre: ['Драма', 'Криминал'],
-                                picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            },
-                            {
-                                id: 7,
-                                name: 'Зеленая миля',
-                                genre: ['Драма', 'Криминал'],
-                                picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            }]}
-                    const fulfilled = Promise.resolve(result);
-                    body = {
-                        isAuth: true,
-                        data: fulfilled,
-                    }
+                    // const result = {compilation_name: 'Топ рейтинга', movies: [
+                    //         {
+                    //             id: 7,
+                    //             name: 'Зеленая миля',
+                    //             genre: ['Драма', 'Криминал'],
+                    //             picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    //         },
+                    //         {
+                    //             id: 7,
+                    //             name: 'Зеленая миля',
+                    //             genre: ['Драма', 'Криминал'],
+                    //             picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    //         },
+                    //         {
+                    //             id: 7,
+                    //             name: 'Зеленая миля',
+                    //             genre: ['Драма', 'Криминал'],
+                    //             picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    //         }, {
+                    //             id: 7,
+                    //             name: 'Зеленая миля',
+                    //             genre: ['Драма', 'Криминал'],
+                    //             picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    //         },
+                    //         {
+                    //             id: 7,
+                    //             name: 'Зеленая миля',
+                    //             genre: ['Драма', 'Криминал'],
+                    //             picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    //         },
+                    //         {
+                    //             id: 7,
+                    //             name: 'Зеленая миля',
+                    //             genre: ['Драма', 'Криминал'],
+                    //             picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
+                    //         }]}
+                    // const fulfilled = Promise.resolve(result);
+                    // body = {
+                    //     isAuth: true,
+                    //     data: fulfilled,
+                    // }
                     movieCompilation({
                         isAuth: body.isAuth,
                         movCompBody: body.data,

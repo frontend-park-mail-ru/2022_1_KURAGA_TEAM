@@ -1,9 +1,10 @@
 @import "../../components/listFilms/listFilms";
 
 .all-films__text {
-  font-size: 50px;
+  font-size: calc(1vw + 20px);
   font-weight: 500;
-  color: white;
+  color: var(--font-color);
+  margin-top: 10vw;
+  margin-bottom: 30px;
   margin-left: 4vw;
-  margin-top: 6vw;
 }
