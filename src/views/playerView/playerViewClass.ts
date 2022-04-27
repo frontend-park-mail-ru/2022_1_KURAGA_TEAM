@@ -39,11 +39,11 @@ export default class PlayerViewClass extends BaseViewClass {
                     const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
                     const numberEpis = +/\d+/.exec(arrPath[4]) - 1;
 
-                    video = this.movie.data.seasons[numberSeas].episodes[numberEpis].video
+                    video = this.movie.data.season[numberSeas].episodes[numberEpis].video
                     super.render(playerTemplate, {
                         id: this.movie.id,
                         video,
-                        episodes: this.movie.data.seasons[numberSeas].episodes,
+                        episodes: this.movie.data.season[numberSeas].episodes,
                         season: numberSeas + 1,
                         episode: numberEpis + 1,
                     });

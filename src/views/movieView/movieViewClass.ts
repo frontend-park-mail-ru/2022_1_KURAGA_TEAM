@@ -22,6 +22,7 @@ export default class MovieViewClass extends BaseViewClass {
     private user: UserModel;
     private movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
+    private seasonsCompilation: Array<MovieCompilationModel>;
 
     async render() {
         try {
@@ -49,20 +50,31 @@ export default class MovieViewClass extends BaseViewClass {
                 return;
             }
 
+
             this.movie = new MovieModel(movData);
+            if(!this.movie.checkMovie) {
+                this.seasonsCompilation = this.movie.seasonsData.map(
+                    (movieCompilationData, index) =>
+                        new MovieCompilationModel(
+                            index,
+                            movieCompilationData.episodes
+                        ));
+            }
+            console.log("seasons2",this.seasonsCompilation);
+
 
             const { movCompBody }: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
-
             this.movieCompilation = new MovieCompilationModel(
                 0,
                 movieCompilationData,
             );
 
+
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
-            const episodes = new EpisodesClass();
+            const episodes = new EpisodesClass(this.seasonsCompilation.length);
             const firstInfoMovie = new FirstInfoMovieClass(
                 this.movie.movieData
             );
@@ -85,6 +97,7 @@ export default class MovieViewClass extends BaseViewClass {
                         movieImg: this.movie.movieData,
                         header: header.render(),
                         episodes: episodes.render(),
+                        seasons: this.seasonsRender(this.seasonsCompilation),
                         headMovie: headMovie.render(),
                         firstInfoMovie: firstInfoMovie.render(),
                         secondGenre: secondGenre.render(),
@@ -111,6 +124,7 @@ export default class MovieViewClass extends BaseViewClass {
                         movieImg: this.movie.movieData,
                         header: header.render(),
                         episodes: episodes.render(),
+                        seasons: this.seasonsRender(this.seasonsCompilation),
                         headMovie: headMovie.render(),
                         actors: actors.render(),
                         firstInfoMovie: firstInfoMovie.render(),
@@ -121,11 +135,14 @@ export default class MovieViewClass extends BaseViewClass {
                 }
             }
 
+            
             handlerLink();
             this.setHandler();
             firstInfoMovie.setHandlers();
             this.movieCompilation.setHandler();
-
+            this.seasonsCompilation.forEach((carousel) => {
+                carousel.setHandler();
+            });
             header.setHandler();
         } catch (err) {
             console.error(err);
@@ -138,6 +155,7 @@ export default class MovieViewClass extends BaseViewClass {
         if (episodes.childNodes.length === 0) {
             episodes.style.marginTop = "0";
         }
+
     }
 
     compilationsRender(movieCompilation: MovieCompilationModel): string {
@@ -147,4 +165,26 @@ export default class MovieViewClass extends BaseViewClass {
             "</div>"
         );
     }
+    seasonsRender(movieCompilations: MovieCompilationModel[]) {
+        let select = "";
+        console.log("inside",movieCompilations);
+        movieCompilations.forEach((carousel, index) => {
+            let carouselBlock = "";
+            switch (index) {
+                case 0:
+                    carouselBlock =
+                        '<div class = "first">' + carousel.render() + "</div>";
+                    break;
+                case movieCompilations.length - 1:
+                    carouselBlock =
+                        '<div class = "last">' + carousel.render() + "</div>";
+                    break;
+                default:
+                    carouselBlock = "<div>" + carousel.render() + "</div>";
+            }
+            select += carouselBlock;
+        });
+        return select;
+    }
+
 }

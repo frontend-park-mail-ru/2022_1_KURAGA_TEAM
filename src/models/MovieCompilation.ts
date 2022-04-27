@@ -13,6 +13,7 @@ export default class MovieCompilationModel {
         if(Array.isArray(movieCompilationData)){
             this.data = {
                 movies: movieCompilationData,
+                id: index
             };
         } else {
             this.data = {
@@ -192,8 +193,9 @@ export default class MovieCompilationModel {
 
 
     render() {
-        const Top = new MovieClass(this.data.movies, "Top");
-        const unTop = new MovieClass(this.data.movies, "");
+        const Series = new MovieClass(this.data.movies, "",false);
+        const Top = new MovieClass(this.data.movies, "Top",true);
+        const unTop = new MovieClass(this.data.movies, "",true);
         const common = {
             car: `js-carousel${this.data.id}`,
             prevBtn: `js-carousel${this.data.id}__prev`,
@@ -208,6 +210,15 @@ export default class MovieCompilationModel {
                 ...common,
                 items: Top.render(),
                 typeMov: "Top",
+                is_movie: true,
+            });
+        }
+        if (!this.data.compilationName) {
+            return carouselTemplate({
+                ...common,
+                items: Series.render(),
+                typeMov: "",
+                is_movie: false,
             });
         }
 
@@ -215,6 +226,7 @@ export default class MovieCompilationModel {
             ...common,
             items: unTop.render(),
             typeMov: "",
+            is_movie: true,
         });
     }
 
