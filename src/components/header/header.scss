@@ -79,19 +79,10 @@
   transform: scale(1.2);
 }
 .search__btn:hover {
-  transform: scale(1.1);
+  fill: var(--mix-color);
+  transform: scale(0.7);
 }
-.search-topic{
-  border-radius: 5px;
-  margin-bottom: 10px;
-  height: 5vw;
-  background: var(--search-topic-color);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
+
 
 #all-res-topic{
   text-decoration: none;
