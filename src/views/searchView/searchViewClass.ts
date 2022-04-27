@@ -15,7 +15,7 @@ import "./search.scss";
 export default class SearchViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
-
+    private searchRes;
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -27,19 +27,9 @@ export default class SearchViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const searchConfig = {
-                res: "результат",
-                categories: [{
-                    topic: "Фильмы",
-                    results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
-                }, {
-                    topic: "Сериалы",
-                    results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
-                }, {
-                    topic: "Персоны",
-                    results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
-                }
-                ]
+
+            this.searchRes = {
+                categories: []
             }
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
@@ -50,19 +40,33 @@ export default class SearchViewClass extends BaseViewClass {
 
             super.render(filmsViewTemplate, {
                 header: header.render(),
-                search: searchConfig,
+                search: this.searchRes,
                 footer: footer.render(),
             });
 
             this.setHandler();
             handlerLink();
             header.setHandler();
+
         } catch (err) {
             console.error(err);
         }
     }
 
     setHandler(): void {
+        this.searchRes = {
+            categories: [{
+                topic: "Фильмы",
+                results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
+            }, {
+                topic: "Сериалы",
+                results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
+            }, {
+                topic: "Персоны",
+                results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
+            }
+            ]
+        }
 
     }
 }

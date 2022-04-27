@@ -88,7 +88,7 @@ export default class HeaderClass {
 
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
-        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
+
 
         searchBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -97,7 +97,6 @@ export default class HeaderClass {
             searchMenu.style.display = "block";
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
-            //navbar.style.position = "absolute";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
 
@@ -111,11 +110,11 @@ export default class HeaderClass {
         const searchMenu: HTMLElement =
             document.querySelector(".menu__input");
 
-        const a = document.querySelector("#live-search");
 
+        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
-
+            document.getElementById("res").textContent = "";
             searchMenu.style.display = "none";
             searchCloseBtn.style.display = "none";
             searchBtn.style.display = "block";
@@ -128,10 +127,13 @@ export default class HeaderClass {
             }
         })
 
+        //const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
+        const a = document.querySelector("#live-search");
+        const res = document.getElementById("res");
         a.addEventListener("keyup", function () {
             searchMenuRes.style.display = "flex";
 
-            console.log(this.value);
+            res.textContent = this.value;
         });
 
     }

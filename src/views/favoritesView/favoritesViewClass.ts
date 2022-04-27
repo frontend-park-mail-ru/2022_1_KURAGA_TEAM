@@ -45,7 +45,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                     )
             );
 
-            
+
            const header = new HeaderClass(this.user.userData);
             const footer = new FooterClass();
 
