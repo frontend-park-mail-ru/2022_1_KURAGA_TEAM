@@ -136,19 +136,16 @@
 }
 
 .search__btn:hover {
-  transform: scale(1.1);
+  fill: var(--mix-color);
+  transform: scale(0.7);
 }
 
-.search-topic {
-  border-radius: 5px;
-  margin-bottom: 10px;
-  height: 5vw;
-  background: var(--search-topic-color);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+#all-res-topic {
+  text-decoration: none;
+}
+
+#all-res-topic:hover {
+  text-decoration: underline;
 }
 
 .search-menu {
@@ -209,6 +206,7 @@
   padding: 10px;
   font-weight: 300;
   font-size: 14px;
+  text-decoration: none;
   color: var(--genre-color);
 }
 

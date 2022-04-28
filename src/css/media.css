@@ -973,6 +973,14 @@
   .font-menu-search {
     font-size: 30px;
   }
+
+  .search-back {
+    display: none;
+  }
+
+  .results {
+    width: 100vw;
+  }
 }
 @media (max-width: 375px) {
   .genre,

@@ -1,0 +1,71 @@
+.list-films {
+  display: flex;
+  margin: 70px 4vw 30px 4vw;
+  background: var(--back-color);
+  row-gap: 4vw;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.test {
+  width: 22vw;
+  margin-right: 30px;
+  height: 260px;
+  margin-bottom: 50px;
+  background: red;
+  border: 2px solid white;
+}
+
+.search__text {
+  font-size: calc(1vw + 20px);
+  font-weight: 500;
+  color: var(--font-color);
+  margin-top: 10vw;
+  margin-bottom: 30px;
+}
+
+.search-topic {
+  transition: all 0.2s linear;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 5vw;
+  background: var(--menu-back);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-topic:hover {
+  transform: scale(1.05);
+}
+
+.results {
+  width: 50vw;
+  margin: 0 4vw 2vw 4vw;
+}
+
+.topic {
+  margin-block: 10px;
+}
+
+.search-pic {
+  width: 10%;
+  height: 10%;
+}
+
+.search-main {
+  display: flex;
+}
+
+.search-back {
+  display: block;
+  background-size: cover;
+  box-shadow: inset 0 0 0, inset 0px -40px 22px var(--back-color);
+  background-image: url("../../static/search-poster.webp");
+  opacity: 0.6;
+  width: 50vw;
+}
+
+/*# sourceMappingURL=search.css.map */
