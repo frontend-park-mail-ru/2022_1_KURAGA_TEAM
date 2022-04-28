@@ -34,9 +34,10 @@ export default class FavoritesViewClass extends BaseViewClass {
 
 
             const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getMovieCompilations();
+                await MovieCompilationModel.getFavorites();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
+            console.log(movieCompilationsData);
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
