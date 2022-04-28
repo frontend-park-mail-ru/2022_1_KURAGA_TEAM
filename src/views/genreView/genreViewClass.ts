@@ -36,7 +36,6 @@ export default class GenreViewClass extends BaseViewClass {
 
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
 
-
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
             const footer = new FooterClass();

@@ -50,7 +50,6 @@ export default class MovieViewClass extends BaseViewClass {
                 return;
             }
 
-
             this.movie = new MovieModel(movData);
             if(!this.movie.checkMovie) {
                 this.seasonsCompilation = this.movie.seasonsData.map(
@@ -62,7 +61,6 @@ export default class MovieViewClass extends BaseViewClass {
             }
             console.log("seasons2",this.seasonsCompilation);
 
-
             const { movCompBody }: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovieCompilationMovie(id);
             const movieCompilationData = await Promise.resolve(movCompBody);
@@ -71,10 +69,10 @@ export default class MovieViewClass extends BaseViewClass {
                 movieCompilationData,
             );
 
+            console.log(this.movie)
 
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
-            const episodes = new EpisodesClass(this.seasonsCompilation.length);
             const firstInfoMovie = new FirstInfoMovieClass(
                 this.movie.movieData
             );
@@ -93,6 +91,8 @@ export default class MovieViewClass extends BaseViewClass {
                         footer: footer.render(),
                     });
                 } else {
+                    const episodes = new EpisodesClass(this.seasonsCompilation.length);
+
                     super.render(movieViewTemplate, {
                         movieImg: this.movie.movieData,
                         header: header.render(),
@@ -120,6 +120,8 @@ export default class MovieViewClass extends BaseViewClass {
                         footer: footer.render(),
                     });
                 } else {
+                    const episodes = new EpisodesClass(this.seasonsCompilation.length);
+
                     super.render(movieViewTemplate, {
                         movieImg: this.movie.movieData,
                         header: header.render(),
@@ -165,6 +167,7 @@ export default class MovieViewClass extends BaseViewClass {
             "</div>"
         );
     }
+
     seasonsRender(movieCompilations: MovieCompilationModel[]) {
         let select = "";
         console.log("inside",movieCompilations);
