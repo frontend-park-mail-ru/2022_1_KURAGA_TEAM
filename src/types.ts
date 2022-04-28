@@ -52,14 +52,14 @@ export interface PersonData {
 export interface MovieData {
     id: number;
     name: string;
-    genre: Array<string>;
+    genre?: Array<GenreData>;
     picture: string;
     tagline: string;
     age_limit: string;
     is_movie: boolean;
     country: string;
     description: string;
-    seasons: any;
+    season?: Array<Season>;
     duration: string;
     kinopoisk_rating: string;
     name_picture: string;
@@ -68,12 +68,32 @@ export interface MovieData {
     trailer: string;
     video: string;
     year: string;
+
+}
+export interface Season{
+    episodes: Array<Episode>;
+    id: number;
+    number: number;
+}
+export interface Episode{
+    description?: string;
+    id?: number;
+    name: string;
+    number?: number;
+    picture?: string;
+    video?: string;
+}
+
+export interface GenreData{
+    id: number;
+    name:string;
 }
 
 export interface MovieCompilationData {
     id?: number;
     movies: Array<MovieData>;
     compilationName?: string;
+    is_movie?: boolean;
 }
 export interface InfoHeadPerson {
     name: string;

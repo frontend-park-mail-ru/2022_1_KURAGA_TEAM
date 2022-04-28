@@ -476,6 +476,14 @@
   position: relative;
 }
 
+.select-title-all {
+  display: inline-block;
+  font-size: 18px;
+  margin-inline-start: 4vw;
+  font-weight: 300;
+  color: var(--secondary-name);
+}
+
 .b-carousel {
   display: grid;
   grid-gap: 16px;
@@ -661,6 +669,7 @@
 }
 
 .select-title {
+  display: inline-block;
   inline-size: max-content;
   font-size: 28px;
   line-height: 42px;

@@ -1,7 +1,7 @@
-import { ajaxReq } from "Modules/ajax";
+import {ajaxReq} from "Modules/ajax";
 import router from "Routing/router.ts";
-import { routes } from "Routing/constRouting";
-import { MovieData } from "../types";
+import {routes} from "Routing/constRouting";
+import {MovieData} from "../types";
 
 export default class MovieModel {
     data: MovieData;
@@ -12,6 +12,19 @@ export default class MovieModel {
 
     get movieData() {
         return this.data;
+    }
+
+    get checkMovie() {
+        return this.data.is_movie;
+    }
+
+    get seasonsData() {
+        this.movieData.season.forEach((value,index)=>{
+            if (value.episodes === null){
+                value.episodes = [{name:"Cерия пока недоступна",}];
+            }
+        })
+        return this.movieData.season;
     }
 
     get video() {

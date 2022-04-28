@@ -1,6 +1,6 @@
 .list-films {
   display: flex;
-  margin: 70px 4vw 30px 4vw;
+  margin: 20px 4vw 30px 4vw;
   background: var(--back-color);
   row-gap: 4vw;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@
   border: 2px solid white;
 }
 
-.search__text {
+.topic__text {
   font-size: calc(1vw + 20px);
   font-weight: 500;
   color: var(--font-color);

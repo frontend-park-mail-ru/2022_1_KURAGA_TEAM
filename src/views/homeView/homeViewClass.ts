@@ -85,6 +85,7 @@ export default class HomeViewClass extends BaseViewClass {
 
     compilationsRender(movieCompilations: MovieCompilationModel[]) {
         let select = "";
+        console.log("inside",movieCompilations);
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
             switch (index) {

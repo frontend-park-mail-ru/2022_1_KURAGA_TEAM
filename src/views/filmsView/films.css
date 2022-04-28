@@ -1,6 +1,6 @@
 .list-films {
   display: flex;
-  margin: 70px 4vw 30px 4vw;
+  margin: 20px 4vw 30px 4vw;
   background: var(--back-color);
   row-gap: 4vw;
   flex-wrap: wrap;
@@ -17,11 +17,12 @@
 }
 
 .all-films__text {
-  font-size: 50px;
+  font-size: calc(1vw + 20px);
   font-weight: 500;
-  color: white;
+  color: var(--font-color);
+  margin-top: 10vw;
+  margin-bottom: 30px;
   margin-left: 4vw;
-  margin-top: 6vw;
 }
 
 /*# sourceMappingURL=films.css.map */
