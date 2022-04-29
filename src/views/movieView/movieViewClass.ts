@@ -136,30 +136,16 @@ export default class MovieViewClass extends BaseViewClass {
                 }
             }
 
-<<<<<<< HEAD
-            handlerLink();
-            firstInfoMovie.setHandlers();
-            this.movieCompilation.setHandler();
-            this.seasonsCompilation.forEach((carousel) => {
-                carousel.setHandler();
-            });
-            header.setHandler();
-            this.setHandler();
-        } catch  {
-            router.go(routes.ERROR_CATCH_VIEW);
-=======
-
             handlerLink();
             if (this.seasonsCompilation != null) {
-                this.setHandler();
                 firstInfoMovie.setHandlers();
                 this.movieCompilation.setHandler();
                 this.seasonsCompilation.forEach((carousel) => {
                     carousel.setHandler();
                 });
                 header.setHandler();
+                this.setHandler();
             }
-
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -167,10 +153,9 @@ export default class MovieViewClass extends BaseViewClass {
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
 
-
         } catch (err) {
-            console.error(err);
->>>>>>> 1e2aab3ffa2d047b0d0c7332f4608c2e4409dc11
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -223,10 +208,6 @@ export default class MovieViewClass extends BaseViewClass {
 
     seasonsRender(movieCompilations: MovieCompilationModel[]) {
         let select = "";
-<<<<<<< HEAD
-=======
-        console.log("inside", movieCompilations);
->>>>>>> 1e2aab3ffa2d047b0d0c7332f4608c2e4409dc11
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
             carouselBlock = `<div class = "car${index + 1}">` + carousel.render() + `</div>`;
