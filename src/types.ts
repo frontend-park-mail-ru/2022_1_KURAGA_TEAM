@@ -34,6 +34,9 @@ export interface UserData {
     email: string;
     avatar: string;
 }
+export interface Favorites{
+    id: Array<number>
+}
 
 export interface User {
     user: UserData;
@@ -68,6 +71,7 @@ export interface MovieData {
     trailer: string;
     video: string;
     year: string;
+    is_liked?: boolean;
 
 }
 export interface Season{

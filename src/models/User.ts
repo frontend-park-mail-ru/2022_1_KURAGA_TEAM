@@ -95,10 +95,11 @@ export default class UserModel {
             return err;
         }
     }
+
     static async getSearch() {
         try {
             return await ajaxReq.get({
-                path: "/searchRes",
+                path: "/find",
             });
         } catch (err) {
             return err;
@@ -115,6 +116,37 @@ export default class UserModel {
         }
     }
 
+    static async like(form, csrfToken) {
+        try {
+            console.log("like")
+            return await ajaxReq.post({
+                path: "/like",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async dislike(form, csrfToken) {
+        try {
+            console.log("dislike")
+            return await ajaxReq.delete({
+                path: "/dislike",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 
     static auth() {
         return new Promise<{ isAuth: boolean; userBody }>((res) => {
@@ -223,6 +255,15 @@ export default class UserModel {
         }
     }
 
+    static async allLikes() {
+        try {
+            return await ajaxReq.get({
+                path: `/likes`,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 
     static getSearchMainRes(formData) {
         const mainRes = document.getElementById("res");
@@ -247,13 +288,25 @@ export default class UserModel {
                     const result = {
                         categories: [{
                             topic: "Фильмы",
-                            results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
+                            results: [{name: "Мстители", info: "жанр", id: 1}, {
+                                name: "Мстители2",
+                                info: "жанр2",
+                                id: 2
+                            }]
                         }, {
                             topic: "Сериалы",
-                            results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
+                            results: [{name: "Мстители", info: "жанр", id: 2}, {
+                                name: "Мстители2",
+                                info: "жанр2",
+                                id: 4
+                            }]
                         }, {
                             topic: "Персоны",
-                            results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
+                            results: [{name: "Мстители", info: "жанр", id: 3}, {
+                                name: "Мстители2",
+                                info: "жанр2",
+                                id: 1
+                            }]
                         }
                         ]
                     }
@@ -272,4 +325,91 @@ export default class UserModel {
                 });
         });
     }
+
+    static async liked(formJson) {
+        try {
+
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.like(formJson, message);
+
+
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async disliked(formJson) {
+        try {
+
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.dislike(formJson, message);
+
+
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static getLikes() {
+        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
+            this.allLikes()
+                .then((body) => {
+                    likes({
+                        isAuth: body.isAuth,
+                        likesBody: body.data,
+                    });
+                })
+                .catch((err) => {
+                    router.go(routes.ERROR_CATCH_VIEW);
+                });
+        });
+    }
+
+    setHandler(): void {
+        const likes = document.querySelectorAll(".like");
+        likes.forEach((like: HTMLElement) => {
+            like.onclick = function () {
+                let formJson = JSON.stringify({
+                    id: Number(like.id.split('_').pop()),
+                });
+                console.log(formJson, like.id.split('_').pop());
+                if (like.classList.contains("active-like")) {
+                    UserModel.disliked(formJson);
+                } else {
+                    console.log("likeeee");
+                    UserModel.liked(formJson);
+                }
+                const similarLikes = document.querySelectorAll("#" + like.id);
+                similarLikes.forEach((like: HTMLElement) => {
+                    like.classList.toggle("active-like");
+                })
+            };
+
+        });
+    }
+
+    setAllLikes(likesId) {
+        if(!likesId){
+            return;
+        }
+        const unique = likesId.filter(function(item, pos) {
+            return likesId.indexOf(item) == pos;
+        })
+        unique.forEach((i) => {
+            console.log(i,"#like_" + i)
+            const similarLikes = document.querySelectorAll("#like_" + i);
+            similarLikes.forEach((like: HTMLElement) => {
+                like.classList.toggle("active-like");
+            })
+        });
+    }
+
+
 }
+
+
+

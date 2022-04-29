@@ -1,6 +1,6 @@
 import movieTemplate from "./movie.pug";
 import {MovieData} from "../../types";
-
+import "./movie.scss";
 export default class MovieClass {
     private readonly movies: Array<MovieData>;
     private readonly typeMov: string;
@@ -19,7 +19,7 @@ export default class MovieClass {
     render() {
         const genreConfig = [{id: 0, name: ""}];
 
-        this.movies.forEach((value, index) => {
+        this.movies.forEach((value) => {
             if (value.genre === null) {
                 value.genre = genreConfig;
             }
@@ -33,4 +33,5 @@ export default class MovieClass {
             is_movie: this.is_movie,
         });
     }
+
 }

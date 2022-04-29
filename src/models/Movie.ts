@@ -15,13 +15,16 @@ export default class MovieModel {
     }
 
     get checkMovie() {
+        if(this.movieData.season == null){
+            return true;
+        }
         return this.data.is_movie;
     }
 
     get seasonsData() {
         this.movieData.season.forEach((value,index)=>{
             if (value.episodes === null){
-                value.episodes = [{name:"Cерия пока недоступна",}];
+                value.episodes = [{name:"Cерия пока недоступна"}];
             }
         })
         return this.movieData.season;

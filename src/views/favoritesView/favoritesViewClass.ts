@@ -37,7 +37,17 @@ export default class FavoritesViewClass extends BaseViewClass {
                 await MovieCompilationModel.getFavorites();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            console.log(movieCompilationsData);
+            console.log(1,movieCompilationsData);
+            movieCompilationsData.forEach(i => {
+                if (!i.movies) {
+                    movieCompilationsData.length--;
+                }
+            })
+            movieCompilationsData.forEach(i => {
+               console.log([...new Set(i.movies)])
+            })
+            //console.log(2,movieCompilationsData);
+
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
@@ -47,11 +57,11 @@ export default class FavoritesViewClass extends BaseViewClass {
             );
 
 
-           const header = new HeaderClass(this.user.userData);
+            const header = new HeaderClass(this.user.userData);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {
-               header: header.render(),
+                header: header.render(),
                 select: this.compilationsRender(this.movieCompilations),
                 footer: footer.render(),
             });
@@ -59,9 +69,20 @@ export default class FavoritesViewClass extends BaseViewClass {
             handlerLink();
             this.setHandler();
 
+            const {likesBody} = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+            this.user.setAllLikes(likesData.favorites.id);
+            this.user.setHandler();
+
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
                 carousel.setHandler();
+            });
+
+
+            const selectTopicAll = document.querySelectorAll(".select-title-all");
+            selectTopicAll.forEach((val) => {
+                val.classList.add("show");
             });
         } catch (err) {
             console.error(err);
