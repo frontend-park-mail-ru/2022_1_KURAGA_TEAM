@@ -88,7 +88,7 @@ export default class MovieViewClass extends BaseViewClass {
                         select: this.compilationsRender(this.movieCompilation),
                         footer: footer.render(),
                     });
-                } else if (this.seasonsCompilation != null) {
+                } else {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
 
                     super.render(movieViewTemplate, {
@@ -137,15 +137,15 @@ export default class MovieViewClass extends BaseViewClass {
             }
 
             handlerLink();
-            if (this.seasonsCompilation != null) {
-                firstInfoMovie.setHandlers();
-                this.movieCompilation.setHandler();
-                this.seasonsCompilation.forEach((carousel) => {
-                    carousel.setHandler();
-                });
-                header.setHandler();
-                this.setHandler();
-            }
+
+            firstInfoMovie.setHandlers();
+            this.movieCompilation.setHandler();
+            this.seasonsCompilation.forEach((carousel) => {
+                carousel.setHandler();
+            });
+            header.setHandler();
+            this.setHandler();
+
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -177,8 +177,8 @@ export default class MovieViewClass extends BaseViewClass {
 
         const buttons: Array<HTMLButtonElement> = [];
         for (let i = 0; i < this.seasonsCompilation.length; ++i) {
-            buttons[i] =  document.querySelector(`.season` + `${i + 1}`);
-            buttons[i].addEventListener('click',() => {
+            buttons[i] = document.querySelector(`.season` + `${i + 1}`);
+            buttons[i].addEventListener('click', () => {
 
                 for (let j = 0; j < this.seasonsCompilation.length; ++j) {
                     if (i !== j) {

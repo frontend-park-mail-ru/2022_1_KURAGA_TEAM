@@ -45,7 +45,6 @@ export default class FavoritesViewClass extends BaseViewClass {
                 }
             })
 
-            console.log(2,movieCompilationsData);
 
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>

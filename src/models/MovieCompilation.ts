@@ -8,20 +8,47 @@ import MovieClass from "Components/movie/movieClass";
 
 export default class MovieCompilationModel {
     private readonly data: MovieCompilationData;
+    private defaultMovies = [{
+        id: 0,
+        name: "",
+        picture: "",
+        tagline: "",
+        genre: [{id: 0, name: ""}],
+        age_limit: "",
+        is_movie: true,
+        country: "",
+        description: "",
+        duration: "",
+        kinopoisk_rating: "",
+        name_picture: "",
+        rating: "",
+        staff: "",
+        trailer: "",
+        video: "",
+        year: "",
+    }]
 
     constructor(index, movieCompilationData, id?) {
-        if(Array.isArray(movieCompilationData)){
+        if (Array.isArray(movieCompilationData)) {
             this.data = {
                 movies: movieCompilationData,
                 id: index,
                 idSerial: id,
             };
         } else {
-            this.data = {
-                id: index,
-                compilationName: movieCompilationData.compilation_name,
-                movies: movieCompilationData.movies,
-            };
+            if (movieCompilationData.movies == null) {
+                this.data = {
+                    id: index,
+                    compilationName: movieCompilationData.compilation_name,
+                    movies: this.defaultMovies,
+                };
+            } else {
+                this.data = {
+                    id: index,
+                    compilationName: movieCompilationData.compilation_name,
+                    movies: movieCompilationData.movies,
+                };
+            }
         }
     }
 
@@ -68,7 +95,6 @@ export default class MovieCompilationModel {
             return err;
         }
     }
-
 
 
     static async allMovies() {
@@ -289,8 +315,8 @@ export default class MovieCompilationModel {
 
     render() {
         const Series = new MovieClass(this.data.movies, "", false, this.data.id, this.data.idSerial);
-        const Top = new MovieClass(this.data.movies, "Top",true);
-        const unTop = new MovieClass(this.data.movies, "",true);
+        const Top = new MovieClass(this.data.movies, "Top", true);
+        const unTop = new MovieClass(this.data.movies, "", true);
 
         const common = {
             car: `js-carousel${this.data.id}`,
