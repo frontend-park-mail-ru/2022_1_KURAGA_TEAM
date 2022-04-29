@@ -394,6 +394,9 @@ export default class UserModel {
     }
 
     setAllLikes(likesId) {
+        if(!likesId){
+            return;
+        }
         const unique = likesId.filter(function(item, pos) {
             return likesId.indexOf(item) == pos;
         })

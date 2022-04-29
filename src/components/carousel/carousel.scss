@@ -210,7 +210,7 @@
 
 
 .selection {
-  overflow-x: hidden;
+  overflow: hidden;
   background-color: var(--back-color);
   display: grid;
   grid-template-columns: auto;

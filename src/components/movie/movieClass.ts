@@ -10,13 +10,14 @@ export default class MovieClass {
         this.movies = info;
         this.typeMov = typeMov;
         this.is_movie = is_movie;
+
     }
 
     render() {
 
         const genreConfig = [{id: 0, name: ""}];
 
-        this.movies.forEach((value, index) => {
+        this.movies.forEach((value) => {
             if (value.genre === null) {
                 value.genre = genreConfig;
             }

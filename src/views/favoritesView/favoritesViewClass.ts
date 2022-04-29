@@ -37,7 +37,13 @@ export default class FavoritesViewClass extends BaseViewClass {
                 await MovieCompilationModel.getFavorites();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            console.log(movieCompilationsData);
+            movieCompilationsData.forEach(i=>{
+                 if(!i.movies){
+                    movieCompilationsData.length--;
+                 }
+
+            })
+
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
@@ -58,11 +64,12 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
+
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
-            console.log("like:",likesData.favorites);
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
+
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
                 carousel.setHandler();
