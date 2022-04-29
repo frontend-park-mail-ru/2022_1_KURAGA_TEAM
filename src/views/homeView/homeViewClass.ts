@@ -11,7 +11,7 @@ import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import "../../css/home.scss";
-import {User} from "../../types";
+import {User,Favorites} from "../../types";
 
 export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
@@ -50,6 +50,9 @@ export default class HomeViewClass extends BaseViewClass {
             );
 
 
+
+            this.user = new UserModel(userData.user);
+
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
             const footer = new FooterClass();
@@ -64,6 +67,11 @@ export default class HomeViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
+
+            const {likesBody}  = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+            console.log("like:",likesData.favorites);
+            this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
@@ -85,7 +93,6 @@ export default class HomeViewClass extends BaseViewClass {
 
     compilationsRender(movieCompilations: MovieCompilationModel[]) {
         let select = "";
-        console.log("inside", movieCompilations);
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
             switch (index) {

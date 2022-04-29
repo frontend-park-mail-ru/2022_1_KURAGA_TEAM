@@ -68,15 +68,7 @@ export default class MovieCompilationModel {
         }
     }
 
-    static async allLikes() {
-        try {
-            return await ajaxReq.get({
-                path: `/likes`,
-            });
-        } catch (err) {
-            return err;
-        }
-    }
+
 
     static async allMovies() {
         try {
@@ -268,6 +260,9 @@ export default class MovieCompilationModel {
                 });
         });
     }
+
+
+
 
 
     render() {

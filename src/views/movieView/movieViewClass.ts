@@ -142,6 +142,10 @@ export default class MovieViewClass extends BaseViewClass {
             this.setHandler();
             firstInfoMovie.setHandlers();
             this.movieCompilation.setHandler();
+            const {likesBody}  = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+            console.log("like:",likesData.favorites);
+            this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             this.seasonsCompilation.forEach((carousel) => {
                 carousel.setHandler();

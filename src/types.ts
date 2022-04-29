@@ -34,6 +34,9 @@ export interface UserData {
     email: string;
     avatar: string;
 }
+export interface Favorites{
+    id: Array<number>
+}
 
 export interface User {
     user: UserData;

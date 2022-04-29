@@ -26,7 +26,6 @@ export default class FilmsViewClass extends BaseViewClass {
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
-
                 return;
             }
 
@@ -50,6 +49,10 @@ export default class FilmsViewClass extends BaseViewClass {
 
             this.setHandler();
             handlerLink();
+            const {likesBody}  = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+            console.log("like:",likesData.favorites);
+            this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             header.setHandler();
         } catch(err) {

@@ -58,6 +58,10 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
+            const {likesBody}  = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+            console.log("like:",likesData.favorites);
+            this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {

@@ -255,6 +255,15 @@ export default class UserModel {
         }
     }
 
+    static async allLikes() {
+        try {
+            return await ajaxReq.get({
+                path: `/likes`,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 
     static getSearchMainRes(formData) {
         const mainRes = document.getElementById("res");
@@ -345,18 +354,34 @@ export default class UserModel {
         }
     }
 
-    setHandler(): void {
+    static getLikes() {
+        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
+            this.allLikes()
+                .then((body) => {
+                    likes({
+                        isAuth: body.isAuth,
+                        likesBody: body.data,
+                    });
+                })
+                .catch((err) => {
+                    router.go(routes.ERROR_CATCH_VIEW);
+                });
+        });
+    }
 
+    setHandler(): void {
         const likes = document.querySelectorAll(".like");
+        console.log(likes);
         likes.forEach((like: HTMLElement) => {
             like.onclick = function (this) {
                 let formJson = JSON.stringify({
                     id: Number(like.id.split('_').pop()),
                 });
-                console.log(formJson,like.id.split('_').pop());
+                console.log(formJson, like.id.split('_').pop());
                 if (like.classList.contains("active-like")) {
                     UserModel.disliked(formJson);
                 } else {
+                    console.log("likeeee");
                     UserModel.liked(formJson);
                 }
                 const similarLikes = document.querySelectorAll("#" + like.id);
@@ -365,6 +390,19 @@ export default class UserModel {
                 })
             };
 
+        });
+    }
+
+    setAllLikes(likesId) {
+        const unique = likesId.filter(function(item, pos) {
+            return likesId.indexOf(item) == pos;
+        })
+        unique.forEach((i) => {
+            console.log(i,"#like_" + i)
+            const similarLikes = document.querySelectorAll("#like_" + i);
+            similarLikes.forEach((like: HTMLElement) => {
+                like.classList.toggle("active-like");
+            })
         });
     }
 
