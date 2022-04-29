@@ -61,7 +61,17 @@ export default class MovieCompilationModel {
     static async favorites() {
         try {
             return await ajaxReq.get({
-                path: `/favorite`,
+                path: `/favorites`,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async allLikes() {
+        try {
+            return await ajaxReq.get({
+                path: `/likes`,
             });
         } catch (err) {
             return err;

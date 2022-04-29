@@ -50,6 +50,7 @@ export default class FilmsViewClass extends BaseViewClass {
 
             this.setHandler();
             handlerLink();
+            this.user.setHandler();
             header.setHandler();
         } catch(err) {
             console.log(err)

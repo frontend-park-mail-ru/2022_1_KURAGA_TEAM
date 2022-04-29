@@ -47,6 +47,7 @@ export default class GenreViewClass extends BaseViewClass {
             });
 
             handlerLink();
+            this.user.setHandler();
             header.setHandler();
         } catch (err) {
             console.error(err);

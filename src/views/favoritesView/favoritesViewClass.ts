@@ -58,7 +58,7 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-
+            this.user.setHandler();
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
                 carousel.setHandler();

@@ -99,7 +99,7 @@ export default class UserModel {
     static async getSearch() {
         try {
             return await ajaxReq.get({
-                path: "/searchRes",
+                path: "/find",
             });
         } catch (err) {
             return err;
@@ -123,6 +123,7 @@ export default class UserModel {
                 path: "/like",
                 body: form,
                 headers: {
+                    "Content-Type": "application/json",
                     "csrf-token": csrfToken,
                 },
             });
@@ -134,10 +135,11 @@ export default class UserModel {
     static async dislike(form, csrfToken) {
         try {
             console.log("dislike")
-            return await ajaxReq.post({
+            return await ajaxReq.delete({
                 path: "/dislike",
                 body: form,
                 headers: {
+                    "Content-Type": "application/json",
                     "csrf-token": csrfToken,
                 },
             });
@@ -315,13 +317,13 @@ export default class UserModel {
         });
     }
 
-    static async liked(formData) {
+    static async liked(formJson) {
         try {
 
             const {data} = await this.token();
             const {message} = await data;
 
-            return this.like(formData, message);
+            return this.like(formJson, message);
 
 
         } catch (err) {
@@ -329,13 +331,13 @@ export default class UserModel {
         }
     }
 
-    static async disliked(formData) {
+    static async disliked(formJson) {
         try {
 
             const {data} = await this.token();
             const {message} = await data;
 
-            return this.dislike(formData, message);
+            return this.dislike(formJson, message);
 
 
         } catch (err) {
@@ -348,13 +350,14 @@ export default class UserModel {
         const likes = document.querySelectorAll(".like");
         likes.forEach((like: HTMLElement) => {
             like.onclick = function (this) {
-                let formData = new FormData();
-                formData.append("id", like.id.split('_').pop());
-                console.log(like.id.split('_').pop()); // post
+                let formJson = JSON.stringify({
+                    id: Number(like.id.split('_').pop()),
+                });
+                console.log(formJson,like.id.split('_').pop());
                 if (like.classList.contains("active-like")) {
-                    UserModel.disliked(formData);
+                    UserModel.disliked(formJson);
                 } else {
-                    UserModel.liked(formData);
+                    UserModel.liked(formJson);
                 }
                 const similarLikes = document.querySelectorAll("#" + like.id);
                 similarLikes.forEach((like: HTMLElement) => {

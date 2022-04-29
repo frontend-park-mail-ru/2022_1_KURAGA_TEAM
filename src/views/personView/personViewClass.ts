@@ -65,6 +65,7 @@ export default class PersonViewClass extends BaseViewClass {
 
             handlerLink();
             header.setHandler();
+            this.user.setHandler();
             this.movieCompilation.setHandler();
         } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);

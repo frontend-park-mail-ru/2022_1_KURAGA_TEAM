@@ -142,6 +142,7 @@ export default class MovieViewClass extends BaseViewClass {
             this.setHandler();
             firstInfoMovie.setHandlers();
             this.movieCompilation.setHandler();
+            this.user.setHandler();
             this.seasonsCompilation.forEach((carousel) => {
                 carousel.setHandler();
             });
