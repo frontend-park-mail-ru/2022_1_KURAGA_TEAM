@@ -10,7 +10,7 @@ export default class MovieCompilationModel {
     private readonly data: MovieCompilationData;
 
     constructor(index, movieCompilationData) {
-        if(Array.isArray(movieCompilationData)){
+        if (Array.isArray(movieCompilationData)) {
             this.data = {
                 movies: movieCompilationData,
                 id: index
@@ -58,7 +58,7 @@ export default class MovieCompilationModel {
         }
     }
 
-    static async favorites(){
+    static async favorites() {
         try {
             return await ajaxReq.get({
                 path: `/favorite`,
@@ -107,7 +107,8 @@ export default class MovieCompilationModel {
         return new Promise((movieCompilations) => {
             this.favorites()
                 .then((body) => {
-                    const result = [{compilation_name: 'Фильмы', movies: [
+                    const result = [{
+                        compilation_name: 'Фильмы', movies: [
                             {
                                 id: 7,
                                 name: 'Зеленая миля',
@@ -142,7 +143,9 @@ export default class MovieCompilationModel {
                                 name: 'Зеленая миля',
                                 genre: [{id: 0, name: "жанр"}],
                                 picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            }]},{compilation_name: 'Сериалы', movies: [
+                            }]
+                    }, {
+                        compilation_name: 'Сериалы', movies: [
                             {
                                 id: 7,
                                 name: 'Зеленая миля',
@@ -177,7 +180,8 @@ export default class MovieCompilationModel {
                                 name: 'Зеленая миля',
                                 genre: [{id: 0, name: "жанр"}],
                                 picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'
-                            }]}]
+                            }]
+                    }]
                     const fulfilled = Promise.resolve(result);
                     body = {
                         isAuth: true,
@@ -239,6 +243,7 @@ export default class MovieCompilationModel {
                 });
         });
     }
+
     static getSeries() {
         return new Promise((movieCompilation) => {
             this.allSeries()
@@ -256,9 +261,10 @@ export default class MovieCompilationModel {
 
 
     render() {
-        const Series = new MovieClass(this.data.movies, "",false);
-        const Top = new MovieClass(this.data.movies, "Top",true);
-        const unTop = new MovieClass(this.data.movies, "",true);
+        const Series = new MovieClass(this.data.movies, "", false);
+        const Top = new MovieClass(this.data.movies, "Top", true);
+        const unTop = new MovieClass(this.data.movies, "", true);
+
         const common = {
             car: `js-carousel${this.data.id}`,
             prevBtn: `js-carousel${this.data.id}__prev`,
@@ -294,6 +300,28 @@ export default class MovieCompilationModel {
     }
 
     setHandler(): void {
+
+        const likes = document.querySelectorAll(".like");
+        likes.forEach((like: HTMLElement) => {
+            like.onclick = function () {
+                console.log(like.id); // post 
+                const similarLikes = document.querySelectorAll("#"+like.id);
+                similarLikes.forEach((like:HTMLElement)=>{
+                    like.classList.toggle("active-like");
+                })
+            };
+        })
+        // const activeLikes = document.querySelectorAll(".active-like");
+        // activeLikes.forEach((like: HTMLElement) => {
+        //     like.onclick = function () {
+        //         if (like.classList[1] == "active-like") {
+        //             console.log(1);
+        //             like.classList.toggle("active-like");
+        //         }
+        //     };
+        // })
+
+
         const wrap = document.querySelector(`.js-carousel${this.data.id}`);
 
         const buttonCarouselPrev = document.querySelector(

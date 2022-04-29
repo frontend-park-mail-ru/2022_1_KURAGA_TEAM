@@ -63,6 +63,12 @@ export default class FavoritesViewClass extends BaseViewClass {
             this.movieCompilations.forEach((carousel) => {
                 carousel.setHandler();
             });
+
+
+            const selectTopicAll = document.querySelectorAll(".select-title-all");
+            selectTopicAll.forEach((val)=>{
+                val.classList.add("show");
+            });
         } catch (err) {
             console.error(err);
         }

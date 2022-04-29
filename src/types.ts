@@ -68,6 +68,7 @@ export interface MovieData {
     trailer: string;
     video: string;
     year: string;
+    is_liked?: boolean;
 
 }
 export interface Season{

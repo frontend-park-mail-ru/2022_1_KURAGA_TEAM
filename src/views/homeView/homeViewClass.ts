@@ -75,6 +75,7 @@ export default class HomeViewClass extends BaseViewClass {
     }
 
     setHandler() {
+        UserModel.liked();
         const homeNavbarMobile = document.querySelector(".homeMobile-js");
         const homeNavbar = document.querySelector(".home-js");
         const nameProfile = document.querySelector(".name-profile-mobile");

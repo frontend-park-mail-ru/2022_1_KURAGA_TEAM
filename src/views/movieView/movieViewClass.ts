@@ -152,6 +152,7 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
+        UserModel.liked();
         const episodes: HTMLDivElement = document.querySelector(".episodes");
 
         if (episodes.childNodes.length === 0) {

@@ -115,6 +115,32 @@ export default class UserModel {
         }
     }
 
+    static async like(form, csrfToken) {
+        try {
+            return await ajaxReq.post({
+                path: "/like",
+                body: form,
+                headers: {
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+    static async dislike(form, csrfToken) {
+        try {
+            return await ajaxReq.post({
+                path: "/dislike",
+                body: form,
+                headers: {
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 
     static auth() {
         return new Promise<{ isAuth: boolean; userBody }>((res) => {
@@ -272,4 +298,27 @@ export default class UserModel {
                 });
         });
     }
+
+    static async liked() {
+        try {
+
+            const {data} = await this.token();
+
+            const {message} = await data;
+            let formData = new FormData();
+            const likes = document.querySelectorAll("#cb");
+            likes.forEach((like) => {
+                like.addEventListener("click",(e)=>{
+                    formData.append("id", like.classList[1].split('_').pop());
+                    console.log(like.classList[1].split('_').pop());
+                    return this.like(formData, message);
+                })
+
+            })
+        } catch (err) {
+            return err;
+        }
+    }
+
+
 }

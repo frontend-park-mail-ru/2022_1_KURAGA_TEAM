@@ -19,5 +19,12 @@ div.head-movie__buttons
     else
         a.play-button(href=`/player/${info.id}/seas=1/ep=1`) Смотреть сериал
     a.trailer-button(href=`/player/${info.id}/trailer`) Трейлер
-    input#cbMovie(type="checkbox")
+    svg#default-like(class =`like_${info.id}`,width="36" height="36" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M13.7503 6.11111C8.18158 6.11111 3.66699 10.6257 3.66699 16.1944C3.66699 26.2778 15.5837 35.4444 22.0003 37.5766C28.417 35.4444 40.3337 26.2778 40.3337 16.1944C40.3337 10.6257 35.8191 6.11111 30.2503 6.11111C26.8403 6.11111 23.8245 7.8042 22.0003 10.3956C21.0705 9.07122 19.8353 7.99036 18.3992 7.24456C16.9632 6.49876 15.3685 6.10997 13.7503 6.11111Z" stroke="white" stroke-linecap="round" stroke-linejoin="round")
+    svg#like(class =`like_${info.id}`,width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M11.25 6C6.69375 6 3 9.69375 3 14.25C3 22.5 12.75 30 18 31.7445C23.25 30 33 22.5 33 14.25C33 9.69375 29.3062 6 24.75 6C21.96 6 19.4925 7.38525 18 9.5055C17.2393 8.42191 16.2286 7.53757 15.0536 6.92737C13.8787 6.31716 12.574 5.99907 11.25 6Z" fill="url(#paint0_linear_1107_1192)" stroke="white" stroke-linecap="round" stroke-linejoin="round")
+        defs
+            linearGradient(id="paint0_linear_1107_1192" x1="-3" y1="8.5" x2="33" y2="29.5" gradientUnits="userSpaceOnUse")
+                stop(stop-color="#C951AB")
+                stop(offset="1" stop-color="#2B54BC")
 
