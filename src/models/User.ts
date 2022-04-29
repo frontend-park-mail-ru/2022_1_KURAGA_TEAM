@@ -371,9 +371,8 @@ export default class UserModel {
 
     setHandler(): void {
         const likes = document.querySelectorAll(".like");
-        console.log(likes);
         likes.forEach((like: HTMLElement) => {
-            like.onclick = function (this) {
+            like.onclick = function () {
                 let formJson = JSON.stringify({
                     id: Number(like.id.split('_').pop()),
                 });
