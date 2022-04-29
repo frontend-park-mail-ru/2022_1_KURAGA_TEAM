@@ -38,15 +38,14 @@ export default class FavoritesViewClass extends BaseViewClass {
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
             console.log(1,movieCompilationsData);
-            movieCompilationsData.forEach(i => {
+            movieCompilationsData.forEach((i,id) => {
                 if (!i.movies) {
-                    movieCompilationsData.length--;
+                    movieCompilationsData.splice(id, 1);
+
                 }
             })
-            movieCompilationsData.forEach(i => {
-               console.log([...new Set(i.movies)])
-            })
-            //console.log(2,movieCompilationsData);
+
+            console.log(2,movieCompilationsData);
 
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
@@ -99,7 +98,7 @@ export default class FavoritesViewClass extends BaseViewClass {
         homeNavbar.classList.add("headline-style");
     }
 
-    compilationsRender(movieCompilations: MovieCompilationModel[]) {
+    compilationsRender(movieCompilations: Array<MovieCompilationModel>) {
         let select = "";
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";

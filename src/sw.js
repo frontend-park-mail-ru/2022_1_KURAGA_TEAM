@@ -20,7 +20,7 @@ const checkUrl = (url) => {
         avatars: /\/avatars/,
         persons: /\/persons/,
         trailers: /\/trailers/,
-        likes: /\/like/,
+
 
     };
 

@@ -118,7 +118,6 @@ export default class UserModel {
 
     static async like(form, csrfToken) {
         try {
-            console.log("like")
             return await ajaxReq.post({
                 path: "/like",
                 body: form,
@@ -134,7 +133,6 @@ export default class UserModel {
 
     static async dislike(form, csrfToken) {
         try {
-            console.log("dislike")
             return await ajaxReq.delete({
                 path: "/dislike",
                 body: form,
@@ -370,7 +368,9 @@ export default class UserModel {
     }
 
     setHandler(): void {
+
         const likes = document.querySelectorAll(".like");
+        console.log(likes);
         likes.forEach((like: HTMLElement) => {
             like.onclick = function () {
                 let formJson = JSON.stringify({
@@ -379,8 +379,9 @@ export default class UserModel {
                 console.log(formJson, like.id.split('_').pop());
                 if (like.classList.contains("active-like")) {
                     UserModel.disliked(formJson);
+                    console.log("dislike");
                 } else {
-                    console.log("likeeee");
+                    console.log("like");
                     UserModel.liked(formJson);
                 }
                 const similarLikes = document.querySelectorAll("#" + like.id);
