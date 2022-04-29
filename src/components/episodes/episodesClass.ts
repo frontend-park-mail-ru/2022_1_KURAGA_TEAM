@@ -8,7 +8,6 @@ export default class EpisodesClass {
     }
 
     render() {
-        console.log(this.numSeries);
         return episodesTemplate({num: this.numSeries});
     }
 }

@@ -12,7 +12,7 @@
   cursor: pointer;
   border: 3px solid var(--mix-color);
   font-weight: lighter;
-  background: transparent;
+  background-color: var(--back-color);
   color: var(--font-color);
   transition: transform 0.1s ease-out, background-color 0.15s linear;
 }

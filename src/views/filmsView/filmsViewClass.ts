@@ -36,8 +36,9 @@ export default class FilmsViewClass extends BaseViewClass {
             const { movCompBody }: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovies();
             const movieCompilationsData = await Promise.resolve(movCompBody);
+
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
-            console.log(movieCompilationsData);
+
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
             const footer = new FooterClass();

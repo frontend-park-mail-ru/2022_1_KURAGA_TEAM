@@ -9,11 +9,12 @@ import MovieClass from "Components/movie/movieClass";
 export default class MovieCompilationModel {
     private readonly data: MovieCompilationData;
 
-    constructor(index, movieCompilationData) {
+    constructor(index, movieCompilationData, id?) {
         if(Array.isArray(movieCompilationData)){
             this.data = {
                 movies: movieCompilationData,
-                id: index
+                id: index,
+                idSerial: id,
             };
         } else {
             this.data = {
@@ -82,6 +83,16 @@ export default class MovieCompilationModel {
         try {
             return await ajaxReq.get({
                 path: `/series`,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async allGenre(id) {
+        try {
+            return await ajaxReq.get({
+                path: `/movieCompilations/genre/${id}`,
             });
         } catch (err) {
             return err;
@@ -239,6 +250,7 @@ export default class MovieCompilationModel {
                 });
         });
     }
+
     static getSeries() {
         return new Promise((movieCompilation) => {
             this.allSeries()
@@ -254,9 +266,23 @@ export default class MovieCompilationModel {
         });
     }
 
+    static getGenre(id) {
+        return new Promise((movieCompilation) => {
+            this.allGenre(id)
+                .then((body) => {
+                    movieCompilation({
+                        isAuth: body.isAuth,
+                        movCompBody: body.data,
+                    });
+                })
+                .catch((err) => {
+                    router.go(routes.ERROR_CATCH_VIEW);
+                });
+        });
+    }
 
     render() {
-        const Series = new MovieClass(this.data.movies, "",false);
+        const Series = new MovieClass(this.data.movies, "", false, this.data.id, this.data.idSerial);
         const Top = new MovieClass(this.data.movies, "Top",true);
         const unTop = new MovieClass(this.data.movies, "",true);
         const common = {
