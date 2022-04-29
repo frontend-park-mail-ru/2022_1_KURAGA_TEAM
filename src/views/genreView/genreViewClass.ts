@@ -29,18 +29,22 @@ export default class GenreViewClass extends BaseViewClass {
                 return;
             }
 
+            const id = +/\d+/.exec(window.location.pathname);
+
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            const movieCompilationData = {compilation_name: 'Топ рейтинга', movies: {id: 7, name: 'Зеленая миля', genre: "Array(2)", picture: 'http://movie-space.ru:8000/api/v1/posters/TheGreenMile.webp'}}
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationData);
+            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getGenre(id);
+            const movieCompilationsData = await Promise.resolve(movCompBody);
+            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
+            console.log(this.movieCompilation)
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
             const footer = new FooterClass();
 
             super.render(genreViewTemplate, {
+                genre: this.movieCompilation.movieCompilationData.compilationName,
                 header: header.render(),
                 listFilms: listFilms.render(),
                 footer: footer.render(),

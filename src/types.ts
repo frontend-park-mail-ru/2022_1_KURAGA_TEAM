@@ -95,6 +95,7 @@ export interface GenreData{
 
 export interface MovieCompilationData {
     id?: number;
+    idSerial?: number;
     movies: Array<MovieData>;
     compilationName?: string;
     is_movie?: boolean;

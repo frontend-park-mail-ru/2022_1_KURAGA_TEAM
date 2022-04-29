@@ -56,7 +56,8 @@ export default class MovieViewClass extends BaseViewClass {
                     (movieCompilationData, index) =>
                         new MovieCompilationModel(
                             index,
-                            movieCompilationData.episodes
+                            movieCompilationData.episodes,
+                            id
                         ));
             }
 
@@ -67,8 +68,6 @@ export default class MovieViewClass extends BaseViewClass {
                 0,
                 movieCompilationData,
             );
-
-            console.log(this.movie)
 
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
@@ -137,18 +136,16 @@ export default class MovieViewClass extends BaseViewClass {
                 }
             }
 
-
             handlerLink();
             if (this.seasonsCompilation != null) {
-                this.setHandler();
                 firstInfoMovie.setHandlers();
                 this.movieCompilation.setHandler();
                 this.seasonsCompilation.forEach((carousel) => {
                     carousel.setHandler();
                 });
                 header.setHandler();
+                this.setHandler();
             }
-
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -156,9 +153,9 @@ export default class MovieViewClass extends BaseViewClass {
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
 
-
         } catch (err) {
-            console.error(err);
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -170,6 +167,35 @@ export default class MovieViewClass extends BaseViewClass {
             episodes.style.marginTop = "0";
         }
 
+        const season: Array<HTMLDivElement> = [];
+        for (let i = 0; i < this.seasonsCompilation.length; ++i) {
+            season[i] = document.querySelector(`.car` + `${i + 1}`);
+            if (i !== 0) {
+                season[i].style.display = 'none';
+            }
+        }
+
+        const buttons: Array<HTMLButtonElement> = [];
+        for (let i = 0; i < this.seasonsCompilation.length; ++i) {
+            buttons[i] =  document.querySelector(`.season` + `${i + 1}`);
+            buttons[i].addEventListener('click',() => {
+
+                for (let j = 0; j < this.seasonsCompilation.length; ++j) {
+                    if (i !== j) {
+                        season[j].style.display = 'none';
+                    } else {
+                        buttons.forEach((item) => {
+                            item.style.backgroundColor = '#01090b';
+                        })
+
+                        buttons[i].style.backgroundColor = '#595959';
+                        season[j].style.display = '';
+                    }
+                }
+            });
+        }
+
+        buttons[0].style.backgroundColor = '#595959';
     }
 
     compilationsRender(movieCompilation: MovieCompilationModel): string {
@@ -182,21 +208,9 @@ export default class MovieViewClass extends BaseViewClass {
 
     seasonsRender(movieCompilations: MovieCompilationModel[]) {
         let select = "";
-        console.log("inside", movieCompilations);
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
-            switch (index) {
-                case 0:
-                    carouselBlock =
-                        '<div class = "first">' + carousel.render() + "</div>";
-                    break;
-                case movieCompilations.length - 1:
-                    carouselBlock =
-                        '<div class = "last">' + carousel.render() + "</div>";
-                    break;
-                default:
-                    carouselBlock = "<div>" + carousel.render() + "</div>";
-            }
+            carouselBlock = `<div class = "car${index + 1}">` + carousel.render() + `</div>`;
             select += carouselBlock;
         });
         return select;
