@@ -64,7 +64,7 @@ export default class HomeViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-
+            this.user.setHandler();
             header.setHandler();
             this.movieCompilations.forEach((carousel) => {
                 carousel.setHandler();
@@ -75,7 +75,6 @@ export default class HomeViewClass extends BaseViewClass {
     }
 
     setHandler() {
-        UserModel.liked();
         const homeNavbarMobile = document.querySelector(".homeMobile-js");
         const homeNavbar = document.querySelector(".home-js");
         const nameProfile = document.querySelector(".name-profile-mobile");
@@ -86,7 +85,7 @@ export default class HomeViewClass extends BaseViewClass {
 
     compilationsRender(movieCompilations: MovieCompilationModel[]) {
         let select = "";
-        console.log("inside",movieCompilations);
+        console.log("inside", movieCompilations);
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
             switch (index) {

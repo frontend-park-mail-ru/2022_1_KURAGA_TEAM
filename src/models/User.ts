@@ -95,6 +95,7 @@ export default class UserModel {
             return err;
         }
     }
+
     static async getSearch() {
         try {
             return await ajaxReq.get({
@@ -117,6 +118,7 @@ export default class UserModel {
 
     static async like(form, csrfToken) {
         try {
+            console.log("like")
             return await ajaxReq.post({
                 path: "/like",
                 body: form,
@@ -128,8 +130,10 @@ export default class UserModel {
             return err;
         }
     }
+
     static async dislike(form, csrfToken) {
         try {
+            console.log("dislike")
             return await ajaxReq.post({
                 path: "/dislike",
                 body: form,
@@ -273,13 +277,25 @@ export default class UserModel {
                     const result = {
                         categories: [{
                             topic: "Фильмы",
-                            results: [{name: "Мстители", info: "жанр",id:1}, {name: "Мстители2", info: "жанр2",id:2}]
+                            results: [{name: "Мстители", info: "жанр", id: 1}, {
+                                name: "Мстители2",
+                                info: "жанр2",
+                                id: 2
+                            }]
                         }, {
                             topic: "Сериалы",
-                            results: [{name: "Мстители", info: "жанр",id:2}, {name: "Мстители2", info: "жанр2",id:4}]
+                            results: [{name: "Мстители", info: "жанр", id: 2}, {
+                                name: "Мстители2",
+                                info: "жанр2",
+                                id: 4
+                            }]
                         }, {
                             topic: "Персоны",
-                            results: [{name: "Мстители", info: "жанр",id:3}, {name: "Мстители2", info: "жанр2",id:1}]
+                            results: [{name: "Мстители", info: "жанр", id: 3}, {
+                                name: "Мстители2",
+                                info: "жанр2",
+                                id: 1
+                            }]
                         }
                         ]
                     }
@@ -299,26 +315,58 @@ export default class UserModel {
         });
     }
 
-    static async liked() {
+    static async liked(formData) {
         try {
 
             const {data} = await this.token();
-
             const {message} = await data;
-            let formData = new FormData();
-            const likes = document.querySelectorAll("#cb");
-            likes.forEach((like) => {
-                like.addEventListener("click",(e)=>{
-                    formData.append("id", like.classList[1].split('_').pop());
-                    console.log(like.classList[1].split('_').pop());
-                    return this.like(formData, message);
-                })
 
-            })
+            return this.like(formData, message);
+
+
         } catch (err) {
             return err;
         }
     }
 
+    static async disliked(formData) {
+        try {
+
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.dislike(formData, message);
+
+
+        } catch (err) {
+            return err;
+        }
+    }
+
+    setHandler(): void {
+
+        const likes = document.querySelectorAll(".like");
+        likes.forEach((like: HTMLElement) => {
+            like.onclick = function (this) {
+                let formData = new FormData();
+                formData.append("id", like.id.split('_').pop());
+                console.log(like.id.split('_').pop()); // post
+                if (like.classList.contains("active-like")) {
+                    UserModel.disliked(formData);
+                } else {
+                    UserModel.liked(formData);
+                }
+                const similarLikes = document.querySelectorAll("#" + like.id);
+                similarLikes.forEach((like: HTMLElement) => {
+                    like.classList.toggle("active-like");
+                })
+            };
+
+        });
+    }
+
 
 }
+
+
+

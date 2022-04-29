@@ -301,25 +301,6 @@ export default class MovieCompilationModel {
 
     setHandler(): void {
 
-        const likes = document.querySelectorAll(".like");
-        likes.forEach((like: HTMLElement) => {
-            like.onclick = function () {
-                console.log(like.id); // post 
-                const similarLikes = document.querySelectorAll("#"+like.id);
-                similarLikes.forEach((like:HTMLElement)=>{
-                    like.classList.toggle("active-like");
-                })
-            };
-        })
-        // const activeLikes = document.querySelectorAll(".active-like");
-        // activeLikes.forEach((like: HTMLElement) => {
-        //     like.onclick = function () {
-        //         if (like.classList[1] == "active-like") {
-        //             console.log(1);
-        //             like.classList.toggle("active-like");
-        //         }
-        //     };
-        // })
 
 
         const wrap = document.querySelector(`.js-carousel${this.data.id}`);
