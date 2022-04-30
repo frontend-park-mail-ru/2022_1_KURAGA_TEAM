@@ -135,19 +135,25 @@ export default class HeaderClass {
             const searchData: object = await Promise.resolve(searchBody);
 
             console.log(searchData);
-            Object.keys(searchData).every((value) => {
-                if (value != null) {
-                    console.log("res", value, searchData[value]);
-                    res.textContent = searchData[value][0].name;
-                    info.textContent = searchData[value][0].genre[0].name + "/" + searchData[value][0].genre[1].name;
-                    res.setAttribute("href", "/movie/" + searchData[value][0].id)
+            for (let key in searchData) {
+                if (searchData[key] != null) {
+                    console.log("res", key, searchData[key],searchData[key][0].name);
+                    res.textContent = searchData[key][0].name;
+                    if (key != "persons") {
+                        res.setAttribute("href", "/movie/" + searchData[key][0].id)
+                        info.textContent = searchData[key][0].genre[0].name + "/" + searchData[key][0].genre[1].name;
+                    } else {
+                        res.setAttribute("href", "/person/" + searchData[key][0].id);
+                        info.textContent = searchData[key][0].position[0];
+                    }
+                    break;
 
                 } else {
                     res.textContent = "Ничего не найдено";
                     info.textContent = "";
                 }
 
-            });
+            }
 
 
         }));
