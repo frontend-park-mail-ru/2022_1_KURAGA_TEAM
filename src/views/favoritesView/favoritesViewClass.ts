@@ -88,13 +88,23 @@ export default class FavoritesViewClass extends BaseViewClass {
     }
 
     setHandler() {
-        const homeNavbarMobile = document.querySelector(".homeMobile-js");
-        const homeNavbar = document.querySelector(".home-js");
-        const nameProfile = document.querySelector(".name-profile-mobile");
+        const filmsNavbar: HTMLAnchorElement =
+            document.querySelector(".font-nav.favourite-js");
 
-        nameProfile.classList.add("headline-style");
-        homeNavbarMobile.classList.add("headline-style");
-        homeNavbar.classList.add("headline-style");
+        filmsNavbar.style.backgroundColor = "#2C51B1";
+        filmsNavbar.style.webkitBackgroundClip = "text";
+        filmsNavbar.style.webkitTextFillColor = "transparent";
+        filmsNavbar.style.backgroundImage =
+            "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+
+        //
+        // const homeNavbarMobile = document.querySelector(".homeMobile-js");
+        // const homeNavbar = document.querySelector(".home-js");
+        // const nameProfile = document.querySelector(".name-profile-mobile");
+        //
+        // nameProfile.classList.add("headline-style");
+        // homeNavbarMobile.classList.add("headline-style");
+        // homeNavbar.classList.add("headline-style");
     }
 
     compilationsRender(movieCompilations: Array<MovieCompilationModel>) {
