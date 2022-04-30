@@ -137,15 +137,16 @@ export default class MovieViewClass extends BaseViewClass {
             }
 
             handlerLink();
+            header.setHandler();
 
             firstInfoMovie.setHandlers();
             this.movieCompilation.setHandler();
-            this.seasonsCompilation.forEach((carousel) => {
-                carousel.setHandler();
-            });
-            header.setHandler();
-            this.setHandler();
-
+            if (this.seasonsCompilation !== null) {
+                this.seasonsCompilation.forEach((carousel) => {
+                    carousel.setHandler();
+                });
+                this.setHandler();
+            }
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -160,7 +161,6 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
-
         const episodes: HTMLDivElement = document.querySelector(".episodes");
 
         if (episodes.childNodes.length === 0) {
