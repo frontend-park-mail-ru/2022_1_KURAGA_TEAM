@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../components/listFilms/listFilms.scss","films.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;;ACbF;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA","file":"films.css"}
+{"version":3,"sourceRoot":"","sources":["../../components/listFilms/listFilms.scss","films.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;;ACbF;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA;EACA;EACA;;;AAGF;EACE","file":"films.css"}

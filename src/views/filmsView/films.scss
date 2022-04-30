@@ -10,10 +10,16 @@
 }
 
 .all-list {
-  height: 100vh;
+  height: 100%;
 }
 
 .loader {
+  opacity: 0;
   height: 100px;
   width: 100%;
+  transition: all .2s ease;
+}
+
+.loader-show {
+  opacity: 1;
 }

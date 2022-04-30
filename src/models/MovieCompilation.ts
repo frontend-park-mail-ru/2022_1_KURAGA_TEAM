@@ -71,10 +71,10 @@ export default class MovieCompilationModel {
 
 
 
-    static async allMovies() {
+    static async allMovies(limit, offset) {
         try {
             return await ajaxReq.get({
-                path: `/movies`,
+                path: `/movies?limit=${limit}&offset=${offset}`,
             });
         } catch (err) {
             return err;
@@ -242,9 +242,9 @@ export default class MovieCompilationModel {
         });
     }
 
-    static getMovies() {
+    static getMovies(limit, offset) {
         return new Promise((movieCompilation) => {
-            this.allMovies()
+            this.allMovies(limit, offset)
                 .then((body) => {
                     movieCompilation({
                         isAuth: body.isAuth,
