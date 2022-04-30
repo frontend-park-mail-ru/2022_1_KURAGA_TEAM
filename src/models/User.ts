@@ -85,21 +85,16 @@ export default class UserModel {
         }
     }
 
-    static async search(form) {
+
+    static async search(form, csrfToken) {
         try {
             return await ajaxReq.post({
-                path: "/search",
-                body: form,
-            });
-        } catch (err) {
-            return err;
-        }
-    }
-
-    static async getSearch() {
-        try {
-            return await ajaxReq.get({
                 path: "/find",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
             });
         } catch (err) {
             return err;
@@ -118,7 +113,6 @@ export default class UserModel {
 
     static async like(form, csrfToken) {
         try {
-            console.log("like")
             return await ajaxReq.post({
                 path: "/like",
                 body: form,
@@ -134,7 +128,6 @@ export default class UserModel {
 
     static async dislike(form, csrfToken) {
         try {
-            console.log("dislike")
             return await ajaxReq.delete({
                 path: "/dislike",
                 body: form,
@@ -265,57 +258,16 @@ export default class UserModel {
         }
     }
 
-    static getSearchMainRes(formData) {
-        const mainRes = document.getElementById("res");
+    static async getSearchRes(formJson) {
 
-        this.search(formData)
-            .then(({isAuth, data}) => {
-                data.then((res) => {
 
-                    mainRes.textContent = formData.get("search");
+        const {data} = await this.token();
+        const {message} = await data;
 
-                });
-            })
-            .catch((err) => {
-                router.go(routes.ERROR_CATCH_VIEW);
-            });
-    }
-
-    static getSearchRes() {
-        return new Promise((searchRes) => {
-            this.getSearch()
+        return new Promise<{ isAuth: boolean; searchBody }>((search) => {
+            this.search(formJson, message)
                 .then((body) => {
-                    const result = {
-                        categories: [{
-                            topic: "Фильмы",
-                            results: [{name: "Мстители", info: "жанр", id: 1}, {
-                                name: "Мстители2",
-                                info: "жанр2",
-                                id: 2
-                            }]
-                        }, {
-                            topic: "Сериалы",
-                            results: [{name: "Мстители", info: "жанр", id: 2}, {
-                                name: "Мстители2",
-                                info: "жанр2",
-                                id: 4
-                            }]
-                        }, {
-                            topic: "Персоны",
-                            results: [{name: "Мстители", info: "жанр", id: 3}, {
-                                name: "Мстители2",
-                                info: "жанр2",
-                                id: 1
-                            }]
-                        }
-                        ]
-                    }
-                    const fulfilled = Promise.resolve(result);
-                    body = {
-                        isAuth: true,
-                        data: fulfilled,
-                    }
-                    searchRes({
+                    search({
                         isAuth: body.isAuth,
                         searchBody: body.data,
                     });
@@ -325,6 +277,62 @@ export default class UserModel {
                 });
         });
     }
+
+    // this.search(formData)
+    //     .then(({isAuth, data}) => {
+    //         data.then((res) => {
+    //             mainRes.textContent = formData.get("search");
+    //         });
+    //     })
+    //     .catch((err) => {
+    //         router.go(routes.ERROR_CATCH_VIEW);
+    //     });
+
+
+// static getSearchRes() {
+//     return new Promise((searchRes) => {
+//         this.getSearch()
+//             .then((body) => {
+//                 const result = {
+//                     categories: [{
+//                         topic: "Фильмы",
+//                         results: [{name: "Мстители", info: "жанр", id: 1}, {
+//                             name: "Мстители2",
+//                             info: "жанр2",
+//                             id: 2
+//                         }]
+//                     }, {
+//                         topic: "Сериалы",
+//                         results: [{name: "Мстители", info: "жанр", id: 2}, {
+//                             name: "Мстители2",
+//                             info: "жанр2",
+//                             id: 4
+//                         }]
+//                     }, {
+//                         topic: "Персоны",
+//                         results: [{name: "Мстители", info: "жанр", id: 3}, {
+//                             name: "Мстители2",
+//                             info: "жанр2",
+//                             id: 1
+//                         }]
+//                     }
+//                     ]
+//                 }
+//                 const fulfilled = Promise.resolve(result);
+//                 body = {
+//                     isAuth: true,
+//                     data: fulfilled,
+//                 }
+//                 searchRes({
+//                     isAuth: body.isAuth,
+//                     searchBody: body.data,
+//                 });
+//             })
+//             .catch((err) => {
+//                 router.go(routes.ERROR_CATCH_VIEW);
+//             });
+//     });
+// }
 
     static async liked(formJson) {
         try {
@@ -369,8 +377,12 @@ export default class UserModel {
         });
     }
 
-    setHandler(): void {
+    setHandler()
+        :
+        void {
+
         const likes = document.querySelectorAll(".like");
+        console.log(likes);
         likes.forEach((like: HTMLElement) => {
             like.onclick = function () {
                 let formJson = JSON.stringify({
@@ -379,8 +391,9 @@ export default class UserModel {
                 console.log(formJson, like.id.split('_').pop());
                 if (like.classList.contains("active-like")) {
                     UserModel.disliked(formJson);
+                    console.log("dislike");
                 } else {
-                    console.log("likeeee");
+                    console.log("like");
                     UserModel.liked(formJson);
                 }
                 const similarLikes = document.querySelectorAll("#" + like.id);
@@ -393,14 +406,14 @@ export default class UserModel {
     }
 
     setAllLikes(likesId) {
-        if(!likesId){
+        if (!likesId) {
             return;
         }
-        const unique = likesId.filter(function(item, pos) {
+        const unique = likesId.filter(function (item, pos) {
             return likesId.indexOf(item) == pos;
         })
         unique.forEach((i) => {
-            console.log(i,"#like_" + i)
+            console.log(i, "#like_" + i)
             const similarLikes = document.querySelectorAll("#like_" + i);
             similarLikes.forEach((like: HTMLElement) => {
                 like.classList.toggle("active-like");

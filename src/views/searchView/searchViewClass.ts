@@ -32,17 +32,17 @@ export default class SearchViewClass extends BaseViewClass {
             this.user = new UserModel(userData.user);
 
 
-            const {searchBody}: { searchBody?: Promise<any> } = await UserModel.getSearchRes();
-            const searchData = await Promise.resolve(searchBody);
-            this.searchRes = searchData;
-            console.log(searchBody,searchData);
+           // const {searchBody}: { searchBody?: Promise<any> } = await UserModel.getSearchRes();
+           // const searchData = await Promise.resolve(searchBody);
+           // this.searchRes = searchData;
+           // console.log(searchBody,searchData);
 
             const header = new HeaderClass(this.user.userData);
             const footer = new FooterClass();
 
             super.render(filmsViewTemplate, {
                 header: header.render(),
-                search: this.searchRes,
+           //     search: this.searchRes,
                 footer: footer.render(),
             });
 
