@@ -32,8 +32,8 @@ export default class FilmsViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            let currentPage = 1;
-            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(5, currentPage);
+            let currentOffset = 0;
+            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
@@ -48,7 +48,7 @@ export default class FilmsViewClass extends BaseViewClass {
                 footer: footer.render(),
             });
 
-            this.setHandler(currentPage);
+            this.setHandler(currentOffset);
             handlerLink();
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -62,7 +62,7 @@ export default class FilmsViewClass extends BaseViewClass {
         }
     }
 
-    setHandler(currentPage: number) {
+    setHandler(currentOffset: number) {
         const filmsNavbar: HTMLAnchorElement =
             document.querySelector(".font-nav.movie-js");
 
@@ -83,28 +83,26 @@ export default class FilmsViewClass extends BaseViewClass {
             } = document.documentElement;
 
             if (scrollTop + clientHeight >= scrollHeight - 5) {
-                currentPage++;
-                console.log(currentPage)
+                currentOffset += 30;
 
-                loader.classList.add('loader-show');
+                // TODO ЧТО-ТО С ЛОАДЕРОМ
 
                 try {
-                    const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(5, currentPage);
+                    const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
                     const movieCompilationsData = await Promise.resolve(movCompBody);
+                    console.log(movieCompilationsData)
 
                     this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
 
                     const listFilms = new ListFilmsClass(this.movieCompilation);
 
-                    loader.classList.remove('loader-show');
+                    // TODO ЧТО-ТО С ЛОАДЕРОМ
 
                     list.innerHTML += listFilms.render();
                 } catch (error) {
                     console.log(error.message);
                 }
             }
-        }, {
-            passive: true
         });
     }
 }

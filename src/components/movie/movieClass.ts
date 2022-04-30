@@ -24,7 +24,6 @@ export default class MovieClass {
                 value.genre = genreConfig;
             }
         })
-        console.log("this.movies",this.movies);
         return movieTemplate({
             season: this.season,
             idx: this.idx,

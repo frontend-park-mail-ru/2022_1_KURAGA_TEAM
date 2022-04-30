@@ -101,7 +101,6 @@ export default class InputsProfileClass {
             document.querySelector(".btn-profile");
 
         const nameValid = () => {
-            console.log(inputName.value);
             return (
                 inputName.value.match(/<script>/) !== null ||
                 inputName.value.match(/<a/) !== null ||

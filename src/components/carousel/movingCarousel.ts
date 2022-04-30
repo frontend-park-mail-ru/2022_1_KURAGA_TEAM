@@ -17,8 +17,6 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
     this.prev_slide = () => {
         const numMovies = Math.floor(window.screen.width / (privates.opt.length+20) * privates.opt.max_position);
-        console.log(numMovies);
-        console.log(privates.opt.position, numMovies);
 
         if (privates.opt.position >= numMovies) {
             privates.opt.position -= numMovies;

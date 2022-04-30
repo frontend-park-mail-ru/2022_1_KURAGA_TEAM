@@ -17,7 +17,6 @@ export default class PlayerViewClass extends BaseViewClass {
             loader.render();
 
             const idx = +/\d+/.exec(window.location.pathname);
-            console.log()
 
             const check = window.location.pathname.indexOf("trailer");
 
@@ -30,7 +29,6 @@ export default class PlayerViewClass extends BaseViewClass {
                 return;
             }
             this.movie = new MovieModel(movData);
-            console.log(this.movie)
 
             let video = this.movie.trailer;
             if (check === -1) {

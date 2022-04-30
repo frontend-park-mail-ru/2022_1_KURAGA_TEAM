@@ -20,7 +20,7 @@
   font-size: calc(1vw + 20px);
   font-weight: 500;
   color: var(--font-color);
-  margin-top: 110px;
+  margin-top: 150px;
   margin-bottom: 30px;
   margin-left: 4vw;
 }
@@ -30,14 +30,9 @@
 }
 
 .loader {
-  opacity: 0;
+  display: none;
   height: 100px;
   width: 100%;
-  transition: all 0.2s ease;
-}
-
-.loader-show {
-  opacity: 1;
 }
 
 /*# sourceMappingURL=films.css.map */

@@ -377,9 +377,7 @@ export default class UserModel {
         });
     }
 
-    setHandler()
-        :
-        void {
+    setHandler() : void {
 
         const likes = document.querySelectorAll(".like");
         console.log(likes);

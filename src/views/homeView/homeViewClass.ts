@@ -40,7 +40,6 @@ export default class HomeViewClass extends BaseViewClass {
                 await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            console.log(movieCompilationsData);
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
@@ -48,8 +47,6 @@ export default class HomeViewClass extends BaseViewClass {
                         movieCompilationData,
                     )
             );
-
-
 
             this.user = new UserModel(userData.user);
 
