@@ -4,7 +4,7 @@
   background: var(--back-color);
   row-gap: 4vw;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .test {
@@ -14,4 +14,27 @@
   margin-bottom: 50px;
   background: red;
   border: 2px solid white;
+}
+
+.list-genres {
+  margin-bottom: 40px;
+  margin-left: 4vw;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 30px;
+  background: var(--trailer-button-hover);
+
+  &__genre {
+    font-weight: lighter;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+  }
+
+  &__genre:hover {
+    text-decoration: underline;
+  }
 }

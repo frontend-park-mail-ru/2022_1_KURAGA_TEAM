@@ -1363,7 +1363,8 @@
   }
 
   .first-part-info {
-    margin-top: 260px;
+    margin-top: 0;
+    padding-top: 260px;
     margin-left: 4vw;
   }
 

@@ -36,8 +36,8 @@ export default class GenreViewClass extends BaseViewClass {
 
             const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getGenre(id);
             const movieCompilationsData = await Promise.resolve(movCompBody);
+
             this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
-            console.log(this.movieCompilation)
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -47,7 +47,6 @@ export default class GenreViewClass extends BaseViewClass {
                 genre: this.movieCompilation.movieCompilationData.compilationName,
                 header: header.render(),
                 listFilms: listFilms.render(),
-                footer: footer.render(),
             });
 
             handlerLink();

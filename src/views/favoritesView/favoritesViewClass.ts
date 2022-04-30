@@ -61,7 +61,6 @@ export default class FavoritesViewClass extends BaseViewClass {
             super.render(homeViewTemplate, {
                 header: header.render(),
                 select: this.compilationsRender(this.movieCompilations),
-                footer: footer.render(),
             });
 
             handlerLink();

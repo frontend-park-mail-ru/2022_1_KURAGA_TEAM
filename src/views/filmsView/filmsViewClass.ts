@@ -45,7 +45,6 @@ export default class FilmsViewClass extends BaseViewClass {
             super.render(filmsViewTemplate, {
                 header: header.render(),
                 listFilms: listFilms.render(),
-                footer: footer.render(),
             });
 
             this.setHandler(currentOffset);
