@@ -65,28 +65,28 @@ export default class GenreViewClass extends BaseViewClass {
 
         currGenre.style.backgroundColor = '#744fa9';
 
-        // let temp = document.createElement('a');
-        // firstGenre.parentNode.insertBefore(temp, firstGenre);
-        //
-        // currGenre.parentNode.insertBefore(firstGenre, currGenre);
-        //
-        // temp.parentNode.insertBefore(currGenre, temp);
-        //
-        // temp.parentNode.removeChild(temp);
+        let temp = document.createElement('a');
+        firstGenre.parentNode.insertBefore(temp, firstGenre);
 
-        let parentCurr = currGenre.parentNode;
-        let nextCurr = currGenre.nextSibling;
+        currGenre.parentNode.insertBefore(firstGenre, currGenre);
 
-        if (nextCurr === firstGenre) {
-            parentCurr.insertBefore(firstGenre, currGenre);
-        } else {
-            firstGenre.parentNode.insertBefore(currGenre, firstGenre);
+        temp.parentNode.insertBefore(currGenre, temp);
 
-            if (nextCurr) {
-                parentCurr.insertBefore(firstGenre, nextCurr);
-            } else {
-                parentCurr.appendChild(firstGenre);
-            }
-        }
+        temp.parentNode.removeChild(temp);
+
+        // let parentCurr = currGenre.parentNode;
+        // let nextCurr = currGenre.nextSibling;
+        //
+        // if (nextCurr === firstGenre) {
+        //     parentCurr.insertBefore(firstGenre, currGenre);
+        // } else {
+        //     firstGenre.parentNode.insertBefore(currGenre, firstGenre);
+        //
+        //     if (nextCurr) {
+        //         parentCurr.insertBefore(firstGenre, nextCurr);
+        //     } else {
+        //         parentCurr.appendChild(firstGenre);
+        //     }
+        // }
     }
 }
