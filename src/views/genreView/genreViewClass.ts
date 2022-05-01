@@ -65,13 +65,28 @@ export default class GenreViewClass extends BaseViewClass {
 
         currGenre.style.backgroundColor = '#744fa9';
 
-        let temp = document.createElement('a');
-        firstGenre.parentNode.insertBefore(temp, firstGenre);
+        // let temp = document.createElement('a');
+        // firstGenre.parentNode.insertBefore(temp, firstGenre);
+        //
+        // currGenre.parentNode.insertBefore(firstGenre, currGenre);
+        //
+        // temp.parentNode.insertBefore(currGenre, temp);
+        //
+        // temp.parentNode.removeChild(temp);
 
-        currGenre.parentNode.insertBefore(firstGenre, currGenre);
+        let parentCurr = currGenre.parentNode;
+        let nextCurr = currGenre.nextSibling;
 
-        temp.parentNode.insertBefore(currGenre, temp);
+        if (nextCurr === firstGenre) {
+            parentCurr.insertBefore(firstGenre, currGenre);
+        } else {
+            firstGenre.parentNode.insertBefore(currGenre, firstGenre);
 
-        temp.parentNode.removeChild(temp);
+            if (nextCurr) {
+                parentCurr.insertBefore(firstGenre, nextCurr);
+            } else {
+                parentCurr.appendChild(firstGenre);
+            }
+        }
     }
 }
