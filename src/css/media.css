@@ -1812,15 +1812,17 @@
   }
 }
 @media (min-width: 1250px) and (max-width: 1450px) {
-  .test {
-    width: 20vw;
-    height: 170px;
+  .list-genres {
+    width: 72%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
 @media (min-width: 1000px) and (max-width: 1250px) {
-  .test {
-    width: 27vw;
-    height: 185px;
+  .list-genres {
+    width: 72%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   .episodes {
@@ -1835,9 +1837,10 @@
   }
 }
 @media (min-width: 750px) and (max-width: 1000px) {
-  .test {
-    width: 27vw;
-    height: 170px;
+  .list-genres {
+    width: 72%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   .photo-movie {
@@ -1902,9 +1905,10 @@
     font-size: 50px;
   }
 
-  .test {
-    width: 38vw;
-    height: 110px;
+  .list-genres {
+    width: 88%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   .episodes {

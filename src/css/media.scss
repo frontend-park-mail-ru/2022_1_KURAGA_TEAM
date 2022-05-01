@@ -1271,18 +1271,20 @@
 }
 
 @media (min-width: 1250px) and (max-width: 1450px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
-  .test {
-    width: 20vw;
-    height: 170px;
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ЖАНРОВ
+  .list-genres {
+    width: 72%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1250px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
-  .test {
-    width: 27vw;
-    height: 185px;
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ЖАНРОВ
+  .list-genres {
+    width: 72%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
@@ -1300,10 +1302,11 @@
 }
 
 @media (min-width: 750px) and (max-width: 1000px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
-  .test {
-    width: 27vw;
-    height: 170px;
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ЖАНРОВ
+  .list-genres {
+    width: 72%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМA
@@ -1370,9 +1373,10 @@
     font-size: 50px;
   }
 
-  .test {
-    width: 38vw;
-    height: 110px;
+  .list-genres {
+    width: 88%;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ

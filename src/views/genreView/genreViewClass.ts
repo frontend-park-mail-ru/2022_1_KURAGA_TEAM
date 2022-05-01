@@ -19,9 +19,6 @@ export default class GenreViewClass extends BaseViewClass {
 
     async render() {
         try {
-            const loader = new LoaderViewClass();
-            loader.render();
-
             const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
@@ -41,7 +38,6 @@ export default class GenreViewClass extends BaseViewClass {
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
-            const footer = new FooterClass();
 
             super.render(genreViewTemplate, {
                 genre: this.movieCompilation.movieCompilationData.compilationName,
@@ -56,8 +52,26 @@ export default class GenreViewClass extends BaseViewClass {
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             header.setHandler();
+            this.setHandler(id);
         } catch (err) {
             console.error(err);
         }
+    }
+
+    setHandler(id: number) {
+        const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
+        const listGenres: HTMLDivElement = document.querySelector('.list-genres');
+        const firstGenre = listGenres.firstChild;
+
+        currGenre.style.backgroundColor = '#744fa9';
+
+        let temp = document.createElement('a');
+        firstGenre.parentNode.insertBefore(temp, firstGenre);
+
+        currGenre.parentNode.insertBefore(firstGenre, currGenre);
+
+        temp.parentNode.insertBefore(currGenre, temp);
+
+        temp.parentNode.removeChild(temp);
     }
 }

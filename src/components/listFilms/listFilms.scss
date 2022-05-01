@@ -21,8 +21,8 @@
   margin-left: 4vw;
   height: 50px;
   display: flex;
-  align-items: center;
   width: fit-content;
+  align-items: center;
   border-radius: 30px;
   background: var(--trailer-button-hover);
 
@@ -31,10 +31,17 @@
     font-size: 20px;
     text-decoration: none;
     color: white;
-    margin: 10px;
+    margin: 4px;
+    border-radius: 30px;
+    padding: 2px 8px 2px 8px;
   }
 
   &__genre:hover {
     text-decoration: underline;
   }
+}
+
+.list-genres::-webkit-scrollbar {
+  height: 0;
+  width: 0;
 }
