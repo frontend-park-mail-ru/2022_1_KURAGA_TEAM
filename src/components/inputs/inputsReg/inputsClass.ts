@@ -2,6 +2,7 @@ import inputsTemplate from "./inputs.pug";
 import UserModel from "../../../models/User";
 import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
 import { regExp } from "Components/inputs/utils/regExp/regExp";
+import '../inputs.scss'
 
 const configElement = [
     {

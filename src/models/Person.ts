@@ -33,7 +33,7 @@ export default class PersonModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }

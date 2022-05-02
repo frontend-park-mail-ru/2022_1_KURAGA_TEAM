@@ -1,6 +1,7 @@
 import listFilmsTemplate from './listFilms.pug'
 import MovieClass from "Components/movie/movieClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
+import './listFilms.scss'
 
 export default class ListFilmsClass {
     private readonly info: MovieCompilationModel;

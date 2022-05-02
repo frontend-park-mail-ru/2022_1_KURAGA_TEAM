@@ -162,7 +162,7 @@ export default class UserModel {
                     router.go(routes.LOGIN_VIEW);
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -198,7 +198,7 @@ export default class UserModel {
                 });
             })
             .catch((err) => {
-                router.go(routes.ERROR_CATCH_VIEW);
+                console.error(err)
             });
     }
 
@@ -220,7 +220,7 @@ export default class UserModel {
                 router.go("/");
             })
             .catch((err) => {
-                router.go(routes.ERROR_CATCH_VIEW);
+                console.error(err)
             });
     }
 
@@ -273,7 +273,7 @@ export default class UserModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -371,8 +371,7 @@ export default class UserModel {
                         likesBody: body.data,
                     });
                 })
-                .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                .catch(() => {
                 });
         });
     }
@@ -380,18 +379,18 @@ export default class UserModel {
     setHandler() : void {
 
         const likes = document.querySelectorAll(".like");
-        console.log(likes);
+
         likes.forEach((like: HTMLElement) => {
             like.onclick = function () {
                 let formJson = JSON.stringify({
                     id: Number(like.id.split('_').pop()),
                 });
-                console.log(formJson, like.id.split('_').pop());
+
                 if (like.classList.contains("active-like")) {
                     UserModel.disliked(formJson);
-                    console.log("dislike");
+
                 } else {
-                    console.log("like");
+
                     UserModel.liked(formJson);
                 }
                 const similarLikes = document.querySelectorAll("#" + like.id);
@@ -411,7 +410,6 @@ export default class UserModel {
             return likesId.indexOf(item) == pos;
         })
         unique.forEach((i) => {
-            console.log(i, "#like_" + i)
             const similarLikes = document.querySelectorAll("#like_" + i);
             similarLikes.forEach((like: HTMLElement) => {
                 like.classList.toggle("active-like");

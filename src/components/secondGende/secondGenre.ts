@@ -1,5 +1,6 @@
 import secondGenreTemplate from "./secondGenre.pug";
 import { Genre, Genres } from "../../types";
+import './secondGenre.scss'
 
 export default class SecondGenreClass {
     private readonly genres: Genre;

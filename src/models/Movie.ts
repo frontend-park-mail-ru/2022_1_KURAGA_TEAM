@@ -82,7 +82,7 @@ export default class MovieModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -97,7 +97,7 @@ export default class MovieModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }

@@ -4,6 +4,7 @@ import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
 import {debounce, findNotNull} from "./DebounceSearch"
+import './header.scss'
 
 export default class HeaderClass {
     private readonly info: UserData;
@@ -104,7 +105,7 @@ export default class HeaderClass {
         const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            console.log(document.getElementById("live-search"));
+
             const a: HTMLInputElement = document.querySelector("#live-search");
             a.value = "";
             searchMenu.style.display = "none";
@@ -125,7 +126,7 @@ export default class HeaderClass {
 
         const a = document.querySelector("#live-search");
         a.addEventListener("keyup", debounce(async () => {
-            console.log('Saving data');
+
             const a: HTMLInputElement = document.querySelector("#live-search");
             searchMenuRes.style.display = "flex";
             let formJson = JSON.stringify({
@@ -134,10 +135,8 @@ export default class HeaderClass {
             const {searchBody} = await UserModel.getSearchRes(formJson);
             const searchData: object = await Promise.resolve(searchBody);
 
-            console.log(searchData);
             for (let key in searchData) {
                 if (searchData[key] != null) {
-                    console.log("res", key, searchData[key],searchData[key][0].name);
                     res.textContent = searchData[key][0].name;
                     if (key != "persons") {
                         res.setAttribute("href", "/movie/" + searchData[key][0].id)

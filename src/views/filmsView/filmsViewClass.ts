@@ -51,13 +51,12 @@ export default class FilmsViewClass extends BaseViewClass {
             handlerLink();
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
-            console.log("like:",likesData.favorites);
+
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             header.setHandler();
         } catch(err) {
-            console.log(err)
-            //router.go(routes.ERROR_CATCH_VIEW);
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -89,7 +88,6 @@ export default class FilmsViewClass extends BaseViewClass {
                 try {
                     const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
                     const movieCompilationsData = await Promise.resolve(movCompBody);
-                    console.log(movieCompilationsData)
 
                     this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
 
@@ -98,8 +96,8 @@ export default class FilmsViewClass extends BaseViewClass {
                     // TODO ЧТО-ТО С ЛОАДЕРОМ
 
                     list.innerHTML += listFilms.render();
-                } catch (error) {
-                    console.log(error.message);
+                } catch {
+
                 }
             }
         });
