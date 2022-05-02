@@ -431,7 +431,8 @@
     font-size: 22px;
   }
   .font-menu-search {
-    font-size: 30px;
+    font-size: calc( 1vw + 20px);
+    text-align: initial;
   }
   .search-back{
     display: none;
