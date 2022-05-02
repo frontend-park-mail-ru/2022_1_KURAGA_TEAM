@@ -3,6 +3,18 @@
   margin-right: 40px;
 }
 
+.episodes__div {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+}
+
+.episodes__div::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  background: var(--trailer-button-hover);
+}
+
 .episodes__season {
   height: 50px;
   width: 50px;

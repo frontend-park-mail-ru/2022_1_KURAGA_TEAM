@@ -630,7 +630,9 @@
   }
 
   .back-menu-profile {
-    height: 130vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: fit-content;
   }
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА*/
@@ -1270,23 +1272,7 @@
   }
 }
 
-@media (min-width: 1250px) and (max-width: 1450px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ЖАНРОВ
-  .list-genres {
-    width: 72%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-  }
-}
-
 @media (min-width: 1000px) and (max-width: 1250px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ЖАНРОВ
-  .list-genres {
-    width: 72%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-  }
-
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
   .episodes {
     margin-top: 0;
@@ -1302,13 +1288,6 @@
 }
 
 @media (min-width: 750px) and (max-width: 1000px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ЖАНРОВ
-  .list-genres {
-    width: 72%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-  }
-
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМA
   .photo-movie {
     background-repeat: no-repeat;
@@ -1374,15 +1353,23 @@
   }
 
   .list-genres {
-    width: 89%;
+    max-width: 89%;
     overflow-x: scroll;
     overflow-y: hidden;
   }
 
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
   .episodes {
+    width: fit-content;
     margin-bottom: -240px;
-    margin-top: 270px;
+    padding-top: 200px;
+    overflow-y: scroll;
+    padding-right: 0;
+  }
+
+  .seasons {
+    margin-bottom: -220px;
+    padding-top: 260px;
   }
 }
 

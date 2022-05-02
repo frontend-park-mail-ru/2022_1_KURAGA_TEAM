@@ -21,8 +21,12 @@
   margin-left: 4vw;
   height: 50px;
   display: flex;
+  max-width: 90%;
   width: fit-content;
   align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-left: 6px;
   border-radius: 30px;
   background: var(--trailer-button-hover);
 }

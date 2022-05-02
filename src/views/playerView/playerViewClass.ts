@@ -39,6 +39,7 @@ export default class PlayerViewClass extends BaseViewClass {
 
                     video = this.movie.data.season[numberSeas].episodes[numberEpis].video
                     super.render(playerTemplate, {
+                        trailer: false,
                         id: this.movie.id,
                         video,
                         episodes: this.movie.data.season[numberSeas].episodes,
@@ -49,12 +50,15 @@ export default class PlayerViewClass extends BaseViewClass {
                     video = this.movie.video;
 
                     super.render(playerTemplate, {
+                        trailer: false,
+                        is_movie: this.movie.movieData.is_movie,
                         id: this.movie.id,
                         video,
                     });
                 }
             } else {
                 super.render(playerTemplate, {
+                    trailer: true,
                     id: this.movie.id,
                     video,
                 });
@@ -62,8 +66,9 @@ export default class PlayerViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
