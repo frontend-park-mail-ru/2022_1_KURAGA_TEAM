@@ -1567,8 +1567,13 @@
     box-shadow: 0 -108px 35px #01090b inset;
   }
 
+  .seasons {
+    margin-bottom: -620px;
+    padding-top: 260px;
+  }
+
   .first-part-info {
-    margin-top: 400px;
+    padding-top: 400px;
   }
 
   .head-movie__rating {
