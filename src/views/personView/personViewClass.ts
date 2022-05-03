@@ -10,8 +10,8 @@ import HeadPersonClass from "Components/headPerson/headPersonClass";
 import FooterClass from "Components/footer/footerClass";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import MovieCompilationView from "Components/movieCompilationView/movieCompilationView";
-import UserLikeView from "Components/userLikeView/userLikeView"
+import MovieCompilationView from "../movieCompilationView/movieCompilationView";
+import UserLikeView from "../userLikeView/userLikeView"
 import {User} from "../../types";
 
 import "./person.scss";

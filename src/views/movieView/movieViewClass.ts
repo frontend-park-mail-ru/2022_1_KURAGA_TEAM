@@ -15,8 +15,8 @@ import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import {MovieData, User} from "../../types";
 import EpisodesClass from "../../components/episodes/episodesClass";
-import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
-import UserLikeView from "Components/userLikeView/userLikeView"
+import MovieCompilationView from "../movieCompilationView/movieCompilationView"
+import UserLikeView from "../userLikeView/userLikeView"
 
 import "./movie.scss";
 

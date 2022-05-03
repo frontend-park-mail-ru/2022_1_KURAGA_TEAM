@@ -10,7 +10,7 @@ import {User} from "../../types";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import UserLikeView from "Components/userLikeView/userLikeView"
+import UserLikeView from "../userLikeView/userLikeView"
 
 import "./films.scss";
 

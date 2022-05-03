@@ -5,7 +5,7 @@ import carouselTemplate from "Components/carousel/carousel.pug";
 import movingCarousel from "Components/carousel/movingCarousel";
 import {MovieCompilationData} from "../../types";
 import MovieClass from "Components/movie/movieClass";
-import MovieCompilationModel from "Models/"
+import MovieCompilationModel from "./movieCompilationView"
 
 export default class MovieCompilationView {
 
