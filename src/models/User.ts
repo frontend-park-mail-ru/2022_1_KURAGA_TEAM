@@ -181,54 +181,22 @@ export default class UserModel {
                     console.error(err)
                 });
         });
-            // .then(({isAuth, data}) => {
-            //     data.then((res) => {
-            //         if (res.message === "ERROR: Email is not unique") {
-            //             errorIncorr.classList.add("error-active");
-            //             errorIncorr.classList.add("center");
-            //             errorIncorr.textContent =
-            //                 "Такой пользователь уже существует";
-            //
-            //             return;
-            //         }
-            //
-            //         if (!isAuth) {
-            //             errorIncorr.classList.add("error-active");
-            //             errorIncorr.classList.add("center");
-            //             errorIncorr.textContent =
-            //                 "Упс... У нас что-то пошло не так!";
-            //
-            //             return;
-            //         }
-            //
-            //         router.go("/");
-            //     });
-            // })
-            // .catch((err) => {
-            //     console.error(err)
-            // });
+
     }
 
     static log(formJson) {
-        const errorIncorr = document.querySelector(
-            'div[data-section="incorrect"]'
-        );
+        return new Promise<{ isAuth: boolean;}>((res)=>{
+            this.login(formJson)
+                .then((body) => {
+                    res({
+                        isAuth: body.isAuth,
+                    });
+                })
+                .catch((err) => {
+                    console.error(err)
+                });
+        });
 
-        this.login(formJson)
-            .then(({isAuth}) => {
-                if (!isAuth) {
-                    errorIncorr.classList.add("error-active");
-                    errorIncorr.classList.add("center");
-                    errorIncorr.textContent = "Неверный логин или пароль";
-
-                    return;
-                }
-
-                router.go("/");
-            })
-            .catch((err) => {
-                console.error(err)
-            });
     }
 
     static async editProfile(formJson) {
