@@ -80,16 +80,17 @@ export default class FavoritesViewClass extends BaseViewClass {
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
             this.user.setAllLikes(likesData.favorites.id);
+            this.deleteLikes();
             // this.user.setHandler();
             this.setHandler();
             header.setHandler();
 
 
 
-            const selectTopicAll = document.querySelectorAll(".select-title-all");
-            selectTopicAll.forEach((val) => {
-                val.classList.add("show");
-            });
+            // const selectTopicAll = document.querySelectorAll(".select-title-all");
+            // selectTopicAll.forEach((val) => {
+            //     val.classList.add("show");
+            // });
         } catch (err) {
             console.error(err);
         }
@@ -105,19 +106,7 @@ export default class FavoritesViewClass extends BaseViewClass {
         filmsNavbar.style.backgroundImage =
             "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
-        const like = document.querySelector(".like.active-like");
 
-        like.addEventListener("click", (e) => {
-            const id = like.id.split('_').pop();
-
-            console.log(like.id.split('_').pop());
-            const movie = document.getElementById(id);
-            movie.style.display = "none";
-            let formJson = JSON.stringify({
-                id: Number(id),
-            });
-                UserModel.disliked(formJson);
-        });
         //
         // const homeNavbarMobile = document.querySelector(".homeMobile-js");
         // const homeNavbar = document.querySelector(".home-js");
@@ -127,6 +116,24 @@ export default class FavoritesViewClass extends BaseViewClass {
         // homeNavbarMobile.classList.add("headline-style");
         // homeNavbar.classList.add("headline-style");
 
+
+    }
+
+    deleteLikes(){
+        const likes = document.querySelectorAll(".like.active-like");
+        likes.forEach(like=>{
+            like.addEventListener("click", (e) => {
+                const id = like.id.split('_').pop();
+
+                console.log(like.id.split('_').pop());
+                const movie = document.getElementById(id);
+                movie.style.display = "none";
+                let formJson = JSON.stringify({
+                    id: Number(id),
+                });
+                UserModel.disliked(formJson);
+            });
+        })
 
     }
 
