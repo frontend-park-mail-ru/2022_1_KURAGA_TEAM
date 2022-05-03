@@ -1,4 +1,4 @@
-export function debounce(func, timeout = 100) {
+export function debounce(func, timeout = 300) {
     let timer;
     return (...args) => {
         clearTimeout(timer);
@@ -8,8 +8,13 @@ export function debounce(func, timeout = 100) {
     };
 }
 
-export function findNotNull(obj) {
-
+export function isEmpty(obj) {
+    for (let key in obj) {
+        if(obj[key] != null){
+            return false;
+        }
+    }
+    return true;
 }
 
 

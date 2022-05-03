@@ -428,11 +428,14 @@
     padding-block: 10px;
   }
   .font-topics {
-    font-size: 22px;
+    font-size: calc(1vw + 8px);
   }
   .font-menu-search {
-    font-size: calc( 1vw + 20px);
+    font-size: calc( 1vw + 10px);
     text-align: initial;
+  }
+  .font-search {
+    font-size: calc( 1vw + 6px);
   }
   .search-back{
     display: none;

@@ -88,12 +88,14 @@
   text-decoration: none;
 }
 #all-res-topic:hover{
+  cursor: pointer;
   text-decoration: underline;
 }
 
 
 .search-menu {
   display: none;
+  padding-block: 10px;
   z-index: 3;
   border-radius: 10px;
   background: var(--search-back);
@@ -147,9 +149,9 @@
   padding-inline: 10px;
 }
 .font-search{
-  padding: 10px;
+  padding-inline: 10px;
   font-weight: 300;
-  font-size: 14px;
+  font-size: calc(1vw + 3px);
   text-decoration: none;
   color: var(--genre-color);
 }
@@ -167,7 +169,8 @@
 .font-topics{
   margin: 30px auto 10px 0;
   font-weight: 400;
-  font-size: calc(1vw + 8px);
+  text-align: initial;
+  font-size: calc(1vw + 4px);
   text-decoration: none;
   color: var(--secondary-name);
 }
@@ -178,7 +181,7 @@
 
 .font-menu-search {
   text-decoration: none;
-  font-size: calc(1vw + 12px);
+  font-size: calc(1vw + 8px);
   color: var(--font-color);
   font-style: normal;
   font-weight: 500;

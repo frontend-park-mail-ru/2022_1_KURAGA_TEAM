@@ -3,10 +3,11 @@ import UserModel from "../../models/User";
 import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
-import {debounce, findNotNull} from "./DebounceSearch"
+import {debounce, isEmpty} from "./DebounceSearch"
 
 export default class HeaderClass {
     private readonly info: UserData;
+    result: object;
 
     constructor(info) {
         this.info = info;
@@ -15,10 +16,24 @@ export default class HeaderClass {
 
     render() {
 
-        const searchConfig = {
-            res: "", info: ""
+        this.result = {
+            movies: [{name: "Мстители", genre: [{name: "жанр"}], id: 1}, {
+                name: "Мстители2",
+                genre: [{name: "жанр"}],
+                id: 2
+            }],
+
+            serials: [{name: "Мстители", genre: [{name: "жанр"}], id: 2}, {
+                name: "Мстители2",
+                genre: [{name: "жанр"}],
+                id: 4
+            }],
+            persons: [
+                {name: "Мстители", position: ["жанр"], id: 3},
+                {name: "Мстители2", position: ["жанр"], id: 1}
+            ]
         }
-        return headerTemplate({item: this.info, search: searchConfig});
+        return headerTemplate({item: this.info, results: this.result});
     }
 
     setHandler() {
@@ -120,44 +135,98 @@ export default class HeaderClass {
         })
 
 
-        const res = document.getElementById("res");
-        const info = document.getElementById("info");
-
+        const menu:HTMLElement = document.querySelector(".search-menu");
         const a = document.querySelector("#live-search");
         a.addEventListener("keyup", debounce(async () => {
-            console.log('Saving data');
             const a: HTMLInputElement = document.querySelector("#live-search");
+            let formJson;
             searchMenuRes.style.display = "flex";
-            let formJson = JSON.stringify({
-                find: a.value,
-            });
-            const {searchBody} = await UserModel.getSearchRes(formJson);
-            const searchData: object = await Promise.resolve(searchBody);
+            if (a.value != "") {
+                formJson = JSON.stringify({
+                    find: a.value,
+                });
+                const {searchBody} = await UserModel.getSearchRes(formJson);
+                const searchData: object = await Promise.resolve(searchBody);
 
-            console.log(searchData);
-            for (let key in searchData) {
-                if (searchData[key] != null) {
-                    console.log("res", key, searchData[key],searchData[key][0].name);
-                    res.textContent = searchData[key][0].name;
-                    if (key != "persons") {
-                        res.setAttribute("href", "/movie/" + searchData[key][0].id)
-                        info.textContent = searchData[key][0].genre[0].name + "/" + searchData[key][0].genre[1].name;
-                    } else {
-                        res.setAttribute("href", "/person/" + searchData[key][0].id);
-                        info.textContent = searchData[key][0].position[0];
+            console.log(searchBody, searchData);
+            menu.innerHTML = "";
+            if (isEmpty(searchData)) {
+                const title = document.createElement("div");
+                title.classList.add("font-search");
+                title.textContent = "Ничего не найдено";
+                menu.appendChild(title);
+            } else {
+
+                const title = document.createElement("div");
+                title.classList.add("font-search");
+                title.textContent = "Возможно, вы искали";
+                menu.appendChild(title);
+
+                for (let key in searchData) {
+                    if (searchData[key] != null) {
+                        const topic = document.createElement("div");
+                        topic.classList.add("topic");
+                        const nameTopic = document.createElement("a");
+                        nameTopic.classList.add("font-topics", "padding-names");
+                        switch (key) {
+                            case "movies":
+                                nameTopic.textContent = "Фильмы";
+                                break;
+                            case "series":
+                                nameTopic.textContent = "Сериалы";
+                                break;
+                            case "persons":
+                                nameTopic.textContent = "Персоны";
+                        }
+                        topic.appendChild(nameTopic);
+
+
+                        searchData[key].forEach((res, i) => {
+                            if (i <= 1) {
+                                const searchTopic = document.createElement("div");
+                                searchTopic.classList.add("search-topic");
+                                const searchTopicName = document.createElement("a");
+                                searchTopicName.classList.add("font-menu-search", "padding-names");
+                                const searchTopicInfo = document.createElement("a");
+                                if (key == "persons") {
+                                    searchTopicName.href = `/person/` + res.id;
+                                    searchTopicName.textContent = res.name;
+                                    searchTopicInfo.classList.add("genre", "padding-names");
+                                    searchTopicInfo.textContent = res.position[0];
+                                } else {
+                                    searchTopicName.href = `/movie/` + res.id;
+                                    searchTopicName.textContent = res.name;
+                                    searchTopicInfo.classList.add("genre", "padding-names");
+                                    if (res.genre.length > 1) {
+                                        searchTopicInfo.textContent = res.genre[0].name + '/' + res.genre[1].name;
+                                    } else if (res.genre.length > 0) {
+                                        searchTopicInfo.textContent = res.genre[0].name;
+                                    }
+
+                                }
+                                searchTopic.appendChild(searchTopicName);
+                                searchTopic.appendChild(searchTopicInfo);
+                                topic.appendChild(searchTopic);
+                            }
+                        })
+
+
+                        menu.appendChild(topic);
+
                     }
-                    break;
 
-                } else {
-                    res.textContent = "Ничего не найдено";
-                    info.textContent = "";
                 }
 
+                const titleEnd = document.createElement("a");
+                titleEnd.classList.add("font-search");
+                titleEnd.id = "all-res-topic";
+                titleEnd.textContent = "Показать все результаты";
+                menu.appendChild(titleEnd);
             }
-
-
-        }));
-
-
+        }else {
+                menu.style.display = "none";
+            }
+        }))
     }
+
 }
