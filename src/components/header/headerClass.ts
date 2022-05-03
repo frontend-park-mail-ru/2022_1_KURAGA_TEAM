@@ -121,7 +121,7 @@ export default class HeaderClass {
         })
 
 
-        const menu:HTMLElement = document.querySelector(".search-menu");
+        const menu: HTMLElement = document.querySelector(".search-menu");
         const a = document.querySelector("#live-search");
         a.addEventListener("keyup", debounce(async () => {
             const a: HTMLInputElement = document.querySelector("#live-search");
@@ -134,82 +134,84 @@ export default class HeaderClass {
                 const {searchBody} = await UserModel.getSearchRes(formJson);
                 const searchData: object = await Promise.resolve(searchBody);
 
-            console.log(searchBody, searchData);
-            menu.innerHTML = "";
-            if (isEmpty(searchData)) {
-                const title = document.createElement("div");
-                title.classList.add("font-search");
-                title.textContent = "Ничего не найдено";
-                menu.appendChild(title);
-            } else {
+                console.log(searchBody, searchData);
+                menu.innerHTML = "";
+                if (isEmpty(searchData)) {
+                    const title = document.createElement("div");
+                    title.classList.add("font-search");
+                    title.textContent = "Ничего не найдено";
+                    menu.appendChild(title);
+                } else {
 
-                const title = document.createElement("div");
-                title.classList.add("font-search");
-                title.textContent = "Возможно, вы искали";
-                menu.appendChild(title);
+                    const title = document.createElement("div");
+                    title.classList.add("font-search");
+                    title.textContent = "Возможно, вы искали";
+                    menu.appendChild(title);
 
-                for (let key in searchData) {
-                    if (searchData[key] != null) {
-                        const topic = document.createElement("div");
-                        topic.classList.add("topic");
-                        const nameTopic = document.createElement("a");
-                        nameTopic.classList.add("font-topics", "padding-names");
-                        switch (key) {
-                            case "movies":
-                                nameTopic.textContent = "Фильмы";
-                                break;
-                            case "series":
-                                nameTopic.textContent = "Сериалы";
-                                break;
-                            case "persons":
-                                nameTopic.textContent = "Персоны";
-                        }
-                        topic.appendChild(nameTopic);
-
-
-                        searchData[key].forEach((res, i) => {
-                            if (i <= 1) {
-                                const searchTopic = document.createElement("div");
-                                searchTopic.classList.add("search-topic");
-                                const searchTopicName = document.createElement("a");
-                                searchTopicName.classList.add("font-menu-search", "padding-names");
-                                const searchTopicInfo = document.createElement("a");
-                                if (key == "persons") {
-                                    searchTopicName.href = `/person/` + res.id;
-                                    searchTopicName.textContent = res.name;
-                                    searchTopicInfo.classList.add("genre", "padding-names");
-                                    searchTopicInfo.textContent = res.position[0];
-                                } else {
-                                    searchTopicName.href = `/movie/` + res.id;
-                                    searchTopicName.textContent = res.name;
-                                    searchTopicInfo.classList.add("genre", "padding-names");
-                                    if (res.genre.length > 1) {
-                                        searchTopicInfo.textContent = res.genre[0].name + '/' + res.genre[1].name;
-                                    } else if (res.genre.length > 0) {
-                                        searchTopicInfo.textContent = res.genre[0].name;
-                                    }
-
-                                }
-                                searchTopic.appendChild(searchTopicName);
-                                searchTopic.appendChild(searchTopicInfo);
-                                topic.appendChild(searchTopic);
+                    for (let key in searchData) {
+                        if (searchData[key] != null) {
+                            const topic = document.createElement("div");
+                            topic.classList.add("topic");
+                            const nameTopic = document.createElement("a");
+                            nameTopic.classList.add("font-topics", "padding-names");
+                            switch (key) {
+                                case "movies":
+                                    nameTopic.textContent = "Фильмы";
+                                    break;
+                                case "series":
+                                    nameTopic.textContent = "Сериалы";
+                                    break;
+                                case "persons":
+                                    nameTopic.textContent = "Персоны";
                             }
-                        })
+                            topic.appendChild(nameTopic);
 
 
-                        menu.appendChild(topic);
+                            searchData[key].forEach((res, i) => {
+                                if (i <= 1) {
+                                    const searchTopic = document.createElement("div");
+                                    searchTopic.classList.add("search-topic");
+                                    const searchTopicName = document.createElement("a");
+                                    searchTopicName.classList.add("font-menu-search", "padding-names");
+                                    const searchTopicInfo = document.createElement("a");
+                                    if (key == "persons") {
+                                        searchTopicName.href = `/person/` + res.id;
+                                        searchTopicName.textContent = res.name;
+                                        searchTopicInfo.classList.add("genre", "padding-names");
+                                        searchTopicInfo.textContent = res.position[0];
+                                    } else {
+                                        searchTopicName.href = `/movie/` + res.id;
+                                        searchTopicName.textContent = res.name;
+                                        searchTopicInfo.classList.add("genre", "padding-names");
+                                        if (res.genre != null) {
+                                            if (res.genre.length > 1) {
+                                                searchTopicInfo.textContent = res.genre[0].name + '/' + res.genre[1].name;
+                                            } else if (res.genre.length > 0) {
+                                                searchTopicInfo.textContent = res.genre[0].name;
+                                            }
+                                        }
+
+                                    }
+                                    searchTopic.appendChild(searchTopicName);
+                                    searchTopic.appendChild(searchTopicInfo);
+                                    topic.appendChild(searchTopic);
+                                }
+                            })
+
+
+                            menu.appendChild(topic);
+
+                        }
 
                     }
 
+                    const titleEnd = document.createElement("a");
+                    titleEnd.classList.add("font-search");
+                    titleEnd.id = "all-res-topic";
+                    titleEnd.textContent = "Показать все результаты";
+                    menu.appendChild(titleEnd);
                 }
-
-                const titleEnd = document.createElement("a");
-                titleEnd.classList.add("font-search");
-                titleEnd.id = "all-res-topic";
-                titleEnd.textContent = "Показать все результаты";
-                menu.appendChild(titleEnd);
-            }
-        }else {
+            } else {
                 menu.style.display = "none";
             }
         }))
