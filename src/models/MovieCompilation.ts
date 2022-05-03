@@ -9,7 +9,7 @@ import MovieClass from "Components/movie/movieClass";
 export default class MovieCompilationModel {
     private readonly data: MovieCompilationData;
     private defaultMovies = [{
-        id: 0,
+        id: -1,
         name: "",
         picture: "",
         tagline: "",

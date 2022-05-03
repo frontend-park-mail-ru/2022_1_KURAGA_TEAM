@@ -8,7 +8,7 @@ import router from "Routing/router.ts";
 import HeadMovieClass from "Components/headMovie/headMovieClass";
 import FooterClass from "Components/footer/footerClass";
 import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass";
-import SecondGenreClass from "Components/secondGende/secondGenre";
+import SecondGenreClass from "Components/secondGenre/secondGenre";
 import ActorsClass from "Components/actors/actorsClass";
 import {routes} from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";

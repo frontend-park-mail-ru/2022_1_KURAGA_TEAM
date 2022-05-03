@@ -8,9 +8,11 @@ div.head-movie__rating
         div.poisk-name КиноПоиск
 div.head-movie__info
     div.short-info.info__year #{info.year}
-    a.short-info.info__genre-first(href=`genre/${info.genre[0].id}`) #{info.genre[0].name},
-    a.short-info.info__genre(href=`genre/${info.genre[1].id}`) #{info.genre[1].name}
-    div.short-info.info__country #{info.country[0]}
+    if(info.genre)
+        a.short-info.info__genre-first(href=`genre/${info.genre[0].id}`) #{info.genre[0].name},
+        a.short-info.info__genre(href=`genre/${info.genre[1].id}`) #{info.genre[1].name}
+    if(info.country)
+        div.short-info.info__country #{info.country[0]}
     div.short-info.info__duration #{info.duration}
     div.short-info.info__age #{info.age_limit}+
 div.head-movie__buttons
