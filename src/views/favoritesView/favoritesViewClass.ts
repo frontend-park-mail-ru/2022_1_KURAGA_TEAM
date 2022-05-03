@@ -40,11 +40,14 @@ export default class FavoritesViewClass extends BaseViewClass {
 
 
             if(isEmptyMovies(movieCompilationsData)){
-                const empty = "Каталог пуст"
+                const empty = "Каталог пуст";
                 super.render(homeViewTemplate, {
                     header: header.render(),
                     empty: empty
                 });
+                const footerImage:HTMLElement = document.querySelector(".footer-poster");
+                footerImage.style.position = "absolute";
+                footerImage.style.bottom = "0";
             } else {
 
                 movieCompilationsData.forEach((i, id) => {
