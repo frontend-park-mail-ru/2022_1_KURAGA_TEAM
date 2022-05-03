@@ -1,12 +1,10 @@
 each item in items
     div.out-movie
+        if(is_movie)
+            a(href=`/movie/${item.id}`)
+        else
+            a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
         div(class=`movie` + `${typeMov}`, id =`${item.id}` , style=`background-image: url(\"${item.picture}\");`)
-            if(is_movie)
-                a(href=`/movie/${item.id}`)
-                    div.ref-mov
-            else
-                a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
-                    div.ref-mov
             div(class=`desc-mov` + `${typeMov}`)
                 a(class=`movie` + `${typeMov}` + '__href')(href=`/movie/${item.id}`)= item.name
                 if(is_movie)

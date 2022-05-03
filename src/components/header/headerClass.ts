@@ -205,11 +205,11 @@ export default class HeaderClass {
 
                     }
 
-                    const titleEnd = document.createElement("a");
-                    titleEnd.classList.add("font-search");
-                    titleEnd.id = "all-res-topic";
-                    titleEnd.textContent = "Показать все результаты";
-                    menu.appendChild(titleEnd);
+                    // const titleEnd = document.createElement("a");
+                    // titleEnd.classList.add("font-search");
+                    // titleEnd.id = "all-res-topic";
+                    // titleEnd.textContent = "Показать все результаты";
+                    // menu.appendChild(titleEnd);
                 }
             } else {
                 menu.style.display = "none";

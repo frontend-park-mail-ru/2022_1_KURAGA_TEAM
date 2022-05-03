@@ -114,9 +114,15 @@
 }
 
 .like{
+  cursor: pointer;
   fill: none;
+  transition: all 0.3s ease;
   display: inline-block;
 }
+.like:hover,.active-like:hover{
+  transform: scale(1.1);
+}
 .active-like{
+  transition: all 0.3s ease;
   fill: var(--mix-color);
 }
