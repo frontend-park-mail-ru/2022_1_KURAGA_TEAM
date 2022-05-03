@@ -48,13 +48,12 @@ export default class GenreViewClass extends BaseViewClass {
             handlerLink();
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
-            console.log("like:",likesData.favorites);
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
             header.setHandler();
             this.setHandler(id);
-        } catch (err) {
-            console.error(err);
+        } catch {
+            router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 

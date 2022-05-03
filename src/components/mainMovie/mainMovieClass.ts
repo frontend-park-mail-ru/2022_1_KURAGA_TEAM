@@ -1,5 +1,7 @@
 import mainMovieTemplate from "./mainMovie.pug";
 import { mainMovieData } from "../../types";
+import './mainMovie.scss'
+
 export default class MainMovieClass {
     private readonly info: mainMovieData;
 

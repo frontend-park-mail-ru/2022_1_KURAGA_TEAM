@@ -1,4 +1,5 @@
 import episodesTemplate from './episodes.pug'
+import './episodes.scss'
 
 export default class EpisodesClass {
     private readonly numSeries;

@@ -136,7 +136,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -231,7 +231,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -247,7 +247,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -262,7 +262,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -277,7 +277,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -292,7 +292,7 @@ export default class MovieCompilationModel {
                     });
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
@@ -306,8 +306,8 @@ export default class MovieCompilationModel {
                         movCompBody: body.data,
                     });
                 })
-                .catch(() => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                .catch((err) => {
+                    console.error(err)
                 });
         });
     }

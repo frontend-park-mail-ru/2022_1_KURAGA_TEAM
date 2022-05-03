@@ -1,5 +1,6 @@
 import actorsTemplate from "./actors.pug";
 import { Staff, Staffs } from "../../types";
+import './actors.scss'
 
 export default class ActorsClass {
     private readonly staffs: Staff;

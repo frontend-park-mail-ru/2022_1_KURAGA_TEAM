@@ -1,6 +1,7 @@
 import movieTemplate from "./movie.pug";
 import {MovieData} from "../../types";
 import "./movie.scss";
+
 export default class MovieClass {
     private readonly movies: Array<MovieData>;
     private readonly typeMov: string;

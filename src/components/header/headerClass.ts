@@ -4,6 +4,8 @@ import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
 import {debounce, isEmpty} from "./DebounceSearch"
+import './header.scss'
+
 
 export default class HeaderClass {
     private readonly info: UserData;
@@ -119,7 +121,7 @@ export default class HeaderClass {
         const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            console.log(document.getElementById("live-search"));
+
             const a: HTMLInputElement = document.querySelector("#live-search");
             a.value = "";
             searchMenu.style.display = "none";

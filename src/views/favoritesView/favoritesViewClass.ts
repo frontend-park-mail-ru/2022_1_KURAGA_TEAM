@@ -21,30 +21,26 @@ export default class FavoritesViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            console.log("aefef");
             const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            console.log(userBody);
+
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
-
 
             const {movCompBody}: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getFavorites();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            console.log(1,movieCompilationsData);
             movieCompilationsData.forEach((i,id) => {
                 if (!i.movies) {
                     movieCompilationsData.splice(id, 1);
 
                 }
             })
-
 
             this.movieCompilations = movieCompilationsData.map(
                 (movieCompilationData, index) =>
@@ -53,7 +49,6 @@ export default class FavoritesViewClass extends BaseViewClass {
                         movieCompilationData,
                     )
             );
-
 
             const header = new HeaderClass(this.user.userData);
             const footer = new FooterClass();
