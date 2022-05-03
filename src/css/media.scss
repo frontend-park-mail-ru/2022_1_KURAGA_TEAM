@@ -1214,11 +1214,23 @@
 }
 
 @media (min-width: 2000px) {
+  .search__btn {
+    transform: scale(1.8);
+  }
+  .close-btn{
+    transform: scale(2.3);
+  }
+  .search__btn:hover {
+    transform: scale(1.5);
+  }
+  .close-btn:hover{
+    transform: scale(2);
+  }
   .all-films__text {
     margin-top: calc(2vw + 150px);
   }
   .search-menu {
-    margin: 6rem auto auto auto;
+    margin: 7rem auto auto auto;
   }
   .logo-home {
     height: calc(3vw + 40px);
@@ -1262,7 +1274,11 @@
 
 }
 
-
+@media (min-width: 3500px) {
+  .search-menu {
+    margin: 12rem auto auto auto;
+  }
+}
 @media (min-width: 2000px) {
   //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
   .test {

@@ -79,7 +79,7 @@
   transform: scale(1.2);
 }
 .search__btn:hover {
-  fill: var(--mix-color);
+
   transform: scale(0.7);
 }
 
@@ -134,7 +134,10 @@
 }
 
 
-
+.search__div{
+  width: -webkit-fill-available;
+  padding-inline: 20px;
+}
 
 .submit {
   display: none;
