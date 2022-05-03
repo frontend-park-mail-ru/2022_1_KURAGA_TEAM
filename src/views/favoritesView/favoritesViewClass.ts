@@ -75,13 +75,13 @@ export default class FavoritesViewClass extends BaseViewClass {
             }
 
             handlerLink();
-            this.setHandler();
+
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
             this.user.setAllLikes(likesData.favorites.id);
-            this.user.setHandler();
-
+            // this.user.setHandler();
+            this.setHandler();
             header.setHandler();
 
 
@@ -105,6 +105,19 @@ export default class FavoritesViewClass extends BaseViewClass {
         filmsNavbar.style.backgroundImage =
             "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
+        const like = document.querySelector(".like.active-like");
+
+        like.addEventListener("click", (e) => {
+            const id = like.id.split('_').pop();
+
+            console.log(like.id.split('_').pop());
+            const movie = document.getElementById(id);
+            movie.style.display = "none";
+            let formJson = JSON.stringify({
+                id: Number(id),
+            });
+                UserModel.disliked(formJson);
+        });
         //
         // const homeNavbarMobile = document.querySelector(".homeMobile-js");
         // const homeNavbar = document.querySelector(".home-js");
@@ -113,6 +126,8 @@ export default class FavoritesViewClass extends BaseViewClass {
         // nameProfile.classList.add("headline-style");
         // homeNavbarMobile.classList.add("headline-style");
         // homeNavbar.classList.add("headline-style");
+
+
     }
 
     compilationsRender(movieCompilations: Array<MovieCompilationModel>) {
