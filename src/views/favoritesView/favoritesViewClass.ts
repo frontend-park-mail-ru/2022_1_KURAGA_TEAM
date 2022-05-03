@@ -10,6 +10,7 @@ import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
+import UserLikeView from "Components/userLikeView/userLikeView"
 import {isEmptyMovies} from "./utilsFavorite"
 import "./favorites.scss";
 import {User} from "../../types";
@@ -80,7 +81,8 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
-            this.user.setAllLikes(likesData.favorites.id);
+            UserLikeView.setAllLikes(likesData.favorites.id);
+
             this.deleteLikes();
             //this.user.setHandler();
             this.setHandler();

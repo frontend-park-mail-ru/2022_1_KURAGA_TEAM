@@ -296,46 +296,7 @@ export default class UserModel {
         });
     }
 
-    setHandler() : void {
 
-        const likes = document.querySelectorAll(".like");
-
-        likes.forEach((like: HTMLElement) => {
-            like.onclick = function () {
-                let formJson = JSON.stringify({
-                    id: Number(like.id.split('_').pop()),
-                });
-
-                if (like.classList.contains("active-like")) {
-                    UserModel.disliked(formJson);
-
-                } else {
-
-                    UserModel.liked(formJson);
-                }
-                const similarLikes = document.querySelectorAll("#" + like.id);
-                similarLikes.forEach((like: HTMLElement) => {
-                    like.classList.toggle("active-like");
-                })
-            };
-
-        });
-    }
-
-    setAllLikes(likesId) {
-        if (!likesId) {
-            return;
-        }
-        const unique = likesId.filter(function (item, pos) {
-            return likesId.indexOf(item) == pos;
-        })
-        unique.forEach((i) => {
-            const similarLikes = document.querySelectorAll("#like_" + i);
-            similarLikes.forEach((like: HTMLElement) => {
-                like.classList.toggle("active-like");
-            })
-        });
-    }
 
 
 }

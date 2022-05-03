@@ -16,6 +16,7 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 import {MovieData, User} from "../../types";
 import EpisodesClass from "../../components/episodes/episodesClass";
 import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
+import UserLikeView from "Components/userLikeView/userLikeView"
 
 import "./movie.scss";
 
@@ -136,8 +137,8 @@ export default class MovieViewClass extends BaseViewClass {
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
-            this.user.setAllLikes(likesData.favorites.id);
-            this.user.setHandler();
+            UserLikeView.setAllLikes(likesData.favorites.id);
+            UserLikeView.setHandler();
 
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);

@@ -11,6 +11,7 @@ import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
+import UserLikeView from "Components/userLikeView/userLikeView"
 import "../../css/home.scss";
 import {User} from "../../types";
 
@@ -70,8 +71,8 @@ export default class HomeViewClass extends BaseViewClass {
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
-            this.user.setAllLikes(likesData.favorites.id);
-            this.user.setHandler();
+            UserLikeView.setAllLikes(likesData.favorites.id);
+            UserLikeView.setHandler();
 
             this.movieCompilations.forEach((carousel) => {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);

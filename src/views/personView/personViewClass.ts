@@ -11,6 +11,7 @@ import FooterClass from "Components/footer/footerClass";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import MovieCompilationView from "Components/movieCompilationView/movieCompilationView";
+import UserLikeView from "Components/userLikeView/userLikeView"
 import {User} from "../../types";
 
 import "./person.scss";
@@ -64,9 +65,14 @@ export default class PersonViewClass extends BaseViewClass {
                 footer: footer.render(),
             });
 
+            const {likesBody} = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+
+
             handlerLink();
             header.setHandler();
-            this.user.setHandler();
+            UserLikeView.setAllLikes(likesData.favorites.id);
+            UserLikeView.setHandler();
             //this.movieCompilation.setHandler();
         } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);

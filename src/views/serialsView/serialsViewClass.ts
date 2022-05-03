@@ -10,6 +10,7 @@ import handlerLink from "Utils/handlerLink";
 import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import UserLikeView from "Components/userLikeView/userLikeView"
 
 import "../filmsView/films.scss";
 
@@ -53,8 +54,8 @@ export default class SerialsViewClass extends BaseViewClass {
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
-            this.user.setAllLikes(likesData.favorites.id);
-            this.user.setHandler();
+            UserLikeView.setAllLikes(likesData.favorites.id);
+            UserLikeView.setHandler();
             header.setHandler();
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
