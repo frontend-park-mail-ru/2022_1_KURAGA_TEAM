@@ -9,6 +9,7 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
+import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
 import {isEmptyMovies} from "./utilsFavorite"
 import "./favorites.scss";
 import {User} from "../../types";
@@ -70,7 +71,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                     select: this.compilationsRender(this.movieCompilations),
                 });
                 this.movieCompilations.forEach((carousel) => {
-                    carousel.setHandler();
+                    MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
             }
 
@@ -81,7 +82,7 @@ export default class FavoritesViewClass extends BaseViewClass {
             const likesData = await Promise.resolve(likesBody);
             this.user.setAllLikes(likesData.favorites.id);
             this.deleteLikes();
-            // this.user.setHandler();
+            //this.user.setHandler();
             this.setHandler();
             header.setHandler();
 
@@ -106,15 +107,6 @@ export default class FavoritesViewClass extends BaseViewClass {
         filmsNavbar.style.backgroundImage =
             "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
-
-        //
-        // const homeNavbarMobile = document.querySelector(".homeMobile-js");
-        // const homeNavbar = document.querySelector(".home-js");
-        // const nameProfile = document.querySelector(".name-profile-mobile");
-        //
-        // nameProfile.classList.add("headline-style");
-        // homeNavbarMobile.classList.add("headline-style");
-        // homeNavbar.classList.add("headline-style");
 
 
     }
@@ -144,14 +136,14 @@ export default class FavoritesViewClass extends BaseViewClass {
             switch (index) {
                 case 0:
                     carouselBlock =
-                        '<div class = "first">' + carousel.render() + "</div>";
+                        '<div class = "first">' + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
                     break;
                 case movieCompilations.length - 1:
                     carouselBlock =
-                        '<div class = "last">' + carousel.render() + "</div>";
+                        '<div class = "last">' + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
                     break;
                 default:
-                    carouselBlock = "<div>" + carousel.render() + "</div>";
+                    carouselBlock = "<div>" + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
             }
             select += carouselBlock;
         });

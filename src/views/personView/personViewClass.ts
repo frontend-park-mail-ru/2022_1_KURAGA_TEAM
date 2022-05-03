@@ -10,6 +10,7 @@ import HeadPersonClass from "Components/headPerson/headPersonClass";
 import FooterClass from "Components/footer/footerClass";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import MovieCompilationView from "Components/movieCompilationView/movieCompilationView";
 import {User} from "../../types";
 
 import "./person.scss";
@@ -66,7 +67,7 @@ export default class PersonViewClass extends BaseViewClass {
             handlerLink();
             header.setHandler();
             this.user.setHandler();
-            this.movieCompilation.setHandler();
+            //this.movieCompilation.setHandler();
         } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);
         }
@@ -75,7 +76,7 @@ export default class PersonViewClass extends BaseViewClass {
     compilationsRender(movieCompilation: MovieCompilationModel): string {
         return (
             '<div class = "margin-bottom margin-person">' +
-            movieCompilation.render() +
+            MovieCompilationView.render(movieCompilation.movieCompilationData) +
             "</div>"
         );
     }

@@ -15,6 +15,7 @@ import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import {MovieData, User} from "../../types";
 import EpisodesClass from "../../components/episodes/episodesClass";
+import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
 
 import "./movie.scss";
 
@@ -124,10 +125,10 @@ export default class MovieViewClass extends BaseViewClass {
             header.setHandler();
             firstInfoMovie.setHandlers();
 
-            this.movieCompilation.setHandler();
+            MovieCompilationView.setHandler(this.movieCompilation.movieCompilationData);
             if (this.seasonsCompilation !== null) {
                 this.seasonsCompilation.forEach((carousel) => {
-                    carousel.setHandler();
+                    MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
                 this.setHandler();
             }
@@ -138,9 +139,8 @@ export default class MovieViewClass extends BaseViewClass {
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
 
-        } catch(err) {
-            console.log(err);
-            //router.go(routes.ERROR_CATCH_VIEW);
+        } catch {
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -185,7 +185,7 @@ export default class MovieViewClass extends BaseViewClass {
     compilationsRender(movieCompilation: MovieCompilationModel): string {
         return (
             '<div class = "margin-bottom movie-carousel margin-person">' +
-            movieCompilation.render() +
+            MovieCompilationView.render(movieCompilation.movieCompilationData)  +
             "</div>"
         );
     }
@@ -194,7 +194,7 @@ export default class MovieViewClass extends BaseViewClass {
         let select = "";
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
-            carouselBlock = `<div class = "car${index + 1}">` + carousel.render() + `</div>`;
+            carouselBlock = `<div class = "car${index + 1}">` + MovieCompilationView.render(carousel.movieCompilationData)  + `</div>`;
             select += carouselBlock;
         });
         return select;

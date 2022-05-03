@@ -10,8 +10,9 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
+import MovieCompilationView from "Components/movieCompilationView/movieCompilationView"
 import "../../css/home.scss";
-import {User,Favorites} from "../../types";
+import {User} from "../../types";
 
 export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
@@ -71,11 +72,13 @@ export default class HomeViewClass extends BaseViewClass {
 
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
+
             this.movieCompilations.forEach((carousel) => {
-                carousel.setHandler();
+                MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW)
+        } catch(err) {
+            console.log(err);
+            //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 
@@ -95,14 +98,14 @@ export default class HomeViewClass extends BaseViewClass {
             switch (index) {
                 case 0:
                     carouselBlock =
-                        '<div class = "first">' + carousel.render() + "</div>";
+                        '<div class = "first">' + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
                     break;
                 case movieCompilations.length - 1:
                     carouselBlock =
-                        '<div class = "last">' + carousel.render() + "</div>";
+                        '<div class = "last">' + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
                     break;
                 default:
-                    carouselBlock = "<div>" + carousel.render() + "</div>";
+                    carouselBlock = "<div>" + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
             }
             select += carouselBlock;
         });
