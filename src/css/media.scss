@@ -165,7 +165,9 @@
     width: 85%;
     max-width: 600px;
   }
-
+  .font-empty {
+    font-size: calc(1vw + 20px);
+  }
   .menu-h1 {
     font-size: 30px;
   }
