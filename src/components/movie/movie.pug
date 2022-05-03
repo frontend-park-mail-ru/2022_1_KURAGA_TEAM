@@ -18,6 +18,7 @@ each item in items
                             svg.like(id =`like_${item.id}`,width="36" height="36" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg")
                                 path(d="M13.7503 6.11111C8.18158 6.11111 3.66699 10.6257 3.66699 16.1944C3.66699 26.2778 15.5837 35.4444 22.0003 37.5766C28.417 35.4444 40.3337 26.2778 40.3337 16.1944C40.3337 10.6257 35.8191 6.11111 30.2503 6.11111C26.8403 6.11111 23.8245 7.8042 22.0003 10.3956C21.0705 9.07122 19.8353 7.99036 18.3992 7.24456C16.9632 6.49876 15.3685 6.10997 13.7503 6.11111Z" stroke="white" stroke-linecap="round" stroke-linejoin="round")
                 else
-                    a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
-                        div(class=`desc-mov` + `${typeMov}`)
-                            a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)= item.name
+                    div(class=`desc-mov` + `${typeMov}`)
+                        a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
+                            div(class=`desc-mov` + `${typeMov}`)
+                                a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)= item.name
