@@ -3,18 +3,28 @@
   font-weight: 500;
   margin-block: 50px;
 }
-.footer-poster{
+
+.footer-poster {
   background-image: url("../../static/footer-poster.png");
   background-size: cover;
   width: 100vw;
   height: 20vw;
-  box-shadow: inset 0 0 0 ,inset 0px -40px 22px var(--back-color);
+  box-shadow: inset 0 0 0, inset 0px -40px 22px var(--back-color);
 }
-.poster{
+
+
+@media (max-width: 1000px) {
+  .footer-poster {
+    box-shadow: inset 0 0 0, inset 0px -10px 22px var(--back-color);
+  }
+}
+
+.poster {
   width: 100%;
   height: 100%;
 }
-.font-empty{
+
+.font-empty {
   margin-left: 4vw;
   font-size: calc(1vw + 8px);
   color: var(--font-first-span-color);

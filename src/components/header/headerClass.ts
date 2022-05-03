@@ -91,9 +91,11 @@ export default class HeaderClass {
             searchCloseBtn.style.display = "block";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
-
+            const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 logo.style.display = "none";
+            } else if ( screenWidth < 1300){
+                desktopNavbar.style.display = "none";
             }
 
         })
@@ -115,9 +117,11 @@ export default class HeaderClass {
             searchMenuRes.style.display = "none";
             navbar.style.position = "fixed";
             const screenWidth = window.screen.width;
-
+            const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 logo.style.display = "block";
+            } else if ( screenWidth < 1300){
+                desktopNavbar.style.display = "block";
             }
         })
 
