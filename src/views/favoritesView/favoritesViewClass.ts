@@ -9,6 +9,7 @@ import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
+import {isEmptyMovies} from "./utilsFavorite"
 import "./favorites.scss";
 import {User} from "../../types";
 
@@ -31,32 +32,44 @@ export default class FavoritesViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
+            const header = new HeaderClass(this.user.userData);
+
             const {movCompBody}: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getFavorites();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
-            movieCompilationsData.forEach((i,id) => {
-                if (!i.movies) {
-                    movieCompilationsData.splice(id, 1);
 
-                }
-            })
+            if(isEmptyMovies(movieCompilationsData)){
+                const empty = "Каталог пуст"
+                super.render(homeViewTemplate, {
+                    header: header.render(),
+                    empty: empty
+                });
+            } else {
 
-            this.movieCompilations = movieCompilationsData.map(
-                (movieCompilationData, index) =>
-                    new MovieCompilationModel(
-                        index,
-                        movieCompilationData,
-                    )
-            );
+                movieCompilationsData.forEach((i, id) => {
+                    if (!i.movies) {
+                        movieCompilationsData.splice(id, 1);
+                    }
+                })
 
-            const header = new HeaderClass(this.user.userData);
-            const footer = new FooterClass();
+                this.movieCompilations = movieCompilationsData.map(
+                    (movieCompilationData, index) =>
+                        new MovieCompilationModel(
+                            index,
+                            movieCompilationData,
+                        )
+                );
 
-            super.render(homeViewTemplate, {
-                header: header.render(),
-                select: this.compilationsRender(this.movieCompilations),
-            });
+
+                super.render(homeViewTemplate, {
+                    header: header.render(),
+                    select: this.compilationsRender(this.movieCompilations),
+                });
+                this.movieCompilations.forEach((carousel) => {
+                    carousel.setHandler();
+                });
+            }
 
             handlerLink();
             this.setHandler();
@@ -67,9 +80,7 @@ export default class FavoritesViewClass extends BaseViewClass {
             this.user.setHandler();
 
             header.setHandler();
-            this.movieCompilations.forEach((carousel) => {
-                carousel.setHandler();
-            });
+
 
 
             const selectTopicAll = document.querySelectorAll(".select-title-all");

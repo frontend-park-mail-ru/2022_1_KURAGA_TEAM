@@ -27,25 +27,6 @@ div.search
     form.search__form
         input.menu__input#live-search(placeholder="Поиск", type="text", maxlength="80",autocorrect="off", spellcheck="false", autocapitalize="off", autocomplete="off")
         div.search-menu
-            // each items,key in results
-            //     div.topic
-            //         if key == "persons"
-            //             a.font-topics.padding-names Персоны
-            //         else if key == "movies"
-            //             a.font-topics.padding-names Фильмы
-            //         else if key == "serials"
-            //             a.font-topics.padding-names Сериалы
-            //     each res in items
-            //         div.search-topic
-            //             if key == "persons"
-            //                 a.font-menu-search.padding-names(href=`/person/${res.id}`) !{res.name}
-            //                 a.genre.padding-names !{res.position[0]}
-            //             else
-            //                 a.font-menu-search.padding-names(href=`/movie/${res.id}`) !{res.name}
-            //                 if (res.genre.length > 1)
-            //                     a.genre.padding-names !{res.genre[0].name} + "/" + !{res.genre[1].name}
-            //                 else
-            //                     a.genre.padding-names !{res.genre[0].name}
 a.font-nav.name-profile(href='/profile')  !{item.username}
 div.profile-block
     div.profile.dropdown

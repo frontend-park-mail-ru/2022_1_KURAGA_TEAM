@@ -18,24 +18,8 @@ export default class HeaderClass {
 
     render() {
 
-        this.result = {
-            movies: [{name: "Мстители", genre: [{name: "жанр"}], id: 1}, {
-                name: "Мстители2",
-                genre: [{name: "жанр"}],
-                id: 2
-            }],
 
-            serials: [{name: "Мстители", genre: [{name: "жанр"}], id: 2}, {
-                name: "Мстители2",
-                genre: [{name: "жанр"}],
-                id: 4
-            }],
-            persons: [
-                {name: "Мстители", position: ["жанр"], id: 3},
-                {name: "Мстители2", position: ["жанр"], id: 1}
-            ]
-        }
-        return headerTemplate({item: this.info, results: this.result});
+        return headerTemplate({item: this.info});
     }
 
     setHandler() {

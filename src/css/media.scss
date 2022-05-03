@@ -1214,6 +1214,9 @@
 }
 
 @media (min-width: 2000px) {
+  .all-films__text {
+    margin-top: calc(2vw + 150px);
+  }
   .search-menu {
     margin: 6rem auto auto auto;
   }
@@ -1237,13 +1240,13 @@
 
   .movie {
     height: calc(3vw + 215px);
-    grid-template-rows: auto 80px;
+    grid-template-rows: auto 70px;
     width: calc(3vw + 380px);
 
   }
   .movieTop {
     height: calc(3vw + 250px);
-    grid-template-rows: auto 70px;
+    grid-template-rows: auto 60px;
     width: calc(3vw + 464px);
   }
   .desc-mov {
