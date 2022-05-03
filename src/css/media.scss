@@ -118,6 +118,9 @@
   ::-webkit-scrollbar {
     color: rgba(0, 0, 0, 0);
   }
+  .like{
+    transform: scale(0.8);
+  }
   /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
   .error-img {
     width: 535px;
@@ -403,7 +406,7 @@
     font-size: 16px;
   }
   .movie__href {
-    width: 118px;
+    width: 90px;
   }
 
   .genre {
