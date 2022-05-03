@@ -77,69 +77,53 @@ export default class MovieViewClass extends BaseViewClass {
             const secondGenre = new SecondGenreClass(this.movie.movieData);
             const footer = new FooterClass();
 
-            if (this.movie.movieData.staff === null) {
-                if (this.movie.movieData.is_movie) {
+            const common = {
+                movieImg: this.movie.movieData,
+                header: header.render(),
+                headMovie: headMovie.render(),
+                firstInfoMovie: firstInfoMovie.render(),
+                secondGenre: secondGenre.render(),
+                select: this.compilationsRender(this.movieCompilation),
+                footer: footer.render(),
+            }
+            if (this.movie.movieData.staff == null ) {
+
+                if (this.movie.movieData.is_movie || this.seasonsCompilation == null ) {
                     super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        headMovie: headMovie.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
+                        ...common
                     });
                 } else {
-                    const episodes = new EpisodesClass(this.seasonsCompilation.length);
+                        const episodes = new EpisodesClass(this.seasonsCompilation.length);
+                        super.render(movieViewTemplate, {
+                            ...common,
+                            episodes: episodes.render(),
+                            seasons: this.seasonsRender(this.seasonsCompilation),
 
-                    super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        episodes: episodes.render(),
-                        seasons: this.seasonsRender(this.seasonsCompilation),
-                        headMovie: headMovie.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
-                    });
-
-                }
+                        });
+                    }
             } else {
                 const actors = new ActorsClass(this.movie.movieData);
-
                 if (this.movie.movieData.is_movie) {
                     super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
-                        headMovie: headMovie.render(),
+                        ...common,
                         actors: actors.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
+
                     });
                 } else {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
-
                     super.render(movieViewTemplate, {
-                        movieImg: this.movie.movieData,
-                        header: header.render(),
+                        ...common,
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
-                        headMovie: headMovie.render(),
                         actors: actors.render(),
-                        firstInfoMovie: firstInfoMovie.render(),
-                        secondGenre: secondGenre.render(),
-                        select: this.compilationsRender(this.movieCompilation),
-                        footer: footer.render(),
                     });
                 }
             }
 
             handlerLink();
             header.setHandler();
-
             firstInfoMovie.setHandlers();
+
             this.movieCompilation.setHandler();
             if (this.seasonsCompilation !== null) {
                 this.seasonsCompilation.forEach((carousel) => {
@@ -154,8 +138,9 @@ export default class MovieViewClass extends BaseViewClass {
             this.user.setAllLikes(likesData.favorites.id);
             this.user.setHandler();
 
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            console.log(err);
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 

@@ -135,7 +135,6 @@ export default class HeaderClass {
                 const {searchBody} = await UserModel.getSearchRes(formJson);
                 const searchData: object = await Promise.resolve(searchBody);
 
-                console.log(searchBody, searchData);
                 menu.innerHTML = "";
                 if (isEmpty(searchData)) {
                     const title = document.createElement("div");

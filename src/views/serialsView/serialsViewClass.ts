@@ -41,12 +41,11 @@ export default class SerialsViewClass extends BaseViewClass {
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
-            const footer = new FooterClass();
 
             super.render(serialsViewTemplate, {
                 header: header.render(),
                 listFilms: listFilms.render(),
-                footer: footer.render(),
+
             });
 
             this.setHandler();

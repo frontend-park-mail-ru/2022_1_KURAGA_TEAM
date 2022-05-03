@@ -62,7 +62,7 @@ export default class GenreViewClass extends BaseViewClass {
         const listGenres: HTMLDivElement = document.querySelector('.list-genres');
         const firstGenre = listGenres.firstChild;
 
-        currGenre.style.backgroundColor = '#744fa9';
+        currGenre.style.backgroundColor = 'var(--mix-color)';
 
         let parentCurr = currGenre.parentNode;
         let nextCurr = currGenre.nextSibling;
