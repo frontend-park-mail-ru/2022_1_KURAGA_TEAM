@@ -86,6 +86,7 @@ export default class HeaderClass {
             const searchMenu: HTMLElement =
                 document.querySelector(".menu__input");
             searchMenu.style.display = "block";
+            searchMenu.focus();
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
             const screenWidth = window.screen.width;
