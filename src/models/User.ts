@@ -169,37 +169,44 @@ export default class UserModel {
 
 
     static reg(formJson) {
-        const errorIncorr = document.querySelector(
-            'div[data-section="incorrect"]'
-        );
-
-        this.registration(formJson)
-            .then(({isAuth, data}) => {
-                data.then((res) => {
-                    if (res.message === "ERROR: Email is not unique") {
-                        errorIncorr.classList.add("error-active");
-                        errorIncorr.classList.add("center");
-                        errorIncorr.textContent =
-                            "Такой пользователь уже существует";
-
-                        return;
-                    }
-
-                    if (!isAuth) {
-                        errorIncorr.classList.add("error-active");
-                        errorIncorr.classList.add("center");
-                        errorIncorr.textContent =
-                            "Упс... У нас что-то пошло не так!";
-
-                        return;
-                    }
-
-                    router.go("/");
+        return new Promise<{ isAuth: boolean; regBody }>((res)=>{
+            this.registration(formJson)
+                .then((body) => {
+                res({
+                    isAuth: body.isAuth,
+                    regBody: body.data,
                 });
             })
-            .catch((err) => {
-                console.error(err)
-            });
+                .catch((err) => {
+                    console.error(err)
+                });
+        });
+            // .then(({isAuth, data}) => {
+            //     data.then((res) => {
+            //         if (res.message === "ERROR: Email is not unique") {
+            //             errorIncorr.classList.add("error-active");
+            //             errorIncorr.classList.add("center");
+            //             errorIncorr.textContent =
+            //                 "Такой пользователь уже существует";
+            //
+            //             return;
+            //         }
+            //
+            //         if (!isAuth) {
+            //             errorIncorr.classList.add("error-active");
+            //             errorIncorr.classList.add("center");
+            //             errorIncorr.textContent =
+            //                 "Упс... У нас что-то пошло не так!";
+            //
+            //             return;
+            //         }
+            //
+            //         router.go("/");
+            //     });
+            // })
+            // .catch((err) => {
+            //     console.error(err)
+            // });
     }
 
     static log(formJson) {
@@ -278,61 +285,6 @@ export default class UserModel {
         });
     }
 
-    // this.search(formData)
-    //     .then(({isAuth, data}) => {
-    //         data.then((res) => {
-    //             mainRes.textContent = formData.get("search");
-    //         });
-    //     })
-    //     .catch((err) => {
-    //         router.go(routes.ERROR_CATCH_VIEW);
-    //     });
-
-
-// static getSearchRes() {
-//     return new Promise((searchRes) => {
-//         this.getSearch()
-//             .then((body) => {
-//                 const result = {
-//                     categories: [{
-//                         topic: "Фильмы",
-//                         results: [{name: "Мстители", info: "жанр", id: 1}, {
-//                             name: "Мстители2",
-//                             info: "жанр2",
-//                             id: 2
-//                         }]
-//                     }, {
-//                         topic: "Сериалы",
-//                         results: [{name: "Мстители", info: "жанр", id: 2}, {
-//                             name: "Мстители2",
-//                             info: "жанр2",
-//                             id: 4
-//                         }]
-//                     }, {
-//                         topic: "Персоны",
-//                         results: [{name: "Мстители", info: "жанр", id: 3}, {
-//                             name: "Мстители2",
-//                             info: "жанр2",
-//                             id: 1
-//                         }]
-//                     }
-//                     ]
-//                 }
-//                 const fulfilled = Promise.resolve(result);
-//                 body = {
-//                     isAuth: true,
-//                     data: fulfilled,
-//                 }
-//                 searchRes({
-//                     isAuth: body.isAuth,
-//                     searchBody: body.data,
-//                 });
-//             })
-//             .catch((err) => {
-//                 router.go(routes.ERROR_CATCH_VIEW);
-//             });
-//     });
-// }
 
     static async liked(formJson) {
         try {
