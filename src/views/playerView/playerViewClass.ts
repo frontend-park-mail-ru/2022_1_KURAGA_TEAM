@@ -85,8 +85,6 @@ export default class PlayerViewClass extends BaseViewClass {
         const video: HTMLVideoElement = document.querySelector(".player");
         video.play();
 
-
-
         const noVideo: HTMLDivElement = document.querySelector(".novideo");
 
         const controlsContainers: HTMLDivElement = document.querySelector(
@@ -97,13 +95,22 @@ export default class PlayerViewClass extends BaseViewClass {
         const playPauseButton = document.querySelector(".play-pause");
         const play: SVGElement = playPauseButton.querySelector(".play__svg");
         const pause: SVGElement = playPauseButton.querySelector(".pause__svg");
+        play.style.display = "none";
+        pause.style.display = "";
 
         if (window.screen.width <= 700) {
-            play.style.display = "";
-            pause.style.display = "none";
-        } else {
-            play.style.display = "none";
-            pause.style.display = "";
+            video.addEventListener('play', () => {
+                console.log(1);
+                if (video.paused) {
+                    play.style.display = "none";
+                    pause.style.display = "";
+
+                    return;
+                }
+
+                play.style.display = "";
+                pause.style.display = "none";
+            })
         }
 
         const rewindButton = document.querySelector(".rewind");
