@@ -58,13 +58,14 @@
   flex-grow: 1;
   flex-direction: row-reverse;
 }
+
 .close-btn,
 .search__btn {
   cursor: pointer;
   transition: all 0.2s linear;
 }
 
-.close-btn{
+.close-btn {
   transform: scale(1.5);
   margin-inline-start: 10px;
   place-self: center;
@@ -74,20 +75,22 @@
   display: none;
 }
 
-.close-btn:hover{
+.close-btn:hover {
   fill: var(--mix-color);
   transform: scale(1.2);
 }
+
 .search__btn:hover {
 
   transform: scale(0.7);
 }
 
 
-#all-res-topic{
+#all-res-topic {
   text-decoration: none;
 }
-#all-res-topic:hover{
+
+#all-res-topic:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -109,7 +112,7 @@
 }
 
 .menu__input {
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   display: none;
   font-family: "GT Eesti Pro Display", sans-serif;
   color: var(--font-color);
@@ -120,8 +123,9 @@
   font-size: 22px;
   background: var(--drop-back);
 }
-.menu__input:focus{
-  outline:none;
+
+.menu__input:focus {
+  outline: none;
 }
 
 .menu__input::placeholder {
@@ -134,7 +138,7 @@
 }
 
 
-.search__div{
+.search__div {
   width: -webkit-fill-available;
   padding-inline: 20px;
 }
@@ -143,22 +147,26 @@
   display: none;
 }
 
-.search__form{
+.search__form {
   position: relative;
   width: 100%;
   display: flex;
 }
-.padding-names{
+
+.padding-names {
   padding-inline: 10px;
 }
-.font-search{
+
+.font-search {
   padding-inline: 10px;
-  font-weight: 300;
+  font-weight: 400;
   font-size: calc(1vw + 3px);
   text-decoration: none;
-  color: var(--genre-color);
+  color: var(--progress-bar);
+  text-shadow: 0 4px 4px var(--nav-font-shadow);
 }
-.font-res{
+
+.font-res {
 
   text-decoration: none;
   color: var(--font-color);
@@ -169,7 +177,7 @@
   transition: all .2s linear;
 }
 
-.font-topics{
+.font-topics {
   margin: 30px auto 10px 0;
   font-weight: 400;
   text-align: initial;
@@ -177,7 +185,8 @@
   text-decoration: none;
   color: var(--secondary-name);
 }
-.font-topics:hover{
+
+.font-topics:hover {
   text-decoration: var(--font-color);
 }
 

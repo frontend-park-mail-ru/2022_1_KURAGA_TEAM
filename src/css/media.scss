@@ -397,7 +397,7 @@
     padding-inline: 5px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    font-size: 12px;
+    font-size: 10px;
   }
   .desc-movTop {
     justify-content: center;
@@ -410,7 +410,7 @@
   }
 
   .genre {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .list-films {
@@ -425,13 +425,12 @@
   }
   .search-topic {
     height: fit-content;
-    padding-block: 10px;
   }
   .font-topics {
     font-size: calc(1vw + 8px);
   }
   .font-menu-search {
-    font-size: calc( 1vw + 10px);
+    font-size: calc( 1vw + 12px);
     text-align: initial;
   }
   .font-search {
@@ -442,6 +441,9 @@
   }
   .results {
     width: 100vw;
+  }
+  .topic{
+    margin-block: 0;
   }
 
 
