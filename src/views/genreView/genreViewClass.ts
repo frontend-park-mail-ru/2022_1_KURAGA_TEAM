@@ -59,6 +59,19 @@ export default class GenreViewClass extends BaseViewClass {
     }
 
     setHandler(id: number) {
+        const genreNavbar: HTMLAnchorElement = document.querySelector(".font-nav.genre-js");
+        const genreMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.genre-js");
+
+        genreNavbar.style.backgroundColor = "#2C51B1";
+        genreNavbar.style.webkitBackgroundClip = "text";
+        genreNavbar.style.webkitTextFillColor = "transparent";
+        genreNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+
+        genreMobileNavbar.style.backgroundColor = "#2C51B1";
+        genreMobileNavbar.style.webkitBackgroundClip = "text";
+        genreMobileNavbar.style.webkitTextFillColor = "transparent";
+        genreMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+
         const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
         const listGenres: HTMLDivElement = document.querySelector('.list-genres');
         const firstGenre = listGenres.firstChild;

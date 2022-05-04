@@ -71,6 +71,11 @@
     justify-self: center;
 }
 
+#undefined {
+    background-size: contain;
+    background-image: url("../../static/NoSeria.webp") !important;
+}
+
 .btn-info {
     height: 40px;
     text-decoration: none;

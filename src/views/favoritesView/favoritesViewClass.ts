@@ -100,17 +100,18 @@ export default class FavoritesViewClass extends BaseViewClass {
     }
 
     setHandler() {
-        const filmsNavbar: HTMLAnchorElement =
-            document.querySelector(".font-nav.favourite-js");
+        const favouriteNavbar: HTMLAnchorElement = document.querySelector(".font-nav.favourite-js");
+        const favouriteMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.favourite-js");
 
-        filmsNavbar.style.backgroundColor = "#2C51B1";
-        filmsNavbar.style.webkitBackgroundClip = "text";
-        filmsNavbar.style.webkitTextFillColor = "transparent";
-        filmsNavbar.style.backgroundImage =
-            "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        favouriteNavbar.style.backgroundColor = "#2C51B1";
+        favouriteNavbar.style.webkitBackgroundClip = "text";
+        favouriteNavbar.style.webkitTextFillColor = "transparent";
+        favouriteNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
-
-
+        favouriteMobileNavbar.style.backgroundColor = "#2C51B1";
+        favouriteMobileNavbar.style.webkitBackgroundClip = "text";
+        favouriteMobileNavbar.style.webkitTextFillColor = "transparent";
+        favouriteMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
     }
 
     deleteLikes(){
