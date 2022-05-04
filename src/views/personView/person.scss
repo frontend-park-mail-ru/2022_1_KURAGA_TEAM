@@ -1,5 +1,3 @@
-@import "../../components/headPerson/headPerson";
-
 .photo-person {
     display: flex;
     align-items: center;
@@ -12,7 +10,7 @@
 .photo-person__gradient {
     padding-top: 18vh;
     width: 100%;
-    height: 100%;
+    height: 78vh;
     background: var(--movie-gradient);
 }
 

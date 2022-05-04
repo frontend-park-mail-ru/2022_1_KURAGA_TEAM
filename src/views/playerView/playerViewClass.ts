@@ -30,15 +30,39 @@ export default class PlayerViewClass extends BaseViewClass {
             }
             this.movie = new MovieModel(movData);
 
-            let video = this.movie.video;
-            if (check !== -1) {
-                video = this.movie.trailer;
-            }
+            let video = this.movie.trailer;
+            if (check === -1) {
+                if (!this.movie.movieData.is_movie) {
+                    const arrPath = window.location.pathname.split('/');
+                    const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
+                    const numberEpis = +/\d+/.exec(arrPath[4]) - 1;
 
-            super.render(playerTemplate, {
-                id: this.movie.id,
-                video,
-            });
+                    video = this.movie.data.season[numberSeas].episodes[numberEpis].video
+                    super.render(playerTemplate, {
+                        trailer: false,
+                        id: this.movie.id,
+                        video,
+                        episodes: this.movie.data.season[numberSeas].episodes,
+                        season: numberSeas + 1,
+                        episode: numberEpis + 1,
+                    });
+                } else {
+                    video = this.movie.video;
+
+                    super.render(playerTemplate, {
+                        trailer: false,
+                        is_movie: this.movie.movieData.is_movie,
+                        id: this.movie.id,
+                        video,
+                    });
+                }
+            } else {
+                super.render(playerTemplate, {
+                    trailer: true,
+                    id: this.movie.id,
+                    video,
+                });
+            }
 
             handlerLink();
             this.setHandler();
@@ -48,6 +72,15 @@ export default class PlayerViewClass extends BaseViewClass {
     }
 
     setHandler() {
+        const series: HTMLButtonElement = document.querySelector('.series');
+        series.style.display = 'none';
+
+        if (!window.location.pathname.match(/trailer/) && !this.movie.data.is_movie) {
+            series.style.display = '';
+        }
+
+        const seriesPopUp: HTMLDivElement = document.querySelector('.series__popUp');
+
         const videoContainer = document.querySelector(".video-container");
         const video: HTMLVideoElement = document.querySelector(".player");
         video.play();
@@ -62,13 +95,21 @@ export default class PlayerViewClass extends BaseViewClass {
         const playPauseButton = document.querySelector(".play-pause");
         const play: SVGElement = playPauseButton.querySelector(".play__svg");
         const pause: SVGElement = playPauseButton.querySelector(".pause__svg");
+        play.style.display = "none";
+        pause.style.display = "";
 
         if (window.screen.width <= 700) {
-            play.style.display = "";
-            pause.style.display = "none";
-        } else {
-            play.style.display = "none";
-            pause.style.display = "";
+            video.addEventListener('play', () => {
+                if (video.paused) {
+                    play.style.display = "none";
+                    pause.style.display = "";
+
+                    return;
+                }
+
+                play.style.display = "";
+                pause.style.display = "none";
+            })
         }
 
         const rewindButton = document.querySelector(".rewind");
@@ -79,8 +120,15 @@ export default class PlayerViewClass extends BaseViewClass {
             volumeButton.querySelector(".volume-full__svg");
         const volumeMute: SVGElement =
             volumeButton.querySelector(".volume-mute__svg");
+        const volumeHalf: SVGElement =
+            volumeButton.querySelector(".volume-half__svg");
         volumeMute.style.display = "none";
+        volumeHalf.style.display = "none";
         volumeFull.style.display = "";
+
+        const volumeReg: HTMLDivElement = document.querySelector('.volume__popUp');
+        const volumeBar: HTMLDivElement = document.querySelector('.volume-bar');
+        volumeBar.style.width = video.volume * 100 + '%';
 
         const fullScreenButton = document.querySelector(".full");
         const fullSize: SVGElement =
@@ -206,13 +254,11 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
-        document.addEventListener("pointermove", () => {
-            displayControls();
-        });
+        document.addEventListener("pointermove", displayControls);
 
-        document.addEventListener("touchend", () => {
-            displayControls();
-        });
+        document.addEventListener("touchend", displayControls);
+
+        seriesPopUp.addEventListener("scroll", displayControls);
 
         playPauseButton.addEventListener("click", playPause);
 
@@ -220,19 +266,72 @@ export default class PlayerViewClass extends BaseViewClass {
 
         forwardButton.addEventListener("click", forward);
 
-        volumeButton.addEventListener("click", () => {
-            if (video.muted) {
-                volumeFull.style.display = "";
-                volumeMute.style.display = "none";
-            } else {
+        let click = false;
+
+        volumeReg.addEventListener('click', (e: any) => {
+            click = true;
+
+            const pos =
+                (e.pageX -
+                    (volumeReg.offsetLeft +
+                        // @ts-ignore
+                        volumeReg.offsetParent.offsetLeft)) /
+                volumeReg.offsetWidth;
+
+            video.volume = pos - 0.17;
+            volumeBar.style.width = video.volume * 100 + '%';
+
+            if (Number(video.volume.toFixed(2)) === 0) {
                 volumeFull.style.display = "none";
+                volumeHalf.style.display = "none";
+                volumeMute.style.display = "";
+
+                return;
+            }
+
+            if (Number(video.volume.toFixed(2)) <= 0.35) {
+                volumeFull.style.display = "none";
+                volumeMute.style.display = "none";
+                volumeHalf.style.display = "";
+
+                return;
+            }
+
+            volumeFull.style.display = "";
+            volumeMute.style.display = "none";
+            volumeHalf.style.display = "none";
+        });
+
+        volumeButton.addEventListener("click", () => {
+            if (click) {
+                click = false;
+
+                return;
+            }
+
+            if (video.muted) {
+                volumeBar.style.width = video.volume * 100 + '%';
+
+                if (Number(video.volume.toFixed(2)) <= 0.35) {
+                    volumeFull.style.display = "none";
+                    volumeMute.style.display = "none";
+                    volumeHalf.style.display = "";
+                } else {
+                    volumeFull.style.display = "";
+                    volumeMute.style.display = "none";
+                    volumeHalf.style.display = "none";
+                }
+            } else {
+                volumeBar.style.width = '0';
+                volumeFull.style.display = "none";
+                volumeHalf.style.display = "none";
                 volumeMute.style.display = "";
             }
 
             video.muted = !video.muted;
         });
 
-        fullScreenButton.addEventListener("click", () => {
+        const fullScreenChange = () => {
             if (!document.fullscreenElement) {
                 videoContainer.requestFullscreen();
 
@@ -240,6 +339,9 @@ export default class PlayerViewClass extends BaseViewClass {
             }
 
             document.exitFullscreen();
-        });
+        }
+
+        fullScreenButton.addEventListener("click", fullScreenChange);
+        document.addEventListener("dblclick", fullScreenChange);
     }
 }

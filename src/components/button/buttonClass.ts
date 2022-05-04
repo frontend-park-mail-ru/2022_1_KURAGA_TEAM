@@ -1,4 +1,5 @@
 import buttonTemplate from "./button.pug";
+import './button.scss'
 
 export default class ButtonClass {
     private readonly value: string;

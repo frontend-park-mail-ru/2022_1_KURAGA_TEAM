@@ -1,7 +1,7 @@
-import { ajaxReq } from "Modules/ajax";
+import {ajaxReq} from "Modules/ajax";
 import router from "Routing/router.ts";
-import { routes } from "Routing/constRouting";
-import { UserData } from "../types";
+import {routes} from "Routing/constRouting";
+import {UserData} from "../types";
 
 export default class UserModel {
     data: UserData;
@@ -85,10 +85,56 @@ export default class UserModel {
         }
     }
 
+
+    static async search(form, csrfToken) {
+        try {
+            return await ajaxReq.post({
+                path: "/find",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
     static async token() {
         try {
             return await ajaxReq.get({
                 path: "/csrf",
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async like(form, csrfToken) {
+        try {
+            return await ajaxReq.post({
+                path: "/like",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async dislike(form, csrfToken) {
+        try {
+            return await ajaxReq.delete({
+                path: "/dislike",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
             });
         } catch (err) {
             return err;
@@ -104,7 +150,8 @@ export default class UserModel {
                         userBody: body.data,
                     });
                 })
-                .catch(() => {});
+                .catch(() => {
+                });
         });
     }
 
@@ -115,72 +162,48 @@ export default class UserModel {
                     router.go(routes.LOGIN_VIEW);
                 })
                 .catch((err) => {
-                    router.go(routes.ERROR_CATCH_VIEW);
+                    console.error(err)
                 });
         });
     }
 
+
     static reg(formJson) {
-        const errorIncorr = document.querySelector(
-            'div[data-section="incorrect"]'
-        );
-
-        this.registration(formJson)
-            .then(({ isAuth, data }) => {
-                data.then((res) => {
-                    if (res.message === "ERROR: Email is not unique") {
-                        errorIncorr.classList.add("error-active");
-                        errorIncorr.classList.add("center");
-                        errorIncorr.textContent =
-                            "Такой пользователь уже существует";
-
-                        return;
-                    }
-
-                    if (!isAuth) {
-                        errorIncorr.classList.add("error-active");
-                        errorIncorr.classList.add("center");
-                        errorIncorr.textContent =
-                            "Упс... У нас что-то пошло не так!";
-
-                        return;
-                    }
-
-                    router.go("/");
+        return new Promise<{ isAuth: boolean; regBody }>((res)=>{
+            this.registration(formJson)
+                .then((body) => {
+                res({
+                    isAuth: body.isAuth,
+                    regBody: body.data,
                 });
             })
-            .catch((err) => {
-                router.go(routes.ERROR_CATCH_VIEW);
-            });
+                .catch((err) => {
+                    console.error(err)
+                });
+        });
+
     }
 
     static log(formJson) {
-        const errorIncorr = document.querySelector(
-            'div[data-section="incorrect"]'
-        );
+        return new Promise<{ isAuth: boolean;}>((res)=>{
+            this.login(formJson)
+                .then((body) => {
+                    res({
+                        isAuth: body.isAuth,
+                    });
+                })
+                .catch((err) => {
+                    console.error(err)
+                });
+        });
 
-        this.login(formJson)
-            .then(({ isAuth }) => {
-                if (!isAuth) {
-                    errorIncorr.classList.add("error-active");
-                    errorIncorr.classList.add("center");
-                    errorIncorr.textContent = "Неверный логин или пароль";
-
-                    return;
-                }
-
-                router.go("/");
-            })
-            .catch((err) => {
-                router.go(routes.ERROR_CATCH_VIEW);
-            });
     }
 
     static async editProfile(formJson) {
         try {
-            const { data } = await this.token();
+            const {data} = await this.token();
 
-            const { message } = await data;
+            const {message} = await data;
 
             return this.edit(formJson, message);
         } catch (err) {
@@ -190,13 +213,93 @@ export default class UserModel {
 
     static async editAvatar(formData) {
         try {
-            const { data } = await this.token();
+            const {data} = await this.token();
 
-            const { message } = await data;
+            const {message} = await data;
 
             return this.avatar(formData, message);
         } catch (err) {
             return err;
         }
     }
+
+    static async allLikes() {
+        try {
+            return await ajaxReq.get({
+                path: `/likes`,
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async getSearchRes(formJson) {
+
+
+        const {data} = await this.token();
+        const {message} = await data;
+
+        return new Promise<{ isAuth: boolean; searchBody }>((search) => {
+            this.search(formJson, message)
+                .then((body) => {
+                    search({
+                        isAuth: body.isAuth,
+                        searchBody: body.data,
+                    });
+                })
+                .catch((err) => {
+                    console.error(err)
+                });
+        });
+    }
+
+
+    static async liked(formJson) {
+        try {
+
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.like(formJson, message);
+
+
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async disliked(formJson) {
+        try {
+
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.dislike(formJson, message);
+
+
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static getLikes() {
+        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
+            this.allLikes()
+                .then((body) => {
+                    likes({
+                        isAuth: body.isAuth,
+                        likesBody: body.data,
+                    });
+                })
+                .catch(() => {
+                });
+        });
+    }
+
+
+
+
 }
+
+
+

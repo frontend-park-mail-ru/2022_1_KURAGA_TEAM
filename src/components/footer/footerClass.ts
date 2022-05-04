@@ -1,4 +1,5 @@
 import footerTemplate from "./footer.pug";
+import './footer.scss'
 
 const configIcon = [
     {

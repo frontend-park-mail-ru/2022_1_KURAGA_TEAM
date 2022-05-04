@@ -34,6 +34,9 @@ export interface UserData {
     email: string;
     avatar: string;
 }
+export interface Favorites{
+    id: Array<number>
+}
 
 export interface User {
     user: UserData;
@@ -52,12 +55,14 @@ export interface PersonData {
 export interface MovieData {
     id: number;
     name: string;
-    genre: string;
+    genre?: Array<GenreData>;
     picture: string;
     tagline: string;
     age_limit: string;
+    is_movie: boolean;
     country: string;
     description: string;
+    season?: Array<Season>;
     duration: string;
     kinopoisk_rating: string;
     name_picture: string;
@@ -66,13 +71,34 @@ export interface MovieData {
     trailer: string;
     video: string;
     year: string;
+    is_liked?: boolean;
+
+}
+export interface Season{
+    episodes: Array<Episode>;
+    id: number;
+    number: number;
+}
+export interface Episode{
+    description?: string;
+    id?: number;
+    name: string;
+    number?: number;
+    picture?: string;
+    video?: string;
+}
+
+export interface GenreData{
+    id: number;
+    name:string;
 }
 
 export interface MovieCompilationData {
-    id: number;
+    id?: number;
+    idSerial?: number;
     movies: Array<MovieData>;
-    compilationName: string;
-    isMobile: boolean;
+    compilationName?: string;
+    is_movie?: boolean;
 }
 export interface InfoHeadPerson {
     name: string;
@@ -100,6 +126,7 @@ export interface privatesMovingCarousel {
     opt?: optInfo;
 }
 export interface optInfo {
+    length: number;
     position: number;
     max_position: number;
 }
@@ -110,4 +137,9 @@ export interface selInfo {
     children: HTMLCollection;
     prev: HTMLElement;
     next: HTMLElement;
+}
+
+export interface Info {
+    username: string;
+    email: string;
 }

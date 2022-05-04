@@ -4,17 +4,32 @@ div.menu-mobile
             path(d="M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z M22.75,10.375H2c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z M22.75,18.875H2c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z")
     div.menu-mobile__vertical
         a.menu-mobile__nav.homeMobile-js(href="/") Главная
-        a.menu-mobile__nav.movie-js(href="/") Фильмы
-        a.menu-mobile__nav.serials-js(href="/") Сериалы
-        a.menu-mobile__nav.favourite-js(href="/") Избранное
+        a.menu-mobile__nav.movie-js(href="/movies") Фильмы
+        a.menu-mobile__nav.serials-js(href="/series") Сериалы
+        a.menu-mobile__nav.favourite-js(href="/favorites") Избранное
+        a.menu-mobile__nav.genre-js(href=`/genre/2`) Жанры
 a.logo-link(href="/")
     object.logo-home(type = "image/png", data = "../static/logo.png")
 div.desktop-navbar
     a.font-nav.home-js(href="/") Главная
-    a.font-nav.movie-js(href="/") Фильмы
-    a.font-nav.serials-js(href="/") Сериалы
-    a.font-nav.favourite-js(href="/") Избранное
+    a.font-nav.movie-js(href="/movies") Фильмы
+    a.font-nav.serials-js(href="/series") Сериалы
+    a.font-nav.favourite-js(href=`/favorites`) Избранное
+    a.font-nav.genre-js(href=`/genre/2`) Жанры
 div.space
+div.search
+    svg.search__btn(width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+        rect(width="39" height="39" fill="url(#pattern0)")
+        defs
+            pattern(id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1")
+                use(xlink:href="#image0_1151_1490" transform="scale(0.02)")
+            image(id="image0_1151_1490" width="50" height="50" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAADCElEQVRoge2ZzUtUURjGn9vCjKRNhLkoQ4MEV22CFn4lQrVp0VKJIBAD/4ekFn38Fy2CaBPpNCpEkG00o5197PpYVJhEGJRa/VrcOzS8c5yZc+fcGaT5wSzOHe7zvM+cOV/3Sk2aZEJUy81Ah6SzkgYk9UrqlLQv+fqbpHeSViQ9kZSPouhTLX7BAQaBHPCL6tkCZoD+Rtcv4Cgw51H8duSB7kaFuAB8DxCiwDowVu8QV8sU9BK4DgwDx4C9yacnuXYDeFXm/ql6hbi2TQFLwJCHzkngaUPCEP+dLBvAOOA94wERMJFoWEazyFAY2HZMfAH6Amj3A2tGex3oClG7NbOz00aIEEX6A8Cm8ciF0i+YDDq6fjyoSexz2eET7McS8WJXzCIpxkQVPhHwzHhNhxLvIF6FixkIIu72GzJeW0B7COFLRnglQL2VPF8bz4u+Grsc1+yvH6ary/PAtAd9BVxBek37ka9oCqyHraEiriCdpv3BVzQF7yvU4A+lq25bzaKVPduM509fDVePWIJPuw5sHVu1CkjSuml3+IqmwHqs+gq4grw17UO+oik4bNqffQVcQey6MeIrmgLr8cJXwBVkwbTP+YqmwHo8rlkROOjYongvUB5+w8ZrA9gfSnzGiC+R3abxufG6HdKgn1Imghn885l0+BwPbZI3BpsEfCZFvOu1B6s7ofSLjbqJj5/FrBFgS098cLNH3VXgQIjaXYZjjq7fJD7ZpX34MOnoCYAFoCWLHAXzKYcpwDJwykNnmNKBbckDrY0IA/Gh6CYwQvxQri359CTXbgFvKgQoZpqMe2aU0jGTFTPA7izDdFH6YMKXP8A9YL6hYZJAfcR/AbsDKMcP4C5wItFoBWYr3JOrNkytL3raJZ1RfMbulXRE8Yue35LWJH2UtCxpUVIuiqKv5v5WSfclnS5j81DS+SiKNmqpNXOAFkq3RJZZspzNQlFlmLlmmHrzP4aZB/Y0utaKUN3UXN/3j2mp0DNXGl2fF9uE2VkhCpgwOzNEgWTMZPOytEmT8vwFxdlvsvNj/B0AAAAASUVORK5CYII=")
+    svg.close-btn(width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="HeaderContent__icon--39VdR HeaderContent__close-icon--30A_k" data-tid="f934d019")
+        path(d="M14.7071 13.2929C15.0976 13.6834 15.0976 14.3166 14.7071 14.7071C14.3166 15.0976 13.6834 15.0976 13.2929 14.7071L9.56569 10.9799C9.36768 10.7819 9.26867 10.6829 9.15451 10.6458C9.05409 10.6132 8.94591 10.6132 8.84549 10.6458C8.73133 10.6829 8.63232 10.7819 8.43432 10.9799L4.70711 14.7071C4.31658 15.0976 3.68342 15.0976 3.29289 14.7071C2.90237 14.3166 2.90237 13.6834 3.29289 13.2929L7.0201 9.56569C7.21811 9.36768 7.31711 9.26867 7.35421 9.15451C7.38684 9.05409 7.38684 8.94591 7.35421 8.84549C7.31711 8.73133 7.21811 8.63232 7.0201 8.43432L3.29289 4.70711C2.90237 4.31658 2.90237 3.68342 3.29289 3.29289C3.68342 2.90237 4.31658 2.90237 4.70711 3.29289L8.43432 7.0201C8.63232 7.21811 8.73133 7.31711 8.84549 7.35421C8.94591 7.38684 9.05409 7.38684 9.15451 7.35421C9.26867 7.31711 9.36768 7.21811 9.56569 7.0201L13.2929 3.29289C13.6834 2.90237 14.3166 2.90237 14.7071 3.29289C15.0976 3.68342 15.0976 4.31658 14.7071 4.70711L10.9799 8.43431C10.7819 8.63232 10.6829 8.73133 10.6458 8.84549C10.6132 8.94591 10.6132 9.05409 10.6458 9.15451C10.6829 9.26867 10.7819 9.36768 10.9799 9.56569L14.7071 13.2929Z")
+    div.search__div
+        form.search__form
+            input.menu__input#live-search(placeholder="Поиск", type="text", maxlength="80",autocorrect="off", spellcheck="false", autocapitalize="off", autocomplete="off")
+            div.search-menu
 a.font-nav.name-profile(href='/profile')  !{item.username}
 div.profile-block
     div.profile.dropdown

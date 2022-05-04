@@ -1,7 +1,4 @@
-@import "../components/footer/footer";
-@import "../components/header/header";
 @import "../components/carousel/carousel";
-@import "../components/mainMovie/mainMovie";
 
 .root {
     display: grid;
@@ -16,7 +13,7 @@
 }
 
 .first {
-    margin-top: -75px;
+  margin-top: -60px;
 }
 .last {
     margin-bottom: 50px;
@@ -29,6 +26,3 @@
     background-image: linear-gradient(180deg, #bd4ca1 20%, #2c51b1 100%);
 }
 
-::-webkit-scrollbar {
-    color: transparent;
-}

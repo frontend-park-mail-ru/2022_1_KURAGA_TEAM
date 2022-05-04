@@ -1,15 +1,41 @@
-@import "../../components/headMovie/headMovie";
-@import "../../components/firstInfoMovie/firstInfoMovie";
-@import "../../components/secondGende/secondGenre";
-@import "../../components/actors/actors";
-
 .photo-movie {
+  position: relative;
     display: flex;
     align-items: center;
     top: 0;
     left: 0;
     background-size: cover;
     height: 96vh;
+}
+
+.episodes {
+  margin-top: 60px;
+  margin-bottom: -20px;
+  margin-left: 4vw;
+  background: var(--back-color);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.episodes::-webkit-scrollbar {
+  display: none;
+}
+
+.first-part-info-serial{
+  margin-left: 4vw;
+  //margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  height: auto !important;
+}
+
+.series-margin{
+  margin-top: 0;
+}
+
+.series-top{
+  margin-top: 22px;
 }
 
 .photo-movie__gradient {
@@ -35,6 +61,7 @@
 .second-part-genre {
     margin-left: 4vw;
     margin-top: 40px;
+  margin-bottom: -20px;
 }
 
 .third-part-actors {
@@ -49,4 +76,8 @@
 
 .carousel-title {
     font-size: 28px !important;
+}
+
+.seasons{
+  margin-top: 0;
 }

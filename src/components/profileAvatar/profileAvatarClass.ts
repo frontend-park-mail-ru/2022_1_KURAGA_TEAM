@@ -1,4 +1,5 @@
 import profileAvatarTemplate from "./profileAvatar.pug";
+import './profileAvatar.scss'
 
 export default class ProfileAvatarClass {
     private readonly avatar: string;

@@ -1,7 +1,9 @@
 import inputsTemplate from "./inputs.pug";
 import UserModel from "../../../models/User";
-import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
-import { regExp } from "Components/inputs/utils/regExp/regExp";
+import router from "Routing/router.ts";
+import {textErrors} from "Components/inputs/utils/textErrors/textErrors";
+import {regExp} from "Components/inputs/utils/regExp/regExp";
+import '../inputs.scss'
 
 const configElement = [
     {
@@ -28,7 +30,7 @@ const configElement = [
     {
         key: "passwordSecond",
         data: "../../static/password.svg",
-        placeholder: "Повторите Пароль",
+        placeholder: "Повторите пароль",
         type: "password",
         error: "passTwoError",
     },
@@ -36,7 +38,7 @@ const configElement = [
 
 export default class InputsClass {
     render() {
-        return inputsTemplate({ items: configElement });
+        return inputsTemplate({items: configElement});
     }
 
     setHandler(): void {
@@ -72,9 +74,11 @@ export default class InputsClass {
 
         const nameValid: () => boolean = () => {
             return (
-                inputName.value.length === 1 ||
                 inputName.value.match(/<script>/) !== null ||
-                inputName.value.match(/<img/) !== null
+                inputName.value.match(/<a/) !== null ||
+                inputName.value.match(/<img/) !== null ||
+                inputName.value.match(/<img/) !== null ||
+                !(regExp.checkUsername.test(inputName.value))
             );
         };
 
@@ -146,7 +150,8 @@ export default class InputsClass {
             if (
                 regExp.checkEmail.test(inputEmail.value) &&
                 inputEmail.value.length !== 0 &&
-                inputEmail.validity.valid
+                inputEmail.validity.valid &&
+                inputEmail.value.length < 50
             ) {
                 errorEmail.classList.remove("error-active");
 
@@ -163,6 +168,13 @@ export default class InputsClass {
         inputPassOne.addEventListener("change", () => {
             if (!inputPassOne.validity.valid) {
                 passOneErrorEmpty();
+
+                return;
+            }
+
+            if (inputPassOne.value.length > 50) {
+                errorPassOne.classList.add("error-active");
+                errorPassOne.textContent = textErrors.tooLong;
 
                 return;
             }
@@ -203,7 +215,7 @@ export default class InputsClass {
             errorPassTwo.classList.remove("error-active");
         });
 
-        const validation: (e: any) => void = (e) => {
+        const validation: (e: any) => void = async (e) => {
             let check = 0;
             if (
                 !inputName.validity.valid ||
@@ -271,7 +283,29 @@ export default class InputsClass {
                     password: inputPassOne.value,
                 });
 
-                UserModel.reg(formJson);
+                const errorIncorr = document.querySelector(
+                    'div[data-section="incorrect"]'
+                );
+
+                const {isAuth, regBody} = await UserModel.reg(formJson);
+
+                const regData = await Promise.resolve(regBody);
+                if (regData.message === "ERROR: Email is not unique") {
+                    errorIncorr.classList.add("error-active");
+                    errorIncorr.classList.add("center");
+                    errorIncorr.textContent =
+                        "Такой пользователь уже существует";
+
+                    return;
+                }
+                if (!isAuth) {
+                    errorIncorr.classList.add("error-active");
+                    errorIncorr.classList.add("center");
+                    errorIncorr.textContent =
+                        "Упс... У нас что-то пошло не так!";
+                    return;
+                }
+                router.go("/");
             }
         };
 

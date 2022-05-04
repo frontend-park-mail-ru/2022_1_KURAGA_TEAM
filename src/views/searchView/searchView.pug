@@ -1,0 +1,18 @@
+div.navbar !{header}
+div.search-main
+    div.results
+        div.topic__text Результаты поиска
+        each item in search.categories
+            div.topic
+                a.font-topics.padding-names !{item.topic}
+            each res in item.results
+                div.search-topic
+                    if item.topic == "Персоны"
+                        a.font-menu-search.padding-names(href=`/person/${res.id}`) !{res.name}
+                    else
+                        a.font-menu-search.padding-names(href=`/movie/${res.id}`) !{res.name}
+                    a.genre.padding-names !{res.info}
+    div.search-back
+
+
+div !{footer}
