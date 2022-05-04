@@ -72,9 +72,11 @@ export default class FavoritesViewClass extends BaseViewClass {
                     header: header.render(),
                     select: this.compilationsRender(this.movieCompilations),
                 });
-                if (movieCompilationsData.length == 1) {
+
+                if (window.screen.width < 1000) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
                     footerImage.style.position = "absolute";
+                    footerImage.style.bottom = "0";
                 }
                 const heart: HTMLElement = document.querySelector(".empty-heart");
                 heart.style.display = "none";
