@@ -1,0 +1,37 @@
+.error-back {
+  display: flex;
+  height: 100vh;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-text {
+  margin-top: 100px;
+}
+
+.error-text__404 {
+  font-size: 90px;
+  margin-bottom: 20px;
+}
+
+.error-text__info {
+  color: var(--secondary-name);
+  font-weight: lighter;
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+.error-img {
+  width: 600px;
+  height: 414px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+}
+
+/*# sourceMappingURL=error.css.map */

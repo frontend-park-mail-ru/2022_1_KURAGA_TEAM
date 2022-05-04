@@ -1,0 +1,1521 @@
+@charset "UTF-8";
+#footer {
+  cursor: default;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  background: var(--footer-color);
+  height: 150px;
+  justify-content: space-between;
+}
+
+.left {
+  margin-left: 4vw;
+  width: 60%;
+  display: flex;
+}
+
+#second-footer {
+  margin-left: 20px;
+  display: block;
+  width: 350px;
+}
+
+#third-footer {
+  text-align: end;
+  display: block;
+  grid-area: fourth;
+}
+
+.titleFooter {
+  font-weight: lighter;
+  text-align: left;
+  color: var(--font-footer-color);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.content {
+  font-weight: lighter;
+  text-decoration: none;
+  color: var(--font-footer-color);
+  font-size: 15px;
+}
+
+.refer {
+  height: 39px;
+  width: 39px;
+  margin-top: 20px;
+  transition: transform 0.1s linear;
+}
+
+.refer:hover {
+  transform: scale(1.2);
+}
+
+.ref {
+  margin-right: 70px;
+}
+
+.menu-button {
+  font-weight: lighter;
+  font-family: GT Eesti Pro Display, arial, sans-serif;
+  color: var(--font-color);
+  font-size: 25px;
+  height: 50px;
+  margin-top: 20px;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  background: var(--btn-color);
+  mix-blend-mode: normal;
+  border-radius: 10px;
+  transition: transform 0.1s ease-out, background-color 0.15s linear;
+}
+
+.menu-button:active {
+  -webkit-transform: scale(0.94);
+  transform: scale(0.94);
+}
+
+.menu-button:hover {
+  background: var(--btn-hover-color);
+}
+
+.b-carouselTop__prev,
+.b-carouselTop__next {
+  color: transparent;
+  width: 54px;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  background-color: var(--btn-carousel-back);
+  height: 100%;
+  border: 0;
+  transform: translateY(-50%) translateZ(0);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.b-carouselTop {
+  padding-inline: 4vw;
+  height: 100%;
+  border-radius: 5px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.b-carouselTop__wrap {
+  display: flex;
+  transition: transform 0.75s ease-in-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.b-carouselTop__prev {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carouselTop__next {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: auto;
+  right: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carouselTop__prev:hover,
+.b-carouselTop__next:hover {
+  color: var(--btn-carousel-color);
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.4s ease;
+}
+
+.movieTop {
+  transform: scale(0.95);
+  margin-inline-end: 20px;
+  transition: all 0.1s ease;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 50px;
+  column-gap: 10px;
+  width: 425px;
+  height: 235px;
+  row-gap: 10px;
+  border-radius: 12px;
+  grid-template-areas: "refMov " "descMov";
+}
+
+.movieTop:hover {
+  transform: scale(1);
+}
+
+.desc-movTop {
+  cursor: default;
+  display: flex;
+  padding-inline: 5px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  font-size: 16px;
+  line-height: 19px;
+  background: var(--desc-mov-back);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  grid-area: descMov;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-evenly;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.wrap {
+  margin: 0 0 10px auto;
+  width: 100%;
+  height: 100%;
+}
+
+.b-carousel {
+  padding-inline: 4vw;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.b-carousel__prev,
+.b-carousel__next {
+  border: 0;
+  width: 54px;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  background-color: transparent;
+  height: 100%;
+  transform: translateY(-50%) translateZ(0);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 3;
+  color: transparent;
+}
+
+.b-carousel__prev {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carousel__next {
+  visibility: hidden;
+  height: 100%;
+  background-color: transparent;
+  left: auto;
+  right: 0;
+  transition: all 0.4s ease;
+}
+
+.b-carousel__prev-hover,
+.b-carousel__next-hover {
+  color: var(--btn-carousel-color);
+  width: 54px;
+  font-size: 40px;
+  background-color: var(--btn-carousel-back-hover);
+}
+
+.b-carousel__prev:hover,
+.b-carousel__next:hover {
+  color: var(--btn-carousel-color);
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.4s ease;
+}
+
+.b-carousel__wrap {
+  display: flex;
+  transition: transform 0.75s ease-in-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.b-carousel__item {
+  flex: 0 0 100%;
+  width: 1px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.b-carousel__img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie__href {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: var(--font-color);
+}
+
+.movieTop__href {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: var(--font-color);
+}
+
+.movie {
+  transform: scale(0.95);
+  margin-inline-end: 20px;
+  background-size: cover;
+  background-position-x: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 50px;
+  column-gap: 10px;
+  width: 320px;
+  height: 180px;
+  row-gap: 10px;
+  border-radius: 24px;
+  /*margin-inline-start: 0;*/
+  overflow: visible;
+  transition: all 0.2s ease;
+  grid-template-areas: "refMov " "descMov";
+}
+
+.movie:hover {
+  transform: scale(1);
+}
+
+.ref-mov {
+  grid-area: movie;
+}
+
+.desc-mov {
+  cursor: default;
+  display: flex;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
+  padding-inline: 5px;
+  border-bottom-left-radius: 21px;
+  border-bottom-right-radius: 21px;
+  font-size: 14px;
+  background: var(--desc-mov-back);
+  grid-area: descMov;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-evenly;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.genre {
+  font-weight: 350;
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--genre-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  grid-area: title;
+}
+
+.title-name {
+  font-size: 96px;
+  line-height: 111px;
+}
+
+.title-descr {
+  font-weight: 350;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+#selectMobile {
+  display: none;
+}
+
+.selection {
+  background-color: var(--back-color);
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 10px;
+  grid-template-rows: auto;
+  row-gap: 10px;
+}
+
+.select-title {
+  inline-size: max-content;
+  font-size: 28px;
+  line-height: 42px;
+  margin-inline-start: 4vw;
+  margin-block-start: 60px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.select-movies {
+  width: 1280px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  column-gap: 28px;
+  grid-template-rows: auto;
+}
+
+.like-size {
+  background-size: 36px 36px;
+  width: 36px;
+  height: 36px;
+}
+
+#cbMovie,
+#cb {
+  visibility: hidden;
+  text-align: -webkit-center;
+}
+
+#cbMovie:hover::after,
+#cb:hover::after {
+  display: block;
+  content: " ";
+  background-image: url("../static/activeLike.png");
+  background-position: center;
+}
+
+#cbMovie,
+#cb,
+#cbMovie::after,
+#cbMovie:checked::after,
+#cb::after,
+#cb:checked::after {
+  margin-left: -8px;
+  background-size: 36px 36px;
+  height: 36px;
+  width: 36px;
+}
+
+#cbMovie::after,
+#cb::after {
+  cursor: pointer;
+  transition-property: transform;
+  transition: all 0.1s ease;
+  visibility: visible;
+  display: block;
+  content: " ";
+  background-image: url("../static/heart.png");
+}
+
+#cbMovie:checked::after,
+#cb:checked::after {
+  transform: scale(1.2);
+  display: block;
+  content: " ";
+  background-image: url("../static/activeLike.png");
+  background-position: center;
+  /*background-size: 36px 36px;*/
+  /*height: 36px;*/
+  /*width: 36px;*/
+}
+
+#like {
+  display: block;
+}
+
+#like-active {
+  display: none;
+}
+
+.menu-form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.error {
+  font-family: "GT Eesti Pro Display", arial, sans-serif;
+  display: block;
+  opacity: 0;
+  font-size: 18px;
+  color: var(--font-error-color);
+  padding-top: 2px;
+  height: 30px;
+  transition: all 0.1s linear;
+}
+
+.error-active {
+  opacity: 1;
+}
+
+.center {
+  text-align: center;
+}
+
+.element {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background: var(--input-back);
+  backdrop-filter: blur(60px);
+  border-radius: 10px;
+}
+
+.success {
+  color: green;
+}
+
+.not-success {
+  color: var(--font-error-color);
+}
+
+.svg {
+  margin: 8px 20px 10px 10px;
+  width: 32px;
+  height: 32px;
+}
+
+.menu-input::placeholder {
+  color: var(--font-color);
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.menu-input {
+  font-size: 20px;
+  color: var(--font-color);
+  outline: none;
+  padding: 0 20px 0 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 0 10px 10px 0;
+  width: 89.5%;
+  height: 100%;
+}
+
+.papa {
+  height: 85px;
+}
+
+@media (min-width: 1450px) and (max-width: 1600px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+  #menu {
+    width: 500px;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ*/
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .formSearch {
+    flex-grow: 2;
+  }
+
+  .movieTop {
+    width: calc(5vw + 405px);
+    height: calc(5vh + 235px);
+  }
+
+  .movie {
+    grid-template-rows: auto calc(1vh + 50px);
+    width: calc(5vw + 300px);
+    height: calc(5vh + 180px);
+  }
+}
+@media (min-width: 1000px) and (max-width: 1450px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+  .error-text__404 {
+    text-align: center;
+    font-size: 70px;
+  }
+
+  .error-text__info {
+    font-size: 22px;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+  .error {
+    font-size: 14px;
+  }
+
+  .papa {
+    height: 70px;
+  }
+
+  .element {
+    height: 40px;
+  }
+
+  .svg {
+    height: 26px;
+    width: 26px;
+  }
+
+  .menu-input::placeholder {
+    font-size: 16px;
+  }
+
+  .menu-input {
+    font-size: 16px;
+  }
+
+  .menu-button {
+    font-size: 22px;
+    margin-top: 20px;
+    height: 40px;
+  }
+
+  .first-span {
+    font-size: 20px;
+  }
+
+  .second-span {
+    font-size: 20px;
+  }
+
+  #menu {
+    padding-top: 50px;
+    padding-bottom: 40px;
+    width: 500px;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .menu-profile {
+    width: 800px;
+  }
+
+  .profile-avatar {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1250px) {
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+  .photo-movie {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 67vw;
+  }
+
+  .photo-movie__gradient {
+    position: absolute;
+    top: 0;
+    height: 67vw;
+  }
+
+  .head-movie__name {
+    margin-bottom: 0;
+    width: 470px;
+  }
+
+  .first-part-info {
+    margin-top: 0;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
+  .novideo__text {
+    margin-left: 30px;
+    font-size: 60px;
+  }
+}
+@media (max-width: 1000px) {
+  ::-webkit-scrollbar {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+  .error-img {
+    width: 535px;
+    height: 392px;
+  }
+
+  .error-text__404 {
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .error-text__info {
+    font-size: 18px;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
+  .novideo__text {
+    margin-left: 30px;
+    font-size: 50px;
+  }
+
+  .novideo__img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .novideo {
+    left: 13vw;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+  #back {
+    height: calc(100vh + 80px);
+  }
+
+  .logo {
+    width: 136px;
+    height: 80px;
+    left: 10px;
+  }
+
+  #menu {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 85%;
+    max-width: 600px;
+  }
+
+  .menu-h1 {
+    font-size: 30px;
+  }
+
+  .text {
+    font-size: 20px;
+  }
+
+  .error {
+    font-size: 14px;
+  }
+
+  .papa {
+    height: 70px;
+  }
+
+  .element {
+    height: 40px;
+  }
+
+  .svg {
+    height: 26px;
+    width: 26px;
+  }
+
+  .menu-input::placeholder {
+    font-size: 16px;
+  }
+
+  .menu-input {
+    font-size: 16px;
+  }
+
+  .menu-button {
+    font-size: 22px;
+    margin-top: 20px;
+    height: 40px;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .profile-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-avatar__input-button {
+    height: 39px;
+  }
+
+  .menu-profile {
+    padding-top: 30px;
+    width: 85%;
+  }
+
+  .menu-form-avatar {
+    margin-right: 70px;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ХЕДЕРА*/
+  .header {
+    background-position-x: center;
+    height: 100%;
+  }
+
+  .font-nav {
+    padding-inline: 0;
+  }
+
+  .photo-person__gradient {
+    padding-top: 0;
+    background: none;
+    height: 60%;
+  }
+
+  .div-logo {
+    height: 80px;
+  }
+
+  .desktop-navbar {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .space {
+    display: none;
+  }
+
+  .logo-home {
+    padding-inline-start: 0;
+    height: 50px;
+  }
+
+  .profile-block {
+    margin-inline-end: 4vw;
+  }
+
+  .btn-profile {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dropdown-content a {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .dropdown-content {
+    width: 30vw;
+    text-align: end;
+  }
+
+  .dropdown {
+    justify-content: flex-end;
+  }
+
+  .name-profile-mobile {
+    font-size: 18px;
+    display: block;
+    color: var(--mix-color);
+    padding: 10px 10px 10px 10px;
+  }
+
+  .name-profile {
+    display: none;
+  }
+
+  /* для main movie*/
+  .main-movie__name {
+    height: 60px;
+  }
+
+  .main-movie {
+    height: auto;
+    justify-content: center;
+  }
+
+  .sidebar {
+    margin: 4vw;
+    align-content: center;
+    width: 100%;
+    border-radius: 32px;
+    display: grid;
+    column-gap: 10px;
+    grid-template-rows: auto;
+    grid-template-areas: "title title" "btn btnInfo";
+  }
+
+  .title-descr {
+    margin-top: 10px;
+    line-height: 22px;
+    font-size: 25px;
+  }
+
+  .btn,
+.btn-info {
+    padding: 2px 9px;
+    font-size: 16px;
+  }
+
+  /*карусель*/
+  .b-carousel {
+    padding-inline: 0;
+  }
+
+  .movieTop:hover,
+.movieTop {
+    transform: scale(1);
+    margin-inline-end: 0;
+    margin-inline: 1vw;
+    background-position-x: center;
+  }
+
+  .movie,
+.movie:hover {
+    transform: scale(0.95);
+  }
+
+  #cbMovie:hover::after,
+#cb:hover::after {
+    background-image: url("../static/heart.png");
+  }
+
+  #cbMovie:checked::after,
+#cb:checked::after {
+    background-image: url("../static/activeLike.png");
+  }
+
+  .first {
+    margin-top: -50px;
+  }
+
+  .b-carouselTop__prev,
+.b-carouselTop__next,
+.b-carousel__next,
+.b-carousel__prev {
+    display: none;
+  }
+
+  .b-carouselTop__wrap,
+.b-carousel__wrap {
+    overflow-x: scroll;
+  }
+
+  #selectMobile {
+    display: block;
+  }
+
+  #select {
+    display: none;
+  }
+
+  .movie {
+    margin: 4px;
+    width: 212px;
+    height: 140px;
+    border-radius: 8px;
+    grid-template-rows: auto 55px;
+  }
+
+  .desc-mov {
+    justify-content: center;
+    /*width: 100%;*/
+    padding-inline: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 12px;
+  }
+
+  .desc-movTop {
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 16px;
+  }
+
+  .movie__href {
+    width: 118px;
+  }
+
+  .genre {
+    font-size: 12px;
+  }
+}
+@media (max-width: 375px) {
+  .genre,
+.desc-mov {
+    font-size: 10px;
+  }
+
+  #cb,
+#cb::after,
+#cb:checked::after {
+    margin-inline: -2px;
+    background-size: 28px 28px;
+    height: 28px;
+    width: 28px;
+  }
+}
+@media (max-width: 700px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .select-title {
+    margin-inline-start: 4vw;
+    font-size: 26px;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+  .error-text__404 {
+    margin-right: 15px;
+    padding-left: 10px;
+    font-size: 45px;
+  }
+
+  .error-text {
+    margin-top: 50px;
+  }
+
+  .error-text__info {
+    text-align: center;
+    margin-right: 15px;
+    padding-left: 15px;
+    font-size: 16px;
+  }
+
+  .error-img {
+    width: 232px;
+    height: 183px;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ЛОГИНА И РЕГИСТРАЦИЯ*/
+  .div-logo {
+    height: 60px;
+  }
+
+  .papa {
+    height: 65px;
+  }
+
+  .element {
+    height: 35px;
+  }
+
+  .menu-input {
+    font-size: 16px;
+  }
+
+  .menu-input::placeholder {
+    font-size: 14px;
+  }
+
+  .svg {
+    margin: 5px 20px 5px 5px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .menu-button {
+    font-size: 18px;
+    height: 40px;
+    margin-top: 5px;
+  }
+
+  .error {
+    font-size: 14px;
+    padding-top: 1px;
+  }
+
+  .logo {
+    top: 10px;
+    width: 120px;
+    height: 60px;
+  }
+
+  .text {
+    margin-top: 5px;
+  }
+
+  .first-span {
+    font-size: 16px;
+  }
+
+  .second-span {
+    font-size: 16px;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ФУТЕРА*/
+  .titleFooter {
+    font-size: 20px;
+  }
+
+  #footer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    margin-left: 4vw;
+    flex-direction: column;
+  }
+
+  #second-footer {
+    margin-left: 0;
+  }
+
+  #third-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .ref {
+    margin-right: 30px;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .profile-avatar {
+    width: 130px;
+    height: 130px;
+  }
+
+  .profile-avatar__input-button {
+    font-size: 16px;
+    width: 150px;
+  }
+
+  .menu-form__profile {
+    flex-direction: column;
+  }
+
+  .menu-form-avatar {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .navbar {
+    height: 22%;
+    transition: none;
+    position: sticky !important;
+    justify-content: space-between;
+  }
+
+  .back-profile {
+    height: 130vh;
+  }
+
+  .back-menu-profile {
+    height: 124vh;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+  .exit {
+    margin-left: 26px;
+    padding-top: 9vmin;
+  }
+
+  .controls__button {
+    width: 214px;
+  }
+
+  .progress-controls {
+    width: 95%;
+  }
+
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+    height: 300px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -50vw;
+    position: absolute;
+    margin-left: 0;
+  }
+
+  .head-movie__name {
+    margin-left: 0;
+    width: 150px;
+    height: 58px;
+    margin-bottom: 30px;
+  }
+
+  .head-movie__rating {
+    margin-left: 0;
+    width: 70%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .string-rating {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .head-movie__info {
+    margin-left: 2vw;
+    margin-bottom: 40px;
+  }
+
+  .short-info {
+    font-size: 14px;
+    margin-right: 1px;
+  }
+
+  .info__year {
+    padding-right: 7px;
+  }
+
+  .info__genre {
+    margin-right: 8px;
+  }
+
+  .info__country {
+    margin-right: 8px;
+  }
+
+  .info__duration {
+    margin-right: 8px;
+  }
+
+  .photo-movie__gradient {
+    display: none;
+  }
+
+  .head-movie__buttons {
+    width: 90%;
+  }
+
+  .play-button {
+    font-size: 14px;
+    width: 130px;
+  }
+
+  .trailer-button {
+    width: 130px;
+    font-size: 14px;
+  }
+
+  .first-part-info {
+    margin-top: 260px;
+    margin-left: 4vw;
+  }
+
+  .first-part-info__text {
+    padding-right: 4vw;
+    max-width: fit-content;
+    font-size: 14px;
+  }
+
+  .second-part-genre {
+    font-size: 26px;
+    margin-left: 4vw;
+  }
+
+  .second-part-genre__genres {
+    font-size: 18px;
+  }
+
+  .group {
+    font-size: 26px;
+  }
+
+  .third-part-actors {
+    margin-left: 4vw;
+  }
+
+  .group__staff {
+    overflow: scroll;
+    width: 100%;
+  }
+
+  .person__photo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .person__position {
+    font-size: 18px;
+  }
+
+  .person__name {
+    font-size: 18px;
+  }
+
+  .group__staff::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    background: var(--back-color);
+  }
+
+  .first-part-info__our-rating {
+    font-size: 62px;
+  }
+
+  .first-part-info__our-name {
+    font-size: 18px;
+  }
+
+  .first-part-info__our-name-rt {
+    font-size: 18px;
+  }
+
+  .your-rating__button {
+    width: 90%;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПЛЕЕРА */
+  .novideo__text {
+    margin-left: 20px;
+    font-size: 40px;
+  }
+
+  .novideo__img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .novideo {
+    left: 12vw;
+  }
+
+  .controls {
+    display: block;
+    width: auto;
+  }
+
+  .series__text {
+    display: none;
+  }
+
+  .rewind {
+    display: none;
+  }
+
+  .forward {
+    display: none;
+  }
+
+  .volume {
+    display: none;
+  }
+
+  .series {
+    display: none;
+  }
+
+  .full {
+    display: none;
+  }
+
+  /* страница актера*/
+  .photo-person {
+    margin-bottom: 300px;
+    box-shadow: 0 -108px 35px #01090b inset;
+    height: 300px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .head-person {
+    height: auto;
+    align-content: center;
+    justify-content: flex-end;
+    margin: 160px auto auto 4vw;
+  }
+
+  .head-person__name {
+    font-size: 32px;
+  }
+
+  .head-person__descr {
+    width: fit-content;
+    font-weight: 500;
+    margin-block: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 20px 14vw 20px 0;
+  }
+
+  .add-photos__photo {
+    width: calc(6vw + 120px);
+    height: calc(6vh + 80px);
+  }
+}
+@media (max-height: 450px) {
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ РЕГИСТРАЦИИ и ЛОГИНА*/
+  #back {
+    height: 100vw;
+  }
+
+  #back-menu {
+    height: 100vw;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .navbar {
+    height: 22%;
+    transition: none;
+    position: sticky !important;
+    justify-content: space-between;
+  }
+
+  .back-profile {
+    height: 160vh;
+  }
+
+  .back-menu-profile {
+    height: 160vh;
+  }
+
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ПРОФИЛЯ*/
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -50vw;
+    position: absolute;
+    margin-left: 0;
+  }
+
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+  }
+
+  .first-part-info {
+    margin-top: 400px;
+  }
+
+  .head-movie__rating {
+    width: 40%;
+    justify-content: space-between;
+  }
+
+  .string-rating {
+    margin-right: 0;
+  }
+
+  .head-movie__name {
+    width: 380px;
+  }
+
+  .head-movie__buttons {
+    width: 70%;
+  }
+}
+@media (min-width: 1600px) and (max-width: 1800px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .movie {
+    grid-template-rows: auto calc(1vh + 50px);
+    width: calc(6vw + 300px);
+    height: calc(6vh + 180px);
+  }
+
+  .movieTop {
+    width: calc(6vw + 422px);
+    height: calc(6vh + 240px);
+  }
+
+  .movieTop {
+    grid-template-rows: auto calc(1vw + 50px);
+  }
+}
+@media (min-width: 1800px) and (max-width: 2800px) {
+  .main-movie {
+    justify-content: center;
+  }
+
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .movie {
+    grid-template-rows: auto calc(3vh + 40px);
+    width: calc(12vw + 300px);
+    height: calc(12vh + 180px);
+  }
+
+  .movieTop {
+    width: calc(15vw + 422px);
+    height: calc(10vh + 240px);
+  }
+
+  .movieTop {
+    grid-template-rows: auto calc(1vw + 40px);
+  }
+
+  .desc-mov,
+.desc-movTop {
+    font-size: 20px;
+  }
+
+  .genre {
+    font-size: 18px;
+  }
+}
+@media (min-width: 2800px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .movie {
+    height: calc(15vh + 180px);
+    grid-template-rows: auto calc(3vh + 40px);
+    width: calc(15vw + 300px);
+  }
+
+  .main-movie {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .movieTop {
+    width: calc(15vw + 422px);
+    height: calc(10vh + 240px);
+  }
+
+  .movieTop {
+    grid-template-rows: auto calc(1vw + 40px);
+  }
+}
+@media (min-width: 1450px) and (max-width: 1800px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
+  .sidebar {
+    width: calc(1vw + 582px);
+  }
+
+  .btn,
+.btn-info {
+    margin-inline: auto;
+    font-size: calc(1vh + 20px);
+  }
+
+  .title-name {
+    font-size: calc(1vw + 60px);
+  }
+
+  .title-descr {
+    font-size: calc(1vw + 20px);
+  }
+
+  .desc-mov,
+.desc-movTop,
+.genre {
+    font-size: calc(1vw + 0px);
+  }
+
+  #cb,
+#cb::after,
+#cb:checked::after {
+    background-size: calc(1vw + 30px) calc(1vw + 30px);
+    height: calc(1vw + 30px);
+    width: calc(1vw + 30px);
+  }
+}
+
+/*# sourceMappingURL=media.css.map */
