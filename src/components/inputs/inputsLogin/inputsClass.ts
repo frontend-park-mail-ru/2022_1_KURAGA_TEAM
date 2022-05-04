@@ -1,7 +1,9 @@
 import inputsTemplate from "../inputsReg/inputs.pug";
 import UserModel from "../../../models/User";
 import { regExp } from "Components/inputs/utils/regExp/regExp";
+import router from "Routing/router.ts";
 import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
+import '../inputs.scss'
 
 const configElement = [
     {
@@ -97,7 +99,7 @@ export default class InputsClass {
             errorPassword.classList.remove("error-active");
         });
 
-        const validation = (e) => {
+        const validation = async (e) => {
             let check = 0;
             if (!inputEmail.validity.valid) {
                 check++;
@@ -125,7 +127,19 @@ export default class InputsClass {
                     password: inputPassword.value,
                 });
 
-                UserModel.log(formJson);
+                const errorIncorr = document.querySelector(
+                    'div[data-section="incorrect"]'
+                );
+                const {isAuth} = await UserModel.log(formJson);
+
+                if (!isAuth) {
+                    errorIncorr.classList.add("error-active");
+                    errorIncorr.classList.add("center");
+                    errorIncorr.textContent = "Неверный логин или пароль";
+
+                    return;
+                }
+                router.go("/");
             }
         };
 

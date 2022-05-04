@@ -5,26 +5,27 @@ import FooterClass from "Components/footer/footerClass";
 import handlerLink from "Utils/handlerLink";
 import router from "Routing/router";
 import BaseViewClass from "../baseView/baseViewClass";
-import { routes } from "Routing/constRouting";
+import {routes} from "Routing/constRouting";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserModel from "../../models/User";
 import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
+import MovieCompilationView from "../movieCompilationView/movieCompilationView"
+import UserLikeView from "../userLikeView/userLikeView"
 import "../../css/home.scss";
-import { User } from "../../types";
+import {User} from "../../types";
 
 export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
     private mainMovie: MovieModel;
     private movieCompilations: Array<MovieCompilationModel>;
-    private movieCompilationsMobile: Array<MovieCompilationModel>;
 
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody } = await UserModel.auth();
+            const {isAuth, userBody} = await UserModel.auth();
 
             if (!isAuth) {
                 router.go(routes.LOGIN_VIEW);
@@ -33,12 +34,11 @@ export default class HomeViewClass extends BaseViewClass {
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
-            const { movBody }: { movBody?: Promise<any> } =
-                await MovieModel.mainMov();
+            const {movBody}: { movBody?: Promise<any> } = await MovieModel.mainMov();
             const mainMovieData = await Promise.resolve(movBody);
             this.mainMovie = new MovieModel(mainMovieData);
 
-            const { movCompBody }: { movCompBody?: Promise<any> } =
+            const {movCompBody}: { movCompBody?: Promise<any> } =
                 await MovieCompilationModel.getMovieCompilations();
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
@@ -47,13 +47,10 @@ export default class HomeViewClass extends BaseViewClass {
                     new MovieCompilationModel(
                         index,
                         movieCompilationData,
-                        false
                     )
             );
-            this.movieCompilationsMobile = movieCompilationsData.map(
-                (movieCompilationData, index) =>
-                    new MovieCompilationModel(index, movieCompilationData, true)
-            );
+
+            this.user = new UserModel(userData.user);
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
@@ -64,24 +61,25 @@ export default class HomeViewClass extends BaseViewClass {
                 header: header.render(),
                 mainMovie: mainMovie.render(),
                 select: this.compilationsRender(this.movieCompilations),
-                selectMobile: this.compilationsRender(
-                    this.movieCompilationsMobile
-                ),
                 footer: footer.render(),
             });
 
             handlerLink();
             this.setHandler();
-
             header.setHandler();
+
+            const {likesBody}  = await UserModel.getLikes()
+            const likesData = await Promise.resolve(likesBody);
+
+            UserLikeView.setAllLikes(likesData.favorites.id);
+            UserLikeView.setHandler();
+
             this.movieCompilations.forEach((carousel) => {
-                carousel.setHandler();
+                MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
-            this.movieCompilationsMobile.forEach((carousel) => {
-                carousel.setHandler();
-            });
-        } catch (err) {
-            console.error(err);
+        } catch(err) {
+            console.log(err);
+            //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 
@@ -89,7 +87,6 @@ export default class HomeViewClass extends BaseViewClass {
         const homeNavbarMobile = document.querySelector(".homeMobile-js");
         const homeNavbar = document.querySelector(".home-js");
         const nameProfile = document.querySelector(".name-profile-mobile");
-
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");
@@ -102,14 +99,14 @@ export default class HomeViewClass extends BaseViewClass {
             switch (index) {
                 case 0:
                     carouselBlock =
-                        '<div class = "first">' + carousel.render() + "</div>";
+                        '<div class = "first">' + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
                     break;
                 case movieCompilations.length - 1:
                     carouselBlock =
-                        '<div class = "last">' + carousel.render() + "</div>";
+                        '<div class = "last">' + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
                     break;
                 default:
-                    carouselBlock = "<div>" + carousel.render() + "</div>";
+                    carouselBlock = "<div>" + MovieCompilationView.render(carousel.movieCompilationData) + "</div>";
             }
             select += carouselBlock;
         });
