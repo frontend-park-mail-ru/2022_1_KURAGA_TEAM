@@ -50,7 +50,7 @@ export default class MovieCompilationView {
     }
 
     static setHandler(data:MovieCompilationData): void {
-        const wrap = document.querySelector(`.js-carousel${data.id}`);
+        const wrap = document.querySelector(`.js-carousel${data.id}__wrap`);
 
         const buttonCarouselPrev = document.querySelector(
             `.js-carousel${data.id}__prev`
