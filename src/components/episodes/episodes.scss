@@ -10,9 +10,7 @@
 }
 
 .episodes__div::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-  background: var(--trailer-button-hover);
+  display: none;
 }
 
 .episodes__season {

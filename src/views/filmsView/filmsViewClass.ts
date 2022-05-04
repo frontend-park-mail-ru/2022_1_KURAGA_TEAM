@@ -62,45 +62,51 @@ export default class FilmsViewClass extends BaseViewClass {
     }
 
     setHandler(currentOffset: number) {
-        const filmsNavbar: HTMLAnchorElement =
-            document.querySelector(".font-nav.movie-js");
+        const filmsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.movie-js");
+        const filmsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.movie-js");
 
         filmsNavbar.style.backgroundColor = "#2C51B1";
         filmsNavbar.style.webkitBackgroundClip = "text";
         filmsNavbar.style.webkitTextFillColor = "transparent";
-        filmsNavbar.style.backgroundImage =
-            "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        filmsNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
-        const loader: HTMLDivElement = document.querySelector('.loader');
-        const list: HTMLDivElement = document.querySelector('.all-list');
+        filmsMobileNavbar.style.backgroundColor = "#2C51B1";
+        filmsMobileNavbar.style.webkitBackgroundClip = "text";
+        filmsMobileNavbar.style.webkitTextFillColor = "transparent";
+        filmsMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
-        window.addEventListener('scroll', async () => {
-            const {
-                scrollTop,
-                scrollHeight,
-                clientHeight
-            } = document.documentElement;
+        // TODO СДЕЛАТЬ ПАДДИНГ
 
-            if (scrollTop + clientHeight >= scrollHeight - 5) {
-                currentOffset += 30;
+        // const loader: HTMLDivElement = document.querySelector('.loader');
+        // const list: HTMLDivElement = document.querySelector('.all-list');
 
-                // TODO ЧТО-ТО С ЛОАДЕРОМ
-
-                try {
-                    const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
-                    const movieCompilationsData = await Promise.resolve(movCompBody);
-
-                    this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
-
-                    const listFilms = new ListFilmsClass(this.movieCompilation);
-
-                    // TODO ЧТО-ТО С ЛОАДЕРОМ
-
-                    list.innerHTML += listFilms.render();
-                } catch {
-
-                }
-            }
-        });
+        // window.addEventListener('scroll', async () => {
+        //     const {
+        //         scrollTop,
+        //         scrollHeight,
+        //         clientHeight
+        //     } = document.documentElement;
+        //
+        //     if (scrollTop + clientHeight >= scrollHeight - 5) {
+        //         currentOffset += 30;
+        //
+        //         // TODO ЧТО-ТО С ЛОАДЕРОМ
+        //
+        //         try {
+        //             const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
+        //             const movieCompilationsData = await Promise.resolve(movCompBody);
+        //
+        //             this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
+        //
+        //             const listFilms = new ListFilmsClass(this.movieCompilation);
+        //
+        //             // TODO ЧТО-ТО С ЛОАДЕРОМ
+        //
+        //             list.innerHTML += listFilms.render();
+        //         } catch {
+        //
+        //         }
+        //     }
+        // });
     }
 }

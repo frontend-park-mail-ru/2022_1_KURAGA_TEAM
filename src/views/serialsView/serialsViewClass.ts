@@ -63,13 +63,17 @@ export default class SerialsViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
-        const filmsNavbar: HTMLAnchorElement =
-            document.querySelector(".font-nav.serials-js");
+        const serialsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.serials-js");
+        const serialsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.serials-js");
 
-        filmsNavbar.style.backgroundColor = "#2C51B1";
-        filmsNavbar.style.webkitBackgroundClip = "text";
-        filmsNavbar.style.webkitTextFillColor = "transparent";
-        filmsNavbar.style.backgroundImage =
-            "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        serialsNavbar.style.backgroundColor = "#2C51B1";
+        serialsNavbar.style.webkitBackgroundClip = "text";
+        serialsNavbar.style.webkitTextFillColor = "transparent";
+        serialsNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+
+        serialsMobileNavbar.style.backgroundColor = "#2C51B1";
+        serialsMobileNavbar.style.webkitBackgroundClip = "text";
+        serialsMobileNavbar.style.webkitTextFillColor = "transparent";
+        serialsMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
     }
 }
