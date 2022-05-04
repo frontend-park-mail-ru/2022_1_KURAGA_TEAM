@@ -131,9 +131,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 console.log(like.id.split('_').pop());
                 const movie = document.getElementById(id);
                 movie.style.display = "none";
-                const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                footerImage.style.position = "absolute";
-                footerImage.style.bottom = "0";
+                
                 let formJson = JSON.stringify({
                     id: Number(id),
                 });
