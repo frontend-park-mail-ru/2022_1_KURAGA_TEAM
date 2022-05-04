@@ -140,8 +140,9 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
 
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 

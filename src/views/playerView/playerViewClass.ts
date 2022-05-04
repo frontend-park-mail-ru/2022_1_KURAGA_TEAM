@@ -100,7 +100,6 @@ export default class PlayerViewClass extends BaseViewClass {
 
         if (window.screen.width <= 700) {
             video.addEventListener('play', () => {
-                console.log(1);
                 if (video.paused) {
                     play.style.display = "none";
                     pause.style.display = "";

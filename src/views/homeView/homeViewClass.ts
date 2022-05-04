@@ -31,6 +31,7 @@ export default class HomeViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+
             const userData: User = await Promise.resolve(userBody);
             this.user = new UserModel(userData.user);
 
