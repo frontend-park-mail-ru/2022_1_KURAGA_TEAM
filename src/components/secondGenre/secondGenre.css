@@ -1,0 +1,35 @@
+.second-part-genre__genre {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.second-part-genre__genres {
+  width: fit-content;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: lighter;
+  padding-bottom: 6px;
+}
+
+.second-part-genre__genres:hover {
+  text-decoration: underline;
+}
+
+.second-part-genre__genres {
+  color: white;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.second-part-genre__div {
+  display: flex;
+  flex-direction: row;
+}
+
+.second-part-genre__div .second-part-genre__genres:not(:last-child):after {
+  content: ", ";
+}
+
+/*# sourceMappingURL=secondGenre.css.map */

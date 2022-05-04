@@ -5,6 +5,7 @@ import { routes } from "Routing/constRouting";
 import { regExp } from "Components/inputs/utils/regExp/regExp";
 import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
 import { Info } from "../../../types";
+import '../inputs.scss'
 
 const configElement = [
     {
@@ -101,7 +102,6 @@ export default class InputsProfileClass {
             document.querySelector(".btn-profile");
 
         const nameValid = () => {
-            console.log(inputName.value);
             return (
                 inputName.value.match(/<script>/) !== null ||
                 inputName.value.match(/<a/) !== null ||

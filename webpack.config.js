@@ -9,6 +9,9 @@ module.exports = {
     performance: {
         hints: false,
     },
+    optimization: {
+        minimize: false,
+    },
     module: {
         rules: [
             {
@@ -84,4 +87,5 @@ module.exports = {
         static: path.resolve(__dirname, 'src'),
         port: 8080,
     },
+
 };

@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.exit-btn {
+  width: 360px;
+  margin-top: 50px;
+}
+
 .error-text {
   margin-top: 100px;
 }

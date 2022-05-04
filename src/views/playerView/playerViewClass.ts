@@ -30,15 +30,39 @@ export default class PlayerViewClass extends BaseViewClass {
             }
             this.movie = new MovieModel(movData);
 
-            let video = this.movie.video;
-            if (check !== -1) {
-                video = this.movie.trailer;
-            }
+            let video = this.movie.trailer;
+            if (check === -1) {
+                if (!this.movie.movieData.is_movie) {
+                    const arrPath = window.location.pathname.split('/');
+                    const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
+                    const numberEpis = +/\d+/.exec(arrPath[4]) - 1;
 
-            super.render(playerTemplate, {
-                id: this.movie.id,
-                video,
-            });
+                    video = this.movie.data.season[numberSeas].episodes[numberEpis].video
+                    super.render(playerTemplate, {
+                        trailer: false,
+                        id: this.movie.id,
+                        video,
+                        episodes: this.movie.data.season[numberSeas].episodes,
+                        season: numberSeas + 1,
+                        episode: numberEpis + 1,
+                    });
+                } else {
+                    video = this.movie.video;
+
+                    super.render(playerTemplate, {
+                        trailer: false,
+                        is_movie: this.movie.movieData.is_movie,
+                        id: this.movie.id,
+                        video,
+                    });
+                }
+            } else {
+                super.render(playerTemplate, {
+                    trailer: true,
+                    id: this.movie.id,
+                    video,
+                });
+            }
 
             handlerLink();
             this.setHandler();
@@ -48,9 +72,20 @@ export default class PlayerViewClass extends BaseViewClass {
     }
 
     setHandler() {
+        const series: HTMLButtonElement = document.querySelector('.series');
+        series.style.display = 'none';
+
+        if (!window.location.pathname.match(/trailer/) && !this.movie.data.is_movie) {
+            series.style.display = '';
+        }
+
+        const seriesPopUp: HTMLDivElement = document.querySelector('.series__popUp');
+
         const videoContainer = document.querySelector(".video-container");
         const video: HTMLVideoElement = document.querySelector(".player");
         video.play();
+
+
 
         const noVideo: HTMLDivElement = document.querySelector(".novideo");
 
@@ -213,13 +248,11 @@ export default class PlayerViewClass extends BaseViewClass {
             displayControls();
         });
 
-        document.addEventListener("pointermove", () => {
-            displayControls();
-        });
+        document.addEventListener("pointermove", displayControls);
 
-        document.addEventListener("touchend", () => {
-            displayControls();
-        });
+        document.addEventListener("touchend", displayControls);
+
+        seriesPopUp.addEventListener("scroll", displayControls);
 
         playPauseButton.addEventListener("click", playPause);
 
@@ -292,7 +325,7 @@ export default class PlayerViewClass extends BaseViewClass {
             video.muted = !video.muted;
         });
 
-        fullScreenButton.addEventListener("click", () => {
+        const fullScreenChange = () => {
             if (!document.fullscreenElement) {
                 videoContainer.requestFullscreen();
 
@@ -300,6 +333,9 @@ export default class PlayerViewClass extends BaseViewClass {
             }
 
             document.exitFullscreen();
-        });
+        }
+
+        fullScreenButton.addEventListener("click", fullScreenChange);
+        document.addEventListener("dblclick", fullScreenChange);
     }
 }

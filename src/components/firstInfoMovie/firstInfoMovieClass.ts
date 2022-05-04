@@ -1,4 +1,5 @@
 import firstInfoMovie from "./firstInfoMovie.pug";
+import './firstInfoMovie.scss'
 
 export default class FirstInfoMovieClass {
     private readonly rating: number;
