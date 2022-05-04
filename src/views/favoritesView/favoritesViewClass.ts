@@ -131,7 +131,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 console.log(like.id.split('_').pop());
                 const movie = document.getElementById(id);
                 movie.style.display = "none";
-                
+
                 let formJson = JSON.stringify({
                     id: Number(id),
                 });
