@@ -85,14 +85,14 @@ export default class MovieViewClass extends BaseViewClass {
                 headMovie: headMovie.render(),
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
-                select: this.compilationsRender(this.movieCompilation),
                 footer: footer.render(),
             }
             if (this.movie.movieData.staff == null ) {
 
                 if (this.movie.movieData.is_movie || this.seasonsCompilation == null ) {
                     super.render(movieViewTemplate, {
-                        ...common
+                        ...common,
+                        select: this.compilationsRender(this.movieCompilation),
                     });
                 } else {
                         const episodes = new EpisodesClass(this.seasonsCompilation.length);
@@ -108,6 +108,7 @@ export default class MovieViewClass extends BaseViewClass {
                 if (this.movie.movieData.is_movie) {
                     super.render(movieViewTemplate, {
                         ...common,
+                        select: this.compilationsRender(this.movieCompilation),
                         actors: actors.render(),
 
                     });
@@ -115,6 +116,7 @@ export default class MovieViewClass extends BaseViewClass {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
                     super.render(movieViewTemplate, {
                         ...common,
+                        select: this.compilationsRender(this.movieCompilation),
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
                         actors: actors.render(),
