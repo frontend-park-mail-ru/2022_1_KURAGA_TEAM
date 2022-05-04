@@ -27,10 +27,26 @@
 }
 
 .font-empty {
+  display: flex;
   margin-left: 4vw;
   font-size: calc(1vw + 8px);
   color: var(--font-first-span-color);
   font-style: normal;
   font-weight: 300;
   text-shadow: 0 4px 4px var(--nav-font-shadow);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.empty-heart{
+  margin-inline-start: 20px;
+  width: 50px;
+  height: 50px;
+  transition: all 1s ease;
+}
+.empty-heart:hover{
+  filter: blur(20px);
+  transform: scale(1.2);
 }

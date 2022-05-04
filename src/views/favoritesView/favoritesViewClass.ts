@@ -41,15 +41,16 @@ export default class FavoritesViewClass extends BaseViewClass {
             const movieCompilationsData = await Promise.resolve(movCompBody);
 
 
-            if(isEmptyMovies(movieCompilationsData)){
-                const empty = "Каталог пуст";
+            if (isEmptyMovies(movieCompilationsData)) {
+                const empty = "Ваш каталог пустой";
                 super.render(homeViewTemplate, {
                     header: header.render(),
                     empty: empty
                 });
-                const footerImage:HTMLElement = document.querySelector(".footer-poster");
-                footerImage.style.position = "absolute";
+
+                const footerImage: HTMLElement = document.querySelector(".footer-poster");
                 footerImage.style.bottom = "0";
+                footerImage.style.position = "absolute";
             } else {
 
                 movieCompilationsData.forEach((i, id) => {
@@ -71,6 +72,12 @@ export default class FavoritesViewClass extends BaseViewClass {
                     header: header.render(),
                     select: this.compilationsRender(this.movieCompilations),
                 });
+                if (movieCompilationsData.length == 1) {
+                    const footerImage: HTMLElement = document.querySelector(".footer-poster");
+                    footerImage.style.position = "absolute";
+                }
+                const heart: HTMLElement = document.querySelector(".empty-heart");
+                heart.style.display = "none";
                 this.movieCompilations.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
@@ -87,7 +94,6 @@ export default class FavoritesViewClass extends BaseViewClass {
             //this.user.setHandler();
             this.setHandler();
             header.setHandler();
-
 
 
             // const selectTopicAll = document.querySelectorAll(".select-title-all");
@@ -114,15 +120,15 @@ export default class FavoritesViewClass extends BaseViewClass {
         favouriteMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
     }
 
-    deleteLikes(){
+    deleteLikes() {
         const likes = document.querySelectorAll(".like.active-like");
-        likes.forEach(like=>{
+        likes.forEach(like => {
             like.addEventListener("click", (e) => {
                 const id = like.id.split('_').pop();
 
                 console.log(like.id.split('_').pop());
                 const movie = document.getElementById(id);
-                movie.style.opacity = "0";
+                movie.style.display = "none";
                 let formJson = JSON.stringify({
                     id: Number(id),
                 });

@@ -94,7 +94,7 @@ export default class HeaderClass {
             const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 logo.style.display = "none";
-            } else if ( screenWidth < 1300){
+            } else if ( screenWidth < 1500){
                 desktopNavbar.style.display = "none";
             }
 
@@ -120,7 +120,7 @@ export default class HeaderClass {
             const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 logo.style.display = "block";
-            } else if ( screenWidth < 1300){
+            } else if ( screenWidth < 1500){
                 desktopNavbar.style.display = "block";
             }
         })
