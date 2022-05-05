@@ -137,6 +137,18 @@ export default class FavoritesViewClass extends BaseViewClass {
                 });
                 UserModel.disliked(formJson);
             });
+            like.removeEventListener("click",(e) => {
+                const id = like.id.split('_').pop();
+
+                console.log(like.id.split('_').pop());
+                const movie = document.getElementById(id);
+                movie.style.display = "none";
+
+                let formJson = JSON.stringify({
+                    id: Number(id),
+                });
+                UserModel.disliked(formJson);
+            });
         })
 
     }

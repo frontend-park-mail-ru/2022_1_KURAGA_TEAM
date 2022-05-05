@@ -59,12 +59,24 @@ export default class MovieCompilationView {
             `.js-carousel${data.id}__next`
         );
 
-        wrap.addEventListener("mouseover", () => {
+        wrap.addEventListener("mouseover", (e) => {
+            e.preventDefault();
             buttonCarouselPrev.classList.add("b-carousel__prev-hover");
             buttonCarouselNext.classList.add("b-carousel__next-hover");
+
+        });
+        wrap.removeEventListener("mouseover",(e) => {
+            e.preventDefault();
+            buttonCarouselPrev.classList.add("b-carousel__prev-hover");
+            buttonCarouselNext.classList.add("b-carousel__next-hover");
+
         });
 
         wrap.addEventListener("mouseout", () => {
+            buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
+            buttonCarouselNext.classList.remove("b-carousel__next-hover");
+        });
+        wrap.removeEventListener("mouseout", () => {
             buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
             buttonCarouselNext.classList.remove("b-carousel__next-hover");
         });

@@ -6,4 +6,5 @@ export default class BaseViewClass {
 
         root.innerHTML = template(props);
     }
+    
 }

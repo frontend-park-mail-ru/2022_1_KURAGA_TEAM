@@ -77,6 +77,7 @@ export default class HomeViewClass extends BaseViewClass {
             this.movieCompilations.forEach((carousel) => {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
+
         } catch(err) {
             console.log(err);
             //router.go(routes.ERROR_CATCH_VIEW)
