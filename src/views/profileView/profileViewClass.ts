@@ -22,18 +22,16 @@ export default class ProfileViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody } = await UserModel.auth();
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             const header = new HeaderClass(this.user.userData);
-            const inputs = new InputsProfileClass(userData.user);
-            const avatar = new ProfileAvatarClass(userData.user.avatar);
+            const inputs = new InputsProfileClass(this.user.userData.username);
+            const avatar = new ProfileAvatarClass(this.user.userData.avatar);
             const button = new ButtonClass("Сохранить");
             const footer = new FooterClass();
 

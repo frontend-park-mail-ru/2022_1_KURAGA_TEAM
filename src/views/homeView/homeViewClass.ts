@@ -25,24 +25,19 @@ export default class HomeViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
 
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
-            const {movBody}: { movBody?: Promise<any> } = await MovieModel.mainMov();
-            const mainMovieData = await Promise.resolve(movBody);
-            this.mainMovie = new MovieModel(mainMovieData);
+            const {movie} = await MovieModel.mainMov();
+            this.mainMovie = new MovieModel(movie);
 
-            const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getMovieCompilations();
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilations = movieCompilationsData.map(
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
+            this.movieCompilations = movCompBody.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
                         index,
@@ -50,7 +45,6 @@ export default class HomeViewClass extends BaseViewClass {
                     )
             );
 
-            this.user = new UserModel(userData.user);
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
@@ -63,6 +57,8 @@ export default class HomeViewClass extends BaseViewClass {
                 select: this.compilationsRender(this.movieCompilations),
                 footer: footer.render(),
             });
+
+
 
             handlerLink();
             this.setHandler();

@@ -21,15 +21,12 @@ export default class SearchViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
 
            // const {searchBody}: { searchBody?: Promise<any> } = await UserModel.getSearchRes();

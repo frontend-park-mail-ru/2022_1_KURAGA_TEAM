@@ -7,6 +7,7 @@ import likeService from "./likeService"
 
 export default class UserLikeView {
 
+
     static setHandler(): void {
 
         const likes = document.querySelectorAll(".like");

@@ -13,12 +13,12 @@ import "./regLog.scss";
 export default class RegViewClass extends BaseViewClass {
     async render() {
         try {
-            const { isAuth } = await UserModel.auth();
-
-            if (isAuth) {
+            const {user} = await UserModel.auth();
+            if (user) {
                 router.go(routes.HOME_VIEW);
                 return;
             }
+
 
             const footer = new FooterClass();
             const inputs = new InputsClass();

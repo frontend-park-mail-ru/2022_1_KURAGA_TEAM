@@ -3,6 +3,7 @@ import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import { routes } from "Routing/constRouting";
 import MovieModel from "../../models/Movie";
+import UserModel from "../../models/User";
 import router from "Routing/router";
 import handlerLink from "Utils/handlerLink";
 
@@ -20,15 +21,16 @@ export default class PlayerViewClass extends BaseViewClass {
 
             const check = window.location.pathname.indexOf("trailer");
 
-            const { movBody }: { movBody?: Promise<any> } =
-                await MovieModel.getMovie(idx);
-            const movData = await Promise.resolve(movBody);
-
-            if (movData.status === routes.ERROR) {
-                router.go(routes.ERROR_VIEW);
+            const {user} = await UserModel.auth();
+            if (!user) {
+                router.go(routes.LOGIN_VIEW);
                 return;
             }
-            this.movie = new MovieModel(movData);
+
+            const {movie} = await MovieModel.getMovie(idx);
+            this.movie = new MovieModel(movie);
+
+
 
             let video = this.movie.trailer;
             if (check === -1) {

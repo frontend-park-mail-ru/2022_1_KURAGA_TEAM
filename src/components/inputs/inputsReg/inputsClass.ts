@@ -289,8 +289,7 @@ export default class InputsClass {
 
                 const {isAuth, regBody} = await UserModel.reg(formJson);
 
-                const regData = await Promise.resolve(regBody);
-                if (regData.message === "ERROR: Email is not unique") {
+                if (regBody.message === "ERROR: Email is not unique") {
                     errorIncorr.classList.add("error-active");
                     errorIncorr.classList.add("center");
                     errorIncorr.textContent =

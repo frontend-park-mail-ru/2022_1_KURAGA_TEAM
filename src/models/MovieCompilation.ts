@@ -127,13 +127,16 @@ export default class MovieCompilationModel {
     }
 
     static getMovieCompilations() {
-        return new Promise((movieCompilations) => {
+        return new Promise<{movCompBody:Array<MovieCompilationModel>}>((movCompBody) => {
             this.movies()
-                .then((body) => {
-                    movieCompilations({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)
@@ -142,13 +145,16 @@ export default class MovieCompilationModel {
     }
 
     static getFavorites() {
-        return new Promise((movieCompilations) => {
+        return new Promise<{movCompBody:Array<MovieCompilationData>}>((movCompBody) => {
             this.favorites()
-                .then((body) => {
-                    movieCompilations({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)
@@ -158,13 +164,16 @@ export default class MovieCompilationModel {
 
 
     static getMovieCompilationMovie(id) {
-        return new Promise((movieCompilation) => {
+        return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
             this.movieCompilationMovie(id)
-                .then((body) => {
-                    movieCompilation({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)
@@ -173,13 +182,16 @@ export default class MovieCompilationModel {
     }
 
     static getMovieCompilationPerson(id) {
-        return new Promise((movieCompilation) => {
+        return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
             this.movieCompilationPerson(id)
-                .then((body) => {
-                    movieCompilation({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)
@@ -188,13 +200,15 @@ export default class MovieCompilationModel {
     }
 
     static getMovies(limit, offset) {
-        return new Promise((movieCompilation) => {
+        return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
             this.allMovies(limit, offset)
-                .then((body) => {
-                    movieCompilation({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
                 })
                 .catch((err) => {
                     console.error(err)
@@ -203,13 +217,15 @@ export default class MovieCompilationModel {
     }
 
     static getSeries() {
-        return new Promise((movieCompilation) => {
+        return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
             this.allSeries()
-                .then((body) => {
-                    movieCompilation({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
                 })
                 .catch((err) => {
                     console.error(err)
@@ -218,13 +234,15 @@ export default class MovieCompilationModel {
     }
 
     static getGenre(id) {
-        return new Promise((movieCompilation) => {
+        return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
             this.allGenre(id)
-                .then((body) => {
-                    movieCompilation({
-                        isAuth: body.isAuth,
-                        movCompBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieCompilations)=>{
+                            movCompBody({
+                                movCompBody: movieCompilations,
+                            });
+                        })
                 })
                 .catch((err) => {
                     console.error(err)

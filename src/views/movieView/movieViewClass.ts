@@ -31,28 +31,17 @@ export default class MovieViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const {movBody}: { movBody?: Promise<any> } =
-                await MovieModel.getMovie(id);
-            const movData = await Promise.resolve(movBody);
-
-            if (movData.status === routes.ERROR) {
-                router.go(routes.ERROR_VIEW);
-                return;
-            }
-
-            this.movie = new MovieModel(movData);
+            const {movie} = await MovieModel.getMovie(id);
+            this.movie = new MovieModel(movie);
             if (!this.movie.checkMovie) {
                 this.seasonsCompilation = this.movie.seasonsData.map(
                     (movieCompilationData, index) =>
@@ -63,13 +52,9 @@ export default class MovieViewClass extends BaseViewClass {
                         ));
             }
 
-            const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getMovieCompilationMovie(id);
-            const movieCompilationData = await Promise.resolve(movCompBody);
-            this.movieCompilation = new MovieCompilationModel(
-                0,
-                movieCompilationData,
-            );
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
+            this.movieCompilation = new MovieCompilationModel(0, movCompBody);
+
 
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
@@ -87,22 +72,22 @@ export default class MovieViewClass extends BaseViewClass {
                 secondGenre: secondGenre.render(),
                 footer: footer.render(),
             }
-            if (this.movie.movieData.staff == null ) {
+            if (this.movie.movieData.staff == null) {
 
-                if (this.movie.movieData.is_movie || this.seasonsCompilation == null ) {
+                if (this.movie.movieData.is_movie || this.seasonsCompilation == null) {
                     super.render(movieViewTemplate, {
                         ...common,
                         select: this.compilationsRender(this.movieCompilation),
                     });
                 } else {
-                        const episodes = new EpisodesClass(this.seasonsCompilation.length);
-                        super.render(movieViewTemplate, {
-                            ...common,
-                            episodes: episodes.render(),
-                            seasons: this.seasonsRender(this.seasonsCompilation),
+                    const episodes = new EpisodesClass(this.seasonsCompilation.length);
+                    super.render(movieViewTemplate, {
+                        ...common,
+                        episodes: episodes.render(),
+                        seasons: this.seasonsRender(this.seasonsCompilation),
 
-                        });
-                    }
+                    });
+                }
             } else {
                 const actors = new ActorsClass(this.movie.movieData);
                 if (this.movie.movieData.is_movie) {
@@ -188,7 +173,7 @@ export default class MovieViewClass extends BaseViewClass {
     compilationsRender(movieCompilation: MovieCompilationModel): string {
         return (
             '<div class = "margin-bottom movie-carousel margin-person">' +
-            MovieCompilationView.render(movieCompilation.movieCompilationData)  +
+            MovieCompilationView.render(movieCompilation.movieCompilationData) +
             "</div>"
         );
     }
@@ -197,7 +182,7 @@ export default class MovieViewClass extends BaseViewClass {
         let select = "";
         movieCompilations.forEach((carousel, index) => {
             let carouselBlock = "";
-            carouselBlock = `<div class = "car${index + 1}">` + MovieCompilationView.render(carousel.movieCompilationData)  + `</div>`;
+            carouselBlock = `<div class = "car${index + 1}">` + MovieCompilationView.render(carousel.movieCompilationData) + `</div>`;
             select += carouselBlock;
         });
         return select;

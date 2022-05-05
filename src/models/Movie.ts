@@ -15,16 +15,16 @@ export default class MovieModel {
     }
 
     get checkMovie() {
-        if(this.movieData.season == null){
+        if (this.movieData.season == null) {
             return true;
         }
         return this.data.is_movie;
     }
 
     get seasonsData() {
-        this.movieData.season.forEach((value,index)=>{
-            if (value.episodes === null){
-                value.episodes = [{name:"Cерия пока недоступна"}];
+        this.movieData.season.forEach((value, index) => {
+            if (value.episodes === null) {
+                value.episodes = [{name: "Cерия пока недоступна"}];
             }
         })
         return this.movieData.season;
@@ -72,14 +72,18 @@ export default class MovieModel {
         }
     }
 
+
     static mainMov() {
-        return new Promise((movie) => {
+        return new Promise<{ movie: MovieData }>((movie) => {
             this.mainHomeMovie()
-                .then((body) => {
-                    movie({
-                        isAuth: body.isAuth,
-                        movBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieBody) => {
+                            movie({
+                                movie: movieBody
+                            })
+
+                        })
                 })
                 .catch((err) => {
                     console.error(err)
@@ -88,13 +92,23 @@ export default class MovieModel {
     }
 
     static getMovie(id) {
-        return new Promise((movie) => {
+        return new Promise<{ movie: MovieData }>((movie) => {
             this.movie(id)
-                .then((body) => {
-                    movie({
-                        isAuth: body.isAuth,
-                        movBody: body.data,
-                    });
+                .then(({isAuth,data}) => {
+                    data
+                        .then((movieBody)=>{
+                            if(isAuth){
+                                movie({
+                                    movie: movieBody,
+                                });
+                            } else {
+                                movie({
+                                    movie: null,
+                                });
+                            }
+
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)

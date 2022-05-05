@@ -23,21 +23,16 @@ export default class FilmsViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             let currentOffset = 0;
-            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData,-1);
+            const { movCompBody } = await MovieCompilationModel.getMovies(30, currentOffset);
+            this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);

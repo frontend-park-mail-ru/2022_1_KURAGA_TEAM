@@ -20,22 +20,19 @@ export default class GenreViewClass extends BaseViewClass {
 
     async render() {
         try {
-            const {isAuth, userBody} = await UserModel.auth();
 
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+            this.user = new UserModel(user);
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
 
-            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getGenre(id);
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
+            const { movCompBody } = await MovieCompilationModel.getGenre(id);
+            this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);

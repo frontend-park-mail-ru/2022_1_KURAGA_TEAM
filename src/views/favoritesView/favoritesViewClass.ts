@@ -24,24 +24,20 @@ export default class FavoritesViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             const header = new HeaderClass(this.user.userData);
 
-            const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getFavorites();
-            const movieCompilationsData = await Promise.resolve(movCompBody);
+            const {movCompBody} = await MovieCompilationModel.getFavorites();
+            console.log(movCompBody);
 
 
-            if (isEmptyMovies(movieCompilationsData)) {
+            if (isEmptyMovies(movCompBody)) {
                 const empty = "Ваш каталог пустой";
                 super.render(homeViewTemplate, {
                     header: header.render(),
@@ -53,13 +49,13 @@ export default class FavoritesViewClass extends BaseViewClass {
                 footerImage.style.position = "absolute";
             } else {
 
-                movieCompilationsData.forEach((i, id) => {
-                    if (!i.movies) {
-                        movieCompilationsData.splice(id, 1);
-                    }
-                })
+                 movCompBody.forEach((i, id) => {
+                      if (!i.movies) {
+                         movCompBody.splice(id, 1);
+                      }
+                 })
 
-                this.movieCompilations = movieCompilationsData.map(
+                this.movieCompilations = movCompBody.map(
                     (movieCompilationData, index) =>
                         new MovieCompilationModel(
                             index,
@@ -73,7 +69,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                     select: this.compilationsRender(this.movieCompilations),
                 });
 
-                if (movieCompilationsData.length == 1) {
+                if (movCompBody.length == 1) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
                     footerImage.style.position = "absolute";
                     footerImage.style.bottom = "0";
