@@ -28,6 +28,7 @@ export default class HomeViewClass extends BaseViewClass {
 
             const {user} = await UserModel.auth();
             if (!user) {
+
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
@@ -108,5 +109,9 @@ export default class HomeViewClass extends BaseViewClass {
             select += carouselBlock;
         });
         return select;
+    }
+
+    unmount(){
+        HeaderClass.unmount();
     }
 }
