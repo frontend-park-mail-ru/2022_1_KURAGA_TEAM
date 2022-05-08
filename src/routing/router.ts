@@ -18,12 +18,15 @@ class Router {
         return this;
     }
 
-    go(path: string,View?:any): void {
+    go(path: string, View?:any): void {
         if(this.currentView) {
             this.currentView.unmount();
+
             const pathname = parseRegExp(path);
-            window.history.pushState(null, null, path);
             this.currentView = this.routes[pathname];
+
+            window.history.pushState(null, null, path);
+
             this.routes[pathname].render();
         }
     }

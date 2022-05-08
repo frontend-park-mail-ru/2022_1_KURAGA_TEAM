@@ -107,6 +107,7 @@ export default class HomeViewClass extends BaseViewClass {
             }
             select += carouselBlock;
         });
+
         return select;
     }
 

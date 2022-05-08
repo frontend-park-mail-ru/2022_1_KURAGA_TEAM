@@ -201,7 +201,6 @@ export default class InputsClass {
         errorPassword.classList.remove("error-active");
     }
 
-
     unmount(): void {
         const inputEmail: HTMLInputElement = document.querySelector(
             'input[data-section="email"]'
@@ -209,11 +208,10 @@ export default class InputsClass {
         const inputPassword: HTMLInputElement = document.querySelector(
             'input[data-section="password"]'
         );
+
         inputEmail.removeEventListener("change", this.inputEmailChange.bind(this));
         inputEmail.removeEventListener("keydown", this.inputEmailKey.bind(this));
         inputPassword.removeEventListener("change", this.inputPasswordChange.bind(this));
         inputPassword.removeEventListener("keydown", this.inputPasswordlKey.bind(this));
-
-
     }
 }
