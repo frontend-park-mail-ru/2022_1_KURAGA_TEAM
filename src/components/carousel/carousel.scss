@@ -43,6 +43,12 @@
   position: relative;
 }
 
+.b-carouselSeries{
+  z-index: 3;
+  height: 180px;
+  position: absolute;
+}
+
 .b-carousel::-webkit-scrollbar {
   height: 0;
 }
@@ -104,7 +110,6 @@
   will-change: transform;
   position: relative;
   z-index: 1;
-  height: 100%;
 }
 .b-carouselSeries__item,
 .b-carousel__item {
@@ -154,7 +159,7 @@
         "refMov "
         "descMov";
 }
-.movieSeries:hover,
+
 .movie:hover {
   transform: scale(1);
 }
@@ -255,16 +260,37 @@
   height: 36px;
 }
 
-
-
-
 .out-movie{
-  transition: background-color;
+
 }
-//.out-movie:hover{
-//  max-height: 150%;
-//  height: fit-content;
-//  padding: 10px;
-//  background: linear-gradient(0deg, rgba(47, 48, 49, 0.85), rgba(47, 48, 49, 0.85));
-//  border-radius: 24px;
-//}
+
+
+.out-movieSeries {
+  position: relative;
+  padding-block: 3px;
+  width: min-content;
+  height: min-content;
+  transition: all 0.2s ease;
+
+}
+
+.out-movieSeries .descr-series{
+  visibility: hidden;
+}
+.out-movieSeries:hover{
+  transform: scale(1.05);
+  background: linear-gradient(0deg, rgba(47, 48, 49, 1), rgba(47, 48, 49, 1));
+  border-radius: 24px;
+}
+.out-movieSeries:hover  .descr-series{
+  overflow: hidden;
+  visibility: visible;
+  font-size: calc(.5vw + 8px);
+  padding-block: 12px;
+  line-height: 16px;
+  max-width: fit-content;
+  font-weight: 350;
+  height: 150px;
+  padding-inline: 20px;
+}
+

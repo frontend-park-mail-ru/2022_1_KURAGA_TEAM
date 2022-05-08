@@ -1,5 +1,5 @@
 each item in items
-    div.out-movie
+    div(class = `out-movie`+`${typeMov}`)
         if(item.id != -1)
             div(class=`movie` + `${typeMov}`, id =`${item.id}` , style=`background-image: url(\"${item.picture}\");`)
                 if(is_movie)
@@ -19,3 +19,6 @@ each item in items
                 else
                     div(class=`desc-mov` + `${typeMov}`)
                         a(class=`movie` + `${typeMov}` + '__href')(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)= item.name
+                        a.genre(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`) !{item.number} серия
+        if(!is_movie)
+            div.descr-series= item.description

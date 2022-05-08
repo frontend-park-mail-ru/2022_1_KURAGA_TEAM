@@ -335,7 +335,14 @@
   }
 
   /*карусель*/
+  .b-carouselSeries{
+    overflow-x: scroll;
+    padding-inline: 0;
+    height: auto;
+    position: initial;
+  }
   .b-carousel {
+
     overflow-x: scroll;
     padding-inline: 0;
   }
@@ -351,6 +358,11 @@
     margin-inline: 2vw;
     background-position-x: center;
   }
+
+   .descr-series{
+    display: none;
+  }
+
 
   .movie,
   .movie:hover {
@@ -370,6 +382,8 @@
     margin-top: -50px;
   }
 
+  .b-carouselSeries__prev,
+  .b-carouselSeries__next
   .b-carouselTop__prev,
   .b-carouselTop__next,
   .b-carousel__next,
@@ -383,6 +397,7 @@
   .wrap {
     padding-inline: 4px;
   }
+  .movieSeries,
   .movie {
     margin-inline: 1vw;
     width: 48vw;
@@ -391,6 +406,7 @@
     grid-template-rows: auto 40px;
   }
 
+  .desc-movSeries,
   .desc-mov {
     justify-content: center;
     /*width: 100%;*/
@@ -450,20 +466,11 @@
 }
 
 @media (max-width: 375px) {
+  .desc-movSeries,
   .genre,
   .desc-mov {
     font-size: 10px;
   }
-
-  #cb,
-  #cb::after,
-  #cb:checked::after {
-    margin-inline: -2px;
-    background-size: 28px 28px;
-    height: 28px;
-    width: 28px;
-  }
-
 
 }
 

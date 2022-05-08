@@ -100,7 +100,6 @@ export default class MovieCompilationView {
         });
 
 
-
     }
 
     static unmount(data: MovieCompilationData): void {
