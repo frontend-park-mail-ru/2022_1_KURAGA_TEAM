@@ -261,10 +261,140 @@
 .out-movie{
   transition: background-color;
 }
-//.out-movie:hover{
-//  max-height: 150%;
-//  height: fit-content;
-//  padding: 10px;
-//  background: linear-gradient(0deg, rgba(47, 48, 49, 0.85), rgba(47, 48, 49, 0.85));
-//  border-radius: 24px;
-//}
+
+@media (max-width: 1000px) {
+  .b-carousel {
+    overflow-x: scroll;
+    padding-inline: 0;
+  }
+  .b-carouselTop {
+    overflow-y: hidden;
+  }
+  .movieTop:hover,
+  .movieTop {
+    width: 90vw;
+    height: 60vw;
+    transform: scale(1);
+    margin-inline-end: 0;
+    margin-inline: 2vw;
+    background-position-x: center;
+  }
+
+  .movie,
+  .movie:hover {
+    transform: scale(0.95);
+  }
+
+  #cbMovie:hover::after,
+  #cb:hover::after {
+    background-image: url("../static/heart.png");
+  }
+
+  #cbMovie:checked::after,
+  #cb:checked::after {
+    background-image: url("../static/activeLike.png");
+  }
+  .first {
+    margin-top: -50px;
+  }
+
+  .b-carouselTop__prev,
+  .b-carouselTop__next,
+  .b-carousel__next,
+  .b-carousel__prev {
+    display: none;
+  }
+  .b-carouselTop__wrap,
+  .b-carousel__wrap {
+  }
+
+  .wrap {
+    padding-inline: 4px;
+  }
+  .movie {
+    margin-inline: 1vw;
+    width: 48vw;
+    height: 30vw;
+    border-radius: 8px;
+    grid-template-rows: auto 40px;
+  }
+
+  .desc-mov {
+    justify-content: center;
+    /*width: 100%;*/
+    padding-inline: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 10px;
+  }
+  .desc-movTop {
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 16px;
+  }
+  .movie__href {
+    width: 100px;
+  }
+
+  .genre {
+    font-size: 10px;
+  }
+
+  .list-films {
+    display: flex;
+    margin: 20px auto auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .padding-names {
+    padding-inline: 10px;
+  }
+  .search-topic {
+    height: fit-content;
+  }
+  .font-topics {
+    font-size: calc(1vw + 8px);
+  }
+  .font-menu-search {
+    font-size: calc( 1vw + 12px);
+    text-align: initial;
+  }
+  .font-search {
+    font-size: calc( 1vw + 6px);
+  }
+  .search-back{
+    display: none;
+  }
+  .results {
+    width: 100vw;
+  }
+  .topic{
+    margin-block: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .genre,
+  .desc-mov {
+    font-size: 10px;
+  }
+
+  #cb,
+  #cb::after,
+  #cb:checked::after {
+    margin-inline: -2px;
+    background-size: 28px 28px;
+    height: 28px;
+    width: 28px;
+  }
+}
+
+@media (max-width: 750px) {
+  /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
+  .select-title {
+    margin-inline-start: 4vw;
+    font-size: 26px;
+  }
+}

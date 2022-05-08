@@ -81,3 +81,454 @@
 .seasons{
   margin-top: 0;
 }
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  .photo-movie {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 67vw;
+  }
+
+  .photo-movie__gradient {
+    position: absolute;
+    top: 0;
+    height: 67vw;
+  }
+
+  .head-movie__name {
+    margin-bottom: 0;
+    width: 470px;
+  }
+
+  .first-part-info {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+    height: 300px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -50vw;
+    position: absolute;
+    margin-left: 0;
+  }
+
+  .head-movie__name {
+    margin-left: 0;
+    width: 150px;
+    height: 58px;
+    margin-bottom: 30px;
+  }
+
+  .head-movie__rating {
+    margin-left: 0;
+    width: 70%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .string-rating {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .head-movie__info {
+    margin-left: 2vw;
+    margin-bottom: 40px;
+  }
+
+  .short-info {
+    font-size: 14px;
+    margin-right: 1px;
+  }
+
+  .info__year {
+    padding-right: 7px;
+  }
+
+  .info__genre {
+    margin-right: 8px;
+  }
+
+  .info__country {
+    margin-right: 8px;
+  }
+
+  .info__duration {
+    margin-right: 8px;
+  }
+
+  .photo-movie__gradient {
+    display: none;
+  }
+
+  .head-movie__buttons {
+    width: 90%;
+  }
+
+  .play-button {
+    font-size: 14px;
+    width: 130px;
+  }
+
+  .trailer-button {
+    width: 130px;
+    font-size: 14px;
+  }
+
+  .first-part-info {
+    margin-top: 0;
+    padding-top: 260px;
+    margin-left: 4vw;
+  }
+
+  .first-part-info__text {
+    padding-right: 4vw;
+    max-width: fit-content;
+    font-size: 14px;
+  }
+
+  .second-part-genre {
+    font-size: 26px;
+    margin-left: 4vw;
+  }
+
+  .second-part-genre__genres {
+    font-size: 15px;
+  }
+
+  .group {
+    font-size: 26px;
+  }
+
+  .third-part-actors {
+    margin-left: 4vw;
+  }
+
+  .group__staff {
+    overflow: scroll;
+    width: 100%;
+  }
+
+  .person__photo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .person__position {
+    font-size: 18px;
+  }
+
+  .person__name {
+    font-size: 18px;
+  }
+
+  .group__staff::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    background: var(--back-color);
+  }
+
+  .first-part-info__our-rating {
+    font-size: 62px;
+  }
+
+  .first-part-info__our-name {
+    font-size: 18px;
+  }
+
+  .first-part-info__our-name-rt {
+    font-size: 18px;
+  }
+
+  .your-rating__button {
+    width: 90%;
+  }
+}
+
+
+@media (min-width: 500px) and (max-width: 750px) {
+  .first-part-info__text {
+    padding-right: 4vw;
+    max-width: fit-content;
+    font-size: 14px;
+  }
+
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 63vw;
+  }
+
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -43vw;
+    position: absolute;
+    margin-left: 0;
+  }
+
+  .head-movie__name {
+    margin-left: 0;
+    width: 150px;
+    height: 58px;
+    margin-bottom: 30px;
+  }
+
+  .head-movie__rating {
+    margin-left: 0;
+    width: 70%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .string-rating {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .head-movie__info {
+    margin-left: 2vw;
+    margin-bottom: 40px;
+  }
+
+  .short-info {
+    font-size: 14px;
+    margin-right: 1px;
+  }
+
+  .info__year {
+    padding-right: 7px;
+  }
+
+  .info__genre {
+    margin-right: 8px;
+  }
+
+  .info__country {
+    margin-right: 8px;
+  }
+
+  .info__duration {
+    margin-right: 8px;
+  }
+
+  .photo-movie__gradient {
+    display: none;
+  }
+
+  .head-movie__buttons {
+    width: 90%;
+  }
+
+  .play-button {
+    font-size: 14px;
+    width: 130px;
+  }
+
+  .trailer-button {
+    width: 130px;
+    font-size: 14px;
+  }
+
+  .first-part-info {
+    margin-top: 290px;
+  }
+}
+
+@media (max-height: 450px) {
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -50vw;
+    position: absolute;
+    margin-left: 0;
+  }
+
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+  }
+
+  .seasons {
+    margin-bottom: -620px;
+    padding-top: 260px;
+  }
+
+  .first-part-info {
+    padding-top: 400px;
+  }
+
+  .head-movie__rating {
+    width: 40%;
+    justify-content: space-between;
+  }
+
+  .string-rating {
+    margin-right: 0;
+  }
+
+  .head-movie__name {
+    width: 380px;
+  }
+
+  .head-movie__buttons {
+    width: 70%;
+  }
+
+  .head-movie {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: -50vw;
+    position: absolute;
+    margin-left: 0;
+  }
+
+  .photo-movie {
+    box-shadow: 0 -108px 35px #01090b inset;
+  }
+
+  .first-part-info {
+    margin-top: 400px;
+  }
+
+  .head-movie__rating {
+    width: 40%;
+    justify-content: space-between;
+  }
+
+  .string-rating {
+    margin-right: 0;
+  }
+
+  .head-movie__name {
+    width: 380px;
+  }
+
+  .head-movie__buttons {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
+  .episodes {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА
+  .head-movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1000px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМA
+  .photo-movie {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 63vw;
+  }
+
+  .head-movie__name {
+    margin-bottom: 0;
+    width: 470px;
+  }
+
+  .head-movie {
+    height: 23%;
+  }
+
+  .head-movie__name {
+    margin-bottom: 0;
+    width: 360px;
+  }
+
+  .rating {
+    font-size: 26px;
+  }
+
+  .our-name {
+    font-size: 18px;
+  }
+
+  .poisk-name {
+    font-size: 18px;
+  }
+
+  .short-info {
+    font-size: 18px;
+  }
+
+  .trailer-button {
+    height: 36px;
+    font-size: 18px;
+    width: 164px;
+  }
+
+  .play-button {
+    font-size: 18px;
+    height: 42px;
+    width: 200px;
+  }
+
+  .first-part-info {
+    margin-top: 40px;
+  }
+  .sidebar{
+    margin: 16vw;
+  }
+}
+
+@media (max-width: 750px) {
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
+  .all-films__text {
+    margin-top: 30px;
+    font-size: 35px;
+  }
+
+  .list-genres {
+    max-width: 89%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
+  .episodes {
+    width: 96%;
+    margin-bottom: -300px;
+    padding-top: 200px;
+    overflow-y: scroll;
+    padding-right: 0;
+  }
+
+  .seasons {
+    margin-bottom: -220px;
+    padding-top: 260px;
+  }
+}

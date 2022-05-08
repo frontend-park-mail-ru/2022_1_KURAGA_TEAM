@@ -2,9 +2,11 @@ import { parseRegExp } from "./parseRegExp";
 import { routes } from "./constRouting";
 import OfflineViewClass from "../views/offlineView/offlineViewClass";
 import BaseViewClass from "../views/baseView/baseViewClass";
+
 class Router {
     private readonly routes: {};
     private currentView: any;
+
     constructor() {
         this.routes = {};
         this.currentView = null;
