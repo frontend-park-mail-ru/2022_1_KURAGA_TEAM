@@ -73,9 +73,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
                     footerImage.style.position = "absolute";
                     footerImage.style.bottom = "0";
-                }
-                // const heart: HTMLElement = document.querySelector(".empty-heart");
-                // heart.style.display = "none";
+                };
                 this.movieCompilations.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
@@ -168,5 +166,11 @@ export default class FavoritesViewClass extends BaseViewClass {
             select += carouselBlock;
         });
         return select;
+    }
+
+    unmount(){
+        this.movieCompilations.forEach((carousel) => {
+            MovieCompilationView.unmount(carousel.movieCompilationData);
+        });
     }
 }

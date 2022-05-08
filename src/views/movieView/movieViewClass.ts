@@ -83,6 +83,7 @@ export default class MovieViewClass extends BaseViewClass {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
                     super.render(movieViewTemplate, {
                         ...common,
+                        select: this.compilationsRender(this.movieCompilation),
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
 
@@ -127,8 +128,9 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
 
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            console.log(err);
+           // router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -186,6 +188,16 @@ export default class MovieViewClass extends BaseViewClass {
             select += carouselBlock;
         });
         return select;
+    }
+
+    unmount(){
+        if (this.seasonsCompilation !== null) {
+            this.seasonsCompilation.forEach((carousel) => {
+                MovieCompilationView.unmount(carousel.movieCompilationData);
+            });
+        }
+
+        // removeEvent
     }
 
 }

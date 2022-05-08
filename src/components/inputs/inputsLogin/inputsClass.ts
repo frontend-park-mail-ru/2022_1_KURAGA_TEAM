@@ -1,8 +1,8 @@
 import inputsTemplate from "../inputsReg/inputs.pug";
 import UserModel from "../../../models/User";
-import { regExp } from "Components/inputs/utils/regExp/regExp";
+import {regExp} from "Components/inputs/utils/regExp/regExp";
 import router from "Routing/router.ts";
-import { textErrors } from "Components/inputs/utils/textErrors/textErrors";
+import {textErrors} from "Components/inputs/utils/textErrors/textErrors";
 import '../inputs.scss'
 
 const configElement = [
@@ -24,7 +24,7 @@ const configElement = [
 
 export default class InputsClass {
     render() {
-        return inputsTemplate({ items: configElement });
+        return inputsTemplate({items: configElement});
     }
 
     setHandler(): void {
@@ -65,34 +65,11 @@ export default class InputsClass {
             errorPassword.textContent = textErrors.empty;
         };
 
-        inputEmail.addEventListener("change", () => {
-            if (
-                regExp.checkEmail.test(inputEmail.value) &&
-                inputEmail.value.length !== 0 &&
-                inputEmail.validity.valid
-            ) {
-                errorEmail.classList.remove("error-active");
+        inputEmail.addEventListener("change", this.inputEmailChange.bind(this));
 
-                return;
-            }
+        inputEmail.addEventListener("keydown", this.inputEmailKey.bind(this));
 
-            emailError();
-        });
-
-        inputEmail.addEventListener("keydown", () => {
-            errorIncorr.classList.remove("error-active");
-            errorEmail.classList.remove("error-active");
-        });
-
-        inputPassword.addEventListener("change", () => {
-            if (inputPassword.validity.valid) {
-                errorPassword.classList.remove("error-active");
-
-                return;
-            }
-
-            passwordError();
-        });
+        inputPassword.addEventListener("change", this.inputPasswordChange.bind(this));
 
         inputPassword.addEventListener("keydown", () => {
             errorIncorr.classList.remove("error-active");
@@ -146,5 +123,97 @@ export default class InputsClass {
         form.addEventListener("submit", (e) => {
             validation(e);
         });
+    }
+
+    inputEmailChange(): void {
+        const inputEmail: HTMLInputElement = document.querySelector(
+            'input[data-section="email"]'
+        );
+        const errorEmail = document.querySelector(
+            'div[data-section="emailError"]'
+        );
+        const emailError = () => {
+            if (inputEmail.validity.valueMissing) {
+                errorEmail.classList.add("error-active");
+                errorEmail.textContent = textErrors.empty;
+
+                return;
+            }
+
+            errorEmail.classList.add("error-active");
+            errorEmail.textContent = textErrors.wrongEmail;
+        };
+
+        if (
+            regExp.checkEmail.test(inputEmail.value) &&
+            inputEmail.value.length !== 0 &&
+            inputEmail.validity.valid
+        ) {
+            errorEmail.classList.remove("error-active");
+
+            return;
+        }
+
+        emailError();
+    }
+
+    inputEmailKey():void{
+        const errorEmail = document.querySelector(
+            'div[data-section="emailError"]'
+        );
+        const errorIncorr = document.querySelector(
+            'div[data-section="incorrect"]'
+        );
+
+        errorIncorr.classList.remove("error-active");
+        errorEmail.classList.remove("error-active");
+    }
+
+    inputPasswordChange():void{
+        const inputPassword: HTMLInputElement = document.querySelector(
+            'input[data-section="password"]'
+        );
+
+        const errorPassword = document.querySelector(
+            'div[data-section="passwordError"]'
+        );
+
+        if (inputPassword.validity.valid) {
+            errorPassword.classList.remove("error-active");
+
+            return;
+        }
+        const passwordError = () => {
+            errorPassword.classList.add("error-active");
+            errorPassword.textContent = textErrors.empty;
+        };
+
+        passwordError();
+    }
+    inputPasswordlKey():void{
+        const errorPassword = document.querySelector(
+            'div[data-section="passwordError"]'
+        );
+        const errorIncorr = document.querySelector(
+            'div[data-section="incorrect"]'
+        );
+        errorIncorr.classList.remove("error-active");
+        errorPassword.classList.remove("error-active");
+    }
+
+
+    unmount(): void {
+        const inputEmail: HTMLInputElement = document.querySelector(
+            'input[data-section="email"]'
+        );
+        const inputPassword: HTMLInputElement = document.querySelector(
+            'input[data-section="password"]'
+        );
+        inputEmail.removeEventListener("change", this.inputEmailChange.bind(this));
+        inputEmail.removeEventListener("keydown", this.inputEmailKey.bind(this));
+        inputPassword.removeEventListener("change", this.inputPasswordChange.bind(this));
+        inputPassword.removeEventListener("keydown", this.inputPasswordlKey.bind(this));
+
+
     }
 }

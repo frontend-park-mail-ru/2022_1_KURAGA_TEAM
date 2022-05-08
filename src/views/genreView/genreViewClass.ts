@@ -92,4 +92,8 @@ export default class GenreViewClass extends BaseViewClass {
             }
         }
     }
+
+    unmount(){
+        // removeEvent
+    }
 }

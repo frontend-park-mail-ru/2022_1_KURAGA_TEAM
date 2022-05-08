@@ -60,12 +60,11 @@ export default class HomeViewClass extends BaseViewClass {
             });
 
 
-
             handlerLink();
             this.setHandler();
             header.setHandler();
 
-            const {likesBody}  = await UserModel.getLikes()
+            const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
             UserLikeView.setAllLikes(likesData.favorites.id);
@@ -75,7 +74,7 @@ export default class HomeViewClass extends BaseViewClass {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
 
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
@@ -111,7 +110,9 @@ export default class HomeViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(){
-        HeaderClass.unmount();
+    unmount() {
+        this.movieCompilations.forEach((carousel) => {
+            MovieCompilationView.unmount(carousel.movieCompilationData);
+        });
     }
 }

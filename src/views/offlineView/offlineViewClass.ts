@@ -12,4 +12,5 @@ export default class OfflineViewClass extends BaseViewClass {
             footer: footer.render(),
         });
     }
+    unmount(){}
 }

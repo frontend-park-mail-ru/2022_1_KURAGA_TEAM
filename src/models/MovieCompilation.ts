@@ -34,6 +34,7 @@ export default class MovieCompilationModel {
                 movies: movieCompilationData,
                 id: index,
                 idSerial: id,
+
             };
         } else {
             if (movieCompilationData.movies == null) {

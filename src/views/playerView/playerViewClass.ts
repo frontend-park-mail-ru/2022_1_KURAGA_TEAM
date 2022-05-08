@@ -347,4 +347,8 @@ export default class PlayerViewClass extends BaseViewClass {
         fullScreenButton.addEventListener("click", fullScreenChange);
         document.addEventListener("dblclick", fullScreenChange);
     }
+
+    unmount(){
+
+    }
 }

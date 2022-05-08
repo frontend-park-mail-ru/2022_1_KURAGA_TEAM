@@ -92,12 +92,39 @@ export default class MovieModel {
     }
 
     static getMovie(id) {
+        const mockSerial =
+             [{
+                id: 1, number: 1, episodes: [
+                    {
+                        description: "У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                        id: 1,
+                        name: "Пилотная серия",
+                        number: 1,
+                        picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                        video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+                    }]
+
+            },{id: 2, number: 1, episodes: [
+            {
+                description: "У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                id: 2,
+                name: "Пилотная серия",
+                number: 1,
+                picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+            }]
+
+    }
+            ]
+
         return new Promise<{ movie: MovieData }>((movie) => {
             this.movie(id)
-                .then(({isAuth,data}) => {
+                .then(({isAuth, data}) => {
                     data
-                        .then((movieBody)=>{
-                            if(isAuth){
+                        .then((movieBody) => {
+                            if (isAuth) {
+                                console.log(movieBody);
+                                movieBody.season = mockSerial;
                                 movie({
                                     movie: movieBody,
                                 });
@@ -115,4 +142,6 @@ export default class MovieModel {
                 });
         });
     }
+
+
 }

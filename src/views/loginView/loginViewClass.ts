@@ -1,5 +1,5 @@
 import FooterClass from "Components/footer/footerClass.ts";
-import InputsClass from "Components/inputs/inputsLogin/inputsClass.ts";
+import InputsClass from "Components/inputs/inputsLogin/inputsClass";
 import ButtonClass from "Components/button/buttonClass.ts";
 import handlerLink from "Utils/handlerLink";
 import router from "Routing/router.ts";
@@ -11,6 +11,8 @@ import UserModel from "../../models/User";
 import "../regView/regLog.scss";
 
 export default class LoginViewClass extends BaseViewClass {
+
+
     async render() {
         try {
 
@@ -35,5 +37,8 @@ export default class LoginViewClass extends BaseViewClass {
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
         }
+    }
+    unmount(){
+        // removeEvent inputs
     }
 }

@@ -36,7 +36,7 @@ export default class PersonViewClass extends BaseViewClass {
             }
             this.user = new UserModel(user);
 
-            const {person} =  await PersonModel.getPerson(id);
+            const {person} = await PersonModel.getPerson(id);
 
             this.person = new PersonModel(person);
 
@@ -52,7 +52,6 @@ export default class PersonViewClass extends BaseViewClass {
                 header: header.render(),
                 headPerson: headPerson.render(),
                 select: this.compilationsRender(this.movieCompilation),
-
                 footer: footer.render(),
             });
 
@@ -64,7 +63,6 @@ export default class PersonViewClass extends BaseViewClass {
             header.setHandler();
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
-            //this.movieCompilation.setHandler();
         } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);
         }
@@ -76,5 +74,9 @@ export default class PersonViewClass extends BaseViewClass {
             MovieCompilationView.render(movieCompilation.movieCompilationData) +
             "</div>"
         );
+    }
+
+    unmount() {
+        MovieCompilationView.unmount(this.movieCompilation.movieCompilationData);
     }
 }

@@ -104,4 +104,8 @@ export default class FilmsViewClass extends BaseViewClass {
         //     }
         // });
     }
+
+    unmount(){
+        // removeEvent
+    }
 }

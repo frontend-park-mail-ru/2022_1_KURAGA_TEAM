@@ -57,4 +57,5 @@ export default class SearchViewClass extends BaseViewClass {
 
 
     }
+    unmount(){}
 }

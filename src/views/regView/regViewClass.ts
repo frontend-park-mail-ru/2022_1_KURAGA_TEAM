@@ -36,4 +36,5 @@ export default class RegViewClass extends BaseViewClass {
             router.go(routes.ERROR_CATCH_VIEW);
         }
     }
+    unmount(){}
 }

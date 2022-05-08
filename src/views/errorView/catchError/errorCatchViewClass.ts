@@ -15,4 +15,7 @@ export default class ErrorCatchViewClass extends BaseViewClass {
             footer: footer.render(),
         });
     }
+
+    unmount() {
+    }
 }

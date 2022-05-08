@@ -62,4 +62,7 @@ export default class ProfileViewClass extends BaseViewClass {
         profileNavbar.style.backgroundImage =
             "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
     }
+    unmount(){
+
+    }
 }

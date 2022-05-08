@@ -9,7 +9,7 @@ export default class MovieClass {
     private readonly idx: number;
     private readonly season: number;
 
-    constructor(info: Array<MovieData>, typeMov?: string, is_movie?: boolean, season?: number, idx?: number) {
+    constructor(info: Array<MovieData>, typeMov?: string, is_movie?: boolean, season?: number, idx?: number,idSerial?:number) {
         this.movies = info;
         this.typeMov = typeMov;
         this.is_movie = is_movie;

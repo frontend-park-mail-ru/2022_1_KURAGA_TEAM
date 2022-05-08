@@ -10,11 +10,12 @@ import MovieCompilationModel from "./movieCompilationView"
 export default class MovieCompilationView {
 
 
-    static render(data:MovieCompilationData) {
-        const Series = new MovieClass(data.movies, "", false, data.id, data.idSerial);
+    static render(data: MovieCompilationData) {
+        const idSeries = Math.floor(Math.random() * (-100));
+        const Series = new MovieClass(data.movies, "Series", false, data.id, data.idSerial, idSeries);
         const Top = new MovieClass(data.movies, "Top", true);
         const unTop = new MovieClass(data.movies, "", true);
-
+        // non unique ids
         const common = {
             car: `js-carousel${data.id}`,
             prevBtn: `js-carousel${data.id}__prev`,
@@ -34,9 +35,13 @@ export default class MovieCompilationView {
         }
         if (!data.compilationName) {
             return carouselTemplate({
-                ...common,
+                car: `js-carousel${idSeries}`,
+                prevBtn: `js-carousel${idSeries}__prev`,
+                nextBtn: `js-carousel${idSeries}__next`,
+                wrapMov: `js-carousel${idSeries}__wrap`,
+                //compilationName: data.compilationName,
                 items: Series.render(),
-                typeMov: "",
+                typeMov: "Series",
                 is_movie: false,
             });
         }
@@ -49,43 +54,87 @@ export default class MovieCompilationView {
         });
     }
 
-    static setHandler(data:MovieCompilationData): void {
-        const wrap = document.querySelector(`.js-carousel${data.id}`);
+    static setHandler(data: MovieCompilationData): void {
+        let wrap: HTMLElement;
+        let buttonCarouselNext: HTMLElement;
+        let buttonCarouselPrev: HTMLElement;
+        if (data.idSerial) {
+            wrap = document.querySelector(`.b-carouselSeries`);
 
-        const buttonCarouselPrev = document.querySelector(
-            `.js-carousel${data.id}__prev`
-        );
-        const buttonCarouselNext = document.querySelector(
-            `.js-carousel${data.id}__next`
-        );
+            buttonCarouselPrev = document.querySelector(
+                `.b-carouselSeries__prev`
+            );
+            buttonCarouselNext = document.querySelector(
+                `.b-carouselSeries__next`
+            );
+            const a = new movingCarousel({
+                main: `.b-carouselSeries`,
+                wrap: `.b-carouselSeries__wrap`,
+                prev: `.b-carouselSeries__prev`,
+                next: `.b-carouselSeries__next`,
+            });
+        } else {
+            wrap = document.querySelector(`.js-carousel${data.id}`);
 
+            buttonCarouselPrev = document.querySelector(
+                `.js-carousel${data.id}__prev`
+            );
+            buttonCarouselNext = document.querySelector(
+                `.js-carousel${data.id}__next`
+            );
+            const a = new movingCarousel({
+                main: `.js-carousel${data.id}`,
+                wrap: `.js-carousel${data.id}__wrap`,
+                prev: `.js-carousel${data.id}__prev`,
+                next: `.js-carousel${data.id}__next`,
+            });
+        }
         wrap.addEventListener("mouseover", (e) => {
-            e.preventDefault();
             buttonCarouselPrev.classList.add("b-carousel__prev-hover");
             buttonCarouselNext.classList.add("b-carousel__next-hover");
 
         });
-        wrap.removeEventListener("mouseover",(e) => {
-            e.preventDefault();
-            buttonCarouselPrev.classList.add("b-carousel__prev-hover");
-            buttonCarouselNext.classList.add("b-carousel__next-hover");
-
-        });
-
         wrap.addEventListener("mouseout", () => {
             buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
             buttonCarouselNext.classList.remove("b-carousel__next-hover");
         });
+
+
+
+    }
+
+    static unmount(data: MovieCompilationData): void {
+
+        let wrap: HTMLElement;
+        let buttonCarouselNext: HTMLElement;
+        let buttonCarouselPrev: HTMLElement;
+        if (data.idSerial) {
+            wrap = document.querySelector(`.b-carouselSeries`);
+
+            buttonCarouselPrev = document.querySelector(
+                `.b-carouselSeries__prev`
+            );
+            buttonCarouselNext = document.querySelector(
+                `.b-carouselSeries__next`
+            );
+        } else {
+            wrap = document.querySelector(`.js-carousel${data.id}`);
+
+            buttonCarouselPrev = document.querySelector(
+                `.js-carousel${data.id}__prev`
+            );
+            buttonCarouselNext = document.querySelector(
+                `.js-carousel${data.id}__next`
+            );
+        }
+
+        wrap.removeEventListener("mouseover", () => {
+            buttonCarouselPrev.classList.add(`b-carousel__prev-hover`);
+            buttonCarouselNext.classList.add("b-carousel__next-hover");
+        });
         wrap.removeEventListener("mouseout", () => {
             buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
             buttonCarouselNext.classList.remove("b-carousel__next-hover");
-        });
-
-        const a = new movingCarousel({
-            main: `.js-carousel${data.id}`,
-            wrap: `.js-carousel${data.id}__wrap`,
-            prev: `.js-carousel${data.id}__prev`,
-            next: `.js-carousel${data.id}__next`,
         });
     }
 }
