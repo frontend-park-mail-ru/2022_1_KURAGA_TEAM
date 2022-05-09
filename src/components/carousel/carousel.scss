@@ -63,7 +63,7 @@
 .b-carousel__next {
   border: 0;
   width: calc(2vw + 40px);
-  font-size: calc(1vw + 30px);
+  font-size: calc(1vw + 20px);
   position: absolute;
   top: 50%;
   background-color: transparent;
@@ -330,7 +330,7 @@
   position: absolute;
 }
 
-@media (min-width: 2000px){
+@media (min-width: 2000px) {
 
   .b-carouselSeries {
     z-index: 3;
@@ -342,28 +342,34 @@
     width: calc(3vw + 380px);
   }
 
-  .b-carouselSeries__next{
+  .b-carouselSeries__next {
     height: calc(3vw + 215px);
     visibility: visible;
     position: absolute;
   }
-  .b-carouselSeries__prev{
+  .b-carouselSeries__prev {
     height: calc(3vw + 215px);
     visibility: visible;
     position: absolute;
   }
 
-  .movieSeries + .descr-series{
+  .movieSeries + .descr-series {
     visibility: hidden;
     overflow-y: hidden;
     text-overflow: ellipsis;
     height: calc(3vw + 215px);
     width: calc(3vw + 380px);
   }
-  .desc-movSeries{
+  .desc-movSeries {
     font-size: 24px;
   }
-  #play__svg{
+  #play__svg {
     transform: scale(2);
+  }
+}
+@media (max-width: 1000px) {
+
+  .wrapSeries {
+    position: relative;
   }
 }

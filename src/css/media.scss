@@ -379,7 +379,7 @@
     background-image: url("../static/activeLike.png");
   }
   .first {
-    margin-top: -50px;
+    margin-top: 10px;
   }
 
   .b-carouselSeries__prev,
@@ -497,11 +497,13 @@
 @media (max-width: 750px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ КАРУСЕЛЬКИ*/
   .select-title {
+    line-height: 1;
     margin-inline-start: 4vw;
     font-size: 26px;
-  }
+    margin-block: 10px;
+}
 
-  /*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
+/*МЕДИА ЗАПРОСЫ ДЛЯ ОШИБКИ*/
   .error-text__404 {
     margin-right: 15px;
     padding-left: 10px;
@@ -1181,7 +1183,7 @@
   .btn,
   .btn-info {
     margin-inline: auto;
-    font-size: calc(1vh + 20px);
+    font-size: calc(1vw + 4px);
   }
 
   .title-name {
