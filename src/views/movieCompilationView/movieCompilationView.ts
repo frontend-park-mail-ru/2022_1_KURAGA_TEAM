@@ -89,7 +89,7 @@ export default class MovieCompilationView {
                 next: `.js-carousel${data.id}__next`,
             });
         }
-        wrap.addEventListener("mouseover", (e) => {
+        wrap.addEventListener("mouseover", () => {
             buttonCarouselPrev.classList.add("b-carousel__prev-hover");
             buttonCarouselNext.classList.add("b-carousel__next-hover");
 
@@ -101,6 +101,20 @@ export default class MovieCompilationView {
 
 
     }
+
+    static showSeriesDescr(data: MovieCompilationData): void{
+        if (!data.idSerial) {
+            return
+        }
+        const moviesSeries = document.querySelectorAll(".movieSeries");
+        moviesSeries.forEach((movie)=>{
+            movie.addEventListener("mouseover",(e)=>{
+                e.preventDefault();
+                console.log(movie.parentNode,"sef");
+            })
+        })
+    }
+
 
     static unmount(data: MovieCompilationData): void {
 

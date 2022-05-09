@@ -72,6 +72,7 @@ export default class HomeViewClass extends BaseViewClass {
 
             this.movieCompilations.forEach((carousel) => {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);
+                MovieCompilationView.showSeriesDescr(carousel.movieCompilationData);
             });
 
         } catch (err) {
