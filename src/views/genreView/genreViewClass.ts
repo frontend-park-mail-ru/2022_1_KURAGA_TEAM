@@ -55,7 +55,6 @@ export default class GenreViewClass extends BaseViewClass {
             genreMobileNavbar.style.webkitTextFillColor = "transparent";
             genreMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
-
             handlerLink();
             const {likesBody}  = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -69,31 +68,12 @@ export default class GenreViewClass extends BaseViewClass {
     }
 
     setHandler(id: number) {
-
-
         const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
-        const listGenres: HTMLDivElement = document.querySelector('.list-genres');
-        const firstGenre = listGenres.firstChild;
 
         currGenre.style.backgroundColor = 'var(--mix-color)';
-
-        let parentCurr = currGenre.parentNode;
-        let nextCurr = currGenre.nextSibling;
-
-        if (nextCurr === firstGenre) {
-            parentCurr.insertBefore(firstGenre, currGenre);
-        } else {
-            firstGenre.parentNode.insertBefore(currGenre, firstGenre);
-
-            if (nextCurr) {
-                parentCurr.insertBefore(firstGenre, nextCurr);
-            } else {
-                parentCurr.appendChild(firstGenre);
-            }
-        }
     }
 
-    unmount(){
+    unmount() {
         // removeEvent
     }
 }

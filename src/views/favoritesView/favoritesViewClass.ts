@@ -168,7 +168,7 @@ export default class FavoritesViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(){
+    unmount(): void {
         this.movieCompilations.forEach((carousel) => {
             MovieCompilationView.unmount(carousel.movieCompilationData);
         });

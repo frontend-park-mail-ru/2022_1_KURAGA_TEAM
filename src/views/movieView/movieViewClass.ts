@@ -190,7 +190,7 @@ export default class MovieViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(){
+    unmount(): void {
         if (this.seasonsCompilation !== null) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);

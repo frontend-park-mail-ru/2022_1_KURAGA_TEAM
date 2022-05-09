@@ -65,16 +65,13 @@ export default class InputsClass {
             errorPassword.textContent = textErrors.empty;
         };
 
-        inputEmail.addEventListener("change", this.inputEmailChange.bind(this));
+        inputEmail.addEventListener("change", this.inputEmailChange);
 
-        inputEmail.addEventListener("keydown", this.inputEmailKey.bind(this));
+        inputEmail.addEventListener("keydown", this.inputEmailKey);
 
-        inputPassword.addEventListener("change", this.inputPasswordChange.bind(this));
+        inputPassword.addEventListener("change", this.inputPasswordChange);
 
-        inputPassword.addEventListener("keydown", () => {
-            errorIncorr.classList.remove("error-active");
-            errorPassword.classList.remove("error-active");
-        });
+        inputPassword.addEventListener("keydown", this.inputPasswordlKey);
 
         const validation = async (e) => {
             let check = 0;
@@ -125,7 +122,7 @@ export default class InputsClass {
         });
     }
 
-    inputEmailChange(): void {
+     inputEmailChange(): void {
         const inputEmail: HTMLInputElement = document.querySelector(
             'input[data-section="email"]'
         );
@@ -157,7 +154,7 @@ export default class InputsClass {
         emailError();
     }
 
-    inputEmailKey():void{
+    inputEmailKey(): void{
         const errorEmail = document.querySelector(
             'div[data-section="emailError"]'
         );
@@ -169,7 +166,7 @@ export default class InputsClass {
         errorEmail.classList.remove("error-active");
     }
 
-    inputPasswordChange():void{
+    inputPasswordChange(): void{
         const inputPassword: HTMLInputElement = document.querySelector(
             'input[data-section="password"]'
         );
@@ -190,13 +187,15 @@ export default class InputsClass {
 
         passwordError();
     }
-    inputPasswordlKey():void{
+
+    inputPasswordlKey(): void{
         const errorPassword = document.querySelector(
             'div[data-section="passwordError"]'
         );
         const errorIncorr = document.querySelector(
             'div[data-section="incorrect"]'
         );
+
         errorIncorr.classList.remove("error-active");
         errorPassword.classList.remove("error-active");
     }
@@ -209,9 +208,9 @@ export default class InputsClass {
             'input[data-section="password"]'
         );
 
-        inputEmail.removeEventListener("change", this.inputEmailChange.bind(this));
-        inputEmail.removeEventListener("keydown", this.inputEmailKey.bind(this));
-        inputPassword.removeEventListener("change", this.inputPasswordChange.bind(this));
-        inputPassword.removeEventListener("keydown", this.inputPasswordlKey.bind(this));
+        inputEmail.removeEventListener("change", this.inputEmailChange);
+        inputEmail.removeEventListener("keydown", this.inputEmailKey);
+        inputPassword.removeEventListener("change", this.inputPasswordChange);
+        inputPassword.removeEventListener("keydown", this.inputPasswordlKey);
     }
 }

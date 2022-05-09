@@ -10,12 +10,15 @@ import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import InputsClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import { User } from "../../types";
 
 import "./profile.scss";
 
+
 export default class ProfileViewClass extends BaseViewClass {
     private user: UserModel;
+    private inputs: any;
 
     async render() {
         try {
@@ -30,14 +33,14 @@ export default class ProfileViewClass extends BaseViewClass {
             this.user = new UserModel(user);
 
             const header = new HeaderClass(this.user.userData);
-            const inputs = new InputsProfileClass(this.user.userData.username);
+            this.inputs = new InputsProfileClass(this.user.userData.username);
             const avatar = new ProfileAvatarClass(this.user.userData.avatar);
             const button = new ButtonClass("Сохранить");
             const footer = new FooterClass();
 
             super.render(profileViewTemplate, {
                 header: header.render(),
-                inputs: inputs.render(),
+                inputs: this.inputs.render(),
                 avatar: avatar.render(),
                 button: button.render(),
                 footer: footer.render(),
@@ -45,7 +48,7 @@ export default class ProfileViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-            inputs.setHandler();
+            this.inputs.setHandler();
             header.setHandler();
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
@@ -62,7 +65,7 @@ export default class ProfileViewClass extends BaseViewClass {
         profileNavbar.style.backgroundImage =
             "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
     }
-    unmount(){
-
+    unmount(): void {
+        this.inputs.unmount();
     }
 }
