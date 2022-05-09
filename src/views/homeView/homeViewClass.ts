@@ -32,6 +32,7 @@ export default class HomeViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+          
             this.user = new UserModel(user);
 
             const {movie} = await MovieModel.mainMov();

@@ -129,8 +129,8 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setHandler();
 
         } catch(err) {
-            console.log(err);
-           // router.go(routes.ERROR_CATCH_VIEW);
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
