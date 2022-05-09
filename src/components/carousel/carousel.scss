@@ -1,9 +1,13 @@
 @import "./carouselTop.scss";
-
+.wrapSeries,
 .wrap {
   width: 100%;
   max-width: 100vw;
   position: relative;
+}
+
+.wrapSeries{
+  position: absolute;
 }
 .select-topic{
   display: flex;
@@ -46,7 +50,7 @@
 .b-carouselSeries{
   z-index: 3;
   height: 180px;
-  position: absolute;
+  position: relative;
 }
 
 .b-carousel::-webkit-scrollbar {
@@ -160,6 +164,8 @@
         "refMov "
         "descMov";
 }
+
+
 
 .movie:hover {
   transform: scale(1);
@@ -284,7 +290,6 @@
 
 .movieSeries:hover + .descr-series{
   transition: all .2s ease;
-
   visibility: visible;
   font-size: calc(.5vw + 8px);
   padding-block: 40px;
@@ -292,17 +297,73 @@
   max-width: fit-content;
   font-weight: 350;
   padding-inline: 20px;
-  background: var(--series-back);
+  background-color: var(--search-back);
   border-radius: 0 0 24px 24px;
   margin-top: -26px;
+}
 
-  background-color: skyblue;
+.movieSeries:hover #play__svg{
+  display: block;
 }
 
 
 .movieSeries:hover{
   transform: scale(1);
   border-radius: 24px;
-  border: 4px solid;
+  border: 10px solid;
   border-color: var(--search-back);
+}
+
+#play__svg{
+ display: none;
+  margin-block-start: 44px;
+}
+
+.b-carouselSeries__next{
+  height: 180px;
+  visibility: visible;
+  position: absolute;
+}
+.b-carouselSeries__prev{
+  height: 180px;
+  visibility: visible;
+  position: absolute;
+}
+
+@media (min-width: 2000px){
+
+  .b-carouselSeries {
+    z-index: 3;
+    height: calc(3vw + 215px);
+  }
+  .movieSeries {
+    height: calc(3vw + 215px);
+    grid-template-rows: auto 70px;
+    width: calc(3vw + 380px);
+  }
+
+  .b-carouselSeries__next{
+    height: calc(3vw + 215px);
+    visibility: visible;
+    position: absolute;
+  }
+  .b-carouselSeries__prev{
+    height: calc(3vw + 215px);
+    visibility: visible;
+    position: absolute;
+  }
+
+  .movieSeries + .descr-series{
+    visibility: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    height: calc(3vw + 215px);
+    width: calc(3vw + 380px);
+  }
+  .desc-movSeries{
+    font-size: 24px;
+  }
+  #play__svg{
+    transform: scale(2);
+  }
 }

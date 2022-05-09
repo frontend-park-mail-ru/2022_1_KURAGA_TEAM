@@ -58,6 +58,12 @@
     height: auto !important;
 }
 
+@media (min-width: 2000px){
+  .first-part-info {
+    margin-top: calc(2vw + 300px);
+  }
+
+}
 .second-part-genre {
     margin-left: 4vw;
     margin-top: 40px;
@@ -81,3 +87,8 @@
 .seasons{
   margin-top: 0;
 }
+
+.play__back{
+  place-self: center;
+}
+
