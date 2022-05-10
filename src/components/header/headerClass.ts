@@ -175,6 +175,9 @@ export default class HeaderClass {
                                     const searchTopicName = document.createElement("a");
                                     searchTopicName.classList.add("font-menu-search", "padding-names");
                                     const searchTopicInfo = document.createElement("a");
+                                    const searchPic = document.createElement("img");
+                                    searchPic.src = res.picture;
+                                    searchPic.classList.add("search-pic");
                                     if (key == "persons") {
                                         searchTopicName.href = `/person/` + res.id;
                                         searchTopicName.textContent = res.name;
@@ -193,8 +196,10 @@ export default class HeaderClass {
                                         }
 
                                     }
+
                                     searchTopic.appendChild(searchTopicName);
                                     searchTopic.appendChild(searchTopicInfo);
+                                    //searchTopic.appendChild(searchPic);
                                     topic.appendChild(searchTopic);
                                 }
                             })
