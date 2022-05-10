@@ -1,4 +1,5 @@
 @import "./carouselTop.scss";
+
 .wrapSeries,
 .wrap {
   width: 100%;
@@ -6,31 +7,35 @@
   position: relative;
 }
 
-.wrapSeries{
+.wrapSeries {
   position: absolute;
 }
-.select-topic{
+
+.select-topic {
   display: flex;
 
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
 }
-.select-title-all{
+
+.select-title-all {
   display: none;
   font-size: 18px;
   margin-inline-end: 4vw;
   font-weight: 300;
   line-height: 42px;
   color: var(--secondary-name);
-  transition: all 0.5s ;
+  transition: all 0.5s;
   cursor: pointer;
 }
+
 .select-title-all:hover {
   color: var(--mix-color);
 }
-.show{
-  display:inline-block;
+
+.show {
+  display: inline-block;
 }
 
 .b-carouselSeries,
@@ -47,7 +52,7 @@
   position: relative;
 }
 
-.b-carouselSeries{
+.b-carouselSeries {
   z-index: 3;
   height: 180px;
   position: relative;
@@ -83,6 +88,7 @@
   left: 0;
   transition: all 0.4s ease;
 }
+
 .b-carouselSeries__next,
 .b-carousel__next {
 
@@ -99,6 +105,7 @@
   font-size: 40px;
   background-color: var(--btn-carousel-back-hover);
 }
+
 .b-carouselSeries__next:hover,
 .b-carouselSeries__prev:hover,
 .b-carousel__prev:hover,
@@ -107,6 +114,7 @@
   background-color: rgb(0 0 0 / 75%);
   transition: all 0.4s ease;
 }
+
 .b-carouselSeries__wrap,
 .b-carousel__wrap {
   display: flex;
@@ -115,6 +123,7 @@
   position: relative;
   z-index: 1;
 }
+
 .b-carouselSeries__item,
 .b-carousel__item {
   flex: 0 0 100%;
@@ -129,6 +138,7 @@
   height: 100%;
   object-fit: cover;
 }
+
 .movieSeries__href,
 .movie__href {
   cursor: pointer;
@@ -143,6 +153,7 @@
   display: block;
   color: var(--font-color);
 }
+
 .movieSeries,
 .movie {
   box-sizing: border-box;
@@ -164,7 +175,6 @@
         "refMov "
         "descMov";
 }
-
 
 
 .movie:hover {
@@ -267,7 +277,7 @@
   height: 36px;
 }
 
-.out-movie{
+.out-movie {
 
 }
 
@@ -280,51 +290,56 @@
   transition: all 0.2s ease;
 }
 
-.movieSeries + .descr-series{
+.movieSeries + .descr-series {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   visibility: hidden;
-  overflow-y: hidden;
-  text-overflow: ellipsis;
-  height: 150px;
+  height: 116px;
   width: 320px;
 }
 
-.movieSeries:hover + .descr-series{
+.movieSeries:hover + .descr-series {
   transition: all .2s ease;
   visibility: visible;
   font-size: calc(.5vw + 8px);
-  padding-block: 40px;
+  padding-block: 42px;
   line-height: 1.5;
   max-width: fit-content;
   font-weight: 350;
   padding-inline: 20px;
   background-color: var(--search-back);
   border-radius: 0 0 24px 24px;
-  margin-top: -26px;
+  margin-top: -36px;
 }
 
-.movieSeries:hover #play__svg{
+.movieSeries:hover .play__svg {
+
   display: block;
 }
 
 
-.movieSeries:hover{
+.movieSeries:hover {
   transform: scale(1);
   border-radius: 24px;
   border: 10px solid;
   border-color: var(--search-back);
 }
 
-#play__svg{
- display: none;
+.play__svg {
+  transform: scale(1.5);
+  display: none;
   margin-block-start: 44px;
 }
 
-.b-carouselSeries__next{
+.b-carouselSeries__next {
   height: 180px;
   visibility: visible;
   position: absolute;
 }
-.b-carouselSeries__prev{
+
+.b-carouselSeries__prev {
   height: 180px;
   visibility: visible;
   position: absolute;
@@ -363,13 +378,46 @@
   .desc-movSeries {
     font-size: 24px;
   }
-  #play__svg {
-    transform: scale(2);
+  .play__svg {
+    transform: scale(3);
   }
 }
+
 @media (max-width: 1000px) {
 
   .wrapSeries {
     position: relative;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1600px)  {
+  .movieSeries + .descr-series {
+    height: calc(2.2vw + 90px);
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1600px)  {
+  .movieSeries + .descr-series {
+    height: calc(2.2vw + 90px);
+  }
+}
+@media (min-width: 1600px) and (max-width: 1900px){
+  .movieSeries + .descr-series {
+    height: calc(2.5vw + 91px);
+  }
+}
+@media (min-width: 1900px) and (max-width: 2250px){
+  .movieSeries + .descr-series {
+    height: calc(3vw + 90px);
+  }
+}
+@media (min-width: 2250px) and (max-width: 3500px){
+  .movieSeries + .descr-series {
+    height: calc(4vw + 78px);
+  }
+}
+@media (min-width: 3500px){
+  .movieSeries + .descr-series {
+    height: calc(5vw + 57px);
   }
 }

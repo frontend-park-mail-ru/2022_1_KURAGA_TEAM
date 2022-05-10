@@ -101,7 +101,7 @@
   }
 
   .first-part-info {
-    margin-top: 0;
+    margin-top: 230px;
   }
 
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ  ПЛЕЕРА*/
@@ -359,7 +359,8 @@
     background-position-x: center;
   }
 
-   .descr-series{
+
+  .movieSeries+.descr-series {
     display: none;
   }
 
@@ -1381,7 +1382,7 @@
   }
 
   .first-part-info {
-    margin-top: 40px;
+    margin-top: 90px;
   }
   .sidebar{
       margin: 16vw;
