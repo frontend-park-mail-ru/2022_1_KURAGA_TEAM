@@ -38,4 +38,8 @@ export default class FirstInfoMovieClass {
             error.classList.add("first-part-info__error-active");
         });
     }
+    setHandlerMovie():void{
+        const info:HTMLElement = document.querySelector(".first-part-info");
+        info.style.marginTop = "0";
+    }
 }

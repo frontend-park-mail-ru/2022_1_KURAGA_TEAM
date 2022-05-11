@@ -112,6 +112,9 @@ export default class MovieViewClass extends BaseViewClass {
 
             handlerLink();
             header.setHandler();
+            if(!this.seasonsCompilation){
+                firstInfoMovie.setHandlerMovie();
+            }
             firstInfoMovie.setHandlers();
 
             MovieCompilationView.setHandler(this.movieCompilation.movieCompilationData);
