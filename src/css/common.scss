@@ -132,3 +132,16 @@ body::-webkit-scrollbar-thumb {
   --search-topic-color:rgba(97, 57, 107, 0.41);
   --footer-color: #031014;
 }
+
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .like{
+    transform: scale(0.8);
+  }
+}

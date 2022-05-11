@@ -15,7 +15,6 @@ import GenreViewClass from "./views/genreView/genreViewClass";
 import SearchViewClass from "./views/searchView/searchViewClass";
 
 import "./css/common.scss";
-import "./css/media.scss";
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js", { scope: "/" }).catch((err) => {

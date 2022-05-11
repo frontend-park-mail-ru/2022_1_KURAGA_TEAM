@@ -56,3 +56,39 @@
 .ref {
     margin-right: 70px;
 }
+
+@media (max-width: 750px) {
+    .content {
+        font-size: 13px;
+    }
+
+    .titleFooter {
+        font-size: 17px;
+    }
+
+    #footer {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left {
+        margin-left: 4vw;
+        flex-direction: column;
+    }
+
+    #second-footer {
+        margin-left: 0;
+        width: 130%;
+    }
+
+    #third-footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .ref {
+        margin-right: 30px;
+    }
+}
