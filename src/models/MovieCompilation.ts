@@ -34,7 +34,7 @@ export default class MovieCompilationModel {
                 movies: movieCompilationData,
                 id: index,
                 idSerial: id,
-
+                idBtn: Math.floor(Math.random() * (-100)),
             };
         } else {
             if (movieCompilationData.movies == null) {
