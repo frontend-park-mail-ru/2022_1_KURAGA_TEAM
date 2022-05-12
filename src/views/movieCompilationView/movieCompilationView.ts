@@ -103,19 +103,6 @@ export default class MovieCompilationView {
 
     }
 
-    static showSeriesDescr(data: MovieCompilationData): void{
-        if (!data.idSerial) {
-            return
-        }
-        const moviesSeries = document.querySelectorAll(".movieSeries");
-        moviesSeries.forEach((movie)=>{
-            movie.addEventListener("mouseover",(e)=>{
-                e.preventDefault();
-                console.log(movie.parentNode,"sef");
-            })
-        })
-    }
-
 
     static unmount(data: MovieCompilationData): void {
 

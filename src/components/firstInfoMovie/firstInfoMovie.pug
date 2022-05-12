@@ -1,9 +1,12 @@
 div.first-part-info__rating
     div.first-part-info__rating-flex
-        div.first-part-info__our-rating #{rating}
+        div.first-part-info__our-rating#rating #{rating}
         div
             div.first-part-info__our-name Оценка
             div.first-part-info__our-name-rt MovieSpace
-    button.your-rating__button Оценить
+    //button.your-rating__button Оценить
+    div#rating-bar
+        div#progress-wrapper
+        input(type="range", id="slider", list="slider-list")
     div.first-part-info__error Временно недоступно
 div.first-part-info__text #{description}
