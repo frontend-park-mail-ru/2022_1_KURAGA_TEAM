@@ -113,8 +113,10 @@ export default class HomeViewClass extends BaseViewClass {
     }
 
     unmount() {
-        this.movieCompilations.forEach((carousel) => {
-            MovieCompilationView.unmount(carousel.movieCompilationData);
-        });
+        if (this.movieCompilations) {
+            this.movieCompilations.forEach((carousel) => {
+                MovieCompilationView.unmount(carousel.movieCompilationData);
+            });
+        }
     }
 }

@@ -11,8 +11,7 @@ export default class MovieCompilationView {
 
 
     static render(data: MovieCompilationData) {
-        const idSeries = Math.floor(Math.random() * (-100));
-        const Series = new MovieClass(data.movies, "Series", false, data.id, data.idSerial, idSeries);
+        const Series = new MovieClass(data.movies, "Series", false, data.id, data.idSerial, data.idBtn);
         const Top = new MovieClass(data.movies, "Top", true);
         const unTop = new MovieClass(data.movies, "", true);
         // non unique ids
@@ -35,10 +34,10 @@ export default class MovieCompilationView {
         }
         if (!data.compilationName) {
             return carouselTemplate({
-                car: `js-carousel${idSeries}`,
-                prevBtn: `js-carousel${idSeries}__prev`,
-                nextBtn: `js-carousel${idSeries}__next`,
-                wrapMov: `js-carousel${idSeries}__wrap`,
+                car: `js-carousel${data.idBtn}`,
+                prevBtn: `js-carousel${data.idBtn}__prev`,
+                nextBtn: `js-carousel${data.idBtn}__next`,
+                wrapMov: `js-carousel${data.idBtn}__wrap`,
                 //compilationName: data.compilationName,
                 items: Series.render(),
                 typeMov: "Series",
@@ -59,19 +58,19 @@ export default class MovieCompilationView {
         let buttonCarouselNext: HTMLElement;
         let buttonCarouselPrev: HTMLElement;
         if (data.idSerial) {
-            wrap = document.querySelector(`.b-carouselSeries`);
+            wrap = document.querySelector(`.js-carousel${data.idBtn}`);
 
             buttonCarouselPrev = document.querySelector(
-                `.b-carouselSeries__prev`
+                `.js-carousel${data.id}__prev`
             );
             buttonCarouselNext = document.querySelector(
-                `.b-carouselSeries__next`
+                `.js-carousel${data.idBtn}__next`
             );
             const a = new movingCarousel({
-                main: `.b-carouselSeries`,
-                wrap: `.b-carouselSeries__wrap`,
-                prev: `.b-carouselSeries__prev`,
-                next: `.b-carouselSeries__next`,
+                main: `.js-carousel${data.idBtn}`,
+                wrap: `.js-carousel${data.idBtn}__wrap`,
+                prev: `.js-carousel${data.idBtn}__prev`,
+                next: `.js-carousel${data.idBtn}__next`,
             });
         } else {
             wrap = document.querySelector(`.js-carousel${data.id}`);
@@ -89,19 +88,21 @@ export default class MovieCompilationView {
                 next: `.js-carousel${data.id}__next`,
             });
         }
-        wrap.addEventListener("mouseover", (e) => {
-            buttonCarouselPrev.classList.add("b-carousel__prev-hover");
-            buttonCarouselNext.classList.add("b-carousel__next-hover");
+        if(wrap) {
+            wrap.addEventListener("mouseover", () => {
+                buttonCarouselPrev.classList.add("b-carousel__prev-hover");
+                buttonCarouselNext.classList.add("b-carousel__next-hover");
 
-        });
-        wrap.addEventListener("mouseout", () => {
-            buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
-            buttonCarouselNext.classList.remove("b-carousel__next-hover");
-        });
-
+            });
+            wrap.addEventListener("mouseout", () => {
+                buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
+                buttonCarouselNext.classList.remove("b-carousel__next-hover");
+            });
+        }
 
 
     }
+
 
     static unmount(data: MovieCompilationData): void {
 
@@ -128,6 +129,7 @@ export default class MovieCompilationView {
             );
         }
 
+        if(wrap){
         wrap.removeEventListener("mouseover", () => {
             buttonCarouselPrev.classList.add(`b-carousel__prev-hover`);
             buttonCarouselNext.classList.add("b-carousel__next-hover");
@@ -136,5 +138,6 @@ export default class MovieCompilationView {
             buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
             buttonCarouselNext.classList.remove("b-carousel__next-hover");
         });
+        }
     }
 }

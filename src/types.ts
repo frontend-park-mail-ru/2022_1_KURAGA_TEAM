@@ -99,6 +99,7 @@ export interface MovieCompilationData {
     movies: Array<MovieData>;
     compilationName?: string;
     is_movie?: boolean;
+    idBtn?: number;
 }
 export interface InfoHeadPerson {
     name: string;

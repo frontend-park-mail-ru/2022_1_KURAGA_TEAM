@@ -5,6 +5,9 @@
 
 .first-part-info__rating-flex {
     display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
 }
 
 .first-part-info__our-rating {
@@ -30,7 +33,6 @@
 }
 
 .first-part-info__our-name {
-    padding-top: 10px;
     font-weight: lighter;
     font-size: 20px;
     margin-bottom: 4px;
@@ -84,4 +86,36 @@
     font-size: 20px;
     font-weight: lighter;
     width: 700px;
+}
+
+#progress-wrapper {
+  text-align: -webkit-center;
+  width: 100%;
+  transition: width 0.3s cubic-bezier(0,.96,0,.96);
+  font-weight: bold;
+  font-size: 58px;
+}
+#slider{
+  background-color: #9159A0;
+  color: #2F3031;
+  height: 10px;
+  width:  100%;
+  -webkit-appearance: none;
+  background: #2F3031;
+  border-radius: 10px;
+  background-image: linear-gradient(#9159A0, #9159A0);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+
+}
+input[type="range"]::-webkit-slider-thumb {
+
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: #9159A0;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
 }

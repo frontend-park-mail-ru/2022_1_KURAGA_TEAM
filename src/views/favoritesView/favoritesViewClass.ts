@@ -17,7 +17,7 @@ import {User} from "../../types";
 
 export default class FavoritesViewClass extends BaseViewClass {
     private user: UserModel;
-    private movieCompilations: Array<MovieCompilationModel>;
+    private movieCompilations: Array<MovieCompilationModel> = null;
 
     async render() {
         try {
@@ -49,11 +49,11 @@ export default class FavoritesViewClass extends BaseViewClass {
                 footerImage.style.position = "absolute";
             } else {
 
-                 movCompBody.forEach((i, id) => {
-                      if (!i.movies) {
-                         movCompBody.splice(id, 1);
-                      }
-                 })
+                movCompBody.forEach((i, id) => {
+                    if (!i.movies) {
+                        movCompBody.splice(id, 1);
+                    }
+                })
 
                 this.movieCompilations = movCompBody.map(
                     (movieCompilationData, index) =>
@@ -73,7 +73,8 @@ export default class FavoritesViewClass extends BaseViewClass {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
                     footerImage.style.position = "absolute";
                     footerImage.style.bottom = "0";
-                };
+                }
+                ;
                 this.movieCompilations.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
@@ -131,7 +132,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 });
                 UserModel.disliked(formJson);
             });
-            like.removeEventListener("click",(e) => {
+            like.removeEventListener("click", (e) => {
                 const id = like.id.split('_').pop();
 
                 console.log(like.id.split('_').pop());
@@ -168,9 +169,12 @@ export default class FavoritesViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(): void {
-        this.movieCompilations.forEach((carousel) => {
-            MovieCompilationView.unmount(carousel.movieCompilationData);
-        });
+
+    unmount() {
+        if (this.movieCompilations) {
+            this.movieCompilations.forEach((carousel) => {
+                MovieCompilationView.unmount(carousel.movieCompilationData);
+            });
+        }
     }
 }
