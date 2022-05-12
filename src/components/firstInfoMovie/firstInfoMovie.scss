@@ -88,7 +88,7 @@
     width: 700px;
 }
 
-.progress-wrapper {
+#progress-wrapper {
   text-align: -webkit-center;
   width: 100%;
   transition: width 0.3s cubic-bezier(0,.96,0,.96);
@@ -104,7 +104,7 @@
   background: #2F3031;
   border-radius: 10px;
   background-image: linear-gradient(#9159A0, #9159A0);
-  background-size: 100%;
+  background-size: 50% 100%;
   background-repeat: no-repeat;
 
 }

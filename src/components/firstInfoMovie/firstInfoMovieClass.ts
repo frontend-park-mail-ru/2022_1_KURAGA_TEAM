@@ -56,7 +56,7 @@ export default class FirstInfoMovieClass {
         const progress: HTMLElement = document.getElementById("progress-wrapper");
         rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
-            rating.style.color = "#E13D3D";
+            rating.style.color = "var(--font-error-color)";
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
             rating.style.color = "#D4E13D";
         } else {
