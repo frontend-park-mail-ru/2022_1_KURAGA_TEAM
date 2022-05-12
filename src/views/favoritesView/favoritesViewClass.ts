@@ -169,6 +169,7 @@ export default class FavoritesViewClass extends BaseViewClass {
         return select;
     }
 
+
     unmount() {
         if (this.movieCompilations) {
             this.movieCompilations.forEach((carousel) => {

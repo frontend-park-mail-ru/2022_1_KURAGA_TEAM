@@ -4,7 +4,7 @@ import './footer.scss'
 const configIcon = [
     {
         key: "telegram",
-        href: "/",
+        href: "https://t.me/movie_space",
         src: "../../static/telegram.png",
     },
     {

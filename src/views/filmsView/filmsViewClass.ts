@@ -36,7 +36,6 @@ export default class FilmsViewClass extends BaseViewClass {
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
-            const footer = new FooterClass();
 
             super.render(filmsViewTemplate, {
                 header: header.render(),
@@ -105,7 +104,7 @@ export default class FilmsViewClass extends BaseViewClass {
         // });
     }
 
-    unmount(){
+    unmount() {
         // removeEvent
     }
 }

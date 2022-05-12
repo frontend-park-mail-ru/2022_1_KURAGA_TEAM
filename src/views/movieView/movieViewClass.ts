@@ -132,8 +132,8 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setHandler();
 
         } catch(err) {
-            console.log(err);
-           // router.go(routes.ERROR_CATCH_VIEW);
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -193,7 +193,7 @@ export default class MovieViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(){
+    unmount(): void {
         if (this.seasonsCompilation !== null) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);

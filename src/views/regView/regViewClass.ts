@@ -11,30 +11,40 @@ import UserModel from "../../models/User";
 import "./regLog.scss";
 
 export default class RegViewClass extends BaseViewClass {
+    private inputs: any;
+
+    constructor() {
+        super();
+
+        this.inputs = new InputsClass();
+    }
+
     async render() {
         try {
             const {user} = await UserModel.auth();
+
             if (user) {
                 router.go(routes.HOME_VIEW);
                 return;
             }
 
-
             const footer = new FooterClass();
-            const inputs = new InputsClass();
             const button = new ButtonClass("Зарегистрироваться");
 
             super.render(regViewTemplate, {
-                inputs: inputs.render(),
+                inputs: this.inputs.render(),
                 button: button.render(),
                 footer: footer.render(),
             });
 
-            inputs.setHandler();
+            this.inputs.setHandler();
             handlerLink();
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
         }
     }
-    unmount(){}
+
+    unmount(): void {
+        this.inputs.unmount();
+    }
 }
