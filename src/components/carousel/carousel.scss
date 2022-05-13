@@ -531,6 +531,100 @@
       .topic {
         margin-block: 0;
       }
+
+      .b-carouselSeries{
+        overflow-x: scroll;
+        padding-inline: 0;
+        height: auto;
+        position: initial;
+      }
+      .b-carousel {
+
+        overflow-x: scroll;
+        padding-inline: 0;
+      }
+      .b-carouselTop {
+        overflow-y: hidden;
+      }
+      .movieTop:hover,
+      .movieTop {
+        width: 90vw;
+        height: 60vw;
+        transform: scale(1);
+        margin-inline-end: 0;
+        margin-inline: 2vw;
+        background-position-x: center;
+      }
+
+
+      .movieSeries+.descr-series {
+        display: none;
+      }
+
+
+      .movie,
+      .movie:hover {
+        transform: scale(0.95);
+      }
+
+      .first {
+        margin-top: 10px;
+      }
+
+      .b-carouselSeries__prev,
+      .b-carouselSeries__next
+      .b-carouselTop__prev,
+      .b-carouselTop__next,
+      .b-carousel__next,
+      .b-carousel__prev {
+        display: none;
+      }
+      .b-carouselTop__wrap,
+      .b-carousel__wrap {
+      }
+
+      .wrap {
+        padding-inline: 4px;
+      }
+      .movieSeries,
+      .movie {
+        margin-inline: 1vw;
+        width: 48vw;
+        height: 30vw;
+        border-radius: 8px;
+        grid-template-rows: auto 40px;
+      }
+
+      .desc-movSeries,
+      .desc-mov {
+        justify-content: center;
+        /*width: 100%;*/
+        padding-inline: 5px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        font-size: 10px;
+      }
+      .desc-movTop {
+        justify-content: center;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        font-size: 16px;
+      }
+      .movie__href {
+        width: 100px;
+      }
+
+      .genre {
+        font-size: 10px;
+      }
+
+      .list-films {
+        display: flex;
+        margin: 20px auto auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 375px) {
@@ -548,3 +642,4 @@
         font-size: 26px;
       }
     }
+

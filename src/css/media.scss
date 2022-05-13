@@ -370,15 +370,6 @@
     transform: scale(0.95);
   }
 
-  #cbMovie:hover::after,
-  #cb:hover::after {
-    background-image: url("../static/heart.png");
-  }
-
-  #cbMovie:checked::after,
-  #cb:checked::after {
-    background-image: url("../static/activeLike.png");
-  }
   .first {
     margin-top: 10px;
   }
@@ -397,6 +388,15 @@
 
   .wrap {
     padding-inline: 4px;
+  }
+  .play__back {
+   display: none;
+  }
+  .movieSeries:hover {
+    /* transform: scale(1); */
+    /* border-radius: 32px; */
+    /* border: 10px solid; */
+    /* border-color: var(--search-back); */
   }
   .movieSeries,
   .movie {
@@ -1159,22 +1159,7 @@
   }
 }
 
-@media (min-width: 1800px) {
-  /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
-  .main-movie {
-    justify-content: center;
-  }
-  .sidebar {
-    transform: scale(1.3);
-    margin: 0;
-  }
-}
 
-@media (min-width: 2800px) {
-  .sidebar {
-    transform: scale(3);
-  }
-}
 
 
 @media (min-width: 1450px) and (max-width: 1800px) {
@@ -1211,28 +1196,7 @@
 }
 
 
-/* HEADER*/
-@media (min-width: 1000px) {
 
-  .navbar {
-    font-size: calc(1vw + 8px);
-  }
-  .menu__input {
-    font-size: calc(1vw + 10px);
-  }
-  .menu__input::placeholder {
-    font-size: calc(1vw + 5px);
-  }
-  .logo-home {
-    height: calc(1vw + 50px);
-  }
-  .dropdown-content a {
-    font-size: calc(1vw + 8px);
-  }
-  .dropdown-content {
-    margin-block: calc(1vw + 60px);
-  }
-}
 
 @media (min-width: 2000px) {
   .search__btn {
