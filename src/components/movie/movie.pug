@@ -10,6 +10,7 @@ each item in items
                             g(id="Layer_1")
                             g(id="play_x5F_alt")
                                 path(d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M10,24V8l16.008,8L10,24z   " style="fill: var(--mix-color);")
+                    a(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
                 if(is_movie)
                     div(class=`desc-mov` + `${typeMov}`)
                         a(class=`movie` + `${typeMov}` + '__href')(href=`/movie/${item.id}`)= item.name
