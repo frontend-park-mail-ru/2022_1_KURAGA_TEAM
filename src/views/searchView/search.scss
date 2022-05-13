@@ -9,14 +9,16 @@
 .search-topic {
   transition: all .2s linear;
   margin-bottom: 10px;
-  height: fit-content;
   background: var(--menu-back);
   width: 100%;
+  height: fit-content;
   display: flex;
+  align-content: space-between;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   padding-block: 5px;
+  flex-wrap: wrap;
 
 }
 
@@ -35,9 +37,10 @@
   text-align: initial;
 }
 
-.search-pic {
-  width: 10%;
-  height: 10%;
+.search-pic{
+  margin-right: 150px;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .search-main {

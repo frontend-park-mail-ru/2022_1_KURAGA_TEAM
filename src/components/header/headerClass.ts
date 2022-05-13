@@ -3,7 +3,7 @@ import UserModel from "../../models/User";
 import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
-import {debounce, isEmpty} from "./DebounceSearch"
+import {debounce, isEmpty} from "../../utils/Debounce"
 import './header.scss'
 
 
@@ -35,21 +35,18 @@ export default class HeaderClass {
                 return;
             }
 
-
             navbar.classList.remove("navbar-color");
         });
 
         const quit = document.querySelector(".quit");
 
-        quit.addEventListener("click", (e) => {
-            e.preventDefault();
+        quit.addEventListener("click", () => {
             UserModel.quit();
         });
 
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
-
             if (logo.style.display != "none") {
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
@@ -91,10 +88,10 @@ export default class HeaderClass {
             searchCloseBtn.style.display = "block";
             const screenWidth = window.screen.width;
             const logo: HTMLElement = document.querySelector(".logo-link");
-            const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
+            const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 logo.style.display = "none";
-            } else if ( screenWidth < 1500){
+            } else if (screenWidth < 1500) {
                 desktopNavbar.style.display = "none";
             }
 
@@ -117,10 +114,10 @@ export default class HeaderClass {
             searchMenuRes.style.display = "none";
             navbar.style.position = "fixed";
             const screenWidth = window.screen.width;
-            const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
+            const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 logo.style.display = "block";
-            } else if ( screenWidth < 1500){
+            } else if (screenWidth < 1500) {
                 desktopNavbar.style.display = "block";
             }
         })
@@ -178,6 +175,9 @@ export default class HeaderClass {
                                     const searchTopicName = document.createElement("a");
                                     searchTopicName.classList.add("font-menu-search", "padding-names");
                                     const searchTopicInfo = document.createElement("a");
+                                    const searchPic = document.createElement("img");
+                                    searchPic.src = res.picture;
+                                    searchPic.classList.add("search-pic");
                                     if (key == "persons") {
                                         searchTopicName.href = `/person/` + res.id;
                                         searchTopicName.textContent = res.name;
@@ -196,8 +196,10 @@ export default class HeaderClass {
                                         }
 
                                     }
+
                                     searchTopic.appendChild(searchTopicName);
                                     searchTopic.appendChild(searchTopicInfo);
+                                    //searchTopic.appendChild(searchPic);
                                     topic.appendChild(searchTopic);
                                 }
                             })

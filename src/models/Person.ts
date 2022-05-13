@@ -24,13 +24,16 @@ export default class PersonModel {
     }
 
     static getPerson(id) {
-        return new Promise((person) => {
+        return new Promise<{ person: PersonData }>((person) => {
             this.person(id)
-                .then((body) => {
-                    person({
-                        isAuth: body.isAuth,
-                        persBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((personData)=>{
+                            person({
+                                person: personData,
+                            });
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)

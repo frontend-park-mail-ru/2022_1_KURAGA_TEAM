@@ -10,36 +10,37 @@ import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
+import InputsClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import { User } from "../../types";
 
 import "./profile.scss";
 
+
 export default class ProfileViewClass extends BaseViewClass {
     private user: UserModel;
+    private inputs: any;
 
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody } = await UserModel.auth();
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             const header = new HeaderClass(this.user.userData);
-            const inputs = new InputsProfileClass(userData.user);
-            const avatar = new ProfileAvatarClass(userData.user.avatar);
+            this.inputs = new InputsProfileClass(this.user.userData.username);
+            const avatar = new ProfileAvatarClass(this.user.userData.avatar);
             const button = new ButtonClass("Сохранить");
             const footer = new FooterClass();
 
             super.render(profileViewTemplate, {
                 header: header.render(),
-                inputs: inputs.render(),
+                inputs: this.inputs.render(),
                 avatar: avatar.render(),
                 button: button.render(),
                 footer: footer.render(),
@@ -47,7 +48,7 @@ export default class ProfileViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-            inputs.setHandler();
+            this.inputs.setHandler();
             header.setHandler();
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
@@ -63,5 +64,8 @@ export default class ProfileViewClass extends BaseViewClass {
         profileNavbar.style.webkitTextFillColor = "transparent";
         profileNavbar.style.backgroundImage =
             "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+    }
+    unmount(): void {
+        this.inputs.unmount();
     }
 }

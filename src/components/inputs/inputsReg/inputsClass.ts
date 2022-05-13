@@ -47,22 +47,49 @@ export default class InputsClass {
         const inputName: HTMLInputElement = document.querySelector(
             'input[data-section="name"]'
         );
-        const errorName = document.querySelector(
-            'div[data-section="nameError"]'
-        );
 
         const inputEmail: HTMLInputElement = document.querySelector(
             'input[data-section="email"]'
-        );
-        const errorEmail = document.querySelector(
-            'div[data-section="emailError"]'
         );
 
         const inputPassOne: HTMLInputElement = document.querySelector(
             'input[data-section="passwordFirst"]'
         );
-        const errorPassOne = document.querySelector(
-            'div[data-section="passOneError"]'
+
+        const inputPassTwo: HTMLInputElement = document.querySelector(
+            'input[data-section="passwordSecond"]'
+        );
+
+        inputName.addEventListener("change", this.inputNameChange);
+
+        inputName.addEventListener("keydown", this.inputNameKeyDown);
+
+        inputEmail.addEventListener("change", this.inputEmailChange);
+
+        inputEmail.addEventListener("keydown", this.inputEmailKeyDown);
+
+        inputPassOne.addEventListener("change", this.inputPassOneChange);
+
+        inputPassOne.addEventListener("keydown", this.inputPassOneKeyDown);
+
+        inputPassTwo.addEventListener("change", this.inputPassTwoChange);
+
+        inputPassTwo.addEventListener("keydown", this.inputPassTwoKeyDown);
+
+        form.addEventListener("submit", this.validation);
+    }
+
+    async validation(e: any) {
+        const inputName: HTMLInputElement = document.querySelector(
+            'input[data-section="name"]'
+        );
+
+        const inputEmail: HTMLInputElement = document.querySelector(
+            'input[data-section="email"]'
+        );
+
+        const inputPassOne: HTMLInputElement = document.querySelector(
+            'input[data-section="passwordFirst"]'
         );
 
         const inputPassTwo: HTMLInputElement = document.querySelector(
@@ -72,245 +99,340 @@ export default class InputsClass {
             'div[data-section="passTwoError"]'
         );
 
-        const nameValid: () => boolean = () => {
-            return (
-                inputName.value.match(/<script>/) !== null ||
-                inputName.value.match(/<a/) !== null ||
-                inputName.value.match(/<img/) !== null ||
-                inputName.value.match(/<img/) !== null ||
-                !(regExp.checkUsername.test(inputName.value))
-            );
-        };
+        let check = 0;
 
-        const nameError: () => void = () => {
-            if (nameValid()) {
-                errorName.classList.add("error-active");
-                errorName.textContent = textErrors.wrongData;
+        if (
+            !inputName.validity.valid ||
+            inputName.value.trim() === "" ||
+            InputsClass.nameValid()
+        ) {
+            check++;
+            InputsClass.nameError();
 
-                return;
-            }
+            e.preventDefault();
+        }
 
-            errorName.classList.add("error-active");
-            errorName.textContent = textErrors.empty;
-        };
+        if (
+            !regExp.checkEmail.test(inputEmail.value) ||
+            inputEmail.value.length === 0 ||
+            !inputEmail.validity.valid
+        ) {
+            check++;
+            InputsClass.emailError();
 
-        const emailError: () => void = () => {
-            if (inputEmail.validity.valueMissing) {
-                errorEmail.classList.add("error-active");
-                errorEmail.textContent = textErrors.empty;
+            e.preventDefault();
+        }
 
-                return;
-            }
+        if (!inputPassOne.validity.valid) {
+            check++;
+            InputsClass.passOneErrorEmpty();
 
-            errorEmail.classList.add("error-active");
-            errorEmail.textContent = textErrors.wrongEmail;
-        };
+            e.preventDefault();
+        } else if (!regExp.minimum8Chars.test(inputPassOne.value)) {
+            check++;
+            InputsClass.passOneErrorLength();
 
-        const passOneErrorEmpty: () => void = () => {
-            errorPassOne.classList.add("error-active");
-            errorPassOne.textContent = textErrors.empty;
-        };
+            e.preventDefault();
+        } else if (
+            !regExp.containsNumbers.test(inputPassOne.value) ||
+            !regExp.containsLetters.test(inputPassOne.value)
+        ) {
+            check++;
+            InputsClass.passOneErrorAllow();
 
-        const passOneErrorLength: () => void = () => {
-            errorPassOne.classList.add("error-active");
-            errorPassOne.textContent = textErrors.shortPass;
-        };
+            e.preventDefault();
+        }
 
-        const passOneErrorAllow: () => void = () => {
-            errorPassOne.classList.add("error-active");
-            errorPassOne.textContent = textErrors.wrongPass;
-        };
-
-        const passTwoError: () => void = () => {
+        if (inputPassTwo.value !== inputPassOne.value) {
+            check++;
             errorPassTwo.classList.add("error-active");
             errorPassTwo.textContent = textErrors.secondPassErr;
-        };
 
-        inputName.addEventListener("change", () => {
-            if (inputName.value.trim() === "" || nameValid()) {
-                nameError();
+            e.preventDefault();
+        }
 
-                return;
-            }
+        if (inputPassTwo.value.length === 0) {
+            check++;
+            InputsClass.passTwoError();
 
-            if (inputName.validity.valid) {
-                errorName.classList.remove("error-active");
+            e.preventDefault();
+        }
 
-                return;
-            }
+        if (check === 0) {
+            e.preventDefault();
 
-            nameError();
-        });
+            const formJson = JSON.stringify({
+                username: inputName.value.trim(),
+                email: inputEmail.value.trim(),
+                password: inputPassOne.value,
+            });
 
-        inputName.addEventListener("keydown", () => {
-            errorName.classList.remove("error-active");
-        });
+            const errorIncorr = document.querySelector(
+                'div[data-section="incorrect"]'
+            );
 
-        inputEmail.addEventListener("change", () => {
-            if (
-                regExp.checkEmail.test(inputEmail.value) &&
-                inputEmail.value.length !== 0 &&
-                inputEmail.validity.valid &&
-                inputEmail.value.length < 50
-            ) {
-                errorEmail.classList.remove("error-active");
+            const {isAuth, regBody} = await UserModel.reg(formJson);
 
-                return;
-            }
-
-            emailError();
-        });
-
-        inputEmail.addEventListener("keydown", () => {
-            errorEmail.classList.remove("error-active");
-        });
-
-        inputPassOne.addEventListener("change", () => {
-            if (!inputPassOne.validity.valid) {
-                passOneErrorEmpty();
+            if (regBody.message === "ERROR: Email is not unique") {
+                errorIncorr.classList.add("error-active");
+                errorIncorr.classList.add("center");
+                errorIncorr.textContent =
+                    "Такой пользователь уже существует";
 
                 return;
             }
-
-            if (inputPassOne.value.length > 50) {
-                errorPassOne.classList.add("error-active");
-                errorPassOne.textContent = textErrors.tooLong;
-
+            if (!isAuth) {
+                errorIncorr.classList.add("error-active");
+                errorIncorr.classList.add("center");
+                errorIncorr.textContent =
+                    "Упс... У нас что-то пошло не так!";
                 return;
             }
+            router.go("/");
+        }
+    };
 
-            if (!regExp.minimum8Chars.test(inputPassOne.value)) {
-                passOneErrorLength();
+    inputPassTwoKeyDown(): void {
+        const errorPassTwo = document.querySelector(
+            'div[data-section="passTwoError"]'
+        );
 
-                return;
-            }
+        errorPassTwo.classList.remove("error-active");
+    }
 
-            if (
-                !regExp.containsNumbers.test(inputPassOne.value) ||
-                !regExp.containsLetters.test(inputPassOne.value)
-            ) {
-                passOneErrorAllow();
+    static passTwoError(): void {
+        const errorPassTwo = document.querySelector(
+            'div[data-section="passTwoError"]'
+        );
 
-                return;
-            }
+        errorPassTwo.classList.add("error-active");
+        errorPassTwo.textContent = textErrors.secondPassErr;
+    }
 
-            errorPassOne.classList.remove("error-active");
-        });
+    inputPassTwoChange(): void {
+        const inputPassTwo: HTMLInputElement = document.querySelector(
+            'input[data-section="passwordSecond"]'
+        );
+        const errorPassTwo = document.querySelector(
+            'div[data-section="passTwoError"]'
+        );
 
-        inputPassOne.addEventListener("keydown", () => {
-            errorPassOne.classList.remove("error-active");
-        });
-
-        inputPassTwo.addEventListener("change", () => {
-            if (inputPassTwo.validity.valid) {
-                errorPassTwo.classList.remove("error-active");
-
-                return;
-            }
-
-            passTwoError();
-        });
-
-        inputPassTwo.addEventListener("keydown", () => {
+        if (inputPassTwo.validity.valid) {
             errorPassTwo.classList.remove("error-active");
-        });
 
-        const validation: (e: any) => void = async (e) => {
-            let check = 0;
-            if (
-                !inputName.validity.valid ||
-                inputName.value.trim() === "" ||
-                nameValid()
-            ) {
-                check++;
-                nameError();
+            return;
+        }
 
-                e.preventDefault();
-            }
+        InputsClass.passTwoError();
+    }
 
-            if (
-                !regExp.checkEmail.test(inputEmail.value) ||
-                inputEmail.value.length === 0 ||
-                !inputEmail.validity.valid
-            ) {
-                check++;
-                emailError();
+    inputPassOneKeyDown(): void {
+        const errorPassOne = document.querySelector(
+            'div[data-section="passOneError"]'
+        );
 
-                e.preventDefault();
-            }
+        errorPassOne.classList.remove("error-active");
+    }
 
-            if (!inputPassOne.validity.valid) {
-                check++;
-                passOneErrorEmpty();
+    static passOneErrorEmpty(): void {
+        const errorPassOne = document.querySelector(
+            'div[data-section="passOneError"]'
+        );
 
-                e.preventDefault();
-            } else if (!regExp.minimum8Chars.test(inputPassOne.value)) {
-                check++;
-                passOneErrorLength();
+        errorPassOne.classList.add("error-active");
+        errorPassOne.textContent = textErrors.empty;
+    }
 
-                e.preventDefault();
-            } else if (
-                !regExp.containsNumbers.test(inputPassOne.value) ||
-                !regExp.containsLetters.test(inputPassOne.value)
-            ) {
-                check++;
-                passOneErrorAllow();
+    static passOneErrorLength(): void {
+        const errorPassOne = document.querySelector(
+            'div[data-section="passOneError"]'
+        );
 
-                e.preventDefault();
-            }
+        errorPassOne.classList.add("error-active");
+        errorPassOne.textContent = textErrors.shortPass;
+    }
 
-            if (inputPassTwo.value !== inputPassOne.value) {
-                check++;
-                errorPassTwo.classList.add("error-active");
-                errorPassTwo.textContent = textErrors.secondPassErr;
+    static passOneErrorAllow(): void {
+        const errorPassOne = document.querySelector(
+            'div[data-section="passOneError"]'
+        );
 
-                e.preventDefault();
-            }
+        errorPassOne.classList.add("error-active");
+        errorPassOne.textContent = textErrors.wrongPass;
+    }
 
-            if (inputPassTwo.value.length === 0) {
-                check++;
-                passTwoError();
+    inputPassOneChange(): void {
+        const inputPassOne: HTMLInputElement = document.querySelector(
+            'input[data-section="passwordFirst"]'
+        );
+        const errorPassOne = document.querySelector(
+            'div[data-section="passOneError"]'
+        );
 
-                e.preventDefault();
-            }
+        if (!inputPassOne.validity.valid) {
+            InputsClass.passOneErrorEmpty();
 
-            if (check === 0) {
-                e.preventDefault();
+            return;
+        }
 
-                const formJson = JSON.stringify({
-                    username: inputName.value.trim(),
-                    email: inputEmail.value.trim(),
-                    password: inputPassOne.value,
-                });
+        if (inputPassOne.value.length > 50) {
+            errorPassOne.classList.add("error-active");
+            errorPassOne.textContent = textErrors.tooLong;
 
-                const errorIncorr = document.querySelector(
-                    'div[data-section="incorrect"]'
-                );
+            return;
+        }
 
-                const {isAuth, regBody} = await UserModel.reg(formJson);
+        if (!regExp.minimum8Chars.test(inputPassOne.value)) {
+            InputsClass.passOneErrorLength();
 
-                const regData = await Promise.resolve(regBody);
-                if (regData.message === "ERROR: Email is not unique") {
-                    errorIncorr.classList.add("error-active");
-                    errorIncorr.classList.add("center");
-                    errorIncorr.textContent =
-                        "Такой пользователь уже существует";
+            return;
+        }
 
-                    return;
-                }
-                if (!isAuth) {
-                    errorIncorr.classList.add("error-active");
-                    errorIncorr.classList.add("center");
-                    errorIncorr.textContent =
-                        "Упс... У нас что-то пошло не так!";
-                    return;
-                }
-                router.go("/");
-            }
-        };
+        if (
+            !regExp.containsNumbers.test(inputPassOne.value) ||
+            !regExp.containsLetters.test(inputPassOne.value)
+        ) {
+            InputsClass.passOneErrorAllow();
 
-        form.addEventListener("submit", (e) => {
-            validation(e);
-        });
+            return;
+        }
+
+        errorPassOne.classList.remove("error-active");
+    }
+
+    inputEmailKeyDown(): void {
+        const errorEmail = document.querySelector(
+            'div[data-section="emailError"]'
+        );
+
+        errorEmail.classList.remove("error-active");
+    }
+
+    static emailError(): void {
+        const inputEmail: HTMLInputElement = document.querySelector(
+            'input[data-section="email"]'
+        );
+        const errorEmail = document.querySelector(
+            'div[data-section="emailError"]'
+        );
+
+        if (inputEmail.validity.valueMissing) {
+            errorEmail.classList.add("error-active");
+            errorEmail.textContent = textErrors.empty;
+
+            return;
+        }
+
+        errorEmail.classList.add("error-active");
+        errorEmail.textContent = textErrors.wrongEmail;
+    }
+
+    inputEmailChange(): void {
+        const inputEmail: HTMLInputElement = document.querySelector(
+            'input[data-section="email"]'
+        );
+        const errorEmail = document.querySelector(
+            'div[data-section="emailError"]'
+        );
+
+        if (
+            regExp.checkEmail.test(inputEmail.value) &&
+            inputEmail.value.length !== 0 &&
+            inputEmail.validity.valid &&
+            inputEmail.value.length < 50
+        ) {
+            errorEmail.classList.remove("error-active");
+
+            return;
+        }
+
+        InputsClass.emailError();
+    }
+
+    inputNameKeyDown(): void {
+        const errorName = document.querySelector(
+            'div[data-section="nameError"]'
+        );
+
+        errorName.classList.remove("error-active");
+    }
+
+    static nameValid(): boolean {
+        const inputName: HTMLInputElement = document.querySelector(
+            'input[data-section="name"]'
+        );
+
+        return (
+            inputName.value.match(/<script>/) !== null ||
+            inputName.value.match(/<a/) !== null ||
+            inputName.value.match(/<img/) !== null ||
+            inputName.value.match(/<img/) !== null ||
+            !(regExp.checkUsername.test(inputName.value))
+        );
+    }
+
+    static nameError(): void {
+        const errorName = document.querySelector(
+            'div[data-section="nameError"]'
+        );
+
+        if (InputsClass.nameValid()) {
+            errorName.classList.add("error-active");
+            errorName.textContent = textErrors.wrongData;
+
+            return;
+        }
+
+        errorName.classList.add("error-active");
+        errorName.textContent = textErrors.empty;
+    }
+
+    inputNameChange(): void {
+        const inputName: HTMLInputElement = document.querySelector(
+            'input[data-section="name"]'
+        );
+        const errorName = document.querySelector(
+            'div[data-section="nameError"]'
+        );
+
+        if (inputName.value.trim() === "" || InputsClass.nameValid()) {
+            InputsClass.nameError();
+
+            return;
+        }
+
+        if (inputName.validity.valid) {
+            errorName.classList.remove("error-active");
+
+            return;
+        }
+
+        InputsClass.nameError();
+    }
+
+    unmount(): void {
+        const inputName: HTMLInputElement = document.querySelector(
+            'input[data-section="name"]'
+        );
+        const inputEmail: HTMLInputElement = document.querySelector(
+            'input[data-section="email"]'
+        );
+        const inputPassOne: HTMLInputElement = document.querySelector(
+            'input[data-section="passwordFirst"]'
+        );
+        const inputPassTwo: HTMLInputElement = document.querySelector(
+            'input[data-section="passwordSecond"]'
+        );
+        const form = document.querySelector(".menu-form");
+
+        inputName.removeEventListener("change", this.inputNameChange);
+        inputName.removeEventListener("keydown", this.inputNameKeyDown);
+        inputEmail.removeEventListener("change", this.inputEmailChange);
+        inputEmail.removeEventListener("keydown", this.inputEmailKeyDown);
+        inputPassOne.removeEventListener("change", this.inputPassOneChange);
+        inputPassOne.removeEventListener("keydown", this.inputPassOneKeyDown);
+        inputPassTwo.removeEventListener("change", this.inputPassTwoChange);
+        inputPassTwo.removeEventListener("keydown", this.inputPassTwoKeyDown);
+        form.removeEventListener("submit", this.validation);
     }
 }

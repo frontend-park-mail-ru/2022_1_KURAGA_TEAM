@@ -141,18 +141,44 @@ export default class UserModel {
         }
     }
 
+
+    static async rating(form, csrfToken) {
+        try {
+            return await ajaxReq.post({
+                path: "/userRating",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
     static auth() {
-        return new Promise<{ isAuth: boolean; userBody }>((res) => {
+        return new Promise<{ user: UserData }>((res) => {
             this.profile()
-                .then((body) => {
-                    res({
-                        isAuth: body.isAuth,
-                        userBody: body.data,
-                    });
+                .then(({isAuth, data}) => {
+                    data
+                        .then((userBody) => {
+                            if (isAuth) {
+                                res({
+                                    user: userBody.user,
+                                })
+                            } else res({
+                                user: null,
+                            });
+                        })
+
+
                 })
                 .catch(() => {
                 });
-        });
+        })
+
+
     }
 
     static quit() {
@@ -169,14 +195,18 @@ export default class UserModel {
 
 
     static reg(formJson) {
-        return new Promise<{ isAuth: boolean; regBody }>((res)=>{
+        return new Promise<{ isAuth: boolean; regBody }>((res) => {
             this.registration(formJson)
-                .then((body) => {
-                res({
-                    isAuth: body.isAuth,
-                    regBody: body.data,
-                });
-            })
+                .then(({isAuth, data}) => {
+                    data
+                        .then((reg) => {
+                            res({
+                                isAuth: isAuth,
+                                regBody: reg,
+                            });
+                        })
+
+                })
                 .catch((err) => {
                     console.error(err)
                 });
@@ -185,7 +215,7 @@ export default class UserModel {
     }
 
     static log(formJson) {
-        return new Promise<{ isAuth: boolean;}>((res)=>{
+        return new Promise<{ isAuth: boolean; }>((res) => {
             this.login(formJson)
                 .then((body) => {
                     res({
@@ -296,7 +326,19 @@ export default class UserModel {
         });
     }
 
+    static async changeRating(formJson) {
+        try {
 
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.rating(formJson, message);
+
+
+        } catch (err) {
+            return err;
+        }
+    }
 
 
 }

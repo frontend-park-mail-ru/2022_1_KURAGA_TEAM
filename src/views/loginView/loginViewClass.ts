@@ -1,5 +1,5 @@
 import FooterClass from "Components/footer/footerClass.ts";
-import InputsClass from "Components/inputs/inputsLogin/inputsClass.ts";
+import InputsClass from "Components/inputs/inputsLogin/inputsClass";
 import ButtonClass from "Components/button/buttonClass.ts";
 import handlerLink from "Utils/handlerLink";
 import router from "Routing/router.ts";
@@ -11,29 +11,39 @@ import UserModel from "../../models/User";
 import "../regView/regLog.scss";
 
 export default class LoginViewClass extends BaseViewClass {
+    private inputs: any;
+
+    constructor() {
+        super();
+        this.inputs = new InputsClass();
+    }
+
     async render() {
         try {
-            const { isAuth } = await UserModel.auth();
-
-            if (isAuth) {
+            const {user} = await UserModel.auth();
+            if (user) {
                 router.go(routes.HOME_VIEW);
                 return;
             }
 
             const footer = new FooterClass();
-            const inputs = new InputsClass();
+
             const button = new ButtonClass("Войти");
 
             super.render(loginViewTemplate, {
-                inputs: inputs.render(),
+                inputs: this.inputs.render(),
                 button: button.render(),
                 footer: footer.render(),
             });
 
-            inputs.setHandler();
+            this.inputs.setHandler();
             handlerLink();
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
         }
+    }
+
+    unmount() {
+        this.inputs.unmount();
     }
 }

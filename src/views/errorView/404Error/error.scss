@@ -33,3 +33,54 @@
     height: 150px;
     width: 100%;
 }
+
+@media (min-width: 1000px) and (max-width: 1450px) {
+    .error-text__404 {
+        text-align: center;
+        font-size: 70px;
+    }
+
+    .error-text__info {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .error-img {
+        width: 535px;
+        height: 392px;
+    }
+
+    .error-text__404 {
+        text-align: center;
+        font-size: 50px;
+    }
+
+    .error-text__info {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 750px) {
+    .error-text__404 {
+        margin-right: 15px;
+        padding-left: 10px;
+        font-size: 45px;
+    }
+
+    .error-text {
+        margin-top: 50px;
+    }
+
+    .error-text__info {
+        text-align: center;
+        margin-right: 15px;
+        padding-left: 15px;
+        font-size: 16px;
+    }
+
+    .error-img {
+        width: 232px;
+        height: 183px;
+    }
+}

@@ -14,15 +14,13 @@ export default class ErrorViewClass extends BaseViewClass {
 
     async render() {
         try {
-            const { isAuth, userBody } = await UserModel.auth();
 
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             const header = new HeaderClass(this.user.userData);
             const footer = new FooterClass();
@@ -35,4 +33,5 @@ export default class ErrorViewClass extends BaseViewClass {
             router.go(routes.ERROR_CATCH_VIEW);
         }
     }
+    unmount(){}
 }

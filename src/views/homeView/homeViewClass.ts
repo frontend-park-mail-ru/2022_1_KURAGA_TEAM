@@ -25,25 +25,21 @@ export default class HomeViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
 
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
+
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+          
+            this.user = new UserModel(user);
 
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            const {movie} = await MovieModel.mainMov();
+            this.mainMovie = new MovieModel(movie);
 
-            const {movBody}: { movBody?: Promise<any> } = await MovieModel.mainMov();
-            const mainMovieData = await Promise.resolve(movBody);
-            this.mainMovie = new MovieModel(mainMovieData);
-
-            const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getMovieCompilations();
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilations = movieCompilationsData.map(
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
+            this.movieCompilations = movCompBody.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
                         index,
@@ -51,7 +47,6 @@ export default class HomeViewClass extends BaseViewClass {
                     )
             );
 
-            this.user = new UserModel(userData.user);
 
             const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
@@ -65,11 +60,12 @@ export default class HomeViewClass extends BaseViewClass {
                 footer: footer.render(),
             });
 
+
             handlerLink();
             this.setHandler();
             header.setHandler();
 
-            const {likesBody}  = await UserModel.getLikes()
+            const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
             UserLikeView.setAllLikes(likesData.favorites.id);
@@ -78,7 +74,8 @@ export default class HomeViewClass extends BaseViewClass {
             this.movieCompilations.forEach((carousel) => {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
-        } catch(err) {
+
+        } catch (err) {
             console.log(err);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
@@ -111,6 +108,15 @@ export default class HomeViewClass extends BaseViewClass {
             }
             select += carouselBlock;
         });
+
         return select;
+    }
+
+    unmount() {
+        if (this.movieCompilations) {
+            this.movieCompilations.forEach((carousel) => {
+                MovieCompilationView.unmount(carousel.movieCompilationData);
+            });
+        }
     }
 }

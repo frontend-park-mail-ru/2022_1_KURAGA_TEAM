@@ -1,12 +1,15 @@
 import { parseRegExp } from "./parseRegExp";
 import { routes } from "./constRouting";
 import OfflineViewClass from "../views/offlineView/offlineViewClass";
+import BaseViewClass from "../views/baseView/baseViewClass";
 
 class Router {
     private readonly routes: {};
+    private currentView: any;
 
     constructor() {
         this.routes = {};
+        this.currentView = null;
     }
 
     register(path: string, View): Router {
@@ -15,12 +18,17 @@ class Router {
         return this;
     }
 
-    go(path: string): void {
-        const pathname = parseRegExp(path);
+    go(path: string, View?:any): void {
+        if(this.currentView) {
+            this.currentView.unmount();
 
-        window.history.pushState(null, null, path);
+            const pathname = parseRegExp(path);
+            this.currentView = this.routes[pathname];
 
-        this.routes[pathname].render();
+            window.history.pushState(null, null, path);
+
+            this.routes[pathname].render();
+        }
     }
 
     start(): void {
@@ -37,8 +45,8 @@ class Router {
             pathname = routes.ERROR_VIEW;
         }
 
-        const currentView = this.routes[pathname];
-        currentView.render();
+        this.currentView = this.routes[pathname];
+        this.currentView.render();
 
         window.addEventListener("popstate", () => {
             const pathname = parseRegExp(window.location.pathname);

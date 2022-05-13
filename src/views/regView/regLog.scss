@@ -78,3 +78,191 @@
 .second-span:hover {
     text-decoration: underline;
 }
+
+@media (min-width: 1450px) and (max-width: 1600px) {
+    #menu {
+        width: 500px;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1450px) {
+    .error {
+        font-size: 14px;
+    }
+
+    .papa {
+        height: 70px;
+    }
+
+    .element {
+        height: 40px;
+    }
+
+    .svg {
+        height: 26px;
+        width: 26px;
+    }
+
+    .menu-input::placeholder {
+        font-size: 16px;
+    }
+
+    .menu-input {
+        font-size: 16px;
+    }
+
+    .menu-button {
+        font-size: 22px;
+        margin-top: 20px;
+        height: 40px;
+    }
+
+    .first-span {
+        font-size: 20px;
+    }
+
+    .second-span {
+        font-size: 20px;
+    }
+
+    #menu {
+        padding-top: 50px;
+        padding-bottom: 40px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #back {
+        height: calc(100vh + 80px);
+    }
+
+    .logo {
+        width: 136px;
+        height: 80px;
+        left: 10px;
+    }
+
+    #menu {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 85%;
+        max-width: 600px;
+    }
+    .font-empty {
+        font-size: calc(1vw + 20px);
+    }
+    .menu-h1 {
+        font-size: 30px;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .error {
+        font-size: 14px;
+    }
+
+    .papa {
+        height: 70px;
+    }
+
+    .element {
+        height: 40px;
+    }
+
+    .svg {
+        height: 26px;
+        width: 26px;
+    }
+
+    .menu-input::placeholder {
+        font-size: 16px;
+    }
+
+    .menu-input {
+        font-size: 16px;
+    }
+
+    .menu-button {
+        font-size: 22px;
+        margin-top: 20px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 750px) {
+    #back-menu {
+        height: fit-content;
+        margin-bottom: 10vh;
+        margin-top: 10vh;
+        align-items: flex-start;
+    }
+
+    .div-logo {
+        height: 60px;
+    }
+
+    .papa {
+        height: 65px;
+    }
+
+    .element {
+        height: 35px;
+    }
+
+    .menu-input {
+        font-size: 16px;
+    }
+
+    .menu-input::placeholder {
+        font-size: 14px;
+    }
+
+    .svg {
+        margin: 5px 20px 5px 5px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-button {
+        font-size: 18px;
+        height: 40px;
+        margin-top: 5px;
+    }
+
+    .error {
+        font-size: 14px;
+        padding-top: 1px;
+    }
+
+    .logo {
+        top: 10px;
+        width: 120px;
+        height: 60px;
+    }
+
+    .text {
+        margin-top: 5px;
+    }
+
+    .first-span {
+        font-size: 16px;
+    }
+
+    .second-span {
+        font-size: 16px;
+    }
+}
+
+@media (max-height: 450px) {
+    #back {
+        height: 100vw;
+    }
+
+    #back-menu {
+        height: 100vw;
+    }
+
+}
