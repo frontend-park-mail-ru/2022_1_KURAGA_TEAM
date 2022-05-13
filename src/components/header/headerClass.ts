@@ -3,7 +3,7 @@ import UserModel from "../../models/User";
 import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
-import {debounce, isEmpty} from "./DebounceSearch"
+import {debounce, isEmpty} from "../../utils/Debounce"
 import './header.scss'
 
 

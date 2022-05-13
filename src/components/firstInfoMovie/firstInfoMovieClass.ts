@@ -1,18 +1,13 @@
 import firstInfoMovie from "./firstInfoMovie.pug";
 import './firstInfoMovie.scss'
+import {debounce} from "../../utils/Debounce"
 
 export default class FirstInfoMovieClass {
     private readonly rating: number;
 
     private readonly description: string;
 
-    constructor({
-                    rating,
-                    description,
-                }: {
-        rating: number;
-        description: string;
-    }) {
+    constructor({rating, description,}: { rating: number; description: string; }) {
         this.rating = rating;
         this.description = description;
     }
@@ -39,12 +34,9 @@ export default class FirstInfoMovieClass {
         // });
 
 
-        const raiting = document.getElementById("rating-bar");
-
-
-
-        raiting.addEventListener("input", this.changeRaiting);
-
+        const rating = document.getElementById("rating-bar");
+        //rating.addEventListener("input", this.changeRaiting);
+        rating.addEventListener("input", this.changeRaiting);
 
     }
 
@@ -62,6 +54,7 @@ export default class FirstInfoMovieClass {
         } else {
             rating.style.color = "#3BB33B";
         }
+
     }
 
     setHandlerMovie(): void {

@@ -112,7 +112,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             handlerLink();
             header.setHandler();
-            if(!this.seasonsCompilation){
+            if (!this.seasonsCompilation) {
                 firstInfoMovie.setHandlerMovie();
             }
             firstInfoMovie.setHandlers();
@@ -131,7 +131,7 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
 
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             //router.go(routes.ERROR_CATCH_VIEW);
         }
@@ -194,7 +194,15 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     unmount(): void {
-        if (this.seasonsCompilation !== null) {
+        const rating: HTMLElement = document.getElementById("rating")
+        const formJson = JSON.stringify({
+            rating: rating.textContent,
+            id: this.movie.id
+        });
+        console.log(formJson);
+        UserModel.changeRating(formJson);
+
+        if (this.seasonsCompilation) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);
             });

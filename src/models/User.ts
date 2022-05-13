@@ -141,6 +141,22 @@ export default class UserModel {
         }
     }
 
+
+    static async rating(form, csrfToken) {
+        try {
+            return await ajaxReq.post({
+                path: "/userRating",
+                body: form,
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
     static auth() {
         return new Promise<{ user: UserData }>((res) => {
             this.profile()
@@ -308,6 +324,20 @@ export default class UserModel {
                 .catch(() => {
                 });
         });
+    }
+
+    static async changeRating(formJson) {
+        try {
+
+            const {data} = await this.token();
+            const {message} = await data;
+
+            return this.rating(formJson, message);
+
+
+        } catch (err) {
+            return err;
+        }
     }
 
 
