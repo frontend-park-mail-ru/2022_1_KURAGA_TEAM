@@ -131,6 +131,13 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
 
+
+
+            window.addEventListener("unload",(e)=>{
+                e.preventDefault();
+                this.changeRating();
+            } );
+
         } catch (err) {
             console.error(err)
             //router.go(routes.ERROR_CATCH_VIEW);
@@ -138,9 +145,11 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
+
+
         const episodes: HTMLDivElement = document.querySelector(".episodes");
 
-        if (episodes.childNodes.length === 0) {
+        if (episodes.childNodes.length === 0 && episodes) {
             episodes.style.marginTop = "0";
         }
 
@@ -193,20 +202,29 @@ export default class MovieViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(): void {
-        const rating: HTMLElement = document.getElementById("rating")
-        const formJson = JSON.stringify({
-            rating: rating.textContent,
-            id: this.movie.id
-        });
-        console.log(formJson);
-        UserModel.changeRating(formJson);
+    changeRating(){
+        const rating: HTMLElement = document.getElementById("rating");
+            const formJson = JSON.stringify({
+                rating: rating.textContent.toString(),
+                id: this.movie.id.toString()
+            });
+            console.log(formJson);
+            UserModel.changeRating(formJson);
+    }
 
+    unmount() {
+        this.changeRating();
+        window.removeEventListener("unload",(e)=>{
+            e.preventDefault();
+            this.changeRating();
+        } );
         if (this.seasonsCompilation) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);
             });
         }
+
+
 
         // removeEvent
     }

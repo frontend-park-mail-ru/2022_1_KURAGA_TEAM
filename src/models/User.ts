@@ -145,12 +145,21 @@ export default class UserModel {
     static async rating(form, csrfToken) {
         try {
             return await ajaxReq.post({
-                path: "/userRating",
+                path: "/addMovieRating",
                 body: form,
                 headers: {
                     "Content-Type": "application/json",
                     "csrf-token": csrfToken,
                 },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+    static async ratingGet(form) {
+        try {
+            return await ajaxReq.get({
+                path: "/addMovieRating?id="+form.id+"&rating="+form.rating,
             });
         } catch (err) {
             return err;
@@ -338,6 +347,20 @@ export default class UserModel {
         } catch (err) {
             return err;
         }
+    }
+
+    static changeRatingGet(form) {
+        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
+            this.ratingGet(form)
+                .then((body) => {
+                    likes({
+                        isAuth: body.isAuth,
+                        likesBody: body.data,
+                    });
+                })
+                .catch(() => {
+                });
+        });
     }
 
 
