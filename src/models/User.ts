@@ -156,10 +156,10 @@ export default class UserModel {
             return err;
         }
     }
-    static async ratingGet(form) {
+    static async userRating(id) {
         try {
             return await ajaxReq.get({
-                path: "/addMovieRating?id="+form.id+"&rating="+form.rating,
+                path: `/userRating?movie_id=${id}`,
             });
         } catch (err) {
             return err;
@@ -349,14 +349,16 @@ export default class UserModel {
         }
     }
 
-    static changeRatingGet(form) {
-        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
-            this.ratingGet(form)
-                .then((body) => {
-                    likes({
-                        isAuth: body.isAuth,
-                        likesBody: body.data,
-                    });
+    static getRating(id) {
+        return new Promise<{ratingBody }>((rating) => {
+            this.userRating(id)
+                .then(({isAuth, data}) => {
+                    data
+                        .then((reg) => {
+                            rating({
+                                ratingBody: reg,
+                            });
+                        })
                 })
                 .catch(() => {
                 });

@@ -1,18 +1,19 @@
 import firstInfoMovie from "./firstInfoMovie.pug";
 import './firstInfoMovie.scss'
 import {debounce} from "../../utils/Debounce"
-
+import UserModel from "../../models/User";
 export default class FirstInfoMovieClass {
     private readonly rating: number;
 
     private readonly description: string;
 
-    constructor({rating, description,}: { rating: number; description: string; }) {
+    constructor(rating,{description,}: { rating: number; description: string; }) {
         this.rating = rating;
         this.description = description;
     }
 
     render() {
+
         return firstInfoMovie({
             rating: this.rating,
             description: this.description,
@@ -33,10 +34,23 @@ export default class FirstInfoMovieClass {
         //     error.classList.add("first-part-info__error-active");
         // });
 
-
-        const rating = document.getElementById("rating-bar");
+        let inputValue = (this.rating*10).toString();
+        const rating: HTMLElement = document.getElementById("rating");
+        const slider: HTMLElement = document.getElementById("slider");
+        slider.style.backgroundSize = inputValue + "%";
+        slider.setAttribute("value",inputValue);
+        const progress: HTMLElement = document.getElementById("progress-wrapper");
+        rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
+        if (Math.round(parseInt(inputValue) / 10) <= 3) {
+            rating.style.color = "var(--font-error-color)";
+        } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
+            rating.style.color = "#D4E13D";
+        } else {
+            rating.style.color = "#3BB33B";
+        }
+        const rat = document.getElementById("rating-bar");
         //rating.addEventListener("input", this.changeRaiting);
-        rating.addEventListener("input", this.changeRaiting);
+        rat.addEventListener("input", this.changeRaiting);
 
     }
 

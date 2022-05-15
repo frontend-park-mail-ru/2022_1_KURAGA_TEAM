@@ -4,12 +4,14 @@ import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
 import {debounce, isEmpty} from "../../utils/Debounce"
+import autoBind from "../../utils/autoBind"
 import './header.scss'
 
 
 export default class HeaderClass {
     private readonly info: UserData;
     result: object;
+
 
     constructor(info) {
         this.info = info;
@@ -18,11 +20,11 @@ export default class HeaderClass {
 
     render() {
 
-
         return headerTemplate({item: this.info});
     }
 
     setHandler() {
+        //let ab = new autoBind;
 
 
         const navbar: HTMLElement = document.querySelector(".navbar");
@@ -84,6 +86,9 @@ export default class HeaderClass {
                 document.querySelector(".menu__input");
             searchMenu.style.display = "block";
             searchMenu.focus();
+            //ab.setVariable("name","RED");
+           // ab.setVariable("display","none");
+            //console.log(ab);
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
             const screenWidth = window.screen.width;
