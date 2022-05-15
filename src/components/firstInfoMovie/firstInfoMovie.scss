@@ -1,6 +1,6 @@
 .first-part-info__rating {
-    margin-bottom: 30px;
-    width: 210px;
+  margin-bottom: 30px;
+  width: 24%;
 }
 
 .first-part-info__rating-flex {
@@ -17,6 +17,7 @@
     color: var(--great-rating);
     font-size: 72px;
     font-weight: bold;
+    width: 1%;
 }
 
 .first-part-info__error {
@@ -118,4 +119,15 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
+}
+
+#refresh{
+  transition: all 0.5s ease;
+}
+#refresh:hover{
+  transform: scale(1.2);
+}
+#refresh:active{
+  transform: rotate(180deg);
+  fill: var(--mix-color);
 }

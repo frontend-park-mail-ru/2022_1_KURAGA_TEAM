@@ -52,6 +52,8 @@ export default class FirstInfoMovieClass {
         //rating.addEventListener("input", this.changeRaiting);
         rat.addEventListener("input", this.changeRaiting);
 
+
+
     }
 
     changeRaiting() {

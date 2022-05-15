@@ -42,6 +42,7 @@ export default class MovieViewClass extends BaseViewClass {
 
 
             const {movie} = await MovieModel.getMovie(id);
+            console.log(movie);
             this.movie = new MovieModel(movie);
             if (!this.movie.checkMovie) {
                 this.seasonsCompilation = this.movie.seasonsData.map(
@@ -129,12 +130,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
-
-
-            window.addEventListener("unload", (e) => {
-                e.preventDefault();
-                this.changeRating();
-            });
+            this.refreshRating();
 
         } catch (err) {
             console.error(err)
@@ -214,16 +210,24 @@ export default class MovieViewClass extends BaseViewClass {
         UserModel.changeRating(formJson);
     }
 
-    unmount() {
-        this.changeRating();
-        window.removeEventListener("unload", (e) => {
-            e.preventDefault();
+    refreshRating() {
+        const refresh = document.getElementById("refresh");
+        refresh.addEventListener("click", () => {
             this.changeRating();
-        });
+        })
+    }
+
+    unmount() {
         if (this.seasonsCompilation) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);
             });
+        }
+        const refresh = document.getElementById("refresh");
+        if (refresh) {
+            refresh.removeEventListener("click", () => {
+                this.changeRating();
+            })
         }
 
 
