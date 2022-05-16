@@ -4,11 +4,12 @@ export default class AutoBind{
     constructor() {
 
         this.binded = [...document.querySelector(".root").querySelectorAll('[data-bind]')]
-            .map((el:HTMLElement) => ({
+            .map((el:SVGElement | HTMLElement) => ({
                 el,
                 prop: el.dataset['bind'].split(':')[0],
                 variable: el.dataset['bind'].split(':')[1],
             }));
+
     }
     getVariable(name) {
         const entry = this.binded.find(({variable}) => variable === name);
@@ -20,5 +21,9 @@ export default class AutoBind{
                 entry.el[entry.prop] = value;
             }
         });
+    }
+    setStyle(name,value){
+        const entry = this.binded.find(({variable}) => variable === name);
+        entry.el.attributeStyleMap.set(name, value);
     }
 }

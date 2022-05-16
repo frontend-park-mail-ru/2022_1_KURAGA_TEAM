@@ -37,10 +37,11 @@ export default class FirstInfoMovieClass {
         let inputValue = (this.rating*10).toString();
         const rating: HTMLElement = document.getElementById("rating");
         const slider: HTMLElement = document.getElementById("slider");
-        slider.style.backgroundSize = inputValue + "%";
+        slider.style.backgroundSize = parseInt(inputValue) + "%";
         slider.setAttribute("value",inputValue);
         const progress: HTMLElement = document.getElementById("progress-wrapper");
-        rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
+
+
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
             rating.style.color = "var(--font-error-color)";
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
@@ -62,7 +63,12 @@ export default class FirstInfoMovieClass {
         let inputValue = (<HTMLInputElement>slider).value;
         slider.style.backgroundSize = inputValue + "%";
         const progress: HTMLElement = document.getElementById("progress-wrapper");
-        rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
+        console.log(Math.round(parseInt(inputValue) / 10));
+        if(Math.round(parseInt(inputValue) / 10) == 0){
+            rating.textContent = "1";
+        }else {
+            rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
+        }
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
             rating.style.color = "var(--font-error-color)";
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {

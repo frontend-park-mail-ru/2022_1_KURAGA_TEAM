@@ -4,17 +4,18 @@ import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
 import {debounce, isEmpty} from "../../utils/Debounce"
-import autoBind from "../../utils/autoBind"
+import AutoBind from "../../utils/autoBind"
 import './header.scss'
 
 
 export default class HeaderClass {
     private readonly info: UserData;
-    result: object;
+    private autoBind: AutoBind
 
 
     constructor(info) {
         this.info = info;
+
     }
 
 
@@ -24,7 +25,8 @@ export default class HeaderClass {
     }
 
     setHandler() {
-        //let ab = new autoBind;
+        this.autoBind = new AutoBind;
+        this.autoBind.setVariable("inputSearchDisplay","true");
 
 
         const navbar: HTMLElement = document.querySelector(".navbar");
@@ -49,7 +51,7 @@ export default class HeaderClass {
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         verticalNavbar.addEventListener("click", (e) => {
             e.preventDefault();
-            if (logo.style.display != "none") {
+            if(this.autoBind.getVariable("logoDisplay") == ""){
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
                 );
@@ -65,13 +67,11 @@ export default class HeaderClass {
         const profileIcon = document.querySelector(".btn-profile");
         profileIcon.addEventListener("touchstart", (e) => {
             e.preventDefault();
-            if (logo.style.display == "block") {
-                const profileMenu: HTMLElement =
-                    document.querySelector(".dropdown-content");
-                if (profileMenu.style.display === "block") {
-                    profileMenu.style.display = "none";
+            if(this.autoBind.getVariable("logoDisplay") == ""){
+                if (this.autoBind.getVariable("profileDisplay") == "") {
+                    this.autoBind.setVariable("profileDisplay","true");
                 } else {
-                    profileMenu.style.display = "block";
+                    this.autoBind.setVariable("profileDisplay","true");
                 }
             }
         });
@@ -79,61 +79,56 @@ export default class HeaderClass {
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
 
-
         searchBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            const searchMenu: HTMLElement =
-                document.querySelector(".menu__input");
-            searchMenu.style.display = "block";
-            searchMenu.focus();
-            //ab.setVariable("name","RED");
-           // ab.setVariable("display","none");
-            //console.log(ab);
+
+
+            this.autoBind.setVariable("inputSearchDisplay","");
+            document.getElementById("live-search").focus();
+
             searchBtn.style.display = "none";
             searchCloseBtn.style.display = "block";
             const screenWidth = window.screen.width;
-            const logo: HTMLElement = document.querySelector(".logo-link");
             const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
-                logo.style.display = "none";
+                this.autoBind.setVariable("logoDisplay","true");
             } else if (screenWidth < 1500) {
                 desktopNavbar.style.display = "none";
             }
 
         })
-
-        const logo: HTMLElement = document.querySelector(".logo-link");
-        const searchMenu: HTMLElement =
-            document.querySelector(".menu__input");
-
-
-        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
+            //this.autoBind.setVariable("searchMenuDisplay","true");
+        const menu: HTMLElement = document.querySelector(".search-menu");
         searchCloseBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
             const a: HTMLInputElement = document.querySelector("#live-search");
             a.value = "";
-            searchMenu.style.display = "none";
+            this.autoBind.setVariable("inputSearchDisplay","true");
             searchCloseBtn.style.display = "none";
+
+
             searchBtn.style.display = "block";
-            searchMenuRes.style.display = "none";
+            //this.autoBind.setVariable("searchMenuDisplay","true");
+            menu.style.display = "none";
             navbar.style.position = "fixed";
             const screenWidth = window.screen.width;
             const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
-                logo.style.display = "block";
+                this.autoBind.setVariable("logoDisplay","");
             } else if (screenWidth < 1500) {
                 desktopNavbar.style.display = "block";
             }
         })
 
 
-        const menu: HTMLElement = document.querySelector(".search-menu");
-        const a = document.querySelector("#live-search");
-        a.addEventListener("keyup", debounce(async () => {
+
+        const search = document.querySelector("#live-search");
+        search.addEventListener("keyup", debounce(async () => {
             const a: HTMLInputElement = document.querySelector("#live-search");
             let formJson;
-            searchMenuRes.style.display = "flex";
+            //this.autoBind.setVariable("searchMenuDisplay","");
+            menu.style.display = "flex";
             if (a.value != "") {
                 formJson = JSON.stringify({
                     find: a.value,
@@ -171,8 +166,6 @@ export default class HeaderClass {
                                     nameTopic.textContent = "Персоны";
                             }
                             topic.appendChild(nameTopic);
-
-
                             searchData[key].forEach((res, i) => {
                                 if (i <= 1) {
                                     const searchTopic = document.createElement("div");
@@ -201,28 +194,17 @@ export default class HeaderClass {
                                         }
 
                                     }
-
                                     searchTopic.appendChild(searchTopicName);
                                     searchTopic.appendChild(searchTopicInfo);
-                                    //searchTopic.appendChild(searchPic);
                                     topic.appendChild(searchTopic);
                                 }
                             })
-
-
                             menu.appendChild(topic);
-
                         }
-
                     }
-
-                    // const titleEnd = document.createElement("a");
-                    // titleEnd.classList.add("font-search");
-                    // titleEnd.id = "all-res-topic";
-                    // titleEnd.textContent = "Показать все результаты";
-                    // menu.appendChild(titleEnd);
                 }
             } else {
+                //this.autoBind.setVariable("searchMenuDisplay","true");
                 menu.style.display = "none";
             }
         }))
