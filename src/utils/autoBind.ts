@@ -3,7 +3,7 @@ export default class AutoBind{
 
     constructor() {
 
-        this.binded = [...document.querySelector(".root").querySelectorAll('[data-bind]')]
+        this.binded = [...document.querySelector("#root").querySelectorAll('[data-bind]')]
             .map((el:SVGElement | HTMLElement) => ({
                 el,
                 prop: el.dataset['bind'].split(':')[0],

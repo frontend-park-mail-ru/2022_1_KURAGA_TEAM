@@ -1,6 +1,6 @@
 div.first-part-info__rating
     div.first-part-info__rating-flex
-        if(rating == NaN)
+        if(rating === NaN)
             div.first-part-info__our-rating#rating -
         else
             div.first-part-info__our-rating#rating #{rating}
@@ -12,5 +12,5 @@ div.first-part-info__rating
     //button.your-rating__button Оценить
     div#rating-bar
         div#progress-wrapper
-        input(type="range", id="slider", list="slider-list" value="10" min="10" max="100")
+        input(type="range", id="slider", list="slider-list" value="0" min="0" max="100")
 div.first-part-info__text #{description}
