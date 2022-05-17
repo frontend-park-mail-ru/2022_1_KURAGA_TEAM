@@ -129,7 +129,7 @@
 
 .first-part-info {
     margin-left: 4vw;
-    margin-top: 220px;
+    margin-top: 300px;
     display: flex;
     flex-direction: column;
     height: auto !important;
@@ -137,7 +137,7 @@
 
 @media (min-width: 2000px){
   .first-part-info {
-    margin-top: calc(2vw + 300px);
+    margin-top: calc(6vw + 350px);
   }
 
 }
@@ -331,6 +331,7 @@
   }
 
   .first-part-info__our-rating {
+    width: auto;
     font-size: 62px;
   }
 
@@ -618,6 +619,11 @@
   .seasons {
     margin-bottom: -220px;
     padding-top: 260px;
+  }
+
+  .first-part-info__rating {
+    margin-bottom: 30px;
+    width: 68%;
   }
 }
 

@@ -39,7 +39,9 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
+
             const {movie} = await MovieModel.getMovie(id);
+
             MovieViewClass.movie = new MovieModel(movie);
 
             if (!MovieViewClass.movie.checkMovie) {
@@ -54,11 +56,12 @@ export default class MovieViewClass extends BaseViewClass {
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
-
+            const {ratingBody} = await UserModel.getRating(id);
 
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(MovieViewClass.movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(
+                ratingBody.rating,
                 MovieViewClass.movie.movieData
             );
             const secondGenre = new SecondGenreClass(MovieViewClass.movie.movieData);
@@ -70,6 +73,7 @@ export default class MovieViewClass extends BaseViewClass {
                 headMovie: headMovie.render(),
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
+                select: this.compilationsRender(this.movieCompilation),
                 footer: footer.render(),
             }
 
@@ -78,13 +82,11 @@ export default class MovieViewClass extends BaseViewClass {
                 if (MovieViewClass.movie.movieData.is_movie || this.seasonsCompilation == null) {
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                     });
                 } else {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
 
@@ -95,7 +97,6 @@ export default class MovieViewClass extends BaseViewClass {
                 if (MovieViewClass.movie.movieData.is_movie) {
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                         actors: actors.render(),
 
                     });
@@ -103,7 +104,6 @@ export default class MovieViewClass extends BaseViewClass {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
                         actors: actors.render(),
@@ -134,6 +134,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
+            this.refreshRating();
 
         } catch (err) {
             console.error(err)
@@ -142,41 +143,48 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
-        const episodes: HTMLDivElement = document.querySelector(".episodes");
+        if (!MovieViewClass.movie.checkMovie) {
 
-        if (episodes.childNodes.length === 0) {
-            episodes.style.marginTop = "0";
-        }
-
-        const season: Array<HTMLDivElement> = [];
-        for (let i = 0; i < this.seasonsCompilation.length; ++i) {
-            season[i] = document.querySelector(`.car` + `${i + 1}`);
-            if (i !== 0) {
-                season[i].style.display = 'none';
+            const episodes: HTMLDivElement = document.querySelector(".episodes");
+            if (episodes) {
+                if (episodes.childNodes.length === 0) {
+                    episodes.style.marginTop = "0";
+                }
             }
-        }
 
-        const buttons: Array<HTMLButtonElement> = [];
-        for (let i = 0; i < this.seasonsCompilation.length; ++i) {
-            buttons[i] = document.querySelector(`.season` + `${i + 1}`);
-            buttons[i].addEventListener('click', () => {
+            const season: Array<HTMLDivElement> = [];
 
-                for (let j = 0; j < this.seasonsCompilation.length; ++j) {
-                    if (i !== j) {
-                        season[j].style.display = 'none';
-                    } else {
-                        buttons.forEach((item) => {
-                            item.style.backgroundColor = '#01090b';
-                        })
-
-                        buttons[i].style.backgroundColor = '#595959';
-                        season[j].style.display = '';
+            for (let i = 0; i < this.seasonsCompilation.length; ++i) {
+                season[i] = document.querySelector(`.car` + `${i + 1}`);
+                if (i !== 0) {
+                    if (season[i]) {
+                        season[i].style.display = 'none';
                     }
                 }
-            });
-        }
+            }
 
-        buttons[0].style.backgroundColor = '#595959';
+            const buttons: Array<HTMLButtonElement> = [];
+            for (let i = 0; i < this.seasonsCompilation.length; ++i) {
+                buttons[i] = document.querySelector(`.season` + `${i + 1}`);
+                buttons[i].addEventListener('click', () => {
+
+                    for (let j = 0; j < this.seasonsCompilation.length; ++j) {
+                        if (i !== j) {
+                            season[j].style.display = 'none';
+                        } else {
+                            buttons.forEach((item) => {
+                                item.style.backgroundColor = '#01090b';
+                            })
+
+                            buttons[i].style.backgroundColor = '#595959';
+                            season[j].style.display = '';
+                        }
+                    }
+                });
+            }
+
+            buttons[0].style.backgroundColor = '#595959';
+        }
     }
 
     compilationsRender(movieCompilation: MovieCompilationModel): string {
@@ -241,22 +249,39 @@ export default class MovieViewClass extends BaseViewClass {
         // router.go(`/player/${id}/seas=1/ep=1`);
     }
 
-    unmount(): void {
-        const rating: HTMLElement = document.getElementById("rating")
-        const playButton: HTMLButtonElement = document.querySelector('.play-button');
+    changeRating() {
+        const rating: HTMLElement = document.getElementById("rating");
 
         const formJson = JSON.stringify({
-            rating: rating.textContent,
-            id: MovieViewClass.movie.id
+            rating: rating.textContent.toString(),
+            id: MovieViewClass.movie.id.toString()
         });
-        console.log(formJson);
+
         UserModel.changeRating(formJson);
+    }
+
+    refreshRating() {
+        const refresh = document.getElementById("refresh");
+        refresh.addEventListener("click", () => {
+            this.changeRating();
+        })
+    }
+
+    unmount(): void  {
+        const playButton: HTMLButtonElement = document.querySelector('.play-button');
 
         if (this.seasonsCompilation) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);
             });
         }
+        const refresh = document.getElementById("refresh");
+        if (refresh) {
+            refresh.removeEventListener("click", () => {
+                this.changeRating();
+            })
+        }
+
 
         playButton.removeEventListener('click', this.openPopUp, { capture: true });
         document.removeEventListener('click', MovieViewClass.closePopUP);

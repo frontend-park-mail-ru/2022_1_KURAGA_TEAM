@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
+const port = process.env.PORT || 8080;
+
 module.exports = {
     mode: 'production',
     entry: path.resolve(__dirname, 'src', 'app.ts'),
@@ -69,6 +71,8 @@ module.exports = {
         publicPath: '/',
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
+        hotUpdateChunkFilename: 'hot/hot-update.js',
+        hotUpdateMainFilename: 'hot/hot-update.json'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -82,10 +86,12 @@ module.exports = {
     devServer: {
         allowedHosts: [
             'movie-space.ru',
+            'localhost',
         ],
+        hot: false,
         host: '0.0.0.0',
         static: path.resolve(__dirname, 'src'),
-        port: 8080,
+        port: port,
     },
 
 };

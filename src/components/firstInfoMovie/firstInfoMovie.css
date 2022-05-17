@@ -92,7 +92,7 @@
 #progress-wrapper {
   text-align: -webkit-center;
   width: 100%;
-  transition: width 0.3s cubic-bezier(0, .96, 0, .96);
+  transition: width 0.3s cubic-bezier(0, 0.96, 0, 0.96);
   font-weight: bold;
   font-size: 58px;
 }
@@ -108,11 +108,9 @@
   background-image: linear-gradient(#9159A0, #9159A0);
   background-size: 0% 100%;
   background-repeat: no-repeat;
-
 }
 
-input[type="range"]::-webkit-slider-thumb {
-
+input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 25px;
   width: 25px;
@@ -120,7 +118,7 @@ input[type="range"]::-webkit-slider-thumb {
   background: #9159A0;
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #555;
-  transition: background .3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 
 #refresh {
@@ -140,11 +138,15 @@ input[type="range"]::-webkit-slider-thumb {
   #slider {
     width: 50vw;
   }
+
   .rating-descr {
     padding-inline: 15px;
   }
+
   .first-part-info__rating-flex {
     column-gap: 0;
     justify-content: flex-end;
   }
 }
+
+/*# sourceMappingURL=firstInfoMovie.css.map */
