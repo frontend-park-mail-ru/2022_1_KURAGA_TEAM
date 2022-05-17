@@ -33,6 +33,7 @@ export interface UserData {
     username: string;
     email: string;
     avatar: string;
+    date: string;
 }
 export interface Favorites{
     id: Array<number>

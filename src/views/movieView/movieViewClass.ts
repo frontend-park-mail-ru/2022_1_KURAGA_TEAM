@@ -20,7 +20,7 @@ import UserLikeView from "../userLikeView/userLikeView"
 import "./movie.scss";
 
 export default class MovieViewClass extends BaseViewClass {
-    private user: UserModel;
+    private static user: UserModel;
     private static movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
     private seasonsCompilation: Array<MovieCompilationModel> = null;
@@ -35,7 +35,7 @@ export default class MovieViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-            this.user = new UserModel(user);
+            MovieViewClass.user = new UserModel(user);
 
             const id = +/\d+/.exec(window.location.pathname);
 
@@ -58,7 +58,7 @@ export default class MovieViewClass extends BaseViewClass {
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
             const {ratingBody} = await UserModel.getRating(id);
 
-            const header = new HeaderClass(this.user.userData);
+            const header = new HeaderClass(MovieViewClass.user.userData);
             const headMovie = new HeadMovieClass(MovieViewClass.movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(
                 ratingBody.rating,
@@ -224,29 +224,35 @@ export default class MovieViewClass extends BaseViewClass {
     openPopUp(e: any): void {
         e.stopPropagation();
 
-        const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
-        const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
-        const popUpClose: HTMLButtonElement = document.querySelector('.popUp__exit');
+        const userDate = new Date(MovieViewClass.user.data.date);
+        const nowDate = new Date();
 
-        popUpBg.classList.add('active');
-        popUpBody.classList.add('active');
+        if (nowDate > userDate) {
+            const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+            const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+            const popUpClose: HTMLButtonElement = document.querySelector('.popUp__exit');
 
-        popUpClose.addEventListener('click', () => {
-            popUpBg.classList.remove('active');
-            popUpBody.classList.remove('active');
-        });
+            popUpBg.classList.add('active');
+            popUpBody.classList.add('active');
 
+            popUpClose.addEventListener('click', () => {
+                popUpBg.classList.remove('active');
+                popUpBody.classList.remove('active');
+            });
+
+            return;
+        }
         document.addEventListener('click', MovieViewClass.closePopUP);
 
-        // const id = +/\d+/.exec(window.location.pathname);
-        //
-        // if (MovieViewClass.movie.movieData.is_movie) {
-        //     router.go(`/player/${id}/movie`);
-        //
-        //     return;
-        // }
-        //
-        // router.go(`/player/${id}/seas=1/ep=1`);
+        const id = +/\d+/.exec(window.location.pathname);
+
+        if (MovieViewClass.movie.movieData.is_movie) {
+            router.go(`/player/${id}/movie`);
+
+            return;
+        }
+
+        router.go(`/player/${id}/seas=1/ep=1`);
     }
 
     changeRating() {
