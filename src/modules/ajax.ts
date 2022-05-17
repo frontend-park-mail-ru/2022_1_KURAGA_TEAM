@@ -1,5 +1,5 @@
-// const API_URL = "http://localhost:1323/api/v1";
-const API_URL = 'http://movie-space.ru:1323/api/v1';
+// const API_URL = "http://localhost/api/v1";
+const API_URL = 'http://movie-space.ru/api/v1';
 
 function checkStatus(status: number): string {
     switch (Math.round(status / 100)) {

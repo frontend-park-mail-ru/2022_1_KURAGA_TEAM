@@ -40,7 +40,9 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
+
             const {movie} = await MovieModel.getMovie(id);
+            console.log(movie);
             this.movie = new MovieModel(movie);
             if (!this.movie.checkMovie) {
                 this.seasonsCompilation = this.movie.seasonsData.map(
@@ -54,11 +56,12 @@ export default class MovieViewClass extends BaseViewClass {
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationMovie(id);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
-
+            const {ratingBody} = await UserModel.getRating(id);
 
             const header = new HeaderClass(this.user.userData);
             const headMovie = new HeadMovieClass(this.movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(
+                ratingBody.rating,
                 this.movie.movieData
             );
             const secondGenre = new SecondGenreClass(this.movie.movieData);
@@ -70,6 +73,7 @@ export default class MovieViewClass extends BaseViewClass {
                 headMovie: headMovie.render(),
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
+                select: this.compilationsRender(this.movieCompilation),
                 footer: footer.render(),
             }
             if (this.movie.movieData.staff == null) {
@@ -77,13 +81,11 @@ export default class MovieViewClass extends BaseViewClass {
                 if (this.movie.movieData.is_movie || this.seasonsCompilation == null) {
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                     });
                 } else {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
 
@@ -94,7 +96,6 @@ export default class MovieViewClass extends BaseViewClass {
                 if (this.movie.movieData.is_movie) {
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                         actors: actors.render(),
 
                     });
@@ -102,7 +103,6 @@ export default class MovieViewClass extends BaseViewClass {
                     const episodes = new EpisodesClass(this.seasonsCompilation.length);
                     super.render(movieViewTemplate, {
                         ...common,
-                        select: this.compilationsRender(this.movieCompilation),
                         episodes: episodes.render(),
                         seasons: this.seasonsRender(this.seasonsCompilation),
                         actors: actors.render(),
@@ -130,6 +130,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
+            this.refreshRating();
 
         } catch (err) {
             console.error(err)
@@ -138,17 +139,23 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
-        const episodes: HTMLDivElement = document.querySelector(".episodes");
 
-        if (episodes.childNodes.length === 0) {
-            episodes.style.marginTop = "0";
+
+        const episodes: HTMLDivElement = document.querySelector(".episodes");
+        if (episodes) {
+            if (episodes.childNodes.length === 0) {
+                episodes.style.marginTop = "0";
+            }
         }
 
         const season: Array<HTMLDivElement> = [];
+
         for (let i = 0; i < this.seasonsCompilation.length; ++i) {
             season[i] = document.querySelector(`.car` + `${i + 1}`);
             if (i !== 0) {
-                season[i].style.display = 'none';
+                if (season[i]) {
+                    season[i].style.display = 'none';
+                }
             }
         }
 
@@ -193,20 +200,36 @@ export default class MovieViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount(): void {
-        const rating: HTMLElement = document.getElementById("rating")
+    changeRating() {
+        const rating: HTMLElement = document.getElementById("rating");
         const formJson = JSON.stringify({
-            rating: rating.textContent,
-            id: this.movie.id
+            rating: rating.textContent.toString(),
+            id: this.movie.id.toString()
         });
         console.log(formJson);
         UserModel.changeRating(formJson);
+    }
 
+    refreshRating() {
+        const refresh = document.getElementById("refresh");
+        refresh.addEventListener("click", () => {
+            this.changeRating();
+        })
+    }
+
+    unmount() {
         if (this.seasonsCompilation) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);
             });
         }
+        const refresh = document.getElementById("refresh");
+        if (refresh) {
+            refresh.removeEventListener("click", () => {
+                this.changeRating();
+            })
+        }
+
 
         // removeEvent
     }

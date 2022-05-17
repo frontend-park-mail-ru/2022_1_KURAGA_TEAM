@@ -531,7 +531,10 @@
       .topic {
         margin-block: 0;
       }
-
+//<<<<<<< HEAD
+//
+//=======
+//>>>>>>> b652892b953911f6127c83bf2938d5c13a350cd8
       .b-carouselSeries{
         overflow-x: scroll;
         padding-inline: 0;
@@ -560,6 +563,7 @@
       .movieSeries+.descr-series {
         display: none;
       }
+//<<<<<<< HEAD
 
 
       .movie,
@@ -624,6 +628,13 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
+//=======
+//      .play__back {
+//        display:none;
+//      }
+//      .movieSeries:hover{
+//
+//>>>>>>> b652892b953911f6127c83bf2938d5c13a350cd8
       }
     }
 
