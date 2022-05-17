@@ -335,34 +335,7 @@
   }
 
   /*карусель*/
-  .b-carouselSeries{
-    overflow-x: scroll;
-    padding-inline: 0;
-    height: auto;
-    position: initial;
-  }
-  .b-carousel {
 
-    overflow-x: scroll;
-    padding-inline: 0;
-  }
-  .b-carouselTop {
-    overflow-y: hidden;
-  }
-  .movieTop:hover,
-  .movieTop {
-    width: 90vw;
-    height: 60vw;
-    transform: scale(1);
-    margin-inline-end: 0;
-    margin-inline: 2vw;
-    background-position-x: center;
-  }
-
-
-  .movieSeries+.descr-series {
-    display: none;
-  }
 
 
   .movie,

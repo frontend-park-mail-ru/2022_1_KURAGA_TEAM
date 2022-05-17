@@ -15,6 +15,7 @@ export default class MovieModel {
     }
 
     get checkMovie() {
+
         if (this.movieData.season == null) {
             return true;
         }
