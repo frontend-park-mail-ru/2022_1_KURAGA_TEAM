@@ -40,6 +40,9 @@ body::-webkit-scrollbar-thumb {
   background-color: #191919;
   border-radius: 20px;
 }
+.hidden{
+  display: none;
+}
 
 :root {
   --series-back: linear-gradient(0deg, rgba(47, 48, 49, 1), rgba(47, 48, 49, 1));

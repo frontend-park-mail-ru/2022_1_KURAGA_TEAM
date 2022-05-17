@@ -27,7 +27,6 @@ export default class HeaderClass {
     setHandler() {
         this.autoBind = new AutoBind;
         this.autoBind.setVariable("inputSearchDisplay","true");
-
         const navbar: HTMLElement = document.querySelector(".navbar");
 
 
@@ -54,11 +53,11 @@ export default class HeaderClass {
                 const verticalMenu: HTMLElement = document.querySelector(
                     ".menu-mobile__vertical"
                 );
-                if (verticalMenu.style.display === "flex") {
-                    verticalMenu.style.display = "none";
+                if (!verticalMenu.classList.contains("hidden")) {
+                    verticalMenu.classList.add("hidden");
                     verticalNavbar.classList.remove("menuSymbol__action");
                 } else {
-                    verticalMenu.style.display = "flex";
+                    verticalMenu.classList.remove("hidden");
                     verticalNavbar.classList.add("menuSymbol__action");
                 }
             }
@@ -85,14 +84,16 @@ export default class HeaderClass {
             this.autoBind.setVariable("inputSearchDisplay","");
             document.getElementById("live-search").focus();
 
-            searchBtn.style.display = "none";
-            searchCloseBtn.style.display = "block";
+            //this.autoBind.setVariable("searchBtnDisplay",this.autoBind.getVariable("searchBtnDisplay")+" hidden");
+            console.log(this.autoBind);
+            searchBtn.classList.add("hidden");
+            searchCloseBtn.classList.remove("hidden");
             const screenWidth = window.screen.width;
             const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 this.autoBind.setVariable("logoDisplay","true");
             } else if (screenWidth < 1500) {
-                desktopNavbar.style.display = "none";
+                desktopNavbar.classList.add("hidden");
             }
 
         })
@@ -104,20 +105,18 @@ export default class HeaderClass {
             const a: HTMLInputElement = document.querySelector("#live-search");
             a.value = "";
             this.autoBind.setVariable("inputSearchDisplay","true");
-            searchCloseBtn.style.display = "none";
-
-
-            //searchBtn.style.display = "block";
-            this.autoBind.setVariable("searchBtnDisplay","visible");
+            searchCloseBtn.classList.add("hidden");
+            searchBtn.classList.remove("hidden");
             console.log(this.autoBind);
-            menu.style.display = "none";
+
+            menu.classList.add("hidden");
             navbar.style.position = "fixed";
             const screenWidth = window.screen.width;
             const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
             if (screenWidth <= 1000) {
                 this.autoBind.setVariable("logoDisplay","");
             } else if (screenWidth < 1500) {
-                desktopNavbar.style.display = "block";
+                desktopNavbar.classList.remove("hidden");
             }
         })
 
@@ -127,8 +126,7 @@ export default class HeaderClass {
         search.addEventListener("keyup", debounce(async () => {
             const a: HTMLInputElement = document.querySelector("#live-search");
             let formJson;
-            //this.autoBind.setVariable("searchMenuDisplay","");
-            menu.style.display = "flex";
+            menu.classList.remove("hidden");
             if (a.value != "") {
                 formJson = JSON.stringify({
                     find: a.value,
@@ -205,7 +203,7 @@ export default class HeaderClass {
                 }
             } else {
                 //this.autoBind.setVariable("searchMenuDisplay","true");
-                menu.style.display = "none";
+                menu.classList.add("hidden");
             }
         }))
     }
