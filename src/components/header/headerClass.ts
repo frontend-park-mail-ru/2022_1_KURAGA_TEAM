@@ -3,14 +3,14 @@ import UserModel from "../../models/User";
 import router from "Routing/router";
 import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
-import {debounce, isEmpty} from "../../utils/Debounce"
-import AutoBind from "../../utils/autoBind"
+import {debounce, isEmpty} from "Utils/Debounce"
+import AutoBind from "Utils/autoBind"
 import './header.scss'
 
 
 export default class HeaderClass {
     private readonly info: UserData;
-    private autoBind: AutoBind
+    private autoBind;
 
 
     constructor(info) {
@@ -27,7 +27,6 @@ export default class HeaderClass {
     setHandler() {
         this.autoBind = new AutoBind;
         this.autoBind.setVariable("inputSearchDisplay","true");
-
 
         const navbar: HTMLElement = document.querySelector(".navbar");
 
@@ -108,8 +107,9 @@ export default class HeaderClass {
             searchCloseBtn.style.display = "none";
 
 
-            searchBtn.style.display = "block";
-            //this.autoBind.setVariable("searchMenuDisplay","true");
+            //searchBtn.style.display = "block";
+            this.autoBind.setVariable("searchBtnDisplay","visible");
+            console.log(this.autoBind);
             menu.style.display = "none";
             navbar.style.position = "fixed";
             const screenWidth = window.screen.width;

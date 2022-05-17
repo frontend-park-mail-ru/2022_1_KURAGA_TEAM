@@ -144,3 +144,7 @@ export interface Info {
     username: string;
     email: string;
 }
+
+export interface AutoBind{
+    binded: any;
+}
