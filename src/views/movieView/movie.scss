@@ -254,6 +254,7 @@
   }
 
   .first-part-info__our-rating {
+    width: auto;
     font-size: 62px;
   }
 
@@ -541,6 +542,11 @@
   .seasons {
     margin-bottom: -220px;
     padding-top: 260px;
+  }
+
+  .first-part-info__rating {
+    margin-bottom: 30px;
+    width: 68%;
   }
 }
 
