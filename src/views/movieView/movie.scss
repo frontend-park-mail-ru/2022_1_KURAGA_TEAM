@@ -52,7 +52,7 @@
 
 .first-part-info {
     margin-left: 4vw;
-    margin-top: 220px;
+    margin-top: 300px;
     display: flex;
     flex-direction: column;
     height: auto !important;
@@ -60,7 +60,7 @@
 
 @media (min-width: 2000px){
   .first-part-info {
-    margin-top: calc(2vw + 300px);
+    margin-top: calc(6vw + 350px);
   }
 
 }

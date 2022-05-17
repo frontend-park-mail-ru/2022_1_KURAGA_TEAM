@@ -139,47 +139,48 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
+        if (!this.movie.checkMovie) {
 
-
-        const episodes: HTMLDivElement = document.querySelector(".episodes");
-        if (episodes) {
-            if (episodes.childNodes.length === 0) {
-                episodes.style.marginTop = "0";
-            }
-        }
-
-        const season: Array<HTMLDivElement> = [];
-
-        for (let i = 0; i < this.seasonsCompilation.length; ++i) {
-            season[i] = document.querySelector(`.car` + `${i + 1}`);
-            if (i !== 0) {
-                if (season[i]) {
-                    season[i].style.display = 'none';
+            const episodes: HTMLDivElement = document.querySelector(".episodes");
+            if (episodes) {
+                if (episodes.childNodes.length === 0) {
+                    episodes.style.marginTop = "0";
                 }
             }
-        }
 
-        const buttons: Array<HTMLButtonElement> = [];
-        for (let i = 0; i < this.seasonsCompilation.length; ++i) {
-            buttons[i] = document.querySelector(`.season` + `${i + 1}`);
-            buttons[i].addEventListener('click', () => {
+            const season: Array<HTMLDivElement> = [];
 
-                for (let j = 0; j < this.seasonsCompilation.length; ++j) {
-                    if (i !== j) {
-                        season[j].style.display = 'none';
-                    } else {
-                        buttons.forEach((item) => {
-                            item.style.backgroundColor = '#01090b';
-                        })
-
-                        buttons[i].style.backgroundColor = '#595959';
-                        season[j].style.display = '';
+            for (let i = 0; i < this.seasonsCompilation.length; ++i) {
+                season[i] = document.querySelector(`.car` + `${i + 1}`);
+                if (i !== 0) {
+                    if (season[i]) {
+                        season[i].style.display = 'none';
                     }
                 }
-            });
-        }
+            }
 
-        buttons[0].style.backgroundColor = '#595959';
+            const buttons: Array<HTMLButtonElement> = [];
+            for (let i = 0; i < this.seasonsCompilation.length; ++i) {
+                buttons[i] = document.querySelector(`.season` + `${i + 1}`);
+                buttons[i].addEventListener('click', () => {
+
+                    for (let j = 0; j < this.seasonsCompilation.length; ++j) {
+                        if (i !== j) {
+                            season[j].style.display = 'none';
+                        } else {
+                            buttons.forEach((item) => {
+                                item.style.backgroundColor = '#01090b';
+                            })
+
+                            buttons[i].style.backgroundColor = '#595959';
+                            season[j].style.display = '';
+                        }
+                    }
+                });
+            }
+
+            buttons[0].style.backgroundColor = '#595959';
+        }
     }
 
     compilationsRender(movieCompilation: MovieCompilationModel): string {
