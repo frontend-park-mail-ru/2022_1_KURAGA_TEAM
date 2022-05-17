@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .popUp__bg {
   position: fixed;
   top: 0;
@@ -74,15 +75,14 @@
   margin-bottom: 20px;
 }
 
-
 .photo-movie {
   position: relative;
-    display: flex;
-    align-items: center;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    height: 96vh;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  height: 96vh;
 }
 
 .episodes {
@@ -99,74 +99,71 @@
   display: none;
 }
 
-.first-part-info-serial{
+.first-part-info-serial {
   margin-left: 4vw;
-  //margin-top: 60px;
   display: flex;
   flex-direction: column;
   height: auto !important;
 }
 
-.series-margin{
+.series-margin {
   margin-top: 0;
 }
 
-.series-top{
+.series-top {
   margin-top: 22px;
 }
 
 .photo-movie__gradient {
-    width: 80%;
-    height: 96vh;
-    background: var(--movie-gradient);
+  width: 80%;
+  height: 96vh;
+  background: var(--movie-gradient);
 }
 
 .head-movie {
-    position: absolute;
-    margin-left: 4vw;
-    height: 50%;
+  position: absolute;
+  margin-left: 4vw;
+  height: 50%;
 }
 
 .first-part-info {
-    margin-left: 4vw;
-    margin-top: 220px;
-    display: flex;
-    flex-direction: column;
-    height: auto !important;
+  margin-left: 4vw;
+  margin-top: 220px;
+  display: flex;
+  flex-direction: column;
+  height: auto !important;
 }
 
-@media (min-width: 2000px){
+@media (min-width: 2000px) {
   .first-part-info {
     margin-top: calc(2vw + 300px);
   }
-
 }
 .second-part-genre {
-    margin-left: 4vw;
-    margin-top: 40px;
+  margin-left: 4vw;
+  margin-top: 40px;
   margin-bottom: -20px;
 }
 
 .third-part-actors {
-    margin-top: 40px;
-    margin-left: 4vw;
-    margin-bottom: 20px;
+  margin-top: 40px;
+  margin-left: 4vw;
+  margin-bottom: 20px;
 }
 
 .movie-carousel {
-    margin-top: -20px;
+  margin-top: -20px;
 }
 
 .carousel-title {
-    font-size: 28px !important;
+  font-size: 28px !important;
 }
 
-.seasons{
+.seasons {
   margin-top: 0;
 }
 
-
-.play__back{
+.play__back {
   place-self: center;
 }
 
@@ -192,7 +189,6 @@
     margin-top: 0;
   }
 }
-
 @media (max-width: 500px) {
   /*МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА*/
   .photo-movie {
@@ -346,8 +342,6 @@
     width: 90%;
   }
 }
-
-
 @media (min-width: 500px) and (max-width: 750px) {
   .first-part-info__text {
     padding-right: 4vw;
@@ -440,7 +434,6 @@
     margin-top: 290px;
   }
 }
-
 @media (max-height: 450px) {
   .head-movie {
     width: 100%;
@@ -519,24 +512,19 @@
     width: 70%;
   }
 }
-
 @media (min-width: 1000px) and (max-width: 1250px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
   .episodes {
     margin-top: 0;
     margin-bottom: 30px;
   }
 
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ ФИЛЬМА
   .head-movie {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 }
-
 @media (min-width: 750px) and (max-width: 1000px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМA
   .photo-movie {
     background-repeat: no-repeat;
     background-size: cover;
@@ -588,13 +576,12 @@
   .first-part-info {
     margin-top: 40px;
   }
-  .sidebar{
+
+  .sidebar {
     margin: 16vw;
   }
 }
-
 @media (max-width: 750px) {
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СПИСКА ФИЛЬМОВ
   .all-films__text {
     margin-top: 30px;
     font-size: 35px;
@@ -606,7 +593,6 @@
     overflow-y: hidden;
   }
 
-  //МЕДИЯ ЗАПРОСЫ ДЛЯ СЕРИАЛОВ
   .episodes {
     width: 96%;
     margin-bottom: -300px;
@@ -620,19 +606,16 @@
     padding-top: 260px;
   }
 }
-
 @media (min-width: 1250px) and (max-width: 1450px) {
   .popUp__button {
     font-size: 18px !important;
   }
 }
-
 @media (min-width: 1000px) and (max-width: 1250px) {
   .popUp__button {
     font-size: 14px !important;
   }
 }
-
 @media (min-width: 750px) and (max-width: 1000px) {
   .popUp__main-text {
     font-size: 30px;
@@ -643,7 +626,6 @@
     font-size: 18px !important;
   }
 }
-
 @media (max-width: 750px) {
   .popUp__body {
     width: 70%;
@@ -670,4 +652,4 @@
   }
 }
 
-
+/*# sourceMappingURL=movie.css.map */

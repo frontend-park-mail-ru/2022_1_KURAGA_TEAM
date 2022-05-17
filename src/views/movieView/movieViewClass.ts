@@ -13,7 +13,6 @@ import ActorsClass from "Components/actors/actorsClass";
 import {routes} from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import {MovieData, User} from "../../types";
 import EpisodesClass from "../../components/episodes/episodesClass";
 import MovieCompilationView from "../movieCompilationView/movieCompilationView"
 import UserLikeView from "../userLikeView/userLikeView"
@@ -22,7 +21,7 @@ import "./movie.scss";
 
 export default class MovieViewClass extends BaseViewClass {
     private user: UserModel;
-    private movie: MovieModel;
+    private static movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
     private seasonsCompilation: Array<MovieCompilationModel> = null;
 
@@ -41,9 +40,10 @@ export default class MovieViewClass extends BaseViewClass {
             const id = +/\d+/.exec(window.location.pathname);
 
             const {movie} = await MovieModel.getMovie(id);
-            this.movie = new MovieModel(movie);
-            if (!this.movie.checkMovie) {
-                this.seasonsCompilation = this.movie.seasonsData.map(
+            MovieViewClass.movie = new MovieModel(movie);
+
+            if (!MovieViewClass.movie.checkMovie) {
+                this.seasonsCompilation = MovieViewClass.movie.seasonsData.map(
                     (movieCompilationData, index) =>
                         new MovieCompilationModel(
                             index,
@@ -57,24 +57,25 @@ export default class MovieViewClass extends BaseViewClass {
 
 
             const header = new HeaderClass(this.user.userData);
-            const headMovie = new HeadMovieClass(this.movie.movieData);
+            const headMovie = new HeadMovieClass(MovieViewClass.movie.movieData);
             const firstInfoMovie = new FirstInfoMovieClass(
-                this.movie.movieData
+                MovieViewClass.movie.movieData
             );
-            const secondGenre = new SecondGenreClass(this.movie.movieData);
+            const secondGenre = new SecondGenreClass(MovieViewClass.movie.movieData);
             const footer = new FooterClass();
 
             const common = {
-                movieImg: this.movie.movieData,
+                movieImg: MovieViewClass.movie.movieData,
                 header: header.render(),
                 headMovie: headMovie.render(),
                 firstInfoMovie: firstInfoMovie.render(),
                 secondGenre: secondGenre.render(),
                 footer: footer.render(),
             }
-            if (this.movie.movieData.staff == null) {
 
-                if (this.movie.movieData.is_movie || this.seasonsCompilation == null) {
+            if (MovieViewClass.movie.movieData.staff == null) {
+
+                if (MovieViewClass.movie.movieData.is_movie || this.seasonsCompilation == null) {
                     super.render(movieViewTemplate, {
                         ...common,
                         select: this.compilationsRender(this.movieCompilation),
@@ -90,8 +91,8 @@ export default class MovieViewClass extends BaseViewClass {
                     });
                 }
             } else {
-                const actors = new ActorsClass(this.movie.movieData);
-                if (this.movie.movieData.is_movie) {
+                const actors = new ActorsClass(MovieViewClass.movie.movieData);
+                if (MovieViewClass.movie.movieData.is_movie) {
                     super.render(movieViewTemplate, {
                         ...common,
                         select: this.compilationsRender(this.movieCompilation),
@@ -112,6 +113,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             handlerLink();
             header.setHandler();
+
             if (!this.seasonsCompilation) {
                 firstInfoMovie.setHandlerMovie();
             }
@@ -127,6 +129,8 @@ export default class MovieViewClass extends BaseViewClass {
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
+
+            this.checkSub();
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
@@ -193,11 +197,57 @@ export default class MovieViewClass extends BaseViewClass {
         return select;
     }
 
+    static closePopUP(e: any): void {
+        const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+        const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+
+        if (e.target === popUpBg) {
+            popUpBg.classList.remove('active');
+            popUpBody.classList.remove('active');
+        }
+    }
+
+    checkSub(): void {
+        const playButton: HTMLButtonElement = document.querySelector('.play-button');
+
+        playButton.addEventListener('click', this.openPopUp, { capture: true });
+    }
+
+    openPopUp(e: any): void {
+        e.stopPropagation();
+
+        const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+        const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+        const popUpClose: HTMLButtonElement = document.querySelector('.popUp__exit');
+
+        popUpBg.classList.add('active');
+        popUpBody.classList.add('active');
+
+        popUpClose.addEventListener('click', () => {
+            popUpBg.classList.remove('active');
+            popUpBody.classList.remove('active');
+        });
+
+        document.addEventListener('click', MovieViewClass.closePopUP);
+
+        // const id = +/\d+/.exec(window.location.pathname);
+        //
+        // if (MovieViewClass.movie.movieData.is_movie) {
+        //     router.go(`/player/${id}/movie`);
+        //
+        //     return;
+        // }
+        //
+        // router.go(`/player/${id}/seas=1/ep=1`);
+    }
+
     unmount(): void {
         const rating: HTMLElement = document.getElementById("rating")
+        const playButton: HTMLButtonElement = document.querySelector('.play-button');
+
         const formJson = JSON.stringify({
             rating: rating.textContent,
-            id: this.movie.id
+            id: MovieViewClass.movie.id
         });
         console.log(formJson);
         UserModel.changeRating(formJson);
@@ -208,7 +258,7 @@ export default class MovieViewClass extends BaseViewClass {
             });
         }
 
-        // removeEvent
+        playButton.removeEventListener('click', this.openPopUp, { capture: true });
+        document.removeEventListener('click', MovieViewClass.closePopUP);
     }
-
 }
