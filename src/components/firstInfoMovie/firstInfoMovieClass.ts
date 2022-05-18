@@ -3,10 +3,11 @@ import './firstInfoMovie.scss'
 import {debounce} from "Utils/Debounce"
 import {throttle} from "Utils/throttle"
 import UserModel from "../../models/User";
+import AutoBind from "Utils/autoBind"
 
 export default class FirstInfoMovieClass {
     private readonly rating: number;
-
+    private autoBind;
     private readonly description: string;
 
     constructor(rating, {description,}: { rating: number; description: string; }) {
@@ -23,7 +24,7 @@ export default class FirstInfoMovieClass {
     }
 
     setHandlers(): void {
-
+        this.autoBind = new AutoBind;
 
         let inputValue = (this.rating * 10).toString();
         const rating: HTMLElement = document.getElementById("rating");
@@ -40,10 +41,10 @@ export default class FirstInfoMovieClass {
         } else {
             rating.style.color = "#3BB33B";
         }
-        const rat = document.getElementById("rating-bar");
-        //rating.addEventListener("input", this.changeRaiting);
-        rat.addEventListener("input",this.changeRating.bind(this));
-        rat.addEventListener("mousedown",debounce(async()=>{
+
+
+        this.autoBind.setVariable("setRating",this.changeRating.bind(this));
+        this.autoBind.setVariableEvent("changeRating",debounce(async()=>{
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
             const formJson = JSON.stringify({
@@ -54,6 +55,7 @@ export default class FirstInfoMovieClass {
             UserModel.changeRating(formJson);
             console.log("e");
         },500))
+
 
 
     }
