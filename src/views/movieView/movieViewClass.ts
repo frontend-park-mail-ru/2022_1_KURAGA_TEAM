@@ -130,7 +130,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
-            this.refreshRating();
+            // this.refreshRating();
 
         } catch (err) {
             console.error(err)
@@ -181,6 +181,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             buttons[0].style.backgroundColor = '#595959';
         }
+
     }
 
     compilationsRender(movieCompilation: MovieCompilationModel): string {
@@ -201,34 +202,21 @@ export default class MovieViewClass extends BaseViewClass {
         return select;
     }
 
-    changeRating() {
-        const rating: HTMLElement = document.getElementById("rating");
-        const formJson = JSON.stringify({
-            rating: rating.textContent.toString(),
-            id: this.movie.id.toString()
-        });
-        console.log(formJson);
-        UserModel.changeRating(formJson);
-    }
 
-    refreshRating() {
-        const refresh = document.getElementById("refresh");
-        refresh.addEventListener("click", () => {
-            this.changeRating();
-        })
-    }
+
+    // refreshRating() {
+    //     const refresh = document.getElementById("refresh");
+    //     refresh.addEventListener("click", () => {
+    //         this.changeRating();
+    //     })
+    // }
 
     unmount() {
+       // this.changeRating();
         if (this.seasonsCompilation) {
             this.seasonsCompilation.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);
             });
-        }
-        const refresh = document.getElementById("refresh");
-        if (refresh) {
-            refresh.removeEventListener("click", () => {
-                this.changeRating();
-            })
         }
 
 
