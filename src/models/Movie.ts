@@ -155,7 +155,6 @@ export default class MovieModel {
                     data
                         .then((movieBody) => {
                             if (isAuth) {
-                                console.log(movieBody);
                                 //movieBody.season = mockSerial;
                                 movie({
                                     movie: movieBody,

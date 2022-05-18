@@ -10,6 +10,7 @@ import FooterClass from "Components/footer/footerClass";
 import FirstInfoMovieClass from "Components/firstInfoMovie/firstInfoMovieClass";
 import SecondGenreClass from "Components/secondGenre/secondGenre";
 import ActorsClass from "Components/actors/actorsClass";
+import PopUpClass from "Components/popUp/popUpClass";
 import {routes} from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
@@ -66,8 +67,10 @@ export default class MovieViewClass extends BaseViewClass {
             );
             const secondGenre = new SecondGenreClass(MovieViewClass.movie.movieData);
             const footer = new FooterClass();
+            const popUp = new PopUpClass();
 
             const common = {
+                popUp: popUp.render(),
                 movieImg: MovieViewClass.movie.movieData,
                 header: header.render(),
                 headMovie: headMovie.render(),
@@ -226,8 +229,13 @@ export default class MovieViewClass extends BaseViewClass {
 
         const userDate = new Date(MovieViewClass.user.data.date);
         const nowDate = new Date();
+        document.addEventListener('click', MovieViewClass.closePopUP);
 
         if (nowDate > userDate) {
+            const popUpBtn: HTMLButtonElement = document.querySelector('.menu-button');
+
+            popUpBtn.addEventListener('click', MovieViewClass.subscription);
+
             const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
             const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
             const popUpClose: HTMLButtonElement = document.querySelector('.popUp__exit');
@@ -242,7 +250,6 @@ export default class MovieViewClass extends BaseViewClass {
 
             return;
         }
-        document.addEventListener('click', MovieViewClass.closePopUP);
 
         const id = +/\d+/.exec(window.location.pathname);
 
@@ -253,6 +260,26 @@ export default class MovieViewClass extends BaseViewClass {
         }
 
         router.go(`/player/${id}/seas=1/ep=1`);
+    }
+
+    static async subscription() {
+        const error: HTMLDivElement = document.querySelector('.error');
+
+        const dataPay = UserModel.getPayToken();
+
+        const payToken = await dataPay;
+
+        const dataCsrf = UserModel.getToken();
+
+        const csrfToken = await dataCsrf;
+
+        const {isAuth} = await UserModel.pay(csrfToken, payToken);
+
+        if (!isAuth) {
+            error.classList.add('error-active');
+        }
+
+        const check = await UserModel.subscription(payToken);
     }
 
     changeRating() {

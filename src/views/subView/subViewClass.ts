@@ -1,24 +1,19 @@
-import profileViewTemplate from "./profileView.pug";
+import subViewTemplate from "./sub.pug";
 import HeaderClass from "Components/header/headerClass";
 import FooterClass from "Components/footer/footerClass.ts";
 import handlerLink from "Utils/handlerLink.ts";
-import InputsProfileClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import ButtonClass from "Components/button/buttonClass";
-import ProfileAvatarClass from "Components/profileAvatar/profileAvatarClass";
 import UserModel from "../../models/User";
 import router from "Routing/router";
 import { routes } from "Routing/constRouting";
 import BaseViewClass from "../baseView/baseViewClass";
 import LoaderViewClass from "../loaderView/loaderViewClass";
-import InputsClass from "Components/inputs/inputsProfile/inputsProfileClass";
 import { User } from "../../types";
 
-import "./profile.scss";
+import "./sub.scss";
 
-
-export default class ProfileViewClass extends BaseViewClass {
+export default class SubViewClass extends BaseViewClass {
     private user: UserModel;
-    private inputs: any;
 
     async render() {
         try {
@@ -32,40 +27,60 @@ export default class ProfileViewClass extends BaseViewClass {
             }
             this.user = new UserModel(user);
 
+            const userDate = new Date(this.user.data.date);
+            const nowDate = new Date();
+
+            const checkSub: boolean = nowDate > userDate;
+
             const header = new HeaderClass(this.user.userData);
-            this.inputs = new InputsProfileClass(this.user.userData);
-            const avatar = new ProfileAvatarClass(this.user.userData.avatar);
-            const button = new ButtonClass("Сохранить");
+            const button = new ButtonClass("Оформить подписку");
             const footer = new FooterClass();
 
-            super.render(profileViewTemplate, {
+            super.render(subViewTemplate, {
+                checkSub,
+                date: userDate.toLocaleDateString(),
                 header: header.render(),
-                inputs: this.inputs.render(),
-                avatar: avatar.render(),
                 button: button.render(),
                 footer: footer.render(),
             });
 
             handlerLink();
-            this.setHandler();
-            this.inputs.setHandler();
             header.setHandler();
+            this.setHandler();
         } catch {
             router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
     setHandler(): void {
-        const profileNavbar: HTMLAnchorElement =
-            document.querySelector(".name-profile");
+        const subBtn = document.querySelector('.menu-button');
 
-        profileNavbar.style.backgroundColor = "#2C51B1";
-        profileNavbar.style.webkitBackgroundClip = "text";
-        profileNavbar.style.webkitTextFillColor = "transparent";
-        profileNavbar.style.backgroundImage =
-            "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        subBtn.addEventListener('click', this.subscription);
     }
+
+    async subscription() {
+        const error: HTMLDivElement = document.querySelector('.error');
+
+        const dataPay = UserModel.getPayToken();
+
+        const payToken = await dataPay;
+
+        const dataCsrf = UserModel.getToken();
+
+        const csrfToken = await dataCsrf;
+
+        const {isAuth} = await UserModel.pay(csrfToken, payToken);
+
+        if (!isAuth) {
+            error.classList.add('error-active');
+        }
+
+        const sub = UserModel.subscription(payToken);
+    }
+
     unmount(): void {
-        this.inputs.unmount();
+        const subBtn = document.querySelector('.menu-button');
+
+        subBtn.removeEventListener('click', this.subscription);
     }
 }

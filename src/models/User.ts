@@ -156,11 +156,97 @@ export default class UserModel {
             return err;
         }
     }
+
     static async userRating(id) {
         try {
             return await ajaxReq.get({
                 path: `/userRating?movie_id=${id}`,
             });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async paymentToken() {
+        try {
+            return await ajaxReq.get({
+                path: "/payments/token",
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async payment(csrfToken, paymentToken) {
+        try {
+            const payJson = {
+                token: paymentToken
+            }
+
+            return await ajaxReq.post({
+                path: "/payment",
+                body: JSON.stringify(payJson),
+                headers: {
+                    "Content-Type": "application/json",
+                    "csrf-token": csrfToken,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async subscription(paymentToken) {
+        try {
+            const data = {
+                receiver: '44100 1178 0546 4162',
+                'quickpay-form': 'shop',
+                paymentType: 'AC',
+                targets: 'Подписка на MovieSpace',
+                sum: 2,
+                label: paymentToken,
+                successURL: `movie-space.ru/subscription`
+            }
+
+            await fetch('http://yoomoney.ru/quickpay/confirm.xml', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify(data)
+            });
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async getToken() {
+        try {
+            const {data} = await this.token();
+
+            const {message} = await data;
+
+             return message;
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async getPayToken() {
+        try {
+            const {data} = await this.paymentToken();
+
+            const {message} = await data;
+
+            return message;
+        } catch (err) {
+            return err;
+        }
+    }
+
+    static async pay(csrfToken, payToken) {
+        try {
+            return this.payment(csrfToken, payToken);
         } catch (err) {
             return err;
         }
@@ -191,10 +277,12 @@ export default class UserModel {
     }
 
     static quit() {
-        return new Promise((res) => {
+        return new Promise(() => {
             this.logout()
-                .then(() => {
-                    router.go(routes.LOGIN_VIEW);
+                .then(({isAuth}) => {
+                    if (isAuth) {
+                        router.go(routes.LOGIN_VIEW);
+                    }
                 })
                 .catch((err) => {
                     console.error(err)

@@ -13,10 +13,12 @@ export default class PlayerViewClass extends BaseViewClass {
     private movie: MovieModel;
     private static click: boolean;
     private static displayTime: any;
+    private static waitingForClick: any;
 
     constructor() {
         super();
 
+        PlayerViewClass.waitingForClick = false;
         PlayerViewClass.click = false;
         PlayerViewClass.displayTime = 0;
     }
@@ -39,10 +41,16 @@ export default class PlayerViewClass extends BaseViewClass {
             const {movie} = await MovieModel.getMovie(idx);
             this.movie = new MovieModel(movie);
 
-
-
             let video = this.movie.trailer;
             if (check === -1) {
+                const userDate = new Date(user.date);
+                const nowDate = new Date();
+
+                if (nowDate > userDate) {
+                    router.go(routes.HOME_VIEW);
+                    return;
+                }
+
                 if (!this.movie.movieData.is_movie) {
                     const arrPath = window.location.pathname.split('/');
                     const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
@@ -96,7 +104,8 @@ export default class PlayerViewClass extends BaseViewClass {
         video.play();
 
         const playPauseButton = document.querySelector(".play-pause");
-        const play: SVGElement = playPauseButton.querySelector(".play__svg");
+        const play: SVGElement = playPauseButton.querySelector(".playBtn__svg");
+        console.log(play)
         const pause: SVGElement = playPauseButton.querySelector(".pause__svg");
         play.style.display = "none";
         pause.style.display = "";
@@ -143,6 +152,10 @@ export default class PlayerViewClass extends BaseViewClass {
 
         document.addEventListener("fullscreenchange", this.screenIconChange);
 
+        document.addEventListener("click", PlayerViewClass.displayControls);
+
+        video.addEventListener("click", this.checkClick);
+
         document.addEventListener("keydown", this.keyEvents);
 
         document.addEventListener("pointermove", PlayerViewClass.displayControls);
@@ -161,8 +174,26 @@ export default class PlayerViewClass extends BaseViewClass {
 
         volumeButton.addEventListener("click", this.volumeMute);
 
-        fullScreenButton.addEventListener("click", this.fullScreenChange);
-        document.addEventListener("dblclick", this.fullScreenChange);
+        fullScreenButton.addEventListener("click", PlayerViewClass.fullScreenChange);
+    }
+
+    checkClick(e: any): void {
+        switch (e.detail) {
+            case 1:
+                PlayerViewClass.waitingForClick = setTimeout(() => {
+                    PlayerViewClass.playPause(e);
+                }, 500);
+                break;
+            default:
+                if (PlayerViewClass.waitingForClick) {
+                    clearTimeout(PlayerViewClass.waitingForClick);
+
+                    PlayerViewClass.waitingForClick = false;
+                }
+
+                PlayerViewClass.fullScreenChange();
+                break;
+        }
     }
 
     volumeMute(): void {
@@ -273,10 +304,12 @@ export default class PlayerViewClass extends BaseViewClass {
         }, 5000);
     }
 
-    static playPause(): void {
+    static playPause(e: any): void {
+        e.stopPropagation();
+
         const video: HTMLVideoElement = document.querySelector(".player");
         const playPauseButton = document.querySelector(".play-pause");
-        const play: SVGElement = playPauseButton.querySelector(".play__svg");
+        const play: SVGElement = playPauseButton.querySelector(".playBtn__svg");
         const pause: SVGElement = playPauseButton.querySelector(".pause__svg");
 
         if (video.paused) {
@@ -308,7 +341,7 @@ export default class PlayerViewClass extends BaseViewClass {
         if (e.code === "Space") {
             e.preventDefault();
 
-            PlayerViewClass.playPause();
+            PlayerViewClass.playPause(e);
         }
 
         if (e.code === "ArrowRight") {
@@ -362,12 +395,11 @@ export default class PlayerViewClass extends BaseViewClass {
         watchBar.style.width =
             (video.currentTime / video.duration) * 100 + "%";
 
-        const totalSecondsRemaining = video.duration - video.currentTime;
+        let totalSecondsRemaining = video.duration - video.currentTime;
         const hoursRemaining = Math.floor(totalSecondsRemaining / 3600);
+        totalSecondsRemaining = totalSecondsRemaining % 3600;
         const minutesRemaining = Math.floor(totalSecondsRemaining / 60);
-        const secondsRemaining = Math.floor(
-            totalSecondsRemaining - minutesRemaining * 60
-        );
+        const secondsRemaining = Math.floor(totalSecondsRemaining % 60);
 
         if (isNaN(totalSecondsRemaining)) {
             noVideo.style.display = "flex";
@@ -389,7 +421,7 @@ export default class PlayerViewClass extends BaseViewClass {
     playStopMobile(): void {
         const video: HTMLVideoElement = document.querySelector(".player");
         const playPauseButton = document.querySelector(".play-pause");
-        const play: SVGElement = playPauseButton.querySelector(".play__svg");
+        const play: SVGElement = playPauseButton.querySelector(".playBtn__svg");
         const pause: SVGElement = playPauseButton.querySelector(".pause__svg");
 
         if (video.paused) {
@@ -403,7 +435,7 @@ export default class PlayerViewClass extends BaseViewClass {
         pause.style.display = "none";
     }
 
-    fullScreenChange(): void {
+    static fullScreenChange(): void {
         const videoContainer = document.querySelector(".video-container");
 
         if (!document.fullscreenElement) {
@@ -426,20 +458,23 @@ export default class PlayerViewClass extends BaseViewClass {
         const volumeReg: HTMLDivElement = document.querySelector('.volume__popUp');
         const volumeButton = document.querySelector(".volume");
 
-        fullScreenButton.removeEventListener("click", this.fullScreenChange);
-        document.removeEventListener("dblclick", this.fullScreenChange);
-        video.removeEventListener('play', this.playStopMobile);
-        video.removeEventListener("timeupdate", this.progressBarTime);
-        progressBar.removeEventListener("click", this.progressBarRewind);
-        document.removeEventListener("fullscreenchange", this.screenIconChange);
-        document.removeEventListener("keydown", this.keyEvents);
-        document.removeEventListener("pointermove", PlayerViewClass.displayControls);
-        document.removeEventListener("touchend", PlayerViewClass.displayControls);
-        seriesPopUp.removeEventListener("scroll", PlayerViewClass.displayControls);
-        playPauseButton.removeEventListener("click", PlayerViewClass.playPause);
-        rewindButton.removeEventListener("click", PlayerViewClass.rewind);
-        forwardButton.removeEventListener("click", PlayerViewClass.forward);
-        volumeReg.removeEventListener('click', this.volumeChange);
-        volumeButton.removeEventListener("click", this.volumeMute);
+        if (fullScreenButton !== null) {
+            fullScreenButton.removeEventListener("click", PlayerViewClass.fullScreenChange);
+            video.removeEventListener('play', this.playStopMobile);
+            video.removeEventListener("timeupdate", this.progressBarTime);
+            progressBar.removeEventListener("click", this.progressBarRewind);
+            document.removeEventListener("fullscreenchange", this.screenIconChange);
+            document.removeEventListener("keydown", this.keyEvents);
+            document.removeEventListener("pointermove", PlayerViewClass.displayControls);
+            document.removeEventListener("touchend", PlayerViewClass.displayControls);
+            seriesPopUp.removeEventListener("scroll", PlayerViewClass.displayControls);
+            playPauseButton.removeEventListener("click", PlayerViewClass.playPause);
+            rewindButton.removeEventListener("click", PlayerViewClass.rewind);
+            forwardButton.removeEventListener("click", PlayerViewClass.forward);
+            volumeReg.removeEventListener('click', this.volumeChange);
+            volumeButton.removeEventListener("click", this.volumeMute);
+            document.removeEventListener("click", PlayerViewClass.displayControls);
+            video.removeEventListener("click", this.checkClick);
+        }
     }
 }

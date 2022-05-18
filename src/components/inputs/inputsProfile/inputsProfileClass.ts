@@ -39,11 +39,11 @@ const configElement = [
 ];
 
 export default class InputsProfileClass {
-    private info: Info;
+     private static info: Info;
     private static checkAvatar: number;
 
     constructor({ username, email }: { username: string; email: string }) {
-        this.info = {
+        InputsProfileClass.info = {
             username,
             email,
         };
@@ -59,7 +59,7 @@ export default class InputsProfileClass {
         const form = document.querySelector(".form-profile");
 
         const inputName: HTMLInputElement = document.querySelector('input[data-section="name"]');
-        inputName.value = this.info.username;
+        inputName.value = InputsProfileClass.info.username;
 
         const divEmail = document.querySelector('div[data-section="email"]');
         divEmail.classList.add("profile-email");
@@ -69,14 +69,13 @@ export default class InputsProfileClass {
             'input[data-section="email"]'
         );
         inputEmail.readOnly = true;
-        inputEmail.value = this.info.email;
+        inputEmail.value = InputsProfileClass.info.email;
 
         const inputPassOne: HTMLInputElement = document.querySelector('input[data-section="passwordFirst"]');
 
         const inputPassTwo: HTMLInputElement = document.querySelector('input[data-section="passwordSecond"]');
 
         const inputAvatar: HTMLInputElement = document.querySelector('input[class="profile-avatar__input"]');
-
 
         inputName.addEventListener("change", this.inputNameChange);
 
@@ -122,8 +121,9 @@ export default class InputsProfileClass {
 
         let check = 0;
         let caseForm = 0;
+        debugger;
 
-        if (inputName.value.trim() === this.info.username) {
+        if (inputName.value.trim() === InputsProfileClass.info.username) {
             caseForm = 1;
         }
 
@@ -209,7 +209,7 @@ export default class InputsProfileClass {
                             "font-nav name-profile"
                         );
                         name[0].textContent = inputName.value.trim();
-                        this.info.username = inputName.value.trim();
+                        InputsProfileClass.info.username = inputName.value.trim();
                     })
                     .catch(() => {
                         router.go(routes.ERROR_CATCH_VIEW);
@@ -256,7 +256,7 @@ export default class InputsProfileClass {
                             "font-nav name-profile"
                         );
                         name[0].textContent = inputName.value.trim();
-                        this.info.username = inputName.value.trim();
+                        InputsProfileClass.info.username = inputName.value.trim();
                     })
                     .catch(() => {
                         router.go(routes.ERROR_CATCH_VIEW);

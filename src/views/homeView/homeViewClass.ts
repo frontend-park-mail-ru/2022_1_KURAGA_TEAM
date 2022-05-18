@@ -12,12 +12,13 @@ import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import MovieCompilationView from "../movieCompilationView/movieCompilationView"
 import UserLikeView from "../userLikeView/userLikeView"
+import PopUpClass from "Components/popUp/popUpClass";
 import "../../css/home.scss";
 import {User} from "../../types";
 
 export default class HomeViewClass extends BaseViewClass {
-    private user: UserModel;
-    private mainMovie: MovieModel;
+    private static user: UserModel;
+    private static mainMovie: MovieModel;
     private movieCompilations: Array<MovieCompilationModel>;
 
     async render() {
@@ -32,11 +33,11 @@ export default class HomeViewClass extends BaseViewClass {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-          
-            this.user = new UserModel(user);
+
+            HomeViewClass.user = new UserModel(user);
 
             const {movie} = await MovieModel.mainMov();
-            this.mainMovie = new MovieModel(movie);
+            HomeViewClass.mainMovie = new MovieModel(movie);
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
             this.movieCompilations = movCompBody.map(
@@ -48,12 +49,14 @@ export default class HomeViewClass extends BaseViewClass {
             );
 
 
-            const header = new HeaderClass(this.user.userData);
-            const mainMovie = new MainMovieClass(this.mainMovie.movieData);
+            const header = new HeaderClass(HomeViewClass.user.userData);
+            const mainMovie = new MainMovieClass(HomeViewClass.mainMovie.movieData);
             const footer = new FooterClass();
+            const popUp = new PopUpClass();
 
             super.render(homeViewTemplate, {
-                mainMovieImg: this.mainMovie.movieData,
+                popUp: popUp.render(),
+                mainMovieImg: HomeViewClass.mainMovie.movieData,
                 header: header.render(),
                 mainMovie: mainMovie.render(),
                 select: this.compilationsRender(this.movieCompilations),
@@ -64,6 +67,7 @@ export default class HomeViewClass extends BaseViewClass {
             handlerLink();
             this.setHandler();
             header.setHandler();
+            this.checkSub();
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -112,7 +116,79 @@ export default class HomeViewClass extends BaseViewClass {
         return select;
     }
 
-    unmount() {
+    static closePopUP(e: any): void {
+        const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+        const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+
+        if (e.target === popUpBg) {
+            popUpBg.classList.remove('active');
+            popUpBody.classList.remove('active');
+        }
+    }
+
+    checkSub(): void {
+        const playButton: HTMLButtonElement = document.querySelector('.btn');
+
+        playButton.addEventListener('click', this.openPopUp, { capture: true });
+    }
+
+    openPopUp(e: any): void {
+        e.stopPropagation();
+
+        const userDate = new Date(HomeViewClass.user.data.date);
+        const nowDate = new Date();
+
+        document.addEventListener('click', HomeViewClass.closePopUP);
+
+        if (nowDate > userDate) {
+            const popUpBtn: HTMLButtonElement = document.querySelector('.menu-button');
+
+            popUpBtn.addEventListener('click', HomeViewClass.subscription);
+
+            const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+            const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+            const popUpClose: HTMLButtonElement = document.querySelector('.popUp__exit');
+
+            popUpBg.classList.add('active');
+            popUpBody.classList.add('active');
+
+            popUpClose.addEventListener('click', () => {
+                popUpBg.classList.remove('active');
+                popUpBody.classList.remove('active');
+            });
+
+            return;
+        }
+
+        router.go(`/player/${HomeViewClass.mainMovie.movieData.id}/movie`);
+    }
+
+    static async subscription() {
+        const error: HTMLDivElement = document.querySelector('.error');
+
+        const dataPay = UserModel.getPayToken();
+
+        const payToken = await dataPay;
+
+        const dataCsrf = UserModel.getToken();
+
+        const csrfToken = await dataCsrf;
+
+        const {isAuth} = await UserModel.pay(csrfToken, payToken);
+
+        if (!isAuth) {
+            error.classList.add('error-active');
+        }
+
+        const sub = UserModel.subscription(payToken);
+    }
+
+    unmount(): void {
+        const playButton: HTMLButtonElement = document.querySelector('.btn');
+
+        playButton.removeEventListener('click', this.openPopUp, { capture: true });
+        document.removeEventListener('click', HomeViewClass.closePopUP);
+
         if (this.movieCompilations) {
             this.movieCompilations.forEach((carousel) => {
                 MovieCompilationView.unmount(carousel.movieCompilationData);

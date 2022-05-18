@@ -61,7 +61,7 @@
     font-family: GT Eesti Pro Display, arial, sans-serif;
     color: var(--font-color);
     font-size: 20px;
-    height: 44px;
+    height: 54px !important;
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -126,6 +126,7 @@
 .btn:hover {
     background: var(--btn-hover-color);
 }
+
 @media (min-width: 1800px) {
   /*МЕДИА ЗАПРОСЫ ДЛЯ ГЛАВНОЙ*/
   .main-movie {
@@ -140,5 +141,11 @@
 @media (min-width: 2800px) {
   .sidebar {
     transform: scale(3);
+  }
+}
+
+@media (max-width: 1000px) {
+  .btn {
+    height: 50px !important;
   }
 }
