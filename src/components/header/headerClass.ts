@@ -1,8 +1,6 @@
 import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
-import router from "Routing/router";
-import {routes} from "Routing/constRouting";
-import {UserData,autoBind} from "../../types";
+import {UserData} from "../../types";
 import {debounce, isEmpty} from "Utils/Debounce"
 import AutoBind from "Utils/autoBind"
 import './header.scss'
@@ -57,7 +55,7 @@ export default class HeaderClass {
                 }
             }
         });
-        
+
         this.autoBind.setVariableEvent("searchOpen",this.openSearch.bind(this));
         document.querySelector(".search-menu").classList.add("hidden");
         this.autoBind.setVariableEvent("searchClose",this.closeSearch.bind(this));
