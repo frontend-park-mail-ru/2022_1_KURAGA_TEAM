@@ -145,6 +145,7 @@ export interface Info {
     email: string;
 }
 
-export interface AutoBind{
-    binded: any;
+export interface autoBind{
+    binded: any
+    bindedEvent: any;
 }

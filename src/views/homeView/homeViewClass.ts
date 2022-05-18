@@ -19,6 +19,7 @@ export default class HomeViewClass extends BaseViewClass {
     private user: UserModel;
     private mainMovie: MovieModel;
     private movieCompilations: Array<MovieCompilationModel>;
+    private header = new HeaderClass("user");
 
     async render() {
         try {
@@ -48,13 +49,14 @@ export default class HomeViewClass extends BaseViewClass {
             );
 
 
-            const header = new HeaderClass(this.user.userData);
+            this.header = new HeaderClass(this.user.userData);
+            // const header = new HeaderClass(this.user.userData);
             const mainMovie = new MainMovieClass(this.mainMovie.movieData);
             const footer = new FooterClass();
 
             super.render(homeViewTemplate, {
                 mainMovieImg: this.mainMovie.movieData,
-                header: header.render(),
+                header: this.header.render(),
                 mainMovie: mainMovie.render(),
                 select: this.compilationsRender(this.movieCompilations),
                 footer: footer.render(),
@@ -63,7 +65,7 @@ export default class HomeViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-            header.setHandler();
+
 
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
@@ -88,6 +90,11 @@ export default class HomeViewClass extends BaseViewClass {
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");
+
+        if(this.header){
+            this.header.setHandler();
+        }
+
     }
 
     compilationsRender(movieCompilations: MovieCompilationModel[]) {

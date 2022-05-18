@@ -2,7 +2,7 @@ import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
 import router from "Routing/router";
 import {routes} from "Routing/constRouting";
-import {UserData} from "../../types";
+import {UserData,autoBind} from "../../types";
 import {debounce, isEmpty} from "Utils/Debounce"
 import AutoBind from "Utils/autoBind"
 import './header.scss'
@@ -12,10 +12,8 @@ export default class HeaderClass {
     private readonly info: UserData;
     private autoBind;
 
-
     constructor(info) {
         this.info = info;
-
     }
 
 
@@ -24,11 +22,10 @@ export default class HeaderClass {
         return headerTemplate({item: this.info});
     }
 
-    setHandler() {
+    setHandler():void {
         this.autoBind = new AutoBind;
-        this.autoBind.setVariable("inputSearchDisplay","true");
+        this.autoBind.setVariable("inputSearchDisplay", "true");
         const navbar: HTMLElement = document.querySelector(".navbar");
-
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > 15) {
@@ -40,95 +37,94 @@ export default class HeaderClass {
             navbar.classList.remove("navbar-color");
         });
 
-        const quit = document.querySelector(".quit");
 
+        const quit = document.querySelector(".quit");
         quit.addEventListener("click", () => {
             UserModel.quit();
         });
 
-        const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
-        verticalNavbar.addEventListener("click", (e) => {
-            e.preventDefault();
-            if(this.autoBind.getVariable("logoDisplay") == ""){
-                const verticalMenu: HTMLElement = document.querySelector(
-                    ".menu-mobile__vertical"
-                );
-                if (!verticalMenu.classList.contains("hidden")) {
-                    verticalMenu.classList.add("hidden");
-                    verticalNavbar.classList.remove("menuSymbol__action");
-                } else {
-                    verticalMenu.classList.remove("hidden");
-                    verticalNavbar.classList.add("menuSymbol__action");
-                }
-            }
-        });
-        const profileIcon = document.querySelector(".btn-profile");
-        profileIcon.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            if(this.autoBind.getVariable("logoDisplay") == ""){
-                if (this.autoBind.getVariable("profileDisplay") == "") {
-                    this.autoBind.setVariable("profileDisplay","true");
-                } else {
-                    this.autoBind.setVariable("profileDisplay","true");
-                }
-            }
-        });
 
+
+        this.autoBind.setVariableEvent("verticalNavBar",this.verticalNavHandler.bind(this));
+
+        document.querySelector(".btn-profile").addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            if (this.autoBind.getVariable("logoDisplay") == "") {
+                if (this.autoBind.getVariable("profileDisplay") == "") {
+                    this.autoBind.setVariable("profileDisplay", "true");
+                } else {
+                    this.autoBind.setVariable("profileDisplay", "true");
+                }
+            }
+        });
+        
+        this.autoBind.setVariableEvent("searchOpen",this.openSearch.bind(this));
+        document.querySelector(".search-menu").classList.add("hidden");
+        this.autoBind.setVariableEvent("searchClose",this.closeSearch.bind(this));
+        this.searchHandler();
+
+
+    }
+
+    verticalNavHandler():void{
+        const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
+        if (this.autoBind.getVariable("logoDisplay") == "") {
+            const verticalMenu: HTMLElement = document.querySelector(
+                ".menu-mobile__vertical"
+            );
+            if (!verticalMenu.classList.contains("hidden")) {
+                verticalMenu.classList.add("hidden");
+                verticalNavbar.classList.remove("menuSymbol__action");
+            } else {
+                verticalMenu.classList.remove("hidden");
+                verticalNavbar.classList.add("menuSymbol__action");
+            }
+        }
+    }
+    closeSearch(): void{
+        const searchBtn: HTMLElement = document.querySelector(".search__btn");
+        const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
+        const navbar: HTMLElement = document.querySelector(".navbar");
+        const a: HTMLInputElement = document.querySelector("#live-search");
+        a.value = "";
+        this.autoBind.setVariable("inputSearchDisplay", "true");
+        searchCloseBtn.classList.add("hidden");
+        searchBtn.classList.remove("hidden");
+
+        document.querySelector(".search-menu").classList.add("hidden");
+        navbar.style.position = "fixed";
+        const screenWidth = window.screen.width;
+        const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
+        if (screenWidth <= 1000) {
+            this.autoBind.setVariable("logoDisplay", "");
+        } else if (screenWidth < 1500) {
+            desktopNavbar.classList.remove("hidden");
+        }
+    }
+    openSearch():void{
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
 
-        searchBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-
-
-            this.autoBind.setVariable("inputSearchDisplay","");
-            document.getElementById("live-search").focus();
-
-            //this.autoBind.setVariable("searchBtnDisplay",this.autoBind.getVariable("searchBtnDisplay")+" hidden");
-            console.log(this.autoBind);
-            searchBtn.classList.add("hidden");
-            searchCloseBtn.classList.remove("hidden");
-            const screenWidth = window.screen.width;
-            const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
-            if (screenWidth <= 1000) {
-                this.autoBind.setVariable("logoDisplay","true");
-            } else if (screenWidth < 1500) {
-                desktopNavbar.classList.add("hidden");
-            }
-
-        })
-            //this.autoBind.setVariable("searchMenuDisplay","true");
-        const menu: HTMLElement = document.querySelector(".search-menu");
-        searchCloseBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            const a: HTMLInputElement = document.querySelector("#live-search");
-            a.value = "";
-            this.autoBind.setVariable("inputSearchDisplay","true");
-            searchCloseBtn.classList.add("hidden");
-            searchBtn.classList.remove("hidden");
-            console.log(this.autoBind);
-
-            menu.classList.add("hidden");
-            navbar.style.position = "fixed";
-            const screenWidth = window.screen.width;
-            const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
-            if (screenWidth <= 1000) {
-                this.autoBind.setVariable("logoDisplay","");
-            } else if (screenWidth < 1500) {
-                desktopNavbar.classList.remove("hidden");
-            }
-        })
-
-
-
+        this.autoBind.setVariable("inputSearchDisplay", "");
+        document.getElementById("live-search").focus();
+        searchBtn.classList.add("hidden");
+        searchCloseBtn.classList.remove("hidden");
+        const screenWidth = window.screen.width;
+        const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
+        if (screenWidth <= 1000) {
+            this.autoBind.setVariable("logoDisplay", "true");
+        } else if (screenWidth < 1500) {
+            desktopNavbar.classList.add("hidden");
+        }
+    }
+    searchHandler(): void {
         const search = document.querySelector("#live-search");
         search.addEventListener("keyup", debounce(async () => {
+            const menu: HTMLElement = document.querySelector(".search-menu");
             const a: HTMLInputElement = document.querySelector("#live-search");
-            let formJson;
             menu.classList.remove("hidden");
             if (a.value != "") {
-                formJson = JSON.stringify({
+                let formJson = JSON.stringify({
                     find: a.value,
                 });
                 const {searchBody} = await UserModel.getSearchRes(formJson);
@@ -202,10 +198,10 @@ export default class HeaderClass {
                     }
                 }
             } else {
-                //this.autoBind.setVariable("searchMenuDisplay","true");
                 menu.classList.add("hidden");
             }
         }))
     }
+
 
 }

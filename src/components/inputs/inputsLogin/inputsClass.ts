@@ -207,10 +207,11 @@ export default class InputsClass {
         const inputPassword: HTMLInputElement = document.querySelector(
             'input[data-section="password"]'
         );
-
-        inputEmail.removeEventListener("change", this.inputEmailChange);
-        inputEmail.removeEventListener("keydown", this.inputEmailKey);
-        inputPassword.removeEventListener("change", this.inputPasswordChange);
-        inputPassword.removeEventListener("keydown", this.inputPasswordlKey);
+        if(inputEmail && inputPassword){
+            inputEmail.removeEventListener("change", this.inputEmailChange);
+            inputEmail.removeEventListener("keydown", this.inputEmailKey);
+            inputPassword.removeEventListener("change", this.inputPasswordChange);
+            inputPassword.removeEventListener("keydown", this.inputPasswordlKey);
+        }
     }
 }
