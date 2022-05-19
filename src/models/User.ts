@@ -211,6 +211,7 @@ export default class UserModel {
             await fetch('https://yoomoney.ru/quickpay/confirm.xml', {
                 method: 'POST',
                 headers: {
+                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify(data)
