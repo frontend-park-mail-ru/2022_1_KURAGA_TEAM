@@ -208,7 +208,7 @@ export default class UserModel {
                 successURL: `movie-space.ru/subscription`
             }
 
-            await fetch('http://yoomoney.ru/quickpay/confirm.xml', {
+            await fetch('https://yoomoney.ru/quickpay/confirm.xml', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
