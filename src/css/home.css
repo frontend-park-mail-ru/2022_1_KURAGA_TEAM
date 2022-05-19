@@ -57,6 +57,7 @@
 
 .b-carouselTop__prev:hover,
 .b-carouselTop__next:hover {
+  box-shadow: var(--back-color) 10px 0px 50px 10px inset, var(--back-color) 0px 0px 0px 0px inset;
   color: var(--btn-carousel-color);
   background-color: rgba(0, 0, 0, 0.75);
   transition: all 0.4s ease;
@@ -214,6 +215,7 @@
   color: var(--btn-carousel-color);
   background-color: rgba(0, 0, 0, 0.75);
   transition: all 0.4s ease;
+  box-shadow: var(--back-color) 10px 0px 50px 10px inset, var(--back-color) 0px 0px 0px 0px inset;
 }
 
 .b-carouselSeries__wrap,

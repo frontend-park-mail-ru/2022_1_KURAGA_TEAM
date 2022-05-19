@@ -12,13 +12,13 @@ import MovieCompilationModel from "../../models/MovieCompilation";
 import MovieCompilationView from "../movieCompilationView/movieCompilationView"
 import UserLikeView from "../userLikeView/userLikeView"
 import {isEmptyMovies} from "./utilsFavorite"
+import AutoBind from "Utils/autoBind"
 import "./favorites.scss";
 import {User} from "../../types";
 
 export default class FavoritesViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilations: Array<MovieCompilationModel> = null;
-
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -34,8 +34,8 @@ export default class FavoritesViewClass extends BaseViewClass {
             const header = new HeaderClass(this.user.userData);
 
             const {movCompBody} = await MovieCompilationModel.getFavorites();
-            console.log(movCompBody);
 
+            const autoBind = new AutoBind;
 
             if (isEmptyMovies(movCompBody)) {
                 const empty = "Ваш каталог пустой";
@@ -45,8 +45,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 });
 
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                footerImage.style.bottom = "0";
-                footerImage.style.position = "absolute";
+                footerImage.classList.add("footer-poster-position");
             } else {
 
                 movCompBody.forEach((i, id) => {
@@ -71,10 +70,9 @@ export default class FavoritesViewClass extends BaseViewClass {
 
                 if (movCompBody.length == 1) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                    footerImage.style.position = "absolute";
-                    footerImage.style.bottom = "0";
+                    footerImage.classList.add(".footer-poster-position");
                 }
-                ;
+
                 this.movieCompilations.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
@@ -83,20 +81,14 @@ export default class FavoritesViewClass extends BaseViewClass {
             handlerLink();
 
 
-            const {likesBody} = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            const {likesData} = await UserModel.getLikes()
+            console.log(likesData);
             UserLikeView.setAllLikes(likesData.favorites.id);
 
-            this.deleteLikes();
-            //this.user.setHandler();
+            UserLikeView.deleteLikes();
             this.setHandler();
             header.setHandler();
 
-
-            // const selectTopicAll = document.querySelectorAll(".select-title-all");
-            // selectTopicAll.forEach((val) => {
-            //     val.classList.add("show");
-            // });
         } catch (err) {
             console.error(err);
         }
@@ -106,47 +98,11 @@ export default class FavoritesViewClass extends BaseViewClass {
         const favouriteNavbar: HTMLAnchorElement = document.querySelector(".font-nav.favourite-js");
         const favouriteMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.favourite-js");
 
-        favouriteNavbar.style.backgroundColor = "#2C51B1";
-        favouriteNavbar.style.webkitBackgroundClip = "text";
-        favouriteNavbar.style.webkitTextFillColor = "transparent";
-        favouriteNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-        favouriteMobileNavbar.style.backgroundColor = "#2C51B1";
-        favouriteMobileNavbar.style.webkitBackgroundClip = "text";
-        favouriteMobileNavbar.style.webkitTextFillColor = "transparent";
-        favouriteMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        favouriteNavbar.classList.add("headline-style");
+        favouriteMobileNavbar.classList.add("headline-style");
     }
 
-    deleteLikes() {
-        const likes = document.querySelectorAll(".like.active-like");
-        likes.forEach(like => {
-            like.addEventListener("click", (e) => {
-                const id = like.id.split('_').pop();
 
-                console.log(like.id.split('_').pop());
-                const movie = document.getElementById(id);
-                movie.style.display = "none";
-
-                let formJson = JSON.stringify({
-                    id: Number(id),
-                });
-                UserModel.disliked(formJson);
-            });
-            like.removeEventListener("click", (e) => {
-                const id = like.id.split('_').pop();
-
-                console.log(like.id.split('_').pop());
-                const movie = document.getElementById(id);
-                movie.style.display = "none";
-
-                let formJson = JSON.stringify({
-                    id: Number(id),
-                });
-                UserModel.disliked(formJson);
-            });
-        })
-
-    }
 
     compilationsRender(movieCompilations: Array<MovieCompilationModel>) {
         let select = "";

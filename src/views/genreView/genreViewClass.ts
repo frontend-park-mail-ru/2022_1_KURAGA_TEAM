@@ -56,14 +56,15 @@ export default class GenreViewClass extends BaseViewClass {
             genreMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
 
             handlerLink();
-            const {likesBody}  = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            const {likesData} = await UserModel.getLikes()
+            console.log(likesData);
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
             header.setHandler();
             this.setHandler(id);
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW)
+        } catch(err) {
+            console.error(err);
+            //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 

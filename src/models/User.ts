@@ -255,21 +255,23 @@ export default class UserModel {
     static auth() {
         return new Promise<{ user: UserData }>((res) => {
             this.profile()
-                .then(({isAuth, data}) => {
+                .then(({isAuth, isErr, data}) => {
                     data
                         .then((userBody) => {
-                            if (isAuth) {
-                                res({
-                                    user: userBody.user,
-                                })
-                            } else res({
-                                user: null,
-                            });
+                                if (isAuth) {
+                                    res({
+                                        user: userBody.user,
+                                    })
+                                } else res({
+                                    user: null,
+                                });
+
                         })
 
 
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.error(err);
                 });
         })
 
@@ -279,10 +281,10 @@ export default class UserModel {
     static quit() {
         return new Promise(() => {
             this.logout()
-                .then(({isAuth}) => {
-                    if (isAuth) {
+                .then((data) => {
+                    if (!data.isError) {
                         router.go(routes.LOGIN_VIEW);
-                    }
+                    } else console.error("quitError");
                 })
                 .catch((err) => {
                     console.error(err)
@@ -364,14 +366,13 @@ export default class UserModel {
     }
 
     static async getSearchRes(formJson) {
-
-
         const {data} = await this.token();
         const {message} = await data;
 
         return new Promise<{ isAuth: boolean; searchBody }>((search) => {
             this.search(formJson, message)
                 .then((body) => {
+                    console.log(body);
                     search({
                         isAuth: body.isAuth,
                         searchBody: body.data,
@@ -413,13 +414,16 @@ export default class UserModel {
     }
 
     static getLikes() {
-        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
+        return new Promise<{ likesData }>((likes) => {
             this.allLikes()
-                .then((body) => {
-                    likes({
-                        isAuth: body.isAuth,
-                        likesBody: body.data,
-                    });
+                .then(({isAuth,data}) => {
+                    data
+                        .then((body)=>{
+
+                            likes({
+                                likesData: body,
+                            });
+                        })
                 })
                 .catch(() => {
                 });
@@ -441,7 +445,7 @@ export default class UserModel {
     }
 
     static getRating(id) {
-        return new Promise<{ratingBody }>((rating) => {
+        return new Promise<{ ratingBody }>((rating) => {
             this.userRating(id)
                 .then(({isAuth, data}) => {
                     data

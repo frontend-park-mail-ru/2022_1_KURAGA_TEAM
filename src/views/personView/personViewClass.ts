@@ -37,7 +37,6 @@ export default class PersonViewClass extends BaseViewClass {
             this.user = new UserModel(user);
 
             const {person} = await PersonModel.getPerson(id);
-
             this.person = new PersonModel(person);
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationPerson(id);
@@ -55,8 +54,9 @@ export default class PersonViewClass extends BaseViewClass {
                 footer: footer.render(),
             });
 
-            const {likesBody} = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            const {likesData} = await UserModel.getLikes()
+            console.log(likesData);
+
 
 
             handlerLink();

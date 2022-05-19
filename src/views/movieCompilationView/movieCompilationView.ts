@@ -6,6 +6,7 @@ import movingCarousel from "Components/carousel/movingCarousel";
 import {MovieCompilationData} from "../../types";
 import MovieClass from "Components/movie/movieClass";
 import MovieCompilationModel from "./movieCompilationView"
+import AutoBind from "Utils/autoBind"
 
 export default class MovieCompilationView {
 
@@ -54,6 +55,9 @@ export default class MovieCompilationView {
     }
 
     static setHandler(data: MovieCompilationData): void {
+
+        const autoBind = new AutoBind;
+
         let wrap: HTMLElement;
         let buttonCarouselNext: HTMLElement;
         let buttonCarouselPrev: HTMLElement;
@@ -61,7 +65,7 @@ export default class MovieCompilationView {
             wrap = document.querySelector(`.js-carousel${data.idBtn}`);
 
             buttonCarouselPrev = document.querySelector(
-                `.js-carousel${data.id}__prev`
+                `.js-carousel${data.idBtn}__prev`
             );
             buttonCarouselNext = document.querySelector(
                 `.js-carousel${data.idBtn}__next`
@@ -88,7 +92,8 @@ export default class MovieCompilationView {
                 next: `.js-carousel${data.id}__next`,
             });
         }
-        if(wrap) {
+        if (wrap) {
+
             wrap.addEventListener("mouseover", () => {
                 buttonCarouselPrev.classList.add("b-carousel__prev-hover");
                 buttonCarouselNext.classList.add("b-carousel__next-hover");
@@ -129,15 +134,15 @@ export default class MovieCompilationView {
             );
         }
 
-        if(wrap){
-        wrap.removeEventListener("mouseover", () => {
-            buttonCarouselPrev.classList.add(`b-carousel__prev-hover`);
-            buttonCarouselNext.classList.add("b-carousel__next-hover");
-        });
-        wrap.removeEventListener("mouseout", () => {
-            buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
-            buttonCarouselNext.classList.remove("b-carousel__next-hover");
-        });
+        if (wrap) {
+            wrap.removeEventListener("mouseover", () => {
+                buttonCarouselPrev.classList.add(`b-carousel__prev-hover`);
+                buttonCarouselNext.classList.add("b-carousel__next-hover");
+            });
+            wrap.removeEventListener("mouseout", () => {
+                buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
+                buttonCarouselNext.classList.remove("b-carousel__next-hover");
+            });
         }
     }
 }

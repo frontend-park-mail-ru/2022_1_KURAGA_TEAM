@@ -1,13 +1,16 @@
 import firstInfoMovie from "./firstInfoMovie.pug";
 import './firstInfoMovie.scss'
-import {debounce} from "../../utils/Debounce"
+import {debounce} from "Utils/Debounce"
+import {throttle} from "Utils/throttle"
 import UserModel from "../../models/User";
+import AutoBind from "Utils/autoBind"
+
 export default class FirstInfoMovieClass {
     private readonly rating: number;
-
+    private autoBind;
     private readonly description: string;
 
-    constructor(rating,{description,}: { rating: number; description: string; }) {
+    constructor(rating, {description,}: { rating: number; description: string; }) {
         this.rating = rating;
         this.description = description;
     }
@@ -20,67 +23,59 @@ export default class FirstInfoMovieClass {
         });
     }
 
-    setHandlers(): void {
-        // const button = document.querySelector(".your-rating__button");
-        // const error = document.querySelector(".first-part-info__error");
-        //
-        // button.addEventListener("click", () => {
-        //     if (error.classList.length === 2) {
-        //         error.classList.remove("first-part-info__error-active");
-        //
-        //         return;
-        //     }
-        //
-        //     error.classList.add("first-part-info__error-active");
-        // });
+    setHandler(): void {
 
-        let inputValue = (this.rating*10).toString();
-        const rating: HTMLElement = document.getElementById("rating");
-        const slider: HTMLElement = document.getElementById("slider");
-        slider.style.backgroundSize = parseInt(inputValue) + "%";
-        slider.setAttribute("value",inputValue);
-        const progress: HTMLElement = document.getElementById("progress-wrapper");
+        this.autoBind = new AutoBind(".first-part-info");
+        console.log(this.autoBind);
+        this.changeRating();
 
 
-        if (Math.round(parseInt(inputValue) / 10) <= 3) {
-            rating.style.color = "var(--font-error-color)";
-        } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
-            rating.style.color = "#D4E13D";
-        } else {
-            rating.style.color = "#3BB33B";
-        }
-        const rat = document.getElementById("rating-bar");
-        //rating.addEventListener("input", this.changeRaiting);
-        rat.addEventListener("input", this.changeRaiting);
+
+        this.autoBind.setVariable("setRating",this.changeRating.bind(this));
+        this.autoBind.setVariableEvent("changeRating",debounce(async()=>{
+            const id = +/\d+/.exec(window.location.pathname);
+            const rating: HTMLElement = document.getElementById("rating");
+            const formJson = JSON.stringify({
+                rating: rating.textContent.toString(),
+                id: id
+            });
+            UserModel.changeRating(formJson);
+
+        },500))
 
 
 
     }
 
-    changeRaiting() {
+    changeRating() {
         const rating: HTMLElement = document.getElementById("rating");
-        const slider: HTMLElement = document.getElementById("slider");
+        const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
-        slider.style.backgroundSize = inputValue + "%";
+
+        this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
+
         const progress: HTMLElement = document.getElementById("progress-wrapper");
         console.log(Math.round(parseInt(inputValue) / 10));
-        if(Math.round(parseInt(inputValue) / 10) == 0){
+        if (Math.round(parseInt(inputValue) / 10) == 0) {
             rating.textContent = "1";
-        }else {
+        } else {
             rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
         }
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
-            rating.style.color = "var(--font-error-color)";
+            this.autoBind.setVariableStyle("colorRating","var(--font-error-color)");
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
-            rating.style.color = "#D4E13D";
+            this.autoBind.setVariableStyle("colorRating","var(--font-warning-color)");
         } else {
-            rating.style.color = "#3BB33B";
+            this.autoBind.setVariableStyle("colorRating","var(--font-correct-color)");
+
         }
-
     }
 
-    setHandlerMovie(): void {
-        const info: HTMLElement = document.querySelector(".first-part-info");
-        info.style.marginTop = "0";
-    }
+
+
+    // setHandlerMovie(): void {
+    //     // this.autoBind.setVariableStyle("marginInfo",0);
+    //     // const info: HTMLElement = document.querySelector(".first-part-info");
+    //     // info.style.marginTop = "0";
+    // }
 }

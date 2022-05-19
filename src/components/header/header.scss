@@ -73,7 +73,6 @@
   fill: var(--font-color);
   cursor: pointer;
   transition: all 0.2s linear;
-  display: none;
 }
 
 .close-btn:hover {
@@ -98,7 +97,6 @@
 
 
 .search-menu {
-  display: none;
   padding-block: 10px;
   z-index: 3;
   border-radius: 10px;
@@ -299,7 +297,7 @@
   background: var(--drop-back);
   border-radius: 5px;
   box-shadow: 0 8px 16px 0 var(--drop-shadow);
-  display: none;
+  display:flex;
 }
 
 .menu-mobile__nav {
@@ -364,6 +362,7 @@
   .logo-home {
     padding-inline-start: 0;
     height: 50px;
+    width: 80px;
   }
 
   .profile-block {

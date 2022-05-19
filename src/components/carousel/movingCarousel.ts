@@ -10,8 +10,6 @@ import {
 export default function MovingCarousel(setting: movingCarouselData) {
 
     if (document.querySelector(setting.wrap) === null) {
-        router.go(routes.ERROR_CATCH_VIEW);
-
         return;
     }
 

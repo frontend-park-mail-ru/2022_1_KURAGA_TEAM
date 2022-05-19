@@ -104,6 +104,7 @@
   width: 54px;
   font-size: 40px;
   background-color: var(--btn-carousel-back-hover);
+  //box-shadow: 10px 0 20px var(--back-color);
 }
 
 .b-carouselSeries__next:hover,
@@ -113,6 +114,7 @@
   color: var(--btn-carousel-color);
   background-color: rgb(0 0 0 / 75%);
   transition: all 0.4s ease;
+  box-shadow: var(--back-color) 10px 0px 50px 10px inset,var(--back-color) 0px 0px 0px 0px inset;
 }
 
 .b-carouselSeries__wrap,
@@ -557,6 +559,7 @@
   }
   .movieTop:hover,
   .movieTop {
+
     width: 90vw;
     height: 60vw;
     transform: scale(1);

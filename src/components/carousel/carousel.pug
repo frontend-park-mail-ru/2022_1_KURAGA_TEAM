@@ -3,13 +3,13 @@ div.select-topic
     a.select-title-all показать все
 if(typeMov == "Series" )
     div.wrapSeries
-        div(class = car + ` b-carousel`+ `${typeMov}`)
+        div(class = car + ` b-carousel`+ `${typeMov}`, data-bind-event="onmouseover:showButtonsHover")
             div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);") !{items}
         button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
         button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
 else
     div.wrap
-        div(class = car + ` b-carousel` + `${typeMov}`)
+        div(class = car + ` b-carousel` + `${typeMov}` data-bind-event="onmouseover:showButtonsHover")
             div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);") !{items}
         button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
         button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
