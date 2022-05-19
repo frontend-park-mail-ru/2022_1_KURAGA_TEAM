@@ -72,7 +72,7 @@ export default class HomeViewClass extends BaseViewClass {
             this.checkSub();
 
             const {likesData} = await UserModel.getLikes()
-            console.log(likesData);
+
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
 

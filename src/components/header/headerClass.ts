@@ -36,7 +36,6 @@ export default class HeaderClass {
 
         });
 
-
         const quit = document.querySelector(".quit");
 
         quit.addEventListener("click", () => {

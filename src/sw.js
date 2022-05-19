@@ -20,9 +20,14 @@ const checkUrl = (url) => {
         avatars: /\/avatars/,
         persons: /\/persons/,
         trailers: /\/trailers/,
-    };
+    }
+    //console.log("url = ", url)
 
-    const checkS = (value) => url.match(value);
+    const checkS = (value) => {
+        //console.log("v = ", value)
+        //console.log("match = ", url.match(value))
+        url.match(value);
+    }
 
     return Object.values(unUrl).some(checkS);
 };
