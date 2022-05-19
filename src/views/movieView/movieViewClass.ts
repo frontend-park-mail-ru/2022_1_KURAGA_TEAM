@@ -17,6 +17,8 @@ import {MovieData, User} from "../../types";
 import EpisodesClass from "../../components/episodes/episodesClass";
 import MovieCompilationView from "../movieCompilationView/movieCompilationView"
 import UserLikeView from "../userLikeView/userLikeView"
+import AutoBind from "Utils/autoBind"
+
 
 import "./movie.scss";
 
@@ -25,7 +27,6 @@ export default class MovieViewClass extends BaseViewClass {
     private movie: MovieModel;
     private movieCompilation: MovieCompilationModel;
     private seasonsCompilation: Array<MovieCompilationModel> = null;
-
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -110,27 +111,31 @@ export default class MovieViewClass extends BaseViewClass {
                 }
             }
 
+
             handlerLink();
-            header.setHandler();
+
             if (!this.seasonsCompilation) {
-                firstInfoMovie.setHandlerMovie();
+                const info: HTMLElement = document.querySelector(".first-part-info");
+                    info.style.marginTop = "0";
+                // this.autoBind.setVariableStyle("marginInfo","0");
             }
-            firstInfoMovie.setHandlers();
+            header.setHandler();
+
+            firstInfoMovie.setHandler();
 
             MovieCompilationView.setHandler(this.movieCompilation.movieCompilationData);
             if (this.seasonsCompilation !== null) {
                 this.seasonsCompilation.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
-                this.setHandler();
-            }
 
+            }
+            this.setHandler();
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
-            // this.refreshRating();
 
         } catch (err) {
             console.error(err)
@@ -139,6 +144,7 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
+
         if (!this.movie.checkMovie) {
 
             const episodes: HTMLDivElement = document.querySelector(".episodes");
@@ -203,13 +209,6 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
 
-
-    // refreshRating() {
-    //     const refresh = document.getElementById("refresh");
-    //     refresh.addEventListener("click", () => {
-    //         this.changeRating();
-    //     })
-    // }
 
     unmount() {
        // this.changeRating();

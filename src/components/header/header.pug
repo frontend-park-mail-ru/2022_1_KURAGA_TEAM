@@ -33,8 +33,8 @@ div.search
 a.font-nav.name-profile(href='/profile')  !{item.username}
 div.profile-block
     div.profile.dropdown
-        div.btn-profile(style=`background-image: url(\"${item.avatar}\");`)
+        div.btn-profile(data-bind-event="ontouchstart:showProfile" style=`background-image: url(\"${item.avatar}\");`)
         div.dropdown-content(data-bind="hidden:profileDisplay")
             div.font.name-profile-mobile(href='/profile')  !{item.username}
             a.font(href="/profile") Профиль
-            a.quit.font(href="/login") Выйти
+            a.quit.font(href="/login" data-bind-event="onclick:quitEvent") Выйти

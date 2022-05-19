@@ -70,7 +70,7 @@ export default class HomeViewClass extends BaseViewClass {
             const {likesBody} = await UserModel.getLikes()
             const likesData = await Promise.resolve(likesBody);
 
-            UserLikeView.setAllLikes(likesData.favorites.id);
+            UserLikeView.setAllLikes(likesData);
             UserLikeView.setHandler();
 
             this.movieCompilations.forEach((carousel) => {

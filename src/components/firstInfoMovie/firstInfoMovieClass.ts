@@ -23,24 +23,12 @@ export default class FirstInfoMovieClass {
         });
     }
 
-    setHandlers(): void {
-        this.autoBind = new AutoBind;
+    setHandler(): void {
 
-        let inputValue = (this.rating * 10).toString();
-        const rating: HTMLElement = document.getElementById("rating");
-        const slider: HTMLElement = document.getElementById("slider");
-        slider.style.backgroundSize = parseInt(inputValue) + "%";
-        slider.setAttribute("value", inputValue);
-        const progress: HTMLElement = document.getElementById("progress-wrapper");
+        this.autoBind = new AutoBind(".first-part-info");
+        console.log(this.autoBind);
+        this.changeRating();
 
-
-        if (Math.round(parseInt(inputValue) / 10) <= 3) {
-            rating.style.color = "var(--font-error-color)";
-        } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
-            rating.style.color = "#D4E13D";
-        } else {
-            rating.style.color = "#3BB33B";
-        }
 
 
         this.autoBind.setVariable("setRating",this.changeRating.bind(this));
@@ -51,9 +39,8 @@ export default class FirstInfoMovieClass {
                 rating: rating.textContent.toString(),
                 id: id
             });
-            console.log(formJson);
             UserModel.changeRating(formJson);
-            console.log("e");
+
         },500))
 
 
@@ -62,9 +49,9 @@ export default class FirstInfoMovieClass {
 
     changeRating() {
         const rating: HTMLElement = document.getElementById("rating");
-        const slider: HTMLElement = document.getElementById("slider");
+        const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
-        slider.style.backgroundSize = inputValue + "%";
+        this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
         const progress: HTMLElement = document.getElementById("progress-wrapper");
         console.log(Math.round(parseInt(inputValue) / 10));
         if (Math.round(parseInt(inputValue) / 10) == 0) {
@@ -73,23 +60,20 @@ export default class FirstInfoMovieClass {
             rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
         }
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
-            rating.style.color = "var(--font-error-color)";
+            this.autoBind.setVariableStyle("colorRating","var(--font-error-color)");
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
-            rating.style.color = "#D4E13D";
+            this.autoBind.setVariableStyle("colorRating","var(--font-warning-color)");
         } else {
-            rating.style.color = "#3BB33B";
+            this.autoBind.setVariableStyle("colorRating","var(--font-correct-color)");
+
         }
-       // debounce(this.sendRating, 1000)();
-
-    }
-
-    sendRating(): void {
-
     }
 
 
-    setHandlerMovie(): void {
-        const info: HTMLElement = document.querySelector(".first-part-info");
-        info.style.marginTop = "0";
-    }
+
+    // setHandlerMovie(): void {
+    //     // this.autoBind.setVariableStyle("marginInfo",0);
+    //     // const info: HTMLElement = document.querySelector(".first-part-info");
+    //     // info.style.marginTop = "0";
+    // }
 }

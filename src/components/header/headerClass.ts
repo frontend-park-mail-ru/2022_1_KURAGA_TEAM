@@ -20,8 +20,8 @@ export default class HeaderClass {
         return headerTemplate({item: this.info});
     }
 
-    setHandler():void {
-        this.autoBind = new AutoBind;
+    setHandler(): void {
+        this.autoBind = new AutoBind(".navbar");
         this.autoBind.setVariable("inputSearchDisplay", "true");
         const navbar: HTMLElement = document.querySelector(".navbar");
 
@@ -29,10 +29,11 @@ export default class HeaderClass {
             if (window.scrollY > 15) {
 
                 navbar.classList.add("navbar-color");
-                return;
+
+            } else if (navbar.classList.contains("navbar-color")) {
+                navbar.classList.remove("navbar-color");
             }
 
-            navbar.classList.remove("navbar-color");
         });
 
 
@@ -41,12 +42,12 @@ export default class HeaderClass {
             UserModel.quit();
         });
 
+        // this.autoBind.setVariableEvent("quitEvent",UserModel.quit())
 
 
-        this.autoBind.setVariableEvent("verticalNavBar",this.verticalNavHandler.bind(this));
+        this.autoBind.setVariableEvent("verticalNavBar", this.verticalNavHandler.bind(this));
 
-        document.querySelector(".btn-profile").addEventListener("touchstart", (e) => {
-            e.preventDefault();
+        this.autoBind.setVariableEvent("showProfile", () => {
             if (this.autoBind.getVariable("logoDisplay") == "") {
                 if (this.autoBind.getVariable("profileDisplay") == "") {
                     this.autoBind.setVariable("profileDisplay", "true");
@@ -54,17 +55,18 @@ export default class HeaderClass {
                     this.autoBind.setVariable("profileDisplay", "true");
                 }
             }
-        });
+        })
 
-        this.autoBind.setVariableEvent("searchOpen",this.openSearch.bind(this));
+
+        this.autoBind.setVariableEvent("searchOpen", this.openSearch.bind(this));
         document.querySelector(".search-menu").classList.add("hidden");
-        this.autoBind.setVariableEvent("searchClose",this.closeSearch.bind(this));
+        this.autoBind.setVariableEvent("searchClose", this.closeSearch.bind(this));
         this.searchHandler();
 
 
     }
 
-    verticalNavHandler():void{
+    verticalNavHandler(): void {
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
         if (this.autoBind.getVariable("logoDisplay") == "") {
             const verticalMenu: HTMLElement = document.querySelector(
@@ -79,7 +81,8 @@ export default class HeaderClass {
             }
         }
     }
-    closeSearch(): void{
+
+    closeSearch(): void {
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
         const navbar: HTMLElement = document.querySelector(".navbar");
@@ -99,7 +102,8 @@ export default class HeaderClass {
             desktopNavbar.classList.remove("hidden");
         }
     }
-    openSearch():void{
+
+    openSearch(): void {
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
 
@@ -115,6 +119,7 @@ export default class HeaderClass {
             desktopNavbar.classList.add("hidden");
         }
     }
+
     searchHandler(): void {
         const search = document.querySelector("#live-search");
         search.addEventListener("keyup", debounce(async () => {

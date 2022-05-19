@@ -3,11 +3,11 @@ div.first-part-info__rating
         if(!rating)
             div.first-part-info__our-rating#rating -
         else
-            div.first-part-info__our-rating#rating #{rating}
+            div.first-part-info__our-rating#rating(data-bind-style="color:colorRating") #{rating}
         div.rating-descr
             div.first-part-info__our-name Ваша оценка
             div.first-part-info__our-name-rt MovieSpace
     div#rating-bar(data-bind-event="onmouseup:changeRating" data-bind="oninput:setRating")
         div#progress-wrapper
-        input(type="range", id="slider", list="slider-list" value="0" min="0" max="100")
+        input(type="range", id="slider", list="slider-list" value="0" min="0" max="100" data-bind-style="backgroundSize:backSizeSlider")
 div.first-part-info__text #{description}

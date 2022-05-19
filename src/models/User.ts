@@ -197,7 +197,6 @@ export default class UserModel {
         return new Promise((res) => {
             this.logout()
                 .then((data) => {
-                    console.log(data);
                     if (!data.isError) {
                         router.go(routes.LOGIN_VIEW);
                     } else console.error("quitError");

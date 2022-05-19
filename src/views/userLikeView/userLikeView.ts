@@ -4,15 +4,15 @@ import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
 import UserModel from "../../models/User";
 import likeService from "./likeService"
+import AutoBind from "Utils/autoBind"
 
 export default class UserLikeView {
-
 
     static setHandler(): void {
 
         const likes = document.querySelectorAll(".like");
 
-        const service:likeService = new likeService();
+        const service = new likeService();
 
         const likeClick = function (like: HTMLElement) {
             let formJson = JSON.stringify({
@@ -60,10 +60,12 @@ export default class UserLikeView {
     }
 
 
-    static setAllLikes(likesId) {
-        if (!likesId) {
+    static setAllLikes(likes) {
+        if (!likes || !likes.favorites.id) {
             return;
         }
+        const likesId = likes.favorites.id;
+
         const unique = likesId.filter(function (item, pos) {
             return likesId.indexOf(item) == pos;
         })
@@ -74,4 +76,41 @@ export default class UserLikeView {
             })
         });
     }
+
+    static deleteLikes() {
+        const autoBind = new AutoBind(".selection");
+
+        const likes = document.querySelectorAll(".like.active-like");
+
+        likes.forEach(like => {
+            const id = like.id.split('_').pop();
+            autoBind.setVariableEvent("dislike"+id,()=>{
+                const movie = document.getElementById(id);
+                movie.classList.add("hidden");
+
+                let formJson = JSON.stringify({
+                    id: Number(id),
+                });
+                UserModel.disliked(formJson);
+            })
+            // like.addEventListener("click", ()=>{
+            // });
+            //autoBind.setVariableEvent("dislike"+id,()=>{});
+            // like.removeEventListener("click", ()=>{
+            //
+            //     const id = like.id.split('_').pop();
+            //
+            //     console.log(like.id.split('_').pop());
+            //     const movie = document.getElementById(id);
+            //     movie.classList.add("hidden");
+            //
+            //     let formJson = JSON.stringify({
+            //         id: Number(id),
+            //     });
+            //     UserModel.disliked(formJson);
+            // });
+        })
+
+    }
+
 }
