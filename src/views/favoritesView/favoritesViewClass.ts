@@ -46,8 +46,6 @@ export default class FavoritesViewClass extends BaseViewClass {
 
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
                 footerImage.classList.add("footer-poster-position");
-                // footerImage.style.bottom = "0";
-                // footerImage.style.position = "absolute";
             } else {
 
                 movCompBody.forEach((i, id) => {
@@ -74,7 +72,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
                     footerImage.classList.add(".footer-poster-position");
                 }
-                ;
+
                 this.movieCompilations.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
@@ -88,15 +86,9 @@ export default class FavoritesViewClass extends BaseViewClass {
             UserLikeView.setAllLikes(likesData);
 
             UserLikeView.deleteLikes();
-            //this.user.setHandler();
             this.setHandler();
             header.setHandler();
 
-
-            // const selectTopicAll = document.querySelectorAll(".select-title-all");
-            // selectTopicAll.forEach((val) => {
-            //     val.classList.add("show");
-            // });
         } catch (err) {
             console.error(err);
         }
@@ -110,36 +102,7 @@ export default class FavoritesViewClass extends BaseViewClass {
         favouriteMobileNavbar.classList.add("headline-style");
     }
 
-    // deleteLikes() {
-    //     const likes = document.querySelectorAll(".like.active-like");
-    //     likes.forEach(like => {
-    //         like.addEventListener("click", (e) => {
-    //             const id = like.id.split('_').pop();
-    //
-    //             console.log(like.id.split('_').pop());
-    //             const movie = document.getElementById(id);
-    //             movie.style.display = "none";
-    //
-    //             let formJson = JSON.stringify({
-    //                 id: Number(id),
-    //             });
-    //             UserModel.disliked(formJson);
-    //         });
-    //         like.removeEventListener("click", (e) => {
-    //             const id = like.id.split('_').pop();
-    //
-    //             console.log(like.id.split('_').pop());
-    //             const movie = document.getElementById(id);
-    //             movie.style.display = "none";
-    //
-    //             let formJson = JSON.stringify({
-    //                 id: Number(id),
-    //             });
-    //             UserModel.disliked(formJson);
-    //         });
-    //     })
-    //
-    // }
+
 
     compilationsRender(movieCompilations: Array<MovieCompilationModel>) {
         let select = "";

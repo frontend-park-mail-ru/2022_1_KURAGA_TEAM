@@ -37,7 +37,6 @@ export default class PersonViewClass extends BaseViewClass {
             this.user = new UserModel(user);
 
             const {person} = await PersonModel.getPerson(id);
-
             this.person = new PersonModel(person);
 
             const {movCompBody} = await MovieCompilationModel.getMovieCompilationPerson(id);
