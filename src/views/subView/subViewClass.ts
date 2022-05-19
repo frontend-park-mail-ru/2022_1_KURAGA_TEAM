@@ -81,6 +81,8 @@ export default class SubViewClass extends BaseViewClass {
     unmount(): void {
         const subBtn = document.querySelector('.menu-button');
 
-        subBtn.removeEventListener('click', this.subscription);
+        if (subBtn !== null) {
+            subBtn.removeEventListener('click', this.subscription);
+        }
     }
 }
