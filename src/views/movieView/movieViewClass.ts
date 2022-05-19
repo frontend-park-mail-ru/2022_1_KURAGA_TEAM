@@ -40,10 +40,14 @@ export default class MovieViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-
             const {movie} = await MovieModel.getMovie(id);
 
             MovieViewClass.movie = new MovieModel(movie);
+
+            const userDate = new Date(MovieViewClass.user.data.date);
+            const nowDate = new Date();
+
+            const check = nowDate > userDate;
 
             if (!MovieViewClass.movie.checkMovie) {
                 this.seasonsCompilation = MovieViewClass.movie.seasonsData.map(
@@ -51,7 +55,8 @@ export default class MovieViewClass extends BaseViewClass {
                         new MovieCompilationModel(
                             index,
                             movieCompilationData.episodes,
-                            id
+                            id,
+                            check,
                         ));
             }
 
@@ -301,22 +306,23 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     unmount(): void  {
-        const playButton: HTMLButtonElement = document.querySelector('.play-button');
+        const playButton: HTMLButtonElement = document.querySelector('.play-button')
 
-        if (this.seasonsCompilation) {
-            this.seasonsCompilation.forEach((carousel) => {
-                MovieCompilationView.unmount(carousel.movieCompilationData);
-            });
+        if (playButton !== null) {
+            playButton.removeEventListener('click', this.openPopUp, { capture: true });
+            document.removeEventListener('click', MovieViewClass.closePopUP);
+
+            if (this.seasonsCompilation) {
+                this.seasonsCompilation.forEach((carousel) => {
+                    MovieCompilationView.unmount(carousel.movieCompilationData);
+                });
+            }
+            const refresh = document.getElementById("refresh");
+            if (refresh) {
+                refresh.removeEventListener("click", () => {
+                    this.changeRating();
+                })
+            }
         }
-        const refresh = document.getElementById("refresh");
-        if (refresh) {
-            refresh.removeEventListener("click", () => {
-                this.changeRating();
-            })
-        }
-
-
-        playButton.removeEventListener('click', this.openPopUp, { capture: true });
-        document.removeEventListener('click', MovieViewClass.closePopUP);
     }
 }

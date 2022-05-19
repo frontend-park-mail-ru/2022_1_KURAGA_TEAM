@@ -20,8 +20,6 @@ const checkUrl = (url) => {
         avatars: /\/avatars/,
         persons: /\/persons/,
         trailers: /\/trailers/,
-
-
     };
 
     const checkS = (value) => url.match(value);

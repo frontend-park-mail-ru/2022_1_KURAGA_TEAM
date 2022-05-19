@@ -11,10 +11,12 @@ export default class AutoBind{
             }));
 
     }
+
     getVariable(name) {
         const entry = this.binded.find(({variable}) => variable === name);
         return entry ? entry.el[entry.prop] : undefined;
     }
+
     setVariable(name, value) {
         this.binded.forEach((entry) => {
             if (entry.variable === name) {
@@ -22,6 +24,7 @@ export default class AutoBind{
             }
         });
     }
+
     setStyle(name,value){
         const entry = this.binded.find(({variable}) => variable === name);
         entry.el.attributeStyleMap.set(name, value);

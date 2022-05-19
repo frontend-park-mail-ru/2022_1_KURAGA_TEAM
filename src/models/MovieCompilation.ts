@@ -28,12 +28,13 @@ export default class MovieCompilationModel {
         year: "",
     }]
 
-    constructor(index, movieCompilationData, id?) {
+    constructor(index, movieCompilationData, id?, check?) {
         if (Array.isArray(movieCompilationData)) {
             this.data = {
                 movies: movieCompilationData,
                 id: index,
                 idSerial: id,
+                check,
                 idBtn: Math.floor(Math.random() * (-100)),
             };
         } else {

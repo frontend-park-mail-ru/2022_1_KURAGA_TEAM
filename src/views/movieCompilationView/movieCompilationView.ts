@@ -11,7 +11,7 @@ export default class MovieCompilationView {
 
 
     static render(data: MovieCompilationData) {
-        const Series = new MovieClass(data.movies, "Series", false, data.id, data.idSerial, data.idBtn);
+        const Series = new MovieClass(data.movies, "Series", false, data.id, data.idSerial, data.idBtn, data.check);
         const Top = new MovieClass(data.movies, "Top", true);
         const unTop = new MovieClass(data.movies, "", true);
         // non unique ids

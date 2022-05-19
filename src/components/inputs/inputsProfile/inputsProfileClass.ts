@@ -396,12 +396,14 @@ export default class InputsProfileClass {
         const inputPassTwo: HTMLInputElement = document.querySelector('input[data-section="passwordSecond"]');
         const form = document.querySelector(".form-profile");
 
-        inputName.removeEventListener("change", this.inputNameChange);
-        inputName.removeEventListener("keydown", this.inputNameKeyDown);
-        inputPassOne.removeEventListener("change", this.inputPassOneChange);
-        inputPassOne.removeEventListener("keydown", this.inputPassOneKeyDown);
-        inputPassTwo.removeEventListener("keydown", this.inputPassTwoKeyDown);
-        inputAvatar.removeEventListener("change", this.inputAvatarChange);
-        form.removeEventListener("submit", this.validation);
+        if (inputName !== null) {
+            inputName.removeEventListener("change", this.inputNameChange);
+            inputName.removeEventListener("keydown", this.inputNameKeyDown);
+            inputPassOne.removeEventListener("change", this.inputPassOneChange);
+            inputPassOne.removeEventListener("keydown", this.inputPassOneKeyDown);
+            inputPassTwo.removeEventListener("keydown", this.inputPassTwoKeyDown);
+            inputAvatar.removeEventListener("change", this.inputAvatarChange);
+            form.removeEventListener("submit", this.validation);
+        }
     }
 }
