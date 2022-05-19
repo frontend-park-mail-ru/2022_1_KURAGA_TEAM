@@ -186,13 +186,15 @@ export default class HomeViewClass extends BaseViewClass {
     unmount(): void {
         const playButton: HTMLButtonElement = document.querySelector('.btn');
 
-        playButton.removeEventListener('click', this.openPopUp, { capture: true });
-        document.removeEventListener('click', HomeViewClass.closePopUP);
+        if (playButton !== null) {
+            playButton.removeEventListener('click', this.openPopUp, { capture: true });
+            document.removeEventListener('click', HomeViewClass.closePopUP);
 
-        if (this.movieCompilations) {
-            this.movieCompilations.forEach((carousel) => {
-                MovieCompilationView.unmount(carousel.movieCompilationData);
-            });
+            if (this.movieCompilations) {
+                this.movieCompilations.forEach((carousel) => {
+                    MovieCompilationView.unmount(carousel.movieCompilationData);
+                });
+            }
         }
     }
 }

@@ -302,7 +302,6 @@ export default class UserModel {
                                 regBody: reg,
                             });
                         })
-
                 })
                 .catch((err) => {
                     console.error(err)
@@ -312,12 +311,16 @@ export default class UserModel {
     }
 
     static log(formJson) {
-        return new Promise<{ isAuth: boolean; }>((res) => {
+        return new Promise<{ isAuth: boolean; regBody }>((res) => {
             this.login(formJson)
-                .then((body) => {
-                    res({
-                        isAuth: body.isAuth,
-                    });
+                .then(({isAuth, data}) => {
+                    data
+                        .then((reg) => {
+                            res({
+                                isAuth: isAuth,
+                                regBody: reg,
+                            });
+                        })
                 })
                 .catch((err) => {
                     console.error(err)

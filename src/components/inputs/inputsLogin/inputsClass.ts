@@ -104,15 +104,26 @@ export default class InputsClass {
                 const errorIncorr = document.querySelector(
                     'div[data-section="incorrect"]'
                 );
-                const {isAuth} = await UserModel.log(formJson);
+
+                const {isAuth, regBody} = await UserModel.log(formJson);
+
+                if (regBody.status === 404) {
+                    errorIncorr.classList.add("error-active");
+                    errorIncorr.classList.add("center");
+                    errorIncorr.textContent =
+                        "Неверный логин или пароль";
+
+                    return;
+                }
 
                 if (!isAuth) {
                     errorIncorr.classList.add("error-active");
                     errorIncorr.classList.add("center");
-                    errorIncorr.textContent = "Неверный логин или пароль";
-
+                    errorIncorr.textContent =
+                        "Упс... У нас что-то пошло не так!";
                     return;
                 }
+
                 router.go("/");
             }
         };
@@ -208,9 +219,11 @@ export default class InputsClass {
             'input[data-section="password"]'
         );
 
-        inputEmail.removeEventListener("change", this.inputEmailChange);
-        inputEmail.removeEventListener("keydown", this.inputEmailKey);
-        inputPassword.removeEventListener("change", this.inputPasswordChange);
-        inputPassword.removeEventListener("keydown", this.inputPasswordlKey);
+        if (inputEmail !== null) {
+            inputEmail.removeEventListener("change", this.inputEmailChange);
+            inputEmail.removeEventListener("keydown", this.inputEmailKey);
+            inputPassword.removeEventListener("change", this.inputPasswordChange);
+            inputPassword.removeEventListener("keydown", this.inputPasswordlKey);
+        }
     }
 }
