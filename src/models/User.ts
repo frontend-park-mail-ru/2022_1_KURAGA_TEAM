@@ -199,7 +199,7 @@ export default class UserModel {
     static async subscription(paymentToken) {
         try {
             const data = {
-                receiver: '44100 1178 0546 4162',
+                receiver: '4100117805464162',
                 'quickpay-form': 'shop',
                 paymentType: 'AC',
                 targets: 'Подписка на MovieSpace',
@@ -208,14 +208,26 @@ export default class UserModel {
                 successURL: `movie-space.ru/subscription`
             }
 
-            await fetch('https://yoomoney.ru/quickpay/confirm.xml', {
-                method: 'POST',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify(data)
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://yoomoney.ru/quickpay/confirm.xml';
+            form.enctype = 'application/x-www-form-urlencoded';
+
+            Object.entries(data).forEach(([key, value]) => {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = key;
+                hiddenField.value = String(value);
+
+                if (typeof (value) === 'number') {
+                    hiddenField.setAttribute('data-type', 'number');
+                }
+
+                form.appendChild(hiddenField);
             });
+
+            document.body.appendChild(form);
+            form.submit();
         } catch (err) {
             return err;
         }
