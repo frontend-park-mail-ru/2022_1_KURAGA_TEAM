@@ -21,20 +21,18 @@ const checkUrl = (url) => {
         persons: /\/persons/,
         trailers: /\/trailers/,
     }
-    //console.log("url = ", url)
+    console.log("url = ", url)
 
-    const checkS = (value) => {
-        //console.log("v = ", value)
-        //console.log("match = ", url.match(value))
-        url.match(value);
-    }
+    const checkS = (value) => url.match(value);
 
-    return Object.values(unUrl).some(checkS);
+    const res = Object.values(unUrl).some(checkS);
+    console.log('res = ', res);
+    return res;
 };
 
 this.addEventListener("fetch", (event) => {
     if (navigator.onLine) {
-        if (event.request.method === "GET" && checkUrl(event.request.url)) {
+        if (event.request.method === "GET" && !checkUrl(event.request.url)) {
             caches.open(CACHE_NAME).then((cache) => {
                 cache.add(event.request.url);
             });
