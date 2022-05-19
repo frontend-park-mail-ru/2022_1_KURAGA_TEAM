@@ -51,7 +51,9 @@ export default class FirstInfoMovieClass {
         const rating: HTMLElement = document.getElementById("rating");
         const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
+
         this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
+
         const progress: HTMLElement = document.getElementById("progress-wrapper");
         console.log(Math.round(parseInt(inputValue) / 10));
         if (Math.round(parseInt(inputValue) / 10) == 0) {

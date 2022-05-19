@@ -54,8 +54,9 @@ export default class PersonViewClass extends BaseViewClass {
                 footer: footer.render(),
             });
 
-            const {likesBody} = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            const {likesData} = await UserModel.getLikes()
+            console.log(likesData);
+
 
 
             handlerLink();

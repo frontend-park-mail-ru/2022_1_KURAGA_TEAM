@@ -2,8 +2,8 @@ export default class AutoBind{
     private binded: any;
     private bindedEvent: any;
     private bindedStyle: any;
-    constructor(parentSelector : string = "#root") {
 
+    constructor(parentSelector : string = "#root") {
         this.binded = [...document.querySelector(parentSelector).querySelectorAll('[data-bind]')]
             .map((el:HTMLElement) => ({
                 el,
@@ -23,8 +23,8 @@ export default class AutoBind{
                 variable: el.dataset['bindStyle'].split(':')[1],
             }));
 
-
     }
+
     getVariable(name) {
         const entry = this.binded.find(({variable}) => variable === name);
         return entry ? entry.el[entry.prop] : undefined;
@@ -48,7 +48,7 @@ export default class AutoBind{
             }
         });
     }
-
+    
     getVariableStyle(name) {
         const entry = this.bindedStyle.find(({variable}) => variable === name);
         return entry ? entry.el.style[entry.prop] : undefined;

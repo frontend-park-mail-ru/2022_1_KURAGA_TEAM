@@ -38,6 +38,7 @@ export default class HeaderClass {
 
 
         const quit = document.querySelector(".quit");
+
         quit.addEventListener("click", () => {
             UserModel.quit();
         });
@@ -59,8 +60,11 @@ export default class HeaderClass {
 
 
         this.autoBind.setVariableEvent("searchOpen", this.openSearch.bind(this));
+
         document.querySelector(".search-menu").classList.add("hidden");
+
         this.autoBind.setVariableEvent("searchClose", this.closeSearch.bind(this));
+
         this.searchHandler();
 
 

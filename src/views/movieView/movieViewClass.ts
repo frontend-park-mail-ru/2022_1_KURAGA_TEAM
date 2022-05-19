@@ -131,10 +131,8 @@ export default class MovieViewClass extends BaseViewClass {
 
             }
             this.setHandler();
-            const {likesBody} = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
-
-            UserLikeView.setAllLikes(likesData.favorites.id);
+            
+            UserLikeView.setAllLikes(await UserModel.getLikes());
             UserLikeView.setHandler();
 
         } catch (err) {

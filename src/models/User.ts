@@ -327,13 +327,16 @@ export default class UserModel {
     }
 
     static getLikes() {
-        return new Promise<{ isAuth: boolean; likesBody }>((likes) => {
+        return new Promise<{ likesData }>((likes) => {
             this.allLikes()
-                .then((body) => {
-                    likes({
-                        isAuth: body.isAuth,
-                        likesBody: body.data,
-                    });
+                .then(({isAuth,data}) => {
+                    data
+                        .then((body)=>{
+
+                            likes({
+                                likesData: body,
+                            });
+                        })
                 })
                 .catch(() => {
                 });

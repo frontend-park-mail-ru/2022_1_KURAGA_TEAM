@@ -60,11 +60,11 @@ export default class UserLikeView {
     }
 
 
-    static setAllLikes(likes) {
-        if (!likes || !likes.favorites.id) {
+    static async setAllLikes(likesId) {
+        if (!likesId) {
             return;
         }
-        const likesId = likes.favorites.id;
+
 
         const unique = likesId.filter(function (item, pos) {
             return likesId.indexOf(item) == pos;
