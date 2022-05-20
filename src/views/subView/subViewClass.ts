@@ -47,8 +47,9 @@ export default class SubViewClass extends BaseViewClass {
             handlerLink();
             header.setHandler();
             this.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            console.error(err);
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
