@@ -39,8 +39,8 @@
   "version": "1.0.0",
   "main": ".",
   "scripts": {
-    "build": "NODE_ENV='production' webpack",
-    "start": "webpack-dev-server --history-api-fallback --progress",
+    "start": "NODE_ENV=development webpack serve --config webpack.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"**/*.ts\" --ignore-pattern node_modules/"
   },
@@ -59,6 +59,7 @@
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@babel/runtime": "^7.17.7",
-    "@types/pug": "^2.0.6"
+    "@types/pug": "^2.0.6",
+    "webpack-merge": "^5.8.0"
   }
 }

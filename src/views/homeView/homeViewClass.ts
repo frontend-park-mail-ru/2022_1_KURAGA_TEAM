@@ -80,8 +80,8 @@ export default class HomeViewClass extends BaseViewClass {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
 
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.error(error);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
