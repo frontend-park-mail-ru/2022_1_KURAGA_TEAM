@@ -17,11 +17,11 @@ import SubViewClass from "./views/subView/subViewClass";
 
 import "./css/common.scss";
 
-// if ("serviceWorker" in navigator) {
-//     navigator.serviceWorker.register("sw.js", { scope: "/" }).catch((err) => {
-//         console.error(err);
-//     });
-// }
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js", { scope: "/" }).catch((err) => {
+        console.error(err);
+    });
+}
 
 router.register("/reg", RegViewClass);
 router.register("/login", LoginViewClass);
