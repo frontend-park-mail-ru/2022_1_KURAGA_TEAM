@@ -82,7 +82,7 @@ export default class FavoritesViewClass extends BaseViewClass {
 
 
             const {likesData} = await UserModel.getLikes()
-            console.log(likesData);
+
             UserLikeView.setAllLikes(likesData.favorites.id);
 
             UserLikeView.deleteLikes();

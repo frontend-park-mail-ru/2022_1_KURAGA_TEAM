@@ -21,13 +21,9 @@ const checkUrl = (url) => {
         persons: /\/persons/,
         trailers: /\/trailers/,
     }
-    console.log("url = ", url)
-
     const checkS = (value) => url.match(value);
 
-    const res = Object.values(unUrl).some(checkS);
-    console.log('res = ', res);
-    return res;
+    return Object.values(unUrl).some(checkS);
 };
 
 this.addEventListener("fetch", (event) => {

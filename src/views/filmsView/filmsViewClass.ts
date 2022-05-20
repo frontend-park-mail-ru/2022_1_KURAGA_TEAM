@@ -45,12 +45,12 @@ export default class FilmsViewClass extends BaseViewClass {
             this.setHandler(currentOffset);
             handlerLink();
             const {likesData} = await UserModel.getLikes()
-            console.log(likesData);
+
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
             header.setHandler();
         } catch(err) {
-            console.log(err)
+            console.error(err)
             //router.go(routes.ERROR_CATCH_VIEW);
         }
     }

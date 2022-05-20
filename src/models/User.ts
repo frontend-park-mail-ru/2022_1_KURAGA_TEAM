@@ -385,7 +385,6 @@ export default class UserModel {
         return new Promise<{ isAuth: boolean; searchBody }>((search) => {
             this.search(formJson, message)
                 .then((body) => {
-                    console.log(body);
                     search({
                         isAuth: body.isAuth,
                         searchBody: body.data,

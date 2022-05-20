@@ -81,7 +81,7 @@ export default class HomeViewClass extends BaseViewClass {
             });
 
         } catch (err) {
-            console.log(err);
+            console.error(err);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
     }

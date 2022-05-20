@@ -47,7 +47,7 @@ export default class SerialsViewClass extends BaseViewClass {
             this.setHandler();
             handlerLink();
             const {likesData} = await UserModel.getLikes()
-            console.log(likesData);
+
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
             header.setHandler();

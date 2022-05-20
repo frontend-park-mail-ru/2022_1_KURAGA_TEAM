@@ -105,7 +105,7 @@ export default class PlayerViewClass extends BaseViewClass {
 
         const playPauseButton = document.querySelector(".play-pause");
         const play: SVGElement = playPauseButton.querySelector(".playBtn__svg");
-        console.log(play)
+
         const pause: SVGElement = playPauseButton.querySelector(".pause__svg");
         play.style.display = "none";
         pause.style.display = "";

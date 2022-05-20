@@ -26,10 +26,8 @@ export default class FirstInfoMovieClass {
     setHandler(): void {
 
         this.autoBind = new AutoBind(".first-part-info");
-        console.log(this.autoBind);
+
         this.changeRating();
-
-
 
         this.autoBind.setVariable("setRating",this.changeRating.bind(this));
         this.autoBind.setVariableEvent("changeRating",debounce(async()=>{
@@ -55,7 +53,7 @@ export default class FirstInfoMovieClass {
         this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
 
         const progress: HTMLElement = document.getElementById("progress-wrapper");
-        console.log(Math.round(parseInt(inputValue) / 10));
+
         if (Math.round(parseInt(inputValue) / 10) == 0) {
             rating.textContent = "1";
         } else {

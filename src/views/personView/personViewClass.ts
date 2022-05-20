@@ -55,9 +55,6 @@ export default class PersonViewClass extends BaseViewClass {
             });
 
             const {likesData} = await UserModel.getLikes()
-            console.log(likesData);
-
-
 
             handlerLink();
             header.setHandler();
