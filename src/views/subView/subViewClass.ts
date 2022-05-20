@@ -47,16 +47,16 @@ export default class SubViewClass extends BaseViewClass {
             handlerLink();
             header.setHandler();
             this.setHandler();
-        } catch(err) {
-            console.error(err);
-            //router.go(routes.ERROR_CATCH_VIEW);
+        } catch {
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
     setHandler(): void {
         const subBtn = document.querySelector('.menu-button');
-
-        subBtn.addEventListener('click', this.subscription);
+        if (subBtn !== null) {
+            subBtn.addEventListener('click', this.subscription);
+        }
     }
 
     async subscription() {
