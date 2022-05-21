@@ -34,7 +34,7 @@ this.addEventListener("fetch", (event) => {
             });
         }
 
-        return fetch(event.request);
+        return;
     }
 
     event.respondWith(
