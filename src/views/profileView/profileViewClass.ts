@@ -59,11 +59,7 @@ export default class ProfileViewClass extends BaseViewClass {
         const profileNavbar: HTMLAnchorElement =
             document.querySelector(".name-profile");
 
-        profileNavbar.style.backgroundColor = "#2C51B1";
-        profileNavbar.style.webkitBackgroundClip = "text";
-        profileNavbar.style.webkitTextFillColor = "transparent";
-        profileNavbar.style.backgroundImage =
-            "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        profileNavbar.classList.add("headline-style");
     }
     unmount(): void {
         this.inputs.unmount();

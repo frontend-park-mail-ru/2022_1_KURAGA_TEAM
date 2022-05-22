@@ -60,15 +60,8 @@ export default class SerialsViewClass extends BaseViewClass {
         const serialsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.serials-js");
         const serialsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.serials-js");
 
-        serialsNavbar.style.backgroundColor = "#2C51B1";
-        serialsNavbar.style.webkitBackgroundClip = "text";
-        serialsNavbar.style.webkitTextFillColor = "transparent";
-        serialsNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-        serialsMobileNavbar.style.backgroundColor = "#2C51B1";
-        serialsMobileNavbar.style.webkitBackgroundClip = "text";
-        serialsMobileNavbar.style.webkitTextFillColor = "transparent";
-        serialsMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        serialsNavbar.classList.add("headline-style");
+        serialsMobileNavbar.classList.add("headline-style");
     }
     unmount(){
 

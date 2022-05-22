@@ -5,6 +5,7 @@ export default abstract class BaseViewClass {
 
         window.scrollTo(0, 0);
         root.innerHTML = template(props);
+
     }
 
     abstract unmount(): void

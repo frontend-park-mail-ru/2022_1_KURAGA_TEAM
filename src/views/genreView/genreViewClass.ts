@@ -42,23 +42,16 @@ export default class GenreViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+            const {likesData} = await UserModel.getLikes()
+            UserLikeView.setAllLikes(likesData.favorites.id);
+
             const genreNavbar: HTMLAnchorElement = document.querySelector(".font-nav.genre-js");
             const genreMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.genre-js");
-
-            genreNavbar.style.backgroundColor = "#2C51B1";
-            genreNavbar.style.webkitBackgroundClip = "text";
-            genreNavbar.style.webkitTextFillColor = "transparent";
-            genreNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-            genreMobileNavbar.style.backgroundColor = "#2C51B1";
-            genreMobileNavbar.style.webkitBackgroundClip = "text";
-            genreMobileNavbar.style.webkitTextFillColor = "transparent";
-            genreMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+            genreNavbar.classList.add("headline-style");
+            genreMobileNavbar.classList.add("headline-style");
 
             handlerLink();
-            const {likesData} = await UserModel.getLikes()
 
-            UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
             header.setHandler();
             this.setHandler(id);
