@@ -38,7 +38,7 @@ export default class FirstInfoMovieClass {
                 id: id
             });
             UserModel.changeRating(formJson);
-
+            this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
         },500))
 
 
@@ -49,7 +49,7 @@ export default class FirstInfoMovieClass {
         const rating: HTMLElement = document.getElementById("rating");
         const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
-
+        this.autoBind.setVariableStyle("fixRatingShadow","");
         this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
 
         const progress: HTMLElement = document.getElementById("progress-wrapper");

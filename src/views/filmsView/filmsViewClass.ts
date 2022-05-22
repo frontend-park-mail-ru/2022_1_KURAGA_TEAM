@@ -58,16 +58,8 @@ export default class FilmsViewClass extends BaseViewClass {
     setHandler(currentOffset: number) {
         const filmsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.movie-js");
         const filmsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.movie-js");
-
-        filmsNavbar.style.backgroundColor = "#2C51B1";
-        filmsNavbar.style.webkitBackgroundClip = "text";
-        filmsNavbar.style.webkitTextFillColor = "transparent";
-        filmsNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-        filmsMobileNavbar.style.backgroundColor = "#2C51B1";
-        filmsMobileNavbar.style.webkitBackgroundClip = "text";
-        filmsMobileNavbar.style.webkitTextFillColor = "transparent";
-        filmsMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        filmsMobileNavbar.classList.add("headline-style");
+        filmsNavbar.classList.add("headline-style");
 
         // TODO СДЕЛАТЬ ПАДДИНГ
 

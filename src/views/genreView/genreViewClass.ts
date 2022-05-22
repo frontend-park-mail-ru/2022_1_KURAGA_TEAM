@@ -47,16 +47,8 @@ export default class GenreViewClass extends BaseViewClass {
 
             const genreNavbar: HTMLAnchorElement = document.querySelector(".font-nav.genre-js");
             const genreMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.genre-js");
-
-            genreNavbar.style.backgroundColor = "#2C51B1";
-            genreNavbar.style.webkitBackgroundClip = "text";
-            genreNavbar.style.webkitTextFillColor = "transparent";
-            genreNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-            genreMobileNavbar.style.backgroundColor = "#2C51B1";
-            genreMobileNavbar.style.webkitBackgroundClip = "text";
-            genreMobileNavbar.style.webkitTextFillColor = "transparent";
-            genreMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+            genreNavbar.classList.add("headline-style");
+            genreMobileNavbar.classList.add("headline-style");
 
             handlerLink();
 

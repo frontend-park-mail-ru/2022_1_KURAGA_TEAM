@@ -6,6 +6,7 @@ import {
     selInfo,
     optInfo,
 } from "../../types";
+import AutoBind from "Utils/autoBind"
 
 export default function MovingCarousel(setting: movingCarouselData) {
 
@@ -35,6 +36,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
         if (privates.opt.position <= 0) {
             privates.sel.prev.style.visibility = "hidden";
         } else {
+
             privates.sel.prev.style.visibility = "visible";
         }
 
@@ -53,8 +55,8 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
 
         if (numMovies === privates.opt.max_position) {
-            privates.sel.next.style.visibility = "hidden";
-            privates.sel.prev.style.visibility = "hidden";
+             privates.sel.next.style.visibility = "hidden";
+             privates.sel.prev.style.visibility = "hidden";
         } else {
 
 
@@ -74,34 +76,19 @@ export default function MovingCarousel(setting: movingCarouselData) {
                 }
             }
             if (privates.opt.max_position - numMovies <= privates.opt.position) {
+
                 privates.sel.next.style.visibility = "hidden";
             } else {
+
                 privates.sel.next.style.visibility = "visible";
             }
+
             privates.sel.prev.style.visibility = "visible";
         }
 
 
     };
-    this.wheelMove = (delta: number) => {
-        console.log(delta);
-        if (delta > 0) {
-            if (privates.opt.position <= 0) {
-                privates.sel.prev.style.visibility = "hidden";
-            } else {
-                privates.sel.prev.style.visibility = "visible";
-                privates.opt.position--;
-                privates.sel.wrap.style.transform = `translateX(-${((privates.opt.length / privates.opt.max_position)) * privates.opt.position}px)`;
-            }
-        } else {
 
-            privates.opt.position++;
-            privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-
-        }
-
-        //privates.sel.wrap.style.transform = `translateX(${delta * -1}px)`;
-    }
 
     const privates: privatesMovingCarousel = {setting};
 
@@ -120,6 +107,9 @@ export default function MovingCarousel(setting: movingCarouselData) {
     };
     if (privates.opt.max_position > 1) {
         privates.sel.next.style.visibility = "visible";
+    }
+    if(privates.opt.position == 0){
+        privates.sel.prev.style.visibility = "hidden";
     }
 
     if (privates.sel.prev !== null) {
@@ -141,7 +131,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
         } else {
             this.prev_slide(true);
         }
-        //this.wheelMove(delta);
+
     })
 
 

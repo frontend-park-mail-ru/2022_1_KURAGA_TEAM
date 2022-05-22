@@ -67,6 +67,7 @@ export default class MovieViewClass extends BaseViewClass {
 
             const header = new HeaderClass(MovieViewClass.user.userData);
             const headMovie = new HeadMovieClass(MovieViewClass.movie.movieData);
+            console.log(ratingBody.rating)
             const firstInfoMovie = new FirstInfoMovieClass(
                 ratingBody.rating,
                 MovieViewClass.movie.movieData
@@ -292,16 +293,7 @@ export default class MovieViewClass extends BaseViewClass {
         const check = await UserModel.subscription(payToken);
     }
 
-    changeRating() {
-        const rating: HTMLElement = document.getElementById("rating");
 
-        const formJson = JSON.stringify({
-            rating: rating.textContent.toString(),
-            id: MovieViewClass.movie.id.toString()
-        });
-
-        UserModel.changeRating(formJson);
-    }
 
     unmount(): void  {
         const playButton: HTMLButtonElement = document.querySelector('.play-button')
@@ -315,12 +307,7 @@ export default class MovieViewClass extends BaseViewClass {
                     MovieCompilationView.unmount(carousel.movieCompilationData);
                 });
             }
-            const refresh = document.getElementById("refresh");
-            if (refresh) {
-                refresh.removeEventListener("click", () => {
-                    this.changeRating();
-                })
-            }
+
         }
     }
 }

@@ -79,7 +79,7 @@
   overflow: hidden;
   z-index: 3;
   color: transparent;
-  visibility: hidden;
+ // visibility: hidden;
 }
 
 .b-carouselSeries__prev,
@@ -492,7 +492,7 @@
   .b-carouselTop__next,
   .b-carousel__next,
   .b-carousel__prev {
-    display: none;
+    //display: none;
   }
   .b-carouselTop__wrap,
   .b-carousel__wrap {
@@ -614,7 +614,7 @@
   .b-carouselTop__next,
   .b-carousel__next,
   .b-carousel__prev {
-    display: none;
+    //display: none;
   }
   .b-carouselTop__wrap,
   .b-carousel__wrap {
