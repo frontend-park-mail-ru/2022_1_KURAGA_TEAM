@@ -94,15 +94,18 @@ export default class MovieCompilationView {
         }
         if (wrap) {
 
+
             wrap.addEventListener("mouseover", () => {
                 buttonCarouselPrev.classList.add("b-carousel__prev-hover");
                 buttonCarouselNext.classList.add("b-carousel__next-hover");
 
             });
+
+
             wrap.addEventListener("mouseout", () => {
                 buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
                 buttonCarouselNext.classList.remove("b-carousel__next-hover");
-            });
+             });
         }
 
 
@@ -135,14 +138,14 @@ export default class MovieCompilationView {
         }
 
         if (wrap) {
-            wrap.removeEventListener("mouseover", () => {
-                buttonCarouselPrev.classList.add(`b-carousel__prev-hover`);
-                buttonCarouselNext.classList.add("b-carousel__next-hover");
-            });
-            wrap.removeEventListener("mouseout", () => {
-                buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
-                buttonCarouselNext.classList.remove("b-carousel__next-hover");
-            });
+            // wrap.removeEventListener("mouseover", () => {
+            //     buttonCarouselPrev.classList.add(`b-carousel__prev-hover`);
+            //     buttonCarouselNext.classList.add("b-carousel__next-hover");
+            // });
+            // wrap.removeEventListener("mouseout", () => {
+            //     buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
+            //     buttonCarouselNext.classList.remove("b-carousel__next-hover");
+            // });
         }
     }
 }
