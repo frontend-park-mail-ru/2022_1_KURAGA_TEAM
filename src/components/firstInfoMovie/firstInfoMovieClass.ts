@@ -58,7 +58,7 @@ export default class FirstInfoMovieClass {
         } else {
             rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
         }
-        
+
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
             this.autoBind.setVariableStyle("colorRating","var(--font-error-color)");
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
