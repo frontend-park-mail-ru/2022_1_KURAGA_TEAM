@@ -26,7 +26,6 @@ export default class FirstInfoMovieClass {
     setHandler(): void {
 
         this.autoBind = new AutoBind(".first-part-info");
-
         this.changeRating();
 
         this.autoBind.setVariable("setRating",this.changeRating.bind(this));
@@ -55,10 +54,11 @@ export default class FirstInfoMovieClass {
         const progress: HTMLElement = document.getElementById("progress-wrapper");
 
         if (Math.round(parseInt(inputValue) / 10) == 0) {
-            rating.textContent = "1";
+            //rating.textContent = "1";
         } else {
             rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
         }
+        
         if (Math.round(parseInt(inputValue) / 10) <= 3) {
             this.autoBind.setVariableStyle("colorRating","var(--font-error-color)");
         } else if (Math.round(parseInt(inputValue) / 10) <= 6) {

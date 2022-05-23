@@ -1,6 +1,9 @@
 div.first-part-info__rating
     div.first-part-info__rating-flex(data-bind-style="text-shadow:fixRatingShadow")
-        div.first-part-info__our-rating#rating(data-bind-style="color:colorRating") #{rating}
+        if(rating === -1)
+            div.first-part-info__our-rating#rating(data-bind-style="color:colorRating") -
+        else
+            div.first-part-info__our-rating#rating(data-bind-style="color:colorRating") #{rating}
         div.rating-descr
             div.first-part-info__our-name Ваша оценка
             div.first-part-info__our-name-rt MovieSpace
