@@ -56,8 +56,6 @@ export default class MovieCompilationView {
 
     static setHandler(data: MovieCompilationData): void {
 
-        const autoBind = new AutoBind;
-
         let wrap: HTMLElement;
         let buttonCarouselNext: HTMLElement;
         let buttonCarouselPrev: HTMLElement;
@@ -94,15 +92,18 @@ export default class MovieCompilationView {
         }
         if (wrap) {
 
+
             wrap.addEventListener("mouseover", () => {
                 buttonCarouselPrev.classList.add("b-carousel__prev-hover");
                 buttonCarouselNext.classList.add("b-carousel__next-hover");
 
             });
+
+
             wrap.addEventListener("mouseout", () => {
                 buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
                 buttonCarouselNext.classList.remove("b-carousel__next-hover");
-            });
+             });
         }
 
 

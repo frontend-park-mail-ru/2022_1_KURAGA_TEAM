@@ -22,7 +22,6 @@ export default class HeaderClass {
 
     setHandler(): void {
         this.autoBind = new AutoBind(".navbar");
-        this.autoBind.setVariable("inputSearchDisplay", "true");
         const navbar: HTMLElement = document.querySelector(".navbar");
 
         window.addEventListener("scroll", () => {
@@ -112,6 +111,7 @@ export default class HeaderClass {
 
         this.autoBind.setVariable("inputSearchDisplay", "");
         document.getElementById("live-search").focus();
+        this.autoBind.setVariable("searchMenuDisplay", "");
         searchBtn.classList.add("hidden");
         searchCloseBtn.classList.remove("hidden");
         const screenWidth = window.screen.width;

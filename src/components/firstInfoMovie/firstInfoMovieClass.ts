@@ -26,46 +26,71 @@ export default class FirstInfoMovieClass {
     setHandler(): void {
 
         this.autoBind = new AutoBind(".first-part-info");
-
-        this.changeRating();
+        this.setRating();
 
         this.autoBind.setVariable("setRating",this.changeRating.bind(this));
         this.autoBind.setVariableEvent("changeRating",debounce(async()=>{
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
             const formJson = JSON.stringify({
-                rating: rating.textContent.toString(),
+                rating: Number(rating.textContent),
                 id: id
             });
             UserModel.changeRating(formJson);
-
+            this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
         },500))
 
 
 
     }
 
+    setRating(){
+
+        const rating: HTMLElement = document.getElementById("rating");
+        const slider = document.getElementById("slider");
+        let inputValue = (<HTMLInputElement>slider).value;
+        let valueRating = Math.round(parseInt(inputValue) / 10);
+        if(rating.textContent != `-`){
+            valueRating = Number(rating.textContent) ;
+            inputValue = (valueRating * 10).toString();
+            (<HTMLInputElement>slider).value = (valueRating * 10).toString();
+        }
+        this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
+        this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%");
+
+        this.setColorRating();
+    }
+
     changeRating() {
         const rating: HTMLElement = document.getElementById("rating");
         const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
+        let valueRating = Math.round(parseInt(inputValue) / 10);
 
+
+        this.autoBind.setVariableStyle("fixRatingShadow","");
         this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
 
         const progress: HTMLElement = document.getElementById("progress-wrapper");
 
-        if (Math.round(parseInt(inputValue) / 10) == 0) {
-            rating.textContent = "1";
+        if  (valueRating == 0) {
         } else {
-            rating.textContent = (Math.round(parseInt(inputValue) / 10)).toString();
+            rating.textContent = (valueRating).toString();
         }
-        if (Math.round(parseInt(inputValue) / 10) <= 3) {
+
+        this.setColorRating();
+    }
+
+    setColorRating(){
+
+        const valueRating = Math.round(parseInt((<HTMLInputElement>document.getElementById("slider")).value) / 10);
+
+        if (valueRating <= 3) {
             this.autoBind.setVariableStyle("colorRating","var(--font-error-color)");
-        } else if (Math.round(parseInt(inputValue) / 10) <= 6) {
+        } else if (valueRating <= 6) {
             this.autoBind.setVariableStyle("colorRating","var(--font-warning-color)");
         } else {
             this.autoBind.setVariableStyle("colorRating","var(--font-correct-color)");
-
         }
     }
 
