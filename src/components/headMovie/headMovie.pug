@@ -11,9 +11,12 @@ div.head-movie__rating
         div.poisk-name КиноПоиск
 div.head-movie__info
     div.short-info.info__year #{info.year}
-    if (info.genre)
-        a.short-info.info__genre-first(href=`genre/${info.genre[0].id}`) #{info.genre[0].name},
-        a.short-info.info__genre(href=`genre/${info.genre[1].id}`) #{info.genre[1].name}
+    if(info.genre)
+        if(info.genre.length > 1)
+            a.short-info.info__genre-first(href=`genre/${info.genre[0].id}`) #{info.genre[0].name},
+            a.short-info.info__genre(href=`genre/${info.genre[1].id}`) #{info.genre[1].name}
+        else
+            a.short-info.info__genre-first(href=`genre/${info.genre[0].id}`) #{info.genre[0].name}
     if (info.country)
         div.short-info.info__country #{info.country[0]}
     div.short-info.info__duration #{info.duration}
