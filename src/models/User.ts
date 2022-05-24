@@ -448,7 +448,19 @@ export default class UserModel {
             const {data} = await this.token();
             const {message} = await data;
 
-            return this.rating(formJson, message);
+            return new Promise<{ generalRating }>((ratingRes) => {
+                this.rating(formJson, message)
+                    .then(({data})=>{
+                        data.then((body)=>{
+                            ratingRes({
+                                generalRating: body.message,
+                            })
+
+                        })
+                    })
+                    .catch(() => {
+                    });
+            })
 
 
         } catch (err) {
