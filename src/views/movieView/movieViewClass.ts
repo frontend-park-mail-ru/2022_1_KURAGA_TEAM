@@ -43,6 +43,10 @@ export default class MovieViewClass extends BaseViewClass {
 
             const {movie} = await MovieModel.getMovie(id);
 
+            if (movie === null) {
+                router.go(routes.ERROR_VIEW);
+            }
+
             MovieViewClass.movie = new MovieModel(movie);
 
             const userDate = new Date(MovieViewClass.user.data.date);

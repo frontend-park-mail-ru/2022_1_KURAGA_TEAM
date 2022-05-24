@@ -205,7 +205,7 @@ export default class UserModel {
                 targets: 'Подписка на MovieSpace',
                 sum: 2,
                 label: paymentToken,
-                successURL: `movie-space.ru/subscription`
+                successURL: `movie-space.ru`
             }
 
             const form = document.createElement('form');
