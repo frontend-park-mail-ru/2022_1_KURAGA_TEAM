@@ -26,6 +26,7 @@ export default class FirstInfoMovieClass {
     setHandler(): void {
 
         this.autoBind = new AutoBind(".first-part-info");
+        this.autoBind.setVariableStyle("colorRating","var(--font-color)");
         this.setRating();
 
         this.autoBind.setVariable("setRating",this.changeRating.bind(this));
@@ -36,7 +37,8 @@ export default class FirstInfoMovieClass {
                 rating: Number(rating.textContent),
                 id: id
             });
-            UserModel.changeRating(formJson);
+            const {generalRating} = await UserModel.changeRating(formJson);
+            document.querySelector(".our-rating").textContent = generalRating;
             this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
         },500))
 
@@ -54,11 +56,13 @@ export default class FirstInfoMovieClass {
             valueRating = Number(rating.textContent) ;
             inputValue = (valueRating * 10).toString();
             (<HTMLInputElement>slider).value = (valueRating * 10).toString();
-        }
-        this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
-        this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%");
+            this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
+            this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%");
 
-        this.setColorRating();
+            this.setColorRating();
+        }
+
+
     }
 
     changeRating() {
