@@ -34,7 +34,7 @@ export default class FirstInfoMovieClass {
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
             const formJson = JSON.stringify({
-                rating: Number(rating.textContent),
+                rating: rating.textContent,
                 id: id
             });
             const {generalRating} = await UserModel.changeRating(formJson);

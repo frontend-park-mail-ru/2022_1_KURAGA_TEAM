@@ -105,6 +105,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
         next: document.querySelector(privates.setting.next),
     };
 
+
     privates.opt = {
         length: privates.sel.wrap.offsetWidth,
         position: 0,

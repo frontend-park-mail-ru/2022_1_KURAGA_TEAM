@@ -151,5 +151,6 @@ export default class MovieCompilationView {
                 buttonCarouselNext.classList.remove("b-carousel__next-hover");
             });
         }
+
     }
 }
