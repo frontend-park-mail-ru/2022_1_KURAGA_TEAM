@@ -103,8 +103,14 @@ export default class MovieCompilationView {
             wrap.addEventListener("mouseout", () => {
                 buttonCarouselPrev.classList.remove("b-carousel__prev-hover");
                 buttonCarouselNext.classList.remove("b-carousel__next-hover");
-             });
+            });
         }
+
+        // const autoBind = new AutoBind(".seasons");
+        // autoBind.setVariableEvent("scrollDescrSeries", (e) => {
+        //     console.log(e.target.outerHeight);
+        //
+        // })
 
 
     }
