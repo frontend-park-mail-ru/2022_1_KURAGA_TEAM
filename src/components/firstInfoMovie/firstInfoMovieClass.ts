@@ -35,7 +35,7 @@ export default class FirstInfoMovieClass {
             const rating: HTMLElement = document.getElementById("rating");
             const formJson = JSON.stringify({
                 rating: rating.textContent,
-                id: id
+                id: id.toString()
             });
             const {generalRating} = await UserModel.changeRating(formJson);
             document.querySelector(".our-rating").textContent = generalRating;
