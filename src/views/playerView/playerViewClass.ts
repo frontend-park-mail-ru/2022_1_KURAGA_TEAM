@@ -29,6 +29,7 @@ export default class PlayerViewClass extends BaseViewClass {
             loader.render();
 
             const idx = +/\d+/.exec(window.location.pathname);
+            console.log(idx)
 
             const check = window.location.pathname.indexOf("trailer");
 
@@ -43,9 +44,9 @@ export default class PlayerViewClass extends BaseViewClass {
 
             let video = this.movie.trailer;
             const common = {
-                video,
-                id: this.movie.id,
+                id: idx,
             }
+
             if (check === -1) {
                 const userDate = new Date(user.date);
                 const nowDate = new Date();
@@ -60,10 +61,10 @@ export default class PlayerViewClass extends BaseViewClass {
                     const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
                     const numberEpis = +/\d+/.exec(arrPath[4]) - 1;
 
-
                     video = this.movie.data.season[numberSeas].episodes[numberEpis].video
                     super.render(playerTemplate, {
                         common,
+                        video,
                         trailer: false,
                         episodes: this.movie.data.season[numberSeas].episodes,
                         season: numberSeas + 1,
@@ -74,6 +75,7 @@ export default class PlayerViewClass extends BaseViewClass {
 
                     super.render(playerTemplate, {
                         common,
+                        video,
                         trailer: false,
                         is_movie: this.movie.movieData.is_movie,
                     });
@@ -81,6 +83,7 @@ export default class PlayerViewClass extends BaseViewClass {
             } else {
                 super.render(playerTemplate, {
                     trailer: true,
+                    video,
                     common,
                 });
             }
