@@ -27,4 +27,4 @@ each item in items
                         a(class=`movie` + `${typeMov}` + '__href')(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)= item.name
                         a.genre(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`) !{item.number} серия
         if(!is_movie && item.number)
-            div.descr-series= item.description
+            div.descr-series(data-bind-event="onmousewheel:scrollDescrSeries")= item.description

@@ -25,6 +25,8 @@ export default class FirstInfoMovieClass {
 
     setHandler(): void {
 
+
+
         this.autoBind = new AutoBind(".first-part-info");
         this.autoBind.setVariableStyle("colorRating","var(--font-color)");
         this.setRating();
@@ -34,8 +36,8 @@ export default class FirstInfoMovieClass {
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
             const formJson = JSON.stringify({
-                rating: Number(rating.textContent),
-                id: id
+                rating: rating.textContent,
+                id: id.toString()
             });
             const {generalRating} = await UserModel.changeRating(formJson);
             document.querySelector(".our-rating").textContent = generalRating;

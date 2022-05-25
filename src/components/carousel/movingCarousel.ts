@@ -20,9 +20,12 @@ export default function MovingCarousel(setting: movingCarouselData) {
         }
         const numMovies = Math.floor(window.screen.width / (privates.opt.length + 20) * privates.opt.max_position);
         if (isWheel) {
-            privates.opt.position--;
+            privates.opt.position-=0.25;
             privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
         } else {
+            if (!Number.isInteger(privates.opt.position)){
+                privates.opt.position = Math.ceil(privates.opt.position);
+            }
             if (privates.opt.position >= numMovies) {
                 privates.opt.position -= numMovies;
                 privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
@@ -61,10 +64,12 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
 
             if (isWheel) {
-                privates.opt.position++;
+                privates.opt.position+=0.25;
                 privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
             } else {
-
+                if (!Number.isInteger(privates.opt.position)){
+                    privates.opt.position = Math.ceil(privates.opt.position);
+                }
 
                 if (privates.opt.max_position - privates.opt.position >= 2 * numMovies) {
                     privates.opt.position += numMovies;
@@ -100,6 +105,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
         next: document.querySelector(privates.setting.next),
     };
 
+
     privates.opt = {
         length: privates.sel.wrap.offsetWidth,
         position: 0,
@@ -126,7 +132,8 @@ export default function MovingCarousel(setting: movingCarouselData) {
     privates.sel.main.addEventListener("wheel", (e) => {
         e.preventDefault();
         const delta = e.deltaY;
-        if (e.deltaY < 0) {
+
+        if (delta > 0) {
             this.next_slide(true);
         } else {
             this.prev_slide(true);

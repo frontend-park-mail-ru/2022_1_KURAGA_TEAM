@@ -453,7 +453,7 @@ export default class UserModel {
                     .then(({data})=>{
                         data.then((body)=>{
                             ratingRes({
-                                generalRating: body.message,
+                                generalRating: body,
                             })
 
                         })

@@ -71,7 +71,6 @@ export default class MovieViewClass extends BaseViewClass {
 
             const header = new HeaderClass(MovieViewClass.user.userData);
             const headMovie = new HeadMovieClass(MovieViewClass.movie.movieData);
-            console.log(ratingBody.rating)
             const firstInfoMovie = new FirstInfoMovieClass(
                 ratingBody.rating,
                 MovieViewClass.movie.movieData
@@ -124,15 +123,15 @@ export default class MovieViewClass extends BaseViewClass {
                     });
                 }
             }
+            if (!this.seasonsCompilation) {
+                console.log("ad")
 
+                // this.autoBind.setVariableStyle("marginInfo","0");
+            }
 
             handlerLink();
 
-            if (!this.seasonsCompilation) {
-                const info: HTMLElement = document.querySelector(".first-part-info");
-                    info.style.marginTop = "0";
-                // this.autoBind.setVariableStyle("marginInfo","0");
-            }
+
             header.setHandler();
 
             firstInfoMovie.setHandler();
@@ -154,12 +153,16 @@ export default class MovieViewClass extends BaseViewClass {
             UserLikeView.setHandler();
 
         } catch (err) {
-            console.error(err)
+            console.error(err);
             //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
     setHandler(): void {
+
+        console.log(MovieViewClass.movie.checkMovie);
+
+
         if (!MovieViewClass.movie.checkMovie) {
 
             const episodes: HTMLDivElement = document.querySelector(".episodes");
@@ -201,6 +204,9 @@ export default class MovieViewClass extends BaseViewClass {
             }
 
             buttons[0].style.backgroundColor = '#595959';
+        } else {
+            const info: HTMLElement = document.querySelector(".first-part-info");
+            info.style.marginTop = "0";
         }
 
     }
