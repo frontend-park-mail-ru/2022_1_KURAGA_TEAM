@@ -15,7 +15,6 @@ import { User } from "../../types";
 
 import "./profile.scss";
 
-
 export default class ProfileViewClass extends BaseViewClass {
     private user: UserModel;
     private inputs: any;
@@ -62,6 +61,8 @@ export default class ProfileViewClass extends BaseViewClass {
         profileNavbar.classList.add("headline-style");
     }
     unmount(): void {
-        this.inputs.unmount();
+        if (this.inputs !== undefined) {
+            this.inputs.unmount();
+        }
     }
 }
