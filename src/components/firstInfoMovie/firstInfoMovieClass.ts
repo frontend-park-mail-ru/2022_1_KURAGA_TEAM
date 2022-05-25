@@ -25,6 +25,8 @@ export default class FirstInfoMovieClass {
 
     setHandler(): void {
 
+
+
         this.autoBind = new AutoBind(".first-part-info");
         this.autoBind.setVariableStyle("colorRating","var(--font-color)");
         this.setRating();
