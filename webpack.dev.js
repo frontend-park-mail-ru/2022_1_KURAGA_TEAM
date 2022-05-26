@@ -10,7 +10,7 @@ module.exports = merge(common, {
         hints: false,
     },
     optimization: {
-        minimize: false,
+        minimize: true,
     },
     devServer: {
         historyApiFallback: true,
