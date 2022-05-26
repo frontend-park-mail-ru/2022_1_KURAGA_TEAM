@@ -124,7 +124,7 @@ export default class MovieViewClass extends BaseViewClass {
                 }
             }
             if (!this.seasonsCompilation) {
-                console.log("ad")
+
 
                 // this.autoBind.setVariableStyle("marginInfo","0");
             }
@@ -159,10 +159,6 @@ export default class MovieViewClass extends BaseViewClass {
     }
 
     setHandler(): void {
-
-        console.log(MovieViewClass.movie.checkMovie);
-
-
         if (!MovieViewClass.movie.checkMovie) {
 
             const episodes: HTMLDivElement = document.querySelector(".episodes");

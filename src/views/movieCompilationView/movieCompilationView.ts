@@ -10,7 +10,6 @@ import AutoBind from "Utils/autoBind"
 
 export default class MovieCompilationView {
 
-
     static render(data: MovieCompilationData) {
         const Series = new MovieClass(data.movies, "Series", false, data.id, data.idSerial, data.idBtn, data.check);
         const Top = new MovieClass(data.movies, "Top", true);
@@ -33,6 +32,7 @@ export default class MovieCompilationView {
                 is_movie: true,
             });
         }
+
         if (!data.compilationName) {
             return carouselTemplate({
                 car: `js-carousel${data.idBtn}`,
