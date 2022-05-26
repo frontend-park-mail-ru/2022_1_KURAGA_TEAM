@@ -16,7 +16,7 @@ export default class UserLikeView {
 
         const likeClick = function (like: HTMLElement) {
             let formJson = JSON.stringify({
-                id: like.id.split('_').pop(),
+                id: Number(like.id.split('_').pop()),
             });
 
             if (like.classList.contains("active-like")) {
@@ -89,7 +89,7 @@ export default class UserLikeView {
                 movie.classList.add("hidden");
 
                 let formJson = JSON.stringify({
-                    id: id,
+                    id: Number(id),
                 });
                 UserModel.disliked(formJson);
             })
