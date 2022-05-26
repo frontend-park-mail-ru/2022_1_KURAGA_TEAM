@@ -23,20 +23,15 @@ export default class SerialsViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const { isAuth, userBody } = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+            this.user = new UserModel(user);
 
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
-
-            const { movCompBody }: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getSeries();
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
+            const { movCompBody } = await MovieCompilationModel.getSeries();
+            this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
 
 
@@ -51,8 +46,7 @@ export default class SerialsViewClass extends BaseViewClass {
 
             this.setHandler();
             handlerLink();
-            const {likesBody}  = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            const {likesData} = await UserModel.getLikes()
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
@@ -66,14 +60,10 @@ export default class SerialsViewClass extends BaseViewClass {
         const serialsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.serials-js");
         const serialsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.serials-js");
 
-        serialsNavbar.style.backgroundColor = "#2C51B1";
-        serialsNavbar.style.webkitBackgroundClip = "text";
-        serialsNavbar.style.webkitTextFillColor = "transparent";
-        serialsNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        serialsNavbar.classList.add("headline-style");
+        serialsMobileNavbar.classList.add("headline-style");
+    }
+    unmount(){
 
-        serialsMobileNavbar.style.backgroundColor = "#2C51B1";
-        serialsMobileNavbar.style.webkitBackgroundClip = "text";
-        serialsMobileNavbar.style.webkitTextFillColor = "transparent";
-        serialsMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
     }
 }

@@ -12,38 +12,36 @@ import MovieModel from "../../models/Movie";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import MovieCompilationView from "../movieCompilationView/movieCompilationView"
 import UserLikeView from "../userLikeView/userLikeView"
+import PopUpClass from "Components/popUp/popUpClass";
 import "../../css/home.scss";
 import {User} from "../../types";
 
 export default class HomeViewClass extends BaseViewClass {
-    private user: UserModel;
-    private mainMovie: MovieModel;
+    private static user: UserModel;
+    private static mainMovie: MovieModel;
     private movieCompilations: Array<MovieCompilationModel>;
+    private header = new HeaderClass("user");
 
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
 
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
+
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
 
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            HomeViewClass.user = new UserModel(user);
 
-            const {movBody}: { movBody?: Promise<any> } = await MovieModel.mainMov();
-            const mainMovieData = await Promise.resolve(movBody);
-            this.mainMovie = new MovieModel(mainMovieData);
+            const {movie} = await MovieModel.mainMov();
+            HomeViewClass.mainMovie = new MovieModel(movie);
 
-            const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getMovieCompilations();
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilations = movieCompilationsData.map(
+            const {movCompBody} = await MovieCompilationModel.getMovieCompilations();
+            this.movieCompilations = movCompBody.map(
                 (movieCompilationData, index) =>
                     new MovieCompilationModel(
                         index,
@@ -51,26 +49,29 @@ export default class HomeViewClass extends BaseViewClass {
                     )
             );
 
-            this.user = new UserModel(userData.user);
-
-            const header = new HeaderClass(this.user.userData);
-            const mainMovie = new MainMovieClass(this.mainMovie.movieData);
+            this.header = new HeaderClass(HomeViewClass.user.userData);
+            // const header = new HeaderClass(this.user.userData);
+            const mainMovie = new MainMovieClass(HomeViewClass.mainMovie.movieData);
             const footer = new FooterClass();
+            const popUp = new PopUpClass();
 
             super.render(homeViewTemplate, {
-                mainMovieImg: this.mainMovie.movieData,
-                header: header.render(),
+                popUp: popUp.render(),
+                mainMovieImg: HomeViewClass.mainMovie.movieData,
+                header: this.header.render(),
                 mainMovie: mainMovie.render(),
                 select: this.compilationsRender(this.movieCompilations),
                 footer: footer.render(),
             });
 
-            handlerLink();
-            this.setHandler();
-            header.setHandler();
 
-            const {likesBody}  = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            handlerLink();
+
+            this.setHandler();
+
+            this.checkSub();
+
+            const {likesData} = await UserModel.getLikes()
 
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
@@ -78,8 +79,9 @@ export default class HomeViewClass extends BaseViewClass {
             this.movieCompilations.forEach((carousel) => {
                 MovieCompilationView.setHandler(carousel.movieCompilationData);
             });
-        } catch(err) {
-            console.log(err);
+
+        } catch (error) {
+            console.error(error);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
@@ -91,6 +93,11 @@ export default class HomeViewClass extends BaseViewClass {
         nameProfile.classList.add("headline-style");
         homeNavbarMobile.classList.add("headline-style");
         homeNavbar.classList.add("headline-style");
+
+        if(this.header){
+            this.header.setHandler();
+        }
+
     }
 
     compilationsRender(movieCompilations: MovieCompilationModel[]) {
@@ -111,6 +118,89 @@ export default class HomeViewClass extends BaseViewClass {
             }
             select += carouselBlock;
         });
+
         return select;
+    }
+
+    static closePopUP(e: any): void {
+        const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+        const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+
+        if (e.target === popUpBg) {
+            popUpBg.classList.remove('active');
+            popUpBody.classList.remove('active');
+        }
+    }
+
+    checkSub(): void {
+        const playButton: HTMLButtonElement = document.querySelector('.btn');
+
+        playButton.addEventListener('click', this.openPopUp, { capture: true });
+    }
+
+    openPopUp(e: any): void {
+        e.stopPropagation();
+
+        const userDate = new Date(HomeViewClass.user.data.date);
+        const nowDate = new Date();
+
+        document.addEventListener('click', HomeViewClass.closePopUP);
+
+        if (nowDate > userDate) {
+            const popUpBtn: HTMLButtonElement = document.querySelector('.menu-button');
+
+            popUpBtn.addEventListener('click', HomeViewClass.subscription);
+
+            const popUpBg: HTMLDivElement = document.querySelector('.popUp__bg');
+            const popUpBody: HTMLDivElement = document.querySelector('.popUp__body');
+            const popUpClose: HTMLButtonElement = document.querySelector('.popUp__exit');
+
+            popUpBg.classList.add('active');
+            popUpBody.classList.add('active');
+
+            popUpClose.addEventListener('click', () => {
+                popUpBg.classList.remove('active');
+                popUpBody.classList.remove('active');
+            });
+
+            return;
+        }
+
+        router.go(`/player/${HomeViewClass.mainMovie.movieData.id}/movie`);
+    }
+
+    static async subscription() {
+        const error: HTMLDivElement = document.querySelector('.error');
+
+        const dataPay = UserModel.getPayToken();
+
+        const payToken = await dataPay;
+
+        const dataCsrf = UserModel.getToken();
+
+        const csrfToken = await dataCsrf;
+
+        const {isAuth} = await UserModel.pay(csrfToken, payToken);
+
+        if (!isAuth) {
+            error.classList.add('error-active');
+        }
+
+        const sub = UserModel.subscription(payToken);
+    }
+
+    unmount(): void {
+        const playButton: HTMLButtonElement = document.querySelector('.btn');
+
+        if (playButton !== null) {
+            playButton.removeEventListener('click', this.openPopUp, { capture: true });
+            document.removeEventListener('click', HomeViewClass.closePopUP);
+
+            if (this.movieCompilations) {
+                this.movieCompilations.forEach((carousel) => {
+                    MovieCompilationView.unmount(carousel.movieCompilationData);
+                });
+            }
+        }
     }
 }

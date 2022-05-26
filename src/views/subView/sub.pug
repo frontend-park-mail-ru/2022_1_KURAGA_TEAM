@@ -1,0 +1,13 @@
+div.navbar.profile-navbar !{header}
+div.back-profile
+div.back-menu-profile.mobile-sub-menu
+    div.menu-sub
+        if (checkSub)
+            div.menu-sub__text Оформите подписку за 2₽ на один месяц для просмотра фильмов или сериалов!
+            div.menu-sub__second-text Подписка будет автоматически отменена ровно через месяц после покупки.
+            div.error Упс... Что-то пошло не так!
+            div.sub-btn !{button}
+        else
+            div.menu-sub__text Подписка активна!
+            div.menu-sub__second-text Подписка истечет #{date}
+div !{footer}

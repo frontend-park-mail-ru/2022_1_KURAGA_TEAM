@@ -1,15 +1,14 @@
 import headerTemplate from "./header.pug";
 import UserModel from "../../models/User";
-import router from "Routing/router";
-import {routes} from "Routing/constRouting";
 import {UserData} from "../../types";
-import {debounce, isEmpty} from "./DebounceSearch"
+import {debounce, isEmpty} from "Utils/Debounce"
+import AutoBind from "Utils/autoBind"
 import './header.scss'
 
 
 export default class HeaderClass {
     private readonly info: UserData;
-    result: object;
+    private autoBind;
 
     constructor(info) {
         this.info = info;
@@ -18,122 +17,120 @@ export default class HeaderClass {
 
     render() {
 
-
         return headerTemplate({item: this.info});
     }
 
-    setHandler() {
-
-
+    setHandler(): void {
+        this.autoBind = new AutoBind(".navbar");
         const navbar: HTMLElement = document.querySelector(".navbar");
-
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > 15) {
 
                 navbar.classList.add("navbar-color");
-                return;
+
+            } else if (navbar.classList.contains("navbar-color")) {
+                navbar.classList.remove("navbar-color");
             }
 
-
-            navbar.classList.remove("navbar-color");
         });
 
         const quit = document.querySelector(".quit");
 
-        quit.addEventListener("click", (e) => {
-            e.preventDefault();
+        quit.addEventListener("click", () => {
             UserModel.quit();
         });
 
+        // this.autoBind.setVariableEvent("quitEvent",UserModel.quit())
+
+
+        this.autoBind.setVariableEvent("verticalNavBar", this.verticalNavHandler.bind(this));
+
+        this.autoBind.setVariableEvent("showProfile", () => {
+            if (this.autoBind.getVariable("logoDisplay") == "") {
+                if (this.autoBind.getVariable("profileDisplay") == "") {
+                    this.autoBind.setVariable("profileDisplay", "true");
+                } else {
+                    this.autoBind.setVariable("profileDisplay", "true");
+                }
+            }
+        })
+
+
+        this.autoBind.setVariableEvent("searchOpen", this.openSearch.bind(this));
+
+        document.querySelector(".search-menu").classList.add("hidden");
+
+        this.autoBind.setVariableEvent("searchClose", this.closeSearch.bind(this));
+
+        this.searchHandler();
+
+
+    }
+
+    verticalNavHandler(): void {
         const verticalNavbar: HTMLElement = document.querySelector("#Capa_1");
-        verticalNavbar.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            if (logo.style.display != "none") {
-                const verticalMenu: HTMLElement = document.querySelector(
-                    ".menu-mobile__vertical"
-                );
-                if (verticalMenu.style.display === "flex") {
-                    verticalMenu.style.display = "none";
-                    verticalNavbar.classList.remove("menuSymbol__action");
-                } else {
-                    verticalMenu.style.display = "flex";
-                    verticalNavbar.classList.add("menuSymbol__action");
-                }
+        if (this.autoBind.getVariable("logoDisplay") == "") {
+            const verticalMenu: HTMLElement = document.querySelector(
+                ".menu-mobile__vertical"
+            );
+            if (!verticalMenu.classList.contains("hidden")) {
+                verticalMenu.classList.add("hidden");
+                verticalNavbar.classList.remove("menuSymbol__action");
+            } else {
+                verticalMenu.classList.remove("hidden");
+                verticalNavbar.classList.add("menuSymbol__action");
             }
-        });
-        const profileIcon = document.querySelector(".btn-profile");
-        profileIcon.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            if (logo.style.display == "block") {
-                const profileMenu: HTMLElement =
-                    document.querySelector(".dropdown-content");
-                if (profileMenu.style.display === "block") {
-                    profileMenu.style.display = "none";
-                } else {
-                    profileMenu.style.display = "block";
-                }
-            }
-        });
+        }
+    }
 
+    closeSearch(): void {
+        const searchBtn: HTMLElement = document.querySelector(".search__btn");
+        const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
+        const navbar: HTMLElement = document.querySelector(".navbar");
+        const a: HTMLInputElement = document.querySelector("#live-search");
+        a.value = "";
+        this.autoBind.setVariable("inputSearchDisplay", "true");
+        searchCloseBtn.classList.add("hidden");
+        searchBtn.classList.remove("hidden");
+
+        document.querySelector(".search-menu").classList.add("hidden");
+        navbar.style.position = "fixed";
+        const screenWidth = window.screen.width;
+        const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
+        if (screenWidth <= 1000) {
+            this.autoBind.setVariable("logoDisplay", "");
+        } else if (screenWidth < 1500) {
+            desktopNavbar.classList.remove("hidden");
+        }
+    }
+
+    openSearch(): void {
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
 
+        this.autoBind.setVariable("inputSearchDisplay", "");
+        document.getElementById("live-search").focus();
+        this.autoBind.setVariable("searchMenuDisplay", "");
+        searchBtn.classList.add("hidden");
+        searchCloseBtn.classList.remove("hidden");
+        const screenWidth = window.screen.width;
+        const desktopNavbar: HTMLElement = document.querySelector(".desktop-navbar");
+        if (screenWidth <= 1000) {
+            this.autoBind.setVariable("logoDisplay", "true");
+        } else if (screenWidth < 1500) {
+            desktopNavbar.classList.add("hidden");
+        }
+    }
 
-        searchBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const searchMenu: HTMLElement =
-                document.querySelector(".menu__input");
-            searchMenu.style.display = "block";
-            searchMenu.focus();
-            searchBtn.style.display = "none";
-            searchCloseBtn.style.display = "block";
-            const screenWidth = window.screen.width;
-            const logo: HTMLElement = document.querySelector(".logo-link");
-            const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
-            if (screenWidth <= 1000) {
-                logo.style.display = "none";
-            } else if ( screenWidth < 1500){
-                desktopNavbar.style.display = "none";
-            }
-
-        })
-
-        const logo: HTMLElement = document.querySelector(".logo-link");
-        const searchMenu: HTMLElement =
-            document.querySelector(".menu__input");
-
-
-        const searchMenuRes: HTMLElement = document.querySelector(".search-menu");
-        searchCloseBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-
+    searchHandler(): void {
+        const search = document.querySelector("#live-search");
+        search.addEventListener("keyup", debounce(async () => {
+            const menu: HTMLElement = document.querySelector(".search-menu");
             const a: HTMLInputElement = document.querySelector("#live-search");
-            a.value = "";
-            searchMenu.style.display = "none";
-            searchCloseBtn.style.display = "none";
-            searchBtn.style.display = "block";
-            searchMenuRes.style.display = "none";
-            navbar.style.position = "fixed";
-            const screenWidth = window.screen.width;
-            const desktopNavbar:HTMLElement = document.querySelector(".desktop-navbar");
-            if (screenWidth <= 1000) {
-                logo.style.display = "block";
-            } else if ( screenWidth < 1500){
-                desktopNavbar.style.display = "block";
-            }
-        })
-
-
-        const menu: HTMLElement = document.querySelector(".search-menu");
-        const a = document.querySelector("#live-search");
-        a.addEventListener("keyup", debounce(async () => {
-            const a: HTMLInputElement = document.querySelector("#live-search");
-            let formJson;
-            searchMenuRes.style.display = "flex";
+            menu.classList.remove("hidden");
             if (a.value != "") {
-                formJson = JSON.stringify({
+                let formJson = JSON.stringify({
                     find: a.value,
                 });
                 const {searchBody} = await UserModel.getSearchRes(formJson);
@@ -169,8 +166,6 @@ export default class HeaderClass {
                                     nameTopic.textContent = "Персоны";
                             }
                             topic.appendChild(nameTopic);
-
-
                             searchData[key].forEach((res, i) => {
                                 if (i <= 1) {
                                     const searchTopic = document.createElement("div");
@@ -178,6 +173,9 @@ export default class HeaderClass {
                                     const searchTopicName = document.createElement("a");
                                     searchTopicName.classList.add("font-menu-search", "padding-names");
                                     const searchTopicInfo = document.createElement("a");
+                                    const searchPic = document.createElement("img");
+                                    searchPic.src = res.picture;
+                                    searchPic.classList.add("search-pic");
                                     if (key == "persons") {
                                         searchTopicName.href = `/person/` + res.id;
                                         searchTopicName.textContent = res.name;
@@ -201,24 +199,15 @@ export default class HeaderClass {
                                     topic.appendChild(searchTopic);
                                 }
                             })
-
-
                             menu.appendChild(topic);
-
                         }
-
                     }
-
-                    // const titleEnd = document.createElement("a");
-                    // titleEnd.classList.add("font-search");
-                    // titleEnd.id = "all-res-topic";
-                    // titleEnd.textContent = "Показать все результаты";
-                    // menu.appendChild(titleEnd);
                 }
             } else {
-                menu.style.display = "none";
+                menu.classList.add("hidden");
             }
         }))
     }
+
 
 }

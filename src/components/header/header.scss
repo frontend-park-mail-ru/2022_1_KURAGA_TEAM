@@ -45,6 +45,7 @@
 }
 
 .logo-home {
+  width: 100%;
   margin-block: 8px;
   height: 60px;
 }
@@ -72,7 +73,6 @@
   fill: var(--font-color);
   cursor: pointer;
   transition: all 0.2s linear;
-  display: none;
 }
 
 .close-btn:hover {
@@ -97,7 +97,6 @@
 
 
 .search-menu {
-  display: none;
   padding-block: 10px;
   z-index: 3;
   border-radius: 10px;
@@ -113,7 +112,6 @@
 
 .menu__input {
   background: rgba(0, 0, 0, 0);
-  display: none;
   font-family: "GT Eesti Pro Display", sans-serif;
   color: var(--font-color);
   padding-inline-start: 10px;
@@ -299,7 +297,7 @@
   background: var(--drop-back);
   border-radius: 5px;
   box-shadow: 0 8px 16px 0 var(--drop-shadow);
-  display: none;
+  display:flex;
 }
 
 .menu-mobile__nav {
@@ -324,4 +322,126 @@
 
 .profile-block:hover .dropdown-content {
   display: block;
+}
+
+@media (max-width: 1000px) {
+  .search {
+    margin-inline: 10px;
+  }
+  .header {
+    background-position-x: center;
+    height: 100%;
+  }
+
+  .font-nav {
+    padding-inline: 0;
+  }
+
+  .photo-person__gradient {
+    padding-top: 0;
+    background: none;
+    height: 60%;
+  }
+
+  .div-logo {
+    height: 80px;
+  }
+
+  .desktop-navbar {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: flex;
+    cursor: pointer;
+  }
+  .space {
+    display: none;
+  }
+
+  .logo-home {
+    padding-inline-start: 0;
+    height: 50px;
+    width: 80px;
+  }
+
+  .profile-block {
+    margin-inline-end: 4vw;
+  }
+
+  .btn-profile {
+    width: 40px;
+    height: 40px;
+  }
+  .dropdown-content a {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+  }
+  .dropdown-content {
+    width: 30vw;
+    text-align: end;
+  }
+  .dropdown {
+    justify-content: flex-end;
+  }
+  .name-profile-mobile {
+    font-size: 18px;
+    display: block;
+    color: var(--mix-color);
+    padding: 10px 10px 10px 10px;
+  }
+  .name-profile {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
+
+  .navbar {
+    font-size: calc(1vw + 8px);
+  }
+  .menu__input {
+    font-size: calc(1vw + 10px);
+  }
+  .menu__input::placeholder {
+    font-size: calc(1vw + 5px);
+  }
+  .logo-home {
+    height: calc(1vw + 50px);
+  }
+  .dropdown-content a {
+    font-size: calc(1vw + 8px);
+  }
+  .dropdown-content {
+    margin-block: calc(1vw + 60px);
+  }
+}
+
+@media (min-width: 3500px) {
+  .search-menu {
+    margin: 12rem auto auto auto;
+  }
+}
+
+/* HEADER*/
+@media (min-width: 1000px) {
+
+  .navbar {
+    font-size: calc(1vw + 8px);
+  }
+  .menu__input {
+    font-size: calc(1vw + 10px);
+  }
+  .menu__input::placeholder {
+    font-size: calc(1vw + 5px);
+  }
+  .logo-home {
+    height: calc(1vw + 50px);
+  }
+  .dropdown-content a {
+    font-size: calc(1vw + 8px);
+  }
+  .dropdown-content {
+    margin-block: calc(1vw + 60px);
+  }
 }

@@ -1,8 +1,15 @@
 div.select-topic
     div.select-title= compilationName
     a.select-title-all показать все
-div.wrap
-    div(class = car + ` b-carousel`+ `${typeMov}`)
-        div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);") !{items}
-    button(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
-    button(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
+if(typeMov == "Series" )
+    div.wrapSeries
+        div(class = car + ` b-carousel`+ `${typeMov}`)
+            div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);") !{items}
+        button#prevBtn(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
+        button#nextBtn(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭
+else
+    div.wrap
+        div(class = car + ` b-carousel` + `${typeMov}`)
+            div(class=`b-carousel` + `${typeMov}` + `__wrap ${wrapMov}`, style="transform: translateX(0%);") !{items}
+        button#prevBtn(class=`b-carousel` + `${typeMov}` + `__prev ${prevBtn}`) ❬
+        button#nextBtn(class=`b-carousel` + `${typeMov}` + `__next ${nextBtn}`) ❭

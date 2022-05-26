@@ -23,57 +23,43 @@ export default class FilmsViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             let currentOffset = 0;
-            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData,-1);
+            const { movCompBody } = await MovieCompilationModel.getMovies(30, currentOffset);
+            this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
-            const footer = new FooterClass();
 
             super.render(filmsViewTemplate, {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+            const {likesData} = await UserModel.getLikes()
+            UserLikeView.setAllLikes(likesData.favorites.id);
 
             this.setHandler(currentOffset);
             handlerLink();
-            const {likesBody}  = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
 
-            UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
             header.setHandler();
         } catch(err) {
-            router.go(routes.ERROR_CATCH_VIEW);
+            console.error(err)
+            //router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
     setHandler(currentOffset: number) {
         const filmsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.movie-js");
         const filmsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.movie-js");
-
-        filmsNavbar.style.backgroundColor = "#2C51B1";
-        filmsNavbar.style.webkitBackgroundClip = "text";
-        filmsNavbar.style.webkitTextFillColor = "transparent";
-        filmsNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-        filmsMobileNavbar.style.backgroundColor = "#2C51B1";
-        filmsMobileNavbar.style.webkitBackgroundClip = "text";
-        filmsMobileNavbar.style.webkitTextFillColor = "transparent";
-        filmsMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        filmsMobileNavbar.classList.add("headline-style");
+        filmsNavbar.classList.add("headline-style");
 
         // TODO СДЕЛАТЬ ПАДДИНГ
 
@@ -108,5 +94,9 @@ export default class FilmsViewClass extends BaseViewClass {
         //         }
         //     }
         // });
+    }
+
+    unmount() {
+        // removeEvent
     }
 }

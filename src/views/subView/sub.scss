@@ -1,0 +1,57 @@
+@mixin backdrop-filter($blur) {
+  -webkit-backdrop-filter: $blur;
+  backdrop-filter: $blur;
+}
+
+.menu-sub {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background: var(--menu-back);
+  @include backdrop-filter(blur(5px));
+  border-radius: 20px;
+}
+
+.menu-sub__text {
+  text-align: center;
+  font-size: 40px;
+  font-family: "GT Eesti Pro Display Medium", arial, sans-serif;
+  margin-bottom: 40px;
+}
+
+.menu-sub__second-text {
+  font-size: 22px;
+  text-align: center;
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+.sub-btn {
+  width: 80% !important;
+}
+
+@media (max-width: 750px) {
+  .mobile-sub-menu {
+    height: 100vh !important;
+    margin: 0 !important;
+  }
+
+  .menu-sub {
+    width: 70%;
+    padding: 20px;
+  }
+
+  .menu-sub__text {
+    font-size: 22px;
+  }
+
+  .menu-sub__second-text {
+    font-size: 16px;
+  }
+
+  .sub-btn {
+    width: 90% !important;
+  }
+}

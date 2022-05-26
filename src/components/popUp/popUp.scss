@@ -1,0 +1,75 @@
+.popUp__bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s linear;
+}
+
+.popUp__bg.active {
+  opacity: 1;
+  pointer-events: all;
+  transition: all 0.5s linear;
+}
+
+.popUp__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--trailer-button-hover);
+  width: 40%;
+  padding: 70px;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+.popUp__body.active {
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.5s linear;
+}
+
+.popUp__button {
+  font-size: 20px !important;
+  width: 60% !important;
+}
+
+.popUp__exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  fill: white;
+  transition: all 0.2s linear;
+}
+
+.popUp__exit:hover {
+  transform: scale(1.2);
+}
+
+.popUp__main-text {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-family: "GT Eesti Pro Display Medium", arial, sans-serif;
+}
+
+.popUp__second-text {
+  text-align: center;
+  font-weight: lighter;
+  font-size: 20px;
+  margin-bottom: 20px;
+}

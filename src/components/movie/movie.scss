@@ -131,3 +131,12 @@
   transition: all 0.3s ease;
   fill: var(--mix-color);
 }
+.mobile-href{
+  display: none;
+}
+
+@media (max-width: 1000px){
+  .mobile-href{
+    display: block;
+  }
+}

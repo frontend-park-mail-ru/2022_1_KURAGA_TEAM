@@ -12,36 +12,32 @@ import MovieCompilationModel from "../../models/MovieCompilation";
 import MovieCompilationView from "../movieCompilationView/movieCompilationView"
 import UserLikeView from "../userLikeView/userLikeView"
 import {isEmptyMovies} from "./utilsFavorite"
+import AutoBind from "Utils/autoBind"
 import "./favorites.scss";
 import {User} from "../../types";
 
 export default class FavoritesViewClass extends BaseViewClass {
     private user: UserModel;
-    private movieCompilations: Array<MovieCompilationModel>;
-
+    private movieCompilations: Array<MovieCompilationModel> = null;
     async render() {
         try {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const {isAuth, userBody} = await UserModel.auth();
-
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
-
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
+            this.user = new UserModel(user);
 
             const header = new HeaderClass(this.user.userData);
 
-            const {movCompBody}: { movCompBody?: Promise<any> } =
-                await MovieCompilationModel.getFavorites();
-            const movieCompilationsData = await Promise.resolve(movCompBody);
+            const {movCompBody} = await MovieCompilationModel.getFavorites();
 
+            const autoBind = new AutoBind;
 
-            if (isEmptyMovies(movieCompilationsData)) {
+            if (isEmptyMovies(movCompBody)) {
                 const empty = "Ваш каталог пустой";
                 super.render(homeViewTemplate, {
                     header: header.render(),
@@ -49,17 +45,16 @@ export default class FavoritesViewClass extends BaseViewClass {
                 });
 
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                footerImage.style.bottom = "0";
-                footerImage.style.position = "absolute";
+                footerImage.classList.add("footer-poster-position");
             } else {
 
-                movieCompilationsData.forEach((i, id) => {
+                movCompBody.forEach((i, id) => {
                     if (!i.movies) {
-                        movieCompilationsData.splice(id, 1);
+                        movCompBody.splice(id, 1);
                     }
                 })
 
-                this.movieCompilations = movieCompilationsData.map(
+                this.movieCompilations = movCompBody.map(
                     (movieCompilationData, index) =>
                         new MovieCompilationModel(
                             index,
@@ -73,13 +68,11 @@ export default class FavoritesViewClass extends BaseViewClass {
                     select: this.compilationsRender(this.movieCompilations),
                 });
 
-                if (movieCompilationsData.length == 1) {
+                if (movCompBody.length == 1) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                    footerImage.style.position = "absolute";
-                    footerImage.style.bottom = "0";
+                    footerImage.classList.add(".footer-poster-position");
                 }
-                // const heart: HTMLElement = document.querySelector(".empty-heart");
-                // heart.style.display = "none";
+
                 this.movieCompilations.forEach((carousel) => {
                     MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
@@ -88,20 +81,14 @@ export default class FavoritesViewClass extends BaseViewClass {
             handlerLink();
 
 
-            const {likesBody} = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
+            const {likesData} = await UserModel.getLikes()
+
             UserLikeView.setAllLikes(likesData.favorites.id);
 
-            this.deleteLikes();
-            //this.user.setHandler();
+            UserLikeView.deleteLikes();
             this.setHandler();
             header.setHandler();
 
-
-            // const selectTopicAll = document.querySelectorAll(".select-title-all");
-            // selectTopicAll.forEach((val) => {
-            //     val.classList.add("show");
-            // });
         } catch (err) {
             console.error(err);
         }
@@ -111,35 +98,11 @@ export default class FavoritesViewClass extends BaseViewClass {
         const favouriteNavbar: HTMLAnchorElement = document.querySelector(".font-nav.favourite-js");
         const favouriteMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.favourite-js");
 
-        favouriteNavbar.style.backgroundColor = "#2C51B1";
-        favouriteNavbar.style.webkitBackgroundClip = "text";
-        favouriteNavbar.style.webkitTextFillColor = "transparent";
-        favouriteNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-        favouriteMobileNavbar.style.backgroundColor = "#2C51B1";
-        favouriteMobileNavbar.style.webkitBackgroundClip = "text";
-        favouriteMobileNavbar.style.webkitTextFillColor = "transparent";
-        favouriteMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
+        favouriteNavbar.classList.add("headline-style");
+        favouriteMobileNavbar.classList.add("headline-style");
     }
 
-    deleteLikes() {
-        const likes = document.querySelectorAll(".like.active-like");
-        likes.forEach(like => {
-            like.addEventListener("click", (e) => {
-                const id = like.id.split('_').pop();
 
-                console.log(like.id.split('_').pop());
-                const movie = document.getElementById(id);
-                movie.style.display = "none";
-
-                let formJson = JSON.stringify({
-                    id: Number(id),
-                });
-                UserModel.disliked(formJson);
-            });
-        })
-
-    }
 
     compilationsRender(movieCompilations: Array<MovieCompilationModel>) {
         let select = "";
@@ -160,5 +123,14 @@ export default class FavoritesViewClass extends BaseViewClass {
             select += carouselBlock;
         });
         return select;
+    }
+
+
+    unmount() {
+        if (this.movieCompilations) {
+            this.movieCompilations.forEach((carousel) => {
+                MovieCompilationView.unmount(carousel.movieCompilationData);
+            });
+        }
     }
 }

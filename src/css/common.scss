@@ -40,13 +40,19 @@ body::-webkit-scrollbar-thumb {
   background-color: #191919;
   border-radius: 20px;
 }
+.hidden{
+  display: none;
+}
 
 :root {
+  --series-back: linear-gradient(0deg, rgba(47, 48, 49, 1), rgba(47, 48, 49, 1));
   --progress-bar: #5b5b5b;
   --back-color: #01090b;
   --font-color: #fff;
   --font-footer-color: #c3c3c2;
-  --font-error-color: red;
+  --font-error-color: rgb(225, 61, 61);
+  --font-correct-color: #3BB33B;
+  --font-warning-color: #D4E13D;
   --font-first-span-color: grey;
   --input-back: rgb(255 255 255 / 20%);
   --menu-back: linear-gradient(
@@ -130,4 +136,17 @@ body::-webkit-scrollbar-thumb {
   --trailer-button-hover: linear-gradient(121.9deg, #4b4b4b 16.73%, rgba(20, 20, 20, 0.294) 340.95%);
   --search-topic-color:rgba(97, 57, 107, 0.41);
   --footer-color: #031014;
+}
+
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .like{
+    transform: scale(0.8);
+  }
 }

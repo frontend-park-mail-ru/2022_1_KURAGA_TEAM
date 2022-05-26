@@ -4,14 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
     entry: path.resolve(__dirname, 'src', 'app.ts'),
-    performance: {
-        hints: false,
-    },
-    optimization: {
-        minimize: false,
-    },
     module: {
         rules: [
             {
@@ -79,13 +72,4 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new FaviconsWebpackPlugin('./src/static/favicon.webp'),
     ],
-    devServer: {
-        allowedHosts: [
-            'movie-space.ru',
-        ],
-        host: '0.0.0.0',
-        static: path.resolve(__dirname, 'src'),
-        port: 8080,
-    },
-
 };

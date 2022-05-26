@@ -8,13 +8,15 @@ export default class MovieClass {
     private readonly is_movie: boolean;
     private readonly idx: number;
     private readonly season: number;
+    private readonly check: boolean;
 
-    constructor(info: Array<MovieData>, typeMov?: string, is_movie?: boolean, season?: number, idx?: number) {
+    constructor(info: Array<MovieData>, typeMov?: string, is_movie?: boolean, season?: number, idx?: number,idSerial?:number, check?: boolean) {
         this.movies = info;
         this.typeMov = typeMov;
         this.is_movie = is_movie;
         this.season = season;
         this.idx = idx;
+        this.check = check;
     }
 
     render() {
@@ -27,6 +29,7 @@ export default class MovieClass {
         })
         return movieTemplate({
             season: this.season,
+            check: this.check,
             idx: this.idx,
             items: this.movies,
             typeMov: this.typeMov,

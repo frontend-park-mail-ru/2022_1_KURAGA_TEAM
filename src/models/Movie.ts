@@ -15,16 +15,17 @@ export default class MovieModel {
     }
 
     get checkMovie() {
-        if(this.movieData.season == null){
+
+        if (this.movieData.season == null) {
             return true;
         }
         return this.data.is_movie;
     }
 
     get seasonsData() {
-        this.movieData.season.forEach((value,index)=>{
-            if (value.episodes === null){
-                value.episodes = [{name:"Cерия пока недоступна"}];
+        this.movieData.season.forEach((value, index) => {
+            if (value.episodes === null) {
+                value.episodes = [{name: "Cерия пока недоступна"}];
             }
         })
         return this.movieData.season;
@@ -72,14 +73,18 @@ export default class MovieModel {
         }
     }
 
+
     static mainMov() {
-        return new Promise((movie) => {
+        return new Promise<{ movie: MovieData }>((movie) => {
             this.mainHomeMovie()
-                .then((body) => {
-                    movie({
-                        isAuth: body.isAuth,
-                        movBody: body.data,
-                    });
+                .then(({data}) => {
+                    data
+                        .then((movieBody) => {
+                            movie({
+                                movie: movieBody
+                            })
+
+                        })
                 })
                 .catch((err) => {
                     console.error(err)
@@ -88,17 +93,86 @@ export default class MovieModel {
     }
 
     static getMovie(id) {
-        return new Promise((movie) => {
+        const mockSerial =
+             [{
+                id: 1, number: 1, episodes: [
+                    {
+                        description: "У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                        id: 1,
+                        name: "Пилотная серия",
+                        number: 1,
+                        picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                        video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+                    },{
+                         description: " к доктору Хаусу приходит «оранжевый пациент».",
+                         id: 1,
+                         name: "Пилотная серия",
+                         number: 1,
+                         picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                         video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+                     },
+                     {
+                         description: "У воспитательницы детского У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а псада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                         id: 1,
+                         name: "Пилотная серия2",
+                         number: 1,
+                         picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                         video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+                     },
+                     {
+                         description: "У воспитательницы детского У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а псада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                         id: 1,
+                         name: "Пилотная серия3",
+                         number: 1,
+                         picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                         video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+                     },
+                     {
+                         description: "У воспитательницы детского У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а псада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а пУ воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                         id: 1,
+                         name: "Пилотная сери6я",
+                         number: 1,
+                         picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                         video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+                     }]
+
+            },{id: 2, number: 1, episodes: [
+            {
+                description: "У воспитательницы детского сада Ребекки Адлер началась афазия во время урока, а потом у неё случился припадок. Её направляют в госпиталь Принстон-Плэйнсборо, где доктор Хаус и его команда (к которой недавно присоединился новый врач Эрик Форман) пытаются поставить ей диагноз. На приём в клинику к доктору Хаусу приходит «оранжевый пациент».",
+                id: 2,
+                name: "Пилотная2 серия",
+                number: 1,
+                picture: "http://movie-space.ru/api/v1/minio/posters/HouseMD_1_1.webp",
+                video: "http://movie-space.ru/api/v1/minio/series/HouseMD_1_1.mp4"
+            }]
+
+    }
+            ]
+
+        return new Promise<{ movie: MovieData }>((movie) => {
             this.movie(id)
-                .then((body) => {
-                    movie({
-                        isAuth: body.isAuth,
-                        movBody: body.data,
-                    });
+                .then(({isAuth, data}) => {
+                    data
+                        .then((movieBody) => {
+                            if (isAuth) {
+                                //movieBody.season = mockSerial;
+                                movie({
+                                    movie: movieBody,
+                                });
+                            } else {
+                                movie({
+                                    movie: null,
+                                });
+                            }
+
+                        })
+
                 })
                 .catch((err) => {
                     console.error(err)
                 });
         });
     }
+
+
 }

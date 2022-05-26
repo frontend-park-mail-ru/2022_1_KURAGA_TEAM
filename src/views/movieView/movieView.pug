@@ -1,10 +1,11 @@
 div.navbar !{header}
+div.popUp__bg !{popUp}
 div.photo-movie(style=`background-image: url(\"${movieImg.picture}\");`)
     div.photo-movie__gradient
     div.head-movie !{headMovie}
 div.episodes !{episodes}
 div.seasons !{seasons}
-div.first-part-info !{firstInfoMovie}
+div.first-part-info(data-bind-style="marginTop:marginInfo") !{firstInfoMovie}
 div.second-part-genre !{secondGenre}
 div.third-part-actors !{actors}
 div.selection

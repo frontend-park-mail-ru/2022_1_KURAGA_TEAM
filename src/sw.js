@@ -20,10 +20,7 @@ const checkUrl = (url) => {
         avatars: /\/avatars/,
         persons: /\/persons/,
         trailers: /\/trailers/,
-
-
-    };
-
+    }
     const checkS = (value) => url.match(value);
 
     return Object.values(unUrl).some(checkS);
@@ -31,13 +28,13 @@ const checkUrl = (url) => {
 
 this.addEventListener("fetch", (event) => {
     if (navigator.onLine) {
-        if (event.request.method === "GET" && checkUrl(event.request.url)) {
+        if (event.request.method === "GET" && !checkUrl(event.request.url)) {
             caches.open(CACHE_NAME).then((cache) => {
                 cache.add(event.request.url);
             });
         }
 
-        return fetch(event.request);
+        return;
     }
 
     event.respondWith(

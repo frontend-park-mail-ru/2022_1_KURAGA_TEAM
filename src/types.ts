@@ -33,6 +33,7 @@ export interface UserData {
     username: string;
     email: string;
     avatar: string;
+    date: string;
 }
 export interface Favorites{
     id: Array<number>
@@ -95,10 +96,12 @@ export interface GenreData{
 
 export interface MovieCompilationData {
     id?: number;
+    check?: boolean;
     idSerial?: number;
     movies: Array<MovieData>;
     compilationName?: string;
     is_movie?: boolean;
+    idBtn?: number;
 }
 export interface InfoHeadPerson {
     name: string;

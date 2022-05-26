@@ -20,22 +20,19 @@ export default class GenreViewClass extends BaseViewClass {
 
     async render() {
         try {
-            const {isAuth, userBody} = await UserModel.auth();
 
-            if (!isAuth) {
+            const {user} = await UserModel.auth();
+            if (!user) {
                 router.go(routes.LOGIN_VIEW);
                 return;
             }
+            this.user = new UserModel(user);
 
             const id = +/\d+/.exec(window.location.pathname);
 
-            const userData: User = await Promise.resolve(userBody);
-            this.user = new UserModel(userData.user);
 
-            const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getGenre(id);
-            const movieCompilationsData = await Promise.resolve(movCompBody);
-
-            this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
+            const { movCompBody } = await MovieCompilationModel.getGenre(id);
+            this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -45,54 +42,32 @@ export default class GenreViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+            const {likesData} = await UserModel.getLikes()
+            UserLikeView.setAllLikes(likesData.favorites.id);
+
             const genreNavbar: HTMLAnchorElement = document.querySelector(".font-nav.genre-js");
             const genreMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.genre-js");
-
-            genreNavbar.style.backgroundColor = "#2C51B1";
-            genreNavbar.style.webkitBackgroundClip = "text";
-            genreNavbar.style.webkitTextFillColor = "transparent";
-            genreNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
-            genreMobileNavbar.style.backgroundColor = "#2C51B1";
-            genreMobileNavbar.style.webkitBackgroundClip = "text";
-            genreMobileNavbar.style.webkitTextFillColor = "transparent";
-            genreMobileNavbar.style.backgroundImage = "linear-gradient(180deg, #BD4CA1 20%, #2C51B1 100%)";
-
+            genreNavbar.classList.add("headline-style");
+            genreMobileNavbar.classList.add("headline-style");
 
             handlerLink();
-            const {likesBody}  = await UserModel.getLikes()
-            const likesData = await Promise.resolve(likesBody);
-            UserLikeView.setAllLikes(likesData.favorites.id);
+
             UserLikeView.setHandler();
             header.setHandler();
             this.setHandler(id);
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW)
+        } catch(err) {
+            console.error(err);
+            //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 
     setHandler(id: number) {
-
-
         const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
-        const listGenres: HTMLDivElement = document.querySelector('.list-genres');
-        const firstGenre = listGenres.firstChild;
 
         currGenre.style.backgroundColor = 'var(--mix-color)';
+    }
 
-        let parentCurr = currGenre.parentNode;
-        let nextCurr = currGenre.nextSibling;
-
-        if (nextCurr === firstGenre) {
-            parentCurr.insertBefore(firstGenre, currGenre);
-        } else {
-            firstGenre.parentNode.insertBefore(currGenre, firstGenre);
-
-            if (nextCurr) {
-                parentCurr.insertBefore(firstGenre, nextCurr);
-            } else {
-                parentCurr.appendChild(firstGenre);
-            }
-        }
+    unmount() {
+        // removeEvent
     }
 }

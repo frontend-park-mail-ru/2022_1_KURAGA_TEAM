@@ -1,7 +1,7 @@
 # KURAGA TEAM
 
 Frontend репозиторий проекта Netflix
-http://movie-space.ru:8080/
+http://movie-space.ru
 
 ## Сборка
 

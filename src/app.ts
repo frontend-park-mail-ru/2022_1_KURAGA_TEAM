@@ -13,9 +13,9 @@ import FilmsViewClass from "./views/filmsView/filmsViewClass";
 import SerialsViewClass from "./views/serialsView/serialsViewClass";
 import GenreViewClass from "./views/genreView/genreViewClass";
 import SearchViewClass from "./views/searchView/searchViewClass";
+import SubViewClass from "./views/subView/subViewClass";
 
 import "./css/common.scss";
-import "./css/media.scss";
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js", { scope: "/" }).catch((err) => {
@@ -37,5 +37,6 @@ router.register("/movies", FilmsViewClass);
 router.register("/series", SerialsViewClass);
 router.register("/genre", GenreViewClass);
 router.register("/search", SearchViewClass);
+router.register("/subscription", SubViewClass);
 
 router.start();

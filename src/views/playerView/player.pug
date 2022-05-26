@@ -3,7 +3,7 @@ div.video-container
     div.novideo
         img.novideo__img(src='../../static/novideo.png')
         div.novideo__text Извините, видео недоступно
-    a.exit(href=`/movie/${id}`)
+    a.exit(href=`/movie/${common.id}`)
         svg(xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left")
             line(x1="19" y1="12" x2="5" y2="12")
@@ -16,7 +16,7 @@ div.video-container
             div.progress-time 00:00:00
         div.controls
             button.controls__button.play-pause
-                svg.controls__button-svg.play__svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24")
+                svg.controls__button-svg.playBtn__svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24")
                     polygon(points="5 3 19 12 5 21 5 3")
                 svg.controls__button-svg.pause__svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24")
                     rect(x="6" y="4" width="4" height="16")
