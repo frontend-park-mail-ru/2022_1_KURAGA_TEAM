@@ -29,7 +29,6 @@ export default class PlayerViewClass extends BaseViewClass {
             loader.render();
 
             const idx = +/\d+/.exec(window.location.pathname);
-            console.log(idx)
 
             const check = window.location.pathname.indexOf("trailer");
 

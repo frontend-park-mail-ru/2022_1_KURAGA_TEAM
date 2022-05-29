@@ -9,7 +9,7 @@ const configIcon = [
     },
     {
         key: "vk",
-        href: "https://vk.com/dtarnovsky",
+        href: "https://vk.com/moviespacevk",
         src: "../../static/vk.png",
     },
 ];
