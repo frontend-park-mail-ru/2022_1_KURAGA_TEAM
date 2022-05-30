@@ -50,7 +50,6 @@ export default function MovingCarousel(setting: movingCarouselData) {
     };
 
     this.next_slide = (isWheel?: boolean) => {
-        console.log(privates.opt.max_position, privates.opt.position);
         const numMovies = Math.floor(window.screen.width / privates.opt.length * privates.opt.max_position);
         if (privates.opt.max_position - numMovies == privates.opt.position) {
             return;
