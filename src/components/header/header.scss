@@ -324,6 +324,10 @@
   display: block;
 }
 
+.search-topic:active{
+  background: var(--search-res-color);
+}
+
 @media (max-width: 1000px) {
   .search {
     margin-inline: 10px;

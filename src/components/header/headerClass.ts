@@ -4,7 +4,8 @@ import {UserData} from "../../types";
 import {debounce, isEmpty} from "Utils/Debounce"
 import AutoBind from "Utils/autoBind"
 import './header.scss'
-
+import {routes} from "Routing/constRouting";
+import router from "Routing/router";
 
 export default class HeaderClass {
     private readonly info: UserData;
@@ -168,6 +169,7 @@ export default class HeaderClass {
                                 if (i <= 1) {
                                     const searchTopic = document.createElement("div");
                                     searchTopic.classList.add("search-topic");
+
                                     const searchTopicName = document.createElement("a");
                                     searchTopicName.classList.add("font-menu-search", "padding-names");
                                     const searchTopicInfo = document.createElement("a");
@@ -175,11 +177,13 @@ export default class HeaderClass {
                                     searchPic.src = res.picture;
                                     searchPic.classList.add("search-pic");
                                     if (key == "persons") {
+                                        searchTopic.onclick = ()=>{router.go(`/person/` + res.id);}
                                         searchTopicName.href = `/person/` + res.id;
                                         searchTopicName.textContent = res.name;
                                         searchTopicInfo.classList.add("genre", "padding-names");
                                         searchTopicInfo.textContent = res.position[0];
                                     } else {
+                                        searchTopic.onclick = ()=>{router.go(`/movie/` + res.id);}
                                         searchTopicName.href = `/movie/` + res.id;
                                         searchTopicName.textContent = res.name;
                                         searchTopicInfo.classList.add("genre", "padding-names");

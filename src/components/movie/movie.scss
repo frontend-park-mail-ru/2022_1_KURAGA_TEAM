@@ -125,7 +125,7 @@
   display: inline-block;
 }
 .like:hover,.active-like:hover{
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 .active-like{
   transition: all 0.3s ease;
@@ -138,5 +138,8 @@
 @media (max-width: 1000px){
   .mobile-href{
     display: block;
+  }
+  .like:hover,.active-like:hover{
+    transform: scale(0.8);
   }
 }
