@@ -85,6 +85,7 @@ export default class HeaderClass {
     }
 
     closeSearch(): void {
+
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
         const navbar: HTMLElement = document.querySelector(".navbar");
@@ -144,10 +145,7 @@ export default class HeaderClass {
                     menu.appendChild(title);
                 } else {
 
-                    const title = document.createElement("div");
-                    title.classList.add("font-search");
-                    title.textContent = "Возможно, вы искали";
-                    menu.appendChild(title);
+
 
                     for (let key in searchData) {
                         if (searchData[key] != null) {
