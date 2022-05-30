@@ -86,8 +86,8 @@ export default class UserLikeView {
             const id = like.id.split('_').pop();
             autoBind.setVariableEvent("dislike"+id,()=>{
                 const movie = document.getElementById(id);
-                movie.classList.add("hidden");
-
+                //movie.classList.add("hidden");
+                autoBind.setVariable("hiddenMovie"+id,true);
                 let formJson = JSON.stringify({
                     id: Number(id),
                 });

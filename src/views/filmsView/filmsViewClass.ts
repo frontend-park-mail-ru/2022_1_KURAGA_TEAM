@@ -46,7 +46,7 @@ export default class FilmsViewClass extends BaseViewClass {
 
             this.setHandler(currentOffset);
             handlerLink();
-            ListFilmsClass.setHandler();
+
             UserLikeView.setHandler();
             header.setHandler();
         } catch(err) {

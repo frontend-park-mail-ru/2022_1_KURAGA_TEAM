@@ -1,7 +1,7 @@
 each item in items
-    div.mov-card(class = `out-movie`+`${typeMov}`)
+    div.mov-card(data-bind='hidden:hiddenMovie'+`${item.id}` class = `out-movie`+`${typeMov}`)
         if(item.id != -1)
-            div(data-bind='hidden:hiddenMovie'+`${item.id}` class=`movie` + `${typeMov}`, id =`${item.id}` , style=`background-image: url(\"${item.picture}\");`)
+            div( class=`movie` + `${typeMov}`, id =`${item.id}` , style=`background-image: url(\"${item.picture}\");`)
                 if(is_movie)
                     a(href=`/movie/${item.id}`)
                 else if(item.number)

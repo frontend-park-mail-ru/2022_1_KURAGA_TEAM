@@ -35,7 +35,7 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             const {movCompBody} = await MovieCompilationModel.getFavorites();
 
-            const autoBind = new AutoBind;
+            ;
 
             if (isEmptyMovies(movCompBody)) {
                 const empty = "Ваш каталог пустой";
@@ -43,9 +43,12 @@ export default class FavoritesViewClass extends BaseViewClass {
                     header: header.render(),
                     empty: empty
                 });
-
+                const autoBind = new AutoBind(".favorite")
+                const root:HTMLElement = document.querySelector(".root");
+                root.classList.add("root-correction");
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                footerImage.classList.add("footer-poster-position");
+                autoBind.setVariableStyle("marginTextFavorite","0");
+                //footerImage.classList.add("footer-poster-position");
             } else {
 
                 movCompBody.forEach((i, id) => {
@@ -68,9 +71,15 @@ export default class FavoritesViewClass extends BaseViewClass {
                     select: this.compilationsRender(this.movieCompilations),
                 });
 
+                if(document.querySelector(".root").classList.contains("root-correction")){
+                    document.querySelector(".root").classList.remove("root-correction");
+                }
+                const autoBind = new AutoBind(".favorite")
+                autoBind.setVariableStyle("marginTextFavorite","10vw");
+
                 if (movCompBody.length == 1) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                    footerImage.classList.add(".footer-poster-position");
+                    footerImage.classList.add("footer-poster-position");
                 }
 
                 this.movieCompilations.forEach((carousel) => {
@@ -85,7 +94,7 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             UserLikeView.setAllLikes(likesData.favorites.id);
 
-            UserLikeView.deleteLikes();
+            this.deleteLikes();
             this.setHandler();
             header.setHandler();
 
@@ -100,6 +109,46 @@ export default class FavoritesViewClass extends BaseViewClass {
 
         favouriteNavbar.classList.add("headline-style");
         favouriteMobileNavbar.classList.add("headline-style");
+
+        console.log(this.movieCompilations);
+    }
+
+    async deleteLikes() {
+        const autoBind = new AutoBind(".selection");
+
+        const likes = document.querySelectorAll(".like.active-like");
+        console.log("likes",likes);
+        likes.forEach(like => {
+            const id = like.id.split('_').pop();
+            autoBind.setVariableEvent("dislike"+id,()=>{
+                const movie = document.getElementById(id);
+                //movie.classList.add("hidden");
+                autoBind.setVariable("hiddenMovie"+id,true);
+                let formJson = JSON.stringify({
+                    id: Number(id),
+                });
+                UserModel.disliked(formJson);
+            })
+
+            // like.addEventListener("click", ()=>{
+            // });
+            //autoBind.setVariableEvent("dislike"+id,()=>{});
+            // like.removeEventListener("click", ()=>{
+            //
+            //     const id = like.id.split('_').pop();
+            //
+            //     console.log(like.id.split('_').pop());
+            //     const movie = document.getElementById(id);
+            //     movie.classList.add("hidden");
+            //
+            //     let formJson = JSON.stringify({
+            //         id: Number(id),
+            //     });
+            //     UserModel.disliked(formJson);
+            // });
+        })
+
+
     }
 
 
