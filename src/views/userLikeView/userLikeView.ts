@@ -16,7 +16,7 @@ export default class UserLikeView {
 
         const likeClick = function (like: HTMLElement) {
             let formJson = JSON.stringify({
-                id: Number(like.id.split('_').pop()),
+                id: like.id.split('_').pop(),
             });
 
             if (like.classList.contains("active-like")) {

@@ -125,7 +125,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 //movie.classList.add("hidden");
                 autoBind.setVariable("hiddenMovie"+id,true);
                 let formJson = JSON.stringify({
-                    id: Number(id),
+                    id: id,
                 });
                 UserModel.disliked(formJson);
             })
