@@ -1,6 +1,9 @@
 import movieTemplate from "./movie.pug";
 import {MovieData} from "../../types";
 import "./movie.scss";
+import AutoBind from "Utils/autoBind"
+import router from "Routing/router.ts";
+import {routes} from "Routing/constRouting";
 
 export default class MovieClass {
     private readonly movies: Array<MovieData>;
