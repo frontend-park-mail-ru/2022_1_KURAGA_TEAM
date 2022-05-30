@@ -51,7 +51,7 @@ export default class GenreViewClass extends BaseViewClass {
             genreMobileNavbar.classList.add("headline-style");
 
             handlerLink();
-
+            ListFilmsClass.setHandler();
             UserLikeView.setHandler();
             header.setHandler();
             this.setHandler(id);

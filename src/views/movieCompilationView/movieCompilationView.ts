@@ -55,16 +55,16 @@ export default class MovieCompilationView {
     }
 
     static setHandler(data: MovieCompilationData): void {
+
         const autoBind = new AutoBind;
         console.log(autoBind);
         autoBind.setVariableEvent("clickMovieDesc",(e)=>{
             e.preventDefault();
-            router.go(routes.MOVIE_VIEW+e.target.id);
+            console.log(e);
+            if(e.target.classList.contains("common-descr")){
+                router.go(routes.MOVIE_VIEW+e.target.id);
+            }
         });
-
-
-
-
         let wrap: HTMLElement;
         let buttonCarouselNext: HTMLElement;
         let buttonCarouselPrev: HTMLElement;
