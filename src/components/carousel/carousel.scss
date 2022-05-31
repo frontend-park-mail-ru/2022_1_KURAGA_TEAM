@@ -419,6 +419,20 @@
   .wrapSeries {
     position: relative;
   }
+  .out-movieSeries:hover > .movieSeries {
+    .desc-movSeries {
+      border-radius: 0;
+    }
+
+    .play__svg {
+      display: none;
+    }
+
+    transform: scale(1);
+    border-radius: 0;
+    border: 0;
+
+  }
 }
 
 @media (min-width: 1000px) and (max-width: 1100px) {
