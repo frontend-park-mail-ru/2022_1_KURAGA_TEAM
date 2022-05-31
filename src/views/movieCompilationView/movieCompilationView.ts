@@ -56,6 +56,15 @@ export default class MovieCompilationView {
 
     static setHandler(data: MovieCompilationData): void {
 
+        const autoBind = new AutoBind;
+        console.log(autoBind);
+        autoBind.setVariableEvent("clickMovieDesc",(e)=>{
+            e.preventDefault();
+            console.log(e);
+            if(e.target.classList.contains("common-descr")){
+                router.go(routes.MOVIE_VIEW+e.target.id);
+            }
+        });
         let wrap: HTMLElement;
         let buttonCarouselNext: HTMLElement;
         let buttonCarouselPrev: HTMLElement;
@@ -92,7 +101,6 @@ export default class MovieCompilationView {
         }
         if (wrap) {
 
-
             wrap.addEventListener("mouseover", () => {
                 buttonCarouselPrev.classList.add("b-carousel__prev-hover");
                 buttonCarouselNext.classList.add("b-carousel__next-hover");
@@ -106,14 +114,17 @@ export default class MovieCompilationView {
             });
         }
 
-        // const autoBind = new AutoBind(".seasons");
+
+
+
+
+
         // autoBind.setVariableEvent("scrollDescrSeries", (e) => {
         //     console.log(e.target.outerHeight);
         //
         // })
-
-
     }
+
 
 
     static unmount(data: MovieCompilationData): void {

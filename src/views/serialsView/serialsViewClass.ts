@@ -11,7 +11,7 @@ import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserLikeView from "../userLikeView/userLikeView"
-
+import AutoBind from "Utils/autoBind"
 import "../filmsView/films.scss";
 
 export default class SerialsViewClass extends BaseViewClass {
@@ -46,8 +46,10 @@ export default class SerialsViewClass extends BaseViewClass {
 
             this.setHandler();
             handlerLink();
+            const autoBind = new AutoBind(".all-list");
+            autoBind.setVariableStyle("flexContentList","space-between");
             const {likesData} = await UserModel.getLikes()
-
+            ListFilmsClass.setHandler();
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
             header.setHandler();

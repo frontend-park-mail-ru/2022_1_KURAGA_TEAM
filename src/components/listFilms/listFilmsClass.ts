@@ -1,6 +1,9 @@
 import listFilmsTemplate from './listFilms.pug'
 import MovieClass from "Components/movie/movieClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
+import AutoBind from "Utils/autoBind"
+import router from "Routing/router.ts";
+import {routes} from "Routing/constRouting";
 import './listFilms.scss'
 
 export default class ListFilmsClass {
@@ -14,6 +17,17 @@ export default class ListFilmsClass {
         
         return listFilmsTemplate({
             items: unTop.render(),
+        });
+    }
+    static setHandler(){
+        const autoBind = new AutoBind;
+
+        autoBind.setVariableEvent("clickMovieDesc",(e)=>{
+            e.preventDefault();
+            console.log(e);
+            if(e.target.classList.contains("common-descr")){
+                router.go(routes.MOVIE_VIEW+e.target.id);
+            }
         });
     }
 }

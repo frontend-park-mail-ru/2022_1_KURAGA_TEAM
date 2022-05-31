@@ -4,7 +4,8 @@ import {UserData} from "../../types";
 import {debounce, isEmpty} from "Utils/Debounce"
 import AutoBind from "Utils/autoBind"
 import './header.scss'
-
+import {routes} from "Routing/constRouting";
+import router from "Routing/router";
 
 export default class HeaderClass {
     private readonly info: UserData;
@@ -85,6 +86,7 @@ export default class HeaderClass {
     }
 
     closeSearch(): void {
+
         const searchBtn: HTMLElement = document.querySelector(".search__btn");
         const searchCloseBtn: HTMLElement = document.querySelector(".close-btn");
         const navbar: HTMLElement = document.querySelector(".navbar");
@@ -144,10 +146,7 @@ export default class HeaderClass {
                     menu.appendChild(title);
                 } else {
 
-                    const title = document.createElement("div");
-                    title.classList.add("font-search");
-                    title.textContent = "Возможно, вы искали";
-                    menu.appendChild(title);
+
 
                     for (let key in searchData) {
                         if (searchData[key] != null) {
@@ -177,11 +176,13 @@ export default class HeaderClass {
                                     searchPic.src = res.picture;
                                     searchPic.classList.add("search-pic");
                                     if (key == "persons") {
+                                        searchTopic.onclick = ()=>{router.go(`/person/` + res.id);}
                                         searchTopicName.href = `/person/` + res.id;
                                         searchTopicName.textContent = res.name;
                                         searchTopicInfo.classList.add("genre", "padding-names");
                                         searchTopicInfo.textContent = res.position[0];
                                     } else {
+                                        searchTopic.onclick = ()=>{router.go(`/movie/` + res.id);}
                                         searchTopicName.href = `/movie/` + res.id;
                                         searchTopicName.textContent = res.name;
                                         searchTopicInfo.classList.add("genre", "padding-names");

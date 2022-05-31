@@ -119,3 +119,10 @@
   text-decoration: none;
   font-weight: normal;
 }
+
+@media (max-width: 1000px){
+  .b-carouselTop{
+    padding-inline: 0;
+  }
+}
+

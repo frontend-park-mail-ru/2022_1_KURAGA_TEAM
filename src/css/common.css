@@ -1,5 +1,4 @@
 @import url("../static/fonts/GTEestiProDisplay/stylesheet.css");
-
 html {
   height: 100%;
 }
@@ -39,7 +38,8 @@ body::-webkit-scrollbar-thumb {
   background-color: #191919;
   border-radius: 20px;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
 
@@ -142,11 +142,14 @@ body::-webkit-scrollbar-thumb {
   body {
     overflow-x: hidden;
   }
+
   ::-webkit-scrollbar {
     color: rgba(0, 0, 0, 0);
   }
 
-  .like{
+  .like {
     transform: scale(0.8);
   }
 }
+
+/*# sourceMappingURL=common.css.map */
