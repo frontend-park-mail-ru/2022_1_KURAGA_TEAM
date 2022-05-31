@@ -42,6 +42,8 @@ export default class GenreViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+            const autoBind = new AutoBind(".all-list");
+            autoBind.setVariableStyle("flexContentList","flex-start");
             const {likesData} = await UserModel.getLikes()
             UserLikeView.setAllLikes(likesData.favorites.id);
 
@@ -50,8 +52,7 @@ export default class GenreViewClass extends BaseViewClass {
             genreNavbar.classList.add("headline-style");
             genreMobileNavbar.classList.add("headline-style");
 
-            const autoBind = new AutoBind(".all-list");
-            autoBind.setVariableStyle("flexContentList","flex-start");
+
 
             handlerLink();
             ListFilmsClass.setHandler();

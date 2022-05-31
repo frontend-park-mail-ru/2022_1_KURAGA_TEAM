@@ -43,11 +43,11 @@ export default class SerialsViewClass extends BaseViewClass {
                 listFilms: listFilms.render(),
 
             });
-
-            this.setHandler();
-            handlerLink();
             const autoBind = new AutoBind(".all-list");
             autoBind.setVariableStyle("flexContentList","space-between");
+            this.setHandler();
+            handlerLink();
+
             const {likesData} = await UserModel.getLikes()
             ListFilmsClass.setHandler();
             UserLikeView.setAllLikes(likesData.favorites.id);

@@ -42,13 +42,15 @@ export default class FilmsViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+            const autoBind = new AutoBind(".all-list");
+            autoBind.setVariableStyle("flexContentList","space-between");
+
             const {likesData} = await UserModel.getLikes()
             UserLikeView.setAllLikes(likesData.favorites.id);
 
             this.setHandler(currentOffset);
             handlerLink();
-            const autoBind = new AutoBind(".all-list");
-            autoBind.setVariableStyle("flexContentList","space-between");
+
             UserLikeView.setHandler();
             header.setHandler();
         } catch(err) {

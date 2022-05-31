@@ -23,6 +23,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
             privates.opt.position -= 0.25;
             privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
         } else {
+
             if (!Number.isInteger(privates.opt.position)) {
                 privates.opt.position = Math.ceil(privates.opt.position);
             }
@@ -45,12 +46,13 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
 
         privates.sel.next.style.visibility = "visible";
+        console.log(privates.opt.max_position, privates.opt.position);
         // console.log(window.screen.width,privates.opt.length,privates.opt.max_position,privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position)
         // reason? // privates.sel.wrap.style.transform = `translateX(-${((privates.opt.length / privates.opt.max_position)) * privates.opt.position}px)`;
     };
 
     this.next_slide = (isWheel?: boolean) => {
-        const numMovies = Math.floor(window.screen.width / privates.opt.length * privates.opt.max_position);
+        const numMovies = window.screen.width / privates.opt.length * privates.opt.max_position;
         if (privates.opt.max_position - numMovies == privates.opt.position) {
             return;
         }
@@ -73,9 +75,15 @@ export default function MovingCarousel(setting: movingCarouselData) {
                 if (privates.opt.max_position - privates.opt.position >= 2 * numMovies) {
                     privates.opt.position += numMovies;
                     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-                } else {
+                } else if (privates.opt.max_position - privates.opt.position > 4) {
                     privates.opt.position++;
                     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+
+                } else {
+                    privates.opt.position += 0.5;
+                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+
+                    //privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
 
                 }
             }
@@ -90,7 +98,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
             privates.sel.prev.style.visibility = "visible";
         }
 
-
+        console.log(privates.opt.max_position, privates.opt.position);
     };
 
 
@@ -117,6 +125,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
         privates.sel.prev.style.visibility = "hidden";
     }
 
+
     if (privates.sel.prev !== null) {
         privates.sel.prev.addEventListener("click", () => {
             this.prev_slide();
@@ -130,13 +139,13 @@ export default function MovingCarousel(setting: movingCarouselData) {
     }
     if (window.screen.width >= 1000) {
         privates.sel.main.addEventListener("wheel", (e) => {
-            e.preventDefault();
-            const delta = e.deltaY;
-            if (delta > 0) {
-                this.next_slide(true);
-            } else {
-                this.prev_slide(true);
-            }
+            // e.preventDefault();
+            // const delta = e.deltaX;
+            // if (delta > 0) {
+            //     this.next_slide(true);
+            // } else if (delta < 0){
+            //     this.prev_slide(true);
+            // }
 
         })
     }
