@@ -456,7 +456,7 @@ export default class UserModel {
                                 ratingRes({
                                     generalRating: body,
                                 })
-                            }else console.log(body);
+                            }else;
 
                         })
                     })
