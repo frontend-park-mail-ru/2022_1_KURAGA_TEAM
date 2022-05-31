@@ -119,7 +119,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
         max_position: document.querySelector(privates.setting.wrap).children.length,
     };
     console.log(privates.opt);
-    if (privates.opt.max_position >= 1) {
+    if (privates.opt.max_position > (window.screen.width / privates.opt.length * privates.opt.max_position)) {
         privates.sel.next.style.visibility = "visible";
     }else{
         privates.sel.next.style.visibility = "hidden";
