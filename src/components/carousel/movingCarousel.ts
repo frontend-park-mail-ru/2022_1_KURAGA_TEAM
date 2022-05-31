@@ -68,6 +68,8 @@ export default function MovingCarousel(setting: movingCarouselData) {
                 privates.opt.position += 0.25;
                 privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
             } else {
+
+
                 if (!Number.isInteger(privates.opt.position)) {
                     privates.opt.position = Math.ceil(privates.opt.position);
                 }
@@ -116,8 +118,11 @@ export default function MovingCarousel(setting: movingCarouselData) {
         position: 0,
         max_position: document.querySelector(privates.setting.wrap).children.length,
     };
-    if (privates.opt.max_position > 1) {
+    console.log(privates.opt);
+    if (privates.opt.max_position >= 1) {
         privates.sel.next.style.visibility = "visible";
+    }else{
+        privates.sel.next.style.visibility = "hidden";
     }
     if (privates.opt.position == 0) {
         privates.sel.prev.style.visibility = "hidden";
