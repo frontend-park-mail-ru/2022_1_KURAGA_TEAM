@@ -54,7 +54,7 @@ div.video-container
                             if (!is_movie && !trailer)
                                 div.episode-number #{season} сезон #{episode} серия
                                 each value in episodes
-                                    a.season-number__episode(href=`/player/${common.id}/seas=${season}/ep=${value.number}`)
+                                    a.season-number__episode(href=`/player/${common.id}?seas=${season}&ep=${value.number}`)
                                         div.episode__img(style=`background-image: url(\"${value.picture}\");`)
                                         div.episode__div
                                             div.episode__name #{value.number}. #{value.name}

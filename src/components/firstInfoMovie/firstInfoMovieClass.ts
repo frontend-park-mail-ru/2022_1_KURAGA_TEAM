@@ -88,7 +88,7 @@ export default class FirstInfoMovieClass {
         } else {
             rating.textContent = (valueRating).toString();
         }
-        console.log(valueRating,inputValue);
+
         this.setColorRating();
     }
 

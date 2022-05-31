@@ -276,7 +276,7 @@ export default class MovieViewClass extends BaseViewClass {
             return;
         }
 
-        router.go(`/player/${id}/seas=1/ep=1`);
+        router.go(`/player/${id}?seas=1&ep=1`);
     }
 
     static async subscription() {

@@ -506,6 +506,18 @@
   .wrapSeries {
     position: relative;
   }
+
+  .out-movieSeries:hover > .movieSeries {
+    transform: scale(1);
+    border-radius: 0;
+    border: 0;
+  }
+  .out-movieSeries:hover > .movieSeries .desc-movSeries {
+    border-radius: 0;
+  }
+  .out-movieSeries:hover > .movieSeries .play__svg {
+    display: none;
+  }
 }
 @media (min-width: 1000px) and (max-width: 1100px) {
   .movie {
