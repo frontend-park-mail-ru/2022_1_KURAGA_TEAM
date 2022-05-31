@@ -32,6 +32,8 @@ export default class FirstInfoMovieClass {
         this.setRating();
 
         this.autoBind.setVariable("setRating",this.changeRating.bind(this));
+       // const ratingBar = document.getElementById("rating-bar");
+        //ratingBar.addEventListener("click",this.changeRating.bind(this));
         this.autoBind.setVariableEvent("changeRating",debounce(async()=>{
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
@@ -43,6 +45,7 @@ export default class FirstInfoMovieClass {
             document.querySelector(".our-rating").textContent = generalRating;
             this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
         },500))
+
 
 
 
@@ -68,6 +71,7 @@ export default class FirstInfoMovieClass {
     }
 
     changeRating() {
+
         const rating: HTMLElement = document.getElementById("rating");
         const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
@@ -80,10 +84,11 @@ export default class FirstInfoMovieClass {
         const progress: HTMLElement = document.getElementById("progress-wrapper");
 
         if  (valueRating == 0) {
+            rating.textContent = "1";
         } else {
             rating.textContent = (valueRating).toString();
         }
-
+        console.log(valueRating,inputValue);
         this.setColorRating();
     }
 

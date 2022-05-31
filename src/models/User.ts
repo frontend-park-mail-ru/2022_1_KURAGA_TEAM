@@ -452,9 +452,11 @@ export default class UserModel {
                 this.rating(formJson, message)
                     .then(({data})=>{
                         data.then((body)=>{
-                            ratingRes({
-                                generalRating: body,
-                            })
+                            if(typeof body == "number") {
+                                ratingRes({
+                                    generalRating: body,
+                                })
+                            }else console.log(body);
 
                         })
                     })
