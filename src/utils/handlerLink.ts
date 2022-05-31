@@ -16,7 +16,7 @@ export default function handlerLink(): void {
         item.addEventListener("click", (e) => {
             e.preventDefault();
 
-            router.go(item.pathname);
+            router.go(item.pathname + item.search);
         });
     });
 }

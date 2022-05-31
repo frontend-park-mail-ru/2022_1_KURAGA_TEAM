@@ -6,12 +6,12 @@ each item in items
                     a(href=`/movie/${item.id}`)
                 else if(item.number)
                     if (!check)
-                        a.play__back(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
+                        a.play__back(href=`/player/${idx}?seas=${season + 1}&ep=${item.number}`)
                             svg.play__svg(height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
                                 g(id="Layer_1")
                                 g(id="play_x5F_alt")
                                     path(d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M10,24V8l16.008,8L10,24z   " style="fill: var(--mix-color);")
-                        a.mobile-href(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)
+                        a.mobile-href(href=`/player/${idx}?seas=${season + 1}&ep=${item.number}`)
                 if(is_movie)
                     div.common-descr(id=`${item.id}` class=`desc-mov` + `${typeMov}` data-bind-event="onclick:clickMovieDesc")
                         a(class=`movie` + `${typeMov}` + '__href')(href=`/movie/${item.id}`)= item.name
@@ -25,8 +25,8 @@ each item in items
                 else if(item.number)
                     div(class=`desc-mov` + `${typeMov}`)
                         if (!check)
-                            a(class=`movie` + `${typeMov}` + '__href')(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`)= item.name
-                            a.genre(href=`/player/${idx}/seas=${season + 1}/ep=${item.number}`) !{item.number} серия
+                            a(class=`movie` + `${typeMov}` + '__href')(href=`/player/${idx}?seas=${season + 1}&ep=${item.number}`)= item.name
+                            a.genre(href=`/player/${idx}?seas=${season + 1}&ep=${item.number}`) !{item.number} серия
                         else
                             div(class=`movie` + `${typeMov}` + '__href')= item.name
                             div.genre !{item.number} серия

@@ -56,9 +56,9 @@ export default class PlayerViewClass extends BaseViewClass {
                 }
 
                 if (!this.movie.movieData.is_movie) {
-                    const arrPath = window.location.pathname.split('/');
-                    const numberSeas = +/\d+/.exec(arrPath[3]) - 1;
-                    const numberEpis = +/\d+/.exec(arrPath[4]) - 1;
+                    const arrPath = window.location.search.replace( '?', '').split('&');
+                    const numberSeas = +/\d+/.exec(arrPath[0]) - 1;
+                    const numberEpis = +/\d+/.exec(arrPath[1]) - 1;
 
                     video = this.movie.data.season[numberSeas].episodes[numberEpis].video
                     super.render(playerTemplate, {
@@ -89,8 +89,9 @@ export default class PlayerViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            //router.go(routes.ERROR_CATCH_VIEW);
+            console.error(err)
         }
     }
 
