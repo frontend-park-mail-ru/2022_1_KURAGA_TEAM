@@ -11,7 +11,7 @@ import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserLikeView from "../userLikeView/userLikeView"
-
+import AutoBind from "Utils/autoBind"
 import "../filmsView/films.scss";
 
 export default class GenreViewClass extends BaseViewClass {
@@ -49,6 +49,9 @@ export default class GenreViewClass extends BaseViewClass {
             const genreMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.genre-js");
             genreNavbar.classList.add("headline-style");
             genreMobileNavbar.classList.add("headline-style");
+
+            const autoBind = new AutoBind(".all-list");
+            autoBind.setVariableStyle("flexContentList","flex-start");
 
             handlerLink();
             ListFilmsClass.setHandler();

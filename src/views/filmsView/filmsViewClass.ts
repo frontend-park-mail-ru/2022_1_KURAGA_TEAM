@@ -11,6 +11,7 @@ import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserLikeView from "../userLikeView/userLikeView"
+import AutoBind from "Utils/autoBind"
 
 import "./films.scss";
 
@@ -46,7 +47,8 @@ export default class FilmsViewClass extends BaseViewClass {
 
             this.setHandler(currentOffset);
             handlerLink();
-
+            const autoBind = new AutoBind(".all-list");
+            autoBind.setVariableStyle("flexContentList","space-between");
             UserLikeView.setHandler();
             header.setHandler();
         } catch(err) {

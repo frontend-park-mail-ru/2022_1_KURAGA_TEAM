@@ -21,7 +21,7 @@ export default class ListFilmsClass {
     }
     static setHandler(){
         const autoBind = new AutoBind;
-        console.log(autoBind);
+
         autoBind.setVariableEvent("clickMovieDesc",(e)=>{
             e.preventDefault();
             console.log(e);
