@@ -1,4 +1,4 @@
-// const API_URL = "http://localhost:1323/api/v1";
+//const API_URL = "http://localhost:1323/api/v1";
 const API_URL = 'https://movie-space.ru/api/v1';
 
 

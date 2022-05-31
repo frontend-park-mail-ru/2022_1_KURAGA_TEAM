@@ -46,7 +46,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
 
         privates.sel.next.style.visibility = "visible";
-        console.log(privates.opt.max_position, privates.opt.position);
+
         // console.log(window.screen.width,privates.opt.length,privates.opt.max_position,privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position)
         // reason? // privates.sel.wrap.style.transform = `translateX(-${((privates.opt.length / privates.opt.max_position)) * privates.opt.position}px)`;
     };
@@ -97,8 +97,6 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
             privates.sel.prev.style.visibility = "visible";
         }
-
-        console.log(privates.opt.max_position, privates.opt.position);
     };
 
 

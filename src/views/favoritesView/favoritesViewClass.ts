@@ -109,15 +109,13 @@ export default class FavoritesViewClass extends BaseViewClass {
 
         favouriteNavbar.classList.add("headline-style");
         favouriteMobileNavbar.classList.add("headline-style");
-
-        console.log(this.movieCompilations);
     }
 
     async deleteLikes() {
         const autoBind = new AutoBind(".selection");
 
         const likes = document.querySelectorAll(".like.active-like");
-        console.log("likes",likes);
+
         likes.forEach(like => {
             const id = like.id.split('_').pop();
             autoBind.setVariableEvent("dislike"+id,()=>{

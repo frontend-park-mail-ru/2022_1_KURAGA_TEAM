@@ -77,10 +77,6 @@ export default class InputsProfileClass {
 
         const inputAvatar: HTMLInputElement = document.querySelector('input[class="profile-avatar__input"]');
 
-        inputName.autocomplete = 'off';
-        inputPassOne.autocomplete = 'off';
-        inputPassTwo.autocomplete = 'off';
-
         inputName.addEventListener("change", this.inputNameChange);
 
         inputName.addEventListener("keydown", this.inputNameKeyDown);
