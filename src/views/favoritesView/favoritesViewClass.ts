@@ -83,7 +83,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 }
 
                 this.movieCompilations.forEach((carousel) => {
-                    MovieCompilationView.setHandler(carousel.movieCompilationData, false);
+                    MovieCompilationView.setHandler(carousel.movieCompilationData);
                 });
             }
 

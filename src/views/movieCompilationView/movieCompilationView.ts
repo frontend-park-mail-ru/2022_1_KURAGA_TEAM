@@ -54,19 +54,17 @@ export default class MovieCompilationView {
         });
     }
 
-    static setHandler(data: MovieCompilationData, check: boolean): void {
+    static setHandler(data: MovieCompilationData): void {
 
         const autoBind = new AutoBind;
 
-        if (!check) {
-            autoBind.setVariableEvent("clickMovieDesc",(e)=>{
-                e.preventDefault();
+        autoBind.setVariableEvent("clickMovieDesc",(e)=>{
+            e.preventDefault();
 
-                if(e.target.classList.contains("common-descr")){
-                    router.go(routes.MOVIE_VIEW+e.target.id);
-                }
-            });
-        }
+            if(e.target.classList.contains("common-descr")){
+                router.go(routes.MOVIE_VIEW+e.target.id);
+            }
+        });
 
         let wrap: HTMLElement;
         let buttonCarouselNext: HTMLElement;
