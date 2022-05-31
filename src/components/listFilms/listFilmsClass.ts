@@ -24,7 +24,7 @@ export default class ListFilmsClass {
 
         autoBind.setVariableEvent("clickMovieDesc",(e)=>{
             e.preventDefault();
-            console.log(e);
+
             if(e.target.classList.contains("common-descr")){
                 router.go(routes.MOVIE_VIEW+e.target.id);
             }

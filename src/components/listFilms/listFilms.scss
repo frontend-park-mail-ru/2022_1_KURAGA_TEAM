@@ -28,8 +28,10 @@
   overflow-x: scroll;
   overflow-y: hidden;
   padding-left: 6px;
+  padding-right: 6px;
   border-radius: 30px;
   background: var(--trailer-button-hover);
+  transition: all .2s ease;
 
   &__genre {
     font-size: 20px;
@@ -47,11 +49,37 @@
   }
 }
 
+.full-list {
+  flex-wrap: wrap;
+  transition: all .2s ease;
+  height: 84px;
+}
+
+.open-full {
+  display: none;
+  width: fit-content;
+  text-align: end;
+  margin-left: 86%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.open-full:hover {
+  text-decoration: underline;
+}
+
 .list-genres::-webkit-scrollbar {
   display: none;
 }
-@media (max-width: 1000px){
+
+@media (max-width: 1000px) {
   .list-films {
     margin: 20px 0 20px 0;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1500px) {
+  .open-full {
+    display: block;
   }
 }

@@ -66,6 +66,20 @@ export default class GenreViewClass extends BaseViewClass {
 
     setHandler(id: number) {
         const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
+        const genres: HTMLDivElement = document.querySelector('.list-genres');
+        const btnFull: HTMLDivElement = document.querySelector('.open-full');
+
+        btnFull.addEventListener('click', () => {
+            if (genres.classList.length === 1) {
+                genres.classList.add('full-list');
+                btnFull.textContent = 'Скрыть';
+
+                return;
+            }
+
+            genres.classList.remove('full-list');
+            btnFull.textContent = 'Показать все';
+        });
 
         currGenre.style.backgroundColor = 'var(--mix-color)';
     }

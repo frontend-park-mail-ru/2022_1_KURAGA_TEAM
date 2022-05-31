@@ -82,7 +82,7 @@ export default class HomeViewClass extends BaseViewClass {
             UserLikeView.setHandler();
 
             this.movieCompilations.forEach((carousel) => {
-                MovieCompilationView.setHandler(carousel.movieCompilationData);
+                MovieCompilationView.setHandler(carousel.movieCompilationData, false);
             });
 
         } catch (error) {
