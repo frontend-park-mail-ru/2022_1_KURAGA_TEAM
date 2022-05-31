@@ -421,12 +421,26 @@
   }
 }
 
-@media (min-width: 1000px) and (max-width: 2000px) {
+@media (min-width: 1000px) and (max-width: 1100px) {
   .movie {
     height: calc(3vw + 150px);
     grid-template-rows: auto 50px;
     width: calc(3vw + 280px);
+  }
+}
+@media (min-width: 1100px) and (max-width: 1500px){
+  .movie{
+    height: calc(3vw + 200px);
+    grid-template-rows: auto 50px;
+    width: calc(8vw + 260px);
+  }
+}
 
+@media (min-width: 1500px) and(max-width: 1900px){
+  .movie{
+    height: calc(3vw + 190px);
+    grid-template-rows: auto 50px;
+    width: calc(6vw + 270px);
   }
 }
 

@@ -169,7 +169,6 @@ export default class HeaderClass {
                                 if (i <= 1) {
                                     const searchTopic = document.createElement("div");
                                     searchTopic.classList.add("search-topic");
-
                                     const searchTopicName = document.createElement("a");
                                     searchTopicName.classList.add("font-menu-search", "padding-names");
                                     const searchTopicInfo = document.createElement("a");
