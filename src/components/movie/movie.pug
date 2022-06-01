@@ -1,5 +1,10 @@
 each item in items
     div.mov-card(data-bind='hidden:hiddenMovie'+`${item.id}` class = `out-movie`+`${typeMov}`)
+        if(item.rating === -1)
+        else if(Number.isInteger(item.rating))
+            div.rating-info !{item.rating + `.0`}
+        else
+            div.rating-info !{item.rating}
         if(item.id != -1)
             div( class=`movie` + `${typeMov}`, id =`${item.id}` , style=`background-image: url(\"${item.picture}\");`)
                 if(is_movie)
