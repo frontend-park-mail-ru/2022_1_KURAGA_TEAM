@@ -73,13 +73,13 @@ export default class GenreViewClass extends BaseViewClass {
         btnFull.addEventListener('click', () => {
             if (genres.classList.length === 1) {
                 genres.classList.add('full-list');
-                btnFull.textContent = 'Скрыть';
+                btnFull.textContent = 'Скрыть все';
 
                 return;
             }
 
             genres.classList.remove('full-list');
-            btnFull.textContent = 'Показать все';
+            btnFull.textContent = 'Раскрыть все';
         });
 
         currGenre.style.backgroundColor = 'var(--mix-color)';

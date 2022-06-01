@@ -14,6 +14,7 @@ export default class PlayerViewClass extends BaseViewClass {
     private static click: boolean;
     private static displayTime: any;
     private static waitingForClick: any;
+    private static idx: number;
 
     constructor() {
         super();
@@ -28,7 +29,7 @@ export default class PlayerViewClass extends BaseViewClass {
             const loader = new LoaderViewClass();
             loader.render();
 
-            const idx = +/\d+/.exec(window.location.pathname);
+            PlayerViewClass.idx = +/\d+/.exec(window.location.pathname);
 
             const check = window.location.pathname.indexOf("trailer");
 
@@ -38,12 +39,12 @@ export default class PlayerViewClass extends BaseViewClass {
                 return;
             }
 
-            const {movie} = await MovieModel.getMovie(idx);
+            const {movie} = await MovieModel.getMovie(PlayerViewClass.idx);
             this.movie = new MovieModel(movie);
 
             let video = this.movie.trailer;
             const common = {
-                id: idx,
+                id: PlayerViewClass.idx,
             }
 
             if (check === -1) {
@@ -89,9 +90,8 @@ export default class PlayerViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-        } catch(err) {
-            //router.go(routes.ERROR_CATCH_VIEW);
-            console.error(err)
+        } catch {
+            router.go(routes.ERROR_CATCH_VIEW);
         }
     }
 
@@ -293,10 +293,19 @@ export default class PlayerViewClass extends BaseViewClass {
         const controlsContainers: HTMLDivElement = document.querySelector(".controls-container");
         const video: HTMLVideoElement = document.querySelector(".player");
         const exit: HTMLAnchorElement = document.querySelector(".exit");
+        const leftArrow: HTMLAnchorElement = document.querySelector(".right-arrow");
+        const rightArrow: HTMLAnchorElement = document.querySelector(".left-arrow");
 
         controlsContainers.style.opacity = "1";
         exit.style.opacity = "1";
         video.style.cursor = "initial";
+
+        if (leftArrow !== null) {
+            leftArrow.style.opacity = "1";
+        }
+        if (rightArrow !== null) {
+            rightArrow.style.opacity = "1";
+        }
 
         if (this.displayTime) {
             clearTimeout(this.displayTime);
@@ -305,6 +314,14 @@ export default class PlayerViewClass extends BaseViewClass {
         this.displayTime = setTimeout(() => {
             controlsContainers.style.opacity = "0";
             exit.style.opacity = "0";
+
+            if (leftArrow !== null) {
+                leftArrow.style.opacity = "0";
+            }
+            if (rightArrow !== null) {
+                rightArrow.style.opacity = "0";
+            }
+
             video.style.cursor = "none";
         }, 5000);
     }
@@ -355,6 +372,10 @@ export default class PlayerViewClass extends BaseViewClass {
 
         if (e.code === "ArrowLeft") {
             PlayerViewClass.rewind();
+        }
+
+        if (e.code === "Escape") {
+            router.go(`/movie/${PlayerViewClass.idx}`);
         }
 
         PlayerViewClass.displayControls();

@@ -119,6 +119,11 @@
     background: var(--btn-hover-color);
 }
 
+@mixin backdrop-filter($blur) {
+    -webkit-backdrop-filter: $blur;
+    backdrop-filter: $blur;
+}
+
 .trailer-button {
     height: 40px;
     text-decoration: none;
@@ -129,6 +134,7 @@
     font-weight: lighter;
     font-family: GT Eesti Pro Display, arial, sans-serif;
     color: var(--font-color);
+    @include backdrop-filter(blur(15px));
     font-size: 20px;
     width: 164px;
     cursor: pointer;

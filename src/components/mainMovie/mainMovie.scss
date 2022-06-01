@@ -83,6 +83,11 @@
     justify-self: center;
 }
 
+@mixin backdrop-filter($blur) {
+    -webkit-backdrop-filter: $blur;
+    backdrop-filter: $blur;
+}
+
 .btn-info {
     height: 40px;
     text-decoration: none;
@@ -104,7 +109,7 @@
     font-weight: 350;
     line-height: 28px;
     place-self: center;
-    backdrop-filter: blur(15px);
+    @include backdrop-filter(blur(15px));
     border-radius: 10px;
     transition: transform 0.1s ease-out, background-color 0.15s linear;
 }
