@@ -54,14 +54,12 @@ export default class FirstInfoMovieClass {
         const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
         let valueRating = Math.round(parseInt(inputValue) / 10);
-        if (rating.textContent != `-`) {
+        if (rating.textContent != `–`) {
             valueRating = Number(rating.textContent);
             inputValue = (valueRating * 10).toString();
             (<HTMLInputElement>slider).value = (valueRating * 10).toString();
             this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
             this.autoBind.setVariableStyle("backSizeSlider", inputValue + "%");
-
-            this.setColorRating();
         }
 
 
