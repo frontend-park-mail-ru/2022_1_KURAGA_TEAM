@@ -26,15 +26,14 @@ export default class FirstInfoMovieClass {
     setHandler(): void {
 
 
-
         this.autoBind = new AutoBind(".first-part-info");
-        this.autoBind.setVariableStyle("colorRating","var(--font-color)");
+        this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
         this.setRating();
 
-        this.autoBind.setVariable("setRating",this.changeRating.bind(this));
-       // const ratingBar = document.getElementById("rating-bar");
+        this.autoBind.setVariable("setRating", this.changeRating.bind(this));
+        // const ratingBar = document.getElementById("rating-bar");
         //ratingBar.addEventListener("click",this.changeRating.bind(this));
-        this.autoBind.setVariableEvent("changeRating",debounce(async()=>{
+        this.autoBind.setVariableEvent("changeRating", debounce(async () => {
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
             const formJson = JSON.stringify({
@@ -43,26 +42,24 @@ export default class FirstInfoMovieClass {
             });
             const {generalRating} = await UserModel.changeRating(formJson);
             document.querySelector(".our-rating").textContent = generalRating;
-            this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
-        },500))
-
-
+            this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
+        }, 500))
 
 
     }
 
-    setRating(){
+    setRating() {
 
         const rating: HTMLElement = document.getElementById("rating");
         const slider = document.getElementById("slider");
         let inputValue = (<HTMLInputElement>slider).value;
         let valueRating = Math.round(parseInt(inputValue) / 10);
-        if(rating.textContent != `-`){
-            valueRating = Number(rating.textContent) ;
+        if (rating.textContent != `-`) {
+            valueRating = Number(rating.textContent);
             inputValue = (valueRating * 10).toString();
             (<HTMLInputElement>slider).value = (valueRating * 10).toString();
-            this.autoBind.setVariableStyle("fixRatingShadow","0 5px 8px var(--mix-color)");
-            this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%");
+            this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
+            this.autoBind.setVariableStyle("backSizeSlider", inputValue + "%");
 
             this.setColorRating();
         }
@@ -78,13 +75,13 @@ export default class FirstInfoMovieClass {
         let valueRating = Math.round(parseInt(inputValue) / 10);
 
 
-        this.autoBind.setVariableStyle("fixRatingShadow","");
-        this.autoBind.setVariableStyle("backSizeSlider",inputValue + "%")
+        this.autoBind.setVariableStyle("fixRatingShadow", "");
+        this.autoBind.setVariableStyle("backSizeSlider", inputValue + "%")
 
         const progress: HTMLElement = document.getElementById("progress-wrapper");
 
-        if  (valueRating == 0) {
-            rating.textContent = "1";
+        if (valueRating == 0) {
+            rating.textContent = "–";
         } else {
             rating.textContent = (valueRating).toString();
         }
@@ -92,19 +89,22 @@ export default class FirstInfoMovieClass {
         this.setColorRating();
     }
 
-    setColorRating(){
+    setColorRating() {
 
         const valueRating = Math.round(parseInt((<HTMLInputElement>document.getElementById("slider")).value) / 10);
-
-        if (valueRating <= 3) {
-            this.autoBind.setVariableStyle("colorRating","var(--font-error-color)");
+        console.log(valueRating)
+        if (valueRating == 0) {
+            this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
+        } else if (valueRating <= 3) {
+            this.autoBind.setVariableStyle("colorRating", "var(--font-error-color)");
         } else if (valueRating <= 6) {
-            this.autoBind.setVariableStyle("colorRating","var(--font-warning-color)");
+            this.autoBind.setVariableStyle("colorRating", "var(--font-warning-color)");
         } else {
-            this.autoBind.setVariableStyle("colorRating","var(--font-correct-color)");
+            this.autoBind.setVariableStyle("colorRating", "var(--font-correct-color)");
         }
-    }
 
+
+    }
 
 
     // setHandlerMovie(): void {
