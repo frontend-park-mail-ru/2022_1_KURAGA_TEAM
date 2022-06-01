@@ -19,6 +19,18 @@
     transition: all 0.2s linear;
 }
 
+.left-arrow {
+    position: fixed;
+    left: 0;
+    top: 50%;
+}
+
+.right-arrow {
+    position: fixed;
+    right: 0;
+    top: 50%;
+}
+
 .exit:hover {
     transform: scale(1.2);
 }

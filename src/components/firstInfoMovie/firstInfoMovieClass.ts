@@ -90,7 +90,7 @@ export default class FirstInfoMovieClass {
     setColorRating() {
 
         const valueRating = Math.round(parseInt((<HTMLInputElement>document.getElementById("slider")).value) / 10);
-        console.log(valueRating)
+
         if (valueRating == 0) {
             this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
         } else if (valueRating <= 3) {
