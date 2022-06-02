@@ -136,25 +136,25 @@
   display: none;
 }
 .rating-info{
-  text-shadow: 1px 2px 10px var(--footer-color);
-  filter: drop-shadow(2px 4px 6px var(--back-color));
-  text-align: -webkit-center;
+
+text-align: -webkit-center;
   position: absolute;
   background-color: var(--mix-color);
-  width: 45px;
+  width: 35px;
   font-weight: bold;
   padding: 10px;
   z-index: 10;
   border-radius: 35px;
   border-color: var(--font-color);
-  font-size: 28px;
+  font-size: 20px;
+
 }
 
 @media (max-width: 1000px){
-  .mobile-href{
-    display: block;
-  }
-  .like:hover,.active-like:hover{
-    transform: scale(0.8);
-  }
+.mobile-href{
+display: block;
+}
+.like:hover,.active-like:hover{
+transform: scale(0.8);
+}
 }

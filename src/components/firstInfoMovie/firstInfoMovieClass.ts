@@ -36,10 +36,18 @@ export default class FirstInfoMovieClass {
         this.autoBind.setVariableEvent("changeRating", debounce(async () => {
             const id = +/\d+/.exec(window.location.pathname);
             const rating: HTMLElement = document.getElementById("rating");
-            const formJson = JSON.stringify({
-                rating: rating.textContent,
-                id: id.toString()
-            });
+            let formJson;
+            if(rating.textContent == "–"){
+                formJson = JSON.stringify({
+                    rating: "-1",
+                    id: id.toString()
+                });
+            } else {
+                formJson = JSON.stringify({
+                    rating: rating.textContent,
+                    id: id.toString()
+                });
+            }
             const {generalRating} = await UserModel.changeRating(formJson);
             document.querySelector(".our-rating").textContent = generalRating;
             this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
