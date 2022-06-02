@@ -44,13 +44,7 @@ export interface User {
 }
 
 export interface PersonData {
-    addit_photo_1: string;
-    addit_photo_2: string;
-    description: string;
-    id: number;
-    name: string;
-    photo: string;
-    position: string;
+
 }
 
 export interface MovieData {
@@ -104,11 +98,13 @@ export interface MovieCompilationData {
     idBtn?: number;
 }
 export interface InfoHeadPerson {
-    name: string;
-    position: string;
-    description: string;
     addit_photo_1: string;
     addit_photo_2: string;
+    description: string;
+    id: number;
+    name: string;
+    photo: string;
+    position: Array<string>;
 }
 
 export interface mainMovieData {

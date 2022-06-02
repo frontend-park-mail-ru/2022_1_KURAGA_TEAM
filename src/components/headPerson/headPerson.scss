@@ -29,11 +29,19 @@
 }
 
 .add-photos__photo {
+  border: 3px solid;
+  border-color: var(--font-first-span-color);
+  cursor: pointer;
     object-fit: cover;
     border-radius: 10px;
     width: 252px;
     height: 212px;
+  transition: all 0.5s ease;
 }
+.add-photos__photo:hover {
+  transform: scale(1.05);
+}
+
 //.add-photos__photo:hover {
 //  transform: scale(1.05);
 //}

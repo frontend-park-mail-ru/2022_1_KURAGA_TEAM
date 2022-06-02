@@ -53,11 +53,10 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
     this.next_slide = (isWheel?: boolean) => {
         const numMovies = window.screen.width / privates.opt.length * privates.opt.max_position;
-        const delta = numMovies- Math.floor(numMovies);
+        const delta = numMovies - Math.floor(numMovies);
         if (privates.opt.max_position - numMovies == privates.opt.position) {
             return;
         }
-        console.log("num",numMovies,delta);
 
         if (numMovies === privates.opt.max_position) {
             privates.sel.next.style.visibility = "hidden";

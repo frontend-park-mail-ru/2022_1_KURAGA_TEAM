@@ -1,8 +1,10 @@
 div.head-person__name #{info.name}
-div.head-person__job #{info.position}
+div.head-person__job
+    each item in info.position
+        = item+' '
 div.head-person__descr #{info.description}
 div.add-photos
-    img.add-photos__photo(src=`${info.addit_photo_1}`)
-    img.add-photos__photo(src=`${info.addit_photo_2}`)
+    img.add-photos__photo(src=`${info.addit_photo_1}` data-bind="src:addAddit1" data-bind-event="onclick:clickAddit1")
+    img.add-photos__photo(src=`${info.addit_photo_2}` data-bind="src:addAddit2" data-bind-event="onclick:clickAddit2")
 
 
