@@ -452,9 +452,11 @@ export default class PlayerViewClass extends BaseViewClass {
             .toString()
             .padStart(2, "0")}`;
 
-        if (totalSecondsRemaining === 0) {
-            if (PlayerViewClass.numberEpis !== PlayerViewClass.episodes.length - 1) {
-                router.go(`/player/${PlayerViewClass.idx}?seas=${PlayerViewClass.numberSeas + 1}&ep=${PlayerViewClass.numberEpis + 2}`);
+        if (PlayerViewClass.episodes !== undefined) {
+            if (totalSecondsRemaining === 0) {
+                if (PlayerViewClass.numberEpis !== PlayerViewClass.episodes.length - 1) {
+                    router.go(`/player/${PlayerViewClass.idx}?seas=${PlayerViewClass.numberSeas + 1}&ep=${PlayerViewClass.numberEpis + 2}`);
+                }
             }
         }
     }
