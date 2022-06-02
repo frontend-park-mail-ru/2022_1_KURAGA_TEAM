@@ -57,6 +57,17 @@
     line-height: initial;
   }
 }
+@media (max-width: 1300px) {
+  .head-person__descr {
+    margin: 20px 30vw 20px 0;
+  }
+}
+@media (max-width: 1500px) {
+  .head-person__descr {
+    margin: 20px 50vw 20px 0;
+  }
+}
+
 
 //.add-photos__photo:hover {
 //  transform: scale(1.05);
