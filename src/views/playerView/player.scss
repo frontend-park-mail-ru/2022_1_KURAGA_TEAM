@@ -19,6 +19,14 @@
     transition: all 0.2s linear;
 }
 
+.player-name {
+    position: absolute;
+    top: 0;
+    left: 41vw;
+    margin-top: 4vmin;
+    transition: all 0.2s linear;
+}
+
 .left-arrow {
     position: fixed;
     left: 0;

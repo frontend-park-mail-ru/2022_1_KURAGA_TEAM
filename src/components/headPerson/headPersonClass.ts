@@ -35,7 +35,7 @@ export default class HeadPersonClass {
     changeBack(photo: string): string {
         const back: HTMLElement = document.querySelector(".photo-person");
         const backPhoto = back.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-        console.log(photo);
+
         back.style.backgroundImage = `url(\"${photo}\")`
         return backPhoto;
     }
