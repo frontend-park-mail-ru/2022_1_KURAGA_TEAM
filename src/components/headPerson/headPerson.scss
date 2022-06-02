@@ -1,46 +1,66 @@
 .head-person__name {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 50px;
-    line-height: 58px;
-    color: var(--font-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 58px;
+  color: var(--font-color);
 }
 
 .head-person__job {
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 23px;
-    color: var(--secondary-name);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--secondary-name);
 }
 
 .head-person__descr {
-    font-weight: 400;
-    margin: 20px 60vw 20px 0;
-    font-size: 18px;
-    line-height: 21px;
-    color: var(--font-color);
+  font-weight: 400;
+  margin: 20px 60vw 20px 0;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--font-color);
 }
 
 .add-photos {
-    display: flex;
-    justify-content: flex-start;
-    column-gap: 22px;
-    margin-bottom: 28px;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 22px;
+  margin-bottom: 28px;
 }
 
 .add-photos__photo {
   border: 3px solid;
   border-color: var(--font-first-span-color);
   cursor: pointer;
-    object-fit: cover;
-    border-radius: 10px;
-    width: 252px;
-    height: 212px;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 252px;
+  height: 212px;
   transition: all 0.5s ease;
 }
-.add-photos__photo:hover {
-  transform: scale(1.05);
+
+@media (min-width: 1800px) {
+  .head-person__descr {
+    font-size: calc(1vw + 8px);
+    line-height: initial;
+  }
+  .add-photos__photo{
+    width: calc(10vw + 180px);
+    height: calc(10vw + 150px);
+  }
+  .head-person__job{
+    font-size: calc(1vw + 8px);
+    line-height: initial;
+  }
+  .head-person__name{
+    font-size: calc(1vw + 40px);
+    line-height: initial;
+  }
 }
+
+//.add-photos__photo:hover {
+//  transform: scale(1.05);
+//}
 
 //.add-photos__photo:hover {
 //  transform: scale(1.05);
