@@ -24,7 +24,7 @@
   font-size: calc(1vw + 20px);
   font-weight: 500;
   color: var(--font-color);
-  margin-top: 150px;
+  margin-top: 5vw;
   margin-bottom: 30px;
   margin-left: 4vw;
 }
@@ -67,4 +67,9 @@
 .empty-heart:hover{
   filter: blur(20px);
   transform: scale(1.2);
+}
+
+.footer-poster-fixed{
+  bottom: 0;
+  position: fixed;
 }

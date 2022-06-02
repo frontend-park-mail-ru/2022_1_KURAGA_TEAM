@@ -73,12 +73,12 @@ export default function MovingCarousel(setting: movingCarouselData) {
                 //     privates.opt.position = Math.ceil(privates.opt.position);
                 // }
 
-                if (privates.opt.max_position - privates.opt.position >= 2 * numMovies) {
+                if (privates.opt.max_position - privates.opt.position > 2 * numMovies) {
                     privates.opt.position += numMovies;
                     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
                 } else  {
                     privates.opt.position =  privates.opt.max_position - numMovies;
-                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position + 1 - delta+ window.screen.width*0.04}px)`;
+                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position + window.screen.width*0.08}px)`;
                 }
                 // } else {
                 //     privates.opt.position=privates.opt.position+1-delta;
@@ -88,6 +88,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
                 //
                 // }
             }
+            console.log(privates.opt,numMovies)
             if (privates.opt.max_position - numMovies <= privates.opt.position) {
 
                 privates.sel.next.style.visibility = "hidden";

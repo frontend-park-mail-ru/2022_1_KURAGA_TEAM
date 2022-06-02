@@ -35,7 +35,7 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             const {movCompBody} = await MovieCompilationModel.getFavorites();
 
-            ;
+
 
             if (isEmptyMovies(movCompBody)) {
                 const empty = "Ваш каталог пустой";
@@ -47,8 +47,8 @@ export default class FavoritesViewClass extends BaseViewClass {
                 const root:HTMLElement = document.querySelector(".root");
                 root.classList.add("root-correction");
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                autoBind.setVariableStyle("marginTextFavorite","0");
-                //footerImage.classList.add("footer-poster-position");
+                // autoBind.setVariableStyle("marginTextFavorite","0");
+                footerImage.classList.add("footer-poster-fixed");
             } else {
 
                 movCompBody.forEach((i, id) => {
@@ -76,10 +76,11 @@ export default class FavoritesViewClass extends BaseViewClass {
                 }
                 const autoBind = new AutoBind(".favorite")
                 autoBind.setVariableStyle("marginTextFavorite","10vw");
-
+                const footerImage: HTMLElement = document.querySelector(".footer-poster");
+                footerImage.classList.remove("footer-poster-fixed");
                 if (movCompBody.length == 1) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                    footerImage.classList.add("footer-poster-position");
+                    footerImage.classList.add("footer-poster-fixed");
                 }
 
                 this.movieCompilations.forEach((carousel) => {
