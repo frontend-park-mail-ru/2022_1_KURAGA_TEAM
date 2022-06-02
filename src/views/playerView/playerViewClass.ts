@@ -15,6 +15,9 @@ export default class PlayerViewClass extends BaseViewClass {
     private static displayTime: any;
     private static waitingForClick: any;
     private static idx: number;
+    private static numberEpis: number;
+    private static numberSeas: number;
+    private static episodes: Array<object>;
 
     constructor() {
         super();
@@ -45,6 +48,7 @@ export default class PlayerViewClass extends BaseViewClass {
             let video = this.movie.trailer;
             const common = {
                 id: PlayerViewClass.idx,
+                name_picture: this.movie.data.name_picture,
             }
 
             if (check === -1) {
@@ -58,17 +62,19 @@ export default class PlayerViewClass extends BaseViewClass {
 
                 if (!this.movie.movieData.is_movie) {
                     const arrPath = window.location.search.replace( '?', '').split('&');
-                    const numberSeas = +/\d+/.exec(arrPath[0]) - 1;
-                    const numberEpis = +/\d+/.exec(arrPath[1]) - 1;
+                    PlayerViewClass.numberSeas = +/\d+/.exec(arrPath[0]) - 1;
+                    PlayerViewClass.numberEpis = +/\d+/.exec(arrPath[1]) - 1;
 
-                    video = this.movie.data.season[numberSeas].episodes[numberEpis].video
+                    video = this.movie.data.season[PlayerViewClass.numberSeas].episodes[PlayerViewClass.numberEpis].video;
+                    PlayerViewClass.episodes = this.movie.data.season[PlayerViewClass.numberSeas].episodes;
+
                     super.render(playerTemplate, {
                         common,
                         video,
                         trailer: false,
-                        episodes: this.movie.data.season[numberSeas].episodes,
-                        season: numberSeas + 1,
-                        episode: numberEpis + 1,
+                        episodes: PlayerViewClass.episodes,
+                        season: PlayerViewClass.numberSeas + 1,
+                        episode: PlayerViewClass.numberEpis + 1,
                     });
                 } else {
                     video = this.movie.video;
@@ -295,9 +301,11 @@ export default class PlayerViewClass extends BaseViewClass {
         const exit: HTMLAnchorElement = document.querySelector(".exit");
         const leftArrow: HTMLAnchorElement = document.querySelector(".right-arrow");
         const rightArrow: HTMLAnchorElement = document.querySelector(".left-arrow");
+        const name: HTMLAnchorElement = document.querySelector(".player-name");
 
         controlsContainers.style.opacity = "1";
         exit.style.opacity = "1";
+        name.style.opacity = "1";
         video.style.cursor = "initial";
 
         if (leftArrow !== null) {
@@ -314,6 +322,7 @@ export default class PlayerViewClass extends BaseViewClass {
         this.displayTime = setTimeout(() => {
             controlsContainers.style.opacity = "0";
             exit.style.opacity = "0";
+            name.style.opacity = "0";
 
             if (leftArrow !== null) {
                 leftArrow.style.opacity = "0";
@@ -442,6 +451,12 @@ export default class PlayerViewClass extends BaseViewClass {
             .padStart(2, "0")}:${secondsRemaining
             .toString()
             .padStart(2, "0")}`;
+
+        if (totalSecondsRemaining === 0) {
+            if (PlayerViewClass.numberEpis !== PlayerViewClass.episodes.length - 1) {
+                router.go(`/player/${PlayerViewClass.idx}?seas=${PlayerViewClass.numberSeas + 1}&ep=${PlayerViewClass.numberEpis + 2}`);
+            }
+        }
     }
 
     playStopMobile(): void {
