@@ -27,7 +27,7 @@ export default class FirstInfoMovieClass {
 
 
         this.autoBind = new AutoBind(".first-part-info");
-        this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
+        //this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
         this.setRating();
 
         this.autoBind.setVariable("setRating", this.changeRating.bind(this));
