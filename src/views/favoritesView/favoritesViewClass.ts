@@ -77,7 +77,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                 const autoBind = new AutoBind(".favorite")
                 autoBind.setVariableStyle("marginTextFavorite","10vw");
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                footerImage.classList.remove("footer-poster-fixed");
+
                 if (movCompBody.length == 1) {
                     const footerImage: HTMLElement = document.querySelector(".footer-poster");
                     footerImage.classList.add("footer-poster-fixed");
@@ -95,7 +95,7 @@ export default class FavoritesViewClass extends BaseViewClass {
 
             UserLikeView.setAllLikes(likesData.favorites.id);
 
-            this.deleteLikes();
+            this.deleteLikes(movCompBody.length);
             this.setHandler();
             header.setHandler();
 
@@ -112,7 +112,7 @@ export default class FavoritesViewClass extends BaseViewClass {
         favouriteMobileNavbar.classList.add("headline-style");
     }
 
-    async deleteLikes() {
+    async deleteLikes(length:number) {
         const autoBind = new AutoBind(".selection");
 
         const likes = document.querySelectorAll(".like.active-like");
@@ -123,6 +123,12 @@ export default class FavoritesViewClass extends BaseViewClass {
                 const movie = document.getElementById(id);
                 //movie.classList.add("hidden");
                 autoBind.setVariable("hiddenMovie"+id,true);
+                const footerImage: HTMLElement = document.querySelector(".footer-poster");
+                if(length == 1){
+                    footerImage.classList.add("footer-poster-fixed");
+                }else{
+                    footerImage.classList.remove("footer-poster-fixed");
+                }
                 let formJson = JSON.stringify({
                     id: id,
                 });
