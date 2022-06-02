@@ -68,6 +68,8 @@ export default class FirstInfoMovieClass {
             (<HTMLInputElement>slider).value = (valueRating * 10).toString();
             this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
             this.autoBind.setVariableStyle("backSizeSlider", inputValue + "%");
+        }else{
+            this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
         }
 
 
@@ -88,6 +90,7 @@ export default class FirstInfoMovieClass {
 
         if (valueRating == 0) {
             rating.textContent = "–";
+            this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
         } else {
             rating.textContent = (valueRating).toString();
         }
@@ -99,9 +102,7 @@ export default class FirstInfoMovieClass {
 
         const valueRating = Math.round(parseInt((<HTMLInputElement>document.getElementById("slider")).value) / 10);
 
-        if (valueRating == 0) {
-            this.autoBind.setVariableStyle("colorRating", "var(--font-color)");
-        } else if (valueRating <= 3) {
+         if (valueRating <= 3) {
             this.autoBind.setVariableStyle("colorRating", "var(--font-error-color)");
         } else if (valueRating <= 6) {
             this.autoBind.setVariableStyle("colorRating", "var(--font-warning-color)");
