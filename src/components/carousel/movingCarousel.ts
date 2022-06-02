@@ -78,7 +78,7 @@ export default function MovingCarousel(setting: movingCarouselData) {
                     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
                 } else  {
                     privates.opt.position =  privates.opt.max_position - numMovies;
-                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position + 1 - delta+ window.screen.width*0.04}px)`;
+                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position + window.screen.width*0.08}px)`;
                 }
                 // } else {
                 //     privates.opt.position=privates.opt.position+1-delta;
