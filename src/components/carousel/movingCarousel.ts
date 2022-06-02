@@ -53,10 +53,11 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
     this.next_slide = (isWheel?: boolean) => {
         const numMovies = window.screen.width / privates.opt.length * privates.opt.max_position;
+        const delta = numMovies- Math.floor(numMovies);
         if (privates.opt.max_position - numMovies == privates.opt.position) {
             return;
         }
-
+        console.log("num",numMovies,delta);
 
         if (numMovies === privates.opt.max_position) {
             privates.sel.next.style.visibility = "hidden";
@@ -69,25 +70,24 @@ export default function MovingCarousel(setting: movingCarouselData) {
                 privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
             } else {
 
-
-                if (!Number.isInteger(privates.opt.position)) {
-                    privates.opt.position = Math.ceil(privates.opt.position);
-                }
+                // if (!Number.isInteger(privates.opt.position)) {
+                //     privates.opt.position = Math.ceil(privates.opt.position);
+                // }
 
                 if (privates.opt.max_position - privates.opt.position >= 2 * numMovies) {
                     privates.opt.position += numMovies;
                     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-                } else if (privates.opt.max_position - privates.opt.position > 4) {
-                    privates.opt.position++;
-                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-
-                } else {
-                    privates.opt.position += 0.5;
-                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-
-                    //privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-
+                } else  {
+                    privates.opt.position =  privates.opt.max_position - numMovies;
+                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position + 1 - delta+ window.screen.width*0.04}px)`;
                 }
+                // } else {
+                //     privates.opt.position=privates.opt.position+1-delta;
+                //     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+                //
+                //     //privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+                //
+                // }
             }
             if (privates.opt.max_position - numMovies <= privates.opt.position) {
 
