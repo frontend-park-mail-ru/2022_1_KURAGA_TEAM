@@ -99,7 +99,7 @@ export default class MovieModel {
                     data
                         .then((movieBody) => {
                             if (isAuth) {
-                                //movieBody.season = mockSerial;
+                                // movieBody = {"id":1,"name":"Аватар","is_movie":true,"name_picture":"https://movie-space.ru/api/v1/minio/logos/Avatar.webp","year":2009,"duration":"2 часа 42 минуты","age_limit":12,"description":"Бывший морпех Джейк Салли прикован к инвалидному креслу. Несмотря на немощное тело, Джейк в душе по-прежнему остается воином. Он получает задание совершить путешествие в несколько световых лет к базе землян на планете Пандора, где корпорации добывают редкий минерал, имеющий огромное значение для выхода Земли из энергетического кризиса.","kinopoisk_rating":7.9,"rating":7,"tagline":"Это новый мир","picture":"https://movie-space.ru/api/v1/minio/posters/Avatar.webp","video":"https://movie-space.ru/api/v1/minio/movie/Avatar.mp4","trailer":"https://movie-space.ru/api/v1/minio/trailers/Avatar.mp4","season":null,"country":["США","Великобритания"],"genre":[{"id":6,"name":"Фантастика"},{"id":2,"name":"Боевик"},{"id":3,"name":"Драма"},{"id":4,"name":"Приключения"}],"staff":[{"id":6,"name":"Джеймс Кэмерон","photo":"https://movie-space.ru/api/v1/minio/persons/JamesCameron.webp","position":"Режиссер"}]};
                                 movie({
                                     movie: movieBody,
                                 });

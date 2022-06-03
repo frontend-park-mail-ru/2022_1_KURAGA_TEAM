@@ -54,6 +54,29 @@ export default class FirstInfoMovieClass {
             this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
         }, 500))
 
+        if(window.screen.width < 1000){
+            document.getElementById("rating-bar").addEventListener("ontouchend",debounce(async () => {
+                const id = +/\d+/.exec(window.location.pathname);
+                const rating: HTMLElement = document.getElementById("rating");
+                let formJson;
+                if(rating.textContent == "–"){
+
+                    formJson = JSON.stringify({
+                        rating: "-1",
+                        id: id.toString()
+                    });
+                } else {
+                    formJson = JSON.stringify({
+                        rating: rating.textContent,
+                        id: id.toString()
+                    });
+                }
+                const {generalRating} = await UserModel.changeRating(formJson);
+                document.querySelector(".our-rating").textContent = generalRating;
+                this.autoBind.setVariableStyle("fixRatingShadow", "0 5px 8px var(--mix-color)");
+            }, 500))
+        }
+
 
     }
 
