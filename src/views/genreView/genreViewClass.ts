@@ -39,8 +39,6 @@ export default class GenreViewClass extends BaseViewClass {
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
 
-            console.log(this.movieCompilation.movieCompilationData)
-
             super.render(genreViewTemplate, {
                 genre: this.movieCompilation.movieCompilationData.compilationName,
                 header: header.render(),
