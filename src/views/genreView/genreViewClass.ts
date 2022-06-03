@@ -22,6 +22,8 @@ export default class GenreViewClass extends BaseViewClass {
 
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
 
             const {user} = await UserModel.auth();
             if (!user) {
@@ -44,6 +46,7 @@ export default class GenreViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+
             const autoBind = new AutoBind(".all-list");
             autoBind.setVariableStyle("flexContentList","flex-start");
             const {likesData} = await UserModel.getLikes()
