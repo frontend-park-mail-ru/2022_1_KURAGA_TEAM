@@ -19,6 +19,8 @@ import {User} from "../../types";
 export default class FavoritesViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilations: Array<MovieCompilationModel> = null;
+    private likes = {0: new Set, 1: new Set};
+
     async render() {
         try {
             const loader = new LoaderViewClass();
@@ -36,7 +38,6 @@ export default class FavoritesViewClass extends BaseViewClass {
             const {movCompBody} = await MovieCompilationModel.getFavorites();
 
 
-
             if (isEmptyMovies(movCompBody)) {
                 const empty = "Ваш каталог пустой";
                 super.render(homeViewTemplate, {
@@ -44,7 +45,7 @@ export default class FavoritesViewClass extends BaseViewClass {
                     empty: empty
                 });
                 const autoBind = new AutoBind(".favorite")
-                const root:HTMLElement = document.querySelector(".root");
+                const root: HTMLElement = document.querySelector(".root");
                 root.classList.add("root-correction");
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
                 // autoBind.setVariableStyle("marginTextFavorite","0");
@@ -56,6 +57,12 @@ export default class FavoritesViewClass extends BaseViewClass {
                         movCompBody.splice(id, 1);
                     }
                 })
+                movCompBody.forEach((item, index) => {
+                    item.movies.forEach(movie => {
+                        this.likes[index].add(movie.id);
+                    })
+                })
+
 
                 this.movieCompilations = movCompBody.map(
                     (movieCompilationData, index) =>
@@ -65,17 +72,16 @@ export default class FavoritesViewClass extends BaseViewClass {
                         )
                 );
 
-
                 super.render(homeViewTemplate, {
                     header: header.render(),
                     select: this.compilationsRender(this.movieCompilations),
                 });
 
-                if(document.querySelector(".root").classList.contains("root-correction")){
+                if (document.querySelector(".root").classList.contains("root-correction")) {
                     document.querySelector(".root").classList.remove("root-correction");
                 }
                 const autoBind = new AutoBind(".favorite")
-                autoBind.setVariableStyle("marginTextFavorite","10vw");
+                autoBind.setVariableStyle("marginTextFavorite", "10vw");
                 const footerImage: HTMLElement = document.querySelector(".footer-poster");
 
                 if (movCompBody.length == 1) {
@@ -112,22 +118,24 @@ export default class FavoritesViewClass extends BaseViewClass {
         favouriteMobileNavbar.classList.add("headline-style");
     }
 
-    async deleteLikes(length:number) {
+    async deleteLikes(length: number) {
         const autoBind = new AutoBind(".selection");
 
         const likes = document.querySelectorAll(".like.active-like");
 
         likes.forEach(like => {
             const id = like.id.split('_').pop();
-            autoBind.setVariableEvent("dislike"+id,()=>{
+            autoBind.setVariableEvent("dislike" + id, () => {
                 const movie = document.getElementById(id);
-                //movie.classList.add("hidden");
-                autoBind.setVariable("hiddenMovie"+id,true);
-                const footerImage: HTMLElement = document.querySelector(".footer-poster");
-                if(length == 1){
-                    footerImage.classList.add("footer-poster-fixed");
-                }else{
-                    footerImage.classList.remove("footer-poster-fixed");
+                autoBind.setVariable("hiddenMovie" + id, true);
+                for (let key in this.likes) {
+                    if(this.likes[key].has(Number(id))){
+                        this.likes[key].delete(Number(id));
+                    }
+                    if(this.likes[key].length == 0){
+                        const footerImage: HTMLElement = document.querySelector(".footer-poster");
+                        footerImage.classList.add("footer-poster-fixed");
+                    }
                 }
                 let formJson = JSON.stringify({
                     id: id,
@@ -155,7 +163,6 @@ export default class FavoritesViewClass extends BaseViewClass {
 
 
     }
-
 
 
     compilationsRender(movieCompilations: Array<MovieCompilationModel>) {

@@ -431,7 +431,7 @@ export default class UserModel {
                 .then(({isAuth,data}) => {
                     data
                         .then((body)=>{
-
+                           // body = {"status":200,"favorites":{"id":[29,33,18,36,1]}};
                             likes({
                                 likesData: body,
                             });
