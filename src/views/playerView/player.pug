@@ -8,7 +8,7 @@ div.video-container
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left")
             line(x1="19" y1="12" x2="5" y2="12")
             polyline(points="12 19 5 12 12 5")
-    div.head-movie__name.player-name(style=`background-image: url(\"${common.name_picture}\");`)
+    img.head-movie__name.player-name(src=`${common.name_picture}`)
     if (!is_movie && !trailer)
         if (episode === 1)
             a.right-arrow.controls__button(href=`/player/${common.id}?seas=${season}&ep=${episode + 1}`)

@@ -17,6 +17,9 @@ import "../filmsView/films.scss";
 export default class SerialsViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
+    private static has: boolean;
+    private static isLoading: boolean;
+    private static currentOffset: number;
 
     async render() {
         try {
@@ -30,10 +33,11 @@ export default class SerialsViewClass extends BaseViewClass {
             }
             this.user = new UserModel(user);
 
-            const { movCompBody } = await MovieCompilationModel.getSeries();
+            SerialsViewClass.currentOffset = 0;
+            SerialsViewClass.isLoading = false;
+
+            const { movCompBody } = await MovieCompilationModel.getSeries(20, SerialsViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
-
-
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -64,8 +68,52 @@ export default class SerialsViewClass extends BaseViewClass {
 
         serialsNavbar.classList.add("headline-style");
         serialsMobileNavbar.classList.add("headline-style");
-    }
-    unmount(){
 
+        window.addEventListener('scroll', this.scrollAdd);
+    }
+
+    async scrollAdd() {
+        const loader: HTMLDivElement = document.querySelector('.loader');
+        const list: HTMLDivElement = document.querySelector('.all-list');
+
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 5) {
+            if (SerialsViewClass.has) {
+                SerialsViewClass.currentOffset += 20;
+
+                loader.style.opacity = '1';
+
+                try {
+                    if (!SerialsViewClass.isLoading) {
+                        SerialsViewClass.isLoading = true;
+
+                        const {movCompBody} = await MovieCompilationModel.getMovies(20, SerialsViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody, -1);
+                        // @ts-ignore
+                        FilmsViewClass.has = movCompBody.has_next_page;
+
+                        const listFilms = new ListFilmsClass(this.movieCompilation);
+
+                        loader.style.opacity = '0';
+
+                        list.innerHTML += listFilms.render();
+                        // @ts-ignore
+                        list.lastChild.style.justifyContent = 'space-between';
+                        SerialsViewClass.isLoading = true;
+                    }
+                } catch {
+
+                }
+            }
+        }
+    }
+
+    unmount(): void {
+        window.removeEventListener('scroll', this.scrollAdd);
     }
 }

@@ -22,8 +22,8 @@
 .player-name {
     position: absolute;
     top: 0;
-    left: 41vw;
-    margin-top: 4vmin;
+    margin: auto;
+    padding-top: 4vmin;
     transition: all 0.2s linear;
 }
 
@@ -363,6 +363,18 @@
 }
 
 @media (max-width: 750px) {
+    .player-name {
+        display: none;
+    }
+
+    .right-arrow {
+        display: none;
+    }
+
+    .left-arrow {
+        display: none;
+    }
+
     .exit {
         margin-left: 26px;
         padding-top: 9vmin;

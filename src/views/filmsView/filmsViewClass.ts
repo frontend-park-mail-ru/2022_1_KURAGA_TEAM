@@ -18,6 +18,9 @@ import "./films.scss";
 export default class FilmsViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
+    private static has: boolean;
+    private static currentOffset: number;
+    private static isLoading: boolean;
 
     async render() {
         try {
@@ -31,8 +34,10 @@ export default class FilmsViewClass extends BaseViewClass {
             }
             this.user = new UserModel(user);
 
-            let currentOffset = 0;
-            const { movCompBody } = await MovieCompilationModel.getMovies(30, currentOffset);
+            FilmsViewClass.currentOffset = 0;
+            FilmsViewClass.isLoading = false;
+
+            const { movCompBody } = await MovieCompilationModel.getMovies(20, FilmsViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
 
             const header = new HeaderClass(this.user.userData);
@@ -41,14 +46,18 @@ export default class FilmsViewClass extends BaseViewClass {
             super.render(filmsViewTemplate, {
                 header: header.render(),
                 listFilms: listFilms.render(),
-            });
+            })
+
             const autoBind = new AutoBind(".all-list");
             autoBind.setVariableStyle("flexContentList","space-between");
 
             const {likesData} = await UserModel.getLikes()
             UserLikeView.setAllLikes(likesData.favorites.id);
 
-            this.setHandler(currentOffset);
+            // @ts-ignore
+            FilmsViewClass.has = movCompBody.has_next_page;
+
+            this.setHandler();
             handlerLink();
 
             UserLikeView.setHandler();
@@ -59,48 +68,58 @@ export default class FilmsViewClass extends BaseViewClass {
         }
     }
 
-    setHandler(currentOffset: number) {
+    setHandler() {
         const filmsNavbar: HTMLAnchorElement = document.querySelector(".font-nav.movie-js");
         const filmsMobileNavbar: HTMLAnchorElement = document.querySelector(".menu-mobile__nav.movie-js");
         filmsMobileNavbar.classList.add("headline-style");
         filmsNavbar.classList.add("headline-style");
 
-        // TODO СДЕЛАТЬ ПАДДИНГ
+        window.addEventListener('scroll', this.scrollAdd);
+    }
 
-        // const loader: HTMLDivElement = document.querySelector('.loader');
-        // const list: HTMLDivElement = document.querySelector('.all-list');
+    async scrollAdd() {
+        const loader: HTMLDivElement = document.querySelector('.loader');
+        const list: HTMLDivElement = document.querySelector('.all-list');
 
-        // window.addEventListener('scroll', async () => {
-        //     const {
-        //         scrollTop,
-        //         scrollHeight,
-        //         clientHeight
-        //     } = document.documentElement;
-        //
-        //     if (scrollTop + clientHeight >= scrollHeight - 5) {
-        //         currentOffset += 30;
-        //
-        //         // TODO ЧТО-ТО С ЛОАДЕРОМ
-        //
-        //         try {
-        //             const { movCompBody }: { movCompBody?: Promise<any> } = await MovieCompilationModel.getMovies(30, currentOffset);
-        //             const movieCompilationsData = await Promise.resolve(movCompBody);
-        //
-        //             this.movieCompilation = new MovieCompilationModel(0, movieCompilationsData);
-        //
-        //             const listFilms = new ListFilmsClass(this.movieCompilation);
-        //
-        //             // TODO ЧТО-ТО С ЛОАДЕРОМ
-        //
-        //             list.innerHTML += listFilms.render();
-        //         } catch {
-        //
-        //         }
-        //     }
-        // });
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 5) {
+            if (FilmsViewClass.has) {
+                FilmsViewClass.currentOffset += 20;
+
+                loader.style.opacity = '1';
+
+                try {
+                    if (!FilmsViewClass.isLoading) {
+                        FilmsViewClass.isLoading = true;
+
+                        const { movCompBody } = await MovieCompilationModel.getMovies(20, FilmsViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
+                        // @ts-ignore
+                        FilmsViewClass.has = movCompBody.has_next_page;
+
+                        const listFilms = new ListFilmsClass(this.movieCompilation);
+
+                        loader.style.opacity = '0';
+
+                        list.innerHTML += listFilms.render();
+                        // @ts-ignore
+                        list.lastChild.style.justifyContent = 'space-between';
+
+                        FilmsViewClass.isLoading = false;
+                    }
+                } catch {
+
+                }
+            }
+        }
     }
 
     unmount() {
-        // removeEvent
+        window.removeEventListener('scroll', this.scrollAdd);
     }
 }

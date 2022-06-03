@@ -17,9 +17,14 @@ import "../filmsView/films.scss";
 export default class GenreViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
+    private static has: boolean;
+    private static currentOffset: number;
+    private static isLoading: boolean;
 
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
 
             const {user} = await UserModel.auth();
             if (!user) {
@@ -30,8 +35,10 @@ export default class GenreViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
+            GenreViewClass.currentOffset = 0;
+            GenreViewClass.isLoading = false;
 
-            const { movCompBody } = await MovieCompilationModel.getGenre(id);
+            const { movCompBody } = await MovieCompilationModel.getGenre(id, 20, GenreViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
             const header = new HeaderClass(this.user.userData);
@@ -42,6 +49,7 @@ export default class GenreViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+
             const autoBind = new AutoBind(".all-list");
             autoBind.setVariableStyle("flexContentList","flex-start");
             const {likesData} = await UserModel.getLikes()
@@ -83,9 +91,53 @@ export default class GenreViewClass extends BaseViewClass {
         });
 
         currGenre.style.backgroundColor = 'var(--mix-color)';
+
+        window.addEventListener('scroll', this.scrollAdd);
+    }
+
+    async scrollAdd() {
+        const loader: HTMLDivElement = document.querySelector('.loader');
+        const list: HTMLDivElement = document.querySelector('.all-list');
+
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 5) {
+            if (GenreViewClass.has) {
+                GenreViewClass.currentOffset += 20;
+
+                loader.style.opacity = '1';
+
+                try {
+                    if (!GenreViewClass.isLoading) {
+                        GenreViewClass.isLoading = true;
+
+                        const {movCompBody} = await MovieCompilationModel.getMovies(20, GenreViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody, -1);
+                        // @ts-ignore
+                        FilmsViewClass.has = movCompBody.has_next_page;
+
+                        const listFilms = new ListFilmsClass(this.movieCompilation);
+
+                        loader.style.opacity = '0';
+
+                        list.innerHTML += listFilms.render();
+                        // @ts-ignore
+                        list.lastChild.style.justifyContent = 'space-between';
+
+                        GenreViewClass.isLoading = false;
+                    }
+                } catch {
+
+                }
+            }
+        }
     }
 
     unmount() {
-        // removeEvent
+        window.removeEventListener('scroll', this.scrollAdd);
     }
 }
