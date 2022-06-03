@@ -18,6 +18,7 @@ export default class SerialsViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
     private static has: boolean;
+    private static isLoading: boolean;
     private static currentOffset: number;
 
     async render() {
@@ -33,6 +34,8 @@ export default class SerialsViewClass extends BaseViewClass {
             this.user = new UserModel(user);
 
             SerialsViewClass.currentOffset = 0;
+            SerialsViewClass.isLoading = false;
+
             const { movCompBody } = await MovieCompilationModel.getSeries(20, SerialsViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
@@ -83,22 +86,26 @@ export default class SerialsViewClass extends BaseViewClass {
             if (SerialsViewClass.has) {
                 SerialsViewClass.currentOffset += 20;
 
-
                 loader.style.opacity = '1';
 
                 try {
-                    const { movCompBody } = await MovieCompilationModel.getMovies(20, SerialsViewClass.currentOffset);
-                    this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
-                    // @ts-ignore
-                    FilmsViewClass.has = movCompBody.has_next_page;
+                    if (!SerialsViewClass.isLoading) {
+                        SerialsViewClass.isLoading = true;
 
-                    const listFilms = new ListFilmsClass(this.movieCompilation);
+                        const {movCompBody} = await MovieCompilationModel.getMovies(20, SerialsViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody, -1);
+                        // @ts-ignore
+                        FilmsViewClass.has = movCompBody.has_next_page;
 
-                    loader.style.opacity = '0';
+                        const listFilms = new ListFilmsClass(this.movieCompilation);
 
-                    list.innerHTML += listFilms.render();
-                    // @ts-ignore
-                    list.lastChild.style.justifyContent = 'space-between';
+                        loader.style.opacity = '0';
+
+                        list.innerHTML += listFilms.render();
+                        // @ts-ignore
+                        list.lastChild.style.justifyContent = 'space-between';
+                        SerialsViewClass.isLoading = true;
+                    }
                 } catch {
 
                 }

@@ -19,6 +19,7 @@ export default class GenreViewClass extends BaseViewClass {
     private movieCompilation: MovieCompilationModel;
     private static has: boolean;
     private static currentOffset: number;
+    private static isLoading: boolean;
 
     async render() {
         try {
@@ -35,6 +36,8 @@ export default class GenreViewClass extends BaseViewClass {
             const id = +/\d+/.exec(window.location.pathname);
 
             GenreViewClass.currentOffset = 0;
+            GenreViewClass.isLoading = false;
+
             const { movCompBody } = await MovieCompilationModel.getGenre(id, 20, GenreViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
@@ -106,22 +109,27 @@ export default class GenreViewClass extends BaseViewClass {
             if (GenreViewClass.has) {
                 GenreViewClass.currentOffset += 20;
 
-
                 loader.style.opacity = '1';
 
                 try {
-                    const { movCompBody } = await MovieCompilationModel.getMovies(20, GenreViewClass.currentOffset);
-                    this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
-                    // @ts-ignore
-                    FilmsViewClass.has = movCompBody.has_next_page;
+                    if (!GenreViewClass.isLoading) {
+                        GenreViewClass.isLoading = true;
 
-                    const listFilms = new ListFilmsClass(this.movieCompilation);
+                        const {movCompBody} = await MovieCompilationModel.getMovies(20, GenreViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody, -1);
+                        // @ts-ignore
+                        FilmsViewClass.has = movCompBody.has_next_page;
 
-                    loader.style.opacity = '0';
+                        const listFilms = new ListFilmsClass(this.movieCompilation);
 
-                    list.innerHTML += listFilms.render();
-                    // @ts-ignore
-                    list.lastChild.style.justifyContent = 'space-between';
+                        loader.style.opacity = '0';
+
+                        list.innerHTML += listFilms.render();
+                        // @ts-ignore
+                        list.lastChild.style.justifyContent = 'space-between';
+
+                        GenreViewClass.isLoading = false;
+                    }
                 } catch {
 
                 }
