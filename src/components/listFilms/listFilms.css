@@ -4,7 +4,6 @@
   background: var(--back-color);
   row-gap: 4vw;
   flex-wrap: wrap;
-  //justify-content: space-between;
 }
 
 .test {
@@ -31,27 +30,25 @@
   padding-right: 6px;
   border-radius: 30px;
   background: var(--trailer-button-hover);
-  transition: all .2s ease;
-
-  &__genre {
-    font-size: 20px;
-    font-weight: 350;
-    text-decoration: none;
-    color: white;
-    margin: 4px;
-    border-radius: 30px;
-    padding: 2px 8px 2px 8px;
-    transition: all 0.1s ease;
-  }
-
-  &__genre:hover {
-    text-decoration: underline;
-  }
+  transition: all 0.2s ease;
+}
+.list-genres__genre {
+  font-size: 20px;
+  font-weight: 350;
+  text-decoration: none;
+  color: white;
+  margin: 4px;
+  border-radius: 30px;
+  padding: 2px 8px 2px 8px;
+  transition: all 0.1s ease;
+}
+.list-genres__genre:hover {
+  text-decoration: underline;
 }
 
 .full-list {
   flex-wrap: wrap;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   height: 84px;
 }
 
@@ -77,21 +74,20 @@
     margin: 20px 0 20px 0;
   }
 }
-
 @media (min-width: 1150px) and (max-width: 1300px) {
   .open-full {
     margin-left: 87%;
   }
 }
-
 @media (min-width: 1000px) and (max-width: 1150px) {
   .open-full {
     margin-left: 86%;
   }
 }
-
 @media (min-width: 1000px) and (max-width: 1500px) {
   .open-full {
     display: block;
   }
 }
+
+/*# sourceMappingURL=listFilms.css.map */

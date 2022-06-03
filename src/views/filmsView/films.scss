@@ -3,7 +3,7 @@
   font-weight: 500;
   color: var(--font-color);
   margin-top: 150px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   margin-left: 4vw;
 }
 
@@ -13,9 +13,10 @@
 }
 
 .loader {
-  display: none;
+  opacity: 0;
   height: 100px;
   width: 100%;
+  margin-bottom: 70px;
 }
 
 .films{

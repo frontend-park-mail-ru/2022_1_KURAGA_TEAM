@@ -96,8 +96,8 @@ export default class PlayerViewClass extends BaseViewClass {
 
             handlerLink();
             this.setHandler();
-        } catch {
-            router.go(routes.ERROR_CATCH_VIEW);
+        } catch(err) {
+            console.error(err);
         }
     }
 

@@ -109,20 +109,20 @@ export default class MovieCompilationModel {
         }
     }
 
-    static async allSeries() {
+    static async allSeries(limit, offset) {
         try {
             return await ajaxReq.get({
-                path: `/series`,
+                path: `/series?limit=${limit}&offset=${offset}`,
             });
         } catch (err) {
             return err;
         }
     }
 
-    static async allGenre(id) {
+    static async allGenre(id, limit, offset) {
         try {
             return await ajaxReq.get({
-                path: `/movieCompilations/genre/${id}`,
+                path: `/movieCompilations/genre/${id}?limit=${limit}&offset=${offset}`,
             });
         } catch (err) {
             return err;
@@ -226,9 +226,9 @@ export default class MovieCompilationModel {
         });
     }
 
-    static getSeries() {
+    static getSeries(limit, offset) {
         return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
-            this.allSeries()
+            this.allSeries(limit, offset)
                 .then(({data}) => {
                     data
                         .then((movieCompilations)=>{
@@ -243,9 +243,9 @@ export default class MovieCompilationModel {
         });
     }
 
-    static getGenre(id) {
+    static getGenre(id, limit, offset) {
         return new Promise<{movCompBody:MovieCompilationModel}>((movCompBody) => {
-            this.allGenre(id)
+            this.allGenre(id, limit, offset)
                 .then(({data}) => {
                     data
                         .then((movieCompilations)=>{

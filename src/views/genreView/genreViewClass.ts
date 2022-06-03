@@ -17,6 +17,8 @@ import "../filmsView/films.scss";
 export default class GenreViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
+    private static has: boolean;
+    private static currentOffset: number;
 
     async render() {
         try {
@@ -30,12 +32,14 @@ export default class GenreViewClass extends BaseViewClass {
 
             const id = +/\d+/.exec(window.location.pathname);
 
-
-            const { movCompBody } = await MovieCompilationModel.getGenre(id);
+            GenreViewClass.currentOffset = 0;
+            const { movCompBody } = await MovieCompilationModel.getGenre(id, 20, GenreViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
+
+            console.log(this.movieCompilation.movieCompilationData)
 
             super.render(genreViewTemplate, {
                 genre: this.movieCompilation.movieCompilationData.compilationName,
@@ -83,9 +87,48 @@ export default class GenreViewClass extends BaseViewClass {
         });
 
         currGenre.style.backgroundColor = 'var(--mix-color)';
+
+        window.addEventListener('scroll', this.scrollAdd);
+    }
+
+    async scrollAdd() {
+        const loader: HTMLDivElement = document.querySelector('.loader');
+        const list: HTMLDivElement = document.querySelector('.all-list');
+
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 5) {
+            if (GenreViewClass.has) {
+                GenreViewClass.currentOffset += 20;
+
+
+                loader.style.opacity = '1';
+
+                try {
+                    const { movCompBody } = await MovieCompilationModel.getMovies(20, GenreViewClass.currentOffset);
+                    this.movieCompilation = new MovieCompilationModel(0, movCompBody,-1);
+                    // @ts-ignore
+                    FilmsViewClass.has = movCompBody.has_next_page;
+
+                    const listFilms = new ListFilmsClass(this.movieCompilation);
+
+                    loader.style.opacity = '0';
+
+                    list.innerHTML += listFilms.render();
+                    // @ts-ignore
+                    list.lastChild.style.justifyContent = 'space-between';
+                } catch {
+
+                }
+            }
+        }
     }
 
     unmount() {
-        // removeEvent
+        window.removeEventListener('scroll', this.scrollAdd);
     }
 }
