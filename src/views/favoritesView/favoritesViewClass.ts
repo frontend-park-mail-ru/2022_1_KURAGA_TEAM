@@ -139,9 +139,14 @@ export default class FavoritesViewClass extends BaseViewClass {
 
                         const footerImage: HTMLElement = document.querySelector(".footer-poster");
                         footerImage.classList.add("footer-poster-fixed");
+
                         document.querySelectorAll(".select-title").forEach((i: HTMLElement) => {
                             if (i.textContent == key) {
                                 i.style.visibility = "hidden";
+                            }
+                            if(i.textContent == "Фильмы"){
+                                const topic:HTMLElement = document.querySelector(".select-topic");
+                                topic.style.display = "none";
                             }
                         })
 
