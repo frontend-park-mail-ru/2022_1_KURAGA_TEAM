@@ -144,14 +144,15 @@
   position: absolute;
   background-color: var(--mix-color);
   width: 35px;
+  margin: 5px 10px;
   font-weight: bold;
   padding: 10px;
   z-index: 10;
-  border-radius: 35px;
+  border-radius: 42px;
   border-color: var(--font-color);
   font-size: 20px;
-
 }
+
 
 @media (max-width: 1000px) {
   .mobile-href {
@@ -171,5 +172,6 @@
     border-radius: 35px;
     border-color: var(--font-color);
     font-size: 15px;
+    margin: 3px 5px;
   }
 }
