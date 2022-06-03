@@ -129,10 +129,10 @@ export default class FavoritesViewClass extends BaseViewClass {
                 const movie = document.getElementById(id);
                 autoBind.setVariable("hiddenMovie" + id, true);
                 for (let key in this.likes) {
-                    if(this.likes[key].has(Number(id))){
+                    if (this.likes[key].has(Number(id))) {
                         this.likes[key].delete(Number(id));
                     }
-                    if(this.likes[key].length == 0){
+                    if (this.likes[key].size == 0) {
                         const footerImage: HTMLElement = document.querySelector(".footer-poster");
                         footerImage.classList.add("footer-poster-fixed");
                     }
@@ -142,6 +142,14 @@ export default class FavoritesViewClass extends BaseViewClass {
                 });
                 UserModel.disliked(formJson);
             })
+
+            if (this.likes["0"].size == 0 && this.likes["1"].size == 0) {
+                    
+                document.querySelectorAll(".select-title").forEach((i: HTMLElement) => {
+                    i.style.visibility = "hidden";
+                })
+            }
+
 
             // like.addEventListener("click", ()=>{
             // });
