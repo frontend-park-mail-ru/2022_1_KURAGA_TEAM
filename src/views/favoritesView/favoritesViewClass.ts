@@ -59,7 +59,10 @@ export default class FavoritesViewClass extends BaseViewClass {
                 })
                 movCompBody.forEach((item, index) => {
                     item.movies.forEach(movie => {
-                        this.likes[index].add(movie.id);
+                        if (index == 0) {
+                            this.likes["Фильмы"].add(movie.id);
+                        } else this.likes["Сериалы"].add(movie.id);
+
                     })
                 })
 
@@ -137,9 +140,9 @@ export default class FavoritesViewClass extends BaseViewClass {
                         const footerImage: HTMLElement = document.querySelector(".footer-poster");
                         footerImage.classList.add("footer-poster-fixed");
                         document.querySelectorAll(".select-title").forEach((i: HTMLElement) => {
-                                    if(i.textContent == key){
-                                        i.style.visibility = "hidden";
-                                    }
+                            if (i.textContent == key) {
+                                i.style.visibility = "hidden";
+                            }
                         })
 
                     }
