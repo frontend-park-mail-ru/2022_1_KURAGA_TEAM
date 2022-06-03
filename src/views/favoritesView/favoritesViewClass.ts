@@ -19,7 +19,7 @@ import {User} from "../../types";
 export default class FavoritesViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilations: Array<MovieCompilationModel> = null;
-    private likes = {0: new Set, 1: new Set};
+    private likes = {"Фильмы": new Set, "Сериалы": new Set};
 
     async render() {
         try {
@@ -133,8 +133,15 @@ export default class FavoritesViewClass extends BaseViewClass {
                         this.likes[key].delete(Number(id));
                     }
                     if (this.likes[key].size == 0) {
+
                         const footerImage: HTMLElement = document.querySelector(".footer-poster");
                         footerImage.classList.add("footer-poster-fixed");
+                        document.querySelectorAll(".select-title").forEach((i: HTMLElement) => {
+                                    if(i.textContent == key){
+                                        i.style.visibility = "hidden";
+                                    }
+                        })
+
                     }
                 }
                 let formJson = JSON.stringify({
@@ -143,12 +150,13 @@ export default class FavoritesViewClass extends BaseViewClass {
                 UserModel.disliked(formJson);
             })
 
-            if (this.likes["0"].size == 0 && this.likes["1"].size == 0) {
-                    
-                document.querySelectorAll(".select-title").forEach((i: HTMLElement) => {
-                    i.style.visibility = "hidden";
-                })
-            }
+
+            // if (this.likes["0"].size == 0 || this.likes["1"].size == 0) {
+            //
+            //     document.querySelectorAll(".select-title").forEach((i: HTMLElement) => {
+            //
+            //     })
+            // }
 
 
             // like.addEventListener("click", ()=>{
