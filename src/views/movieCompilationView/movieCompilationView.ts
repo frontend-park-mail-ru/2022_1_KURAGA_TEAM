@@ -84,6 +84,7 @@ export default class MovieCompilationView {
                 prev: `.js-carousel${data.idBtn}__prev`,
                 next: `.js-carousel${data.idBtn}__next`,
             });
+
         } else {
             wrap = document.querySelector(`.js-carousel${data.id}`);
 
@@ -99,6 +100,11 @@ export default class MovieCompilationView {
                 prev: `.js-carousel${data.id}__prev`,
                 next: `.js-carousel${data.id}__next`,
             });
+        }
+
+        if(window.screen.width < 1000){
+            buttonCarouselNext.style.display = "none";
+            buttonCarouselPrev.style.display = "none";
         }
         if (wrap) {
 
