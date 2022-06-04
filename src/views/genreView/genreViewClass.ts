@@ -19,6 +19,7 @@ export default class GenreViewClass extends BaseViewClass {
     private movieCompilation: MovieCompilationModel;
     private static has: boolean;
     private static currentOffset: number;
+    private static id: number;
     private static isLoading: boolean;
 
     async render() {
@@ -33,13 +34,16 @@ export default class GenreViewClass extends BaseViewClass {
             }
             this.user = new UserModel(user);
 
-            const id = +/\d+/.exec(window.location.pathname);
+            GenreViewClass.id = +/\d+/.exec(window.location.pathname);
 
             GenreViewClass.currentOffset = 0;
             GenreViewClass.isLoading = false;
 
-            const { movCompBody } = await MovieCompilationModel.getGenre(id, 20, GenreViewClass.currentOffset);
+            const { movCompBody } = await MovieCompilationModel.getGenre(GenreViewClass.id, 20, GenreViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
+
+            // @ts-ignore
+            GenreViewClass.has = movCompBody.has_next_page;
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -60,21 +64,19 @@ export default class GenreViewClass extends BaseViewClass {
             genreNavbar.classList.add("headline-style");
             genreMobileNavbar.classList.add("headline-style");
 
-
-
             handlerLink();
             ListFilmsClass.setHandler();
             UserLikeView.setHandler();
             header.setHandler();
-            this.setHandler(id);
+            this.setHandler();
         } catch(err) {
             console.error(err);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 
-    setHandler(id: number) {
-        const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
+    setHandler() {
+        const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${GenreViewClass.id}-js`);
         const genres: HTMLDivElement = document.querySelector('.list-genres');
         const btnFull: HTMLDivElement = document.querySelector('.open-full');
 
@@ -106,6 +108,7 @@ export default class GenreViewClass extends BaseViewClass {
         } = document.documentElement;
 
         if (scrollTop + clientHeight >= scrollHeight - 5) {
+            console.log(GenreViewClass.has)
             if (GenreViewClass.has) {
                 GenreViewClass.currentOffset += 20;
 
@@ -115,18 +118,16 @@ export default class GenreViewClass extends BaseViewClass {
                     if (!GenreViewClass.isLoading) {
                         GenreViewClass.isLoading = true;
 
-                        const {movCompBody} = await MovieCompilationModel.getMovies(20, GenreViewClass.currentOffset);
-                        this.movieCompilation = new MovieCompilationModel(0, movCompBody, -1);
+                        const {movCompBody} = await MovieCompilationModel.getGenre(GenreViewClass.id, 20, GenreViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody);
                         // @ts-ignore
-                        FilmsViewClass.has = movCompBody.has_next_page;
+                        GenreViewClass.has = movCompBody.has_next_page;
 
                         const listFilms = new ListFilmsClass(this.movieCompilation);
 
                         loader.style.opacity = '0';
 
                         list.innerHTML += listFilms.render();
-                        // @ts-ignore
-                        list.lastChild.style.justifyContent = 'space-between';
 
                         GenreViewClass.isLoading = false;
                     }

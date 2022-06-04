@@ -39,6 +39,9 @@ export default class SerialsViewClass extends BaseViewClass {
             const { movCompBody } = await MovieCompilationModel.getSeries(20, SerialsViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
 
+            // @ts-ignore
+            SerialsViewClass.has = movCompBody.has_next_page;
+
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
 
@@ -92,10 +95,10 @@ export default class SerialsViewClass extends BaseViewClass {
                     if (!SerialsViewClass.isLoading) {
                         SerialsViewClass.isLoading = true;
 
-                        const {movCompBody} = await MovieCompilationModel.getMovies(20, SerialsViewClass.currentOffset);
-                        this.movieCompilation = new MovieCompilationModel(0, movCompBody, -1);
+                        const {movCompBody} = await MovieCompilationModel.getSeries(20, SerialsViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody);
                         // @ts-ignore
-                        FilmsViewClass.has = movCompBody.has_next_page;
+                        SerialsViewClass.has = movCompBody.has_next_page;
 
                         const listFilms = new ListFilmsClass(this.movieCompilation);
 
