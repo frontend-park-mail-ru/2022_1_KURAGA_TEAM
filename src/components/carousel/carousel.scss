@@ -185,6 +185,7 @@
 .movie:hover {
   transform: scale(1);
 }
+.movie:hover + .rating-info { color: chartreuse}
 
 .series:hover {
   transform: scale(1);
@@ -322,6 +323,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
 
 .out-movieSeries:hover > .descr-series {
 

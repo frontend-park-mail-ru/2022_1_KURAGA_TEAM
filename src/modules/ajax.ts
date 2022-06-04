@@ -2,6 +2,7 @@
 const API_URL = 'https://movie-space.ru/api/v1';
 
 
+
 function checkStatus(status: number): string {
     switch (Math.round(status / 100)) {
         case 1: {

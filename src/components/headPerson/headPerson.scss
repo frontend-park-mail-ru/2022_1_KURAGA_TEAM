@@ -15,10 +15,12 @@
 
 .head-person__descr {
   font-weight: 400;
-  margin: 20px 60vw 20px 0;
-  font-size: 18px;
-  line-height: 21px;
+  line-height: 18px;
   color: var(--font-color);
+  margin-block: 20px;
+  width: 60vw;
+  font-size: 16px;
+
 }
 
 .add-photos {
@@ -38,15 +40,22 @@
   height: 212px;
   transition: all 0.5s ease;
 }
+@media (max-width: 1000px){
+  .head-person__descr{
+    width: 90vw;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
 
 @media (min-width: 1800px) {
   .head-person__descr {
-    font-size: calc(1vw + 8px);
+    font-size: calc(1vw + 3px);
     line-height: initial;
   }
   .add-photos__photo{
     width: calc(10vw + 180px);
-    height: calc(10vw + 150px);
+    height: calc(10vw + 100px);
   }
   .head-person__job{
     font-size: calc(1vw + 8px);
@@ -64,7 +73,17 @@
 }
 @media (max-width: 1500px) {
   .head-person__descr {
-    margin: 20px 50vw 20px 0;
+    width: 70vw;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .add-photos__photo {
+    width: calc(14vw + 50px);
+    height: calc(10vw + 30px);
+  }
+  .head-person__descr {
+    line-height: 16px;
+    font-size: 14px;
   }
 }
 
