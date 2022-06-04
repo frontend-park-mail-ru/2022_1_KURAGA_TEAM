@@ -62,6 +62,7 @@
   margin-left: 88%;
   margin-bottom: 30px;
   cursor: pointer;
+  margin-top: -24px;
 }
 
 .open-full:hover {
@@ -90,7 +91,7 @@
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1500px) {
+@media (min-width: 1000px) and (max-width: 1920px) {
   .open-full {
     display: block;
   }
