@@ -3,5 +3,8 @@ div.sidebar
         div.main-movie__name(style=`background-image: url(\"${info.name_picture}\");`)
         div.title-descr "#{info.tagline}"
     button.btn.font-other Смотреть онлайн
-    a.btn-info.font-other(href=`/movie/${info.id}`) О фильме
+    if(info.is_movie)
+        a.btn-info.font-other(href=`/movie/${info.id}`) О фильме
+    else
+        a.btn-info.font-other(href=`/movie/${info.id}`) О сериале
 

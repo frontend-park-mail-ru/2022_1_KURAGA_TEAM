@@ -20,10 +20,11 @@ export default function MovingCarousel(setting: movingCarouselData) {
         }
         const numMovies = Math.floor(window.screen.width / (privates.opt.length + 20) * privates.opt.max_position);
         if (isWheel) {
-            privates.opt.position-=0.25;
+            privates.opt.position -= 0.25;
             privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
         } else {
-            if (!Number.isInteger(privates.opt.position)){
+
+            if (!Number.isInteger(privates.opt.position)) {
                 privates.opt.position = Math.ceil(privates.opt.position);
             }
             if (privates.opt.position >= numMovies) {
@@ -45,41 +46,49 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
 
         privates.sel.next.style.visibility = "visible";
+
         // console.log(window.screen.width,privates.opt.length,privates.opt.max_position,privates.opt.max_position - window.screen.width/privates.opt.length*privates.opt.max_position)
         // reason? // privates.sel.wrap.style.transform = `translateX(-${((privates.opt.length / privates.opt.max_position)) * privates.opt.position}px)`;
     };
 
     this.next_slide = (isWheel?: boolean) => {
-        console.log(privates.opt.max_position, privates.opt.position);
-        const numMovies = Math.floor(window.screen.width / privates.opt.length * privates.opt.max_position);
+        const numMovies = window.screen.width / privates.opt.length * privates.opt.max_position;
+        const delta = numMovies - Math.floor(numMovies);
         if (privates.opt.max_position - numMovies == privates.opt.position) {
             return;
         }
 
-
         if (numMovies === privates.opt.max_position) {
-             privates.sel.next.style.visibility = "hidden";
-             privates.sel.prev.style.visibility = "hidden";
+            privates.sel.next.style.visibility = "hidden";
+            privates.sel.prev.style.visibility = "hidden";
         } else {
 
 
             if (isWheel) {
-                privates.opt.position+=0.25;
+                privates.opt.position += 0.25;
                 privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
             } else {
-                if (!Number.isInteger(privates.opt.position)){
-                    privates.opt.position = Math.ceil(privates.opt.position);
-                }
 
-                if (privates.opt.max_position - privates.opt.position >= 2 * numMovies) {
+                // if (!Number.isInteger(privates.opt.position)) {
+                //     privates.opt.position = Math.ceil(privates.opt.position);
+                // }
+
+                if (privates.opt.max_position - privates.opt.position > 2 * numMovies) {
                     privates.opt.position += numMovies;
                     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-                } else {
-                    privates.opt.position++;
-                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
-
+                } else  {
+                    privates.opt.position =  privates.opt.max_position - numMovies;
+                    privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position + window.screen.width*0.08}px)`;
                 }
+                // } else {
+                //     privates.opt.position=privates.opt.position+1-delta;
+                //     privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+                //
+                //     //privates.sel.wrap.style.transform = `translateX(-${(privates.opt.length / privates.opt.max_position) * privates.opt.position}px)`;
+                //
+                // }
             }
+            console.log(privates.opt,numMovies)
             if (privates.opt.max_position - numMovies <= privates.opt.position) {
 
                 privates.sel.next.style.visibility = "hidden";
@@ -90,8 +99,6 @@ export default function MovingCarousel(setting: movingCarouselData) {
 
             privates.sel.prev.style.visibility = "visible";
         }
-
-
     };
 
 
@@ -111,12 +118,16 @@ export default function MovingCarousel(setting: movingCarouselData) {
         position: 0,
         max_position: document.querySelector(privates.setting.wrap).children.length,
     };
-    if (privates.opt.max_position > 1) {
+
+    if (privates.opt.max_position > (window.screen.width / privates.opt.length * privates.opt.max_position)) {
         privates.sel.next.style.visibility = "visible";
+    }else{
+        privates.sel.next.style.visibility = "hidden";
     }
-    if(privates.opt.position == 0){
+    if (privates.opt.position == 0) {
         privates.sel.prev.style.visibility = "hidden";
     }
+
 
     if (privates.sel.prev !== null) {
         privates.sel.prev.addEventListener("click", () => {
@@ -129,17 +140,18 @@ export default function MovingCarousel(setting: movingCarouselData) {
             this.next_slide();
         });
     }
-    privates.sel.main.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        const delta = e.deltaY;
+    if (window.screen.width >= 1000) {
+        privates.sel.main.addEventListener("wheel", (e) => {
+            // e.preventDefault();
+            // const delta = e.deltaX;
+            // if (delta > 0) {
+            //     this.next_slide(true);
+            // } else if (delta < 0){
+            //     this.prev_slide(true);
+            // }
 
-        if (delta > 0) {
-            this.next_slide(true);
-        } else {
-            this.prev_slide(true);
-        }
-
-    })
+        })
+    }
 
 
 }

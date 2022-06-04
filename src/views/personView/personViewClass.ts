@@ -60,6 +60,8 @@ export default class PersonViewClass extends BaseViewClass {
             header.setHandler();
             UserLikeView.setAllLikes(likesData.favorites.id);
             UserLikeView.setHandler();
+            MovieCompilationView.setHandler(this.movieCompilation.movieCompilationData);
+            headPerson.setHandler();
         } catch (err) {
             router.go(routes.ERROR_CATCH_VIEW);
         }

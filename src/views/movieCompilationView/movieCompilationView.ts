@@ -56,6 +56,16 @@ export default class MovieCompilationView {
 
     static setHandler(data: MovieCompilationData): void {
 
+        const autoBind = new AutoBind;
+
+        autoBind.setVariableEvent("clickMovieDesc",(e)=>{
+            e.preventDefault();
+
+            if(e.target.classList.contains("common-descr")){
+                router.go(routes.MOVIE_VIEW+e.target.id);
+            }
+        });
+
         let wrap: HTMLElement;
         let buttonCarouselNext: HTMLElement;
         let buttonCarouselPrev: HTMLElement;
@@ -74,6 +84,7 @@ export default class MovieCompilationView {
                 prev: `.js-carousel${data.idBtn}__prev`,
                 next: `.js-carousel${data.idBtn}__next`,
             });
+
         } else {
             wrap = document.querySelector(`.js-carousel${data.id}`);
 
@@ -90,8 +101,12 @@ export default class MovieCompilationView {
                 next: `.js-carousel${data.id}__next`,
             });
         }
-        if (wrap) {
 
+        if(window.screen.width < 1000){
+            buttonCarouselNext.style.display = "none";
+            buttonCarouselPrev.style.display = "none";
+        }
+        if (wrap) {
 
             wrap.addEventListener("mouseover", () => {
                 buttonCarouselPrev.classList.add("b-carousel__prev-hover");
@@ -106,14 +121,17 @@ export default class MovieCompilationView {
             });
         }
 
-        // const autoBind = new AutoBind(".seasons");
+
+
+
+
+
         // autoBind.setVariableEvent("scrollDescrSeries", (e) => {
         //     console.log(e.target.outerHeight);
         //
         // })
-
-
     }
+
 
 
     static unmount(data: MovieCompilationData): void {

@@ -2,9 +2,12 @@ div.head-movie__name(style=`background-image: url(\"${info.name_picture}\");`)
 div.head-movie__rating
     div.string-rating
         if(info.rating === -1)
-            div.rating.our-rating -
+            div.rating.our-rating –
+        else if(Number.isInteger(info.rating))
+            div.rating.our-rating #{info.rating + `.0`}
         else
             div.rating.our-rating #{info.rating}
+
         div.our-name MovieSpace
     div.string-rating
         div.rating.poisk-rating #{info.kinopoisk_rating}

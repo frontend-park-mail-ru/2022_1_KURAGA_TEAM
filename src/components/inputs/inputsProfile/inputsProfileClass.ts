@@ -73,6 +73,8 @@ export default class InputsProfileClass {
 
         const inputPassOne: HTMLInputElement = document.querySelector('input[data-section="passwordFirst"]');
 
+        inputPassOne.autocomplete = "new-password";
+
         const inputPassTwo: HTMLInputElement = document.querySelector('input[data-section="passwordSecond"]');
 
         const inputAvatar: HTMLInputElement = document.querySelector('input[class="profile-avatar__input"]');

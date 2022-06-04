@@ -1,39 +1,97 @@
 .head-person__name {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 50px;
-    line-height: 58px;
-    color: var(--font-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 58px;
+  color: var(--font-color);
 }
 
 .head-person__job {
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 23px;
-    color: var(--secondary-name);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--secondary-name);
 }
 
 .head-person__descr {
-    font-weight: 400;
-    margin: 20px 60vw 20px 0;
-    font-size: 18px;
-    line-height: 21px;
-    color: var(--font-color);
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--font-color);
+  margin-block: 20px;
+  width: 60vw;
+  font-size: 16px;
+
 }
 
 .add-photos {
-    display: flex;
-    justify-content: flex-start;
-    column-gap: 22px;
-    margin-bottom: 28px;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 22px;
+  margin-bottom: 28px;
 }
 
 .add-photos__photo {
-    object-fit: cover;
-    border-radius: 10px;
-    width: 252px;
-    height: 212px;
+  border: 3px solid;
+  border-color: var(--font-first-span-color);
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 252px;
+  height: 212px;
+  transition: all 0.5s ease;
 }
+@media (max-width: 1000px){
+  .head-person__descr{
+    width: 90vw;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .head-person__descr {
+    font-size: calc(1vw + 3px);
+    line-height: initial;
+  }
+  .add-photos__photo{
+    width: calc(10vw + 180px);
+    height: calc(10vw + 100px);
+  }
+  .head-person__job{
+    font-size: calc(1vw + 8px);
+    line-height: initial;
+  }
+  .head-person__name{
+    font-size: calc(1vw + 40px);
+    line-height: initial;
+  }
+}
+@media (max-width: 1300px) {
+  .head-person__descr {
+    margin: 20px 30vw 20px 0;
+  }
+}
+@media (max-width: 1500px) {
+  .head-person__descr {
+    width: 70vw;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .add-photos__photo {
+    width: calc(14vw + 50px);
+    height: calc(10vw + 30px);
+  }
+  .head-person__descr {
+    line-height: 16px;
+    font-size: 14px;
+  }
+}
+
+
+//.add-photos__photo:hover {
+//  transform: scale(1.05);
+//}
+
 //.add-photos__photo:hover {
 //  transform: scale(1.05);
 //}

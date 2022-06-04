@@ -11,15 +11,21 @@ import ListFilmsClass from "../../components/listFilms/listFilmsClass";
 import MovieCompilationModel from "../../models/MovieCompilation";
 import LoaderViewClass from "../loaderView/loaderViewClass";
 import UserLikeView from "../userLikeView/userLikeView"
-
+import AutoBind from "Utils/autoBind"
 import "../filmsView/films.scss";
 
 export default class GenreViewClass extends BaseViewClass {
     private user: UserModel;
     private movieCompilation: MovieCompilationModel;
+    private static has: boolean;
+    private static currentOffset: number;
+    private static id: number;
+    private static isLoading: boolean;
 
     async render() {
         try {
+            const loader = new LoaderViewClass();
+            loader.render();
 
             const {user} = await UserModel.auth();
             if (!user) {
@@ -28,11 +34,16 @@ export default class GenreViewClass extends BaseViewClass {
             }
             this.user = new UserModel(user);
 
-            const id = +/\d+/.exec(window.location.pathname);
+            GenreViewClass.id = +/\d+/.exec(window.location.pathname);
 
+            GenreViewClass.currentOffset = 0;
+            GenreViewClass.isLoading = false;
 
-            const { movCompBody } = await MovieCompilationModel.getGenre(id);
+            const { movCompBody } = await MovieCompilationModel.getGenre(GenreViewClass.id, 20, GenreViewClass.currentOffset);
             this.movieCompilation = new MovieCompilationModel(0, movCompBody);
+
+            // @ts-ignore
+            GenreViewClass.has = movCompBody.has_next_page;
 
             const header = new HeaderClass(this.user.userData);
             const listFilms = new ListFilmsClass(this.movieCompilation);
@@ -42,6 +53,9 @@ export default class GenreViewClass extends BaseViewClass {
                 header: header.render(),
                 listFilms: listFilms.render(),
             });
+
+            const autoBind = new AutoBind(".all-list");
+            autoBind.setVariableStyle("flexContentList","flex-start");
             const {likesData} = await UserModel.getLikes()
             UserLikeView.setAllLikes(likesData.favorites.id);
 
@@ -51,23 +65,80 @@ export default class GenreViewClass extends BaseViewClass {
             genreMobileNavbar.classList.add("headline-style");
 
             handlerLink();
-
+            ListFilmsClass.setHandler();
             UserLikeView.setHandler();
             header.setHandler();
-            this.setHandler(id);
+            this.setHandler();
         } catch(err) {
             console.error(err);
             //router.go(routes.ERROR_CATCH_VIEW)
         }
     }
 
-    setHandler(id: number) {
-        const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${id}-js`);
+    setHandler() {
+        const currGenre: HTMLAnchorElement = document.querySelector(`.genre-${GenreViewClass.id}-js`);
+        const genres: HTMLDivElement = document.querySelector('.list-genres');
+        const btnFull: HTMLDivElement = document.querySelector('.open-full');
+
+        btnFull.addEventListener('click', () => {
+            if (genres.classList.length === 1) {
+                genres.classList.add('full-list');
+                btnFull.textContent = 'Скрыть все';
+
+                return;
+            }
+
+            genres.classList.remove('full-list');
+            btnFull.textContent = 'Раскрыть все';
+        });
 
         currGenre.style.backgroundColor = 'var(--mix-color)';
+
+        window.addEventListener('scroll', this.scrollAdd);
+    }
+
+    async scrollAdd() {
+        const loader: HTMLDivElement = document.querySelector('.loader');
+        const list: HTMLDivElement = document.querySelector('.all-list');
+
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 5) {
+            console.log(GenreViewClass.has)
+            if (GenreViewClass.has) {
+                GenreViewClass.currentOffset += 20;
+
+                loader.style.opacity = '1';
+
+                try {
+                    if (!GenreViewClass.isLoading) {
+                        GenreViewClass.isLoading = true;
+
+                        const {movCompBody} = await MovieCompilationModel.getGenre(GenreViewClass.id, 20, GenreViewClass.currentOffset);
+                        this.movieCompilation = new MovieCompilationModel(0, movCompBody);
+                        // @ts-ignore
+                        GenreViewClass.has = movCompBody.has_next_page;
+
+                        const listFilms = new ListFilmsClass(this.movieCompilation);
+
+                        loader.style.opacity = '0';
+
+                        list.innerHTML += listFilms.render();
+
+                        GenreViewClass.isLoading = false;
+                    }
+                } catch {
+
+                }
+            }
+        }
     }
 
     unmount() {
-        // removeEvent
+        window.removeEventListener('scroll', this.scrollAdd);
     }
 }

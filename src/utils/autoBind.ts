@@ -16,6 +16,7 @@ export default class AutoBind{
                 prop: el.dataset['bindEvent'].split(':')[0],
                 variable: el.dataset['bindEvent'].split(':')[1],
             }));
+
         this.bindedStyle = [...document.querySelector(parentSelector).querySelectorAll('[data-bind-style]')]
             .map((el:HTMLElement) => ({
                 el,

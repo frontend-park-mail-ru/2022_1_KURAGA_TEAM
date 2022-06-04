@@ -5,7 +5,7 @@
 }
 
 .footer-poster {
-
+  grid-area: footer;
   background-image: url("../../static/footer-poster.png");
   background-size: cover;
   width: 100vw;
@@ -13,10 +13,24 @@
   box-shadow: inset 0 0 0,inset 0 139px 236px var(--back-color);
 }
 .footer-poster-position{
-  bottom: 0;
-  position: absolute;
+  margin-top: 10vw;
+  //bottom: 0;
+  //position: absolute;
 }
-
+.favorite{
+  grid-area: main;
+}
+.favorite__text {
+  font-size: calc(1vw + 20px);
+  font-weight: 500;
+  color: var(--font-color);
+  margin-top: 5vw;
+  margin-bottom: 30px;
+  margin-left: 4vw;
+}
+.root-correction{
+  grid-template-rows: 1fr 1.1fr 1fr;
+}
 
 @media (max-width: 1000px) {
   .footer-poster {
@@ -53,4 +67,9 @@
 .empty-heart:hover{
   filter: blur(20px);
   transform: scale(1.2);
+}
+
+.footer-poster-fixed{
+  bottom: 0;
+  position: fixed;
 }

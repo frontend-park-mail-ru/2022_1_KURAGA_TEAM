@@ -71,8 +71,8 @@
   grid-template-columns: auto;
   grid-template-rows: auto 50px;
   column-gap: 10px;
-  width: 425px;
-  height: 235px;
+  height: calc(4vw + 250px);
+  width: calc(8vw + 400px);
   row-gap: 10px;
   border-radius: 12px;
   //transition: all .2s ease;
@@ -119,3 +119,10 @@
   text-decoration: none;
   font-weight: normal;
 }
+
+@media (max-width: 1000px){
+  .b-carouselTop{
+    padding-inline: 0;
+  }
+}
+

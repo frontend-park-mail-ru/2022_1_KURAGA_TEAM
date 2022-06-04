@@ -23,7 +23,7 @@
 }
 
 .navbar {
-  z-index: 4;
+  z-index: 11;
   top: 0;
   width: 100%;
   position: fixed;
@@ -322,6 +322,10 @@
 
 .profile-block:hover .dropdown-content {
   display: block;
+}
+
+.search-topic:active{
+  background: var(--search-res-color);
 }
 
 @media (max-width: 1000px) {

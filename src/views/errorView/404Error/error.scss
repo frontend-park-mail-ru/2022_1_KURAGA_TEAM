@@ -65,22 +65,22 @@
     .error-text__404 {
         margin-right: 15px;
         padding-left: 10px;
-        font-size: 45px;
+        font-size: 45px !important;
     }
 
     .error-text {
-        margin-top: 50px;
+        margin-top: 50px !important;
     }
 
     .error-text__info {
         text-align: center;
         margin-right: 15px;
         padding-left: 15px;
-        font-size: 16px;
+        font-size: 16px !important;
     }
 
     .error-img {
-        width: 232px;
-        height: 183px;
+        width: 232px !important;
+        height: 183px !important;
     }
 }

@@ -577,7 +577,12 @@
 @media (max-width: 750px) {
   .popUp__body {
     width: 70%;
-    padding: 20px;
+    padding: 30px;
+  }
+
+  .popUp__exit__svg {
+    width: 25px;
+    height: 25px;
   }
 
   .popUp__exit {
